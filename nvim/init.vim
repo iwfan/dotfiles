@@ -11,21 +11,3 @@ source $HOME/dotfiles/nvim/settings/general.vim
 source $HOME/dotfiles/nvim/settings/keymappings.vim
 
 colorscheme deus
-
-" ===
-" === key map
-" ===
-" NERDTree git
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-    \ "Modified"  : "M",
-    \ "Staged"    : "+",
-    \ "Untracked" : "?",
-    \ "Renamed"   : "R",
-    \ "Unmerged"  : "C",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
-

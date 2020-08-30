@@ -72,10 +72,10 @@ map <leader>wl <C-w>l
 map <leader>wj <C-w>j
 map <leader>wk <C-w>k
 
-map <C-S-k> w:res +5<cr>
-map <C-S-j> :res -5<cr>
-map <C-S-h> :vertical resize +5<cr>
-map <C-S-l> :vertical resize -5<cr>
+map <C-S-up> :res +5<cr>
+map <C-S-down> :res -5<cr>
+map <C-S-left> :vertical resize +5<cr>
+map <C-S-right> :vertical resize -5<cr>
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
@@ -100,3 +100,4 @@ tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-l> <C-\><C-N><C-w>l
 tnoremap <Esc> <C-\><C-n>
+

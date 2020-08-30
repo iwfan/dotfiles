@@ -10,7 +10,8 @@ syntax enable
 set nocompatible
 set mouse=a                             " Enable your mouse
 set clipboard=unnamedplus               " Copy paste between vim and everything else
-set autochdir
+scriptencoding utf-8
+"set autochdir
 set encoding=utf-8                      " The encoding displayed
 set fileencoding=utf-8                  " The encoding written to file
 
@@ -59,7 +60,7 @@ set smarttab                            " Makes tabbing smarter will realize you
 set expandtab                           " Converts tabs to spaces
 set smartindent                         " Makes indenting smart
 set autoindent                          " Good auto indent
-set copyindent                          " copy indent from the previous line
+"set copyindent                          " copy indent from the previous line
 
 set hlsearch                            " 高亮搜索
 set incsearch                           " 自动定位到输入中的字符串，不需要回车搜索
@@ -83,11 +84,10 @@ set listchars=tab:\↹\ ,trail:␣
 set scrolloff=4
 set viewoptions=cursor,folds,slash,unix
 
-set indentexpr=
-set foldmethod=indent
-set foldlevel=99
 set foldenable
-set formatoptions-=tc
+set foldmethod=indent
+set indentexpr=
+set foldlevel=99
 
 set shortmess+=c                        " Don't pass messages to |ins-completion-menu|.
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
