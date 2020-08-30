@@ -9,6 +9,7 @@ export ZSH="/Users/f/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="spaceship"
+DEFAULT_USER=$USER
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -68,8 +69,12 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-#plugins=(git)
-
+source ~/dotfiles/zsh/env.zsh
+source ~/dotfiles/zsh/aliases.zsh
+source ~/dotfiles/zsh/fzf.zsh
+source ~/dotfiles/zsh/mappings.zsh
+source ~/dotfiles/zsh/vi.zsh
+source ~/dotfiles/zsh/plugins.zsh
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -78,6 +83,7 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -97,12 +103,3 @@ export LANG=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-DEFAULT_USER=$USER
-
-source ~/dotfiles/zsh/env.zsh
-source ~/dotfiles/zsh/aliases.zsh
-source ~/dotfiles/zsh/plugins.zsh
-source ~/dotfiles/zsh/fzf.zsh
-source ~/dotfiles/zsh/mappings.zsh
-# source ~/dotfiles/zsh/vi.zsh

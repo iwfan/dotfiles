@@ -6,9 +6,6 @@ export NVM_DIR="$HOME/.nvm"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 export GPG_TTY=$(tty)
-export LC_ALL='en_US.UTF-8'
-export LANG='en_US.UTF-8'
-
 export TERM=xterm-256color
 export TERM_ITALICS=true
 export RANGER_LOAD_DEFAULT_RC="false"
