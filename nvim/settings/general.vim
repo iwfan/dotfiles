@@ -19,8 +19,12 @@ set autoread                            " auto reload files changed outside of v
 set autowriteall
 set ttyfast                             " should make scrolling faster
 set lazyredraw                          " same as above
-set updatetime=300                      " Faster completion
-set timeoutlen=300                      " By default timeoutlen is 1000 ms
+
+set timeout ttimeout
+set timeoutlen=500                      " Time out on mappings
+set ttimeoutlen=10                      " Time out on key codes
+set updatetime=100                      " Idle time to write swap and trigger CursorHold
+set redrawtime=1500                     " Time in milliseconds for stopping display redraw
 
 set noswapfile
 set nobackup                            " This is recommended by coc
@@ -33,6 +37,11 @@ set noerrorbells                        " disable bells
 set novisualbell                        " disable bells
 set noerrorbells                        " disable bells
 set vb t_vb=
+
+set termguicolors                       " Support True Color in terminal
+let g:space_vim_italic=1
+let g:enable_bold_font=1
+let g:enable_italic_font=1
 
 let &t_ut=''
 set t_Co=256                            " this fixes colors on OS X terminal
@@ -47,40 +56,62 @@ set noshowmode
 set showcmd
 set cmdheight=1                         " More space for displaying messages
 set laststatus=2                        " Always display the status line
+set showtabline=2                       " Always show tabs
 set ruler                               " Show the cursor position all the time
 set wildmenu
 set wildignore+=*.swp,*.bak,log/**,node_modules/**,*.rbc
+set wildignore+=*.DS_Store,.git,.svn,*.o,*.out
 set wildignorecase
+set title
+" Title length.
+set titlelen=95
+" Title string.
+let &g:titlestring="
+			\ %{expand('%:p:~:.')}%(%m%r%w%)
+			\ %<\[%{fnamemodify(getcwd(), ':~')}\] - Neovim"
 
-set showtabline=2                       " Always show tabs
+set colorcolumn=100
+set textwidth=100                       " Text width maximum chars before wrapping
 set tabstop=2                           " Insert 2 spaces for a tab
-set softtabstop=2
+set softtabstop=-1                      " Automatically keeps in sync with shiftwidth
 set shiftwidth=2                        " Change the number of space characters inserted for indentation
 set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
 set expandtab                           " Converts tabs to spaces
 set smartindent                         " Makes indenting smart
 set autoindent                          " Good auto indent
-"set copyindent                          " copy indent from the previous line
+set copyindent                          " copy indent from the previous line
+set shiftround                          " Round indent to multiple of 'shiftwidth'
 
-set hlsearch                            " 高亮搜索
-set incsearch                           " 自动定位到输入中的字符串，不需要回车搜索
-set ignorecase                          " 搜索时智能匹配大小写
-set smartcase
+set ignorecase                          " Search ignoring case
+set smartcase                           " Keep case when searching with *
+set infercase                           " Adjust case in insert completion mode
+set incsearch                           " Incremental search
+set wrapscan                            " Searches wrap around the end of the file
+set hlsearch                            " Highlight search results
 set matchpairs+=<:>,「:」               " %默认匹配()、[]、{}，增加匹配<>
 set showmatch                           " Show matching brackets when text indicator is over them
+set complete=.,w,b,k                    " C-n completion: Scan buffers, windows and dictionary
 
-set wrap                                " Break line at predefined characters
-set linebreak                           " Character to show before the lines that have been soft-wrapped
+"set wrap                                " Break line at predefined characters
+set nowrap                              " No wrap by default
+set linebreak                           " Break long lines at 'breakat'
+set breakat=\ \	;:,!?                   " Long lines break chars
 set showbreak=↪
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
+set nostartofline                       " Cursor in same column for few commands
+set whichwrap+=h,l,<,>,[,],~            " Move to following line on certain keys
+set splitbelow splitright               " Splits open bottom right
+set switchbuf=useopen,vsplit            " Jump to the first open window
+set backspace=indent,eol,start          " Intuitive backspacing in insert mode
+set diffopt=filler,iwhite               " Diff mode: show fillers, ignore whitespace
+set completeopt=menu,menuone            " Always show menu, even for one item
+set completeopt+=noselect,noinsert
 
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set iskeyword+=-                        " treat dash separated words as a word text object"
 set formatoptions-=cro                  " Stop newline continution of comments
 
 set list
-set listchars=tab:\↹\ ,trail:␣
+set listchars=tab:»·,nbsp:␣,trail:·,extends:→,precedes:←
 set scrolloff=4
 set viewoptions=cursor,folds,slash,unix
 
@@ -91,9 +122,9 @@ set foldlevel=99
 
 set shortmess+=c                        " Don't pass messages to |ins-completion-menu|.
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
+highlight clear SignColumn              " gutter is the same color as where your line numbers show up
 set inccommand=split
 set completeopt=longest,noinsert,menuone,noselect,preview
-set colorcolumn=100
 set virtualedit=block
 
 set splitright

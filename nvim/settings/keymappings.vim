@@ -6,8 +6,8 @@ let mapleader = " "
 " map CapsLock Escape
 
 map s <nop>
-map <C-s> :w<CR>
-map <leader>q :x<CR>
+map <C-s> :noh<CR>:w<CR>
+map <C-q> :x<CR>
 
 "map R :w<cr>:source $MYVIMRC<cr>
 
@@ -15,6 +15,8 @@ noremap n nzz
 noremap N Nzz
 noremap U <C-r>
 
+noremap H g^
+noremap L g$
 noremap J <C-d>zz
 noremap K <C-u>zz
 noremap <C-d> j
@@ -39,10 +41,8 @@ map <leader>f <Plug>(easymotion-sn)
 map <leader>F <Plug>(easymotion-tn)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-map <Leader>h g^
-map <Leader>l g$
-map <leader>H <Plug>(easymotion-linebackward)
-map <leader>L <Plug>(easymotion-lineforward)
+map <leader>h <Plug>(easymotion-linebackward)
+map <leader>l <Plug>(easymotion-lineforward)
 map <Leader>z :UndotreeToggle<cr>
 
 inoremap <C-h> <left>
@@ -72,24 +72,26 @@ map <leader>wl <C-w>l
 map <leader>wj <C-w>j
 map <leader>wk <C-w>k
 
+
 map <C-S-up> :res +5<cr>
 map <C-S-down> :res -5<cr>
 map <C-S-left> :vertical resize +5<cr>
 map <C-S-right> :vertical resize -5<cr>
 
 " Close all the buffers
-map <leader>ba :bufdo bd<cr>
-
-map <leader>] :bnext<cr>
-map <leader>[ :bprevious<cr>
-
+noremap bd :bd<cr>
+noremap bl :bnext<cr>
+noremap bh :bprevious<cr>
+noremap bH :bfirst<cr>
+noremap bL :blast<cr>
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
+noremap tn :tabe<CR>
+noremap th :-tabnext<CR>
+noremap tl :+tabnext<CR>
+noremap to :tabonly<cr>
+noremap tc :tabclose<cr>
+noremap tm :tabmove
 "map <leader>] gt
 "map <leader>[ gT
 
@@ -101,3 +103,12 @@ tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-l> <C-\><C-N><C-w>l
 tnoremap <Esc> <C-\><C-n>
 
+map <LEADER>sc :set spell!<CR>
+map <LEADER><LEADER> <ESC>/<++><CR>:nohlsearch<CR>j4d
+
+vnoremap <C-c> "+y
+
+map <F1> :edit ~/.config/nvim/init.vim<CR>
+map <F2> :source ~/.config/nvim/init.vim<CR>
+map <F3> :PlugInstall<CR>
+map <F4> :PlugUpdate<CR>
