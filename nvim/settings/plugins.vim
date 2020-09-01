@@ -32,24 +32,36 @@ Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'luochen1990/rainbow'
 
+if has('nvim')
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/denite.nvim'
+  Plug 'Shougo/defx.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
+Plug 'kristijanhusak/defx-git', {'on':'Defx'}
+Plug 'kristijanhusak/defx-icons'
 
 " Git
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
+
+Plug 'scrooloose/nerdcommenter'
 
 
 "Plug 'metalelf0/supertab'
 "Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 "Plug 'junegunn/vim-easy-align', {'on':'<Plug>(EasyAlign)'}
 "Plug 'voldikss/vim-translator', { 'on':'<Plug>Translate' }
-"Plug 'kristijanhusak/defx-git', {'on':'Defx'}
-"Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins'}
-"Plug 'kristijanhusak/defx-icons'
+"
+"
 "Plug 'junegunn/fzf', {'on':['Files', 'History', 'Colors', 'Rg', 'Marks'] }
 "Plug 'junegunn/fzf.vim', {'on':['Files', 'History', 'Colors', 'Rg', 'Marks']}
 
-Plug 'scrooloose/nerdcommenter'
 
 Plug 'mattn/emmet-vim'
 
@@ -98,6 +110,7 @@ autocmd VimEnter *
 colorscheme deus
 
 source $HOME/dotfiles/nvim/settings/plug-settings/lightline.vim
+source $HOME/dotfiles/nvim/settings/plug-settings/defx.vim
 
 let g:EasyMotion_smartcase = 1
 
@@ -110,4 +123,6 @@ autocmd FileType html,css,jsx,tsx EmmetInstall
 let g:user_emmet_mode='in'
 let g:user_emmet_leader_key='<Tab>'
 
-
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)
+nmap gcp <Plug>(GitGutterPreviewHunk)

@@ -33,7 +33,6 @@ nnoremap > >>
 
 map <leader><backspace> "_dd
 map <leader>m %
-map <leader>n :noh<CR>
 nnoremap <leader>i o<Esc>
 nnoremap <leader>I O<Esc>
 " Easy motion search
