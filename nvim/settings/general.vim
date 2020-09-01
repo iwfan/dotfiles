@@ -20,6 +20,19 @@ set autowriteall
 set ttyfast                             " should make scrolling faster
 set lazyredraw                          " same as above
 
+set termguicolors                       " Support True Color in terminal
+set background=dark
+let g:enable_bold_font=1
+let g:enable_italic_font=1
+
+highlight clear SignColumn              " gutter is the same color as where your line numbers show up
+
+let &t_ut=''
+set t_Co=256                            " this fixes colors on OS X terminal
+let &t_SI="\<Esc>]50;CursorShape=1\x7"  " chang cursor style in difference mode
+let &t_SR="\<Esc>]50;CursorShape=2\x7"  " chang cursor style in difference mode
+let &t_EI="\<Esc>]50;CursorShape=0\x7"  " chang cursor style in difference mode
+
 set timeout ttimeout
 set timeoutlen=500                      " Time out on mappings
 set ttimeoutlen=10                      " Time out on key codes
@@ -38,17 +51,6 @@ set novisualbell                        " disable bells
 set noerrorbells                        " disable bells
 set vb t_vb=
 
-set termguicolors                       " Support True Color in terminal
-let g:space_vim_italic=1
-let g:enable_bold_font=1
-let g:enable_italic_font=1
-
-let &t_ut=''
-set t_Co=256                            " this fixes colors on OS X terminal
-let &t_SI="\<Esc>]50;CursorShape=1\x7"  " chang cursor style in difference mode
-let &t_SR="\<Esc>]50;CursorShape=2\x7"  " chang cursor style in difference mode
-let &t_EI="\<Esc>]50;CursorShape=0\x7"  " chang cursor style in difference mode
-
 set number
 set relativenumber
 set cursorline
@@ -63,9 +65,7 @@ set wildignore+=*.swp,*.bak,log/**,node_modules/**,*.rbc
 set wildignore+=*.DS_Store,.git,.svn,*.o,*.out
 set wildignorecase
 set title
-" Title length.
 set titlelen=95
-" Title string.
 let &g:titlestring="
 			\ %{expand('%:p:~:.')}%(%m%r%w%)
 			\ %<\[%{fnamemodify(getcwd(), ':~')}\] - Neovim"
@@ -106,6 +106,7 @@ set diffopt=filler,iwhite               " Diff mode: show fillers, ignore whites
 set completeopt=menu,menuone            " Always show menu, even for one item
 set completeopt+=noselect,noinsert
 
+set confirm
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set iskeyword+=-                        " treat dash separated words as a word text object"
 set formatoptions-=cro                  " Stop newline continution of comments
@@ -122,7 +123,6 @@ set foldlevel=99
 
 set shortmess+=c                        " Don't pass messages to |ins-completion-menu|.
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
-highlight clear SignColumn              " gutter is the same color as where your line numbers show up
 set inccommand=split
 set completeopt=longest,noinsert,menuone,noselect,preview
 set virtualedit=block

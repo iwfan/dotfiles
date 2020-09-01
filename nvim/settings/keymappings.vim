@@ -54,12 +54,12 @@ inoremap <C-e> <end>
 inoremap <C-d> <delete>
 inoremap <C-s> <Esc>:w<CR>
 
-nnoremap <M-down> :m .+1<CR>==
-nnoremap <M-up> :m .-2<CR>==
-inoremap <M-down> <Esc>:m .+1<CR>==gi
-inoremap <M-up> <Esc>:m .-2<CR>==gi
-vnoremap <M-down> :m '>+1<CR>gv=gv
-vnoremap <M-up> :m '<-2<CR>gv=gv
+nnoremap <silent> <M-down> :m .+1<CR>==
+nnoremap <silent> <M-up> :m .-2<CR>==
+inoremap <silent> <M-down> <Esc>:m .+1<CR>==gi
+inoremap <silent> <M-up> <Esc>:m .-2<CR>==gi
+vnoremap <silent> <M-down> :m '>+1<CR>gv=gv
+vnoremap <silent> <M-up> :m '<-2<CR>gv=gv
 
 " split window
 map <leader>sh :set nosplitright<cr>:vsplit<cr>
@@ -79,19 +79,19 @@ map <C-S-left> :vertical resize +5<cr>
 map <C-S-right> :vertical resize -5<cr>
 
 " Close all the buffers
-noremap bd :bd<cr>
-noremap bl :bnext<cr>
-noremap bh :bprevious<cr>
-noremap bH :bfirst<cr>
-noremap bL :blast<cr>
+noremap <silent> bd :bd<cr>
+noremap <silent> bl :bnext<cr>
+noremap <silent> bh :bprevious<cr>
+noremap <silent> bH :bfirst<cr>
+noremap <silent> bL :blast<cr>
 
 " Useful mappings for managing tabs
-noremap tn :tabe<CR>
-noremap th :-tabnext<CR>
-noremap tl :+tabnext<CR>
-noremap to :tabonly<cr>
-noremap tc :tabclose<cr>
-noremap tm :tabmove
+noremap <silent> tn :tabe<CR>
+noremap <silent> th :-tabnext<CR>
+noremap <silent> tl :+tabnext<CR>
+noremap <silent> to :tabonly<cr>
+noremap <silent> tc :tabclose<cr>
+noremap <silent> tm :tabmove
 "map <leader>] gt
 "map <leader>[ gT
 
