@@ -31,6 +31,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'luochen1990/rainbow'
+"Plug 'liuchengxu/vim-which-key'
+"Plug 'ervandew/supertab'
 
 if has('nvim')
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -45,15 +47,17 @@ endif
 Plug 'kristijanhusak/defx-git', {'on':'Defx'}
 Plug 'kristijanhusak/defx-icons'
 
+" Intellisense Engine
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-
 Plug 'scrooloose/nerdcommenter'
 
 
-"Plug 'metalelf0/supertab'
 "Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 "Plug 'junegunn/vim-easy-align', {'on':'<Plug>(EasyAlign)'}
 "Plug 'voldikss/vim-translator', { 'on':'<Plug>Translate' }
@@ -65,15 +69,8 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'mattn/emmet-vim'
 
-" Intellisense Engine
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 " Denite - Fuzzy finding, buffer management
 "Plug 'Shougo/denite.nvim'
-
-" Snippet support
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
 
 " Print function signatures in echo area
 Plug 'Shougo/echodoc.vim'
@@ -108,9 +105,6 @@ autocmd VimEnter *
 "colorscheme gruvbox
 "colorscheme onedark
 colorscheme deus
-
-source $HOME/dotfiles/nvim/settings/plug-settings/lightline.vim
-source $HOME/dotfiles/nvim/settings/plug-settings/defx.vim
 
 let g:EasyMotion_smartcase = 1
 
