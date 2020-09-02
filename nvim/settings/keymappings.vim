@@ -2,12 +2,14 @@
 " === KeyMappings Setup ===
 " =========================
 
-let mapleader = " "
+nmap <SPACE> <Nop>
+let mapleader = "\<SPACE>"
 " map CapsLock Escape
 
 map s <nop>
-map <C-s> :noh<CR>:w<CR>
-map <C-q> :x<CR>
+map ; :
+nmap <C-s> :noh<CR>:w<CR>
+nmap <C-q> :x<CR>
 
 "map R :w<cr>:source $MYVIMRC<cr>
 
@@ -31,10 +33,10 @@ vnoremap > >gv
 nnoremap < <<
 nnoremap > >>
 
-map <leader><backspace> "_dd
-map <leader>m %
-nnoremap <leader>i o<Esc>
-nnoremap <leader>I O<Esc>
+nmap <leader><backspace> "_dd
+nmap <leader>m %
+nmap <leader>i o<Esc>
+nmap <leader>I O<Esc>
 " Easy motion search
 map <leader>f <Plug>(easymotion-sn)
 map <leader>F <Plug>(easymotion-tn)
@@ -42,7 +44,7 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <leader>h <Plug>(easymotion-linebackward)
 map <leader>l <Plug>(easymotion-lineforward)
-map <Leader>z :UndotreeToggle<cr>
+
 
 inoremap <C-h> <left>
 inoremap <C-l> <right>
@@ -61,15 +63,14 @@ vnoremap <silent> <M-down> :m '>+1<CR>gv=gv
 vnoremap <silent> <M-up> :m '<-2<CR>gv=gv
 
 " split window
-map <leader>sh :set nosplitright<cr>:vsplit<cr>
-map <leader>sl :set splitright<cr>:vsplit<cr>
-map <leader>sj :set splitbelow<cr>:split<cr>
-map <leader>sk :set nosplitbelow<cr>:split<cr>
-
-map <leader>wh <C-w>h
-map <leader>wl <C-w>l
-map <leader>wj <C-w>j
-map <leader>wk <C-w>k
+nmap <leader>H :set nosplitright<cr>:vsplit<cr>
+nmap <leader>L :set splitright<cr>:vsplit<cr>
+nmap <leader>J :set splitbelow<cr>:split<cr>
+nmap <leader>K :set nosplitbelow<cr>:split<cr>
+nmap <leader>h <C-w>h
+nmap <leader>l <C-w>l
+nmap <leader>j <C-w>j
+nmap <leader>k <C-w>k
 
 
 map <C-S-up> :res +5<cr>
@@ -111,3 +112,5 @@ map <F1> :edit ~/.config/nvim/init.vim<CR>
 map <F2> :source ~/.config/nvim/init.vim<CR>
 map <F3> :PlugInstall<CR>
 map <F4> :PlugUpdate<CR>
+
+nmap <silent> <Leader>8 :UndotreeToggle<cr>

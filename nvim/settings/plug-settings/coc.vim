@@ -1,4 +1,29 @@
-
+let g:coc_global_extensions = [
+	\ 'coc-actions',
+	\ 'coc-css',
+	\ 'coc-diagnostic',
+	\ 'coc-explorer',
+	\ 'coc-flutter-tools',
+	\ 'coc-gitignore',
+	\ 'coc-html',
+	\ 'coc-json',
+	\ 'coc-lists',
+	\ 'coc-prettier',
+	\ 'coc-pyright',
+	\ 'coc-python',
+	\ 'coc-snippets',
+	\ 'coc-sourcekit',
+	\ 'coc-stylelint',
+	\ 'coc-syntax',
+	\ 'coc-tasks',
+	\ 'coc-todolist',
+	\ 'coc-translator',
+	\ 'coc-tslint-plugin',
+	\ 'coc-tsserver',
+	\ 'coc-vimlsp',
+	\ 'coc-vetur',
+	\ 'coc-yaml',
+	\ 'coc-yank']
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.

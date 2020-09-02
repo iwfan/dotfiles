@@ -21,17 +21,6 @@ set ttyfast                             " should make scrolling faster
 set lazyredraw                          " same as above
 
 set termguicolors                       " Support True Color in terminal
-set background=dark
-let g:enable_bold_font=1
-let g:enable_italic_font=1
-
-highlight clear SignColumn              " gutter is the same color as where your line numbers show up
-
-let &t_ut=''
-set t_Co=256                            " this fixes colors on OS X terminal
-let &t_SI="\<Esc>]50;CursorShape=1\x7"  " chang cursor style in difference mode
-let &t_SR="\<Esc>]50;CursorShape=2\x7"  " chang cursor style in difference mode
-let &t_EI="\<Esc>]50;CursorShape=0\x7"  " chang cursor style in difference mode
 
 set timeout ttimeout
 set timeoutlen=500                      " Time out on mappings
@@ -121,7 +110,7 @@ set foldmethod=indent
 set indentexpr=
 set foldlevel=99
 
-set shortmess+=c                        " Don't pass messages to |ins-completion-menu|.
+set shortmess+=cW                        " Don't pass messages to |ins-completion-menu|.
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
 set inccommand=split
 set completeopt=longest,noinsert,menuone,noselect,preview

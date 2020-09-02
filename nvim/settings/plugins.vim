@@ -31,7 +31,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'luochen1990/rainbow'
-"Plug 'liuchengxu/vim-which-key'
+Plug 'liuchengxu/vim-which-key'
 "Plug 'ervandew/supertab'
 
 if has('nvim')
@@ -102,9 +102,7 @@ autocmd VimEnter *
   \| endif
 
 
-"colorscheme gruvbox
-"colorscheme onedark
-colorscheme deus
+
 
 let g:EasyMotion_smartcase = 1
 
