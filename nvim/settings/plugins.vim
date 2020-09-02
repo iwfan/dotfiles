@@ -42,10 +42,9 @@ Plug 'liuchengxu/vim-which-key'
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-
 " Git
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+"Plug 'tpope/vim-fugitive'
+"Plug 'airblade/vim-gitgutter'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'voldikss/vim-floaterm'

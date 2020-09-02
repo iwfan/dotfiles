@@ -77,13 +77,10 @@ map <C-S-left> :vertical resize +5<cr>
 map <C-S-right> :vertical resize -5<cr>
 
 " Close all the buffers
-noremap <silent> ∑ :bd<cr>
-noremap <silent> ‘ :bnext<cr>
-noremap <silent> “ :bprevious<cr>
-
-noremap <silent> <M-w> :bd<cr>
-noremap <silent> <M-]> :bnext<cr>
-noremap <silent> <M-[> :bprevious<cr>
+noremap <silent> ∑ <esc>:bd<cr>
+noremap <silent> <M-w> <esc>:bd<cr>
+noremap <silent> <leader>] <esc>:bnext<cr>
+noremap <silent> <leader>[ <esc>:bprevious<cr>
 
 " Useful mappings for managing tabs
 "noremap <silent> tn :tabe<CR>
@@ -119,6 +116,8 @@ nnoremap <silent> <Leader>0 :FloatermToggle<CR>
 tnoremap <silent> <Leader>0 <C-\><C-n>:FloatermToggle<CR>
 tnoremap <silent> <esc><esc> <C-\><C-n>:FloatermKill<CR>
 
+nmap <silent> <Leader>1 <c-u>:CocCommand explorer --toggle<cr>
+nmap <silent> <Leader>3 <c-u>:CocCommand explorer --toggle --preset floating<cr>
 nmap <silent> <Leader>2 <esc>:Vista<cr>
 let g:vista#renderer#enable_icon = 1
 let g:vista_disable_statusline = 1
