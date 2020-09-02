@@ -102,6 +102,7 @@ set formatoptions-=cro                  " Stop newline continution of comments
 
 set list
 set listchars=tab:»·,nbsp:␣,trail:·,extends:→,precedes:←
+set fillchars=eob:\ 
 set scrolloff=4
 set viewoptions=cursor,folds,slash,unix
 

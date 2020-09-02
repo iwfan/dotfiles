@@ -11,6 +11,9 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
+
+" Plugin Recommandtion: https://zhuanlan.zhihu.com/p/58816186
+
 " theme plugins
 Plug 'morhetz/gruvbox'
 Plug 'joshdick/onedark.vim'
@@ -24,28 +27,17 @@ Plug 'mengelbrecht/lightline-bufferline'
 Plug 'ryanoasis/vim-devicons'
 
 " editor enhancement
+Plug 'mhinz/vim-startify'
 Plug 'Yggdroot/indentLine'
 Plug 'mbbill/undotree'
+Plug 'liuchengxu/vista.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'luochen1990/rainbow'
 Plug 'liuchengxu/vim-which-key'
 "Plug 'ervandew/supertab'
-
-if has('nvim')
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/denite.nvim'
-  Plug 'Shougo/defx.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-Plug 'kristijanhusak/defx-git', {'on':'Defx'}
-Plug 'kristijanhusak/defx-icons'
 
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -56,7 +48,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 Plug 'scrooloose/nerdcommenter'
-
+Plug 'voldikss/vim-floaterm'
 
 "Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 "Plug 'junegunn/vim-easy-align', {'on':'<Plug>(EasyAlign)'}
@@ -94,15 +86,11 @@ Plug 'othree/javascript-libraries-syntax.vim'
 
 call plug#end()
 
-
 " Automatically install missing plugins on startup
 autocmd VimEnter *
   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \|   PlugInstall --sync | q
   \| endif
-
-
-
 
 let g:EasyMotion_smartcase = 1
 
@@ -118,3 +106,6 @@ let g:user_emmet_leader_key='<Tab>'
 nmap ]c <Plug>(GitGutterNextHunk)
 nmap [c <Plug>(GitGutterPrevHunk)
 nmap gcp <Plug>(GitGutterPreviewHunk)
+
+let g:floaterm_width = 0.8
+let g:floaterm_height = 0.8

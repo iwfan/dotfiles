@@ -6,13 +6,8 @@ nmap <SPACE> <Nop>
 let mapleader = "\<SPACE>"
 " map CapsLock Escape
 
-map s <nop>
-map ; :
-nmap <C-s> :noh<CR>:w<CR>
-nmap <C-q> :x<CR>
-
-"map R :w<cr>:source $MYVIMRC<cr>
-
+nmap s <nop>
+nmap ; :
 noremap n nzz
 noremap N Nzz
 noremap U <C-r>
@@ -21,6 +16,9 @@ noremap H g^
 noremap L g$
 noremap J <C-d>zz
 noremap K <C-u>zz
+noremap <C-c> y
+noremap <C-v> p
+
 noremap <C-d> j
 noremap <C-u> k
 
@@ -33,18 +31,21 @@ vnoremap > >gv
 nnoremap < <<
 nnoremap > >>
 
+nmap <silent> <C-s> :noh<CR>:w<CR>
+nmap <silent> <C-q> :x<CR>
+
+"map R :w<cr>:source $MYVIMRC<cr>
 nmap <leader><backspace> "_dd
 nmap <leader>m %
 nmap <leader>i o<Esc>
 nmap <leader>I O<Esc>
 " Easy motion search
-map <leader>f <Plug>(easymotion-sn)
-map <leader>F <Plug>(easymotion-tn)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-map <leader>h <Plug>(easymotion-linebackward)
-map <leader>l <Plug>(easymotion-lineforward)
-
+"map <leader>f <Plug>(easymotion-sn)
+"map <leader>F <Plug>(easymotion-tn)
+"map <Leader>j <Plug>(easymotion-j)
+"map <Leader>k <Plug>(easymotion-k)
+"map <leader>h <Plug>(easymotion-linebackward)
+"map <leader>l <Plug>(easymotion-lineforward)
 
 inoremap <C-h> <left>
 inoremap <C-l> <right>
@@ -63,15 +64,12 @@ vnoremap <silent> <M-down> :m '>+1<CR>gv=gv
 vnoremap <silent> <M-up> :m '<-2<CR>gv=gv
 
 " split window
-nmap <leader>H :set nosplitright<cr>:vsplit<cr>
-nmap <leader>L :set splitright<cr>:vsplit<cr>
-nmap <leader>J :set splitbelow<cr>:split<cr>
-nmap <leader>K :set nosplitbelow<cr>:split<cr>
+nmap <leader>\ :set splitright<cr>:vsplit<cr>
+nmap <leader>\| :set splitbelow<cr>:split<cr>
 nmap <leader>h <C-w>h
 nmap <leader>l <C-w>l
 nmap <leader>j <C-w>j
 nmap <leader>k <C-w>k
-
 
 map <C-S-up> :res +5<cr>
 map <C-S-down> :res -5<cr>
@@ -79,21 +77,21 @@ map <C-S-left> :vertical resize +5<cr>
 map <C-S-right> :vertical resize -5<cr>
 
 " Close all the buffers
-noremap <silent> bd :bd<cr>
-noremap <silent> bl :bnext<cr>
-noremap <silent> bh :bprevious<cr>
-noremap <silent> bH :bfirst<cr>
-noremap <silent> bL :blast<cr>
+noremap <silent> ∑ :bd<cr>
+noremap <silent> ‘ :bnext<cr>
+noremap <silent> “ :bprevious<cr>
+
+noremap <silent> <M-w> :bd<cr>
+noremap <silent> <M-]> :bnext<cr>
+noremap <silent> <M-[> :bprevious<cr>
 
 " Useful mappings for managing tabs
-noremap <silent> tn :tabe<CR>
-noremap <silent> th :-tabnext<CR>
-noremap <silent> tl :+tabnext<CR>
-noremap <silent> to :tabonly<cr>
-noremap <silent> tc :tabclose<cr>
-noremap <silent> tm :tabmove
-"map <leader>] gt
-"map <leader>[ gT
+"noremap <silent> tn :tabe<CR>
+"noremap <silent> th :-tabnext<CR>
+"noremap <silent> tl :+tabnext<CR>
+"noremap <silent> to :tabonly<cr>
+"noremap <silent> tc :tabclose<cr>
+"noremap <silent> tm :tabmove
 
 
 " Terminal window navigation
@@ -113,4 +111,26 @@ map <F2> :source ~/.config/nvim/init.vim<CR>
 map <F3> :PlugInstall<CR>
 map <F4> :PlugUpdate<CR>
 
-nmap <silent> <Leader>8 :UndotreeToggle<cr>
+nmap \c <Plug>NERDCommenterToggle
+
+nmap <Leader>g :FloatermNew lazygit<CR>
+"nmap <Leader>0 :FloatermNew<CR>
+nnoremap <silent> <Leader>0 :FloatermToggle<CR>
+tnoremap <silent> <Leader>0 <C-\><C-n>:FloatermToggle<CR>
+tnoremap <silent> <esc><esc> <C-\><C-n>:FloatermKill<CR>
+
+nmap <silent> <Leader>2 <esc>:Vista<cr>
+let g:vista#renderer#enable_icon = 1
+let g:vista_disable_statusline = 1
+let g:vista_default_executive = 'ctags'
+let g:vista_echo_cursor_strategy = 'floating_win'
+let g:vista_vimwiki_executive = 'markdown'
+let g:vista_executive_for = {
+			\ 'vimwiki': 'markdown',
+			\ 'pandoc': 'markdown',
+			\ 'markdown': 'toc',
+			\ 'yaml': 'coc',
+			\ 'typescript': 'coc',
+			\ 'typescriptreact': 'coc',
+			\ }
+nmap <silent> <Leader>8 <esc>:UndotreeToggle<cr>
