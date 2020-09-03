@@ -16,8 +16,8 @@ noremap H g^
 noremap L g$
 noremap J <C-d>zz
 noremap K <C-u>zz
-noremap <C-c> y
-noremap <C-v> p
+"noremap <C-c> y
+"noremap <C-v> p
 
 noremap <C-d> j
 noremap <C-u> k

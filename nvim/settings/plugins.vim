@@ -43,16 +43,19 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Git
-"Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 "Plug 'airblade/vim-gitgutter'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'voldikss/vim-floaterm'
 
+" markdown support
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
 "Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 "Plug 'junegunn/vim-easy-align', {'on':'<Plug>(EasyAlign)'}
 "Plug 'voldikss/vim-translator', { 'on':'<Plug>Translate' }
-"
 "
 "Plug 'junegunn/fzf', {'on':['Files', 'History', 'Colors', 'Rg', 'Marks'] }
 "Plug 'junegunn/fzf.vim', {'on':['Files', 'History', 'Colors', 'Rg', 'Marks']}

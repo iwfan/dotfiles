@@ -186,3 +186,11 @@ let g:coc_explorer_global_presets = {
 \     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
 \   }
 \ }
+
+
+" Auto close exploer
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+function! AuCocExplorerAutoOpen()
+  exe ':CocCommand explorer'
+endfunction
+"autocmd User CocNvimInit call AuCocExplorerAutoOpen()
