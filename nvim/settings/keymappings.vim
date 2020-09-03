@@ -32,7 +32,7 @@ nnoremap < <<
 nnoremap > >>
 
 nmap <silent> <C-s> :noh<CR>:w<CR>
-nmap <silent> <C-q> :x<CR>
+nmap <silent> <C-q> :q<CR>
 
 "map R :w<cr>:source $MYVIMRC<cr>
 nmap <leader><backspace> "_dd

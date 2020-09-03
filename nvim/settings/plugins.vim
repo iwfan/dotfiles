@@ -43,8 +43,7 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Git
-Plug 'tpope/vim-fugitive'
-"Plug 'airblade/vim-gitgutter'
+"Plug 'tpope/vim-fugitive'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'voldikss/vim-floaterm'
@@ -62,9 +61,6 @@ Plug 'plasticboy/vim-markdown'
 
 
 Plug 'mattn/emmet-vim'
-
-" Denite - Fuzzy finding, buffer management
-"Plug 'Shougo/denite.nvim'
 
 " Print function signatures in echo area
 Plug 'Shougo/echodoc.vim'

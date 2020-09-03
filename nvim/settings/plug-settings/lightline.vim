@@ -17,7 +17,7 @@ let g:lightline = {
       \   'left': [
       \     [ 'mode', 'paste' ],
       \     [ 'gitbranch', 'readonly', 'filename', 'modified' ]
-      \   ]
+      \   ],
       \ },
       \ 'tabline': {
       \   'left': [ ['buffers'] ],
@@ -30,7 +30,8 @@ let g:lightline = {
       \   'buffers': 'tabsel'
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
+      \   'blame': 'LightlineGitBlame',
+      \   'gitbranch': 'LightlineGitStatus'
       \ },
       \ 'component': {
       \   'lineinfo': '%3l:%-2v%<'
@@ -43,3 +44,15 @@ let g:lightline#bufferline#enable_devicons = 1
 let g:lightline#bufferline#enable_nerdfont = 1
 let g:lightline#bufferline#unnamed         = '[No Name]'
 
+
+function! LightlineGitStatus() abort
+  let status = get(g:, 'coc_git_status', '')
+  " return status
+  return winwidth(0) > 120 ? status : ''
+endfunction
+
+function! LightlineGitBlame() abort
+  let blame = get(b:, 'coc_git_blame', '')
+  " return blame
+  return winwidth(0) > 120 ? blame : ''
+endfunction
