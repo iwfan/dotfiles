@@ -7,8 +7,10 @@
 "╚═╝     ╚═╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 "
 
-source $HOME/dotfiles/nvim/settings/env.vim
-source $HOME/dotfiles/nvim/settings/general.vim
+
+source $HOME/dotfiles/nvim/basic/general.vim
+source $HOME/dotfiles/nvim/basic/keymappings.vim
+
 source $HOME/dotfiles/nvim/settings/plugins.vim
 source $HOME/dotfiles/nvim/settings/plug-settings/lightline.vim
 "source $HOME/dotfiles/nvim/settings/plug-settings/defx.vim
@@ -19,7 +21,7 @@ source $HOME/dotfiles/nvim/settings/keymappings.vim
 
 source $HOME/dotfiles/nvim/settings/plug-settings/which-key.vim
 
-
+source $HOME/dotfiles/nvim/settings/machine_special_config.vim
 
 " 1. lsp 支持
 " 1. 文件树管理

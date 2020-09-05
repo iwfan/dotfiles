@@ -2,34 +2,8 @@
 " === KeyMappings Setup ===
 " =========================
 
-nmap <SPACE> <Nop>
-let mapleader = "\<SPACE>"
-" map CapsLock Escape
 
-nmap s <nop>
-nmap ; :
-noremap n nzz
-noremap N Nzz
-noremap U <C-r>
 
-noremap H g^
-noremap L g$
-noremap J <C-d>zz
-noremap K <C-u>zz
-"noremap <C-c> y
-"noremap <C-v> p
-
-noremap <C-d> j
-noremap <C-u> k
-
-noremap ]w g*zz
-noremap [w g#zz
-
-" Better indenting
-vnoremap < <gv
-vnoremap > >gv
-nnoremap < <<
-nnoremap > >>
 
 nmap <silent> <C-s> :noh<CR>:w<CR>
 nmap <silent> <C-q> :q<CR>
