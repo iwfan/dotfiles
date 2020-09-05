@@ -1,20 +1,3 @@
-
-" Return to last edit position when opening files (You want this!)
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-"autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" Turn spellcheck on for markdown files
-augroup auto_spellcheck
-  autocmd BufNewFile,BufRead *.md setlocal spell
-augroup END
-
-" Stop highlighting when entering Insert mode
-"let didit = 0
-"autocmd! InsertEnter * if ! didit | call feedkeys("\<C-\>\<C-o>:nohlsearch|let didit = 1\<CR>", 'n') | endif
-"autocmd! InsertLeave * let didit = 0
-
-
 "这里嘛。。是用来一键编译代码的
 noremap <A-r> :call CompileRunGcc()<CR>
 func! CompileRunGcc()

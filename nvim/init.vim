@@ -7,13 +7,12 @@
 "╚═╝     ╚═╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 "
 
-
 source $HOME/dotfiles/nvim/basic/general.vim
 source $HOME/dotfiles/nvim/basic/keymappings.vim
+source $HOME/dotfiles/nvim/basic/functions.vim
 
 source $HOME/dotfiles/nvim/settings/plugins.vim
 source $HOME/dotfiles/nvim/settings/plug-settings/lightline.vim
-"source $HOME/dotfiles/nvim/settings/plug-settings/defx.vim
 source $HOME/dotfiles/nvim/settings/plug-settings/coc.vim
 source $HOME/dotfiles/nvim/settings/advanced.vim
 source $HOME/dotfiles/nvim/settings/ui.vim

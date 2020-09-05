@@ -2,17 +2,8 @@
 " === KeyMappings Setup ===
 " =========================
 
-
-
-
-nmap <silent> <C-s> :noh<CR>:w<CR>
-nmap <silent> <C-q> :q<CR>
-
 "map R :w<cr>:source $MYVIMRC<cr>
-nmap <leader><backspace> "_dd
-nmap <leader>m %
-nmap <leader>i o<Esc>
-nmap <leader>I O<Esc>
+
 " Easy motion search
 "map <leader>f <Plug>(easymotion-sn)
 "map <leader>F <Plug>(easymotion-tn)
@@ -21,66 +12,6 @@ nmap <leader>I O<Esc>
 "map <leader>h <Plug>(easymotion-linebackward)
 "map <leader>l <Plug>(easymotion-lineforward)
 
-inoremap <C-h> <left>
-inoremap <C-l> <right>
-inoremap <C-j> <down>
-inoremap <C-k> <up>
-inoremap <C-a> <home>
-inoremap <C-e> <end>
-inoremap <C-d> <delete>
-inoremap <C-s> <Esc>:w<CR>
-
-nnoremap <silent> <M-down> :m .+1<CR>==
-nnoremap <silent> <M-up> :m .-2<CR>==
-inoremap <silent> <M-down> <Esc>:m .+1<CR>==gi
-inoremap <silent> <M-up> <Esc>:m .-2<CR>==gi
-vnoremap <silent> <M-down> :m '>+1<CR>gv=gv
-vnoremap <silent> <M-up> :m '<-2<CR>gv=gv
-
-" split window
-nmap <leader>\ :set splitright<cr>:vsplit<cr>
-nmap <leader>\| :set splitbelow<cr>:split<cr>
-nmap <leader>h <C-w>h
-nmap <leader>l <C-w>l
-nmap <leader>j <C-w>j
-nmap <leader>k <C-w>k
-
-map <C-S-up> :res +5<cr>
-map <C-S-down> :res -5<cr>
-map <C-S-left> :vertical resize +5<cr>
-map <C-S-right> :vertical resize -5<cr>
-
-" Close all the buffers
-noremap <silent> ∑ <esc>:bd<cr>
-noremap <silent> <M-w> <esc>:bd<cr>
-noremap <silent> <leader>] <esc>:bnext<cr>
-noremap <silent> <leader>[ <esc>:bprevious<cr>
-
-" Useful mappings for managing tabs
-"noremap <silent> tn :tabe<CR>
-"noremap <silent> th :-tabnext<CR>
-"noremap <silent> tl :+tabnext<CR>
-"noremap <silent> to :tabonly<cr>
-"noremap <silent> tc :tabclose<cr>
-"noremap <silent> tm :tabmove
-
-
-" Terminal window navigation
-tnoremap <C-h> <C-\><C-N><C-w>h
-tnoremap <C-j> <C-\><C-N><C-w>j
-tnoremap <C-k> <C-\><C-N><C-w>k
-tnoremap <C-l> <C-\><C-N><C-w>l
-tnoremap <Esc> <C-\><C-n>
-
-map <LEADER>sc :set spell!<CR>
-map <LEADER><LEADER> <ESC>/<++><CR>:nohlsearch<CR>j4d
-
-vnoremap <C-c> "+y
-
-map <F1> :edit ~/.config/nvim/init.vim<CR>
-map <F2> :source ~/.config/nvim/init.vim<CR>
-map <F3> :PlugInstall<CR>
-map <F4> :PlugUpdate<CR>
 
 nmap \c <Plug>NERDCommenterToggle
 
