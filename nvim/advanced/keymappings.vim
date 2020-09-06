@@ -13,10 +13,11 @@
 "map <leader>l <Plug>(easymotion-lineforward)
 
 
-nmap \c <Plug>NERDCommenterToggle
+"nmap \c <Plug>NERDCommenterToggle
 
-nmap <Leader>g :FloatermNew lazygit<CR>
+"nmap <Leader>g :FloatermNew lazygit<CR>
 "nmap <Leader>0 :FloatermNew<CR>
+
 nnoremap <silent> <Leader>0 :FloatermToggle<CR>
 tnoremap <silent> <Leader>0 <C-\><C-n>:FloatermToggle<CR>
 tnoremap <silent> <esc><esc> <C-\><C-n>:FloatermKill<CR>
@@ -24,6 +25,7 @@ tnoremap <silent> <esc><esc> <C-\><C-n>:FloatermKill<CR>
 nmap <silent> <Leader>1 <c-u>:CocCommand explorer --toggle<cr>
 nmap <silent> <Leader>3 <c-u>:CocCommand explorer --toggle --preset floating<cr>
 nmap <silent> <Leader>2 <esc>:Vista<cr>
+
 let g:vista#renderer#enable_icon = 1
 let g:vista_disable_statusline = 1
 let g:vista_default_executive = 'ctags'

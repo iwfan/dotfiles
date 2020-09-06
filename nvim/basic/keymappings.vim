@@ -11,7 +11,6 @@ let mapleader = "\<SPACE>"
 
 nmap . .`[
 nmap s <nop>
-nmap ; :
 nmap <silent> <C-s> :w<CR>
 nmap <silent> <leader><esc> :q<CR>
 
@@ -88,8 +87,8 @@ vnoremap <silent> <M-down> :m '>+1<CR>gv=gv
 vnoremap <silent> <M-up> :m '<-2<CR>gv=gv
 
 " use ]+space create spaceline
-nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
-nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+nnoremap <leader>I  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
+nnoremap <leader>i  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 
 " Use <C-L> to clear the highlighting of :set hlsearch
 if maparg('<C-L>', 'n') ==# ''

@@ -1,5 +1,5 @@
 "这里嘛。。是用来一键编译代码的
-noremap <A-r> :call CompileRunGcc()<CR>
+noremap <C-r> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
   exec "w"
   if &filetype == 'c'

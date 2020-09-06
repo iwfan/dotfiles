@@ -1,6 +1,6 @@
-" ====================
-" === Plugin Setup ===
-" ====================
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                 Plugins                                    "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " auto-install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -30,6 +30,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'mhinz/vim-startify'
 Plug 'Yggdroot/indentLine'
 Plug 'mbbill/undotree'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'liuchengxu/vista.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
@@ -37,25 +38,25 @@ Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'luochen1990/rainbow'
 Plug 'liuchengxu/vim-which-key'
-"Plug 'ervandew/supertab'
+Plug 'ervandew/supertab'
 
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
+Plug 'josa42/vim-lightline-coc'
 " Git
-"Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'voldikss/vim-floaterm'
 
-" markdown support
 Plug 'godlygeek/tabular'
+" markdown support
 Plug 'plasticboy/vim-markdown'
+Plug 'sheerun/vim-polyglot',{'for':['py', 'go', 'java', 'vim', 'json', 'html5', 'javascript', 'typescript', 'sh']}
 
-"Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 "Plug 'junegunn/vim-easy-align', {'on':'<Plug>(EasyAlign)'}
 "Plug 'voldikss/vim-translator', { 'on':'<Plug>Translate' }
-"
+
 "Plug 'junegunn/fzf', {'on':['Files', 'History', 'Colors', 'Rg', 'Marks'] }
 "Plug 'junegunn/fzf.vim', {'on':['Files', 'History', 'Colors', 'Rg', 'Marks']}
 
@@ -100,10 +101,6 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css,jsx,tsx EmmetInstall
 let g:user_emmet_mode='in'
 let g:user_emmet_leader_key='<Tab>'
-
-nmap ]c <Plug>(GitGutterNextHunk)
-nmap [c <Plug>(GitGutterPrevHunk)
-nmap gcp <Plug>(GitGutterPreviewHunk)
 
 let g:floaterm_width = 0.8
 let g:floaterm_height = 0.8

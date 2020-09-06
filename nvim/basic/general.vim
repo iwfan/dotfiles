@@ -161,7 +161,7 @@ endif
 " mark ....
 " syntax
 set foldenable
-set foldmethod=manual
+set foldmethod=indent
 set foldlevel=99
 set foldlevelstart=99
 

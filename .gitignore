@@ -105,3 +105,4 @@ dist
 
 nvim/tmp
 nvim/autoload
+nvim/_machine_specific.vim
