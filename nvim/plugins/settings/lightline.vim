@@ -2,26 +2,26 @@ let g:lightline = { }
 
 let g:lightline.colorscheme = 'deus'
 
-let g:lightline.mode_map = {
-      \   'n' : 'N',
-      \   'i' : 'I',
-      \   'R' : 'R',
-      \   'v' : 'V',
-      \   'V' : 'VL',
-      \   "\<C-v>": 'VB',
-      \   'c' : 'C',
-      \   's' : 'S',
-      \   'S' : 'SL',
-      \   "\<C-s>": 'SB',
-      \   't': 'T',
-      \ }
+" let g:lightline.mode_map = {
+"       \   'n' : 'N',
+"       \   'i' : 'I',
+"       \   'R' : 'R',
+"       \   'v' : 'V',
+"       \   'V' : 'VL',
+"       \   "\<C-v>": 'VB',
+"       \   'c' : 'C',
+"       \   's' : 'S',
+"       \   'S' : 'SL',
+"       \   "\<C-s>": 'SB',
+"       \   't': 'T',
+"       \ }
 
 let g:lightline.active = {
     \ 'left': [ [ 'mode', 'paste' ],
-    \           [ 'readonly', 'filename', 'modified' ] ],
+    \           [ 'readonly', 'filename', 'modified', 'method' ] ],
     \ 'right': [ [ 'lineinfo' ],
     \            [ 'percent' ],
-    \            [ 'coc_errors', 'coc-_warnings', 'coc_ok', 'coc_status', 'git', 'fileformat', 'fileencoding', 'filetype' ],
+    \            [ 'coc_errors', 'coc_warnings', 'coc_ok', 'coc_status', 'git', 'fileformat', 'fileencoding', 'filetype' ],
     \          ] }
 
 let g:lightline.inactive = {
@@ -66,6 +66,7 @@ let g:lightline.component_type = {
     \ }
 
 let g:lightline.component_function = {
+    \ 'method': 'NearestMethodOrFunction',
     \ 'blame': 'LightlineGitBlame',
     \ 'git': 'LightlineGitStatus'
     \ }
@@ -74,7 +75,7 @@ let g:lightline#bufferline#modified        = '*'
 let g:lightline#bufferline#show_number     = 1
 let g:lightline#bufferline#enable_devicons = 1
 let g:lightline#bufferline#enable_nerdfont = 1
-let g:lightline#bufferline#unnamed         = '[No Name]'
+let g:lightline#bufferline#unnamed         = '[Untitled]'
 
 
 function! LightlineGitStatus() abort
@@ -87,3 +88,5 @@ function! LightlineGitBlame() abort
   let blame = get(b:, 'coc_git_blame', '')
   return winwidth(0) > 120 ? blame : ''
 endfunction
+
+call lightline#coc#register()

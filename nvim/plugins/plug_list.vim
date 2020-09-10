@@ -32,7 +32,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'mbbill/undotree'
 " Tag Management
 "Plug 'ludovicchabant/vim-gutentags'
-"Plug 'liuchengxu/vista.vim'
+Plug 'liuchengxu/vista.vim'
 
 Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
@@ -40,8 +40,8 @@ Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'luochen1990/rainbow'
 Plug 'liuchengxu/vim-which-key'
-Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
+"Plug 'ervandew/supertab'
 
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -66,24 +66,24 @@ Plug 'sheerun/vim-polyglot',{'for':['py', 'go', 'java', 'vim', 'json', 'html5', 
 Plug 'mattn/emmet-vim'
 
 " Print function signatures in echo area
-Plug 'Shougo/echodoc.vim'
+"Plug 'Shougo/echodoc.vim'
 
 " === Javascript Plugins === "
 " Typescript syntax highlighting
-Plug 'HerringtonDarkholme/yats.vim'
+"Plug 'HerringtonDarkholme/yats.vim'
 " Improved syntax highlighting and indentation
-Plug 'othree/yajs.vim'
+"Plug 'othree/yajs.vim'
 
 " ReactJS JSX syntax highlighting
-Plug 'mxw/vim-jsx'
+"Plug 'mxw/vim-jsx'
 
 " Generate JSDoc commands based on function signature
-Plug 'heavenshell/vim-jsdoc'
+"Plug 'heavenshell/vim-jsdoc'
 
 " === Syntax Highlighting === "
 
 " Syntax highlighting for javascript libraries
-Plug 'othree/javascript-libraries-syntax.vim'
+"Plug 'othree/javascript-libraries-syntax.vim'
 
 call plug#end()
 
@@ -93,16 +93,26 @@ autocmd VimEnter *
   \|   PlugInstall --sync | q
   \| endif
 
-let g:EasyMotion_smartcase = 1
+let g:EasyMotion_smartcase                     = 1
 
-let g:undotree_WindowLayout = 3
+let g:undotree_WindowLayout                    = 3
 
-let g:rainbow_active = 1
+let g:rainbow_active                           = 1
 
-let g:user_emmet_install_global = 0
+let g:user_emmet_install_global                = 0
 autocmd FileType html,css,jsx,tsx EmmetInstall
-let g:user_emmet_mode='in'
-let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_mode                          = 'in'
+let g:user_emmet_leader_key                    = '<Tab>'
 
-let g:floaterm_width = 0.8
-let g:floaterm_height = 0.8
+let g:floaterm_width                           = 0.8
+let g:floaterm_height                          = 0.8
+
+"NerdCommenter设置
+let g:NERDSpaceDelims                          = 1
+let g:NERDCompactSexyComs                      = 1
+let g:NERDDefaultAlign                         = 'left'
+let g:NERDAltDelims_java                       = 1
+let g:NERDCustomDelimiters                     = {'c': {'left': '/*', 'right': '*/'}}
+let g:NERDCommentEmptyLines                    = 1
+let g:NERDTrimTrailingWhitespace               = 1
+let g:NERDToggleCheckAllLines                  = 1

@@ -24,6 +24,9 @@ let g:coc_global_extensions = [
 	\ 'coc-vetur',
 	\ 'coc-yaml',
 	\ 'coc-tabnine',
+	\ 'coc-highlight',
+	\ 'coc-spell-checker',
+	\ 'coc-emoji',
 	\ 'coc-yank']
 
 " Use tab for trigger completion with characters ahead and navigate.
