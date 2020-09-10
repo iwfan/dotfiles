@@ -30,8 +30,10 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'mhinz/vim-startify'
 Plug 'Yggdroot/indentLine'
 Plug 'mbbill/undotree'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'liuchengxu/vista.vim'
+" Tag Management
+"Plug 'ludovicchabant/vim-gutentags'
+"Plug 'liuchengxu/vista.vim'
+
 Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
@@ -39,6 +41,7 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'luochen1990/rainbow'
 Plug 'liuchengxu/vim-which-key'
 Plug 'ervandew/supertab'
+Plug 'godlygeek/tabular'
 
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -49,7 +52,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdcommenter'
 Plug 'voldikss/vim-floaterm'
 
-Plug 'godlygeek/tabular'
 " markdown support
 Plug 'plasticboy/vim-markdown'
 Plug 'sheerun/vim-polyglot',{'for':['py', 'go', 'java', 'vim', 'json', 'html5', 'javascript', 'typescript', 'sh']}

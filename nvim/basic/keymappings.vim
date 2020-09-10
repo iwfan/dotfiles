@@ -30,6 +30,10 @@ vnoremap < <gv
 vnoremap > >gv
 nnoremap < <<
 nnoremap > >>
+nnoremap <TAB> >>
+nnoremap <S-TAB> <<
+vnoremap <TAB> >gv
+vnoremap <S-TAB> <gv
 
 inoremap <C-h> <left>
 inoremap <C-l> <right>
