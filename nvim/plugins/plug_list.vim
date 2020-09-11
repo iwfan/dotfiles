@@ -19,9 +19,20 @@ Plug 'morhetz/gruvbox'
 Plug 'joshdick/onedark.vim'
 Plug 'theniceboy/vim-deus'
 
+Plug 'easymotion/vim-easymotion'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'luochen1990/rainbow'
+Plug 'liuchengxu/vim-which-key'
+Plug 'godlygeek/tabular'
+
+" Intellisense Engine
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " status line and tabline
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
+Plug 'josa42/vim-lightline-coc'
 
 " icon
 Plug 'ryanoasis/vim-devicons'
@@ -34,17 +45,6 @@ Plug 'mbbill/undotree'
 "Plug 'ludovicchabant/vim-gutentags'
 Plug 'liuchengxu/vista.vim'
 
-Plug 'easymotion/vim-easymotion'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-surround'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'luochen1990/rainbow'
-Plug 'liuchengxu/vim-which-key'
-Plug 'godlygeek/tabular'
-
-" Intellisense Engine
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'josa42/vim-lightline-coc'
 " Git
 Plug 'tpope/vim-fugitive'
 
