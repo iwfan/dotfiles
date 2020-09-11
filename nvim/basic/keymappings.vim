@@ -43,8 +43,6 @@ nnoremap <leader><backspace> "_dd
 nnoremap <leader>m %
 
 " Close all the buffers
-nnoremap <silent> ∑ <esc>:bd<cr>
-nnoremap <silent> <M-w> <esc>:bd<cr>
 nnoremap <silent> <leader>] <esc>:bnext<cr>
 nnoremap <silent> <leader>[ <esc>:bprevious<cr>
 

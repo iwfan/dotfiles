@@ -43,9 +43,10 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'mhinz/vim-startify'
 Plug 'Yggdroot/indentLine'
 Plug 'mbbill/undotree'
+Plug 'qpkorr/vim-bufkill'
 " Tag Management
 "Plug 'ludovicchabant/vim-gutentags'
-"Plug 'liuchengxu/vista.vim'
+Plug 'liuchengxu/vista.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -105,4 +106,7 @@ let g:user_emmet_leader_key                    = '<Tab>'
 
 let g:floaterm_width                           = 0.8
 let g:floaterm_height                          = 0.8
+
+nnoremap <silent> ∑ <esc>:BD<cr>
+nnoremap <silent> <M-w> <esc>:BD<cr>
 
