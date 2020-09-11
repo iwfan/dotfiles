@@ -20,7 +20,7 @@ let g:lightline.active = {
     \ 'left': [ [ 'mode', 'paste' ],
     \           [ 'readonly', 'filename', 'modified', 'method' ] ],
     \ 'right': [ [ 'lineinfo' ],
-    \            [ 'percent' ],
+    \            [ 'percent', 'spell' ],
     \            [ 'coc_errors', 'coc_warnings', 'coc_ok', 'coc_status', 'git', 'fileformat', 'fileencoding', 'filetype' ],
     \          ] }
 
@@ -89,4 +89,4 @@ function! LightlineGitBlame() abort
   return winwidth(0) > 120 ? blame : ''
 endfunction
 
-call lightline#coc#register()
+" call lightline#coc#register()

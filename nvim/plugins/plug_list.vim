@@ -41,7 +41,6 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'luochen1990/rainbow'
 Plug 'liuchengxu/vim-which-key'
 Plug 'godlygeek/tabular'
-"Plug 'ervandew/supertab'
 
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -116,3 +115,10 @@ let g:NERDCustomDelimiters                     = {'c': {'left': '/*', 'right': '
 let g:NERDCommentEmptyLines                    = 1
 let g:NERDTrimTrailingWhitespace               = 1
 let g:NERDToggleCheckAllLines                  = 1
+
+"Indentline设置
+let g:indentLine_enabled = 1
+let g:indentLine_char='┆'
+let g:indentLine_fileTypeExclude = ['defx', 'denite','startify','tagbar','vista_kind','vista','coc-explorer','dashboard']
+let g:indentLine_concealcursor = 'niv'
+let g:indentLine_showFirstIndentLevel =1
