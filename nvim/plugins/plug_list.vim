@@ -18,8 +18,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'joshdick/onedark.vim'
 Plug 'theniceboy/vim-deus'
+" icon
+Plug 'ryanoasis/vim-devicons'
 
-Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -34,8 +35,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'josa42/vim-lightline-coc'
 
-" icon
-Plug 'ryanoasis/vim-devicons'
+Plug 'haya14busa/incsearch.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/incsearch-easymotion.vim'
 
 " editor enhancement
 Plug 'mhinz/vim-startify'
@@ -43,7 +45,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'mbbill/undotree'
 " Tag Management
 "Plug 'ludovicchabant/vim-gutentags'
-Plug 'liuchengxu/vista.vim'
+"Plug 'liuchengxu/vista.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -92,8 +94,6 @@ autocmd VimEnter *
   \|   PlugInstall --sync | q
   \| endif
 
-let g:EasyMotion_smartcase                     = 1
-
 let g:undotree_WindowLayout                    = 3
 
 let g:rainbow_active                           = 1
@@ -106,19 +106,3 @@ let g:user_emmet_leader_key                    = '<Tab>'
 let g:floaterm_width                           = 0.8
 let g:floaterm_height                          = 0.8
 
-"NerdCommenter设置
-let g:NERDSpaceDelims                          = 1
-let g:NERDCompactSexyComs                      = 1
-let g:NERDDefaultAlign                         = 'left'
-let g:NERDAltDelims_java                       = 1
-let g:NERDCustomDelimiters                     = {'c': {'left': '/*', 'right': '*/'}}
-let g:NERDCommentEmptyLines                    = 1
-let g:NERDTrimTrailingWhitespace               = 1
-let g:NERDToggleCheckAllLines                  = 1
-
-"Indentline设置
-let g:indentLine_enabled = 1
-let g:indentLine_char='┆'
-let g:indentLine_fileTypeExclude = ['defx', 'denite','startify','tagbar','vista_kind','vista','coc-explorer','dashboard']
-let g:indentLine_concealcursor = 'niv'
-let g:indentLine_showFirstIndentLevel =1

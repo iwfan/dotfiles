@@ -16,6 +16,7 @@
 # lazynpm
 # ccat
 # highlight
+# ctags
 #)
 
 #for i in "${packages[@]}"

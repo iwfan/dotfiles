@@ -18,12 +18,7 @@ noremap H g^
 noremap L g$
 noremap J <C-d>zz
 noremap K <C-u>zz
-
-noremap n nzz
-noremap N Nzz
 noremap U <C-r>
-noremap ]w g*zz
-noremap [w g#zz
 
 " Better indenting
 vnoremap < <gv
