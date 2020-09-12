@@ -36,7 +36,7 @@ set undodir=$HOME/.vim/undo
 set undolevels=1000
 set undoreload=10000
 
-set tags=./tags;/,$HOME/.vim/tags
+set tags=$HOME/.vim/tags
 set dictionary+=/usr/share/dict/words   " autocompletion with dictionary help
 set dictionary+=$HOME/.vim/dict/
 
@@ -161,7 +161,7 @@ endif
 " mark ....
 " syntax
 set foldenable
-set foldmethod=indent
+set foldmethod=syntax
 set foldlevel=99
 set foldlevelstart=99
 
@@ -171,7 +171,3 @@ let &g:titlestring="
 			\ %{expand('%:p:~:.')}%(%m%r%w%)
 			\ %<\[%{fnamemodify(getcwd(), ':~')}\] - Neovim"
 
-let gitroot = substitute(system('git rev-parse --show-toplevel'),'[\n\r]', '', 'g')                          " Make tags placed in .git/tags file available in all levels of a repository
-if gitroot != ''
-    let &tags = &tags . ',' . gitroot . '/.git/tags'
-endif

@@ -12,7 +12,9 @@ let mapleader = "\<SPACE>"
 nmap . .`[
 nmap s <nop>
 nmap <silent> <C-s> :w<CR>
-nmap <silent> <leader><esc> :q<CR>
+nmap <silent> <C-S> :wall<CR>
+nmap <silent> <leader>q :q<CR>
+nmap <silent> <leader>Q :qall<CR>
 
 noremap H g^
 noremap L g$
@@ -25,10 +27,6 @@ vnoremap < <gv
 vnoremap > >gv
 nnoremap < <<
 nnoremap > >>
-nnoremap <TAB> >>
-nnoremap <S-TAB> <<
-vnoremap <TAB> >gv
-vnoremap <S-TAB> <gv
 
 inoremap <C-h> <left>
 inoremap <C-l> <right>
@@ -43,8 +41,10 @@ nnoremap <leader><backspace> "_dd
 nnoremap <leader>m %
 
 " Close all the buffers
-nnoremap <silent> <leader>] <esc>:bnext<cr>
-nnoremap <silent> <leader>[ <esc>:bprevious<cr>
+nnoremap <silent><TAB> <esc>:bnext<cr>
+nnoremap <silent><S-TAB> <esc>:bprevious<cr>
+vnoremap <silent><TAB> <esc>:bnext<cr>
+vnoremap <silent><S-TAB> <esc>:bprevious<cr>
 
 " Useful mappings for managing tabs
 nnoremap <silent> <leader>tn :tabe<CR>
@@ -84,8 +84,8 @@ vnoremap <silent> <M-down> :m '>+1<CR>gv=gv
 vnoremap <silent> <M-up> :m '<-2<CR>gv=gv
 
 " use ]+space create spaceline
-nnoremap <leader>I  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
-nnoremap <leader>i  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+nnoremap <silent><leader>I :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
+nnoremap <silent><leader>i :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 
 " Use <C-L> to clear the highlighting of :set hlsearch
 if maparg('<C-L>', 'n') ==# ''

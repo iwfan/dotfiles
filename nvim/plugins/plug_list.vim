@@ -21,11 +21,11 @@ Plug 'theniceboy/vim-deus'
 " icon
 Plug 'ryanoasis/vim-devicons'
 
+Plug 'liuchengxu/vim-which-key'
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'luochen1990/rainbow'
-Plug 'liuchengxu/vim-which-key'
 Plug 'godlygeek/tabular'
 
 " Intellisense Engine
@@ -39,11 +39,16 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch-easymotion.vim'
 
+Plug 'andymass/vim-matchup'
+
 " editor enhancement
 Plug 'mhinz/vim-startify'
 Plug 'Yggdroot/indentLine'
 Plug 'mbbill/undotree'
 Plug 'qpkorr/vim-bufkill'
+
+Plug 'pechorin/any-jump.vim'
+
 " Tag Management
 "Plug 'ludovicchabant/vim-gutentags'
 Plug 'liuchengxu/vista.vim'
@@ -51,41 +56,42 @@ Plug 'liuchengxu/vista.vim'
 " Git
 Plug 'tpope/vim-fugitive'
 
-Plug 'scrooloose/nerdcommenter'
+"Comment
+"Plug 'tpope/vim-commentary'
+Plug 'tomtom/tcomment_vim'
+
 Plug 'voldikss/vim-floaterm'
 
 " markdown support
 Plug 'plasticboy/vim-markdown'
-Plug 'sheerun/vim-polyglot',{'for':['py', 'go', 'java', 'vim', 'json', 'html5', 'javascript', 'typescript', 'sh']}
 
-"Plug 'junegunn/vim-easy-align', {'on':'<Plug>(EasyAlign)'}
-"Plug 'voldikss/vim-translator', { 'on':'<Plug>Translate' }
+" General Highlighter
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'RRethy/vim-illuminate'
 
 "Plug 'junegunn/fzf', {'on':['Files', 'History', 'Colors', 'Rg', 'Marks'] }
 "Plug 'junegunn/fzf.vim', {'on':['Files', 'History', 'Colors', 'Rg', 'Marks']}
 
-
 Plug 'mattn/emmet-vim'
-
-" Print function signatures in echo area
-"Plug 'Shougo/echodoc.vim'
+Plug 'AndrewRadev/tagalong.vim'
+Plug 'sheerun/vim-polyglot'
 
 " === Javascript Plugins === "
 " Typescript syntax highlighting
-"Plug 'HerringtonDarkholme/yats.vim'
+Plug 'HerringtonDarkholme/yats.vim'
 " Improved syntax highlighting and indentation
-"Plug 'othree/yajs.vim'
+Plug 'othree/yajs.vim'
 
 " ReactJS JSX syntax highlighting
-"Plug 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx'
 
 " Generate JSDoc commands based on function signature
-"Plug 'heavenshell/vim-jsdoc'
+Plug 'heavenshell/vim-jsdoc'
 
 " === Syntax Highlighting === "
 
 " Syntax highlighting for javascript libraries
-"Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
 
 call plug#end()
 
@@ -97,16 +103,13 @@ autocmd VimEnter *
 
 let g:undotree_WindowLayout                    = 3
 
-let g:rainbow_active                           = 1
-
 let g:user_emmet_install_global                = 0
 autocmd FileType html,css,jsx,tsx EmmetInstall
 let g:user_emmet_mode                          = 'in'
 let g:user_emmet_leader_key                    = '<Tab>'
 
+let g:tagalong_verbose = 1
+
 let g:floaterm_width                           = 0.8
 let g:floaterm_height                          = 0.8
-
-nnoremap <silent> ∑ <esc>:BD<cr>
-nnoremap <silent> <M-w> <esc>:BD<cr>
 

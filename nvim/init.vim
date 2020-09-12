@@ -16,10 +16,15 @@ source $HOME/dotfiles/nvim/plugins/settings/lightline.vim
 source $HOME/dotfiles/nvim/plugins/settings/incsearch.vim
 source $HOME/dotfiles/nvim/plugins/settings/coc.vim
 source $HOME/dotfiles/nvim/plugins/settings/coc-list.vim
+source $HOME/dotfiles/nvim/plugins/settings/coc-snippets.vim
 source $HOME/dotfiles/nvim/plugins/settings/indentline.vim
 source $HOME/dotfiles/nvim/plugins/settings/nerdcommenter.vim
 source $HOME/dotfiles/nvim/plugins/settings/tabular.vim
+source $HOME/dotfiles/nvim/plugins/settings/gutentags.vim
 source $HOME/dotfiles/nvim/plugins/settings/vista.vim
+source $HOME/dotfiles/nvim/plugins/settings/bufkill.vim
+source $HOME/dotfiles/nvim/plugins/settings/any-jump.vim
+source $HOME/dotfiles/nvim/plugins/settings/hexokinase.vim
 
 source $HOME/dotfiles/nvim/advanced/code_run.vim
 source $HOME/dotfiles/nvim/advanced/keymappings.vim
@@ -31,8 +36,8 @@ endif
 source $HOME/.config/nvim/_machine_specific.vim
 
 "colorscheme gruvbox
-colorscheme onedark
-"colorscheme deus
+"colorscheme onedark
+colorscheme deus
 set background=dark
 highlight clear SignColumn              " gutter is the same color as where your line numbers show up
 

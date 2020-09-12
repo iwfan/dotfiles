@@ -5,11 +5,7 @@
 "map R :w<cr>:source $MYVIMRC<cr>
 
 
-
 "nmap \c <Plug>NERDCommenterToggle
-
-"nmap <Leader>g :FloatermNew lazygit<CR>
-"nmap <Leader>0 :FloatermNew<CR>
 
 nnoremap <silent> <Leader>0 :FloatermToggle<CR>
 tnoremap <silent> <Leader>0 <C-\><C-n>:FloatermToggle<CR>
