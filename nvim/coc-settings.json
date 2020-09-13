@@ -1,7 +1,9 @@
 {
-  "suggest.echodocSupport": true,
-  "suggest.maxCompleteItemCount": 20,
-  "suggest.triggerAfterInsertEnter": false,
+  // coc settings
+  "coc.preferences.hoverTarget": "preview",
+  "coc.preferences.enableFloatHighlight": true,
+  "coc.preferences.snippets.enable": true,
+  "coc.preferences.snippetStatusText": "Ⓢ ",
   "coc.preferences.formatOnSaveFiletypes": [
     "html",
     "css",
@@ -15,20 +17,47 @@
     "javascriptreact",
     "typescript.tsx"
   ],
-  "eslint.filetypes": [
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "javascriptreact",
-    "typescript.tsx"
-  ],
-  //diagnostic
-  "diagnostic.signOffset": 9999999,
-  "diagnostic.errorSign": "●",
-  "diagnostic.warningSign": "●",
-  "diagnostic.infoSign": "●",
-  "diagnostic.displayByAle": false,
-  "diagnostic.refreshOnInsertMode": true,
+
+  // suggest
+  "suggest.detailMaxLength": 60,
+  "suggest.noselect": true,
+  "suggest.enablePreselect": false,
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.autoTrigger": "always",
+  "suggest.timeout": 5000,
+  "suggest.enablePreview": true,
+  "suggest.floatEnable": true,
+  "suggest.detailField": "preview",
+  "suggest.echodocSupport": true,
+  "suggest.completionItemKindLabels": {
+    "class": "\uf0e8",
+    "color": "\ue22b",
+    "constant": "\uf8fe",
+    "default": "\uf29c",
+    "enum": "\uf435",
+    "enumMember": "\uf02b",
+    "event": "\ufacd",
+    "field": "\uf93d",
+    "file": "\uf723",
+    "folder": "\uf115",
+    "function": "\u0192",
+    "interface": "\uf417",
+    "keyword": "\uf1de",
+    "method": "\uf6a6",
+    "module": "\uf40d",
+    "operator": "\uf915",
+    "property": "\ue624",
+    "reference": "\ufa46",
+    "snippet": "\ue60b",
+    "struct": "\ufb44",
+    "text": "\ue612",
+    "typeParameter": "\uf728",
+    "unit": "\uf475",
+    "value": "\uf89f",
+    "variable": "\ue71b"
+  },
+  "suggest.maxCompleteItemCount": 20,
+
   // coc-explorer
   "explorer.icon.expanded": "▾",
   "explorer.icon.collapsed": "▸",
@@ -37,10 +66,36 @@
   "explorer.openAction.strategy": "sourceWindow",
   "explorer.file.hiddenRules": {
     "extensions": ["o", "a", "obj", "pyc"],
-    "filenames": [],
-    "patternMatches": [".git"]
+    "filenames": [".git"],
+    "patternMatches": []
   },
   "explorer.file.column.git.showIgnored": true,
+
+  // list
+  "list.previewHighlightGroup": "Statement",
+  "list.source.files.args": ["--hidden", "--files"],
+
+  // coc source
+  "coc.source.around.firstMatch": false,
+  "coc.source.buffer.firstMatch": false,
+  "coc.source.file.ignoreHidden": false,
+
+  //diagnostic
+  "diagnostic.enable": true,
+  "diagnostic.signOffset": 9999999,
+  "diagnostic.highlightOffset": 9999999,
+  "diagnostic.errorSign": "\uf467",
+  "diagnostic.warningSign": "\uf071",
+  "diagnostic.infoSign": "\uf129",
+  "diagnostic.hintSign": "\uf864",
+  "diagnostic.displayByAle": false,
+  "diagnostic.refreshOnInsertMode": false,
+  "diagnostic.refreshAfterSave": false,
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.virtualTextPrefix": " ❯❯❯ ",
+  "diagnostic.virtualText": true,
+  "diagnostic.separateRelatedInformationAsDiagnostics": true,
+
   //git
   "git.enableGutters": true,
   "git.branchCharacter": "\uf418",
@@ -52,6 +107,28 @@
   "git.removedSign.text": "▋",
   "git.topRemovedSign.text": "▔",
   "git.changeRemovedSign.text": "▋",
+  "git.addedSign.hlGroup": "GitAddHi",
+  "git.changedSign.hlGroup": "GitModifyHi",
+  "git.removedSign.hlGroup": "GitDeleteHi",
+  "git.topRemovedSign.hlGroup": "GitDeleteHi",
+  "git.changeRemovedSign.hlGroup": "GitDeleteHi",
+
+  "eslint.filetypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "javascriptreact",
+    "typescript.tsx"
+  ],
+  "eslint.autoFix": true,
+  "eslint.autoFixOnSave": true,
+
+  // prettier
+  "prettier.eslintIntegration": true,
+  "prettier.tslintIntegration": true,
+  "prettier.stylelintIntegration": true,
+  "prettier.statusItemText": "Ⓟ",
+
   "languageserver": {
     "bash": {
       "command": "bash-language-server",

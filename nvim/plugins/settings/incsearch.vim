@@ -1,6 +1,8 @@
-" map /  <Plug>(incsearch-forward)
-" map ?  <Plug>(incsearch-backward)
-" map g/ <Plug>(incsearch-stay)
+let g:EasyMotion_smartcase = 1
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
 let g:incsearch#auto_nohlsearch = 1
 map n  <Plug>(incsearch-nohl-n)
@@ -22,9 +24,9 @@ function! s:incsearch_config(...) abort
   \ }), get(a:, 1, {}))
 endfunction
 
-map <silent><expr> /  incsearch#go(<SID>incsearch_config())
-map <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
-map <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
+" map <silent><expr> /  incsearch#go(<SID>incsearch_config())
+" map <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
+" map <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
 
 map z/ <Plug>(incsearch-easymotion-/)
 map z? <Plug>(incsearch-easymotion-?)

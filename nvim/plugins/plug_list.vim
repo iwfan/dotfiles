@@ -23,8 +23,12 @@ Plug 'ryanoasis/vim-devicons'
 
 Plug 'liuchengxu/vim-which-key'
 
+Plug 'editorconfig/editorconfig-vim'
+
 Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'machakann/vim-swap'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'godlygeek/tabular'
 
@@ -57,13 +61,13 @@ Plug 'liuchengxu/vista.vim'
 Plug 'tpope/vim-fugitive'
 
 "Comment
-"Plug 'tpope/vim-commentary'
-Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary'
 
 Plug 'voldikss/vim-floaterm'
 
 " markdown support
 Plug 'plasticboy/vim-markdown'
+Plug 'dkarter/bullets.vim'
 
 " General Highlighter
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
