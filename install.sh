@@ -1,23 +1,26 @@
 #!/usr/bin/env bash
 
 
-#packages=(
-  #"git"
-  #"node"
-  #"ruby"
-  #"tmux"
-  #"neovim"
-  #"python3"
-  #"zsh"
-  #"ripgrep"
-  #"fzf"
-  #"z"
-# lazygit
-# lazynpm
-# ccat
-# highlight
-# ctags
-#)
+packages=(
+  git
+  node
+  ruby
+  tmux
+  neovim
+  python3
+  golang
+  zsh
+  ripgrep
+  fzf
+  the_silver_searcher
+  z
+  fd
+  lazygit
+  lazynpm
+  ccat
+  highlight
+ # ctags
+)
 
 #for i in "${packages[@]}"
 #do

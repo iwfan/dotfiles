@@ -25,19 +25,26 @@ Plug 'liuchengxu/vim-which-key'
 
 Plug 'editorconfig/editorconfig-vim'
 
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'machakann/vim-swap'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'godlygeek/tabular'
-
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " status line and tabline
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'josa42/vim-lightline-coc'
+
+" text operation
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'machakann/vim-swap'
+Plug 'junegunn/vim-after-object'
+
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
+
+Plug 'godlygeek/tabular'
+
+
 
 Plug 'haya14busa/incsearch.vim'
 Plug 'easymotion/vim-easymotion'

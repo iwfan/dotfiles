@@ -16,10 +16,10 @@ nmap <silent> <C-S> :wall<CR>
 nmap <silent> <leader>q :q<CR>
 nmap <silent> <leader>Q :qall<CR>
 
-noremap H g^
-noremap L g$
-noremap J <C-d>zz
-noremap K <C-u>zz
+" noremap H g^
+" noremap L g$
+" noremap J <C-d>zz
+" noremap K <C-u>zz
 noremap U <C-r>
 
 " Better indenting
