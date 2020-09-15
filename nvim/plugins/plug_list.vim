@@ -13,9 +13,18 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 
 " Plugin Recommandtion: https://zhuanlan.zhihu.com/p/58816186
+"
+"https://github.com/kana/vim-textobj-user
+"https://github.com/machakann/vim-swap
+"https://github.com/AndrewRadev/splitjoin.vim
+"https://github.com/tpope/vim-unimpaired
+"https://github.com/ntpeters/vim-better-whitespace
+"https://github.com/terryma/vim-expand-region
+"https://github.com/svermeulen/vim-easyclip
+"https://github.com/junegunn/vim-easy-align
+"https://github.com/liuchengxu/vim-clap
 
 " theme plugins
-Plug 'morhetz/gruvbox'
 Plug 'joshdick/onedark.vim'
 Plug 'theniceboy/vim-deus'
 " icon
@@ -41,10 +50,7 @@ Plug 'junegunn/vim-after-object'
 
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
-
 Plug 'godlygeek/tabular'
-
-
 
 Plug 'haya14busa/incsearch.vim'
 Plug 'easymotion/vim-easymotion'
@@ -59,6 +65,8 @@ Plug 'mbbill/undotree'
 Plug 'qpkorr/vim-bufkill'
 
 Plug 'pechorin/any-jump.vim'
+Plug '907th/vim-auto-save'
+Plug 'tpope/vim-sensible'
 
 " Tag Management
 "Plug 'ludovicchabant/vim-gutentags'
@@ -74,7 +82,7 @@ Plug 'voldikss/vim-floaterm'
 
 " markdown support
 Plug 'plasticboy/vim-markdown'
-Plug 'dkarter/bullets.vim'
+"Plug 'dkarter/bullets.vim'
 
 " General Highlighter
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
