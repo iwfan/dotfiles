@@ -17,17 +17,18 @@ let g:lightline.mode_map = {
     \ }
 
 let g:lightline.active = {
-    \ 'left': [ [ 'mode', 'paste' ],
-    \           [ 'readonly', 'filename', 'modified', 'method' ] ],
+    \ 'left': [
+    \    [ 'mode', 'paste', 'coc_errors', 'coc_warnings', 'coc_ok' ],
+    \    [ 'gitinfo', 'git_buffer_info' ]
+    \ ],
     \ 'right': [ [ 'lineinfo' ],
-    \            [ 'percent', 'spell' ],
-    \            [ 'coc_errors', 'coc_warnings', 'coc_ok', 'coc_status', 'git', 'fileformat', 'fileencoding', 'filetype' ],
+    \            [ 'fileformat', 'fileencoding', 'filetype', 'percent' ],
+    \            [ 'readonly','coc_status' ],
     \          ] }
 
 let g:lightline.inactive = {
     \ 'left': [ [ 'filename' ] ],
-    \ 'right': [ [ 'lineinfo' ],
-    \            [ 'percent' ] ] }
+    \ 'right': [ ] }
 
 let g:lightline.tabline = {
     \ 'left': [ [ 'buffers' ] ],
@@ -50,7 +51,7 @@ let g:lightline.component = {
     \ 'percent': '%3p%%',
     \ 'percentwin': '%P',
     \ 'spell': '%{&spell?&spelllang:""}',
-    \ 'lineinfo': '%3l:%-2v%<',
+    \ 'lineinfo': ' %3l:%-2v%<',
     \ 'line': '%l',
     \ 'column': '%c',
     \ 'close': '%999X X ',
@@ -66,37 +67,30 @@ let g:lightline.component_type = {
     \ }
 
 let g:lightline.component_function = {
-    \ 'method': 'NearestMethodOrFunction',
-    \ 'blame': 'LightlineGitBlame',
-    \ 'git': 'LightlineGitStatus'
+    \ 'gitinfo': 'LightlineGitStatus',
+    \ 'git_buffer_info': 'LightlineGitBufferStatus'
     \ }
 
-" let g:lightline.separator = {
-"     \ 'left': '⮀',
-"     \ 'right': '',
-"     \ }
-
-" let g:lightline.subseparator = {
-"     \ 'left': '⏽',
-"     \ 'right': '⏽',
-"     \ }
-
-let g:lightline#bufferline#modified        = '*'
-let g:lightline#bufferline#show_number     = 1
+let g:lightline#bufferline#show_number     = 2
 let g:lightline#bufferline#enable_devicons = 1
 let g:lightline#bufferline#enable_nerdfont = 1
 let g:lightline#bufferline#unnamed         = '[No Name]'
-
+let g:lightline#bufferline#number_map      = {
+\ 0: '𝟬 ', 1: '❶ ', 2: '❷ ', 3: '❸ ', 4: '❹ ',
+\ 5: '❺ ', 6: '❻ ', 7: '❼ ', 8: '❽ ', 9: '❾ '}
 
 function! LightlineGitStatus() abort
-  let status = get(g:, 'coc_git_status', '')
-  let splited = split(status, '*')
-  return len(splited) > 0 ? splited[0] : ''
+  let project_status = get(g:, 'coc_git_status', '')
+  return winwidth(0) > 120 ? trim(project_status) : ''
 endfunction
 
-function! LightlineGitBlame() abort
-  let blame = get(b:, 'coc_git_blame', '')
-  return winwidth(0) > 120 ? blame : ''
+function! LightlineGitBufferStatus() abort
+  let buffer_status = get(b:, 'coc_git_status', '')
+  return winwidth(0) > 120 ? trim(buffer_status) : ''
 endfunction
 
-" call lightline#coc#register()
+let g:lightline#coc#indicator_warnings = "\uf071 "
+let g:lightline#coc#indicator_errors   = "\uf05c "
+let g:lightline#coc#indicator_ok       = "\uf058 "
+
+call lightline#coc#register()

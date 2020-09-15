@@ -13,6 +13,15 @@ augroup auto_spellcheck
   autocmd BufNewFile,BufRead *.md setlocal spell
 augroup END
 
+augroup user_persistent_undo
+  autocmd!
+  au BufWritePre /tmp/*          setlocal noundofile
+  au BufWritePre COMMIT_EDITMSG  setlocal noundofile
+  au BufWritePre MERGE_MSG       setlocal noundofile
+  au BufWritePre *.tmp           setlocal noundofile
+  au BufWritePre *.bak           setlocal noundofile
+augroup END
+
 " Stop highlighting when entering Insert mode
 "let didit = 0
 "autocmd! InsertEnter * if ! didit | call feedkeys("\<C-\>\<C-o>:nohlsearch|let didit = 1\<CR>", 'n') | endif

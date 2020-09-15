@@ -2,12 +2,15 @@
 "                                Basic Settings                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set nocompatible
+if &compatible
+  set nocompatible
+endif
+
 filetype on                             " filetype detection on
 filetype plugin indent on               " load plugins
 
 if has('syntax')
-    syntax enable                       " use syntax highlighting
+  syntax enable                       " use syntax highlighting
 endif
 
 scriptencoding utf-8
@@ -23,7 +26,7 @@ set autowriteall
 set timeout ttimeout
 set timeoutlen=500                      " Time out on mappings
 set ttimeoutlen=10                      " Time out on key codes
-set updatetime=300                      " Idle time to write swap and trigger CursorHold
+set updatetime=100                      " Idle time to write swap and trigger CursorHold
 set redrawtime=1500                     " Time in milliseconds for stopping display redraw
 set ttyfast                             " should make scrolling faster
 set lazyredraw                          " same as above

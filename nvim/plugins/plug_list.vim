@@ -61,6 +61,7 @@ Plug 'junegunn/vim-after-object'
 
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
+Plug 'junegunn/vim-easy-align'
 Plug 'godlygeek/tabular'
 
 Plug 'haya14busa/incsearch.vim'
@@ -130,7 +131,7 @@ autocmd VimEnter *
   \|   PlugInstall --sync | q
   \| endif
 
-let g:undotree_WindowLayout                    = 3
+let g:undotree_WindowLayout                    = 4
 
 let g:user_emmet_install_global                = 0
 autocmd FileType html,css,jsx,tsx EmmetInstall

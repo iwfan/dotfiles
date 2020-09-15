@@ -10,15 +10,15 @@ let mapleader = "\<SPACE>"
 " map CapsLock to Escape
 inoremap jk <Esc>
 inoremap kj <Esc>
-vnoremap jk <Esc>
-vnoremap kj <Esc>
 " Use control-c instead of escape
 nnoremap <C-c> <Esc>
+vnoremap <C-c> <Esc>
 
 nmap . .`[
 nmap s <nop>
 nmap <silent> <C-s> :w<CR>
 nmap <silent> <C-q> :q<CR>
+nmap <silent> <leader>q :q<CR>
 
 noremap U <C-r>
 
@@ -40,7 +40,6 @@ inoremap <C-s> <Esc>:w<CR>
 " Easy CAPS
 inoremap <c-u> <ESC>viwUi
 nnoremap <c-u> viwU<Esc>
-
 
 nnoremap <leader><backspace> "_dd
 nnoremap <leader>m %

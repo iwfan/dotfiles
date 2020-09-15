@@ -87,7 +87,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-"nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
 "xmap <leader>f  <Plug>(coc-format-selected)
@@ -132,6 +132,12 @@ nmap [c <Plug>(coc-git-prevchunk)
 nmap ]c <Plug>(coc-git-nextchunk)
 " show chunk diff at current position
 nmap \c <Plug>(coc-git-chunkinfo)
+nmap <silent><BS>\c :CocCommand git.chunkUndo<CR>
+" create text object for git chunks
+omap ig <Plug>(coc-git-chunk-inner)
+xmap ig <Plug>(coc-git-chunk-inner)
+omap ag <Plug>(coc-git-chunk-outer)
+xmap ag <Plug>(coc-git-chunk-outer)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
