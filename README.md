@@ -4,7 +4,7 @@ my dotfiles
 
 # fonts
 
-- Fantasque Sans Mono
+- Fantasque Sans Mono 110/130
 - JetBrains Mono
 - Source Code Pro
 
@@ -15,3 +15,4 @@ my dotfiles
 - https://github.com/KyleJKC/nvim
 - https://github.com/ctaylo21/jarvis
 - https://github.com/SpaceVim/SpaceVim
+- https://github.com/hardcoreplayers/ThinkVim

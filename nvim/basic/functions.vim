@@ -5,6 +5,9 @@
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+" Stop newline continuous of comments
+autocmd FileType * set formatoptions=jql
+
 " Turn spellcheck on for markdown files
 augroup auto_spellcheck
   autocmd BufNewFile,BufRead *.md setlocal spell

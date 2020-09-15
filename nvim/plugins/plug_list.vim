@@ -1,5 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                 Plugins                                    "
+"                                 PLUGINS                                    "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " auto-install vim-plug
@@ -23,19 +23,30 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 "https://github.com/svermeulen/vim-easyclip
 "https://github.com/junegunn/vim-easy-align
 "https://github.com/liuchengxu/vim-clap
+"thaerkh/vim-workspace
+"dyng/ctrlsf.vim
+"bagrat/vim-buffet
 
-" theme plugins
-Plug 'joshdick/onedark.vim'
+"""""""""""""""""""""""""""""""""""""""
+"            Appearance               "
+"""""""""""""""""""""""""""""""""""""""
 Plug 'theniceboy/vim-deus'
+Plug 'glepnir/oceanic-material'
+
 " icon
 Plug 'ryanoasis/vim-devicons'
 
+
+"""""""""""""""""""""""""""""""""""""""
+"            Behavior                 "
+"""""""""""""""""""""""""""""""""""""""
 Plug 'liuchengxu/vim-which-key'
 
 Plug 'editorconfig/editorconfig-vim'
 
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " status line and tabline
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
@@ -66,7 +77,6 @@ Plug 'qpkorr/vim-bufkill'
 
 Plug 'pechorin/any-jump.vim'
 Plug '907th/vim-auto-save'
-Plug 'tpope/vim-sensible'
 
 " Tag Management
 "Plug 'ludovicchabant/vim-gutentags'

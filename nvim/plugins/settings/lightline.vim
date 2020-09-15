@@ -2,19 +2,19 @@ let g:lightline = { }
 
 let g:lightline.colorscheme = 'deus'
 
-" let g:lightline.mode_map = {
-"       \   'n' : 'N',
-"       \   'i' : 'I',
-"       \   'R' : 'R',
-"       \   'v' : 'V',
-"       \   'V' : 'VL',
-"       \   "\<C-v>": 'VB',
-"       \   'c' : 'C',
-"       \   's' : 'S',
-"       \   'S' : 'SL',
-"       \   "\<C-s>": 'SB',
-"       \   't': 'T',
-"       \ }
+let g:lightline.mode_map = {
+    \   'n' : "🅝 ",
+    \   'i' : "🅘 ",
+    \   'R' : "🅡 ",
+    \   'v' : "🅥 ",
+    \   'V' : "🅥 ",
+    \   "\<C-v>": "🅥 ",
+    \   'c' : "🅒 ",
+    \   's' : "🅢 ",
+    \   'S' : "🅢 ",
+    \   "\<C-s>": "🅢 ",
+    \   't': "🅣 ",
+    \ }
 
 let g:lightline.active = {
     \ 'left': [ [ 'mode', 'paste' ],
@@ -71,11 +71,21 @@ let g:lightline.component_function = {
     \ 'git': 'LightlineGitStatus'
     \ }
 
+" let g:lightline.separator = {
+"     \ 'left': '⮀',
+"     \ 'right': '',
+"     \ }
+
+" let g:lightline.subseparator = {
+"     \ 'left': '⏽',
+"     \ 'right': '⏽',
+"     \ }
+
 let g:lightline#bufferline#modified        = '*'
 let g:lightline#bufferline#show_number     = 1
 let g:lightline#bufferline#enable_devicons = 1
 let g:lightline#bufferline#enable_nerdfont = 1
-let g:lightline#bufferline#unnamed         = '[Untitled]'
+let g:lightline#bufferline#unnamed         = '[No Name]'
 
 
 function! LightlineGitStatus() abort

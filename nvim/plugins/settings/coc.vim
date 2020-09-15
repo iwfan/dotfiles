@@ -26,8 +26,10 @@ let g:coc_global_extensions = [
 	\ 'coc-tabnine',
 	\ 'coc-highlight',
 	\ 'coc-emoji',
+	\ 'coc-postfix',
+	\ 'coc-spell-checker',
+	\ 'coc-marketplace',
 	\ 'coc-yank']
-" \ 'coc-spell-checker',
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by

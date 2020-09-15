@@ -8,18 +8,18 @@ nmap <SPACE> <Nop>
 let mapleader = "\<SPACE>"
 
 " map CapsLock to Escape
+inoremap jk <Esc>
+inoremap kj <Esc>
+vnoremap jk <Esc>
+vnoremap kj <Esc>
+" Use control-c instead of escape
+nnoremap <C-c> <Esc>
 
 nmap . .`[
 nmap s <nop>
 nmap <silent> <C-s> :w<CR>
-nmap <silent> <C-S> :wall<CR>
-nmap <silent> <leader>q :q<CR>
-nmap <silent> <leader>Q :qall<CR>
+nmap <silent> <C-q> :q<CR>
 
-" noremap H g^
-" noremap L g$
-" noremap J <C-d>zz
-" noremap K <C-u>zz
 noremap U <C-r>
 
 " Better indenting
@@ -37,8 +37,18 @@ inoremap <C-e> <end>
 inoremap <C-d> <delete>
 inoremap <C-s> <Esc>:w<CR>
 
+" Easy CAPS
+inoremap <c-u> <ESC>viwUi
+nnoremap <c-u> viwU<Esc>
+
+
 nnoremap <leader><backspace> "_dd
 nnoremap <leader>m %
+
+nnoremap <leader>I O<Esc>
+nnoremap <leader>i o<Esc>
+nnoremap <Leader>o o<Esc>^Da
+nnoremap <Leader>O O<Esc>^Da
 
 " Close all the buffers
 nnoremap <silent><TAB> <esc>:bnext<cr>
@@ -82,15 +92,6 @@ inoremap <silent> <M-down> <Esc>:m .+1<CR>==gi
 inoremap <silent> <M-up> <Esc>:m .-2<CR>==gi
 vnoremap <silent> <M-down> :m '>+1<CR>gv=gv
 vnoremap <silent> <M-up> :m '<-2<CR>gv=gv
-
-" use ]+space create spaceline
-nnoremap <silent><leader>I :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
-nnoremap <silent><leader>i :<c-u>put =repeat(nr2char(10), v:count1)<cr>
-
-" Use <C-L> to clear the highlighting of :set hlsearch
-if maparg('<C-L>', 'n') ==# ''
-    nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-endif
 
 " use <++> as placeholder
 map <LEADER><LEADER> <ESC>/<++><CR>:nohlsearch<CR>j4d

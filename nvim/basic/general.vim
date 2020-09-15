@@ -55,14 +55,14 @@ set cursorline
 set noshowmode
 set nomodeline                          " disable mode lines (security measure)
 set showcmd
-set cmdheight=1                         " More space for displaying messages
+set cmdheight=2                         " More space for displaying messages
 set laststatus=2                        " Always display the status line
 set showtabline=2                       " Always show tabs
 set nostartofline                       " Cursor in same column for few commands
 set ruler                               " Show the cursor position all the time
 set list
-set listchars=tab:»·,nbsp:␣,trail:·,extends:→,precedes:←
-set fillchars=eob:\ 
+set listchars=tab:\↹\ ,nbsp:␣,trail:·,extends:→,precedes:←
+set fillchars=eob:\                     " do not show ~ before empty lines at the end of a buffer
 set scrolloff=5
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
 set splitright
@@ -80,7 +80,8 @@ let &t_ut=''
 set t_Co=256                            " this fixes colors on OS X terminal
 
 set hidden                              " Required to keep multiple buffers open multiple buffers
-set switchbuf=useopen,vsplit            " quickfix window instead of opening new buffersset iskeyword+=-                        " treat dash separated words as a word text object
+set switchbuf=useopen,vsplit            " quickfix window instead of opening new buffers
+set iskeyword+=-                        " treat dash separated words as a word text object
 set backspace=indent,eol,start          " Intuitive backspacing in insert mode
 set completeopt=longest,noinsert,menuone,noselect,preview,menu
 " Selected characters/lines in visual mode
@@ -91,22 +92,6 @@ let &t_SI="\<Esc>]50;CursorShape=1\x7"  " chang cursor style in difference mode
 let &t_SR="\<Esc>]50;CursorShape=2\x7"  " chang cursor style in difference mode
 let &t_EI="\<Esc>]50;CursorShape=0\x7"  " chang cursor style in difference mode
 
-" wrap config (not recommend
-" formation options
-" default is tcq 
-" t: 根据 textwidth 自动折行
-" c: 在（程序源代码中的）注释中自动折行，插入合适的注释起始字符
-" r: 插入模式下在注释中键入回车时，插入合适的注释起始字符
-" q: 允许使用"gq"命令对注释进行格式化；
-" n: 识别编号列表，编号行的下一行的缩进由数字后的空白决定（与“2”冲突，需要“autoindent”）；
-" 2: 使用一段的第二行的缩进来格式化文本；
-" l: 在当前行长度超过 textwidth 时，不自动重新格式化；
-" m: 在多字节字符处可以折行，对中文特别有效（否则只在空白字符处折行）；
-" M: 在拼接两行时（重新格式化，或者是手工使用“J”命令），如果前一行的结尾或后一行的开头是多字节字符，则不插入空格，非常适合中文
-" 
-" set textwidth=80 "最大字符长度
-set formatoptions-=t                    " disable wrap
-
 set tabstop=2                           " Insert 2 spaces for a tab
 set softtabstop=-1                      " Automatically keeps in sync with shiftwidth
 set shiftwidth=2                        " Change the number of space characters inserted for indentation
@@ -114,7 +99,7 @@ set smarttab                            " Makes tabbing smarter will realize you
 set expandtab                           " Converts tabs to spaces
 set smartindent                         " Makes indenting smart
 set autoindent                          " Good auto indent
-set copyindent                          " copy indent from the previous line
+" set copyindent                          " copy indent from the previous line
 set shiftround                          " Round indent to multiple of 'shiftwidth'
 
 set ignorecase                          " Search ignoring case
