@@ -55,7 +55,7 @@ Plug 'mengelbrecht/lightline-bufferline'
 Plug 'josa42/vim-lightline-coc'
 
 " text operation
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'machakann/vim-swap'
