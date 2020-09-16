@@ -16,3 +16,4 @@ my dotfiles
 - https://github.com/ctaylo21/jarvis
 - https://github.com/SpaceVim/SpaceVim
 - https://github.com/hardcoreplayers/ThinkVim
+- https://github.com/Shougo/shougo-s-github

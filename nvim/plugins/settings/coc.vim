@@ -1,5 +1,6 @@
 let g:coc_global_extensions = [
 	\ 'coc-actions',
+  \ 'coc-imselect',
 	\ 'coc-git',
 	\ 'coc-css',
 	\ 'coc-eslint',

@@ -26,6 +26,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 "thaerkh/vim-workspace
 "dyng/ctrlsf.vim
 "bagrat/vim-buffet
+" https://github.com/konfekt/fastfold
+" https://github.com/pseewald/vim-anyfold
 
 """""""""""""""""""""""""""""""""""""""
 "            Appearance               "

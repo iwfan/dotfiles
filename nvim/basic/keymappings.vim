@@ -10,9 +10,6 @@ let mapleader = "\<SPACE>"
 " map CapsLock to Escape
 inoremap jk <Esc>
 inoremap kj <Esc>
-" Use control-c instead of escape
-nnoremap <C-c> <Esc>
-vnoremap <C-c> <Esc>
 
 nmap . .`[
 nmap s <nop>
@@ -20,7 +17,17 @@ nmap <silent> <C-s> :w<CR>
 nmap <silent> <C-q> :q<CR>
 nmap <silent> <leader>q :q<CR>
 
-noremap U <C-r>
+" Better x
+nnoremap x "_x
+
+" Disable Ex-mode.
+nnoremap Q  q
+nnoremap U <C-r>
+
+" If press l on fold, fold open.
+nnoremap <expr> l foldclosed(line('.')) != -1 ? 'zo0' : 'l'
+" If press l on fold, range fold open.
+xnoremap <expr> l foldclosed(line('.')) != -1 ? 'zogv0' : 'l'
 
 " Better indenting
 vnoremap < <gv
@@ -28,14 +35,38 @@ vnoremap > >gv
 nnoremap < <<
 nnoremap > >>
 
-inoremap <C-h> <left>
-inoremap <C-l> <right>
-inoremap <C-j> <down>
-inoremap <C-k> <up>
-inoremap <C-a> <home>
-inoremap <C-e> <end>
-inoremap <C-d> <delete>
-inoremap <C-s> <Esc>:w<CR>
+" Command-line mode keymappings:
+" <C-a>, A: move to head.
+cnoremap <C-a>          <Home>
+inoremap <C-a>          <Home>
+" <C-b>: previous char.
+cnoremap <C-b>          <Left>
+inoremap <C-b>          <Left>
+" <C-d>: delete char.
+cnoremap <C-d>          <Del>
+inoremap <C-d>          <Del>
+" <C-e>, E: move to end.
+cnoremap <C-e>          <End>
+inoremap <C-e>          <End>
+" <C-f>: next char.
+cnoremap <C-f>          <Right>
+inoremap <C-f>          <Right>
+" <C-n>: next history.
+cnoremap <C-n>          <Down>
+inoremap <C-n>          <Down>
+" <C-p>: previous history.
+cnoremap <C-p>          <Up>
+inoremap <C-p>          <Up>
+" <C-y>: paste.
+cnoremap <C-y>          <C-r>*
+inoremap <C-y>          <C-r>*
+" <C-g>: Exit.
+cnoremap <C-g>          <C-c>
+inoremap <C-s>          <Esc>:w<CR>
+
+" Use control-c instead of escape
+nnoremap <C-c> <Esc>
+vnoremap <C-c> <Esc>
 
 " Easy CAPS
 inoremap <c-u> <ESC>viwUi
