@@ -114,9 +114,9 @@ set hlsearch                            " Highlight search results
 set showmatch                           " Show matching brackets when text indicator is over them
 set matchpairs+=<:>,「:」               " %默认匹配()、[]、{}，增加匹配<>
 
-"set wrap                                " Break line at predefined characters
+set wrap                                " Break line at predefined characters
 "set colorcolumn=100
-set nowrap                              " No wrap by default
+" set nowrap                              " No wrap by default
 set linebreak                           " Break long lines at 'breakat'
 set breakat=\ \	;:,!?                   " Long lines break chars
 set showbreak=↪

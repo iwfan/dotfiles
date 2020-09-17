@@ -79,7 +79,7 @@ Plug 'mbbill/undotree'
 Plug 'qpkorr/vim-bufkill'
 
 Plug 'pechorin/any-jump.vim'
-Plug '907th/vim-auto-save'
+" Plug '907th/vim-auto-save'
 
 " Tag Management
 "Plug 'ludovicchabant/vim-gutentags'
@@ -87,6 +87,7 @@ Plug 'liuchengxu/vista.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
+Plug 'ybian/smartim'
 
 "Comment
 Plug 'tpope/vim-commentary'
@@ -94,7 +95,7 @@ Plug 'tpope/vim-commentary'
 Plug 'voldikss/vim-floaterm'
 
 " markdown support
-Plug 'plasticboy/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
 "Plug 'dkarter/bullets.vim'
 
 " General Highlighter
@@ -106,7 +107,7 @@ Plug 'RRethy/vim-illuminate'
 
 Plug 'mattn/emmet-vim'
 Plug 'AndrewRadev/tagalong.vim'
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 
 " === Javascript Plugins === "
 " Typescript syntax highlighting
