@@ -80,6 +80,14 @@
   "coc.source.buffer.firstMatch": false,
   "coc.source.file.ignoreHidden": false,
 
+  // imselect
+  "imselect.defaultInput": "com.apple.keylayout.ABC",
+  "imselect.enableStatusItem": true,
+  "imselect.enableFloating": false,
+
+  // pairs
+  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
+
   //diagnostic
   "diagnostic.enable": true,
   "diagnostic.signOffset": 9999999,

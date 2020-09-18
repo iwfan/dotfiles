@@ -6,8 +6,6 @@
 "██║ ╚═╝ ██║   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
 "╚═╝     ╚═╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 "
-let g:polyglot_disabled = ['autoindent']
-
 source $HOME/dotfiles/nvim/basic/general.vim
 source $HOME/dotfiles/nvim/basic/keymappings.vim
 source $HOME/dotfiles/nvim/basic/functions.vim

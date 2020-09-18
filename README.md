@@ -4,7 +4,7 @@ my dotfiles
 
 # fonts
 
-- Fantasque Sans Mono 110/130
+- Fantasque Sans Mono 110/120
 - JetBrains Mono
 - Source Code Pro
 

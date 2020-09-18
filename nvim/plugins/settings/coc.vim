@@ -28,6 +28,7 @@ let g:coc_global_extensions = [
 	\ 'coc-highlight',
 	\ 'coc-emoji',
 	\ 'coc-postfix',
+	\ 'coc-pairs',
 	\ 'coc-spell-checker',
 	\ 'coc-marketplace',
 	\ 'coc-yank']
@@ -129,11 +130,11 @@ omap ac <Plug>(coc-classobj-a)
 "xmap <silent> <C-w> <Plug>(coc-range-select)
 
 " navigate chunks of current buffer
-nmap [c <Plug>(coc-git-prevchunk)
-nmap ]c <Plug>(coc-git-nextchunk)
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
 " show chunk diff at current position
-nmap \c <Plug>(coc-git-chunkinfo)
-nmap <silent><BS>\c :CocCommand git.chunkUndo<CR>
+nmap \g <Plug>(coc-git-chunkinfo)
+nmap <silent>d\g :CocCommand git.chunkUndo<CR>
 " create text object for git chunks
 omap ig <Plug>(coc-git-chunk-inner)
 xmap ig <Plug>(coc-git-chunk-inner)
