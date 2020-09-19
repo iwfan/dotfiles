@@ -14,5 +14,5 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'andymass/vim-matchup'
 
 "Comment
-Plug 'tpope/vim-commentary'
+Plug 'tomtom/tcomment_vim'
 

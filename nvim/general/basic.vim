@@ -125,17 +125,16 @@ set wildmenu
 if has('nvim')                          " Use floating windows to complete the commond, only neovim support
   set wildoptions=pum
   set pumblend=30                       " Let floatingwindow to be transparable
+  let g:neoterm_autoscroll = 1
+  autocmd TermOpen term://* startinsert
 else
   set wildmode=list:longest,full        " Set list to show completeopt, however it will lead to disfunc for floating windows
 endif
 set wildignorecase
 set history=1000                                                        " save 1000 cmd
 set wildignore+=*.o,*~,*.pyc,*.swp,*.bak,*.class,*.DS_Store,node_modules/**              " vim will ignore them
-if has('win16') || has('win32')
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-else
-    set wildignore+=.git\*,.hg\*,.svn\*
-endif
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+set wildignore+=.git\*,.hg\*,.svn\*
 
 set foldenable
 set foldmethod=syntax

@@ -18,9 +18,15 @@ nmap <silent> <C-q> :q<CR>
 nmap <silent> <leader>q :q<CR>
 
 nnoremap j gj
-nnoremap k gk
-nnoremap zl g$
-nnoremap zh g^
+nnoremap j gj
+vnoremap k gk
+vnoremap k gk
+nnoremap L g$
+nnoremap H g^
+vnoremap L g$
+vnoremap H g^
+nnoremap m g%
+vnoremap m g%
 
 " Disable Ex-mode.
 nnoremap Q  q
@@ -67,16 +73,15 @@ inoremap <C-y>          <C-r>*
 cnoremap <C-g>          <C-c>
 inoremap <C-s>          <Esc>:w<CR>
 
-" Use control-c instead of escape
-nnoremap <C-c> <Esc>
-vnoremap <C-c> <Esc>
-
 " Easy CAPS
 inoremap <c-u> <ESC>viwUi
 nnoremap <c-u> viwU<Esc>
 
+" Use control-c instead of escape
+nnoremap <C-c> <Esc>
+vnoremap <C-c> <Esc>
+
 nnoremap <leader><backspace> "_dd
-nnoremap <leader>m %
 
 nnoremap <leader>I O<Esc>
 nnoremap <leader>i o<Esc>

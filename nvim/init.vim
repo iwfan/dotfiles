@@ -32,7 +32,7 @@ endif
 call SourceDirectory(VIM_SCRIPT_PATH . '/general')
 call SourceDirectory(VIM_SCRIPT_PATH . '/advanced')
 
-" setup themes
+g setup themes
 call appearance#theme()
 
 " Free memory
