@@ -10,10 +10,9 @@ filetype on                             " filetype detection on
 filetype plugin indent on               " load plugins
 
 if has('syntax')
-  syntax enable                       " use syntax highlighting
+  syntax enable                         " use syntax highlighting
 endif
 
-scriptencoding utf-8
 set encoding=utf-8                      " configure the encoding
 set termencoding=utf-8                  " it will choose the first right configure to use
 set fileencodings=utf-8,gbk,utf-16le,cp1252,iso-8859-15,ucs-bom
@@ -138,16 +137,6 @@ else
     set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
-" fold config
-" foldmethod [diff, expr, indent, manual, marker, syntax]
-" diff show the diff between unfold and fold
-" expr use `foldexpr` to config fold logic
-" indent fold base on indent
-" manual use zf zF or :Fold to fold, zfa(,
-"                     :mkview to save 
-"                     :loadview to reload
-" mark ....
-" syntax
 set foldenable
 set foldmethod=syntax
 set foldlevel=99

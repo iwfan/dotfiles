@@ -17,11 +17,14 @@ nmap <silent> <C-s> :w<CR>
 nmap <silent> <C-q> :q<CR>
 nmap <silent> <leader>q :q<CR>
 
-" Better x
-nnoremap x "_x
+nnoremap j gj
+nnoremap k gk
+nnoremap zl g$
+nnoremap zh g^
 
 " Disable Ex-mode.
 nnoremap Q  q
+nnoremap q <nop>
 nnoremap U <C-r>
 
 " If press l on fold, fold open.

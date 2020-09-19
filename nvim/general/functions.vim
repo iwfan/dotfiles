@@ -6,7 +6,7 @@
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Stop newline continuous of comments
-autocmd FileType * set formatoptions=jql
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Turn spellcheck on for markdown files
 augroup auto_spellcheck
@@ -21,11 +21,6 @@ augroup user_persistent_undo
   au BufWritePre *.tmp           setlocal noundofile
   au BufWritePre *.bak           setlocal noundofile
 augroup END
-
-" Stop highlighting when entering Insert mode
-"let didit = 0
-"autocmd! InsertEnter * if ! didit | call feedkeys("\<C-\>\<C-o>:nohlsearch|let didit = 1\<CR>", 'n') | endif
-"autocmd! InsertLeave * let didit = 0
 
 "let W Wq wQ not be error
 command! -bar -nargs=* -complete=file -range=% -bang W         <line1>,<line2>write<bang> <args>

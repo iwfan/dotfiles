@@ -104,7 +104,7 @@ dist
 .tern-port
 
 nvim/tmp
-nvim/autoload
-nvim/_machine_specific.vim
+nvim/autoload/plugged
+nvim/general/machine_environment.vim
 nvim/.netrwhist
 tags
