@@ -125,14 +125,8 @@ set wildmenu
 if has('nvim')                          " Use floating windows to complete the commond, only neovim support
   set wildoptions=pum
   set pumblend=30                       " Let floatingwindow to be transparable
-  let g:neoterm_autoscroll = 1
-  autocmd TermOpen term://* startinsert
 else
   set wildmode=list:longest,full        " Set list to show completeopt, however it will lead to disfunc for floating windows
-endif
-if exists('+pumheight')
-  " pum height
-  set pumheight=30
 endif
 set wildignorecase
 set history=1000                                                        " save 1000 cmd

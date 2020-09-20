@@ -13,6 +13,9 @@ augroup auto_spellcheck
   autocmd BufNewFile,BufRead *.md setlocal spell
 augroup END
 
+let g:neoterm_autoscroll = 1
+autocmd TermOpen term://* startinsert
+
 augroup user_persistent_undo
   autocmd!
   au BufWritePre /tmp/*          setlocal noundofile
