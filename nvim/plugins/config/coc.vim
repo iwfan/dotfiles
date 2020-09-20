@@ -1,37 +1,44 @@
 let g:coc_global_extensions = [
-	\ 'coc-actions',
+  \ 'coc-actions',
+  \ 'coc-angular',
+  \ 'coc-css',
+  \ 'coc-diagnostic',
+  \ 'coc-emmet',
+  \ 'coc-emoji',
+  \ 'coc-eslint',
+  \ 'coc-explorer',
+  \ 'coc-git',
+  \ 'coc-gitignore',
+  \ 'coc-highlight',
+  \ 'coc-html',
   \ 'coc-imselect',
-	\ 'coc-git',
-	\ 'coc-css',
-	\ 'coc-eslint',
-	\ 'coc-diagnostic',
-	\ 'coc-explorer',
-	\ 'coc-gitignore',
-	\ 'coc-html',
-	\ 'coc-json',
-	\ 'coc-lists',
-	\ 'coc-prettier',
-	\ 'coc-pyright',
-	\ 'coc-snippets',
-	\ 'coc-sourcekit',
-	\ 'coc-stylelint',
-	\ 'coc-syntax',
-	\ 'coc-tasks',
-	\ 'coc-todolist',
-	\ 'coc-translator',
-	\ 'coc-tslint-plugin',
-	\ 'coc-tsserver',
-	\ 'coc-vimlsp',
-	\ 'coc-vetur',
-	\ 'coc-yaml',
-	\ 'coc-tabnine',
-	\ 'coc-highlight',
-	\ 'coc-emoji',
-	\ 'coc-postfix',
-	\ 'coc-pairs',
-	\ 'coc-spell-checker',
-	\ 'coc-marketplace',
-	\ 'coc-yank']
+  \ 'coc-json',
+  \ 'coc-lists',
+  \ 'coc-marketplace',
+  \ 'coc-pairs',
+  \ 'coc-postfix',
+  \ 'coc-prettier',
+  \ 'coc-pyright',
+  \ 'coc-snippets',
+  \ 'coc-sourcekit',
+  \ 'coc-spell-checker',
+  \ 'coc-stylelint',
+  \ 'coc-svg',
+  \ 'coc-syntax',
+  \ 'coc-tabnine',
+  \ 'coc-tailwindcss',
+  \ 'coc-tasks',
+  \ 'coc-todolist',
+  \ 'coc-translator',
+  \ 'coc-tslint-plugin',
+  \ 'coc-tsserver',
+  \ 'coc-vetur',
+  \ 'coc-vimlsp',
+  \ 'coc-webpack',
+  \ 'coc-wxml',
+  \ 'coc-yaml',
+  \ 'coc-yank',
+  \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -74,8 +81,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window.
-nnoremap <silent> <F1> :call <SID>show_documentation()<CR>
+" Use M to show documentation in preview window.
+nnoremap <silent> <M> :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)

@@ -27,13 +27,7 @@ my dotfiles
 
 Plugin Recommandtion: https://zhuanlan.zhihu.com/p/58816186
 
-https://github.com/kana/vim-textobj-user
-https://github.com/AndrewRadev/splitjoin.vim
-https://github.com/tpope/vim-unimpaired
-https://github.com/ntpeters/vim-better-whitespace
-https://github.com/terryma/vim-expand-region
 https://github.com/svermeulen/vim-easyclip
-https://github.com/junegunn/vim-easy-align
 https://github.com/liuchengxu/vim-clap
 thaerkh/vim-workspace
 dyng/ctrlsf.vim

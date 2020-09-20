@@ -83,7 +83,7 @@ set t_Co=256                            " this fixes colors on OS X terminal
 
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set switchbuf=useopen,vsplit            " quickfix window instead of opening new buffers
-set iskeyword+=-                        " treat dash separated words as a word text object
+" set iskeyword+=-                        " treat dash separated words as a word text object
 set backspace=indent,eol,start          " Intuitive backspacing in insert mode
 set completeopt=longest,noinsert,menuone,noselect,preview,menu
 " Selected characters/lines in visual mode
@@ -129,6 +129,10 @@ if has('nvim')                          " Use floating windows to complete the c
   autocmd TermOpen term://* startinsert
 else
   set wildmode=list:longest,full        " Set list to show completeopt, however it will lead to disfunc for floating windows
+endif
+if exists('+pumheight')
+  " pum height
+  set pumheight=30
 endif
 set wildignorecase
 set history=1000                                                        " save 1000 cmd

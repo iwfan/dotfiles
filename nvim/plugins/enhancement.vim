@@ -15,6 +15,7 @@ Plug 'liuchengxu/vista.vim'
 
 Plug 'voldikss/vim-floaterm'
 
+Plug 'tpope/vim-unimpaired'
 " Git
 Plug 'tpope/vim-fugitive'
 
