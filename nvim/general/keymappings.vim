@@ -18,8 +18,8 @@ nmap <silent> <C-q> :q<CR>
 nmap <silent> <leader>q :q<CR>
 
 nnoremap j gj
-nnoremap j gj
-vnoremap k gk
+vnoremap j gj
+nnoremap k gk
 vnoremap k gk
 nnoremap L g$
 nnoremap H g^
