@@ -71,6 +71,9 @@
   },
   "explorer.file.column.git.showIgnored": true,
 
+  "bookmark.sign": "\uf461",
+  "bookmark.signHl": "Tag",
+
   // list
   "list.previewHighlightGroup": "Statement",
   "list.source.files.args": ["--hidden", "--files"],
