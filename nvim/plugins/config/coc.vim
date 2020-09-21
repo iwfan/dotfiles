@@ -1,6 +1,7 @@
 let g:coc_global_extensions = [
   \ 'coc-actions',
   \ 'coc-angular',
+  \ 'coc-bookmark',
   \ 'coc-css',
   \ 'coc-diagnostic',
   \ 'coc-emmet',
@@ -147,6 +148,10 @@ omap ig <Plug>(coc-git-chunk-inner)
 xmap ig <Plug>(coc-git-chunk-inner)
 omap ag <Plug>(coc-git-chunk-outer)
 xmap ag <Plug>(coc-git-chunk-outer)
+
+nmap ]m <Plug>(coc-bookmark-next)
+nmap [m <Plug>(coc-bookmark-prev)
+nmap \m <Plug>(coc-bookmark-toggle)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
