@@ -1,0 +1,152 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" VIM BASE SETUP
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 显示当前模式
+set showmode
+" 显示相对当前行的行号
+set relativenumber
+" 屏幕滚动时在光标上下方保留3行预览代码
+set scrolloff=3
+" 高亮搜索
+set hlsearch
+" 自动定位到输入中的字符串，不需要回车搜索
+set incsearch
+" 搜索时智能匹配大小写
+set ignorecase
+" 智能区分大小写，首字符是小写就忽略，首字符是大写就不忽略
+set smartcase
+" %默认匹配()、[]、{}，增加匹配<>
+set matchpairs+=<:>,「:」
+" 关闭响铃
+set noerrorbells
+set novisualbell
+set noerrorbells
+" 关闭响铃
+set vb t_vb=
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" VIM KEY MAPPING
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 使用 space 作为 leader key
+let mapleader = " "
+
+" 在折行情况下好用
+noremap j gj
+noremap k gk
+noremap 0 g0
+noremap $ g$
+" 不记录到寄存器
+noremap c "_c
+" redo
+noremap U <C-r>
+" 上一个单词
+noremap ]w g*
+" 下一个单词
+noremap [w g#
+" option + j
+noremap <A-j> <C-d>
+noremap <leader>j <C-d>
+" option + k
+noremap <A-k> <C-u>
+noremap <leader>k <C-u>
+
+" 删除一行,不会记录到剪切板中
+noremap <leader><backspace> "_dd
+" 跳转行首
+noremap H g^
+" 跳转行尾
+noremap L g$
+" 取消高亮
+noremap <leader>n :noh<CR>
+" 跳转对应括号
+noremap m %
+noremap <leader>y "+y
+noremap <leader>p "_dP
+noremap <leader>x ^d$
+
+inoremap jk <Esc>
+inoremap <C-h> <left>
+inoremap <C-l> <right>
+inoremap <C-j> <down>
+inoremap <C-k> <up>
+inoremap <C-a> <home>
+inoremap <C-e> <end>
+inoremap <C-d> <delete>
+inoremap <C-i> <Esc>o
+
+" 复制当前行
+nnoremap <leader>d Yp
+" 复制选中内容
+vnoremap <leader>d y'>p
+" 向下添加新空行，并退出 insert mode
+nnoremap <leader>i o<Esc>
+" 向上添加新空行，并退出 insert mode
+nnoremap <leader>I O<Esc>
+" 移动到下一个窗口
+nnoremap <leader>ww <c-w>w
+" 水平切割当前窗口
+nnoremap <leader>wv <c-w>v
+" 垂直切割当前窗口
+nnoremap <leader>ws <c-w>s
+" 关闭当前窗口
+nnoremap <leader>wc <c-w>c
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" IDEA VIM BASE SETUP
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 启用vim surround功能: ys / cs / ds /S
+set surround
+" 启用 multiple cursors <A-n> / <A-x> / <A-p> / g<A-n>
+set multiple-cursors
+" 自动切换为英文, 需要 IdeaVimExtension 中文
+set keep-english-in-normal
+" set keep-english-in-normal-and-restore-in-insert
+set ideajoin
+set ideamarks
+" 共享系统粘贴板
+set clipboard^=unnamed,unnamedplus,ideaput
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""  ACTION BINDINGS
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+noremap / :action Replace<CR>
+noremap <leader>r :action Refactorings.QuickListPopupAction<CR>
+noremap <leader>f :action AceAction<CR>
+noremap <leader>F :action AceTargetAction<CR>
+noremap <leader>u :action ShowUsages<CR>
+noremap <leader>U :action FindUsages<CR>
+noremap <leader>t :action FileStructurePopup<CR>
+noremap <leader>g :action Vcs.QuickListPopupAction<CR>
+noremap <leader>wr :action ReopenClosedTab<CR>
+noremap <leader>wm :action MoveEditorToOppositeTabGroup<CR>
+
+" navigate paragraph
+noremap ]q :action EditorForwardParagraph<CR>
+noremap [q :action EditorBackwardParagraph<CR>
+" navigate element
+"noremap [w :action GotoPrevElementUnderCaretUsage<CR>
+"noremap ]w :action GotoNextElementUnderCaretUsage<CR>
+" navigate method
+noremap ]e :action MethodDown<CR>
+noremap [e :action MethodUp<CR>
+" naviagte errors
+noremap ]r :action GotoNextError<CR>
+noremap [r :action GotoPreviousError<CR>
+
+" navagate occurrence
+noremap <leader>a :action SelectAllOccurrences<CR>
+noremap ]a :action SelectNextOccurrence<CR>
+noremap [a :action UnselectPreviousOccurrence<CR>
+
+" navigate bookmarks
+noremap <leader>s :action ToggleBookmarkWithMnemonic<CR>
+noremap ]s :action GotoNextBookmark<CR>
+noremap [s :action GotoPreviousBookmark<CR>
+
+" navigate diff
+noremap ]d :action NextDiff<CR>
+noremap [d :action PreviousDiff<CR>
+
+" make AceJump acts like easymotion in vim
+noremap <leader>; :action AceLineAction<CR>
+noremap <leader>' :action AceDeclarationAction<CR>
