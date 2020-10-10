@@ -33,3 +33,9 @@ thaerkh/vim-workspace
 dyng/ctrlsf.vim
 https://github.com/konfekt/fastfold
 https://github.com/pseewald/vim-anyfold
+
+
+# ZSH
+安装 zsh
+安装 zimfw
+安装 romkatv/powerlevel10k 

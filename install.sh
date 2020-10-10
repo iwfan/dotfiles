@@ -6,6 +6,7 @@ packages=(
   node
   ruby
   tmux
+  asdf
   neovim
   python3
   golang
@@ -28,12 +29,14 @@ packages=(
   #echo "---------------------------------------------------------"
 #done
 
-export Oh_My_ZSH_PLUG_DIR=$HOME/.oh-my-zsh
-if [[ ! -d $Oh_My_ZSH_PLUG_DIR ]]; then
+export Oh_My_ZSH_DIR=$HOME/.oh-my-zsh
+if [[ ! -d $Oh_My_ZSH_DIR ]]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 rm ~/.zshrc
+ln -s ~/dotfiles/zsh/p10k.zsh ~/.p10k.zsh
+ln -s ~/dotfiles/zsh/zimrc ~/.zimrc
 ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
 source ~/.zshrc
 
