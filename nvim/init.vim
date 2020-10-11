@@ -30,10 +30,15 @@ if empty(glob(VIM_SCRIPT_PATH . '/general/machine_environment.vim'))
 endif
 
 call SourceDirectory(VIM_SCRIPT_PATH . '/general')
-call SourceDirectory(VIM_SCRIPT_PATH . '/advanced')
 
-" setup themes
-call appearance#theme()
+if exists('g:vscode')
+
+else
+  call SourceDirectory(VIM_SCRIPT_PATH . '/advanced')
+
+  " setup themes
+  call appearance#theme()
+endif
 
 " Free memory
 delfunction appearance#theme

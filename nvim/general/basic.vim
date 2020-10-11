@@ -43,13 +43,7 @@ set dictionary+=/usr/share/dict/words   " autocompletion with dictionary help
 set dictionary+=$HOME/.vim/dict/
 
 set mouse=a                             " Enable your mouse
-if has('clipboard')
-    if has('unnamedplus')               " When possible use + register for copy-paste
-        set clipboard=unnamed,unnamedplus
-    else                                " On mac and Windows, use * register for copy-paste
-        set clipboard=unnamed
-    endif
-endif
+set clipboard=unnamed,unnamedplus
 
 set number
 set relativenumber
@@ -57,7 +51,7 @@ set cursorline
 set noshowmode
 set nomodeline                          " disable mode lines (security measure)
 set showcmd
-set cmdheight=2                         " More space for displaying messages
+set cmdheight=1                         " More space for displaying messages
 set laststatus=2                        " Always display the status line
 set showtabline=2                       " Always show tabs
 set nostartofline                       " Cursor in same column for few commands
@@ -138,10 +132,3 @@ set foldenable
 set foldmethod=syntax
 set foldlevel=99
 set foldlevelstart=99
-
-set title
-set titlelen=95
-let &g:titlestring="
-			\ %{expand('%:p:~:.')}%(%m%r%w%)
-			\ %<\[%{fnamemodify(getcwd(), ':~')}\] - Neovim"
-

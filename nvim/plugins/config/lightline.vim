@@ -3,17 +3,17 @@ let g:lightline = { }
 let g:lightline.colorscheme = 'deus'
 
 let g:lightline.mode_map = {
-    \   'n' : "🅝 ",
-    \   'i' : "🅘 ",
-    \   'R' : "🅡 ",
-    \   'v' : "🅥 ",
-    \   'V' : "🅥 ",
-    \   "\<C-v>": "🅥 ",
-    \   'c' : "🅒 ",
-    \   's' : "🅢 ",
-    \   'S' : "🅢 ",
-    \   "\<C-s>": "🅢 ",
-    \   't': "🅣 ",
+    \ 'n' : 'N',
+    \ 'i' : 'I',
+    \ 'R' : 'R',
+    \ 'v' : 'V',
+    \ 'V' : 'VL',
+    \ "\<C-v>": 'VB',
+    \ 'c' : 'C',
+    \ 's' : 'S',
+    \ 'S' : 'SL',
+    \ "\<C-s>": 'SB',
+    \ 't': 'T',
     \ }
 
 let g:lightline.active = {
@@ -75,9 +75,6 @@ let g:lightline#bufferline#show_number     = 2
 let g:lightline#bufferline#enable_devicons = 1
 let g:lightline#bufferline#enable_nerdfont = 1
 let g:lightline#bufferline#unnamed         = '[No Name]'
-let g:lightline#bufferline#number_map      = {
-\ 0: '𝟬 ', 1: '❶ ', 2: '❷ ', 3: '❸ ', 4: '❹ ',
-\ 5: '❺ ', 6: '❻ ', 7: '❼ ', 8: '❽ ', 9: '❾ '}
 
 function! LightlineGitStatus() abort
   let project_status = get(g:, 'coc_git_status', '')
