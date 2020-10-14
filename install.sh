@@ -51,14 +51,7 @@ if [[ $SHELL != *"zsh"* ]]; then
     success "change default shell to zsh"
 fi
 
-# tpm
-if [ ! -d ~/.tmux/plugins/tpm ]; then
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    success "install tpm"
-fi
-
 # zimfw
-
 if [ ! -d ~/.zim ]; then
     curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
     success "install zimfw"

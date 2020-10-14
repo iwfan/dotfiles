@@ -2,29 +2,10 @@
 "                                Basic Settings                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-if &compatible
-  set nocompatible
-endif
-
-filetype on                             " filetype detection on
-filetype plugin indent on               " load plugins
-
-if has('syntax')
-  syntax enable                         " use syntax highlighting
-endif
-
-if (has("termguicolors"))
-  set termguicolors                       " Support True Color in terminal
-endif
-
-set encoding=utf-8                      " configure the encoding
-set termencoding=utf-8                  " it will choose the first right configure to use
-set fileencodings=utf-8,gbk,utf-16le,cp1252,iso-8859-15,ucs-bom
-set fileformats=unix,dos,mac
-
-set autoread                            " auto reload files changed outside of vim
-set autowrite
-set autowriteall
+set nocompatible
+syntax enable                           " use syntax highlighting
+filetype plugin on
+filetype indent on
 
 set timeout ttimeout
 set timeoutlen=500                      " Time out on mappings
@@ -33,6 +14,18 @@ set updatetime=100                      " Idle time to write swap and trigger Cu
 set redrawtime=1500                     " Time in milliseconds for stopping display redraw
 set ttyfast                             " should make scrolling faster
 set lazyredraw                          " same as above
+set viminfo=
+
+set binary
+set autoread                            " auto reload files changed outside of vim
+set autowrite
+set autowriteall
+
+set encoding=utf-8                      " configure the encoding
+set fileencoding=utf-8
+set termencoding=utf-8                  " it will choose the first right configure to use
+set fileencodings=utf-8,gbk,utf-16le,cp1252,iso-8859-15,ucs-bom
+set fileformats=unix,dos,mac
 
 set noswapfile
 set nobackup                            " This is recommended by coc
@@ -46,20 +39,31 @@ set tags=$HOME/.vim/tags
 set dictionary+=/usr/share/dict/words   " autocompletion with dictionary help
 set dictionary+=$HOME/.vim/dict/
 
-set mouse=a                             " Enable your mouse
+set pastetoggle=<F3>
 set clipboard=unnamed,unnamedplus
 
+if has("gui_running")
+  set mouse=a                             " Enable your mouse
+  set gfn=Source\ Code\ Pro\ Regular\ 12
+  set guioptions-=m
+  set guioptions-=T
+  set guioptions-=r
+  set guioptions-=L
+endif
+
+set termguicolors                       " Support True Color in terminal
 set number
 set relativenumber
 set cursorline
 set noshowmode
 set nomodeline                          " disable mode lines (security measure)
 set showcmd
-set cmdheight=1                         " More space for displaying messages
+set cmdheight=2                         " More space for displaying messages
 set laststatus=2                        " Always display the status line
 set showtabline=2                       " Always show tabs
 set nostartofline                       " Cursor in same column for few commands
 set ruler                               " Show the cursor position all the time
+set magic
 set list
 set listchars=tab:\↹\ ,nbsp:␣,trail:·,extends:→,precedes:←
 set fillchars=eob:\                     " do not show ~ before empty lines at the end of a buffer
@@ -111,12 +115,9 @@ set showmatch                           " Show matching brackets when text indic
 set matchpairs+=<:>,「:」               " %默认匹配()、[]、{}，增加匹配<>
 
 set wrap                                " Break line at predefined characters
-"set colorcolumn=100
-" set nowrap                              " No wrap by default
-set linebreak                           " Break long lines at 'breakat'
-set breakat=\ \	;:,!?                   " Long lines break chars
+set whichwrap+=<,>,h,l,[,]
 set showbreak=↪
-set whichwrap=b,s,h,l,<,>,>h,[,]        " Backspace and cursor keys wrap too
+"set colorcolumn=100
 
 set wildmenu
 if has('nvim')                          " Use floating windows to complete the commond, only neovim support
