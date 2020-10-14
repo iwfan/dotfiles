@@ -104,6 +104,8 @@ if [[ ${ZIM_HOME}/init.zsh -ot ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
 fi
 source ${ZIM_HOME}/init.zsh
 
+source "$(brew --prefix)/etc/profile.d/z.sh"
+
 source ~/dotfiles/zsh/env.zsh
 source ~/dotfiles/zsh/aliases.zsh
 # source ~/dotfiles/zsh/fzf.zsh

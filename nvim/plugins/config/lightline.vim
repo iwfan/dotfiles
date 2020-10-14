@@ -72,6 +72,14 @@ let g:lightline.component_function = {
     \ 'git_buffer_info': 'LightlineGitBufferStatus'
     \ }
 
+let g:lightline.separator = {
+    \ 'left': "\ue0b0", 'right': "\ue0b2"
+    \ }
+
+let g:lightline.subseparator = {
+    \ 'left': "\ue0b1", 'right': "\ue0b3"
+    \ }
+
 let g:lightline#bufferline#show_number     = 2
 let g:lightline#bufferline#enable_devicons = 1
 let g:lightline#bufferline#enable_nerdfont = 1
