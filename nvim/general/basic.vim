@@ -14,7 +14,6 @@ set updatetime=100                      " Idle time to write swap and trigger Cu
 set redrawtime=1500                     " Time in milliseconds for stopping display redraw
 set ttyfast                             " should make scrolling faster
 set lazyredraw                          " same as above
-set viminfo=
 
 set binary
 set autoread                            " auto reload files changed outside of vim
@@ -58,7 +57,7 @@ set cursorline
 set noshowmode
 set nomodeline                          " disable mode lines (security measure)
 set showcmd
-set cmdheight=2                         " More space for displaying messages
+set cmdheight=1                         " More space for displaying messages
 set laststatus=2                        " Always display the status line
 set showtabline=2                       " Always show tabs
 set nostartofline                       " Cursor in same column for few commands
@@ -91,9 +90,9 @@ set completeopt=longest,noinsert,menuone,noselect,preview,menu
 set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
 set virtualedit=onemore                         " used with caution of breaking plugins
 
-let &t_SI="\<Esc>]50;CursorShape=1\x7"  " chang cursor style in difference mode
-let &t_SR="\<Esc>]50;CursorShape=2\x7"  " chang cursor style in difference mode
-let &t_EI="\<Esc>]50;CursorShape=0\x7"  " chang cursor style in difference mode
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+  \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 set tabstop=2                           " Insert 2 spaces for a tab
 set softtabstop=-1                      " Automatically keeps in sync with shiftwidth

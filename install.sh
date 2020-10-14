@@ -24,6 +24,7 @@ packages=(
   zsh
   tmux
   node
+  yarn
   golang
 #  python3
 #  ruby
@@ -51,29 +52,27 @@ if [[ $SHELL != *"zsh"* ]]; then
     success "change default shell to zsh"
 fi
 
+# tmux
+ln -fs ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
+
+# ideavimrc
+ln -fs ~/dotfiles/_ideavimrc ~/.ideavimrc
+
+# neovim
+ln -fs ~/dotfiles/nvim ~/.config/nvim
+
+# hammerspoon
+ln -fs ~/dotfiles/hammerspoon ~/.hammerspoon
+
 # zimfw
 if [ ! -d ~/.zim ]; then
     curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
     success "install zimfw"
 fi
 
-
-rm ~/.tmux.conf
-ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
-
-rm ~/.ideavimrc
-ln -s ~/dotfiles/_ideavimrc ~/.ideavimrc
-
-rm -rf ~/.config/nvim
-ln -s ~/dotfiles/nvim ~/.config/nvim
-
-rm -rf ~/.hammerspoon
-ln -s ~/dotfiles/hammerspoon ~/.hammerspoon
-
-rm ~/.p10k.zsh ~/.zimrc ~/.zshrc
-ln -s ~/dotfiles/zsh/p10k.zsh ~/.p10k.zsh
-ln -s ~/dotfiles/zsh/zimrc ~/.zimrc
-ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
+ln -fs ~/dotfiles/zsh/p10k.zsh ~/.p10k.zsh
+ln -fs ~/dotfiles/zsh/zimrc ~/.zimrc
+ln -fs ~/dotfiles/zsh/zshrc ~/.zshrc
 
 success "link custom config file to $HOME"
 
