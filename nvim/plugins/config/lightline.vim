@@ -1,6 +1,7 @@
 let g:lightline = { }
 
-let g:lightline.colorscheme = 'deus'
+" let g:lightline.colorscheme = 'deus'
+let g:lightline.colorscheme = 'nord'
 
 let g:lightline.mode_map = {
     \ 'n' : 'N',

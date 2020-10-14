@@ -13,6 +13,12 @@ if has('syntax')
   syntax enable                         " use syntax highlighting
 endif
 
+if (has("termguicolors"))
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors                       " Support True Color in terminal
+endif
+
 set encoding=utf-8                      " configure the encoding
 set termencoding=utf-8                  " it will choose the first right configure to use
 set fileencodings=utf-8,gbk,utf-16le,cp1252,iso-8859-15,ucs-bom
@@ -68,7 +74,6 @@ set noerrorbells novisualbell t_vb=     " cancel the annoying bell
 set belloff=all
 set nospell                             " close spell examine
 set confirm                             " Confirm before vim exit
-set termguicolors                       " Support True Color in terminal
 set statusline+=%*
 set statusline+=%#warningmsg#
 set shortmess+=filmnrxoOtT              " Abbrev. of messages (avoids 'hit enter')
