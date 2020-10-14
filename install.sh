@@ -1,43 +1,71 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
+set -e
 
+green="\e[36m"
+blue="\e[34m"
+normal="\e[0m"
+
+success () {
+    printf "${green}$1${normal}\n"
+}
+
+info () {
+    printf "${blue}$1${normal}\n"
+}
+
+# prerequirments package
 packages=(
+  iterm2
   git
+  zsh
+  tmux
   node
   ruby
-  tmux
-  asdf
-  neovim
   python3
   golang
-  zsh
   ripgrep
   fzf
   the_silver_searcher
   z
   fd
-  lazygit
-  lazynpm
   ccat
   highlight
- # ctags
+  neovim
+  lazygit
+  lazynpm
 )
 
-#for i in "${packages[@]}"
-#do
-  #brew install $i
-  #echo "---------------------------------------------------------"
-#done
+for i in "${packages[@]}"
+do
+  # brew install $i
+  # echo "---------------------------------------------------------"
+done
 
-export Oh_My_ZSH_DIR=$HOME/.oh-my-zsh
-if [[ ! -d $Oh_My_ZSH_DIR ]]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# tpm
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    success "install tpm"
 fi
 
-rm ~/.zshrc
-ln -s ~/dotfiles/zsh/p10k.zsh ~/.p10k.zsh
-ln -s ~/dotfiles/zsh/zimrc ~/.zimrc
-ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
+
+ln -fs ./tmux/tmux.conf ~/.tmux.conf
+
+ln -fs ./_ideavimrc ~/.ideavimrc
+ln -fs ./nvim ~/.config/nvim
+
+ln -fs ./hammerspoon ~/.hammerspoon
+
+ln -fs ./zsh/p10k.zsh ~/.p10k.zsh
+ln -fs ./zsh/zimrc ~/.zimrc
+ln -fs ./zsh/zshrc ~/.zshrc
+
 source ~/.zshrc
 
-ln -s ~/dotfiles/nvim ~/.config/nvim
+success "link custom config file to $HOME"
+
+# change default shell to zsh
+if [[ $SHELL != *"zsh"* ]]; then
+    chsh -s $(which zsh)
+    success "change default shell to zsh"
+fi

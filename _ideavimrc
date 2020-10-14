@@ -43,12 +43,13 @@ noremap U <C-r>
 noremap ]w g*
 " 下一个单词
 noremap [w g#
-" option + j
-noremap <A-j> <C-d>
-noremap <leader>j <C-d>
-" option + k
-noremap <A-k> <C-u>
-noremap <leader>k <C-u>
+
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " 删除一行,不会记录到剪切板中
 noremap <leader><backspace> "_dd
