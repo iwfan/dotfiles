@@ -32,7 +32,6 @@ function! appearance#theme()
   " colorscheme deus
   " highlight clear SignColumn              " gutter is the same color as where your line numbers show up
 
-  let g:nord_cursor_line_number_background = 1
   let g:nord_uniform_status_lines = 1
   let g:nord_bold = 1
   let g:nord_italic = 1
