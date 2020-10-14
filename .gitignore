@@ -109,3 +109,4 @@ nvim/general/machine_environment.vim
 nvim/.netrwhist
 tags
 hammerspoon/config.lua
+bak/nvim/autoload

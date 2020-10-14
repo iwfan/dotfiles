@@ -1,0 +1,8 @@
+alias vi="/usr/local/bin/nvim"
+alias vim="/usr/local/bin/nvim"
+alias l="ll -a"
+# alias lg="lazygit"
+# alias ln="lazynpm"
+alias ra="ranger"
+alias cat="ccat"
+alias ctags="`brew --prefix`/bin/ctags"
