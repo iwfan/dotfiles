@@ -33,8 +33,7 @@ call SourceDirectory(VIM_SCRIPT_PATH . '/general')
 call SourceDirectory(VIM_SCRIPT_PATH . '/advanced')
 
 " setup themes
-" call appearance#theme()
-call appearance#oceanic_material_theme()
+call appearance#theme()
 
 " Free memory
 delfunction appearance#theme
