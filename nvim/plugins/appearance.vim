@@ -12,8 +12,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'josa42/vim-lightline-coc'
 
-
-
 function! appearance#oceanic_material_theme()
   let g:oceanic_material_allow_bold      = 1
   let g:oceanic_material_allow_italic    = 1
@@ -24,7 +22,7 @@ function! appearance#oceanic_material_theme()
   colorscheme oceanic_material
   hi VertSplit cterm=reverse ctermfg=235 ctermbg=239 gui=reverse guifg=#282C34 guibg=#504945
   hi Visual cterm=reverse ctermfg=111 ctermbg=235 gui=reverse guifg=#a7c777 guibg=#282C34
-  highlight Sneak ctermfg=235 ctermbg=111 guifg=#282C34 guibg=#a7c777
+
 endfunction
 
 
