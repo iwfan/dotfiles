@@ -33,6 +33,7 @@ packages=(
   the_silver_searcher
   z
   fd
+  lsd
   ccat
   highlight
   neovim
