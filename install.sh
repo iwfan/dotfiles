@@ -65,14 +65,7 @@ ln -fs ~/dotfiles/nvim ~/.config/nvim
 # hammerspoon
 ln -fs ~/dotfiles/hammerspoon ~/.hammerspoon
 
-# zimfw
-if [ ! -d ~/.zim ]; then
-    curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
-    success "install zimfw"
-fi
-
 ln -fs ~/dotfiles/zsh/p10k.zsh ~/.p10k.zsh
-ln -fs ~/dotfiles/zsh/zimrc ~/.zimrc
 ln -fs ~/dotfiles/zsh/zshrc ~/.zshrc
 
 success "link custom config file to $HOME"
