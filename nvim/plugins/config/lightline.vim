@@ -73,11 +73,11 @@ let g:lightline.component_function = {
     \ }
 
 let g:lightline.separator = {
-    \ 'left': "\ue0b0", 'right': "\ue0b2"
+    \ 'left': "", 'right': ""
     \ }
 
 let g:lightline.subseparator = {
-    \ 'left': "\ue0b1", 'right': "\ue0b3"
+    \ 'left': "", 'right': ""
     \ }
 
 let g:lightline#bufferline#show_number     = 2
