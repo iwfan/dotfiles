@@ -92,6 +92,7 @@ zinit light MichaelAquilina/zsh-you-should-use
 zinit ice depth=1 atload"!source ~/.p10k.zsh" lucid nocd
 zinit light romkatv/powerlevel10k
 
+source "$(brew --prefix)/etc/profile.d/z.sh"
 source ~/dotfiles/zsh/env.zsh
 source ~/dotfiles/zsh/aliases.zsh
 # source ~/dotfiles/zsh/fzf.zsh

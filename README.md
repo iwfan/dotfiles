@@ -8,6 +8,10 @@ my dotfiles
 - JetBrains Mono
 - Source Code Pro
 
+# color
+
+https://github.com/glepnir/oceanic-material
+
 # references vim configuration
 
 - https://github.com/ChristianChiarulli/nvim
@@ -34,8 +38,8 @@ dyng/ctrlsf.vim
 https://github.com/konfekt/fastfold
 https://github.com/pseewald/vim-anyfold
 
-
 # ZSH
+
 安装 zsh
 安装 zimfw
-安装 romkatv/powerlevel10k 
+安装 romkatv/powerlevel10k
