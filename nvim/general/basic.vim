@@ -116,7 +116,10 @@ set matchpairs+=<:>,「:」               " %默认匹配()、[]、{}，增加�
 set wrap                                " Break line at predefined characters
 set whichwrap+=<,>,h,l,[,]
 set showbreak=↪
-"set colorcolumn=100
+set colorcolumn=120
+set textwidth=120
+set linebreak                           " Break long lines at 'breakat'
+set breakat+=\ \	                      " Long lines break chars
 
 set wildmenu
 if has('nvim')                          " Use floating windows to complete the commond, only neovim support

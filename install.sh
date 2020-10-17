@@ -28,6 +28,8 @@ packages=(
   golang
 #  python3
 #  ruby
+  curl
+  wget
   ripgrep
   fzf
   the_silver_searcher

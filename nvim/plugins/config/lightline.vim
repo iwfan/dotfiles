@@ -1,20 +1,20 @@
 let g:lightline = { }
 
-let g:lightline.colorscheme = 'deus'
+" let g:lightline.colorscheme = 'deus'
 " let g:lightline.colorscheme = 'nord'
 
 let g:lightline.mode_map = {
-    \ 'n' : 'N',
-    \ 'i' : 'I',
-    \ 'R' : 'R',
-    \ 'v' : 'V',
-    \ 'V' : 'VL',
-    \ "\<C-v>": 'VB',
-    \ 'c' : 'C',
-    \ 's' : 'S',
-    \ 'S' : 'SL',
-    \ "\<C-s>": 'SB',
-    \ 't': 'T',
+    \   'n' : "🅝 ",
+    \   'i' : "🅘 ",
+    \   'R' : "🅡 ",
+    \   'v' : "🅥 ",
+    \   'V' : "🅥 ",
+    \   "\<C-v>": "🅥 ",
+    \   'c' : "🅒 ",
+    \   's' : "🅢 ",
+    \   'S' : "🅢 ",
+    \   "\<C-s>": "🅢 ",
+    \   't': "🅣 ",
     \ }
 
 let g:lightline.active = {
