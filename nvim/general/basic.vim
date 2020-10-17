@@ -118,8 +118,8 @@ set whichwrap+=<,>,h,l,[,]
 set showbreak=↪
 set colorcolumn=120
 set textwidth=120
-set linebreak                           " Break long lines at 'breakat'
-set breakat+=\ \	                      " Long lines break chars
+" set linebreak                           " Break long lines at 'breakat'
+" set breakat+=\ \	                      " Long lines break chars
 
 set wildmenu
 if has('nvim')                          " Use floating windows to complete the commond, only neovim support
