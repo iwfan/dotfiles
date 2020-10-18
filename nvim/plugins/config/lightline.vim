@@ -32,7 +32,7 @@ let g:lightline.inactive = {
 
 let g:lightline.tabline = {
     \ 'left': [ [ 'buffers' ] ],
-    \ 'right': [ [ 'gitinfo', 'tabs' ] ] }
+    \ 'right': [ [ 'tabs' ] ] }
 
 let g:lightline.component = {
     \ 'mode': '%{lightline#mode()}',
