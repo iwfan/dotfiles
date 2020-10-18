@@ -18,8 +18,8 @@ let g:lightline.mode_map = {
 
 let g:lightline.active = {
     \ 'left': [
-    \    [ 'mode', 'paste', 'coc_errors', 'coc_warnings', 'coc_ok' ],
-    \    [ 'gitinfo', 'git_buffer_info' ]
+    \    [ 'mode', 'paste', 'coc_errors', 'coc_warnings' ],
+    \    [ 'gitinfo' ]
     \ ],
     \ 'right': [ [ 'lineinfo' ],
     \            [ 'fileformat', 'fileencoding', 'filetype', 'percent' ],
@@ -32,7 +32,7 @@ let g:lightline.inactive = {
 
 let g:lightline.tabline = {
     \ 'left': [ [ 'buffers' ] ],
-    \ 'right': [ [ 'tabs' ] ] }
+    \ 'right': [ [ 'gitinfo', 'tabs' ] ] }
 
 let g:lightline.component = {
     \ 'mode': '%{lightline#mode()}',
@@ -71,27 +71,34 @@ let g:lightline.component_function = {
     \ 'git_buffer_info': 'LightlineGitBufferStatus'
     \ }
 
-let g:lightline.separator = {
-    \ 'left': "", 'right': ""
-    \ }
-
-let g:lightline.subseparator = {
-    \ 'left': "", 'right': ""
-    \ }
-
 let g:lightline#bufferline#show_number     = 2
-let g:lightline#bufferline#enable_devicons = 1
-let g:lightline#bufferline#enable_nerdfont = 1
+let g:lightline#bufferline#enable_nerdfont = 0
 let g:lightline#bufferline#unnamed         = '[No Name]'
+let g:lightline#bufferline#number_map = {
+  \ 0: '',
+  \ 1: '',
+  \ 2: '',
+  \ 3: '',
+  \ 4: '',
+  \ 5: '',
+  \ 6: '',
+  \ 7: '',
+  \ 8: '',
+  \ 9: ''
+\ }
 
 function! LightlineGitStatus() abort
   let project_status = get(g:, 'coc_git_status', '')
-  return winwidth(0) > 120 ? trim(project_status) : ''
-endfunction
-
-function! LightlineGitBufferStatus() abort
   let buffer_status = get(b:, 'coc_git_status', '')
-  return winwidth(0) > 120 ? trim(buffer_status) : ''
+
+  let git_branch_info = substitute(trim(project_status), '*', '', '')
+  let git_branch_info = substitute(git_branch_info, '…', '', '')
+  
+  let replaced_buffer_status = substitute(trim(buffer_status), '+', ' ', '')
+  let replaced_buffer_status = substitute(replaced_buffer_status, '-', ' ', '')
+  let replaced_buffer_status = substitute(replaced_buffer_status, '\~', ' ', '')
+
+  return winwidth(0) > 120 ? replaced_buffer_status . ' ' . git_branch_info : ''
 endfunction
 
 let g:lightline#coc#indicator_warnings = "\uf071 "

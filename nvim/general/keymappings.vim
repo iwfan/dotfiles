@@ -89,10 +89,10 @@ nnoremap <Leader>o o<Esc>^Da
 nnoremap <Leader>O O<Esc>^Da
 
 " Close all the buffers
-nnoremap <silent><TAB> <esc>:bnext<cr>
-nnoremap <silent><S-TAB> <esc>:bprevious<cr>
-vnoremap <silent><TAB> <esc>:bnext<cr>
-vnoremap <silent><S-TAB> <esc>:bprevious<cr>
+nnoremap <silent><C-,> <esc>:bnext<cr>
+nnoremap <silent><C-.> <esc>:bprevious<cr>
+vnoremap <silent><C-,> <esc>:bnext<cr>
+vnoremap <silent><C-.> <esc>:bprevious<cr>
 
 " Useful mappings for managing tabs
 nnoremap <silent> <leader>tn :tabe<CR>
