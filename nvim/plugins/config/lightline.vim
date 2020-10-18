@@ -1,7 +1,6 @@
 let g:lightline = { }
 
-" let g:lightline.colorscheme = 'deus'
-" let g:lightline.colorscheme = 'nord'
+let g:lightline.colorscheme = 'deus'
 
 let g:lightline.mode_map = {
     \   'n' : "🅝 ",
@@ -73,7 +72,7 @@ let g:lightline.component_function = {
     \ }
 
 let g:lightline.separator = {
-    \ 'left': "", 'right': ""
+    \ 'left': "", 'right': ""
     \ }
 
 let g:lightline.subseparator = {
