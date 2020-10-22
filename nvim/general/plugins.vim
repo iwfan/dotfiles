@@ -9,7 +9,7 @@ if (PLATFORM == 'unix') && empty(glob(VIM_SCRIPT_PATH . '/autoload/plug.vim'))
  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin(VIM_SCRIPT_PATH . '/autoload/plugged')
+call plug#begin(stdpath('data') . '/plugged')
 
 call SourceDirectory(VIM_SCRIPT_PATH . '/plugins')
 
