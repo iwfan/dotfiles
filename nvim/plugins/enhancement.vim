@@ -1,5 +1,6 @@
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'josa42/vim-lightline-coc'
 
 " editor enhancement
 Plug 'Yggdroot/indentLine'

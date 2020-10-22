@@ -19,7 +19,7 @@ let g:lightline.mode_map = {
 let g:lightline.active = {
     \ 'left': [
     \    [ 'mode', 'paste', 'coc_errors', 'coc_warnings' ],
-    \    [ 'gitinfo' ]
+    \    [ 'filename', 'gitinfo' ]
     \ ],
     \ 'right': [ [ 'lineinfo' ],
     \            [ 'fileformat', 'fileencoding', 'filetype', 'percent' ],
@@ -32,7 +32,7 @@ let g:lightline.inactive = {
 
 let g:lightline.tabline = {
     \ 'left': [ [ 'buffers' ] ],
-    \ 'right': [ [ 'tabs' ] ] }
+    \ 'right': [ ] }
 
 let g:lightline.component = {
     \ 'mode': '%{lightline#mode()}',

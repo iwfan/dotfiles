@@ -9,7 +9,6 @@ Plug 'mhinz/vim-startify'
 " status line and tabline
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
-Plug 'josa42/vim-lightline-coc'
 
 function! appearance#theme()
 

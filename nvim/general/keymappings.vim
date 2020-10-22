@@ -69,8 +69,7 @@ inoremap <C-p>          <Up>
 " <C-y>: paste.
 cnoremap <C-y>          <C-r>*
 inoremap <C-y>          <C-r>*
-" <C-g>: Exit.
-cnoremap <C-g>          <C-c>
+" <C-s>: S.
 inoremap <C-s>          <Esc>:w<CR>
 
 " Easy CAPS
@@ -89,10 +88,10 @@ nnoremap <Leader>o o<Esc>^Da
 nnoremap <Leader>O O<Esc>^Da
 
 " Close all the buffers
-nnoremap <silent><C-,> <esc>:bnext<cr>
-nnoremap <silent><C-.> <esc>:bprevious<cr>
-vnoremap <silent><C-,> <esc>:bnext<cr>
-vnoremap <silent><C-.> <esc>:bprevious<cr>
+" nnoremap <silent><Tab> <esc>:bnext<cr>
+" nnoremap <silent><S-Tab> <esc>:bprevious<cr>
+" vnoremap <silent><Tab> <esc>:bnext<cr>
+" vnoremap <silent><S-tab> <esc>:bprevious<cr>
 
 " Useful mappings for managing tabs
 nnoremap <silent> <leader>tn :tabe<CR>
