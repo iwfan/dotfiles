@@ -104,7 +104,7 @@ dist
 .tern-port
 
 nvim/tmp
-nvim/general/machine_environment.vim
+nvim/autoload/machine_environment.vim
 nvim/.netrwhist
 tags
 hammerspoon/config.lua

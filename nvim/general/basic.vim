@@ -2,11 +2,31 @@
 "                                Basic Settings                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set nocompatible
+" Core {{{
+" ------
+if &compatible
+  set nocompatible
+endif
 syntax enable                           " use syntax highlighting
 filetype plugin on
 filetype indent on
 
+" }}}
+
+
+" Encoding {{{
+" ------
+set encoding=utf-8                      " configure the encoding
+set fileencoding=utf-8
+set termencoding=utf-8                  " it will choose the first right configure to use
+set fileencodings=utf-8,gbk,utf-16le,cp1252,iso-8859-15,ucs-bom
+set fileformats=unix,dos,mac
+
+" }}}
+
+
+" Timing {{{
+" ------
 set timeout ttimeout
 set timeoutlen=500                      " Time out on mappings
 set ttimeoutlen=10                      " Time out on key codes
@@ -15,16 +35,11 @@ set redrawtime=1500                     " Time in milliseconds for stopping disp
 set ttyfast                             " should make scrolling faster
 set lazyredraw                          " same as above
 
-set binary
-set autoread                            " auto reload files changed outside of vim
+" }}}
+
+
 set autowrite
 set autowriteall
-
-set encoding=utf-8                      " configure the encoding
-set fileencoding=utf-8
-set termencoding=utf-8                  " it will choose the first right configure to use
-set fileencodings=utf-8,gbk,utf-16le,cp1252,iso-8859-15,ucs-bom
-set fileformats=unix,dos,mac
 
 set noswapfile
 set nobackup                            " This is recommended by coc
@@ -33,6 +48,8 @@ set undofile                            " enable undo after close the file
 set undodir=$HOME/.vim/undo
 set undolevels=1000
 set undoreload=10000
+
+set history=1000                                                        " save 1000 cmd
 
 set tags=$HOME/.vim/tags
 set dictionary+=/usr/share/dict/words   " autocompletion with dictionary help
@@ -81,19 +98,25 @@ set shortmess+=filmnrxoOtT              " Abbrev. of messages (avoids 'hit enter
 let &t_ut=''
 set t_Co=256                            " this fixes colors on OS X terminal
 
+" What to save for views and sessions:
+set viewoptions=folds,cursor,curdir,slash,unix
+set sessionoptions=curdir,help,tabpages,winsize
+
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set switchbuf=useopen,vsplit            " quickfix window instead of opening new buffers
 " set iskeyword+=-                        " treat dash separated words as a word text object
 set backspace=indent,eol,start          " Intuitive backspacing in insert mode
 set completeopt=longest,noinsert,menuone,noselect,preview,menu
 " Selected characters/lines in visual mode
-set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
 set virtualedit=onemore                         " used with caution of breaking plugins
 
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
   \,sm:block-blinkwait175-blinkoff150-blinkon175
 
+
+" Tabs and Indents and Wrap {{{
+" ----------------
 set tabstop=2                           " Insert 2 spaces for a tab
 set softtabstop=-1                      " Automatically keeps in sync with shiftwidth
 set shiftwidth=2                        " Change the number of space characters inserted for indentation
@@ -104,6 +127,21 @@ set autoindent                          " Good auto indent
 " set copyindent                          " copy indent from the previous line
 set shiftround                          " Round indent to multiple of 'shiftwidth'
 
+set wrap                                " Break line at predefined characters
+set whichwrap+=<,>,h,l,[,]
+set showbreak=↪
+set colorcolumn=120
+set textwidth=120
+" set linebreak                           " Break long lines at 'breakat'
+" set breakat+=\ \	                      " Long lines break chars
+
+if exists('&breakindent')
+  set breakindentopt=shift:2,min:20
+endif
+
+" }}}
+
+
 set ignorecase                          " Search ignoring case
 set smartcase                           " Keep case when searching with *
 set infercase                           " Adjust case in insert completion mode
@@ -113,13 +151,11 @@ set hlsearch                            " Highlight search results
 set showmatch                           " Show matching brackets when text indicator is over them
 set matchpairs+=<:>,「:」               " %默认匹配()、[]、{}，增加匹配<>
 
-set wrap                                " Break line at predefined characters
-set whichwrap+=<,>,h,l,[,]
-set showbreak=↪
-set colorcolumn=120
-set textwidth=120
-" set linebreak                           " Break long lines at 'breakat'
-" set breakat+=\ \	                      " Long lines break chars
+set formatoptions+=1                      " Don't break lines after a one-letter word
+set formatoptions-=t                      " Don't auto-wrap text
+set formatoptions-=o                      " Disable comment-continuation (normal 'o'/'O')
+set formatoptions+=j                      " Remove comment leader when joining lines
+
 
 set wildmenu
 if has('nvim')                          " Use floating windows to complete the commond, only neovim support
@@ -129,10 +165,12 @@ else
   set wildmode=list:longest,full        " Set list to show completeopt, however it will lead to disfunc for floating windows
 endif
 set wildignorecase
-set history=1000                                                        " save 1000 cmd
-set wildignore+=*.o,*~,*.pyc,*.swp,*.bak,*.class,*.DS_Store,node_modules/**              " vim will ignore them
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-set wildignore+=.git\*,.hg\*,.svn\*
+set wildignore+=*.o,*~,*.pyc,*.swp,*.bak,*.class              " vim will ignore them
+set wildignore+=.git,.hg,.svn,.stversions,*.pyc,*.spl,*.o,*.out,*~,%*
+set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store
+set wildignore+=**/node_modules/**,**/bower_modules/**,*/.sass-cache/*
+set wildignore+=application/vendor/**,**/vendor/ckeditor/**,media/vendor/**
+set wildignore+=__pycache__,*.egg-info,.pytest_cache,.mypy_cache/**
 
 set foldenable
 set foldmethod=syntax

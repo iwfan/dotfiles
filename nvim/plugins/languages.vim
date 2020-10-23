@@ -28,3 +28,10 @@ Plug 'neoclide/jsonc.vim'
 " === markdown Plugins === "
 Plug 'plasticboy/vim-markdown'
 
+" === code format === ""
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'javascriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0

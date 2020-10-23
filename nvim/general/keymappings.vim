@@ -104,7 +104,7 @@ nnoremap <silent> <leader>tm :tabmove
 
 " split window
 nmap <leader>\ :set splitright<cr>:vsplit<cr>
-nmap <leader>\| :set splitbelow<cr>:split<cr>
+nmap <leader>- :set splitbelow<cr>:split<cr>
 nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
 nmap <C-j> <C-w>j

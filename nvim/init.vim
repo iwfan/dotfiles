@@ -25,8 +25,8 @@ function! SourceDirectory(file_path)
   endfor
 endfunction
 
-if empty(glob(VIM_SCRIPT_PATH . '/general/machine_environment.vim'))
-  silent! exec "!cp " . VIM_SCRIPT_PATH . "/template/machine_environment.vim " . VIM_SCRIPT_PATH . "/general/machine_environment.vim"
+if empty(glob(VIM_SCRIPT_PATH . '/autoload/machine_environment.vim'))
+  silent! exec "!cp " . VIM_SCRIPT_PATH . "/template/machine_environment.vim " . VIM_SCRIPT_PATH . "/autoload/machine_environment.vim"
 endif
 
 call SourceDirectory(VIM_SCRIPT_PATH . '/general')
