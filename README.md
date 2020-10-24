@@ -43,3 +43,9 @@ https://github.com/pseewald/vim-anyfold
 安装 zsh
 安装 zimfw
 安装 romkatv/powerlevel10k
+
+https://sourcegraph.com/github.com/hardcoreplayers/ThinkVim@master/-/blob/keybinds/leaderkey.vim#L14
+https://sourcegraph.com/github.com/theniceboy/nvim/-/blob/README_cn.md
+https://sourcegraph.com/github.com/theniceboy/nvim/-/blob/README_cn.md#vim-subversive
+https://sourcegraph.com/github.com/voldikss/dotfiles
+https://sourcegraph.com/github.com/Wjinlei/nvim/-/blob/init.vim#L402:25
