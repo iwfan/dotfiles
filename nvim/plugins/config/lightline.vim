@@ -26,6 +26,10 @@ let g:lightline.active = {
     \            [ 'readonly','coc_status' ],
     \          ] }
 
+let g:lightline.enable = {
+    \  'tabline': 0
+    \ }
+
 let g:lightline.inactive = {
     \ 'left': [ [ 'filename' ] ],
     \ 'right': [ ] }

@@ -58,15 +58,7 @@ set dictionary+=$HOME/.vim/dict/
 set pastetoggle=<F3>
 set clipboard=unnamed,unnamedplus
 
-if has("gui_running")
-  set mouse=a                             " Enable your mouse
-  set gfn=Source\ Code\ Pro\ Regular\ 12
-  set guioptions-=m
-  set guioptions-=T
-  set guioptions-=r
-  set guioptions-=L
-endif
-
+set mouse=a                             " Enable your mouse
 set termguicolors                       " Support True Color in terminal
 set number
 set relativenumber
@@ -97,10 +89,6 @@ set statusline+=%#warningmsg#
 set shortmess+=filmnrxoOtT              " Abbrev. of messages (avoids 'hit enter')
 let &t_ut=''
 set t_Co=256                            " this fixes colors on OS X terminal
-
-" What to save for views and sessions:
-set viewoptions=folds,cursor,curdir,slash,unix
-set sessionoptions=curdir,help,tabpages,winsize
 
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set switchbuf=useopen,vsplit            " quickfix window instead of opening new buffers

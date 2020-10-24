@@ -226,4 +226,5 @@ autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | end
 function! AuCocExplorerAutoOpen()
   exe ':CocCommand explorer'
 endfunction
-"autocmd User CocNvimInit call AuCocExplorerAutoOpen()
+" Auto open coc explorer
+" autocmd User CocNvimInit call AuCocExplorerAutoOpen()
