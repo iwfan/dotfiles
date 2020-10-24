@@ -2,41 +2,58 @@
 "                                Basic Settings                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Core {{{
+" Sensible {{{
 " ------
 if &compatible
   set nocompatible
 endif
-syntax enable                           " use syntax highlighting
-filetype plugin on
-filetype indent on
+
+if has('autocmd')
+  filetype plugin indent on
+endif
+
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable
+endif
 
 " }}}
 
 
-" Encoding {{{
+" Appearance {{{
 " ------
+set termguicolors                       " Support True Color in terminal
+set number
+set relativenumber
+set cursorline
+set noshowmode
+set nomodeline                          " disable mode lines (security measure)
+set showcmd
+set cmdheight=2                         " More space for displaying messages
+set laststatus=2                        " Always display the status line
+set showtabline=2                       " Always show tabs
+set ruler                               " Show the cursor position all the time
+set display+=lastline
+
+set list
+set listchars=tab:\↹\ ,nbsp:␣,trail:·,extends:→,precedes:←
+set fillchars=eob:\                     " do not show ~ before empty lines at the end of a buffer
+set scrolloff=5
+set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
+
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+  \,sm:block-blinkwait175-blinkoff150-blinkon175
+" }}}
+
+
+" Behavior{{{
+" ------
+
 set encoding=utf-8                      " configure the encoding
 set fileencoding=utf-8
-set termencoding=utf-8                  " it will choose the first right configure to use
-set fileencodings=utf-8,gbk,utf-16le,cp1252,iso-8859-15,ucs-bom
-set fileformats=unix,dos,mac
 
-" }}}
-
-
-" Timing {{{
-" ------
-set timeout ttimeout
-set timeoutlen=500                      " Time out on mappings
-set ttimeoutlen=10                      " Time out on key codes
-set updatetime=100                      " Idle time to write swap and trigger CursorHold
-set redrawtime=1500                     " Time in milliseconds for stopping display redraw
-set ttyfast                             " should make scrolling faster
-set lazyredraw                          " same as above
-
-" }}}
-
+set ttimeout
+set ttimeoutlen=100                     " Time out on key codes
 
 set autowrite
 set autowriteall
@@ -45,50 +62,35 @@ set noswapfile
 set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
 set undofile                            " enable undo after close the file
-set undodir=$HOME/.vim/undo
-set undolevels=1000
-set undoreload=10000
 
-set history=1000                                                        " save 1000 cmd
-
-set tags=$HOME/.vim/tags
-set dictionary+=/usr/share/dict/words   " autocompletion with dictionary help
-set dictionary+=$HOME/.vim/dict/
-
-set pastetoggle=<F3>
+set pastetoggle=<leader>"
 set clipboard=unnamed,unnamedplus
-
 set mouse=a                             " Enable your mouse
-set termguicolors                       " Support True Color in terminal
-set number
-set relativenumber
-set cursorline
-set noshowmode
-set nomodeline                          " disable mode lines (security measure)
-set showcmd
-set cmdheight=1                         " More space for displaying messages
-set laststatus=2                        " Always display the status line
-set showtabline=2                       " Always show tabs
-set nostartofline                       " Cursor in same column for few commands
-set ruler                               " Show the cursor position all the time
-set magic
-set list
-set listchars=tab:\↹\ ,nbsp:␣,trail:·,extends:→,precedes:←
-set fillchars=eob:\                     " do not show ~ before empty lines at the end of a buffer
-set scrolloff=5
-set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
 set splitright
 set splitbelow
-set display+=lastline
-set noerrorbells novisualbell t_vb=     " cancel the annoying bell
-set belloff=all
-set nospell                             " close spell examine
-set confirm                             " Confirm before vim exit
+
 set statusline+=%*
 set statusline+=%#warningmsg#
-set shortmess+=filmnrxoOtT              " Abbrev. of messages (avoids 'hit enter')
-let &t_ut=''
-set t_Co=256                            " this fixes colors on OS X terminal
+
+set history=1000                        " save 1000 cmd
+set tabpagemax=50
+
+set sessionoptions-=options
+set viewoptions-=options
+
+set noerrorbells novisualbell t_vb=     " cancel the annoying bell
+set confirm                             " Confirm before vim exit
+
+" }}}
+
+" Misc {{{
+" ------
+
+" }}}
+
+
+" let &t_ut=''
+" set t_Co=256                            " this fixes colors on OS X terminal
 
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set switchbuf=useopen,vsplit            " quickfix window instead of opening new buffers
@@ -98,9 +100,6 @@ set completeopt=longest,noinsert,menuone,noselect,preview,menu
 " Selected characters/lines in visual mode
 set virtualedit=onemore                         " used with caution of breaking plugins
 
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-  \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 
 " Tabs and Indents and Wrap {{{
@@ -130,6 +129,8 @@ endif
 " }}}
 
 
+" Search {{{
+" ----------------
 set ignorecase                          " Search ignoring case
 set smartcase                           " Keep case when searching with *
 set infercase                           " Adjust case in insert completion mode
@@ -138,6 +139,8 @@ set wrapscan                            " Searches wrap around the end of the fi
 set hlsearch                            " Highlight search results
 set showmatch                           " Show matching brackets when text indicator is over them
 set matchpairs+=<:>,「:」               " %默认匹配()、[]、{}，增加匹配<>
+
+" }}}
 
 set formatoptions+=1                      " Don't break lines after a one-letter word
 set formatoptions-=t                      " Don't auto-wrap text
