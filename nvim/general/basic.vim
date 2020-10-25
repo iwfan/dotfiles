@@ -18,7 +18,6 @@ endif
 
 " }}}
 
-
 " Appearance {{{
 " ------
 set termguicolors                       " Support True Color in terminal
@@ -34,6 +33,9 @@ set showtabline=2                       " Always show tabs
 set ruler                               " Show the cursor position all the time
 set display+=lastline
 
+set statusline+=%*
+set statusline+=%#warningmsg#
+
 set list
 set listchars=tab:\↹\ ,nbsp:␣,trail:·,extends:→,precedes:←
 set fillchars=eob:\                     " do not show ~ before empty lines at the end of a buffer
@@ -45,10 +47,8 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,sm:block-blinkwait175-blinkoff150-blinkon175
 " }}}
 
-
 " Behavior{{{
 " ------
-
 set encoding=utf-8                      " configure the encoding
 set fileencoding=utf-8
 
@@ -63,14 +63,16 @@ set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
 set undofile                            " enable undo after close the file
 
-set pastetoggle=<leader>"
 set clipboard=unnamed,unnamedplus
 set mouse=a                             " Enable your mouse
 set splitright
 set splitbelow
 
-set statusline+=%*
-set statusline+=%#warningmsg#
+set hidden                              " Required to keep multiple buffers open multiple buffers
+set switchbuf=useopen,vsplit            " quickfix window instead of opening new buffers
+set backspace=indent,eol,start          " Intuitive backspacing in insert mode
+set completeopt=longest,noinsert,menuone,noselect,preview,menu
+set virtualedit=onemore                 " Selected characters/lines in visual mode
 
 set history=1000                        " save 1000 cmd
 set tabpagemax=50
@@ -78,29 +80,16 @@ set tabpagemax=50
 set sessionoptions-=options
 set viewoptions-=options
 
-set noerrorbells novisualbell t_vb=     " cancel the annoying bell
-set confirm                             " Confirm before vim exit
-
 " }}}
 
 " Misc {{{
 " ------
+set noerrorbells novisualbell t_vb=     " cancel the annoying bell
+set confirm                             " Confirm before vim exit
 
+let &t_ut=''
+set t_Co=256                            " this fixes colors on OS X terminal
 " }}}
-
-
-" let &t_ut=''
-" set t_Co=256                            " this fixes colors on OS X terminal
-
-set hidden                              " Required to keep multiple buffers open multiple buffers
-set switchbuf=useopen,vsplit            " quickfix window instead of opening new buffers
-" set iskeyword+=-                        " treat dash separated words as a word text object
-set backspace=indent,eol,start          " Intuitive backspacing in insert mode
-set completeopt=longest,noinsert,menuone,noselect,preview,menu
-" Selected characters/lines in visual mode
-set virtualedit=onemore                         " used with caution of breaking plugins
-
-
 
 " Tabs and Indents and Wrap {{{
 " ----------------
@@ -128,7 +117,6 @@ endif
 
 " }}}
 
-
 " Search {{{
 " ----------------
 set ignorecase                          " Search ignoring case
@@ -142,19 +130,12 @@ set matchpairs+=<:>,「:」               " %默认匹配()、[]、{}，增加�
 
 " }}}
 
-set formatoptions+=1                      " Don't break lines after a one-letter word
-set formatoptions-=t                      " Don't auto-wrap text
-set formatoptions-=o                      " Disable comment-continuation (normal 'o'/'O')
-set formatoptions+=j                      " Remove comment leader when joining lines
-
-
+" Enhanced command-line completion {{{
+" ----------------
 set wildmenu
-if has('nvim')                          " Use floating windows to complete the commond, only neovim support
-  set wildoptions=pum
-  set pumblend=30                       " Let floatingwindow to be transparable
-else
-  set wildmode=list:longest,full        " Set list to show completeopt, however it will lead to disfunc for floating windows
-endif
+set wildoptions=pum
+set pumblend=1                            " Let floatingwindow to be transparable
+
 set wildignorecase
 set wildignore+=*.o,*~,*.pyc,*.swp,*.bak,*.class              " vim will ignore them
 set wildignore+=.git,.hg,.svn,.stversions,*.pyc,*.spl,*.o,*.out,*~,%*
@@ -162,8 +143,9 @@ set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store
 set wildignore+=**/node_modules/**,**/bower_modules/**,*/.sass-cache/*
 set wildignore+=application/vendor/**,**/vendor/ckeditor/**,media/vendor/**
 set wildignore+=__pycache__,*.egg-info,.pytest_cache,.mypy_cache/**
+" }}}
 
-set foldenable
 set foldmethod=syntax
 set foldlevel=99
 set foldlevelstart=99
+

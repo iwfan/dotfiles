@@ -5,6 +5,13 @@
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+" Stop newline continuous of comments
+" set formatoptions+=1                      " Don't break lines after a one-letter word
+" set formatoptions-=t                      " Don't auto-wrap text
+" set formatoptions-=o                      " Disable comment-continuation (normal 'o'/'O')
+" set formatoptions+=j                      " Remove comment leader when joining lines
+autocmd FileType * setlocal formatoptions-=cro formatoptions+=j1
+
 " Turn spellcheck on for markdown files
 augroup auto_spellcheck
   autocmd BufNewFile,BufRead *.md setlocal spell
