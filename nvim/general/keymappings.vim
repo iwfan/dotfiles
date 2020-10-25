@@ -66,7 +66,7 @@ cnoremap <C-p>          <Up>
 inoremap <C-p>          <Up>
 " <C-y>: paste.
 cnoremap <C-y>          <C-r>*
-inoremap <C-y>          <C-r>*
+inoremap <C-y>          <Esc>:set paste<CR>i<C-r>*<Esc>:set nopaste<CR>a
 " <C-s>: S.
 inoremap <C-s>          <Esc>:w<CR>
 
@@ -86,10 +86,10 @@ nnoremap <Leader>o o<Esc>^Da
 nnoremap <Leader>O O<Esc>^Da
 
 " Close all the buffers
-" nnoremap <silent><Tab> <esc>:bnext<cr>
-" nnoremap <silent><S-Tab> <esc>:bprevious<cr>
-" vnoremap <silent><Tab> <esc>:bnext<cr>
-" vnoremap <silent><S-tab> <esc>:bprevious<cr>
+nnoremap <silent><Tab> <esc>:bnext<cr>
+nnoremap <silent><S-Tab> <esc>:bprevious<cr>
+vnoremap <silent><Tab> <esc>:bnext<cr>
+vnoremap <silent><S-tab> <esc>:bprevious<cr>
 
 " Useful mappings for managing tabs
 nnoremap <silent> <leader>tn :tabe<CR>

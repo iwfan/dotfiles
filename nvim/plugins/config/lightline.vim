@@ -1,6 +1,6 @@
 let g:lightline = { }
 
-let g:lightline.colorscheme = 'deus'
+let g:lightline.colorscheme = 'fans'
 
 let g:lightline.mode_map = {
     \   'n' : "🅝 ",
