@@ -22,9 +22,11 @@ Plug 'voldikss/vim-floaterm'
 " Git
 Plug 'tpope/vim-fugitive'
 
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+
 " General Highlighter
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'RRethy/vim-illuminate'
 
 Plug 'editorconfig/editorconfig-vim'
-Plug 'liuchengxu/vim-which-key'

@@ -33,5 +33,3 @@ Plug 'markonm/traces.vim'
 "Comment
 Plug 'tomtom/tcomment_vim'
 
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
