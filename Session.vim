@@ -7,23 +7,13 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +10 nvim/advanced/functions.vim
-badd +21 nvim/general/basic.vim
-badd +171 nvim/coc-settings.json
-badd +10 nvim/filetype.vim
-badd +2 nvim/ftplugin/vim.vim
-badd +76 nvim/general/keymappings.vim
-badd +11 nvim/general/plugins.vim
-badd +23 nvim/plugins/enhancement.vim
-badd +13 nvim/init.vim
-badd +30 nvim/autoload/lightline-colorschema.vim
-badd +2 nvim/plugins/config/indentline.vim
-badd +3 nvim/plugins/config/lightline.vim
-badd +28 nvim/plugins/config/lightline-colorschema.vim
-badd +24 nvim/plugins/config/which-key.vim
+badd +62 nvim/plugins/config/lightline.vim
+badd +8 nvim/plugins/config/lightline-colorschema.vim
+badd +121 tmux/tmux.conf
+badd +165 zsh/p10k.zsh
 argglobal
 %argdel
-edit nvim/plugins/config/lightline-colorschema.vim
+edit tmux/tmux.conf
 set splitbelow splitright
 wincmd t
 set winminheight=0
@@ -31,19 +21,19 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-setlocal fdm=marker
+setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=0
+setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 34 - ((33 * winheight(0) + 22) / 45)
+let s:l = 1 - ((0 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-34
+1
 normal! 0
 lcd ~/dotfiles
 tabnext 1
