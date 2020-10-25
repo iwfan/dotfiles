@@ -1,2 +1,2 @@
-set foldmethod=marker
-set foldlevel=0
+setlocal foldmethod=marker
+setlocal foldlevel=0

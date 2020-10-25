@@ -62,12 +62,12 @@ if !exists('#lightline')
   set statusline+=\ [%{&fileformat}\]
   set statusline+=\ %p%%
   set statusline+=\ %l:%c
-  set statusline+=\ 
+  set statusline+=\
 endif
 
 set list
-set listchars=tab:\↹\ ,nbsp:␣,trail:·,extends:→,precedes:←
-set fillchars=eob:\                     " do not show ~ before empty lines at the end of a buffer
+set listchars=tab:▓░,trail:▫,extends:→,precedes:←,nbsp:␣
+set fillchars=fold:\ ,eob:\                     " do not show ~ before empty lines at the end of a buffer
 set scrolloff=5
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
 
@@ -83,6 +83,8 @@ set fileencoding=utf-8
 
 set ttimeout
 set ttimeoutlen=100                     " Time out on key codes
+set updatetime=300
+set redrawtime=1500
 
 set autowrite
 set autowriteall
@@ -97,11 +99,15 @@ set mouse=a                             " Enable your mouse
 set splitright
 set splitbelow
 
+set foldmethod=indent
+set foldlevel=99
+set foldlevelstart=99
+
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set switchbuf=useopen,vsplit            " quickfix window instead of opening new buffers
 set backspace=indent,eol,start          " Intuitive backspacing in insert mode
 set completeopt=longest,noinsert,menuone,noselect,preview,menu
-set virtualedit=onemore                 " Selected characters/lines in visual mode
+set virtualedit=block                   " Selected characters/lines in visual mode
 
 set history=1000                        " save 1000 cmd
 set tabpagemax=50
@@ -109,15 +115,8 @@ set tabpagemax=50
 set sessionoptions-=options
 set viewoptions-=options
 
-" }}}
+set inccommand=split
 
-" Misc {{{
-" ------
-set noerrorbells novisualbell t_vb=     " cancel the annoying bell
-set confirm                             " Confirm before vim exit
-
-let &t_ut=''
-set t_Co=256                            " this fixes colors on OS X terminal
 " }}}
 
 " Tabs and Indents and Wrap {{{
@@ -135,7 +134,7 @@ set shiftround                          " Round indent to multiple of 'shiftwidt
 set wrap                                " Break line at predefined characters
 set whichwrap+=<,>,h,l,[,]
 set showbreak=↪
-set colorcolumn=120
+set colorcolumn=+1
 set textwidth=120
 " set linebreak                           " Break long lines at 'breakat'
 " set breakat+=\ \	                      " Long lines break chars
@@ -174,7 +173,15 @@ set wildignore+=application/vendor/**,**/vendor/ckeditor/**,media/vendor/**
 set wildignore+=__pycache__,*.egg-info,.pytest_cache,.mypy_cache/**
 " }}}
 
-" set foldmethod=syntax
-set foldlevel=99
-set foldlevelstart=99
+" Misc {{{
+" ------
+set noerrorbells novisualbell t_vb=     " cancel the annoying bell
+set confirm                             " Confirm before vim exit
+set shortmess+=c
+set ttyfast
+
+let &t_ut=''
+set t_Co=256                            " this fixes colors on OS X terminal
+" }}}
+
 
