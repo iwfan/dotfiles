@@ -5,6 +5,7 @@ Plug 'ryanoasis/vim-devicons'
 
 Plug 'mhinz/vim-startify'
 
+Plug 'mg979/vim-xtabline'
 " status line and tabline
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
@@ -23,9 +24,7 @@ function! appearance#theme()
 
   colorscheme oceanic_material
   hi! link Visual Search
+  hi! link Folded CursorLine
 endfunction
-
-let g:buffet_left_trunc_icon = "\uf0a8"
-let g:buffet_right_trunc_icon = "\uf0a9"
 
 let g:rainbow_active = 1

@@ -142,7 +142,7 @@ nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)
 " show chunk diff at current position
 nmap \g <Plug>(coc-git-chunkinfo)
-nmap <silent>d\g :CocCommand git.chunkUndo<CR>
+nmap <silent><bs>\g :CocCommand git.chunkUndo<CR>
 " create text object for git chunks
 omap ig <Plug>(coc-git-chunk-inner)
 xmap ig <Plug>(coc-git-chunk-inner)

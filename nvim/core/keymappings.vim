@@ -29,12 +29,6 @@ vnoremap m g%
 " Disable Ex-mode.
 nnoremap Q  q
 nnoremap q <nop>
-nnoremap U <C-r>
-
-" If press l on fold, fold open.
-nnoremap <expr> l foldclosed(line('.')) != -1 ? 'zo0' : 'l'
-" If press l on fold, range fold open.
-xnoremap <expr> l foldclosed(line('.')) != -1 ? 'zogv0' : 'l'
 
 " Better indenting
 vnoremap < <gv
@@ -90,6 +84,8 @@ nnoremap <silent><Tab> <esc>:bnext<cr>
 nnoremap <silent><S-Tab> <esc>:bprevious<cr>
 vnoremap <silent><Tab> <esc>:bnext<cr>
 vnoremap <silent><S-tab> <esc>:bprevious<cr>
+nnoremap <silent><leader><tab> <esc>:bd<cr>
+vnoremap <silent><leader><tab> <esc>:bd<cr>
 
 " Useful mappings for managing tabs
 nnoremap <silent> <leader>tn :tabe<CR>
@@ -130,6 +126,10 @@ vnoremap <silent> <M-up> :m '<-2<CR>gv=gv
 
 " use <++> as placeholder
 map <LEADER><LEADER> <ESC>/<++><CR>:nohlsearch<CR>j4d
+" If press l on fold, fold open.
+nnoremap <expr> l foldclosed(line('.')) != -1 ? 'zo0' : 'l'
+" If press l on fold, range fold open.
+xnoremap <expr> l foldclosed(line('.')) != -1 ? 'zogv0' : 'l'
 
 map <F1> :edit $HOME/.config/nvim/init.vim<CR>
 map <F2> :source $HOME/.config/nvim/init.vim<CR>

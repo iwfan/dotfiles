@@ -19,25 +19,13 @@ endif
 
 let VIM_SCRIPT_PATH = expand('<sfile>:p:h')
 
-function! SourceDirectory(file_path)
-  for l:fpath in split(globpath(a:file_path, '*.vim'), '\n')
-    exe 'source' l:fpath
-  endfor
-endfunction
+call helpers#ensure_machine_environment(VIM_SCRIPT_PATH)
 
-if empty(glob(VIM_SCRIPT_PATH . '/autoload/machine_environment.vim'))
-  silent! exec "!cp " . VIM_SCRIPT_PATH . "/template/machine_environment.vim " . VIM_SCRIPT_PATH . "/autoload/machine_environment.vim"
-endif
-
-call SourceDirectory(VIM_SCRIPT_PATH . '/general')
-call SourceDirectory(VIM_SCRIPT_PATH . '/advanced')
+call helpers#source_file(VIM_SCRIPT_PATH . '/core/basic.vim')
+call helpers#source_file(VIM_SCRIPT_PATH . '/core/keymappings.vim')
+call helpers#source_file(VIM_SCRIPT_PATH . '/core/plugins.vim')
+call helpers#source_file(VIM_SCRIPT_PATH . '/core/functions.vim')
+call helpers#source_file(VIM_SCRIPT_PATH . '/core/plugin_keymappings.vim')
 
 " setup themes
 call appearance#theme()
-
-" Free memory
-delfunction appearance#theme
-delfunction SourceDirectory
-unlet PLATFORM
-unlet VIM_SCRIPT_PATH
-

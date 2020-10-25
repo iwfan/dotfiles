@@ -48,4 +48,3 @@ https://sourcegraph.com/github.com/hardcoreplayers/ThinkVim@master/-/blob/keybin
 https://sourcegraph.com/github.com/theniceboy/nvim/-/blob/README_cn.md
 https://sourcegraph.com/github.com/theniceboy/nvim/-/blob/README_cn.md#vim-subversive
 https://sourcegraph.com/github.com/voldikss/dotfiles
-https://sourcegraph.com/github.com/Wjinlei/nvim/-/blob/init.vim#L402:25

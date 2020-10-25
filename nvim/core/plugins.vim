@@ -11,7 +11,7 @@ endif
 
 call plug#begin(stdpath('data') . '/plugged')
 
-call SourceDirectory(VIM_SCRIPT_PATH . '/plugins')
+call helpers#source_dir(VIM_SCRIPT_PATH . '/plugins')
 
 call plug#end()
 
@@ -23,4 +23,4 @@ if (PLATFORM == 'unix')
     \| endif
 endif
 
-call SourceDirectory(VIM_SCRIPT_PATH . '/plugins/config')
+call helpers#source_dir(VIM_SCRIPT_PATH . '/plugins/config')

@@ -27,7 +27,7 @@ let g:lightline.active = {
     \          ] }
 
 let g:lightline.enable = {
-    \  'tabline': 1
+    \  'tabline': 0
     \ }
 
 let g:lightline.inactive = {
@@ -76,7 +76,7 @@ function! LightlineGitStatus() abort
   let replaced_buffer_status = substitute(replaced_buffer_status, '-', ' ', '')
   let replaced_buffer_status = substitute(replaced_buffer_status, '\~', ' ', '')
 
-  return winwidth(0) > 120 ? replaced_buffer_status . ' ' . git_branch_info : ''
+  return winwidth(0) > 120 ? git_branch_info . ' ' .replaced_buffer_status  : ''
 endfunction
 
 function! LightlineSessionStatusTacking() abort
