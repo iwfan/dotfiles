@@ -2,8 +2,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   Mappings                                   "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Caution: Mapping should place before PluginConfigure
-
 nmap <SPACE> <Nop>
 let mapleader = "\<SPACE>"
 
