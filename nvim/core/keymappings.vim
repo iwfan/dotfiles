@@ -31,11 +31,6 @@ nnoremap Q  q
 nnoremap q <nop>
 
 " Better indenting
-nnoremap <Tab> >>
-nnoremap <S-Tab> <<
-vnoremap <Tab> >gv
-vnoremap <S-tab> <gv
-
 vnoremap < <gv
 vnoremap > >gv
 nnoremap < <<

@@ -2,8 +2,8 @@ let g:undotree_WindowLayout = 4
 
 let g:tagalong_verbose      = 1
 
-let g:floaterm_width                           = 0.8
-let g:floaterm_height                          = 0.8
+let g:floaterm_width        = 0.8
+let g:floaterm_height       = 0.8
 
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js,*.tsx,*.ts'
