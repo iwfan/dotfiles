@@ -33,3 +33,8 @@ Plug 'markonm/traces.vim'
 "Comment
 Plug 'tomtom/tcomment_vim'
 
+
+Plug 'luochen1990/rainbow'
+
+
+let g:rainbow_active = 1

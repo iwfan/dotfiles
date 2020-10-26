@@ -31,6 +31,11 @@ nnoremap Q  q
 nnoremap q <nop>
 
 " Better indenting
+nnoremap <Tab> >>
+nnoremap <S-Tab> <<
+vnoremap <Tab> >gv
+vnoremap <S-tab> <gv
+
 vnoremap < <gv
 vnoremap > >gv
 nnoremap < <<
@@ -78,14 +83,6 @@ nnoremap <leader>I O<Esc>
 nnoremap <leader>i o<Esc>
 nnoremap <Leader>o o<Esc>^Da
 nnoremap <Leader>O O<Esc>^Da
-
-" Close all the buffers
-nnoremap <silent><Tab> <esc>:bnext<cr>
-nnoremap <silent><S-Tab> <esc>:bprevious<cr>
-vnoremap <silent><Tab> <esc>:bnext<cr>
-vnoremap <silent><S-tab> <esc>:bprevious<cr>
-nnoremap <silent><leader><tab> <esc>:bd<cr>
-vnoremap <silent><leader><tab> <esc>:bd<cr>
 
 " Useful mappings for managing tabs
 nnoremap <silent> <leader>tn :tabe<CR>

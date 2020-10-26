@@ -5,7 +5,6 @@ Plug 'josa42/vim-lightline-coc'
 " editor enhancement
 Plug 'Yggdroot/indentLine'
 Plug 'mbbill/undotree'
-Plug 'qpkorr/vim-bufkill'
 
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'pechorin/any-jump.vim'
