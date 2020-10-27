@@ -57,6 +57,8 @@ fi
 
 ln -fs ~/dotfiles/git/gitconfig ~/.gitconfig
 
+ln -fs ~/dotfiles/kitty ~/.config/kitty
+
 # tmux
 ln -fs ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 
