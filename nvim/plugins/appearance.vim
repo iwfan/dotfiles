@@ -12,6 +12,7 @@ Plug 'junegunn/limelight.vim'
 
 " General Highlighter
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
+" norcalli/nvim-colorizer.lua
 Plug 'RRethy/vim-illuminate'
 
 " }}}

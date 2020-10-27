@@ -79,14 +79,35 @@ nnoremap <leader>i o<Esc>
 nnoremap <Leader>o o<Esc>^Da
 nnoremap <Leader>O O<Esc>^Da
 
-" Useful mappings for managing tabs
-nnoremap <silent> <leader>tn :tabe<CR>
-nnoremap <silent> <leader>tv :vnew<CR>
-nnoremap <silent> <leader>th :-tabnext<CR>
-nnoremap <silent> <leader>tl :+tabnext<CR>
-nnoremap <silent> <leader>to :tabonly<cr>
-nnoremap <silent> <leader>tq :tabclose<cr>
-nnoremap <silent> <leader>tm :tabmove
+nnoremap <silent> [a :previous<CR>
+nnoremap <silent> ]a :next<CR>
+nnoremap <silent> [A :first<CR>
+nnoremap <silent> ]A :last<CR>
+
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
+
+nnoremap <silent> [l :lprevious<CR>
+nnoremap <silent> ]l :lnext<CR>
+nnoremap <silent> [L :lfirst<CR>
+nnoremap <silent> ]L :llast<CR>
+
+nnoremap <silent> [q :cprevious<CR>
+nnoremap <silent> ]q :cnext<CR>
+nnoremap <silent> [Q :cfirst<CR>
+nnoremap <silent> ]Q :clast<CR>
+
+nnoremap <silent> ]t :tnext<CR>
+nnoremap <silent> [t :tprevious<CR>
+nnoremap <silent> ]T :tlast<CR>
+nnoremap <silent> [T :tfirst<CR>
+nnoremap <silent> \tn :tabe<CR>
+nnoremap <silent> \tv :vnew<CR>
+nnoremap <silent> \to :tabonly<cr>
+nnoremap <silent> \tq :tabclose<cr>
+nnoremap <silent> \tm :tabmove
 
 " split window
 nmap <leader>\ :set splitright<cr>:vsplit<cr>

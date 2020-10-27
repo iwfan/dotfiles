@@ -115,7 +115,7 @@ set tabpagemax=50
 set sessionoptions-=options
 set viewoptions-=options
 
-set inccommand=split
+set inccommand=nosplit                  " Show substitute command live
 
 " }}}
 
@@ -177,7 +177,7 @@ set wildignore+=__pycache__,*.egg-info,.pytest_cache,.mypy_cache/**
 " ------
 set noerrorbells novisualbell t_vb=     " cancel the annoying bell
 set confirm                             " Confirm before vim exit
-set shortmess+=c
+set shortmess+=Ic
 set ttyfast
 
 let &t_ut=''

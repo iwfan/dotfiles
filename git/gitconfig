@@ -1,0 +1,43 @@
+[user]
+    name = iwfan
+    email = i.wangfancn@gmail.com
+[init]
+    templatedir = ~/dotfiles/git/git_template
+[core]
+    editor = nvim
+    excludesfile = ~/dotfiles/git/gitignore
+[commit]
+    verbose = true
+[push]
+    default = current
+[pull]
+    rebase = true
+[credential]
+    helper = cache --timeout=3600
+[rerere]
+    enabled = true
+[merge]
+    ; tool = nvimMerge
+    ; conflictStyle = diff3
+[diff]
+    noprefix = true
+[difftool]
+    trustExitCode = true
+[feature]
+    manyFiles = true
+[alias]
+    co = checkout
+    st = status
+    ; up = remote update -p
+    up = fetch --all
+    b  = branch --sort=committerdate
+    pls = push --force-with-lease
+    ca = !git add -A && git commit -av
+    caa = !git add -A && git commit --amend -av
+    caas = !git add -A && git commit --amend --no-edit
+    rn = "!f() { git branch -m $1; }; f"
+    rh = reset --hard
+    rhu = reset --hard @{u}
+    cp = cherry-pick
+    cob = !git checkout $(git branch --sort=committerdate | fzf)
+    d = diff --cached --diff-algorithm=minimal

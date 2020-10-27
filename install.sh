@@ -55,6 +55,8 @@ if [[ $SHELL != *"zsh"* ]]; then
     success "change default shell to zsh"
 fi
 
+ln -fs ~/dotfiles/git/gitconfig ~/.gitconfig
+
 # tmux
 ln -fs ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 

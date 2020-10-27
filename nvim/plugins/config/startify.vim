@@ -8,7 +8,7 @@ let g:startify_skiplist = [
       \ 'COMMIT_EDITMSG',
       \ ]
 
-let g:startify_padding_left        = (winwidth(0) / 2) - 30
+" let g:startify_padding_left        = (winwidth(0) / 2) - 30
 let g:startify_files_number        = 5
 let g:startify_custom_indices      = map(range(1,100), 'string(v:val)')
 let g:startify_enable_special      = 0
