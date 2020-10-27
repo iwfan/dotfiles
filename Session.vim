@@ -8,21 +8,28 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +17 nvim/plugins/appearance.vim
-badd +160 nvim/core/basic.vim
+badd +177 nvim/core/basic.vim
 badd +127 nvim/core/keymappings.vim
-badd +167 tmux/tmux.conf
+badd +113 tmux/tmux.conf
 badd +7 nvim/colors/schemer.vim
+badd +1 ~/.config/kitty/kitty.conf
+badd +7 kitty/kitty.conf
 argglobal
 %argdel
-edit nvim/core/basic.vim
+edit tmux/tmux.conf
 set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
 wincmd t
 set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
+wincmd =
 argglobal
-setlocal fdm=marker
+setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
@@ -30,25 +37,32 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-5
-normal! zc
-21
-normal! zc
-79
-normal! zc
-122
-normal! zc
-148
-normal! zc
-161
-normal! zc
-let s:l = 160 - ((158 * winheight(0) + 14) / 29)
+let s:l = 1 - ((0 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-160
+1
 normal! 0
-if exists(':tcd') == 2 | tcd ~/dotfiles | endif
+wincmd w
+argglobal
+if bufexists("tmux/tmux.conf") | buffer tmux/tmux.conf | else | edit tmux/tmux.conf | endif
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 157 - ((8 * winheight(0) + 20) / 41)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+157
+normal! 082|
+wincmd w
+wincmd =
+if exists(':tcd') == 2 | tcd ~/ | endif
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
