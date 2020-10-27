@@ -27,7 +27,7 @@ set cursorline
 set noshowmode
 set nomodeline                          " disable mode lines (security measure)
 set showcmd
-set cmdheight=2                         " More space for displaying messages
+set cmdheight=1                         " More space for displaying messages
 set laststatus=2                        " Always display the status line
 set showtabline=2                       " Always show tabs
 set ruler                               " Show the cursor position all the time
