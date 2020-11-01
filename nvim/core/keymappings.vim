@@ -60,7 +60,7 @@ cnoremap <C-p>          <Up>
 inoremap <C-p>          <Up>
 " <C-y>: paste.
 cnoremap <C-y>          <C-r>*
-inoremap <C-y>          <Esc>:set paste<CR>i<C-r>*<Esc>:set nopaste<CR>a
+inoremap <C-y>          <C-r>*
 " <C-s>: S.
 inoremap <C-s>          <Esc>:w<CR>
 

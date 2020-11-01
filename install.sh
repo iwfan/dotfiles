@@ -61,6 +61,7 @@ ln -fs ~/dotfiles/kitty ~/.config/kitty
 
 # tmux
 ln -fs ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
+ln -fs ~/dotfiles/tmux/tmux.theme.conf ~/.tmux.theme.conf
 
 # ideavimrc
 ln -fs ~/dotfiles/_ideavimrc ~/.ideavimrc
