@@ -62,7 +62,7 @@ Plug 'mhinz/vim-startify'
 " status line and tabline
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
-Plug 'mg979/vim-xtabline'
+" Plug 'mg979/vim-xtabline'
 
 
 Plug 'mbbill/undotree'
@@ -102,15 +102,16 @@ function! appearance#theme()
 
   colorscheme oceanic_material
   hi! link Visual Search
-  hi! link Folded CursorLine
+  " hi! link Folded CursorLine
 
-  hi PmenuSel  cterm=bold ctermfg=239 ctermbg=109 gui=bold guifg=#242a32 guibg=#83a598
-  hi clear TabLine
-  hi TabLine   ctermfg=243 ctermbg=235 guifg=#7c6f64 guibg=bg
-  hi TabLineSel   cterm=bold ctermfg=235 ctermbg=243 gui=bold guifg=bg guibg=#7c6f64
+  " hi PmenuSel  cterm=bold ctermfg=239 ctermbg=109 gui=bold guifg=#242a32 guibg=#83a598
+  " hi clear TabLine
+  " hi TabLine   ctermfg=243 ctermbg=235 guifg=#7c6f64 guibg=bg
+  " hi TabLineSel   cterm=bold ctermfg=235 ctermbg=243 gui=bold guifg=bg guibg=#7c6f64
 endfunction
 
 let g:xtabline_settings = {}
+let g:xtabline_settings.enabled = 0
 let g:xtabline_settings.enable_mappings = 1
 let g:xtabline_settings.tabline_modes = [ 'buffers', 'tabs' ]
 let g:xtabline_settings.mode_labels='none'
