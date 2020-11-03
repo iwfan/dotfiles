@@ -19,7 +19,8 @@ let g:lightline.mode_map = {
 let g:lightline.active = {
     \ 'left': [
     \    [ 'mode', 'paste', 'coc_errors', 'coc_warnings' ],
-    \    [ 'filename', 'gitinfo'  ]
+    \    [ 'filename' ],
+    \    [ 'gitinfo'  ]
     \ ],
     \ 'right': [ [ 'session_status_tracking', 'session_status_paused', 'lineinfo' ],
     \            [ 'fileformat', 'fileencoding', 'filetype', 'percent' ],
