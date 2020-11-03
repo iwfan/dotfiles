@@ -9,6 +9,8 @@ let s:term_grey = 236
 
 let s:basefg = '#2b2b2b'
 let s:basebg = '#343d46'
+" let s:basebg = '#2c313c'
+
 let s:lightbg1 = '#a9b7c6'
 let s:lightbg2 = '#818e9c'
 let s:lightbg3 = '#5c6370'

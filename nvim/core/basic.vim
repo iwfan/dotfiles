@@ -162,7 +162,7 @@ set matchpairs+=<:>,「:」               " %默认匹配()、[]、{}，增加�
 " ----------------
 set wildmenu
 set wildoptions=pum
-set pumblend=1                            " Let floatingwindow to be transparable
+set pumblend=10                            " Let floatingwindow to be transparable
 
 set wildignorecase
 set wildignore+=*.o,*~,*.pyc,*.swp,*.bak,*.class              " vim will ignore them
