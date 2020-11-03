@@ -32,12 +32,12 @@ setlocal fdn=20
 setlocal fen
 23
 normal! zo
-let s:l = 486 - ((26 * winheight(0) + 16) / 33)
+let s:l = 210 - ((18 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-486
-normal! 060|
+210
+normal! 044|
 if exists(':tcd') == 2 | tcd ~/dotfiles | endif
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
