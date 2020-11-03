@@ -7,13 +7,14 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +22 nvim/plugins/config/lightline-colorschema.vim
+badd +20 nvim/plugins/config/lightline-colorschema.vim
 badd +81 nvim/colors/schemer.vim
-badd +88 nvim/plugins/config/lightline.vim
-badd +0 tmux/tmux.theme.conf
+badd +79 nvim/plugins/config/lightline.vim
+badd +9 nvim/core/plugin_keymappings.vim
+badd +111 nvim/plugins/appearance.vim
 argglobal
 %argdel
-edit tmux/tmux.theme.conf
+edit nvim/plugins/config/lightline.vim
 set splitbelow splitright
 wincmd t
 set winminheight=0
@@ -21,20 +22,21 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-setlocal fdm=indent
+setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=99
+setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 74 - ((32 * winheight(0) + 16) / 33)
+let s:l = 30 - ((20 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-74
+30
 normal! 0
+lcd ~/dotfiles
 if exists(':tcd') == 2 | tcd ~/dotfiles | endif
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
@@ -47,8 +49,6 @@ if file_readable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &so = s:so_save | let &siso = s:siso_save
-let g:this_session = v:this_session
-let g:this_obsession = v:this_session
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

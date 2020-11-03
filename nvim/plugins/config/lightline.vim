@@ -77,7 +77,7 @@ function! LightlineGitStatus() abort
   let replaced_buffer_status = substitute(replaced_buffer_status, '-', ' ', '')
   let replaced_buffer_status = substitute(replaced_buffer_status, '\~', ' ', '')
 
-  return winwidth(0) > 120 ? git_branch_info . ' ' .replaced_buffer_status  : ''
+  return strlen(git_branch_info . replaced_buffer_status) > 0 ? git_branch_info . ' ' .replaced_buffer_status  : ''
 endfunction
 
 function! LightlineSessionStatusTacking() abort
