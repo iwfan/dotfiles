@@ -7,14 +7,14 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +20 nvim/plugins/config/lightline-colorschema.vim
+badd +10 nvim/plugins/config/lightline-colorschema.vim
 badd +81 nvim/colors/schemer.vim
-badd +79 nvim/plugins/config/lightline.vim
 badd +9 nvim/core/plugin_keymappings.vim
-badd +111 nvim/plugins/appearance.vim
+badd +116 nvim/plugins/appearance.vim
+badd +692 zsh/p10k.zsh
 argglobal
 %argdel
-edit nvim/plugins/config/lightline.vim
+edit zsh/p10k.zsh
 set splitbelow splitright
 wincmd t
 set winminheight=0
@@ -22,21 +22,22 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-setlocal fdm=marker
+setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=0
+setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 30 - ((20 * winheight(0) + 16) / 33)
+23
+normal! zo
+let s:l = 486 - ((26 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-30
-normal! 0
-lcd ~/dotfiles
+486
+normal! 060|
 if exists(':tcd') == 2 | tcd ~/dotfiles | endif
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
