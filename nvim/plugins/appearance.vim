@@ -108,7 +108,7 @@ function! appearance#theme()
 endfunction
 
 let g:xtabline_settings = {}
-let g:xtabline_settings.enabled = 0
+let g:xtabline_settings.enabled = 1
 let g:xtabline_settings.enable_mappings = 1
 let g:xtabline_settings.tabline_modes = [ 'buffers', 'tabs' ]
 let g:xtabline_settings.mode_labels='none'
