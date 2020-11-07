@@ -98,3 +98,4 @@ let g:lightline#coc#indicator_ok       = "\uf058 "
 
 call lightline#coc#register()
 
+autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
