@@ -1,8 +1,6 @@
 " =========================
 " === KeyMappings Setup ===
 " =========================
-nnoremap <silent><bs>b <esc>:XTabCloseBuffer<cr>
-vnoremap <silent><bs>b <esc>:XTabCloseBuffer<cr>
 
 nnoremap <silent> <Leader>0 :FloatermToggle<CR>
 tnoremap <silent> <Leader>0 <C-\><C-n>:FloatermToggle<CR>

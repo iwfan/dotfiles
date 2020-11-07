@@ -22,6 +22,7 @@ Plug 'RRethy/vim-illuminate'
 " text operation
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-obsession'
 Plug 'kana/vim-textobj-user'

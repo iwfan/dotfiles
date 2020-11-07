@@ -79,30 +79,9 @@ nnoremap <leader>i o<Esc>
 nnoremap <Leader>o o<Esc>^Da
 nnoremap <Leader>O O<Esc>^Da
 
-nnoremap <silent> [a :previous<CR>
-nnoremap <silent> ]a :next<CR>
-nnoremap <silent> [A :first<CR>
-nnoremap <silent> ]A :last<CR>
+nnoremap <silent><bs>b <esc>:bd<cr>
+vnoremap <silent><bs>b <esc>:bd<cr>
 
-nnoremap <silent> [b :bprevious<CR>
-nnoremap <silent> ]b :bnext<CR>
-nnoremap <silent> [B :bfirst<CR>
-nnoremap <silent> ]B :blast<CR>
-
-nnoremap <silent> [l :lprevious<CR>
-nnoremap <silent> ]l :lnext<CR>
-nnoremap <silent> [L :lfirst<CR>
-nnoremap <silent> ]L :llast<CR>
-
-nnoremap <silent> [q :cprevious<CR>
-nnoremap <silent> ]q :cnext<CR>
-nnoremap <silent> [Q :cfirst<CR>
-nnoremap <silent> ]Q :clast<CR>
-
-nnoremap <silent> ]t :tnext<CR>
-nnoremap <silent> [t :tprevious<CR>
-nnoremap <silent> ]T :tlast<CR>
-nnoremap <silent> [T :tfirst<CR>
 nnoremap <silent> \tn :tabe<CR>
 nnoremap <silent> \tv :vnew<CR>
 nnoremap <silent> \to :tabonly<cr>
