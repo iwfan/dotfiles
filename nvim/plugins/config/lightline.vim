@@ -28,7 +28,7 @@ let g:lightline.active = {
     \          ] }
 
 let g:lightline.enable = {
-    \  'tabline': 0
+    \  'tabline': 1
     \ }
 
 let g:lightline.inactive = {
