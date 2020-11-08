@@ -14,6 +14,7 @@ command! -bar -nargs=* -complete=file -range=% -bang WQ        <line1>,<line2>wq
 command! -bar -nargs=* -complete=file -range=% -bang We        <line1>,<line2>w<bang> | e <args>
 command! -bar -nargs=* -complete=file          -bang E         edit<bang> <args>
 command! -bar                                  -bang Q         quit<bang>
+" Use Obs instead of Obsession
 command! -bar -bang -complete=file -nargs=* Obs
       \ Obsession<bang> <args> |
       \ call lightline#update()
@@ -27,5 +28,6 @@ augroup sourcesession
   \   Obsession . |
   \ endif
 augroup END
+
 " Auto open startify when close all buffers
 " autocmd BufEnter * if line2byte('.') == -1 && len(tabpagebuflist()) == 1 | Startify | endif

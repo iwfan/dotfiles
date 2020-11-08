@@ -9,8 +9,6 @@ let mapleader = "\<SPACE>"
 inoremap jk <Esc>
 inoremap kj <Esc>
 
-nmap . .`[
-nmap s <nop>
 nmap <silent> <C-s> :w<CR>
 nmap <silent> <C-q> :q<CR>
 nmap <silent> <leader>q :q<CR>
