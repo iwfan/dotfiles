@@ -28,4 +28,4 @@ augroup sourcesession
   \ endif
 augroup END
 " Auto open startify when close all buffers
-autocmd BufEnter * if line2byte('.') == -1 && len(tabpagebuflist()) == 1 | Startify | endif
+" autocmd BufEnter * if line2byte('.') == -1 && len(tabpagebuflist()) == 1 | Startify | endif

@@ -57,7 +57,7 @@ let s:p.visual.left = [
 
 let s:p.visual.right = s:p.normal.right
 
-let s:p.normal.middle = [ [ s:lightbg1, '#1d2d34', s:term_white, s:term_grey ] ]
+let s:p.normal.middle = [ [ s:lightbg1, '#1b2b34', s:term_white, s:term_grey ] ]
 let s:p.insert.middle = s:p.normal.middle
 let s:p.replace.middle = s:p.normal.middle
 

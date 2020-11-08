@@ -70,6 +70,16 @@
     "patternMatches": []
   },
   "explorer.file.column.git.showIgnored": true,
+  "explorer.file.column.git.icon.mixed": "*",
+  "explorer.file.column.git.icon.added": "✚",
+  "explorer.file.column.git.icon.copied": "@",
+  "explorer.file.column.git.icon.deleted": "✖",
+  "explorer.file.column.git.icon.renamed": "➜",
+  "explorer.file.column.git.icon.ignored": "☒",
+  "explorer.file.column.git.icon.modified": "✹",
+  "explorer.file.column.git.icon.unmerged": "═",
+  "explorer.file.column.git.icon.untracked": "?",
+  "explorer.file.column.git.icon.unmodified": " ",
 
   "bookmark.sign": "\uf461",
   "bookmark.signHl": "Tag",
@@ -119,13 +129,7 @@
   "git.topRemovedSign.text": "▔",
   "git.changeRemovedSign.text": "▋",
 
-  "eslint.filetypes": [
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "javascriptreact",
-    "typescript.tsx"
-  ],
+  "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
   "eslint.autoFix": true,
   "eslint.autoFixOnSave": true,
 
@@ -222,6 +226,6 @@
       "initializationOptions": {},
       "ignoredRootPaths": ["~"],
       "settings": {}
-    },
+    }
   }
 }
