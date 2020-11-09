@@ -10,8 +10,8 @@ inoremap jk <Esc>
 inoremap kj <Esc>
 
 nmap <silent> <C-s> :w<CR>
-nmap <silent> <C-q> :q<CR>
-nmap <silent> <leader>q :q<CR>
+" nmap <silent> <C-q> :q<CR>
+" nmap <silent> <leader>q :q<CR>
 
 nnoremap j gj
 vnoremap j gj

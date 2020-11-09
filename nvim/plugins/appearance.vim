@@ -55,6 +55,10 @@ Plug 'mengelbrecht/lightline-bufferline'
 
 Plug 'Yggdroot/indentLine'
 Plug 'mbbill/undotree'
+
+" Find & Replace
+Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
+
 Plug 'pechorin/any-jump.vim'
 " show registers
 Plug 'junegunn/vim-peekaboo'
@@ -76,9 +80,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
 " General Highlighter
-Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
-" norcalli/nvim-colorizer.lua
-Plug 'RRethy/vim-illuminate'
+" Plug 'RRethy/vim-illuminate'
 
 
 " Git
