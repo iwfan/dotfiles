@@ -92,7 +92,7 @@ function! appearance#theme()
 
   colorscheme oceanic_material
   hi! link Visual Search
-  " hi! link Folded CursorLine
+  hi! link Folded Normal
 
   hi! link  TabLine Normal
   hi! link  TabLineSel Search
@@ -103,3 +103,6 @@ let g:xtabline_settings = {}
 let g:xtabline_settings.tabline_modes = ['buffers', 'tabs']
 let g:xtabline_settings.enable_persistance = 1
 let g:xtabline_settings.last_open_first = 0
+
+
+let g:matchup_matchparen_offscreen  = {}
