@@ -30,3 +30,10 @@ function openlazynpm {
 
 zle -N openlazynpm;
 bindkey "^N" openlazynpm
+
+function opennvim {
+    zle_eval nvim
+}
+
+zle -N opennvim;
+bindkey "^E" opennvim

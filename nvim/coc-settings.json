@@ -14,8 +14,10 @@
     "typescript",
     "typescriptreact",
     "json",
+    "jsonc",
     "javascriptreact",
-    "typescript.tsx"
+    "typescript.tsx",
+    "vim"
   ],
 
   // suggest
@@ -62,7 +64,7 @@
   "explorer.icon.expanded": "▾",
   "explorer.icon.collapsed": "▸",
   "explorer.icon.enableNerdfont": true,
-  "explorer.quitOnOpen": false,
+  "explorer.quitOnOpen": true,
   "explorer.openAction.strategy": "sourceWindow",
   "explorer.file.hiddenRules": {
     "extensions": ["o", "a", "obj", "pyc"],
@@ -129,6 +131,12 @@
   "git.topRemovedSign.text": "▔",
   "git.changeRemovedSign.text": "▋",
 
+  "html.format.enable": true,
+  "javascript.referencesCodeLens.enable": true,
+  "javascript.showUnused": true,
+  "javascript.suggest.names": true,
+  "javascript.suggestionActions.enabled": true,
+
   "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
   "eslint.autoFix": true,
   "eslint.autoFixOnSave": true,
@@ -138,6 +146,12 @@
   "prettier.tslintIntegration": true,
   "prettier.stylelintIntegration": true,
   "prettier.statusItemText": "Ⓟ",
+  "prettier.printWidth": 100,
+  "prettier.disableLanguages": [],
+  "prettier.formatterPriority": 1,
+  "prettier.useTabs": false,
+  "prettier.trailingComma": "all",
+  "prettier.singleQuote": false,
 
   "cSpell.fixSpellingWithRenameProvider": true,
   "cSpell.enabledLanguageIds": [
@@ -218,7 +232,7 @@
   ],
 
   "languageserver": {
-    "sh": {
+    "bash": {
       "command": "bash-language-server",
       "args": ["start", "--stdio"],
       "filetypes": ["sh"],
@@ -226,6 +240,20 @@
       "initializationOptions": {},
       "ignoredRootPaths": ["~"],
       "settings": {}
+    },
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "gocodeCompletionEnabled": true,
+        "diagnosticsEnabled": true,
+        "lintTool": "golint"
+      }
+    },
+    "lua": {
+      "command": "lua-lsp",
+      "filetypes": ["lua"]
     }
   }
 }

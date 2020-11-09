@@ -26,7 +26,8 @@ Plug 'posva/vim-vue', { 'for': 'vue' }
 Plug 'neoclide/jsonc.vim'
 
 " === markdown Plugins === "
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+Plug 'dkarter/bullets.vim', {'for': 'markdown'}
 
 " Go
 Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }

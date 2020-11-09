@@ -11,7 +11,6 @@ Plug 'ryanoasis/vim-devicons'
 " text operation
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-obsession'
 Plug 'kana/vim-textobj-user'
@@ -52,12 +51,10 @@ Plug 'mhinz/vim-startify'
 " status line and tabline
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
+Plug 'mg979/vim-xtabline'
 
 Plug 'Yggdroot/indentLine'
 Plug 'mbbill/undotree'
-
-" Find & Replace
-Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 
 Plug 'pechorin/any-jump.vim'
 " show registers
@@ -97,3 +94,9 @@ function! appearance#theme()
   hi! link Visual Search
   " hi! link Folded CursorLine
 endfunction
+
+let g:xtabline_settings = {}
+" let g:xtabline_settings.enable_mappings = 0
+let g:xtabline_settings.tabline_modes = ['buffers', 'tabs']
+let g:xtabline_settings.enable_persistance = 1
+let g:xtabline_settings.last_open_first = 0

@@ -4,4 +4,5 @@ nnoremap <silent> <space>ff  :<C-u>CocList --number-select --auto-preview files<
 nnoremap <silent> <space>fe  :<C-u>CocList --number-select --auto-preview mru<cr>
 nnoremap <silent> <space>fb  :<C-u>CocList --number-select --auto-preview buffers<cr>
 nnoremap <silent> <space>fw  :exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
+nnoremap <silent> <space>fq  :<C-u>CocList --number-select --auto-preview quickfix<cr>
 nnoremap <silent> <space>p  :<C-u>CocList --number-select --auto-preview yank<cr>
