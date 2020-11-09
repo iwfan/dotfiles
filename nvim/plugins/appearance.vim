@@ -93,6 +93,9 @@ function! appearance#theme()
   colorscheme oceanic_material
   hi! link Visual Search
   " hi! link Folded CursorLine
+
+  hi! link  TabLine Normal
+  hi! link  TabLineSel Search
 endfunction
 
 let g:xtabline_settings = {}

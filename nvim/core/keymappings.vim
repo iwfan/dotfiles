@@ -28,11 +28,6 @@ vnoremap m g%
 nnoremap Q  q
 nnoremap q <nop>
 
-" make Y to copy till the end of the line
-nnoremap Y y$
-" Copy to system clipboard
-vnoremap Y "+y
-
 " Better indenting
 vnoremap < <gv
 vnoremap > >gv
