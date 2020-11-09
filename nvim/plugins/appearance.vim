@@ -79,10 +79,6 @@ Plug 'josa42/vim-lightline-coc'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
-" General Highlighter
-" Plug 'RRethy/vim-illuminate'
-
-
 " Git
 Plug 'tpope/vim-fugitive'
 

@@ -20,7 +20,7 @@ let g:lightline.active = {
     \ 'left': [
     \    [ 'mode', 'paste', 'coc_errors', 'coc_warnings' ],
     \    [ 'filename' ],
-    \    [ 'gitinfo'  ]
+    \    [ 'gitinfo', 'functions' ]
     \ ],
     \ 'right': [ [ 'session_status_tracking', 'session_status_paused', 'lineinfo' ],
     \            [ 'fileformat', 'fileencoding', 'filetype', 'percent' ],
@@ -47,6 +47,7 @@ let g:lightline.component_expand = {
     \ 'buffers': 'lightline#bufferline#buffers',
     \ 'session_status_tracking': 'LightlineSessionStatusTacking',
     \ 'session_status_paused': 'LightlineSessionStatusPaused',
+    \ 'functions': "%{get(b:,'coc_current_function','')}"
     \ }
 
 let g:lightline.component_type = {
