@@ -4,17 +4,6 @@
 Plug 'glepnir/oceanic-material'
 " icon
 Plug 'ryanoasis/vim-devicons'
-
-Plug 'Yggdroot/indentLine'
-
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-
-" General Highlighter
-Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
-" norcalli/nvim-colorizer.lua
-Plug 'RRethy/vim-illuminate'
-
 " }}}
 
 " Behavior{{{
@@ -64,7 +53,7 @@ Plug 'mhinz/vim-startify'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 
-
+Plug 'Yggdroot/indentLine'
 Plug 'mbbill/undotree'
 Plug 'pechorin/any-jump.vim'
 " show registers
@@ -82,6 +71,15 @@ Plug 'voldikss/vim-floaterm'
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'josa42/vim-lightline-coc'
+
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+
+" General Highlighter
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
+" norcalli/nvim-colorizer.lua
+Plug 'RRethy/vim-illuminate'
+
 
 " Git
 Plug 'tpope/vim-fugitive'

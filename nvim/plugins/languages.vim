@@ -28,6 +28,9 @@ Plug 'neoclide/jsonc.vim'
 " === markdown Plugins === "
 Plug 'plasticboy/vim-markdown'
 
+" Go
+Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
+
 " === code format === ""
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',

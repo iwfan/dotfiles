@@ -82,8 +82,9 @@ set encoding=utf-8                      " configure the encoding
 set fileencoding=utf-8
 
 set ttimeout
-set ttimeoutlen=100                     " Time out on key codes
+set ttimeoutlen=0                     " Time out on key codes
 set updatetime=300
+set lazyredraw
 set redrawtime=1500
 
 set autowrite
@@ -99,6 +100,8 @@ set mouse=a                             " Enable your mouse
 set splitright
 set splitbelow
 
+set indentexpr=
+set foldenable
 set foldmethod=indent
 set foldlevel=99
 set foldlevelstart=99
@@ -106,6 +109,7 @@ set foldlevelstart=99
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set switchbuf=useopen,vsplit            " quickfix window instead of opening new buffers
 set backspace=indent,eol,start          " Intuitive backspacing in insert mode
+set inccommand=split                  " Show substitute command live
 set completeopt=longest,noinsert,menuone,noselect,preview,menu
 set virtualedit=block                   " Selected characters/lines in visual mode
 
@@ -114,8 +118,6 @@ set tabpagemax=50
 
 set sessionoptions-=options
 set viewoptions-=options
-
-set inccommand=nosplit                  " Show substitute command live
 
 " }}}
 
