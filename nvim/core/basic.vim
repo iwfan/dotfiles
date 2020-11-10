@@ -156,17 +156,18 @@ set incsearch                           " Incremental search
 set wrapscan                            " Searches wrap around the end of the file
 set hlsearch                            " Highlight search results
 set showmatch                           " Show matching brackets when text indicator is over them
-set matchpairs+=<:>,「:」               " %默认匹配()、[]、{}，增加匹配<>
+set matchpairs+=<:>,「:」,《:》,【:】,“:”,‘:’              " %默认匹配()、[]、{}，增加匹配<>
 
 " }}}
 
 " Enhanced command-line completion {{{
 " ----------------
 set wildmenu
-set wildoptions=pum
+set wildmode=longest,full
+set wildoptions+=pum
+set wildignorecase
 set pumblend=10                            " Let floatingwindow to be transparable
 
-set wildignorecase
 set wildignore+=*.o,*~,*.pyc,*.swp,*.bak,*.class              " vim will ignore them
 set wildignore+=.git,.hg,.svn,.stversions,*.pyc,*.spl,*.o,*.out,*~,%*
 set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store
