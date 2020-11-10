@@ -11,7 +11,7 @@ Plug 'ryanoasis/vim-devicons'
 " text operation
 Plug 'machakann/vim-sandwich'
 Plug 'terryma/vim-expand-region'
-" Plug 'chaoren/vim-wordmotion'
+Plug 'chaoren/vim-wordmotion'
 
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
@@ -22,7 +22,7 @@ Plug 'machakann/vim-textobj-delimited'
 Plug 'junegunn/vim-after-object'
 Plug 'junegunn/vim-easy-align'
 
-" Plug 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 Plug 'AndrewRadev/splitjoin.vim'
 
 " searching
@@ -98,5 +98,12 @@ let g:xtabline_settings.tabline_modes = ['buffers', 'tabs']
 let g:xtabline_settings.enable_persistance = 1
 let g:xtabline_settings.last_open_first = 0
 
-
 let g:matchup_matchparen_offscreen  = {}
+
+let g:tcomment_maps = 1
+let g:tcomment_mapleader1 = ''
+let g:tcomment_mapleader2 = ''
+let g:tcomment_mapleader_uncomment_anyway = ''
+let g:tcomment_mapleader_comment_anyway = ''
+map <silent> <C-_> :TComment<cr>
+imap <silent> <C-_> <esc>:TComment<cr>a
