@@ -1,26 +1,4 @@
-let g:sneak#label = 1
-" case insensitive sneak
-let g:sneak#use_ic_scs = 1
-
-let g:sneak#s_next = 1
-nmap s <Plug>Sneak_s
-nmap S <Plug>Sneak_S
-xmap s <Plug>Sneak_s
-xmap S <Plug>Sneak_S
-omap s <Plug>Sneak_s
-omap S <Plug>Sneak_S
-nmap f <Plug>Sneak_f
-nmap F <Plug>Sneak_F
-xmap f <Plug>Sneak_f
-xmap F <Plug>Sneak_F
-omap f <Plug>Sneak_f
-omap F <Plug>Sneak_F
-nmap t <Plug>Sneak_t
-nmap T <Plug>Sneak_T
-xmap t <Plug>Sneak_t
-xmap T <Plug>Sneak_T
-omap t <Plug>Sneak_t
-omap T <Plug>Sneak_T
+nmap f <Plug>(easymotion-s2)
 
 let g:incsearch#auto_nohlsearch = 1
 let g:EasyMotion_smartcase = 1
