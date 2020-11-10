@@ -67,7 +67,7 @@ endif
 
 set list
 set listchars=tab:▓░,trail:▫,extends:→,precedes:←,nbsp:␣
-set fillchars=fold:\ ,eob:\                     " do not show ~ before empty lines at the end of a buffer
+set fillchars=fold:\-,eob:\                     " do not show ~ before empty lines at the end of a buffer
 set scrolloff=5
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
 
