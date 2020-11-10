@@ -111,13 +111,13 @@ set switchbuf=useopen,vsplit            " quickfix window instead of opening new
 set backspace=indent,eol,start          " Intuitive backspacing in insert mode
 set inccommand=split                  " Show substitute command live
 set completeopt=longest,noinsert,menuone,noselect,preview,menu
-set virtualedit=block                   " Selected characters/lines in visual mode
 
 set history=1000                        " save 1000 cmd
 set tabpagemax=50
 
 set sessionoptions-=options
 set viewoptions-=options
+set virtualedit=onemore             " Allow for cursor beyond last character
 
 " }}}
 
