@@ -14,6 +14,7 @@ Plug 'terryma/vim-expand-region'
 Plug 'chaoren/vim-wordmotion'
 
 Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-entire'
 Plug 'sgur/vim-textobj-parameter'
 

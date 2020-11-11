@@ -4,7 +4,7 @@
 
 " https://stackoverflow.com/a/42461580
 map <CR> <Plug>(expand_region_expand)
-map <S-CR> <Plug>(expand_region_shrink)
+vmap <S-CR> <Plug>(expand_region_shrink)
 
 nnoremap <silent> <Leader>0 :FloatermToggle<CR>
 tnoremap <silent> <Leader>0 <C-\><C-n>:FloatermToggle<CR>
