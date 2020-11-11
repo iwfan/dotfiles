@@ -6,8 +6,8 @@ nmap <SPACE> <Nop>
 let mapleader = "\<SPACE>"
 
 " map CapsLock to Escape
-inoremap jk <Esc>
-inoremap kj <Esc>
+" inoremap jk <Esc>
+" inoremap kj <Esc>
 
 nmap <silent> <C-s> :w<CR>
 " nmap <silent> <C-q> :q<CR>
