@@ -1,4 +1,6 @@
-nmap f <Plug>(easymotion-s2)
+nmap s <Plug>(easymotion-s2)
+nmap f <Plug>(easymotion-f2)
+nmap t <Plug>(easymotion-t2)
 
 let g:incsearch#auto_nohlsearch = 1
 let g:EasyMotion_smartcase = 1

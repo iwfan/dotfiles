@@ -13,6 +13,9 @@ nmap <silent> <C-s> :w<CR>
 " nmap <silent> <C-q> :q<CR>
 " nmap <silent> <leader>q :q<CR>
 
+nmap s <Nop>
+xmap s <Nop>
+
 nnoremap j gj
 vnoremap j gj
 nnoremap k gk
