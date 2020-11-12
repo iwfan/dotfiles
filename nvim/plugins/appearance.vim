@@ -14,9 +14,12 @@ Plug 'terryma/vim-expand-region'
 Plug 'chaoren/vim-wordmotion'
 
 Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-line'
-Plug 'kana/vim-textobj-entire'
-Plug 'sgur/vim-textobj-parameter'
+Plug 'kana/vim-textobj-line'             " al il
+Plug 'kana/vim-textobj-entire'           " ae ie
+Plug 'sgur/vim-textobj-parameter'        " i, a,
+Plug 'coderifous/textobj-word-column.vim' " adds ic, ac, iC, and aC as text-objects.
+Plug 'michaeljsmith/vim-indent-object'    " ii/ai iI/aI
+Plug 'jeetsukumaran/vim-indentwise'       " move by indent [-  ]-   [+ ]+
 
 Plug 'machakann/vim-swap'
 Plug 'machakann/vim-textobj-delimited'
@@ -64,18 +67,21 @@ Plug 'voldikss/vim-floaterm'
 
 " Enhance {{{
 " ------
+Plug 'tpope/vim-repeat'          " makes some plugins repeatable
+Plug 'tpope/vim-abolish'         " I mostly use :S for smart replace
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
+
+Plug 'wellle/context.vim'
+Plug 'wellle/visual-split.vim'
+
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'josa42/vim-lightline-coc'
 
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-
-" Git
-Plug 'tpope/vim-fugitive'
-
 Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-obsession'
 Plug 'liuchengxu/vim-which-key'
 " }}}
 
@@ -93,3 +99,4 @@ function! appearance#theme()
   hi! link  TabLineSel Search
 endfunction
 
+let g:context_enabled = 1

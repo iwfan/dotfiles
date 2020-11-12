@@ -163,8 +163,7 @@ set matchpairs+=<:>,「:」,《:》,【:】,“:”,‘:’              " %默�
 " Enhanced command-line completion {{{
 " ----------------
 set wildmenu
-set wildmode=longest,full
-set wildoptions+=pum
+set wildoptions=pum
 set wildignorecase
 set pumblend=10                            " Let floatingwindow to be transparable
 
