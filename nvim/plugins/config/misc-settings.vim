@@ -47,8 +47,6 @@ let g:sandwich#recipes += [
 \    'action': ['delete'], 'input': ['(']},
 \ ]
 
-
-
 let g:undotree_WindowLayout = 4
 
 let g:tagalong_verbose      = 1

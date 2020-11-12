@@ -12,6 +12,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'machakann/vim-sandwich'
 Plug 'terryma/vim-expand-region'
 Plug 'chaoren/vim-wordmotion'
+Plug 'wellle/targets.vim'     " it's awesome!!!
 
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'             " al il

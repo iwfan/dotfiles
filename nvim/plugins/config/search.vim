@@ -5,10 +5,10 @@ let g:sneak#use_ic_scs = 1
 let g:sneak#s_next = 1
 nmap s <Plug>Sneak_s
 nmap S <Plug>Sneak_S
-xmap s <Plug>Sneak_s
-xmap S <Plug>Sneak_S
-omap s <Plug>Sneak_s
-omap S <Plug>Sneak_S
+" xmap s <Plug>Sneak_s
+" xmap S <Plug>Sneak_S
+" omap s <Plug>Sneak_s
+" omap S <Plug>Sneak_S
 nmap f <Plug>(easymotion-f)
 nmap F <Plug>(easymotion-F)
 xmap f <Plug>(easymotion-f)
