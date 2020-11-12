@@ -9,11 +9,16 @@ let g:xtabline_settings.last_open_first = 0
 let g:matchup_matchparen_offscreen  = {}
 
 " ====== vim-tcomment
-let g:tcomment_maps = 1
-let g:tcomment_mapleader1 = ''
-let g:tcomment_mapleader2 = ''
-let g:tcomment_mapleader_uncomment_anyway = ''
-let g:tcomment_mapleader_comment_anyway = ''
+let g:tcomment_maps = 0
+xmap <silent> gc  <Plug>TComment_gc
+nmap <silent> gc  <Plug>TComment_gc
+omap <silent> gc  <Plug>TComment_gc
+xmap <silent> gcb <Plug>TComment_gcb
+nmap <silent> gcb <Plug>TComment_gcb
+omap <silent> gcb <Plug>TComment_gcb
+nmap <silent> gcc <Plug>TComment_gcc
+xmap <silent> gcc <Plug>TComment_gcc
+omap <silent> gcc <Plug>TComment_gcc
 map <silent> <C-_> :TComment<cr>
 imap <silent> <C-_> <esc>:TComment<cr>a
 
