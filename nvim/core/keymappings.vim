@@ -13,6 +13,9 @@ nmap <silent> <C-s> :w<CR>
 " nmap <silent> <C-q> :q<CR>
 " nmap <silent> <leader>q :q<CR>
 
+map <C-Tab> :echo "C-t"<cr>
+map <C-S-Tab> :echo "C-S-t"<cr>
+
 nmap s <Nop>
 xmap s <Nop>
 
