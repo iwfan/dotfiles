@@ -5,14 +5,6 @@
 nmap <SPACE> <Nop>
 let mapleader = "\<SPACE>"
 
-" map CapsLock to Escape
-" inoremap jk <Esc>
-" inoremap kj <Esc>
-
-nmap <silent> <C-s> :w<CR>
-" nmap <silent> <C-q> :q<CR>
-" nmap <silent> <leader>q :q<CR>
-
 map <C-Tab> :echo "C-t"<cr>
 map <C-S-Tab> :echo "C-S-t"<cr>
 
@@ -65,8 +57,9 @@ inoremap <C-p>          <Up>
 " <C-y>: paste.
 cnoremap <C-y>          <C-r>*
 inoremap <C-y>          <C-r>*
-" <C-s>: S.
-inoremap <C-s>          <Esc>:w<CR>
+" <C-c>: S.
+nmap <expr> <C-s> empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"
+inoremap <expr> <c-s> empty(expand('%:t')) ? "\<Esc>:w\<Space>" : "<Esc>:w\<CR>"
 
 " Easy CAPS
 inoremap <c-u> <ESC>viwUi
