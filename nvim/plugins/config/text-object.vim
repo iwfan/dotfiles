@@ -17,7 +17,7 @@ call textobj#user#plugin('tag', {
 \   },
 \ })
 
-autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '.', ',', ';', '/', '\', ']', ')', '}')
+autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '.', ';', '/', '\', ']', ')', '}')
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)

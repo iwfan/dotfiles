@@ -17,7 +17,6 @@ Plug 'wellle/targets.vim'     " it's awesome!!!
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'             " al il
 Plug 'kana/vim-textobj-entire'           " ae ie
-Plug 'sgur/vim-textobj-parameter'        " i, a,
 Plug 'coderifous/textobj-word-column.vim' " adds ic, ac, iC, and aC as text-objects.
 Plug 'michaeljsmith/vim-indent-object'    " ii/ai iI/aI
 Plug 'jeetsukumaran/vim-indentwise'       " move by indent [-  ]-   [+ ]+

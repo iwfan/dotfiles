@@ -42,3 +42,12 @@ https://sourcegraph.com/github.com/hardcoreplayers/ThinkVim@master/-/blob/keybin
 https://sourcegraph.com/github.com/theniceboy/nvim/-/blob/README_cn.md
 https://sourcegraph.com/github.com/theniceboy/nvim/-/blob/README_cn.md#vim-subversive
 https://sourcegraph.com/github.com/voldikss/dotfiles
+
+# iTerm2 key codes configuration
+
+| key            | code       |
+| -------------- | ---------- |
+| Ctrl-Tab       | ^[[27;5;9~ |
+| Ctrl-Shift-Tab | ^[[27;6;9~ |
+| Enter          | ^[[13;2u   |
+| Shift-Enter    | ^[[13;5u   |
