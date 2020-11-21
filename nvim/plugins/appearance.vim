@@ -58,6 +58,8 @@ Plug 'pechorin/any-jump.vim'
 " show registers
 Plug 'junegunn/vim-peekaboo'
 
+Plug 'brooth/far.vim'
+
 " Tag Management
 "Plug 'ludovicchabant/vim-gutentags'
 Plug 'liuchengxu/vista.vim'
@@ -85,6 +87,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'liuchengxu/vim-which-key'
 " }}}
 
+
 function! appearance#theme()
   let g:oceanic_material_background             = 'ocean'
   let g:oceanic_material_transparent_background = 0
@@ -93,6 +96,7 @@ function! appearance#theme()
 
   colorscheme oceanic_material
   hi! link Visual Search
+  hi! link MatchParen PmenuSel
   hi! link Folded Normal
 
   hi! link  TabLine Normal
