@@ -24,7 +24,7 @@ Plug 'heavenshell/vim-jsdoc'
 Plug 'posva/vim-vue', { 'for': 'vue' }
 
 " === Json Plugins === "
-Plug 'neoclide/jsonc.vim'
+Plug 'neoclide/jsonc.vim' , { 'for': [ 'json','jsonc' ] }
 
 " === markdown Plugins === "
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
