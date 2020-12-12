@@ -17,9 +17,9 @@ Plug 'wellle/targets.vim'     " it's awesome!!!
 Plug 'kana/vim-textobj-user'
 " Plug 'kana/vim-textobj-line'             " al il
 Plug 'kana/vim-textobj-entire'           " ae ie
-Plug 'coderifous/textobj-word-column.vim' " adds ic, ac, iC, and aC as text-objects.
-Plug 'michaeljsmith/vim-indent-object'    " ii/ai iI/aI
-Plug 'jeetsukumaran/vim-indentwise'       " move by indent [-  ]-   [+ ]+
+" Plug 'coderifous/textobj-word-column.vim' " adds ic, ac, iC, and aC as text-objects.
+" Plug 'michaeljsmith/vim-indent-object'    " ii/ai iI/aI
+" Plug 'jeetsukumaran/vim-indentwise'       " move by indent [-  ]-   [+ ]+
 
 Plug 'machakann/vim-swap'
 Plug 'machakann/vim-textobj-delimited'
@@ -48,21 +48,21 @@ Plug 'tomtom/tcomment_vim'
 Plug 'mhinz/vim-startify'
 " status line and tabline
 Plug 'itchyny/lightline.vim'
-Plug 'mengelbrecht/lightline-bufferline'
+" Plug 'mengelbrecht/lightline-bufferline'
 Plug 'mg979/vim-xtabline'
 
-Plug 'Yggdroot/indentLine'
-Plug 'mbbill/undotree'
+" Plug 'Yggdroot/indentLine'
+" Plug 'mbbill/undotree'
 
-Plug 'pechorin/any-jump.vim'
+" Plug 'pechorin/any-jump.vim'
 " show registers
 Plug 'junegunn/vim-peekaboo'
 
-Plug 'brooth/far.vim'
+" Plug 'brooth/far.vim'
 
 " Tag Management
 "Plug 'ludovicchabant/vim-gutentags'
-Plug 'liuchengxu/vista.vim'
+" Plug 'liuchengxu/vista.vim'
 
 Plug 'voldikss/vim-floaterm'
 " }}}
@@ -74,8 +74,8 @@ Plug 'tpope/vim-abolish'         " I mostly use :S for smart replace
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 
-Plug 'wellle/context.vim'
-Plug 'wellle/visual-split.vim'
+" Plug 'wellle/context.vim'
+" Plug 'wellle/visual-split.vim'
 
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -83,7 +83,7 @@ Plug 'josa42/vim-lightline-coc'
 
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'editorconfig/editorconfig-vim'
+" Plug 'editorconfig/editorconfig-vim'
 Plug 'liuchengxu/vim-which-key'
 " }}}
 
