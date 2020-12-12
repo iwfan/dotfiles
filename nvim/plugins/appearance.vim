@@ -87,7 +87,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'liuchengxu/vim-which-key'
 " }}}
 
-
 function! appearance#theme()
   let g:oceanic_material_background             = 'ocean'
   let g:oceanic_material_transparent_background = 0
@@ -102,5 +101,3 @@ function! appearance#theme()
   hi! link  TabLine Normal
   hi! link  TabLineSel Search
 endfunction
-
-let g:context_enabled = 1

@@ -87,6 +87,7 @@ let g:sandwich#recipes += [
 " }}}
 
 " ====== context.vim {{{
+let g:context_enabled = 1
 let g:context_filetype_blacklist = [ 'coc-explorer' ]
 " }}}
 
