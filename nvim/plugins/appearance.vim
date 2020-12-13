@@ -75,7 +75,7 @@ Plug 'tpope/vim-abolish'         " I mostly use :S for smart replace
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 
-Plug 'wellle/context.vim'
+" Plug 'wellle/context.vim'
 Plug 'wellle/visual-split.vim'
 
 " Intellisense Engine

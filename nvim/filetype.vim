@@ -7,6 +7,8 @@ augroup filetypedetect
   " set formatoptions+=j                      " Remove comment leader when joining lines
   autocmd FileType * setlocal formatoptions-=cro formatoptions+=j1
 
+  autocmd FileType *.css,*.scss,*.less setlocal iskeyword+=-
+
   autocmd BufNewFile,BufRead *.md setlocal spell
 
   " Git
