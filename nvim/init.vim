@@ -27,6 +27,7 @@ call helpers#source_file(VIM_SCRIPT_PATH . '/core/keymappings.vim')
 call helpers#source_file(VIM_SCRIPT_PATH . '/core/plugins.vim')
 call helpers#source_file(VIM_SCRIPT_PATH . '/core/functions.vim')
 call helpers#source_file(VIM_SCRIPT_PATH . '/core/plugin_keymappings.vim')
+call helpers#source_file(VIM_SCRIPT_PATH . '/core/code_run.vim')
 
 " setup themes
 call appearance#theme()
