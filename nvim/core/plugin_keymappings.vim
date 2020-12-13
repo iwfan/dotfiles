@@ -2,6 +2,9 @@
 " === KeyMappings Setup ===
 " =========================
 
+map <silent> <C-Tab> :XTabNextBuffer<cr>
+map <silent> <C-S-Tab> :XTabPrevBuffer<cr>
+
 nnoremap <silent> <Leader>0 :FloatermToggle<CR>
 tnoremap <silent> <Leader>0 <C-\><C-n>:FloatermToggle<CR>
 tnoremap <silent> <esc><esc> <C-\><C-n>:FloatermKill<CR>

@@ -33,40 +33,8 @@ set showtabline=2                       " Always show tabs
 set ruler                               " Show the cursor position all the time
 set display+=lastline
 
-if !exists('#lightline')
-  let g:currentmode={
-        \ 'n'  : 'NORMAL',
-        \ 'v'  : 'VISUAL',
-        \ 'V'  : 'V·Line',
-        \ '' : 'V·Block',
-        \ 'i'  : 'INSERT',
-        \ 'R'  : 'R',
-        \ 'Rv' : 'V·Replace',
-        \ 'c'  : 'Command',
-        \}
-
-  set statusline=
-  set statusline+=%#PmenuSel#
-  set statusline+=\ %{toupper(g:currentmode[mode()])}
-  set statusline+=\ %{&modified?'[+]':''}
-  set statusline+=\ %{ObsessionStatus()}
-  set statusline+=%#LineNr#
-  set statusline+=\ %f
-  set statusline+=%m
-  set statusline+=%=
-  set statusline+=\ %#warningmsg#
-  set statusline+=\ %{coc#status()}%{get(b:,'coc_current_function','')}
-  set statusline+=\ %#CursorColumn#
-  set statusline+=\ %{&filetype!=#''?&filetype.'\ ':'none\ '}
-  set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-  set statusline+=\ [%{&fileformat}\]
-  set statusline+=\ %p%%
-  set statusline+=\ %l:%c
-  set statusline+=\
-endif
-
 set list
-set listchars=tab:▓░,trail:▫,extends:→,precedes:←,nbsp:␣
+set listchars=tab:\↹\ ,trail:▫,extends:→,precedes:←,nbsp:␣
 set fillchars=fold:\-,eob:\                     " do not show ~ before empty lines at the end of a buffer
 set scrolloff=5
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time

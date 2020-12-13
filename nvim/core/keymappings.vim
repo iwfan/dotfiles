@@ -5,9 +5,6 @@
 nmap <SPACE> <Nop>
 let mapleader = "\<SPACE>"
 
-map <C-Tab> :echo "C-t"<cr>
-map <C-S-Tab> :echo "C-S-t"<cr>
-
 nmap s <Nop>
 xmap s <Nop>
 
