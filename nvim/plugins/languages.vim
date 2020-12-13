@@ -1,5 +1,5 @@
 " === html Plugins === "
-Plug 'othree/html5.vim', { 'for': 'html' }
+Plug 'othree/html5.vim'
 Plug 'alvan/vim-closetag'
 Plug 'AndrewRadev/tagalong.vim'
 

@@ -95,6 +95,8 @@
   "coc.source.buffer.firstMatch": false,
   "coc.source.file.ignoreHidden": false,
 
+  "cSpell.enabled": false,
+
   // imselect
   "imselect.defaultInput": "com.apple.keylayout.ABC",
   "imselect.enableStatusItem": true,
@@ -105,7 +107,6 @@
 
   //diagnostic
   "diagnostic.enable": true,
-  "diagnostic.signOffset": 9999999,
   "diagnostic.highlightOffset": 9999999,
   "diagnostic.errorSign": "\uf05c",
   "diagnostic.warningSign": "\uf071",
@@ -137,13 +138,7 @@
   "javascript.suggest.names": true,
   "javascript.suggestionActions.enabled": true,
 
-  "eslint.filetypes": [
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "javascriptreact",
-    "typescript.tsx"
-  ],
+  "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
   "eslint.autoFix": true,
   "eslint.autoFixOnSave": true,
 
@@ -246,20 +241,6 @@
       "initializationOptions": {},
       "ignoredRootPaths": ["~"],
       "settings": {}
-    },
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "filetypes": ["go"],
-      "initializationOptions": {
-        "gocodeCompletionEnabled": true,
-        "diagnosticsEnabled": true,
-        "lintTool": "golint"
-      }
-    },
-    "lua": {
-      "command": "lua-lsp",
-      "filetypes": ["lua"]
     }
   }
 }
