@@ -51,14 +51,15 @@ Plug 'itchyny/lightline.vim'
 " Plug 'mengelbrecht/lightline-bufferline'
 Plug 'mg979/vim-xtabline'
 
-" Plug 'Yggdroot/indentLine'
-" Plug 'mbbill/undotree'
+Plug 'Yggdroot/indentLine'
+Plug 'mbbill/undotree'
 
-" Plug 'pechorin/any-jump.vim'
+Plug 'pechorin/any-jump.vim'
 " show registers
 Plug 'junegunn/vim-peekaboo'
 
-" Plug 'brooth/far.vim'
+" Find & Replace
+Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 
 " Tag Management
 "Plug 'ludovicchabant/vim-gutentags'
@@ -74,8 +75,8 @@ Plug 'tpope/vim-abolish'         " I mostly use :S for smart replace
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 
-" Plug 'wellle/context.vim'
-" Plug 'wellle/visual-split.vim'
+Plug 'wellle/context.vim'
+Plug 'wellle/visual-split.vim'
 
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -83,7 +84,7 @@ Plug 'josa42/vim-lightline-coc'
 
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-" Plug 'editorconfig/editorconfig-vim'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'liuchengxu/vim-which-key'
 " }}}
 

@@ -32,7 +32,7 @@ let g:xtabline_settings.last_open_first = 0
 " }}}
 
 " ====== indent-line {{{
-let g:indentLine_enabled         = 0
+let g:indentLine_enabled         = 1
 let g:indentLine_char            = '┆'
 let g:indentLine_fileTypeExclude = ['defx', 'denite', 'startify', 'tagbar', 'vista_kind', 'vista', 'coc-explorer', 'dashboard']
 " let g:indentLine_setColors       = 0
