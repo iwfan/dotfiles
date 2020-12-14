@@ -116,10 +116,6 @@ call textobj#user#plugin('tag', {
       \ })
 " }}}
 
-" ====== after-object {{{
-autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ', '.', ';', '/', '\', ']', ')', '}')
-" }}}
-
 " ====== easy-align {{{
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)

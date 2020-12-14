@@ -23,7 +23,6 @@ Plug 'kana/vim-textobj-entire'           " ae ie
 
 Plug 'machakann/vim-swap'
 Plug 'machakann/vim-textobj-delimited'
-Plug 'junegunn/vim-after-object'
 Plug 'junegunn/vim-easy-align'
 
 Plug 'godlygeek/tabular'
