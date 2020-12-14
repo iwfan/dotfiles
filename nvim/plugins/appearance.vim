@@ -72,11 +72,15 @@ Plug 'voldikss/vim-floaterm'
 " ------
 Plug 'tpope/vim-repeat'          " makes some plugins repeatable
 Plug 'tpope/vim-abolish'         " I mostly use :S for smart replace
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'junegunn/gv.vim'
+Plug 'rhysd/git-messenger.vim'
 
 " Plug 'wellle/context.vim'
-Plug 'wellle/visual-split.vim'
+" Plug 'wellle/visual-split.vim'
 
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
