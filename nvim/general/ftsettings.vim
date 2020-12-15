@@ -7,7 +7,10 @@ autocmd FileType * setlocal formatoptions-=cro formatoptions+=j1
 
 autocmd FileType *.css,*.scss,*.less setlocal iskeyword+=-
 
-autocmd BufNewFile,BufRead *.md setlocal spell
+" Turn spellcheck on for markdown files
+augroup auto_spellcheck
+  autocmd BufNewFile,BufRead *.md setlocal spell
+augroup END
 
 
 augroup user_persistent_undo

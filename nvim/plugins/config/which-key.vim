@@ -1,15 +1,19 @@
-
+" Which Key Settings {{{
+" ------
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
-
 let g:which_key_map =  {}
+let g:which_key_use_floating_win = 0
+let g:which_key_max_size = 0
+let g:which_key_display_names = {'<CR>': '↵', '<TAB>': '⇆'}
 
-" `name` 是一个特殊字段，如果 dict 里面的元素也是一个 dict，那么表明一个 group，比如 `+file`, 就会高亮和显示 `+file` 。默认是 `+prefix`.
+"}}}
 
-" =======================================================
-" 基于已经存在的快捷键映射，直接使用一个字符串说明介绍信息即可
-" =======================================================
-" You can pass a descriptive text to an existing mapping.
+" Basic Mapping {{{
+" ------
+
+"}}}
+
 
 let g:which_key_map.f = { 'name' : '+file' }
 
@@ -62,5 +66,6 @@ let g:which_key_map.l = {
       \ }
 
 call which_key#register('<Space>', "g:which_key_map")
-nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
-vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
+" Map leader to which_key
+nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
