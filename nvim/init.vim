@@ -25,6 +25,7 @@ call helpers#source_file(VIM_SCRIPT_PATH . '/before/disable-built-in-plugin.vim'
 call helpers#source_file(VIM_SCRIPT_PATH . '/general/basic.vim')
 call helpers#source_file(VIM_SCRIPT_PATH . '/general/keymappings.vim')
 call helpers#source_file(VIM_SCRIPT_PATH . '/general/plugins.vim')
+call helpers#source_file(VIM_SCRIPT_PATH . '/general/ftsettings.vim')
 call helpers#source_file(VIM_SCRIPT_PATH . '/general/functions.vim')
 call helpers#source_file(VIM_SCRIPT_PATH . '/general/code_run.vim')
 
