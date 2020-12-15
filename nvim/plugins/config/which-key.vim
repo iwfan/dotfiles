@@ -6,37 +6,43 @@ let g:which_key_map =  {}
 let g:which_key_use_floating_win = 0
 let g:which_key_max_size = 0
 let g:which_key_display_names = {'<CR>': '↵', '<TAB>': '⇆'}
+" Hide status line
+autocmd! FileType which_key
+autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+" }}}
 
-"}}}
-
-" Basic Mapping {{{
+" Tools {{{
 " ------
 
-"}}}
+let g:which_key_map['0'] = [   ':FloatermToggle',                             'Terminal' ]
+tnoremap <silent> <Leader>0 <C-\><C-n>:FloatermToggle<CR>
+tnoremap <silent> <esc><esc> <C-\><C-n>:FloatermKill<CR>
+
+let g:which_key_map['1'] = [ ':CocCommand explorer --toggle --sources=file+', 'File Explorer' ]
+let g:which_key_map['2'] = [ ':Vista coc',                                    'Vista Tags' ]
+
+let g:which_key_map['8'] = [ ':UndotreeToggle',                               'UndoTree' ]
+let g:which_key_map['9'] = 'Git [lazygit]'
+nnoremap <silent> <Leader>9 <esc>:tabe<CR>:-tabmove<CR>:term lazygit<CR>
+" }}}
 
 
-let g:which_key_map.f = { 'name' : '+file' }
+" Search And Find And Replace {{{
+" ------
 
-nnoremap <silent> <leader>fs :update<CR>
-let g:which_key_map.f.s = 'save-file'
+let g:which_key_map['?'] = 'search word'
+nnoremap <leader>? :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
-nnoremap <silent> <leader>fd :e $MYVIMRC<CR>
-let g:which_key_map.f.d = 'open-vimrc'
+nnoremap <silent> <space>ff  :<C-u>CocList --number-select --auto-preview files<cr>
+" nnoremap <silent> <space>fw  :<C-u>CocList --number-select --auto-preview --ignore-case words<cr>
+nnoremap <silent> <space>fe  :<C-u>CocList --number-select --auto-preview mru<cr>
+nnoremap <silent> <space>fb  :<C-u>CocList --number-select buffers<cr>
+nnoremap <silent> <space>fw  :exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
+nnoremap <silent> <space>fq  :<C-u>CocList --number-select --auto-preview quickfix<cr>
+nnoremap <silent> <space>p  :<C-u>CocList --number-select --auto-preview yank<cr>
 
-nnoremap <silent> <leader>oq  :copen<CR>
-nnoremap <silent> <leader>ol  :lopen<CR>
-let g:which_key_map.o = {
-      \ 'name' : '+open',
-      \ 'q' : 'open-quickfix'    ,
-      \ 'l' : 'open-locationlist',
-      \ }
-
-" =======================================================
-" 不存在相关的快捷键映射，需要用一个 list：
-" 第一个元素表明执行的操作，第二个是该操作的介绍
-" =======================================================
-" Provide commands(ex-command, <Plug>/<C-W>/<C-d> mapping, etc.) and descriptions for existing mappings
-let g:which_key_map.b = {
+let g:which_key_map.f = {
       \ 'name' : '+buffer' ,
       \ '1' : ['b1'        , 'buffer 1']        ,
       \ '2' : ['b2'        , 'buffer 2']        ,
@@ -48,22 +54,16 @@ let g:which_key_map.b = {
       \ 'p' : ['bprevious' , 'previous-buffer'] ,
       \ '?' : ['Buffers'   , 'fzf-buffer']      ,
       \ }
+" }}}
 
-let g:which_key_map.l = {
-      \ 'name' : '+lsp'                                            ,
-      \ 'f' : ['LanguageClient#textDocument_formatting()'     , 'formatting']       ,
-      \ 'h' : ['LanguageClient#textDocument_hover()'          , 'hover']            ,
-      \ 'r' : ['LanguageClient#textDocument_references()'     , 'references']       ,
-      \ 'R' : ['LanguageClient#textDocument_rename()'         , 'rename']           ,
-      \ 's' : ['LanguageClient#textDocument_documentSymbol()' , 'document-symbol']  ,
-      \ 'S' : ['LanguageClient#workspace_symbol()'            , 'workspace-symbol'] ,
-      \ 'g' : {
-        \ 'name': '+goto',
-        \ 'd' : ['LanguageClient#textDocument_definition()'     , 'definition']       ,
-        \ 't' : ['LanguageClient#textDocument_typeDefinition()' , 'type-definition']  ,
-        \ 'i' : ['LanguageClient#textDocument_implementation()'  , 'implementation']  ,
-        \ },
+nnoremap <silent> <leader>oq  :copen<CR>
+nnoremap <silent> <leader>ol  :lopen<CR>
+let g:which_key_map.o = {
+      \ 'name' : '+open',
+      \ 'q' : 'open-quickfix'    ,
+      \ 'l' : 'open-locationlist',
       \ }
+
 
 call which_key#register('<Space>', "g:which_key_map")
 " Map leader to which_key
