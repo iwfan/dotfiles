@@ -79,9 +79,6 @@ Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
 Plug 'rhysd/git-messenger.vim'
 
-" Plug 'wellle/context.vim'
-" Plug 'wellle/visual-split.vim'
-
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'josa42/vim-lightline-coc'
