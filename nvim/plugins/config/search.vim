@@ -5,22 +5,21 @@ let g:sneak#use_ic_scs = 1
 let g:sneak#s_next = 1
 nmap s <Plug>Sneak_s
 nmap S <Plug>Sneak_S
-" xmap s <Plug>Sneak_s
-" xmap S <Plug>Sneak_S
-" omap s <Plug>Sneak_s
-" omap S <Plug>Sneak_S
-nmap f <Plug>(easymotion-f)
-nmap F <Plug>(easymotion-F)
-xmap f <Plug>(easymotion-f)
-xmap f <Plug>(easymotion-f)
-omap F <Plug>(easymotion-F)
-omap F <Plug>(easymotion-F)
-nmap t <Plug>(easymotion-t)
-nmap T <Plug>(easymotion-T)
-xmap t <Plug>(easymotion-t)
-xmap T <Plug>(easymotion-T)
-omap t <Plug>(easymotion-t)
-omap T <Plug>(easymotion-T)
+" nmap f <Plug>(easymotion-f)
+" nmap F <Plug>(easymotion-F)
+" xmap f <Plug>(easymotion-f)
+" xmap f <Plug>(easymotion-f)
+" omap F <Plug>(easymotion-F)
+" omap F <Plug>(easymotion-F)
+" nmap t <Plug>(easymotion-t)
+" nmap T <Plug>(easymotion-T)
+" xmap t <Plug>(easymotion-t)
+" xmap T <Plug>(easymotion-T)
+" omap t <Plug>(easymotion-t)
+" omap T <Plug>(easymotion-T)
+
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+let g:qs_buftype_blacklist = ['terminal', 'nofile']
 
 let g:incsearch#auto_nohlsearch = 1
 let g:EasyMotion_smartcase = 1

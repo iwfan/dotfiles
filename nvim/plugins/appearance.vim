@@ -30,6 +30,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 " searching
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'justinmk/vim-sneak'
+Plug 'unblevable/quick-scope'
 Plug 'haya14busa/incsearch.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch-easymotion.vim'
@@ -68,6 +69,7 @@ Plug 'voldikss/vim-floaterm'
 
 " Enhance {{{
 " ------
+Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-repeat'          " makes some plugins repeatable
 Plug 'tpope/vim-abolish'         " I mostly use :S for smart replace
 Plug 'tpope/vim-obsession'
@@ -103,4 +105,10 @@ function! appearance#theme()
 
   hi! link  TabLine Normal
   hi! link  TabLineSel Search
+
+  augroup qs_colors
+    autocmd!
+    autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+    autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+  augroup END
 endfunction
