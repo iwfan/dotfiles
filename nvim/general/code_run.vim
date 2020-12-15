@@ -1,6 +1,5 @@
-"这里嘛。。是用来一键编译代码的
-noremap <leader>r :call CompileRunGcc()<CR>
-func! CompileRunGcc()
+noremap <leader>r :call RunCompilerByFileType()<CR>
+func! RunCompilerByFileType()
   exec "w"
   if &filetype == 'c'
     exec "!g++ % -o %<"

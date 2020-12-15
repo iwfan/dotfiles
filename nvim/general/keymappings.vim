@@ -1,7 +1,10 @@
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                   Mappings                                   "
+"                               Key Mappings                                   "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Basic Mapping {{{
+" ------
 nmap <SPACE> <Nop>
 let mapleader = "\<SPACE>"
 
@@ -121,4 +124,25 @@ map <F1> :edit $HOME/.config/nvim/init.vim<CR>
 map <F2> :source $HOME/.config/nvim/init.vim<CR>
 map <F3> :PlugInstall<CR>
 map <F4> :PlugUpdate<CR>
+" }}}
 
+" Tab Switcher {{{
+" ------
+
+map <silent> <C-Tab> :XTabNextBuffer<cr>
+map <silent> <C-S-Tab> :XTabPrevBuffer<cr>
+
+" }}}
+
+" Tools {{{
+" ------
+
+nnoremap <silent> <Leader>0 :FloatermToggle<CR>
+tnoremap <silent> <Leader>0 <C-\><C-n>:FloatermToggle<CR>
+tnoremap <silent> <esc><esc> <C-\><C-n>:FloatermKill<CR>
+
+nmap <silent> <Leader>1 <esc>:CocCommand explorer --toggle<cr>
+nmap <silent> <Leader>2 <esc>:Vista coc<cr>
+nmap <silent> <Leader>8 <esc>:UndotreeToggle<cr>
+nmap <silent> <Leader>9 <esc>:tabe<CR>:-tabmove<CR>:term lazygit<CR>
+" }}}
