@@ -27,34 +27,25 @@ let g:which_key_map['9'] = 'Git [lazygit]'
 nnoremap <silent> <Leader>9 <esc>:tabe<CR>:-tabmove<CR>:term lazygit<CR>
 " }}}
 
-
 " Search And Find And Replace {{{
 " ------
 
 let g:which_key_map['?'] = 'search word'
 nnoremap <leader>? :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
-nnoremap <silent> <space>ff  :<C-u>CocList --number-select --auto-preview files<cr>
-" nnoremap <silent> <space>fw  :<C-u>CocList --number-select --auto-preview --ignore-case words<cr>
-nnoremap <silent> <space>fe  :<C-u>CocList --number-select --auto-preview mru<cr>
-nnoremap <silent> <space>fb  :<C-u>CocList --number-select buffers<cr>
-nnoremap <silent> <space>fw  :exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
-nnoremap <silent> <space>fq  :<C-u>CocList --number-select --auto-preview quickfix<cr>
-nnoremap <silent> <space>p  :<C-u>CocList --number-select --auto-preview yank<cr>
-
 let g:which_key_map.f = {
-      \ 'name' : '+buffer' ,
-      \ '1' : ['b1'        , 'buffer 1']        ,
-      \ '2' : ['b2'        , 'buffer 2']        ,
-      \ 'd' : ['bd'        , 'delete-buffer']   ,
-      \ 'f' : ['bfirst'    , 'first-buffer']    ,
-      \ 'h' : ['Startify'  , 'home-buffer']     ,
-      \ 'l' : ['blast'     , 'last-buffer']     ,
-      \ 'n' : ['bnext'     , 'next-buffer']     ,
-      \ 'p' : ['bprevious' , 'previous-buffer'] ,
-      \ '?' : ['Buffers'   , 'fzf-buffer']      ,
+      \ 'name' : '+find & replace',
+      \ 'e' : [":CocList --number-select --auto-preview mru",                    'MRU'],
+      \ 'b' : [":CocList --number-select  buffers",                              'Buffers'],
+      \ 'f' : [":CocList --number-select --auto-preview files",                  'Files'],
+      \ 'w' : [":CocList -I --number-select --auto-preview --ignore-case words", 'Words'],
+      \ 'q' : [":CocList --number-select --auto-preview  quickfix",              'Quickfix'],
+      \ '?' : [":CocSearch ''.expand('<cword>').'' ",                            'words'],
       \ }
+
 " }}}
+
+let g:which_key_map.p = [":CocList --number-select --auto-preview yank",         'Yank History']
 
 nnoremap <silent> <leader>oq  :copen<CR>
 nnoremap <silent> <leader>ol  :lopen<CR>
