@@ -102,9 +102,6 @@
   "imselect.enableStatusItem": true,
   "imselect.enableFloating": false,
 
-  // pairs
-  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
-
   //diagnostic
   "diagnostic.enable": true,
   "diagnostic.highlightOffset": 9999999,
@@ -132,13 +129,26 @@
   "git.topRemovedSign.text": "▔",
   "git.changeRemovedSign.text": "▋",
 
+  "codeLens.enable": true,
+
   "html.format.enable": true,
   "javascript.referencesCodeLens.enable": true,
   "javascript.showUnused": true,
   "javascript.suggest.names": true,
   "javascript.suggestionActions.enabled": true,
+  // emmet
+  "emmet.includeLanguages": {
+    "vue-html": "html",
+    "javascript": "javascriptreact"
+  },
 
-  "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
+  "eslint.filetypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "javascriptreact",
+    "typescript.tsx"
+  ],
   "eslint.autoFix": true,
   "eslint.autoFixOnSave": true,
 

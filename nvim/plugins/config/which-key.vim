@@ -38,10 +38,12 @@ let g:which_key_map.f = {
       \ 'e' : [":CocList --number-select --auto-preview mru",                    'MRU'],
       \ 'b' : [":CocList --number-select  buffers",                              'Buffers'],
       \ 'f' : [":CocList --number-select --auto-preview files",                  'Files'],
-      \ 'w' : [":CocList -I --number-select --auto-preview --ignore-case words", 'Words'],
+      \ 'w' : 'Words',
       \ 'q' : [":CocList --number-select --auto-preview  quickfix",              'Quickfix'],
       \ '?' : [":CocSearch ''.expand('<cword>').'' ",                            'words'],
       \ }
+
+nnoremap <silent> <leader>fw  :exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
 
 " }}}
 
