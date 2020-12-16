@@ -86,6 +86,8 @@
   "bookmark.sign": "\uf461",
   "bookmark.signHl": "Tag",
 
+  "signature.target": "float",
+
   // list
   "list.previewHighlightGroup": "Statement",
   "list.source.files.args": ["--hidden", "--files"],
