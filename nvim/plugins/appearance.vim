@@ -61,11 +61,6 @@ Plug 'junegunn/vim-peekaboo'
 " Find & Replace
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'], 'do': ':UpdateRemotePlugins' }
 
- " FZF
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins' }
-Plug 'junegunn/fzf.vim'
-
 " Tag Management
 Plug 'liuchengxu/vista.vim'
 

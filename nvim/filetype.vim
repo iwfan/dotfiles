@@ -13,4 +13,7 @@ augroup filetypedetect
     \ if getline(1) =~ '^\x\{40\}\>\|^ref: ' |
     \   setf git |
     \ endif
+
+" set filetypes as typescriptreact
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 augroup END
