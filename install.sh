@@ -40,6 +40,7 @@ packages=(
   highlight
   neovim
   lazygit
+  ranger
 #  lazynpm
 )
 
@@ -68,6 +69,8 @@ ln -fs ~/dotfiles/_ideavimrc ~/.ideavimrc
 
 # neovim
 ln -fs ~/dotfiles/nvim ~/.config/nvim
+
+ln -fs ~/dotfiles/ranger ~/.config/ranger
 
 # hammerspoon
 ln -fs ~/dotfiles/hammerspoon ~/.hammerspoon

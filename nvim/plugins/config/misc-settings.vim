@@ -164,8 +164,6 @@ let g:vim_jsx_pretty_highlight_close_tag  = 1
 " }}}
 
 " ====== polyglot {{{
-let g:polyglot_disabled = ['csv', 'coc-explorer', 'vista']
-
 let g:python_highlight_all=1
 
 let g:vim_jsx_pretty_colorful_config = 1
