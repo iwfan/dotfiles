@@ -21,12 +21,7 @@ let VIM_SCRIPT_PATH = expand('<sfile>:p:h')
 
 call helpers#ensure_machine_environment(VIM_SCRIPT_PATH)
 call helpers#source_dir(VIM_SCRIPT_PATH . '/before')
-call helpers#source_file(VIM_SCRIPT_PATH . '/general/basic.vim')
-call helpers#source_file(VIM_SCRIPT_PATH . '/general/keymappings.vim')
-call helpers#source_file(VIM_SCRIPT_PATH . '/general/plugins.vim')
-call helpers#source_file(VIM_SCRIPT_PATH . '/general/ftsettings.vim')
-call helpers#source_file(VIM_SCRIPT_PATH . '/general/functions.vim')
-call helpers#source_file(VIM_SCRIPT_PATH . '/general/code_run.vim')
+call helpers#source_dir(VIM_SCRIPT_PATH . '/general')
 
 " setup themes
 call appearance#theme()
