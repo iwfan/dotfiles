@@ -37,6 +37,9 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'andymass/vim-matchup'
 Plug 'markonm/traces.vim'
 
+" Auto pairs for '(' '[' '{'
+Plug 'jiangmiao/auto-pairs'
+
 "Comment
 Plug 'tomtom/tcomment_vim'
 " }}}
@@ -58,11 +61,15 @@ Plug 'pechorin/any-jump.vim'
 Plug 'junegunn/vim-peekaboo'
 
 " Find & Replace
-Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
+Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'], 'do': ':UpdateRemotePlugins' }
+
+ " FZF
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins' }
+Plug 'junegunn/fzf.vim'
 
 " Tag Management
-"Plug 'ludovicchabant/vim-gutentags'
-" Plug 'liuchengxu/vista.vim'
+Plug 'liuchengxu/vista.vim'
 
 Plug 'voldikss/vim-floaterm'
 " }}}
