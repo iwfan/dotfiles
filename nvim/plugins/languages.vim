@@ -27,6 +27,7 @@ Plug 'posva/vim-vue', { 'for': 'vue' }
 Plug 'neoclide/jsonc.vim' , { 'for': [ 'json','jsonc' ] }
 
 " === markdown Plugins === "
+Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 
 " === code format === ""

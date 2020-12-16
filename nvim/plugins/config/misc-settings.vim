@@ -163,6 +163,10 @@ let g:tagalong_additional_filetypes = ['wxml']
 let g:vim_jsx_pretty_highlight_close_tag  = 1
 " }}}
 
+" ====== FzF {{{
+
+" }}}
+
 " ====== Others {{{
 autocmd User Node
   \ if &filetype == "javascript" |

@@ -20,12 +20,10 @@ Plug 'kana/vim-textobj-entire'           " ae ie
 " Plug 'michaeljsmith/vim-indent-object'    " ii/ai iI/aI
 " Plug 'jeetsukumaran/vim-indentwise'       " move by indent [-  ]-   [+ ]+
 
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'machakann/vim-swap'
 Plug 'machakann/vim-textobj-delimited'
 Plug 'junegunn/vim-easy-align'
-
-Plug 'godlygeek/tabular'
-Plug 'AndrewRadev/splitjoin.vim'
 
 " searching
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
