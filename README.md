@@ -12,6 +12,7 @@ https://github.com/glepnir/oceanic-material
 
 # references vim configuration
 
+- https://github.com/mutewinter/dot_vim
 - https://github.com/ChristianChiarulli/nvim
 - https://github.com/iamcco/dotfiles
 - https://github.com/KyleJKC/nvim
