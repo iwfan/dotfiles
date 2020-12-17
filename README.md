@@ -1,7 +1,5 @@
 # dotfiles
 
-my dotfiles
-
 # fonts
 
 - Fantasque Sans Mono 110/120

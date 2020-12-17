@@ -41,7 +41,6 @@ Plug 'junegunn/vim-easy-align'
 " searching
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'justinmk/vim-sneak'
-Plug 'unblevable/quick-scope'
 Plug 'haya14busa/incsearch.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch-easymotion.vim'
