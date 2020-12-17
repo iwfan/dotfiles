@@ -1,3 +1,16 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                 PLUGINS                                    "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" auto-install vim-plug
+if (PLATFORM == 'unix') && empty(glob(VIM_SCRIPT_PATH . '/autoload/plug.vim'))
+ silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+ autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin(stdpath('data') . '/plugged')
+
 " Looks Good {{{
 " ------
 " theme
@@ -89,24 +102,43 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'liuchengxu/vim-which-key'
 " }}}
 
-function! appearance#theme()
+" Language {{{
+" ------
 
-  augroup qs_colors
-    autocmd!
-    autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-    autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
-  augroup END
+Plug 'sheerun/vim-polyglot'
 
-  let g:oceanic_material_background             = 'ocean'
-  let g:oceanic_material_transparent_background = 0
-  let g:oceanic_material_allow_bold             = 1
-  let g:oceanic_material_allow_italic           = 1
+" === html Plugins === "
+Plug 'alvan/vim-closetag'
+Plug 'AndrewRadev/tagalong.vim'
 
-  colorscheme oceanic_material
-  hi! link Visual Search
-  hi! link MatchParen PmenuSel
-  hi! link Folded Normal
+" === css Plugins === "
+Plug 'hail2u/vim-css3-syntax', { 'for': [ 'css', 'javascript','javascriptreact' ] }
 
-  hi! link  TabLine Normal
-  hi! link  TabLineSel Search
-endfunction
+" === Javascript Plugins === "
+Plug 'moll/vim-node'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
+" Generate JSDoc commands based on function signature
+Plug 'heavenshell/vim-jsdoc'
+
+" === markdown Plugins === "
+Plug 'godlygeek/tabular'
+
+" === code format === ""
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'javascriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+" }}}
+
+call plug#end()
+
+" Automatically install missing plugins on startup
+if (PLATFORM == 'unix')
+  autocmd VimEnter *
+    \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+    \|   PlugInstall --sync | q
+    \| endif
+endif
+
+call helpers#source_dir(VIM_SCRIPT_PATH . '/plugins/config')
