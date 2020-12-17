@@ -128,8 +128,6 @@ map <F4> :PlugUpdate<CR>
 
 " Tab Switcher {{{
 " ------
-
-map <silent> <C-Tab> :XTabNextBuffer<cr>
-map <silent> <C-S-Tab> :XTabPrevBuffer<cr>
-
+nnoremap <silent> <C-Tab> :BufferPrevious<CR>
+nnoremap <silent> <C-S-Tab> :BufferNext<CR>
 " }}}

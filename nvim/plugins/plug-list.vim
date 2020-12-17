@@ -60,8 +60,9 @@ Plug 'tomtom/tcomment_vim'
 Plug 'mhinz/vim-startify'
 " status line and tabline
 Plug 'itchyny/lightline.vim'
-" Plug 'mengelbrecht/lightline-bufferline'
-Plug 'mg979/vim-xtabline'
+
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
 
 Plug 'Yggdroot/indentLine'
 Plug 'mbbill/undotree'

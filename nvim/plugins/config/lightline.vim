@@ -35,23 +35,17 @@ let g:lightline.inactive = {
     \ 'left': [ [ 'filename' ] ],
     \ 'right': [ ] }
 
-let g:lightline.tabline = {
-    \ 'left': [ [ 'buffers' ] ],
-    \ 'right': [ ] }
-
 let g:lightline.component = {
     \ 'lineinfo': ' %3l:%-2v%<'
     \ }
 
 let g:lightline.component_expand = {
-    \ 'buffers': 'lightline#bufferline#buffers',
     \ 'session_status_tracking': 'LightlineSessionStatusTacking',
     \ 'session_status_paused': 'LightlineSessionStatusPaused',
     \ 'functions': "%{get(b:,'coc_current_function','')}"
     \ }
 
 let g:lightline.component_type = {
-    \ 'buffers': 'tabsel',
     \ 'session_status_tracking': 'warning',
     \ 'session_status_paused': 'error'
     \ }
@@ -98,5 +92,3 @@ let g:lightline#coc#indicator_errors   = "\uf05c "
 let g:lightline#coc#indicator_ok       = "\uf058 "
 
 call lightline#coc#register()
-
-autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
