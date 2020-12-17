@@ -6,6 +6,9 @@ let g:sneak#s_next = 1
 nmap s <Plug>Sneak_s
 nmap S <Plug>Sneak_S
 
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_prompt = 'Jump to → '
+
 nmap f <Plug>(easymotion-f)
 nmap F <Plug>(easymotion-F)
 xmap f <Plug>(easymotion-f)
@@ -20,7 +23,6 @@ omap t <Plug>(easymotion-t)
 omap T <Plug>(easymotion-T)
 
 let g:incsearch#auto_nohlsearch = 1
-let g:EasyMotion_smartcase = 1
 
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
