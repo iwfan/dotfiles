@@ -157,7 +157,7 @@
   "prettier.eslintIntegration": true,
   "prettier.tslintIntegration": true,
   "prettier.stylelintIntegration": true,
-  "prettier.statusItemText": "Ⓟ",
+  "prettier.statusItemText": "🥳",
   "prettier.printWidth": 100,
   "prettier.disableLanguages": [],
   "prettier.formatterPriority": 1,
