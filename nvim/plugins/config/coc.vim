@@ -197,3 +197,5 @@ function! AuCocExplorerAutoOpen()
 endfunction
 " Auto open coc explorer
 " autocmd User CocNvimInit call AuCocExplorerAutoOpen()
+
+autocmd CursorHold * :CocCommand git.refresh

@@ -92,3 +92,5 @@ let g:lightline#coc#indicator_errors   = "\uf05c "
 let g:lightline#coc#indicator_ok       = "\uf058 "
 
 call lightline#coc#register()
+
+autocmd User CocGitStatusChange call lightline#update()

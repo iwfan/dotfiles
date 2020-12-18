@@ -41,7 +41,6 @@ https://github.com/vim-test/vim-test
 
 https://sourcegraph.com/github.com/hardcoreplayers/ThinkVim@master/-/blob/keybinds/leaderkey.vim#L14
 https://sourcegraph.com/github.com/theniceboy/nvim/-/blob/README_cn.md
-https://sourcegraph.com/github.com/theniceboy/nvim/-/blob/README_cn.md#vim-subversive
 https://sourcegraph.com/github.com/voldikss/dotfiles
 
 # iTerm2 key codes configuration
