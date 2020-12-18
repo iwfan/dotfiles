@@ -103,7 +103,7 @@ set shiftround                          " Round indent to multiple of 'shiftwidt
 
 set wrap                                " Break line at predefined characters
 set whichwrap+=<,>,h,l,[,]
-set showbreak=↪
+set showbreak=↪ 
 set colorcolumn=+1
 set textwidth=120
 " set linebreak                           " Break long lines at 'breakat'
