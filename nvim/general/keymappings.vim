@@ -57,6 +57,8 @@ inoremap <C-p>          <Up>
 " <C-y>: paste.
 cnoremap <C-y>          <C-r>*
 inoremap <C-y>          <C-r>*
+inoremap <C-z>          <C-o>:undo<cr>
+
 " <C-c>: S.
 nmap <expr> <C-s> empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"
 inoremap <expr> <c-s> empty(expand('%:t')) ? "\<Esc>:w\<Space>" : "<Esc>:w\<CR>"
@@ -128,6 +130,6 @@ map <F4> :PlugUpdate<CR>
 
 " Tab Switcher {{{
 " ------
-nnoremap <silent> <C-Tab> :BufferPrevious<CR>
-nnoremap <silent> <C-S-Tab> :BufferNext<CR>
+nnoremap <silent> <C-Tab> :BufferNext<CR>
+nnoremap <silent> <C-S-Tab> :BufferPrevious<CR>
 " }}}

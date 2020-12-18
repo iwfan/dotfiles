@@ -15,6 +15,7 @@ let g:coc_global_extensions = [
   \ 'coc-imselect',
   \ 'coc-json',
   \ 'coc-lists',
+  \ 'coc-pairs',
   \ 'coc-marketplace',
   \ 'coc-postfix',
   \ 'coc-prettier',

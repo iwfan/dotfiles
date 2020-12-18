@@ -47,9 +47,6 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'andymass/vim-matchup'
 Plug 'markonm/traces.vim'
 
-" Auto pairs for '(' '[' '{'
-Plug 'jiangmiao/auto-pairs'
-
 "Comment
 Plug 'tomtom/tcomment_vim'
 " }}}
