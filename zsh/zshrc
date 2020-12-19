@@ -101,7 +101,7 @@ source ~/dotfiles/zsh/mappings.zsh
 
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
-if [ -z "$TMUX" ]
-then
-    tmux attach -t iwfan || tmux new -s iwfan
-fi
+# if [ -z "$TMUX" ]
+# then
+#     tmux attach -t iwfan || tmux new -s iwfan
+# fi
