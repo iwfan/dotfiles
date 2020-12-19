@@ -47,9 +47,6 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'andymass/vim-matchup'
 Plug 'markonm/traces.vim'
 
-" Auto close brackets
-Plug '9mm/vim-closer'
-
 "Comment
 Plug 'tomtom/tcomment_vim'
 " }}}
