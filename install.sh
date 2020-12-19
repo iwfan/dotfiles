@@ -76,6 +76,7 @@ ln -fs ~/dotfiles/ranger ~/.config/ranger
 ln -fs ~/dotfiles/hammerspoon ~/.hammerspoon
 
 ln -fs ~/dotfiles/zsh/p10k.zsh ~/.p10k.zsh
+ln -fs ~/dotfiles/zsh/p10k-evilball.zsh ~/.p10k-evilball.zsh
 ln -fs ~/dotfiles/zsh/zshrc ~/.zshrc
 
 success "link custom config file to $HOME"
