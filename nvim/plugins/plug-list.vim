@@ -16,6 +16,7 @@ call plug#begin(stdpath('data') . '/plugged')
 " theme
 Plug 'glepnir/oceanic-material'
 " icon
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 " }}}
 
@@ -58,8 +59,8 @@ Plug 'mhinz/vim-startify'
 " status line and tabline
 Plug 'itchyny/lightline.vim'
 
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
+Plug 'moll/vim-bbye'
 
 Plug 'Yggdroot/indentLine'
 Plug 'mbbill/undotree'

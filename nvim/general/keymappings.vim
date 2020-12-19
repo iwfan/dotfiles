@@ -78,9 +78,6 @@ nnoremap <leader>i o<Esc>
 nnoremap <Leader>o o<Esc>^Da
 nnoremap <Leader>O O<Esc>^Da
 
-nnoremap <silent><bs>b <esc>:bd<cr>
-vnoremap <silent><bs>b <esc>:bd<cr>
-
 nnoremap <silent> \tn :tabe<CR>
 nnoremap <silent> \tv :vnew<CR>
 nnoremap <silent> \to :tabonly<cr>
@@ -132,4 +129,7 @@ map <F4> :PlugUpdate<CR>
 " ------
 nnoremap <silent> <C-Tab> :BufferNext<CR>
 nnoremap <silent> <C-S-Tab> :BufferPrevious<CR>
+
+nnoremap <silent><bs>b <esc>:Bdelete<cr>
+vnoremap <silent><bs>b <esc>:Bdelete<cr>
 " }}}

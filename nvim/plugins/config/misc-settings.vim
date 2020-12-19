@@ -215,4 +215,6 @@ let g:vue_pre_processors = 'detect_on_enter'
 
 let g:prettier#autoformat = 0
 let g:prettier#autoformat_require_pragma = 0
+
+let g:git_messenger_no_default_mappings=1
 " }}}
