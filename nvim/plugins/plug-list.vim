@@ -59,7 +59,10 @@ Plug 'mhinz/vim-startify'
 " status line and tabline
 Plug 'itchyny/lightline.vim'
 
-Plug 'romgrk/barbar.nvim'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'akinsho/nvim-bufferline.lua'
+
+" Plug 'romgrk/barbar.nvim'
 Plug 'moll/vim-bbye'
 
 Plug 'Yggdroot/indentLine'

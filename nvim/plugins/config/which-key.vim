@@ -19,8 +19,9 @@ let g:which_key_map['0'] = [   ':FloatermToggle',                             'T
 tnoremap <silent> <Leader>0 <C-\><C-n>:FloatermToggle<CR>
 tnoremap <silent> <esc><esc> <C-\><C-n>:FloatermKill<CR>
 
-let g:which_key_map['1'] = [ ':CocCommand explorer --toggle --sources=file+', 'File Explorer' ]
+let g:which_key_map['1'] = [ ':LuaTreeToggle',                                'File Explorer' ]
 let g:which_key_map['2'] = [ ':Vista coc',                                    'Vista Tags' ]
+let g:which_key_map['3'] = [ ':CocCommand explorer --toggle --sources=file+', 'File Explorer' ]
 
 let g:which_key_map['8'] = [ ':UndotreeToggle',                               'UndoTree' ]
 let g:which_key_map['9'] = 'Git [lazygit]'

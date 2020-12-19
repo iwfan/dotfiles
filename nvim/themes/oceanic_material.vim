@@ -26,3 +26,4 @@ hi! BufferInactiveTarget gui=bold guifg=red guibg=#1b2b34
 hi! BufferTabpageFill guifg=#888887 guibg=#1b2b34
 hi! BufferTabpages gui=bold guifg=#d7a657 guibg=#1b2b34
 
+hi! LuaTreeFolderName ctermfg=111 guifg=#a7c777
