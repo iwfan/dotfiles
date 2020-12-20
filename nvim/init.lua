@@ -13,3 +13,4 @@
 --]]
 
 require 'settings'
+require 'keymaps'
