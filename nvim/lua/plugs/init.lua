@@ -29,3 +29,5 @@ require'bufferline'.setup{
     always_show_bufferline = false;
   };
 }
+
+require 'plugs.galaxyline'

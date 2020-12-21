@@ -20,6 +20,7 @@ Plug 'glepnir/zephyr-nvim'
 
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'Akin909/nvim-bufferline.lua'
+Plug 'glepnir/galaxyline.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'glepnir/indent-guides.nvim'
 
