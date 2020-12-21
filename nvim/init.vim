@@ -17,4 +17,3 @@ let VIM_SCRIPT_PATH = expand('<sfile>:p:h')
 call helpers#source_dir(VIM_SCRIPT_PATH . '/general')
 
 lua require 'plugs'
-

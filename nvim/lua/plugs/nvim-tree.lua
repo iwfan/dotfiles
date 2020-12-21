@@ -32,4 +32,4 @@ vim.api.nvim_set_var('lua_tree_icons', {
   };
 })
 
-vim.api.nvim_set_keymap('n', '<leader>1', ':LuaTreeToggle<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>1', ':LuaTreeToggle<CR>', { noremap = true, silent = true })
