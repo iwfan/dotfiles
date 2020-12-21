@@ -49,18 +49,6 @@ augroup filetype_config
   autocmd BufNewFile,BufRead *.md setlocal spell
 augroup END
 
-" Auto load session
-augroup sourcesession
-  autocmd!
-  autocmd VimEnter * nested
-  \ if !argc() && empty(v:this_session) && filereadable('Session.vim') |
-  \   source Session.vim |
-  \   Obsession . |
-  \ endif
-augroup END
-
-
-
 " Get the exit status from a terminal buffer by looking for a line near the end
 " of the buffer with the format, '[Process exited ?]'.
 func! s:getExitStatus() abort
