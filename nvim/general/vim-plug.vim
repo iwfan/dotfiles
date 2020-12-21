@@ -19,6 +19,15 @@ Plug 'nvim-treesitter/playground'
 Plug 'glepnir/zephyr-nvim'
 
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'Akin909/nvim-bufferline.lua'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'glepnir/indent-guides.nvim'
+
+Plug 'machakann/vim-sandwich'
+Plug 'wellle/targets.vim'
+
+" Find & Replace
+Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'], 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 

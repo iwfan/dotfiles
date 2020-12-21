@@ -144,7 +144,7 @@ local function setup_options()
     formatoptions  = "1jcroql";
 
     foldmethod     = "expr";
-    foldexpr       = "nvim_treesitter#foldexpr()"
+    foldexpr       = "nvim_treesitter#foldexpr()";
     foldlevelstart = 99;
   }
 
