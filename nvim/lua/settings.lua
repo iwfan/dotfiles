@@ -145,6 +145,7 @@ local function setup_options()
 
     foldmethod     = "expr";
     foldexpr       = "nvim_treesitter#foldexpr()"
+    foldlevelstart = 99;
   }
 
   local options_table = helpers.table_merge(

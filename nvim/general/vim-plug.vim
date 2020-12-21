@@ -18,6 +18,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'glepnir/zephyr-nvim'
 
+Plug 'kyazdani42/nvim-tree.lua'
+
 call plug#end()
 
 " Automatically install missing plugins on startup
