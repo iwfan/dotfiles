@@ -60,9 +60,6 @@ Plug 'junegunn/gv.vim'
 Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify'
 
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-
 Plug 'junegunn/vim-peekaboo'
 Plug 'voldikss/vim-floaterm'
 
