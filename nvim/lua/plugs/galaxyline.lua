@@ -111,8 +111,8 @@ gls.left[9] = {
 }
 gls.left[10] = {
   LeftEnd = {
-    provider = function() return '' end,
-    separator = '',
+    provider = function() return '' end,
+    separator = '',
     separator_highlight = {colors.bg,colors.line_bg},
     highlight = {colors.line_bg,colors.line_bg}
   }
@@ -139,7 +139,7 @@ gls.left[13] = {
 gls.right[1]= {
   FileFormat = {
     provider = 'FileFormat',
-    separator = ' ',
+    separator = ' ',
     separator_highlight = {colors.bg,colors.line_bg},
     highlight = {colors.fg,colors.line_bg,'bold'},
   }
@@ -170,7 +170,7 @@ gls.right[4] = {
 gls.short_line_left[1] = {
   BufferType = {
     provider = 'FileTypeName',
-    separator = '',
+    separator = '',
     separator_highlight = {colors.purple,colors.bg},
     highlight = {colors.fg,colors.purple}
   }
@@ -180,7 +180,7 @@ gls.short_line_left[1] = {
 gls.short_line_right[1] = {
   BufferIcon = {
     provider= 'BufferIcon',
-    separator = '',
+    separator = '',
     separator_highlight = {colors.purple,colors.bg},
     highlight = {colors.fg,colors.purple}
   }

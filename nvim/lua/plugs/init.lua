@@ -23,11 +23,5 @@ require('indent_guides').options = {
     exclude_filetypes = {'LuaTree','vista','help','sagahover'};
 }
 
-require'bufferline'.setup{
-  options = {
-    mappings = false;
-    always_show_bufferline = false;
-  };
-}
-
 require 'plugs.galaxyline'
+require 'plugs.bufferline'
