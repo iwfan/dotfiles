@@ -160,5 +160,5 @@ end
 
 setup_runtime_env()
 setup_options()
--- disable_distribution_plugins()
+disable_distribution_plugins()
 
