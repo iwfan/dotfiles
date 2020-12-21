@@ -13,6 +13,7 @@ endif
 
 call plug#begin(stdpath('data') . '/plugged')
 
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 Plug 'nvim-treesitter/playground'
 Plug 'glepnir/zephyr-nvim'
@@ -24,3 +25,5 @@ autocmd VimEnter *
   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \|   PlugInstall --sync | q
   \| endif
+
+autocmd VimEnter * echo 'vim enter'

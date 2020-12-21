@@ -37,8 +37,8 @@ vim.api.nvim_set_keymap('n', '<', '<<', { noremap = true })
 vim.api.nvim_set_keymap('n', '>', '>>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader><backspace>', '"_dd', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>h', 'g^', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>l', 'g$', { noremap = true })
+vim.api.nvim_set_keymap('n', 'H', '^', { noremap = true })
+vim.api.nvim_set_keymap('n', 'L', '$', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<C-S-up>',   ':m .-2<CR>==', { silent = true })
 vim.api.nvim_set_keymap('n', '<C-S-down>', ':m .+1<CR>==', { silent = true })
