@@ -13,19 +13,33 @@ endif
 
 call plug#begin(stdpath('data') . '/plugged')
 
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-repeat'          " makes some plugins repeatable
+Plug 'tpope/vim-abolish'         " I mostly use :S for smart replace
+Plug 'tpope/vim-obsession'
+
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 Plug 'nvim-treesitter/playground'
 Plug 'glepnir/zephyr-nvim'
 
+Plug 'mhinz/vim-startify'
+
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'Akin909/nvim-bufferline.lua'
+Plug 'moll/vim-bbye'
 Plug 'glepnir/galaxyline.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'glepnir/indent-guides.nvim'
 
 Plug 'machakann/vim-sandwich'
 Plug 'wellle/targets.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
+Plug 'junegunn/vim-easy-align'
+
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'andymass/vim-matchup'
 
 Plug 'Raimondi/delimitMate'
 
@@ -38,6 +52,21 @@ Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'], 'do': ':UpdateRemotePlugin
 
 " Speed j/k when press
 Plug 'rhysd/accelerated-jk'
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'junegunn/gv.vim'
+Plug 'rhysd/git-messenger.vim'
+Plug 'mhinz/vim-signify'
+
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+
+Plug 'junegunn/vim-peekaboo'
+Plug 'voldikss/vim-floaterm'
+
+Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 
