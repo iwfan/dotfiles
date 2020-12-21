@@ -143,9 +143,8 @@ local function setup_options()
     sessionoptions = "curdir,help,tabpages,winsize";
     formatoptions  = "1jcroql";
 
-    foldenable     = true;
-    foldmethod     = "indent";
-    foldlevelstart = 99;
+    foldmethod     = "expr";
+    foldexpr       = "nvim_treesitter#foldexpr()"
   }
 
   local options_table = helpers.table_merge(
