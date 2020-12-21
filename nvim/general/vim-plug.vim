@@ -27,12 +27,17 @@ Plug 'glepnir/indent-guides.nvim'
 Plug 'machakann/vim-sandwich'
 Plug 'wellle/targets.vim'
 
+Plug 'Raimondi/delimitMate'
+
 " Comment
 Plug 'Shougo/context_filetype.vim'
 Plug 'tyru/caw.vim'
 
 " Find & Replace
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'], 'do': ':UpdateRemotePlugins' }
+
+" Speed j/k when press
+Plug 'rhysd/accelerated-jk'
 
 call plug#end()
 
