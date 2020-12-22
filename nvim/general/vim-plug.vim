@@ -64,6 +64,38 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'voldikss/vim-floaterm'
 
 Plug 'editorconfig/editorconfig-vim'
+Plug 'liuchengxu/vim-which-key'
+Plug 'mbbill/undotree'
+
+" Plug 'AndrewRadev/splitjoin.vim'
+" Plug 'machakann/vim-swap'
+" Plug 'machakann/vim-textobj-delimited'
+" 
+" " searching
+" Plug 'justinmk/vim-sneak'
+" Plug 'haya14busa/incsearch.vim'
+" Plug 'easymotion/vim-easymotion'
+" Plug 'haya14busa/incsearch-easymotion.vim'
+" 
+" Plug 'pechorin/any-jump.vim'
+" 
+" Plug 'liuchengxu/vista.vim'
+" 
+" " === html Plugins === "
+" Plug 'alvan/vim-closetag'
+" Plug 'AndrewRadev/tagalong.vim'
+" 
+" " === css Plugins === "
+" Plug 'hail2u/vim-css3-syntax', { 'for': [ 'css', 'javascript','javascriptreact' ] }
+" 
+" " === Javascript Plugins === "
+" Plug 'moll/vim-node'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'peitalin/vim-jsx-typescript'
+" 
+" Plug 'prettier/vim-prettier', {
+"  \ 'do': 'yarn install',
+"  \ 'for': ['javascript', 'typescript', 'javascriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 call plug#end()
 

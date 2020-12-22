@@ -80,6 +80,11 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 
 " ====== Others {{{
+let g:closetag_filenames                  = '*.html,*.xhtml,*.phtml,*.wxml'
+let g:closetag_xhtml_filenames            = '*.xhtml,*.jsx,*.js,*.tsx,*.ts'
+let g:closetag_filetypes                  = 'html,xhtml,phtml,javascript,typescript'
+
+let g:tagalong_additional_filetypes = ['wxml']
 let g:prettier#autoformat = 0
 let g:prettier#autoformat_require_pragma = 0
 
