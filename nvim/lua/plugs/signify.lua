@@ -5,8 +5,8 @@ vim.api.nvim_set_var('signify_sign_delete_first_line', '▘')
 vim.api.nvim_set_var('signify_sign_show_count', 0)
 
 vim.api.nvim_set_keymap('n', '<leader>gd', ':SignifyDiff<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '\c', ':SignifyHunkDiff<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Del>\c', ':SignifyHunkUndo<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', [[\c]], ':SignifyHunkDiff<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', [[<BS>\c]], ':SignifyHunkUndo<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', ']c', '<plug>(signify-next-hunk)', { noremap = false })
 vim.api.nvim_set_keymap('n', '[c', '<plug>(signify-prev-hunk)', { noremap = false })
