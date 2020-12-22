@@ -24,8 +24,8 @@ omap T <Plug>(easymotion-T)
 
 let g:incsearch#auto_nohlsearch = 1
 
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
+"map /  <Plug>(incsearch-forward)
+"map ?  <Plug>(incsearch-backward)
 
 map g/ <Plug>(incsearch-easymotion-/)
 map g? <Plug>(incsearch-easymotion-?)

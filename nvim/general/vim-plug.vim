@@ -67,6 +67,10 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'mbbill/undotree'
 
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'nvim-lua/completion-nvim'
+" Plug 'nvim-lua/diagnostic-nvim'
+
 " Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'machakann/vim-swap'
 " Plug 'machakann/vim-textobj-delimited'
