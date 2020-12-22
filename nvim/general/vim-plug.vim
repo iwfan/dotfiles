@@ -20,7 +20,13 @@ Plug 'tpope/vim-obsession'
 
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/lsp-status.nvim'
+
 Plug 'glepnir/zephyr-nvim'
 
 Plug 'mhinz/vim-startify'
@@ -59,17 +65,14 @@ Plug 'junegunn/gv.vim'
 Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify'
 
+Plug 'kshenoy/vim-signature'
+
 Plug 'junegunn/vim-peekaboo'
 Plug 'voldikss/vim-floaterm'
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'mbbill/undotree'
-
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'nvim-lua/completion-nvim'
-" Plug 'nvim-lua/diagnostic-nvim'
-" Plug 'nvim-lua/lsp-status.nvim'
 
 " Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'machakann/vim-swap'

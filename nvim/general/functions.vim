@@ -84,6 +84,30 @@ augroup Neoterm
   autocmd TermClose * call timer_start(20, { -> s:afterTermClose() })
 augroup END
 
+let ftToIgnore = ['markdown', 'text']
+
+augroup completion
+  autocmd!
+  " Enable completion for most buffers
+  autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 | lua require'completion'.on_attach()
+augroup END
+
+augroup windows
+  " Resize windows on move
+  autocmd VimResized * :wincmd =
+  " Split help windows vertically, on the right
+  autocmd FileType help wincmd L
+augroup END
+
+augroup external
+  " Open images in an image viewer (probably Preview)
+  autocmd BufEnter *.png,*.jpg,*.gif exec "silent !open ".expand("%") | :bw
+augroup END
+
+augroup editing
+  " Highlight yanks
+  au TextYankPost * silent! lua vim.highlight.on_yank {timeout=1000}
+augroup END
 
 "let W Wq wQ not be error
 command! -bar -nargs=* -complete=file -range=% -bang W         <line1>,<line2>write<bang> <args>
