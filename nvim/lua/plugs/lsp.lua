@@ -1,6 +1,6 @@
-local nvim_lsp = require('nvim_lsp')
-local configs = require('nvim_lsp/configs')
-local util = require('nvim_lsp/util')
+local nvim_lsp = require('lspconfig')
+local configs = require('lspconfig/configs')
+local util = require('lspconfig/util')
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
