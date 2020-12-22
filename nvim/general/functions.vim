@@ -45,8 +45,6 @@ augroup filetype_config
   autocmd FileType * setlocal formatoptions-=cro formatoptions+=j1
 
   autocmd FileType *.css,*.scss,*.less setlocal iskeyword+=-
-  " Turn spellcheck on for markdown files
-  autocmd BufNewFile,BufRead *.md setlocal spell
 augroup END
 
 " Get the exit status from a terminal buffer by looking for a line near the end

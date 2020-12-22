@@ -44,8 +44,7 @@ Plug 'andymass/vim-matchup'
 Plug 'Raimondi/delimitMate'
 
 " Comment
-Plug 'Shougo/context_filetype.vim'
-Plug 'tyru/caw.vim'
+Plug 'tomtom/tcomment_vim'
 
 " Find & Replace
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'], 'do': ':UpdateRemotePlugins' }
@@ -70,6 +69,7 @@ Plug 'mbbill/undotree'
 " Plug 'neovim/nvim-lspconfig'
 " Plug 'nvim-lua/completion-nvim'
 " Plug 'nvim-lua/diagnostic-nvim'
+" Plug 'nvim-lua/lsp-status.nvim'
 
 " Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'machakann/vim-swap'

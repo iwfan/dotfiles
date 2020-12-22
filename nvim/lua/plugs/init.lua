@@ -24,7 +24,7 @@ require('indent_guides').options = {
 }
 
 require 'plugs.galaxyline'
-require 'plugs.bufferline'
 require 'plugs.comment'
+require 'plugs.bufferline'
 require 'plugs.signify'
 

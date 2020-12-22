@@ -51,3 +51,11 @@ https://sourcegraph.com/github.com/voldikss/dotfiles
 | Ctrl-Shift-Tab | ^[[27;6;9~ |
 | Enter          | ^[[13;2u   |
 | Shift-Enter    | ^[[13;5u   |
+
+# LSP
+
+https://nathansmith.io/posts/neovim-lsp
+https://rishabhrd.github.io/jekyll/update/2020/09/19/nvim_lsp_config.html
+
+
+中文
