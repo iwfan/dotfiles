@@ -23,20 +23,26 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
 
+" Neovim lsp Plugins
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/lsp-status.nvim'
+Plug 'tjdevries/nlua.nvim'
+Plug 'tjdevries/lsp_extensions.nvim'
 
 Plug 'glepnir/zephyr-nvim'
-
 Plug 'mhinz/vim-startify'
-
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'Akin909/nvim-bufferline.lua'
 Plug 'moll/vim-bbye'
 Plug 'glepnir/galaxyline.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'glepnir/indent-guides.nvim'
+
+" telescope requirements...
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/telescope.nvim'
 
 Plug 'machakann/vim-sandwich'
 Plug 'wellle/targets.vim'

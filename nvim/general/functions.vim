@@ -86,11 +86,11 @@ augroup END
 
 let ftToIgnore = ['markdown', 'text']
 
-augroup completion
-  autocmd!
-  " Enable completion for most buffers
-  autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 | lua require'completion'.on_attach()
-augroup END
+" augroup completion
+"   autocmd!
+"   " Enable completion for most buffers
+"   autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 | lua require'completion'.on_attach()
+" augroup END
 
 augroup windows
   " Resize windows on move
@@ -106,7 +106,7 @@ augroup END
 
 augroup editing
   " Highlight yanks
-  au TextYankPost * silent! lua vim.highlight.on_yank {timeout=1000}
+  au TextYankPost * silent! lua vim.highlight.on_yank {timeout=500}
 augroup END
 
 "let W Wq wQ not be error

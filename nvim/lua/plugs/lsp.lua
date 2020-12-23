@@ -1,16 +1,7 @@
+
+vim.api.nvim_set_var('completion_matching_strategy_list', {'exact', 'substring', 'fuzzy'})
+
 local nvim_lsp = require('lspconfig')
-local configs = require('lspconfig/configs')
-local util = require('lspconfig/util')
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = false,
-    virtual_text = false,
-    signs = true,
-    update_in_insert = false,
-  }
-)
-
 local on_attach = function(client, bufnr)
   -- Keybindings for LSPs
   vim.fn.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", {noremap = true, silent = true})
@@ -21,28 +12,46 @@ local on_attach = function(client, bufnr)
   vim.fn.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", {noremap = true, silent = true})
   vim.fn.nvim_set_keymap("n", "g0", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", {noremap = true, silent = true})
   vim.fn.nvim_set_keymap("n", "gW", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", {noremap = true, silent = true})
+
+  require'completion'.on_attach(client, bufnr)
 end
 
-nvim_lsp.vimls.setup{
-  on_attach = on_attach,
-}
+-- nvim_lsp.vimls.setup{
+--   on_attach = on_attach,
+-- }
 nvim_lsp.tsserver.setup{
   on_attach = on_attach,
 }
-nvim_lsp.html.setup{
-  on_attach = on_attach,
-}
-nvim_lsp.cssls.setup{
-  on_attach = on_attach,
+-- nvim_lsp.html.setup{
+--   on_attach = on_attach,
+-- }
+-- nvim_lsp.cssls.setup{
+--   on_attach = on_attach,
+--   settings = {
+--     css = {
+--       validate = false
+--     },
+--     less = {
+--       validate = true
+--     },
+--     scss = {
+--       validate = true
+--     }
+--   }
+-- }
+
+require('lspconfig').sumneko_lua.setup({
+  -- An example of settings for an LSP server.
+  --    For more options, see nvim-lspconfig
   settings = {
-    css = {
-      validate = false
-    },
-    less = {
-      validate = true
-    },
-    scss = {
-      validate = true
+    Lua = {
+      diagnostics = {
+        enable = true,
+        globals = { "vim" },
+      },
     }
-  }
-}
+  },
+
+  on_attach = on_attach
+})
+

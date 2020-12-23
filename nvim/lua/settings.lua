@@ -127,7 +127,7 @@ local function setup_options()
     backspace      = "indent,eol,start";
 
     complete       = ".,w,b,k";
-    completeopt    = "menu,menuone,noselect,noinsert";
+    completeopt    = "menuone,noselect,noinsert";
     inccommand     = "nosplit";
 
     grepformat     = "%f:%l:%c:%m";
