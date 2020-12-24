@@ -18,5 +18,3 @@ call helpers#source_dir(VIM_SCRIPT_PATH . '/general')
 
 call helpers#source_dir(VIM_SCRIPT_PATH . '/general/plug-conf')
 lua require 'plugs'
-nmap j <Plug>(accelerated_jk_gj)
-nmap k <Plug>(accelerated_jk_gk)

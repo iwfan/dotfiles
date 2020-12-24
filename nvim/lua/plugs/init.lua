@@ -32,3 +32,6 @@ require 'plugs.searching'
 
 vim.api.nvim_set_keymap('i', '<tab>', '<Plug>(completion_smart_tab)', { noremap = false })
 vim.api.nvim_set_keymap('i', '<s-tab>', '<Plug>(completion_smart_tab)', { noremap = false })
+
+vim.api.nvim_set_keymap('n', 'j', '<Plug>(accelerated_jk_gj)', { noremap = false })
+vim.api.nvim_set_keymap('n', 'k', '<Plug>(accelerated_jk_gk)', { noremap = false })
