@@ -28,6 +28,7 @@ require 'plugs.comment'
 require 'plugs.bufferline'
 require 'plugs.signify'
 require 'plugs.lsp'
+require 'plugs.searching'
 
 vim.api.nvim_set_keymap('i', '<tab>', '<Plug>(completion_smart_tab)', { noremap = false })
 vim.api.nvim_set_keymap('i', '<s-tab>', '<Plug>(completion_smart_tab)', { noremap = false })

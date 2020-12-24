@@ -84,12 +84,11 @@ Plug 'mbbill/undotree'
 " Plug 'machakann/vim-swap'
 " Plug 'machakann/vim-textobj-delimited'
 " 
-" " searching
-" Plug 'justinmk/vim-sneak'
-" Plug 'haya14busa/incsearch.vim'
-" Plug 'easymotion/vim-easymotion'
-" Plug 'haya14busa/incsearch-easymotion.vim'
-" 
+" searching
+Plug 'haya14busa/incsearch.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/incsearch-easymotion.vim'
+
 " Plug 'pechorin/any-jump.vim'
 " 
 " Plug 'liuchengxu/vista.vim'
