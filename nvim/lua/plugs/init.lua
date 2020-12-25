@@ -18,9 +18,9 @@ require 'colorizer'.setup({
     }
 })
 
-require('indent_guides').options = {
+require('indent_guides').setup{
     indent_guide_size = 1;
-    exclude_filetypes = {'LuaTree','vista','help','sagahover'};
+    exclude_filetypes = {'LuaTree', 'Startify', 'vista','help','sagahover'};
 }
 
 require 'plugs.galaxyline'
