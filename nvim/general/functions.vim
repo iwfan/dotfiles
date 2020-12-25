@@ -37,14 +37,9 @@ augroup END
 
 augroup filetype_config
   autocmd!
-  " Stop newline continuous of comments
-  " set formatoptions+=1                      " Don't break lines after a one-letter word
-  " set formatoptions-=t                      " Don't auto-wrap text
-  " set formatoptions-=o                      " Disable comment-continuation (normal 'o'/'O')
-  " set formatoptions+=j                      " Remove comment leader when joining lines
   autocmd FileType * setlocal formatoptions-=cro formatoptions+=j1
-
   autocmd FileType *.css,*.scss,*.less setlocal iskeyword+=-
+  autocmd FileType *.md setlocal wrap
 augroup END
 
 " Get the exit status from a terminal buffer by looking for a line near the end
