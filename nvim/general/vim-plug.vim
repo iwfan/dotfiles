@@ -56,7 +56,8 @@ Plug 'andymass/vim-matchup'
 Plug 'Raimondi/delimitMate'
 
 " Comment
-Plug 'tomtom/tcomment_vim'
+Plug 'Shougo/context_filetype.vim'
+Plug 'tyru/caw.vim'
 
 " Find & Replace
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'], 'do': ':UpdateRemotePlugins' }

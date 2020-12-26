@@ -20,11 +20,11 @@ require 'colorizer'.setup({
 
 require('indent_guides').setup{
     indent_guide_size = 1;
-    exclude_filetypes = {'LuaTree', 'Startify', 'vista','help','sagahover'};
+    indent_start_level = 2;
+    exclude_filetypes = {'LuaTree', 'startify', 'vista','help','sagahover'};
 }
 
 require 'plugs.galaxyline'
-require 'plugs.comment'
 require 'plugs.bufferline'
 require 'plugs.signify'
 require 'plugs.lsp'
