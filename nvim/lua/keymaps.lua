@@ -45,9 +45,9 @@ bind_key('n|>', map_cmd('>>'):with_noremap())
 
 bind_key('n|<leader><backspace>', map_cmd('"_dd'):with_noremap())
 bind_key('n|H', map_cmd('^'):with_noremap())
-bind_key('n|H', map_cmd('^'):with_noremap())
-bind_key('x|L', map_cmd('$'):with_noremap())
-bind_key('x|L', map_cmd('$'):with_noremap())
+bind_key('v|H', map_cmd('^'):with_noremap())
+bind_key('n|L', map_cmd('$'):with_noremap())
+bind_key('v|L', map_cmd('$'):with_noremap())
 
 bind_key('n|<C-S-up>', map_cmd(':m .-2<CR>=='):with_silent())
 bind_key('n|<C-S-down>', map_cmd(':m .+1<CR>=='):with_silent())

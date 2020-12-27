@@ -23,7 +23,7 @@ augroup filetypedetect
     \ endif
 
   " set filetypes as typescriptreact
-  autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+  " autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 augroup END
 
 augroup user_persistent_undo

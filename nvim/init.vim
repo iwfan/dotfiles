@@ -18,3 +18,4 @@ call helpers#source_dir(VIM_SCRIPT_PATH . '/general')
 call helpers#source_dir(VIM_SCRIPT_PATH . '/general/plug-conf')
 
 lua require 'plugs'
+" lua require 'functions'
