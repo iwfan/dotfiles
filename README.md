@@ -57,5 +57,4 @@ https://sourcegraph.com/github.com/voldikss/dotfiles
 https://nathansmith.io/posts/neovim-lsp
 https://rishabhrd.github.io/jekyll/update/2020/09/19/nvim_lsp_config.html
 
-
-中文
+https://github.com/tjdevries/config_manager

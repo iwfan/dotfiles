@@ -1,54 +1,63 @@
+local helpers = require 'helpers'
+
+local bind_key = helpers.bind_key
+local map_cmd  = helpers.map_cmd
+local map_cr   = helpers.map_cr
+local map_cu   = helpers.map_cu
+local map_arg  = helpers.map_arg
+
 vim.g.mapleader = ' '
 
-vim.api.nvim_set_keymap('n', ' ', '', { noremap = true })
-vim.api.nvim_set_keymap('x', ' ', '', { noremap = true })
+bind_key('n| ', map_cmd(''):with_noremap());
+bind_key('x| ', map_cmd(''):with_noremap());
 
-vim.api.nvim_set_keymap('n', 'q', '', { noremap = true })
-vim.api.nvim_set_keymap('n', 'Q', 'q', { noremap = true })
+bind_key('n|q', map_cmd(''):with_noremap());
+bind_key('n|Q', map_cmd('q'):with_noremap());
 
-vim.api.nvim_set_keymap('i', '<C-a>', '<C-o>^', { noremap = true })
-vim.api.nvim_set_keymap('c', '<C-a>', '<HOME>', { noremap = true })
-vim.api.nvim_set_keymap('!', '<C-b>', '<Left>', { noremap = true })
-vim.api.nvim_set_keymap('!', '<C-d>', '<Del>', { noremap = true })
-vim.api.nvim_set_keymap('!', '<C-e>', '<END>', { noremap = true })
-vim.api.nvim_set_keymap('!', '<C-f>', '<Right>', { noremap = true })
-vim.api.nvim_set_keymap('!', '<C-h>', '<BS>', { noremap = true })
-vim.api.nvim_set_keymap('i', '<C-k>', '<C-o>d$', { noremap = true })
-vim.api.nvim_set_keymap('i', '<C-s>', [[empty(expand("%:t")) ? "\<C-o>:w\<Space>" : "<C-o>:w\<CR>"]], { noremap = true, expr = true })
-vim.api.nvim_set_keymap('n', '<C-s>', [[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]], { noremap = true, expr = true })
-vim.api.nvim_set_keymap('i', '<C-u>', '<C-o>d^', { noremap = true })
-vim.api.nvim_set_keymap('!', '<C-y>', '<C-r>*', { noremap = true })
-vim.api.nvim_set_keymap('i', '<C-z>', '<C-o>u', { noremap = true })
-vim.api.nvim_set_keymap('c', '<C-t>', [[<C-R>=expand("%:p:h") . "/" <CR>]], { noremap = true })
+bind_key('i|<C-a>', map_cmd('<C-o>^'):with_noremap())
+bind_key('c|<C-a>', map_cmd('<HOME>'):with_noremap())
+bind_key('!|<C-b>', map_cmd('<Left>'):with_noremap())
+bind_key('!|<C-d>', map_cmd('<Del>'):with_noremap())
+bind_key('!|<C-e>', map_cmd('<END>'):with_noremap())
+bind_key('!|<C-f>', map_cmd('<Right>'):with_noremap())
+bind_key('!|<C-h>', map_cmd('<BS>'):with_noremap())
+bind_key('i|<C-k>', map_cmd('<C-o>d$'):with_noremap())
+bind_key('i|<C-s>', map_cmd([[empty(expand("%:t")) ? "\<C-o>:w\<Space>" : "<C-o>:w\<CR>"]]):with_noremap():with_expr());
+bind_key('n|<C-s>', map_cmd([[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]]):with_noremap():with_expr());
+bind_key('i|<C-u>', map_cmd('<C-o>d^'):with_noremap())
+bind_key('!|<C-y>', map_cmd('<C-r>*'):with_noremap())
+bind_key('i|<C-z>', map_cmd('<C-o>u'):with_noremap())
 
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true })
+bind_key('n|<C-h>', map_cmd('<C-w>h'):with_noremap())
+bind_key('n|<C-j>', map_cmd('<C-w>j'):with_noremap())
+bind_key('n|<C-k>', map_cmd('<C-w>k'):with_noremap())
+bind_key('n|<C-l>', map_cmd('<C-w>l'):with_noremap())
 
-vim.api.nvim_set_keymap('n', '<C-w>}', ':res +5<cr>', { noremap = false })
-vim.api.nvim_set_keymap('n', '<C-w>{', ':res -5<cr>', { noremap = false })
-vim.api.nvim_set_keymap('n', '<C-w>]', ':vertical resize +5<cr>', { noremap = false })
-vim.api.nvim_set_keymap('n', '<C-w>[', ':vertical resize -5<cr>', { noremap = false })
+bind_key('n|<C-w><up>', map_cr('res +5'):with_noremap():with_silent())
+bind_key('n|<C-w><down>', map_cr('res -5'):with_noremap():with_silent())
+bind_key('n|<C-w><right>', map_cr('vertical resize +5'):with_noremap():with_silent())
+bind_key('n|<C-w><left>', map_cr('vertical resize -5'):with_noremap():with_silent())
 
-vim.api.nvim_set_keymap('v', '<', '<gv', { noremap = true })
-vim.api.nvim_set_keymap('v', '>', '>gv', { noremap = true })
-vim.api.nvim_set_keymap('n', '<', '<<', { noremap = true })
-vim.api.nvim_set_keymap('n', '>', '>>', { noremap = true })
+bind_key('v|<', map_cmd('<gv'):with_noremap())
+bind_key('v|>', map_cmd('>gv'):with_noremap())
+bind_key('n|<', map_cmd('<<'):with_noremap())
+bind_key('n|>', map_cmd('>>'):with_noremap())
 
-vim.api.nvim_set_keymap('n', '<leader><backspace>', '"_dd', { noremap = true })
-vim.api.nvim_set_keymap('n', 'H', '^', { noremap = true })
-vim.api.nvim_set_keymap('n', 'L', '$', { noremap = true })
+bind_key('n|<leader><backspace>', map_cmd('"_dd'):with_noremap())
+bind_key('n|H', map_cmd('^'):with_noremap())
+bind_key('n|H', map_cmd('^'):with_noremap())
+bind_key('x|L', map_cmd('$'):with_noremap())
+bind_key('x|L', map_cmd('$'):with_noremap())
 
-vim.api.nvim_set_keymap('n', '<C-S-up>',   ':m .-2<CR>==', { silent = true })
-vim.api.nvim_set_keymap('n', '<C-S-down>', ':m .+1<CR>==', { silent = true })
-vim.api.nvim_set_keymap('i', '<C-S-up>',   '<Esc>:m .-2<CR>==gi', { silent = true })
-vim.api.nvim_set_keymap('i', '<C-S-down>', '<Esc>:m .+1<CR>==gi', { silent = true })
-vim.api.nvim_set_keymap('v', '<C-S-up>',   ":m '<-2<CR>gv=gv", { silent = true })
-vim.api.nvim_set_keymap('v', '<C-S-down>', ":m '>+1<CR>gv=gv", { silent = true })
+bind_key('n|<C-S-up>', map_cmd(':m .-2<CR>=='):with_silent())
+bind_key('n|<C-S-down>', map_cmd(':m .+1<CR>=='):with_silent())
+bind_key('i|<C-S-up>', map_cmd('<Esc>:m .-2<CR>==gi'):with_silent())
+bind_key('i|<C-S-down>', map_cmd('<Esc>:m .+1<CR>==gi'):with_silent())
+bind_key('v|<C-S-up>', map_cmd(":m '<-2<CR>gv=gv"):with_silent())
+bind_key('v|<C-S-down>', map_cmd(":m '>+1<CR>gv=gv"):with_silent())
 
-vim.api.nvim_set_keymap('t', '<C-h>', [[<C-\><C-N><C-w>h]], { noremap = true })
-vim.api.nvim_set_keymap('t', '<C-j>', [[<C-\><C-N><C-w>j]], { noremap = true })
-vim.api.nvim_set_keymap('t', '<C-k>', [[<C-\><C-N><C-w>k]], { noremap = true })
-vim.api.nvim_set_keymap('t', '<C-l>', [[<C-\><C-N><C-w>l]], { noremap = true })
-vim.api.nvim_set_keymap('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
+bind_key('t|<C-h>', map_cmd([[<C-\><C-N><C-w>h]]):with_noremap())
+bind_key('t|<C-j>', map_cmd([[<C-\><C-N><C-w>j]]):with_noremap())
+bind_key('t|<C-k>', map_cmd([[<C-\><C-N><C-w>k]]):with_noremap())
+bind_key('t|<C-l>', map_cmd([[<C-\><C-N><C-w>l]]):with_noremap())
+bind_key('t|<Esc>', map_cmd([[<C-\><C-n>]]):with_noremap())
