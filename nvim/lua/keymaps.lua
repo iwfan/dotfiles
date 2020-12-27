@@ -28,6 +28,10 @@ bind_key('i|<C-u>', map_cmd('<C-o>d^'):with_noremap())
 bind_key('!|<C-v>', map_cmd('<C-r>*'):with_noremap())
 bind_key('i|<C-z>', map_cmd('<C-o>u'):with_noremap())
 
+bind_key('i|<C-j>', map_cmd([[\<C-n>]]):with_expr())
+bind_key('i|<C-k>', map_cmd([[\<C-p>]]):with_expr())
+bind_key('i|<C-c>', map_cmd("<ESC>"):with_noremap())
+
 bind_key('n|<C-h>', map_cmd('<C-w>h'):with_noremap())
 bind_key('n|<C-j>', map_cmd('<C-w>j'):with_noremap())
 bind_key('n|<C-k>', map_cmd('<C-w>k'):with_noremap())
@@ -72,3 +76,11 @@ bind_key('i|<cr>', map_cmd([[pumvisible() ? complete_info()["selected"] != "-1" 
 
 bind_key('n|j', map_cmd("<Plug>(accelerated_jk_gj)"))
 bind_key('n|k', map_cmd("<Plug>(accelerated_jk_gk)"))
+
+
+bind_key('n|ff', map_cu("lua require('telescope.builtin').find_files()"))
+bind_key('n|fb', map_cu("lua require('telescope.builtin').buffers()"))
+bind_key('n|fa', map_cu([[lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})]]))
+
+
+

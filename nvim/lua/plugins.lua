@@ -32,6 +32,8 @@ return require('packer').startup(function()
   use 'tpope/vim-obsession'
   use 'tpope/vim-commentary'
   use 'tpope/vim-scriptease'
+  use 'tpope/vim-dispatch'
+  use 'theprimeagen/vim-be-good'
 
   use 'neovim/nvim-lspconfig'
   use 'nvim-lua/completion-nvim'
