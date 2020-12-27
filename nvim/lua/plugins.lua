@@ -31,6 +31,7 @@ return require('packer').startup(function()
   use 'tpope/vim-abolish'
   use 'tpope/vim-obsession'
   use 'tpope/vim-commentary'
+  use 'tpope/vim-surround'
   use 'tpope/vim-scriptease'
   use 'tpope/vim-dispatch'
   use 'theprimeagen/vim-be-good'
@@ -66,7 +67,6 @@ return require('packer').startup(function()
   use 'nvim-lua/plenary.nvim'
   use 'nvim-lua/telescope.nvim'
 
-  use 'machakann/vim-sandwich'
   use 'wellle/targets.vim'
   use 'kana/vim-textobj-user'
   use 'kana/vim-textobj-entire'
