@@ -25,7 +25,7 @@ bind_key('i|<C-k>', map_cmd('<C-o>d$'):with_noremap())
 bind_key('i|<C-s>', map_cmd([[empty(expand("%:t")) ? "\<C-o>:w\<Space>" : "<C-o>:w\<CR>"]]):with_noremap():with_expr());
 bind_key('n|<C-s>', map_cmd([[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]]):with_noremap():with_expr());
 bind_key('i|<C-u>', map_cmd('<C-o>d^'):with_noremap())
-bind_key('!|<C-y>', map_cmd('<C-r>*'):with_noremap())
+bind_key('!|<C-v>', map_cmd('<C-r>*'):with_noremap())
 bind_key('i|<C-z>', map_cmd('<C-o>u'):with_noremap())
 
 bind_key('n|<C-h>', map_cmd('<C-w>h'):with_noremap())

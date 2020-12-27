@@ -55,7 +55,6 @@ local function setup_options()
     clipboard      = "unnamedplus";
     mouse          = "nv";
     magic          = true;
-    confirm        = true;
 
     errorbells     = true;
     visualbell     = true;
