@@ -61,3 +61,7 @@ bind_key('t|<C-j>', map_cmd([[<C-\><C-N><C-w>j]]):with_noremap())
 bind_key('t|<C-k>', map_cmd([[<C-\><C-N><C-w>k]]):with_noremap())
 bind_key('t|<C-l>', map_cmd([[<C-\><C-N><C-w>l]]):with_noremap())
 bind_key('t|<Esc>', map_cmd([[<C-\><C-n>]]):with_noremap())
+
+bind_key('n|<F3>', map_cu("PackerCompile"))
+bind_key('n|<F4>', map_cu("PackerSync"))
+
