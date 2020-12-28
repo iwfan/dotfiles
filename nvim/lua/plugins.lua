@@ -32,7 +32,6 @@ return require('packer').startup(function()
   use 'tpope/vim-obsession'
   use 'tpope/vim-commentary'
   use 'tpope/vim-surround'
-  use 'tpope/vim-characterize'
   use 'tpope/vim-scriptease'
   use 'tpope/vim-dispatch'
 
