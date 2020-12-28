@@ -5,7 +5,6 @@ local map_cr   = helpers.map_cr
 
 helpers.parse_variable_from_table{
   nvim_tree_side = 'left';
-  nvim_tree_hide_dotfiles = 0;
   nvim_tree_indent_markers = 1;
   nvim_tree_ignore = { '.git', 'node_modules', '.cache' };
   nvim_tree_auto_open = 1;
@@ -35,5 +34,3 @@ helpers.parse_variable_from_table{
     };
   };
 }
-
-bind_key('n|<leader>1', map_cr('NvimTreeToggle'):with_noremap():with_silent())

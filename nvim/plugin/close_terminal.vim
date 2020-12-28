@@ -1,8 +1,3 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                 Functions                                  "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
 " Get the exit status from a terminal buffer by looking for a line near the end
 " of the buffer with the format, '[Process exited ?]'.
 func! s:getExitStatus() abort
@@ -39,23 +34,3 @@ augroup Neoterm
   " to work for me.
   autocmd TermClose * call timer_start(20, { -> s:afterTermClose() })
 augroup END
-
-let ftToIgnore = ['markdown', 'text']
-
-" augroup completion
-"   autocmd!
-"   " Enable completion for most buffers
-"   autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 | lua require'completion'.on_attach()
-" augroup END
-
-"let W Wq wQ not be error
-command! -bar -nargs=* -complete=file -range=% -bang W         <line1>,<line2>write<bang> <args>
-command! -bar -nargs=* -complete=file -range=% -bang Wq        <line1>,<line2>wq<bang> <args>
-command! -bar -nargs=* -complete=file -range=% -bang WQ        <line1>,<line2>wq<bang> <args>
-command! -bar -nargs=* -complete=file -range=% -bang We        <line1>,<line2>w<bang> | e <args>
-command! -bar -nargs=* -complete=file          -bang E         edit<bang> <args>
-command! -bar                                  -bang Q         quit<bang>
-" Use Obs instead of Obsession
-command! -bar -bang -complete=file -nargs=* Obs
-      \ Obsession<bang> <args> |
-      \ call lightline#update()
