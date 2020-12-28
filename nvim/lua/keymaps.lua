@@ -78,6 +78,7 @@ bind_key('n|j', map_cmd("<Plug>(accelerated_jk_gj)"))
 bind_key('n|k', map_cmd("<Plug>(accelerated_jk_gk)"))
 
 
-bind_key('n|ff', map_cu("lua require('telescope.builtin').find_files()"))
-bind_key('n|fb', map_cu("lua require('telescope.builtin').buffers()"))
-bind_key('n|fa', map_cu([[lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})]]))
+bind_key('n|<leader>ff', map_cu("lua require('telescope.builtin').git_files()"))
+bind_key('n|<leader>fa', map_cu("lua require('telescope.builtin').find_files()"))
+bind_key('n|<leader>fb', map_cu("lua require('telescope.builtin').buffers()"))
+bind_key('n|<leader>fw', map_cu([[lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})]]))
