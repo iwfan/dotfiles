@@ -71,8 +71,6 @@ bind_key('n|<F4>', map_cu("PackerSync"))
 
 bind_key('i|<tab>', map_cmd("<Plug>(completion_smart_tab)"))
 bind_key('i|<s-tab>', map_cmd("<Plug>(completion_smart_s_tab)"))
-bind_key('i|<cr>', map_cmd([[pumvisible() ? complete_info()["selected"] != "-1" ?
-                 "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"]]):with_expr())
 
 bind_key('n|j', map_cmd("<Plug>(accelerated_jk_gj)"))
 bind_key('n|k', map_cmd("<Plug>(accelerated_jk_gk)"))

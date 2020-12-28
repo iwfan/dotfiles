@@ -2,9 +2,7 @@
 
 # fonts
 
-- Fantasque Sans Mono 110/120
 - JetBrains Mono
-- Source Code Pro
 
 # color
 
@@ -27,6 +25,7 @@ https://github.com/glepnir/oceanic-material
 4.  tags 管理
 5.  ✅ terminal 集成
 6.  ✅ 剪贴板管理
+
 
 Plugin Recommandtion: https://zhuanlan.zhihu.com/p/58816186
 
