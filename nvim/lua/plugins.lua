@@ -43,7 +43,7 @@ return require('packer').startup(function()
   use 'nvim-lua/lsp-status.nvim'
   use {
        'nvim-treesitter/nvim-treesitter',
-        run = function() vim.cmd [[TSUpdate]] end
+        run = ":TSUpdate"
       }
   use 'nvim-treesitter/completion-treesitter'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -53,12 +53,12 @@ return require('packer').startup(function()
 
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
+  use 'Akin909/nvim-bufferline.lua'
+  use 'moll/vim-bbye'
   use 'glepnir/zephyr-nvim'
   use 'glepnir/galaxyline.nvim'
   use 'glepnir/indent-guides.nvim'
   use 'mhinz/vim-startify'
-  use 'Akin909/nvim-bufferline.lua'
-  use 'moll/vim-bbye'
 
   use 'norcalli/nvim-colorizer.lua'
   use 'norcalli/nvim-terminal.lua'
@@ -106,7 +106,7 @@ return require('packer').startup(function()
   use {
       'brooth/far.vim',
       cmd = {'F', 'Far', 'Fardo'},
-      run = function() vim.cmd [[UpdateRemotePlugins]] end
+      run = ":UpdateRemotePlugins"
   }
 
   -- use 'AndrewRadev/splitjoin.vim'
