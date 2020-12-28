@@ -17,5 +17,4 @@ vim.fn['helpers#source_dir'](VIM_SCRIPT_PATH .. '/general/plug-conf')
 
 require 'plugins'
 require 'plugs'
-
--- lua require 'functions'
+require 'functions'
