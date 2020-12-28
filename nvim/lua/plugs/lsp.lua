@@ -16,33 +16,34 @@ local on_attach = function(client, bufnr)
   require'completion'.on_attach(client, bufnr)
 end
 
--- nvim_lsp.vimls.setup{
---   on_attach = on_attach,
--- }
+nvim_lsp.vimls.setup{
+  on_attach = on_attach,
+}
+
 nvim_lsp.tsserver.setup{
   on_attach = on_attach,
 }
--- nvim_lsp.html.setup{
---   on_attach = on_attach,
--- }
--- nvim_lsp.cssls.setup{
---   on_attach = on_attach,
---   settings = {
---     css = {
---       validate = false
---     },
---     less = {
---       validate = true
---     },
---     scss = {
---       validate = true
---     }
---   }
--- }
 
-require('lspconfig').sumneko_lua.setup({
-  -- An example of settings for an LSP server.
-  --    For more options, see nvim-lspconfig
+nvim_lsp.html.setup{
+  on_attach = on_attach,
+}
+
+nvim_lsp.cssls.setup{
+  on_attach = on_attach,
+  settings = {
+    css = {
+      validate = false
+    },
+    less = {
+      validate = true
+    },
+    scss = {
+      validate = true
+    }
+  }
+}
+
+nvim_lsp.sumneko_lua.setup({
   settings = {
     Lua = {
       diagnostics = {
@@ -51,7 +52,6 @@ require('lspconfig').sumneko_lua.setup({
       },
     }
   },
-
   on_attach = on_attach
 })
 

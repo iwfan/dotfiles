@@ -112,13 +112,13 @@ return require('packer').startup(function()
   -- use 'machakann/vim-swap'
   -- use 'machakann/vim-textobj-delimited'
 
--- use 'pechorin/any-jump.vim'
+  -- use 'pechorin/any-jump.vim'
 
--- use 'liuchengxu/vista.vim'
+  use 'liuchengxu/vista.vim'
 
--- " === html Plugins === "
--- use 'alvan/vim-closetag'
--- use 'AndrewRadev/tagalong.vim'
+  -- === html Plugins === "
+  use 'alvan/vim-closetag'
+  use 'AndrewRadev/tagalong.vim'
 
 -- " === css Plugins === "
 -- use 'hail2u/vim-css3-syntax', { 'for': [ 'css', 'javascript','javascriptreact' ] }
@@ -127,11 +127,6 @@ return require('packer').startup(function()
 -- use 'moll/vim-node'
 -- use 'leafgarland/typescript-vim'
 -- use 'peitalin/vim-jsx-typescript'
-
--- use 'prettier/vim-prettier', {
---  \ 'do': 'yarn install',
---  \ 'for': ['javascript', 'typescript', 'javascriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-
 end)
 
 

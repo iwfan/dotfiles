@@ -58,3 +58,4 @@ https://rishabhrd.github.io/jekyll/update/2020/09/19/nvim_lsp_config.html
 
 https://github.com/tjdevries/config_manager
 https://github.com/awesome-streamers/awesome-streamerrc/blob/master/ThePrimeagen/init.vim
+https://github.com/nathunsmitty/.config/tree/master/nvim
