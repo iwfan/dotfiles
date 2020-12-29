@@ -1,0 +1,9 @@
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+git:
+  paging:
+    colorArg: always
+    pager: diff-so-fancy
+os:
+  openCommand: nvim {{filename}}
+reporting: "off"
+startuppopupversion: 1
