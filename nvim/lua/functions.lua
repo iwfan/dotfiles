@@ -16,6 +16,7 @@ helpers.parse_from_definition_table{
       [[setf git | endif]];
     }};
 
+    { "BufNewFile,BufRead", "_ideavimrc", "setf vim" };
     { "BufNewFile,BufRead", "*.tsx,*.jsx", "setf typescriptreact" };
   };
 
@@ -32,20 +33,11 @@ helpers.parse_from_definition_table{
   };
 
   others = {
+    { "BufEnter", [[*.png,*.jpg,*.gif]], [[exec "silent !open ".expand("%") | :bw]] };
     { "BufReadPost", "*", [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]};
-    { "TermOpen", "term://*", "startinsert"};
-  };
-
-  windows = {
     { "VimResized", "*", [[wincmd =]]};
     { "FileType", "help", [[wincmd L]]};
-  };
-
-  external = {
-    { "BufEnter", [[*.png,*.jpg,*.gif]], [[exec "silent !open ".expand("%") | :bw]] };
-  };
-
-  yank = {
+    { "TermOpen", "term://*", "startinsert"};
     { "TextYankPost", "*", [[silent! lua vim.highlight.on_yank {timeout=500}]] };
   };
 }
