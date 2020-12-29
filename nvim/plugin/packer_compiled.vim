@@ -21,6 +21,20 @@ local plugins = {
     only_sequence = false,
     only_setup = false,
     path = "/Users/f/.local/share/nvim/site/pack/packer/opt/packer.nvim"
+  },
+  undotree = {
+    commands = { "UndotreeToggle" },
+    loaded = false,
+    only_sequence = false,
+    only_setup = false,
+    path = "/Users/f/.local/share/nvim/site/pack/packer/opt/undotree"
+  },
+  ["vista.vim"] = {
+    commands = { "Vista" },
+    loaded = false,
+    only_sequence = false,
+    only_setup = false,
+    path = "/Users/f/.local/share/nvim/site/pack/packer/opt/vista.vim"
   }
 }
 
@@ -155,9 +169,11 @@ endfunction
 
 
 " Command lazy-loads
+command! -nargs=* -range -bang -complete=file UndotreeToggle call s:load(['undotree'], { "cmd": "UndotreeToggle", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
+command! -nargs=* -range -bang -complete=file Vista call s:load(['vista.vim'], { "cmd": "Vista", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file Far call s:load(['far.vim'], { "cmd": "Far", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
-command! -nargs=* -range -bang -complete=file F call s:load(['far.vim'], { "cmd": "F", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file Fardo call s:load(['far.vim'], { "cmd": "Fardo", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
+command! -nargs=* -range -bang -complete=file F call s:load(['far.vim'], { "cmd": "F", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 
 " Keymap lazy-loads
 

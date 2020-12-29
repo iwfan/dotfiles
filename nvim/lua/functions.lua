@@ -32,7 +32,8 @@ helpers.parse_from_definition_table{
   };
 
   others = {
-    { "BufReadPost", "*", [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]}
+    { "BufReadPost", "*", [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]};
+    { "TermOpen", "term://*", "startinsert"};
   };
 
   windows = {

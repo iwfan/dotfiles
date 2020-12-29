@@ -58,7 +58,7 @@ if [[ $SHELL != *"zsh"* ]]; then
 fi
 
 ln -fs ~/dotfiles/git/gitconfig ~/.gitconfig
-
+ln -fs ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/jesseduffield/lazygit/config.yml
 ln -fs ~/dotfiles/kitty ~/.config/kitty
 
 # tmux
@@ -80,7 +80,6 @@ ln -fs ~/dotfiles/zsh/p10k.zsh ~/.p10k.zsh
 ln -fs ~/dotfiles/zsh/p10k-evilball.zsh ~/.p10k-evilball.zsh
 ln -fs ~/dotfiles/zsh/zshrc ~/.zshrc
 
-ln -fs ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/jesseduffield/lazygit/config.yml
 success "link custom config file to $HOME"
 
 #source ~/.zshrc
