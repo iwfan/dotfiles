@@ -95,7 +95,7 @@ return require('packer').startup(function()
 
   use 'editorconfig/editorconfig-vim'
   use 'liuchengxu/vim-which-key'
-  use 'mbbill/undotree'
+  use { 'mbbill/undotree', cmd = { 'UndotreeToggle' } }
 
   -- searching
   use 'haya14busa/incsearch.vim'
@@ -114,7 +114,7 @@ return require('packer').startup(function()
 
   -- use 'pechorin/any-jump.vim'
 
-  use 'liuchengxu/vista.vim'
+  use { 'liuchengxu/vista.vim', cmd = { 'Vista' } }
 
   -- === html Plugins === "
   use 'alvan/vim-closetag'

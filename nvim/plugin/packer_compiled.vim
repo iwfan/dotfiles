@@ -155,9 +155,9 @@ endfunction
 
 
 " Command lazy-loads
-command! -nargs=* -range -bang -complete=file Fardo call s:load(['far.vim'], { "cmd": "Fardo", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file Far call s:load(['far.vim'], { "cmd": "Far", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file F call s:load(['far.vim'], { "cmd": "F", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
+command! -nargs=* -range -bang -complete=file Fardo call s:load(['far.vim'], { "cmd": "Fardo", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 
 " Keymap lazy-loads
 

@@ -1,11 +1,23 @@
 [user]
     name = iwfan
     email = i.wangfancn@gmail.com
-[init]
-    templatedir = ~/dotfiles/git/git_template
 [core]
     editor = nvim
     excludesfile = ~/dotfiles/git/gitignore
+    autocrlf = input
+    pager = diff-so-fancy | less --tabs=4 -RFX
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
+[color "diff"]
+    meta = 11
+    frag = magenta bold
+    commit = yellow bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
 [commit]
     verbose = true
 [push]
@@ -25,19 +37,9 @@
     trustExitCode = true
 [feature]
     manyFiles = true
-[alias]
-    co = checkout
-    st = status
-    ; up = remote update -p
-    up = fetch --all
-    b  = branch --sort=committerdate
-    pls = push --force-with-lease
-    ca = !git add -A && git commit -av
-    caa = !git add -A && git commit --amend -av
-    caas = !git add -A && git commit --amend --no-edit
-    rn = "!f() { git branch -m $1; }; f"
-    rh = reset --hard
-    rhu = reset --hard @{u}
-    cp = cherry-pick
-    cob = !git checkout $(git branch --sort=committerdate | fzf)
-    d = diff --cached --diff-algorithm=minimal
+[color]
+    ui = auto
+[branch]
+    autoSetupRebase = always
+[includeIf "gitdir:~/working/"]
+    path = /Users/f/working/.gitconfig
