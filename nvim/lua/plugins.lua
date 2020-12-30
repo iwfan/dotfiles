@@ -71,12 +71,16 @@ return require('packer').startup(function()
       require 'nvim-web-devicons'.setup { default = true; }
     end
   }
-
-  use 'kyazdani42/nvim-tree.lua'
-  use 'Akin909/nvim-bufferline.lua'
-  use 'moll/vim-bbye'
-  use { 'glepnir/zephyr-nvim', config = function() require 'zephyr' end }
-  use 'glepnir/galaxyline.nvim'
+  use 'glepnir/zephyr-nvim' 
+  use {
+    'glepnir/galaxyline.nvim',
+      branch = 'main',
+      -- your statusline
+      config = function()
+        require 'plugs.galaxyline'
+      end,
+      requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
   use {
     'glepnir/indent-guides.nvim',
     config = function()
@@ -87,7 +91,9 @@ return require('packer').startup(function()
       }
     end
   }
-
+  use 'kyazdani42/nvim-tree.lua'
+  use 'Akin909/nvim-bufferline.lua'
+  use 'moll/vim-bbye'
   use 'mhinz/vim-startify'
 
   use {

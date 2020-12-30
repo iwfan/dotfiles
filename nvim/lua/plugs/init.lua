@@ -1,7 +1,6 @@
 require 'plugs.nvim-treesitter'
 require 'plugs.nvim-tree'
-
-require 'plugs.galaxyline'
+require 'zephyr'
 require 'plugs.bufferline'
 require 'plugs.signify'
 -- require 'plugs.lsp'
