@@ -29,6 +29,6 @@ require('indent_guides').setup{
 require 'plugs.galaxyline'
 require 'plugs.bufferline'
 require 'plugs.signify'
-require 'plugs.lsp'
+-- require 'plugs.lsp'
 require 'plugs.searching'
 require 'plugs.misc-settings'

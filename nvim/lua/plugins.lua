@@ -37,9 +37,9 @@ return require('packer').startup(function()
 
   use 'theprimeagen/vim-be-good'
 
-  use 'neovim/nvim-lspconfig'
-  use 'nvim-lua/completion-nvim'
-  use 'nvim-lua/lsp-status.nvim'
+  use { 'neovim/nvim-lspconfig', disable = true }
+  use { 'nvim-lua/completion-nvim', disable = true }
+  use { 'nvim-lua/lsp-status.nvim', disable = true }
   use {
        'nvim-treesitter/nvim-treesitter',
         run = ":TSUpdate"
@@ -47,9 +47,10 @@ return require('packer').startup(function()
   use 'nvim-treesitter/completion-treesitter'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'nvim-treesitter/playground'
-  use 'tjdevries/nlua.nvim'
-  use 'tjdevries/lsp_extensions.nvim'
+  use { 'tjdevries/nlua.nvim', disable = true }
+  use { 'tjdevries/lsp_extensions.nvim', disable = true }
 
+  use { 'neoclide/coc.nvim', branch = 'release' }
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
   use 'Akin909/nvim-bufferline.lua'
