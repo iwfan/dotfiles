@@ -41,27 +41,82 @@ return require('packer').startup(function()
   use { 'nvim-lua/completion-nvim', disable = true }
   use { 'nvim-lua/lsp-status.nvim', disable = true }
   use {
-       'nvim-treesitter/nvim-treesitter',
-        run = ":TSUpdate"
-      }
+    'nvim-treesitter/nvim-treesitter',
+    run = ":TSUpdate"
+  }
   use 'nvim-treesitter/completion-treesitter'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'nvim-treesitter/playground'
   use { 'tjdevries/nlua.nvim', disable = true }
   use { 'tjdevries/lsp_extensions.nvim', disable = true }
 
-  use { 'neoclide/coc.nvim', branch = 'release' }
-  use 'kyazdani42/nvim-web-devicons'
+  use {
+    'neoclide/coc.nvim',
+    branch = 'release',
+    -- config = function() require'coc'.setup() end,
+    ft = {
+      'typescript',
+      'typescriptreact',
+      'javascript',
+      'javascriptreact',
+      'html',
+      'json',
+      'css'
+    }
+  }
+
+  use {
+    'kyazdani42/nvim-web-devicons',
+    config = function()
+      require 'nvim-web-devicons'.setup { default = true; }
+    end
+  }
+
   use 'kyazdani42/nvim-tree.lua'
   use 'Akin909/nvim-bufferline.lua'
   use 'moll/vim-bbye'
-  use 'glepnir/zephyr-nvim'
+  use { 'glepnir/zephyr-nvim', config = function() require 'zephyr' end }
   use 'glepnir/galaxyline.nvim'
-  use 'glepnir/indent-guides.nvim'
+  use {
+    'glepnir/indent-guides.nvim',
+    config = function()
+      require 'indent_guides'.setup{
+        indent_guide_size = 1;
+        indent_start_level = 2;
+        exclude_filetypes = {'LuaTree', 'Startify', 'vista','help','sagahover'};
+      }
+    end
+  }
+
   use 'mhinz/vim-startify'
 
-  use 'norcalli/nvim-colorizer.lua'
-  use 'norcalli/nvim-terminal.lua'
+  use {
+    'norcalli/nvim-colorizer.lua',
+     config = function()
+      require 'colorizer'.setup({
+        css = { rgb_fn = true; };
+        scss = { rgb_fn = true; };
+        sass = { rgb_fn = true; };
+        stylus = { rgb_fn = true; };
+        vim = { names = true; };
+        tmux = { names = false; };
+        'javascript';
+        'javascriptreact';
+        'typescript';
+        'typescriptreact';
+        html = {
+          mode = 'foreground';
+        }
+      })
+    end
+  }
+
+  use {
+    'norcalli/nvim-terminal.lua',
+    config = function()
+      require'terminal'.setup()
+    end
+  }
 
   use 'romainl/vim-qf'
 

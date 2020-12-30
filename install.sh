@@ -42,7 +42,7 @@ packages=(
   lazygit
   ranger
 #  lazynpm
- diff-so-fancy
+  diff-so-fancy
 )
 
 for i in "${packages[@]}"
