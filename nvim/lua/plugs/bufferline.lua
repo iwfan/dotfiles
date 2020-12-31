@@ -1,10 +1,3 @@
-require 'bufferline'.setup{
-  options = {
-    mappings = false;
-    always_show_bufferline = false;
-  };
-}
-
 vim.api.nvim_set_keymap('n', '[b', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', ']b', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
 
