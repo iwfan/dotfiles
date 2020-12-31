@@ -1,6 +1,5 @@
 require 'plugs.nvim-treesitter'
 require 'plugs.nvim-tree'
-require 'plugs.bufferline'
 require 'plugs.signify'
 -- require 'plugs.lsp'
 require 'plugs.searching'

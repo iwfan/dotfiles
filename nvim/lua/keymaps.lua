@@ -80,3 +80,12 @@ bind_key('n|<leader>ff', map_cu("lua require('telescope.builtin').git_files()"))
 bind_key('n|<leader>fa', map_cu("lua require('telescope.builtin').find_files()"))
 bind_key('n|<leader>fb', map_cu("lua require('telescope.builtin').buffers()"))
 bind_key('n|<leader>fw', map_cu([[lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})]]))
+
+bind_key('n|[b', map_cr('BufferLineCyclePrev'):with_noremap():with_silent())
+bind_key('n|]b', map_cr('BufferLineCycleNext'):with_noremap():with_silent())
+
+bind_key('n|b<', map_cr('BufferLineMovePrev'):with_noremap():with_silent())
+bind_key('n|b>', map_cr('BufferLineMoveNext'):with_noremap():with_silent())
+
+bind_key('n|gb', map_cr('BufferLinePick'):with_noremap():with_silent())
+bind_key('n|<BS>b', map_cr('Bdelete'):with_noremap():with_silent())
