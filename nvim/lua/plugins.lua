@@ -142,9 +142,10 @@ return require('packer').startup(function()
 
   use 'romainl/vim-qf'
 
-  use 'nvim-lua/popup.nvim'
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-lua/telescope.nvim'
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+  }
 
   use 'wellle/targets.vim'
   use 'kana/vim-textobj-user'
