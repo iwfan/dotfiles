@@ -1,30 +1,32 @@
-vim.fn.execute([[
-let g:coc_global_extensions = [
-  \ 'coc-angular',
-  \ 'coc-css',
-  \ 'coc-diagnostic',
-  \ 'coc-emmet',
-  \ 'coc-emoji',
-  \ 'coc-eslint',
-  \ 'coc-html',
-  \ 'coc-imselect',
-  \ 'coc-json',
-  \ 'coc-prettier',
-  \ 'coc-stylelint',
-  \ 'coc-tabnine',
-  \ 'coc-tailwindcss',
-  \ 'coc-translator',
-  \ 'coc-tslint-plugin',
-  \ 'coc-tsserver',
-  \ 'coc-vetur',
-  \ 'coc-vimlsp',
-  \ 'coc-webpack',
-  \ 'coc-yaml',
-  \ ]
+local helpers = require 'helpers'
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
+local bind_key = helpers.bind_key
+local map_cr   = helpers.map_cr
+
+vim.g.coc_global_extensions = {
+  'coc-angular',
+  'coc-css',
+  'coc-diagnostic',
+  'coc-emmet',
+  'coc-emoji',
+  'coc-eslint',
+  'coc-html',
+  'coc-imselect',
+  'coc-json',
+  'coc-prettier',
+  'coc-stylelint',
+  'coc-tabnine',
+  'coc-tailwindcss',
+  'coc-translator',
+  'coc-tslint-plugin',
+  'coc-tsserver',
+  'coc-vetur',
+  'coc-vimlsp',
+  'coc-webpack',
+  'coc-yaml',
+}
+
+--[[
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -129,4 +131,4 @@ endif
 " Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
 " nmap <silent> <C-s> <Plug>(coc-range-select)
 " xmap <silent> <C-s> <Plug>(coc-range-select)
-]], "")
+--]]
