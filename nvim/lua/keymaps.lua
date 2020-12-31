@@ -75,17 +75,15 @@ bind_key('i|<s-tab>', map_cmd("<Plug>(completion_smart_s_tab)"))
 bind_key('n|j', map_cmd("<Plug>(accelerated_jk_gj)"))
 bind_key('n|k', map_cmd("<Plug>(accelerated_jk_gk)"))
 
-
 bind_key('n|<leader>ff', map_cu("lua require('telescope.builtin').git_files()"))
 bind_key('n|<leader>fa', map_cu("lua require('telescope.builtin').find_files()"))
 bind_key('n|<leader>fb', map_cu("lua require('telescope.builtin').buffers()"))
-bind_key('n|<leader>fw', map_cu([[lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})]]))
+bind_key('n|<leader>fg', map_cu([[lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})]]))
+bind_key('n|<leader>fw', map_cu([[lua require('telescope.builtin').grep_string({ search = vim.fn.expand("<cword>")})]]))
 
 bind_key('n|[b', map_cr('BufferLineCyclePrev'):with_noremap():with_silent())
 bind_key('n|]b', map_cr('BufferLineCycleNext'):with_noremap():with_silent())
-
 bind_key('n|b<', map_cr('BufferLineMovePrev'):with_noremap():with_silent())
 bind_key('n|b>', map_cr('BufferLineMoveNext'):with_noremap():with_silent())
-
 bind_key('n|gb', map_cr('BufferLinePick'):with_noremap():with_silent())
 bind_key('n|<BS>b', map_cr('Bdelete'):with_noremap():with_silent())
