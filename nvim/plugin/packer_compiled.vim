@@ -10,6 +10,7 @@ endif
 lua << END
 local plugins = {
   ["coc.nvim"] = {
+    config = { "\27LJ\2\n)\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\14plugs.coc\frequire\0" },
     loaded = false,
     only_sequence = false,
     only_setup = false,
@@ -165,20 +166,20 @@ end
 
 -- Pre-load configuration
 -- Post-load configuration
--- Config for: zephyr-nvim
-loadstring("\27LJ\2\n&\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\vzephyr\frequire\0")()
--- Config for: nvim-terminal.lua
-loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rterminal\frequire\0")()
--- Config for: nvim-colorizer.lua
-loadstring("\27LJ\2\n£\2\0\0\4\0\18\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\0025\3\f\0=\3\r\0025\3\14\0=\3\15\0025\3\16\0=\3\17\2B\0\2\1K\0\1\0\thtml\1\0\1\tmode\15foreground\ttmux\1\0\1\nnames\1\bvim\1\0\1\nnames\2\vstylus\1\0\1\vrgb_fn\2\tsass\1\0\1\vrgb_fn\2\tscss\1\0\1\vrgb_fn\2\bcss\1\5\0\0\15javascript\20javascriptreact\15typescript\20typescriptreact\1\0\1\vrgb_fn\2\nsetup\14colorizer\frequire\0")()
--- Config for: nvim-web-devicons
-loadstring("\27LJ\2\nO\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\fdefault\2\nsetup\22nvim-web-devicons\frequire\0")()
 -- Config for: galaxyline.nvim
 loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21plugs.galaxyline\frequire\0")()
+-- Config for: nvim-colorizer.lua
+loadstring("\27LJ\2\n£\2\0\0\4\0\18\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\0025\3\f\0=\3\r\0025\3\14\0=\3\15\0025\3\16\0=\3\17\2B\0\2\1K\0\1\0\thtml\1\0\1\tmode\15foreground\ttmux\1\0\1\nnames\1\bvim\1\0\1\nnames\2\vstylus\1\0\1\vrgb_fn\2\tsass\1\0\1\vrgb_fn\2\tscss\1\0\1\vrgb_fn\2\bcss\1\5\0\0\15javascript\20javascriptreact\15typescript\20typescriptreact\1\0\1\vrgb_fn\2\nsetup\14colorizer\frequire\0")()
+-- Config for: nvim-bufferline.lua
+loadstring("\27LJ\2\nt\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\foptions\1\0\0\1\0\2\27always_show_bufferline\1\rmappings\1\nsetup\15bufferline\frequire\0")()
+-- Config for: nvim-terminal.lua
+loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rterminal\frequire\0")()
+-- Config for: zephyr-nvim
+loadstring("\27LJ\2\n&\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\vzephyr\frequire\0")()
 -- Config for: indent-guides.nvim
 loadstring("\27LJ\2\n¯\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\22exclude_filetypes\1\6\0\0\fLuaTree\rStartify\nvista\thelp\14sagahover\1\0\2\23indent_start_level\3\2\22indent_guide_size\3\1\nsetup\18indent_guides\frequire\0")()
--- Config for: nvim-bufferline.lua
-loadstring("\27LJ\2\nt\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\foptions\1\0\0\1\0\2\rmappings\1\27always_show_bufferline\1\nsetup\15bufferline\frequire\0")()
+-- Config for: nvim-web-devicons
+loadstring("\27LJ\2\nO\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\fdefault\2\nsetup\22nvim-web-devicons\frequire\0")()
 -- Conditional loads
 -- Load plugins in order defined by `after`
 END
@@ -189,23 +190,23 @@ endfunction
 
 
 " Command lazy-loads
+command! -nargs=* -range -bang -complete=file Far call s:load(['far.vim'], { "cmd": "Far", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
+command! -nargs=* -range -bang -complete=file Fardo call s:load(['far.vim'], { "cmd": "Fardo", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file UndotreeToggle call s:load(['undotree'], { "cmd": "UndotreeToggle", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file Vista call s:load(['vista.vim'], { "cmd": "Vista", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
-command! -nargs=* -range -bang -complete=file Fardo call s:load(['far.vim'], { "cmd": "Fardo", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file F call s:load(['far.vim'], { "cmd": "F", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
-command! -nargs=* -range -bang -complete=file Far call s:load(['far.vim'], { "cmd": "Far", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 
 " Keymap lazy-loads
 
 augroup packer_load_aucmds
   au!
   " Filetype lazy-loads
-  au FileType json ++once call s:load(['coc.nvim'], { "ft": "json" })
-  au FileType css ++once call s:load(['coc.nvim'], { "ft": "css" })
-  au FileType typescript ++once call s:load(['coc.nvim'], { "ft": "typescript" })
   au FileType typescriptreact ++once call s:load(['coc.nvim'], { "ft": "typescriptreact" })
-  au FileType javascript ++once call s:load(['coc.nvim'], { "ft": "javascript" })
+  au FileType json ++once call s:load(['coc.nvim'], { "ft": "json" })
   au FileType javascriptreact ++once call s:load(['coc.nvim'], { "ft": "javascriptreact" })
+  au FileType javascript ++once call s:load(['coc.nvim'], { "ft": "javascript" })
+  au FileType css ++once call s:load(['coc.nvim'], { "ft": "css" })
   au FileType html ++once call s:load(['coc.nvim'], { "ft": "html" })
+  au FileType typescript ++once call s:load(['coc.nvim'], { "ft": "typescript" })
   " Event lazy-loads
 augroup END

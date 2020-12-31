@@ -53,7 +53,7 @@ return require('packer').startup(function()
   use {
     'neoclide/coc.nvim',
     branch = 'release',
-    -- config = function() require'coc'.setup() end,
+    config = function() require 'plugs.coc' end,
     ft = {
       'typescript',
       'typescriptreact',
