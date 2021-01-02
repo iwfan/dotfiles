@@ -270,6 +270,13 @@ return require("packer").startup(
       end
     }
 
+    use {
+      "ybian/smartim",
+      config = function()
+        vim.g.smartim_default = "com.apple.keylayout.ABC"
+      end
+    }
+
     -- use 'AndrewRadev/splitjoin.vim'
     -- use 'machakann/vim-swap'
     -- use 'machakann/vim-textobj-delimited'
