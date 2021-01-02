@@ -9,8 +9,8 @@
 -- Github:   https://github.com/iwfan
 -- License:  MIT License
 
-require 'settings'
-require 'keymaps'
-require 'plugins'
-require 'plugs'
-require 'functions'
+require "settings"
+require "keymaps"
+require "plugins"
+require "plugs"
+require "functions"
