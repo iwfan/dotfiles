@@ -116,7 +116,7 @@ return require("packer").startup(
         require "indent_guides".setup {
           indent_guide_size = 1,
           indent_start_level = 2,
-          exclude_filetypes = {"LuaTree", "dashboard", "vista", "help", "sagahover"}
+          exclude_filetypes = {"NvimTree", "dashboard", "vista", "help", "sagahover"}
         }
       end
     }
@@ -164,8 +164,6 @@ return require("packer").startup(
         require "terminal".setup()
       end
     }
-
-    use "romainl/vim-qf"
 
     use {
       "nvim-telescope/telescope.nvim",
@@ -288,6 +286,8 @@ return require("packer").startup(
     -- === html Plugins === "
     use "alvan/vim-closetag"
     use "AndrewRadev/tagalong.vim"
+
+    -- use "romainl/vim-qf"
 
     -- " === css Plugins === "
     -- use 'hail2u/vim-css3-syntax', { 'for': [ 'css', 'javascript','javascriptreact' ] }
