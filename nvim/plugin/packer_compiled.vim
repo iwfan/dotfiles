@@ -9,13 +9,6 @@ endif
 
 lua << END
 local plugins = {
-  ["coc.nvim"] = {
-    config = { "\27LJ\2\n)\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\14plugs.coc\frequire\0" },
-    loaded = false,
-    only_sequence = false,
-    only_setup = false,
-    path = "/Users/f/.local/share/nvim/site/pack/packer/opt/coc.nvim"
-  },
   ["far.vim"] = {
     commands = { "F", "Far", "Fardo" },
     loaded = false,
@@ -174,26 +167,28 @@ end
 
 -- Pre-load configuration
 -- Post-load configuration
--- Config for: galaxyline.nvim
-loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21plugs.galaxyline\frequire\0")()
--- Config for: smartim
-loadstring("\27LJ\2\nI\0\0\2\0\4\0\0056\0\0\0009\0\1\0'\1\3\0=\1\2\0K\0\1\0\28com.apple.keylayout.ABC\20smartim_default\6g\bvim\0")()
+-- Config for: dashboard-nvim
+loadstring("\27LJ\2\n·\5\0\0\4\0\22\0\0296\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\1\0005\1\b\0005\2\6\0005\3\5\0=\3\a\2=\2\t\0015\2\v\0005\3\n\0=\3\a\2=\2\f\0015\2\14\0005\3\r\0=\3\a\2=\2\15\0015\2\17\0005\3\16\0=\3\a\2=\2\18\0015\2\20\0005\3\19\0=\3\a\2=\2\21\1=\1\4\0K\0\1\0\18find_register\1\0\1\fcommand\22DashboardJumpMark\1\2\0\0009ï‘¤  Find  Register                          SPC f r\14find_word\1\0\1\fcommand\22DashboardFindWord\1\2\0\0009ï†š  Find  Word                              SPC f g\14find_file\1\0\1\fcommand\22DashboardFindFile\1\2\0\0009ï…œ  Find  File                              SPC f f\17find_history\1\0\1\fcommand\25DashboardFindHistory\1\2\0\0009ïœ¡  Recently opened files                   SPC f h\rnew_file\1\0\0\16description\1\0\1\fcommand\21DashboardNewFile\1\2\0\0009ïœ•  New   File                              SPC t f\29dashboard_custom_section\14telescope dashboard_default_executive\6g\bvim\0")()
 -- Config for: nvim-web-devicons
 loadstring("\27LJ\2\nO\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\fdefault\2\nsetup\22nvim-web-devicons\frequire\0")()
--- Config for: nvim-colorizer.lua
-loadstring("\27LJ\2\n£\2\0\0\4\0\18\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\0025\3\f\0=\3\r\0025\3\14\0=\3\15\0025\3\16\0=\3\17\2B\0\2\1K\0\1\0\thtml\1\0\1\tmode\15foreground\ttmux\1\0\1\nnames\1\bvim\1\0\1\nnames\2\vstylus\1\0\1\vrgb_fn\2\tsass\1\0\1\vrgb_fn\2\tscss\1\0\1\vrgb_fn\2\bcss\1\5\0\0\15javascript\20javascriptreact\15typescript\20typescriptreact\1\0\1\vrgb_fn\2\nsetup\14colorizer\frequire\0")()
--- Config for: nvim-terminal.lua
-loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rterminal\frequire\0")()
 -- Config for: telescope.nvim
 loadstring("\27LJ\2\nÀ\1\0\0\5\0\t\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\b\0'\2\5\0B\0\2\1K\0\1\0\19load_extension\15extensions\1\0\0\15fzy_native\1\0\0\1\0\2\25override_file_sorter\2\28override_generic_sorter\1\nsetup\14telescope\frequire\0")()
--- Config for: zephyr-nvim
-loadstring("\27LJ\2\n&\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\vzephyr\frequire\0")()
 -- Config for: indent-guides.nvim
 loadstring("\27LJ\2\n±\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\22exclude_filetypes\1\6\0\0\rNvimTree\14dashboard\nvista\thelp\14sagahover\1\0\2\23indent_start_level\3\2\22indent_guide_size\3\1\nsetup\18indent_guides\frequire\0")()
 -- Config for: nvim-bufferline.lua
-loadstring("\27LJ\2\nt\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\foptions\1\0\0\1\0\2\rmappings\1\27always_show_bufferline\1\nsetup\15bufferline\frequire\0")()
--- Config for: dashboard-nvim
-loadstring("\27LJ\2\n·\5\0\0\4\0\22\0\0296\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\1\0005\1\b\0005\2\6\0005\3\5\0=\3\a\2=\2\t\0015\2\v\0005\3\n\0=\3\a\2=\2\f\0015\2\14\0005\3\r\0=\3\a\2=\2\15\0015\2\17\0005\3\16\0=\3\a\2=\2\18\0015\2\20\0005\3\19\0=\3\a\2=\2\21\1=\1\4\0K\0\1\0\18find_register\1\0\1\fcommand\22DashboardJumpMark\1\2\0\0009ï‘¤  Find  Register                          SPC f r\14find_word\1\0\1\fcommand\22DashboardFindWord\1\2\0\0009ï†š  Find  Word                              SPC f g\14find_file\1\0\1\fcommand\22DashboardFindFile\1\2\0\0009ï…œ  Find  File                              SPC f f\17find_history\1\0\1\fcommand\25DashboardFindHistory\1\2\0\0009ïœ¡  Recently opened files                   SPC f h\rnew_file\1\0\0\16description\1\0\1\fcommand\21DashboardNewFile\1\2\0\0009ïœ•  New   File                              SPC t f\29dashboard_custom_section\14telescope dashboard_default_executive\6g\bvim\0")()
+loadstring("\27LJ\2\nt\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\foptions\1\0\0\1\0\2\27always_show_bufferline\1\rmappings\1\nsetup\15bufferline\frequire\0")()
+-- Config for: coc.nvim
+loadstring("\27LJ\2\n)\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\14plugs.coc\frequire\0")()
+-- Config for: nvim-terminal.lua
+loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rterminal\frequire\0")()
+-- Config for: galaxyline.nvim
+loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21plugs.galaxyline\frequire\0")()
+-- Config for: zephyr-nvim
+loadstring("\27LJ\2\n&\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\vzephyr\frequire\0")()
+-- Config for: nvim-colorizer.lua
+loadstring("\27LJ\2\n£\2\0\0\4\0\18\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\0025\3\f\0=\3\r\0025\3\14\0=\3\15\0025\3\16\0=\3\17\2B\0\2\1K\0\1\0\thtml\1\0\1\tmode\15foreground\ttmux\1\0\1\nnames\1\bvim\1\0\1\nnames\2\vstylus\1\0\1\vrgb_fn\2\tsass\1\0\1\vrgb_fn\2\tscss\1\0\1\vrgb_fn\2\bcss\1\5\0\0\15javascript\20javascriptreact\15typescript\20typescriptreact\1\0\1\vrgb_fn\2\nsetup\14colorizer\frequire\0")()
+-- Config for: smartim
+loadstring("\27LJ\2\nI\0\0\2\0\4\0\0056\0\0\0009\0\1\0'\1\3\0=\1\2\0K\0\1\0\28com.apple.keylayout.ABC\20smartim_default\6g\bvim\0")()
 -- Conditional loads
 -- Load plugins in order defined by `after`
 END
@@ -204,12 +199,12 @@ endfunction
 
 
 " Command lazy-loads
+command! -nargs=* -range -bang -complete=file Format call s:load(['formatter.nvim'], { "cmd": "Format", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
+command! -nargs=* -range -bang -complete=file Vista call s:load(['vista.vim'], { "cmd": "Vista", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file Far call s:load(['far.vim'], { "cmd": "Far", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
+command! -nargs=* -range -bang -complete=file F call s:load(['far.vim'], { "cmd": "F", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file Fardo call s:load(['far.vim'], { "cmd": "Fardo", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file UndotreeToggle call s:load(['undotree'], { "cmd": "UndotreeToggle", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
-command! -nargs=* -range -bang -complete=file Format call s:load(['formatter.nvim'], { "cmd": "Format", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
-command! -nargs=* -range -bang -complete=file F call s:load(['far.vim'], { "cmd": "F", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
-command! -nargs=* -range -bang -complete=file Vista call s:load(['vista.vim'], { "cmd": "Vista", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 
 " Keymap lazy-loads
 
@@ -217,12 +212,12 @@ augroup packer_load_aucmds
   au!
   " Filetype lazy-loads
   au FileType lua ++once call s:load(['formatter.nvim'], { "ft": "lua" })
-  au FileType typescriptreact ++once call s:load(['formatter.nvim', 'coc.nvim'], { "ft": "typescriptreact" })
-  au FileType json ++once call s:load(['formatter.nvim', 'coc.nvim'], { "ft": "json" })
-  au FileType javascriptreact ++once call s:load(['formatter.nvim', 'coc.nvim'], { "ft": "javascriptreact" })
-  au FileType javascript ++once call s:load(['formatter.nvim', 'coc.nvim'], { "ft": "javascript" })
-  au FileType css ++once call s:load(['formatter.nvim', 'coc.nvim'], { "ft": "css" })
-  au FileType html ++once call s:load(['formatter.nvim', 'coc.nvim'], { "ft": "html" })
-  au FileType typescript ++once call s:load(['formatter.nvim', 'coc.nvim'], { "ft": "typescript" })
+  au FileType css ++once call s:load(['formatter.nvim'], { "ft": "css" })
+  au FileType javascript ++once call s:load(['formatter.nvim'], { "ft": "javascript" })
+  au FileType javascriptreact ++once call s:load(['formatter.nvim'], { "ft": "javascriptreact" })
+  au FileType typescript ++once call s:load(['formatter.nvim'], { "ft": "typescript" })
+  au FileType typescriptreact ++once call s:load(['formatter.nvim'], { "ft": "typescriptreact" })
+  au FileType html ++once call s:load(['formatter.nvim'], { "ft": "html" })
+  au FileType json ++once call s:load(['formatter.nvim'], { "ft": "json" })
   " Event lazy-loads
 augroup END

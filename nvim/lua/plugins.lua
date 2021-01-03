@@ -49,16 +49,17 @@ return require("packer").startup(
       branch = "release",
       config = function()
         require "plugs.coc"
-      end,
-      ft = {
-        "typescript",
-        "typescriptreact",
-        "javascript",
-        "javascriptreact",
-        "html",
-        "json",
-        "css"
-      }
+      end
+      -- ,
+      -- ft = {
+      --   "typescript",
+      --   "typescriptreact",
+      --   "javascript",
+      --   "javascriptreact",
+      --   "html",
+      --   "json",
+      --   "css"
+      -- }
     }
 
     use {

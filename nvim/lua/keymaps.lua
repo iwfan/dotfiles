@@ -69,9 +69,6 @@ bind_key("t|<Esc>", map_cmd([[<C-\><C-n>]]):with_noremap())
 bind_key("n|<F3>", map_cu("PackerCompile"))
 bind_key("n|<F4>", map_cu("PackerSync"))
 
--- bind_key('i|<tab>', map_cmd("<Plug>(completion_smart_tab)"))
--- bind_key('i|<s-tab>', map_cmd("<Plug>(completion_smart_s_tab)"))
-
 bind_key("n|j", map_cmd("<Plug>(accelerated_jk_gj)"))
 bind_key("n|k", map_cmd("<Plug>(accelerated_jk_gk)"))
 
