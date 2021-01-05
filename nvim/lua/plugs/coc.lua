@@ -11,7 +11,6 @@ vim.g.coc_global_extensions = {
   "coc-emoji",
   "coc-eslint",
   "coc-html",
-  "coc-imselect",
   "coc-json",
   "coc-prettier",
   "coc-stylelint",
@@ -23,5 +22,6 @@ vim.g.coc_global_extensions = {
   "coc-vetur",
   "coc-vimlsp",
   "coc-webpack",
-  "coc-yaml"
+  "coc-yaml",
+  "coc-go"
 }
