@@ -19,6 +19,7 @@ vim.g.coc_global_extensions = {
   "coc-translator",
   "coc-tslint-plugin",
   "coc-tsserver",
+  "coc-deno",
   "coc-vetur",
   "coc-vimlsp",
   "coc-webpack",
