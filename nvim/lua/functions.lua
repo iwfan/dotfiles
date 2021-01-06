@@ -24,7 +24,8 @@ helpers.parse_from_definition_table {
       }
     },
     {"BufNewFile,BufRead", "_ideavimrc", "setf vim"},
-    {"BufNewFile,BufRead", "*.tsx,*.jsx", "setf typescriptreact"}
+    {"BufNewFile,BufRead", "*.tsx,*.jsx", "setf typescriptreact"},
+    {"TermOpen", "term://*", "setf terminal"}
   },
   filetype_config = {
     {"BufWritePre", [[/tmp/*]], "setlocal noundofile"},

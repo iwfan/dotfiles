@@ -117,7 +117,7 @@ return require("packer").startup(
         require "indent_guides".setup {
           indent_guide_size = 1,
           indent_start_level = 2,
-          exclude_filetypes = {"NvimTree", "dashboard", "vista", "help", "sagahover"}
+          exclude_filetypes = {"NvimTree", "dashboard", "vista", "help", "sagahover", "terminal"}
         }
       end
     }
