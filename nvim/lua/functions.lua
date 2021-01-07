@@ -35,7 +35,9 @@ helpers.parse_from_definition_table {
     {"BufWritePre", [[*.bak]], "setlocal noundofile"},
     {"BufWritePre", "*", "setlocal formatoptions-=cro formatoptions+=j1"},
     {"BufWritePre", "*.css,*.scss,*.less", "setlocal iskeyword+=-"},
-    {"BufWritePre", "*.md", "setlocal wrap"}
+    {"BufWritePre", "*.md", "setlocal wrap"},
+    -- Makefile
+    {"FileType", "make", "setlocal noexpandtab"}
   },
   others = {
     {"BufEnter", [[*.png,*.jpg,*.gif]], [[exec "silent !open ".expand("%") | :bw]]},
