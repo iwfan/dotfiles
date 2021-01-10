@@ -237,48 +237,33 @@ return require("packer").startup(
         "html",
         "json",
         "css",
-        "lua"
+        "lua",
+        "go"
       },
       config = function()
+        local prettier = function()
+          return {
+            exe = "prettier",
+            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+            stdin = true
+          }
+        end
+
         require("formatter").setup(
           {
             logging = false,
             filetype = {
               javascript = {
-                function()
-                  return {
-                    exe = "prettier",
-                    args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
-                    stdin = true
-                  }
-                end
+                prettier
               },
               javascriptreact = {
-                function()
-                  return {
-                    exe = "prettier",
-                    args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
-                    stdin = true
-                  }
-                end
+                prettier
               },
               typescript = {
-                function()
-                  return {
-                    exe = "prettier",
-                    args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
-                    stdin = true
-                  }
-                end
+                prettier
               },
               typescriptreact = {
-                function()
-                  return {
-                    exe = "prettier",
-                    args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
-                    stdin = true
-                  }
-                end
+                prettier
               },
               lua = {
                 -- luafmt
@@ -286,6 +271,15 @@ return require("packer").startup(
                   return {
                     exe = "luafmt",
                     args = {"--indent-count", 2, "--stdin"},
+                    stdin = true
+                  }
+                end
+              },
+              go = {
+                function()
+                  return {
+                    exe = "gofmt",
+                    args = {},
                     stdin = true
                   }
                 end

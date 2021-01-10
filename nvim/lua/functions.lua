@@ -44,7 +44,7 @@ helpers.parse_from_definition_table {
     {"BufReadPost", "*", [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]},
     {
       "BufWritePre",
-      "*.html,*.css,*.json,*.javascript,*.javascriptreact,*.typescript,*.typescriptreact,*.lua",
+      "*.html,*.css,*.json,*.javascript,*.javascriptreact,*.typescript,*.typescriptreact,*.lua,*.go",
       "lua vim.api.nvim_command('Format')"
     },
     {"VimResized", "*", [[wincmd =]]},
