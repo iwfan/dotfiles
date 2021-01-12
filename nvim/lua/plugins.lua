@@ -71,7 +71,7 @@ return require("packer").startup(
     use {
       "glepnir/zephyr-nvim",
       config = function()
-        require "zephyr"
+        -- require "zephyr"
       end
     }
     use {
