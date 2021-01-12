@@ -196,6 +196,9 @@ return require("packer").startup(
 
     use "Raimondi/delimitMate"
 
+    use "tommcdo/vim-exchange"
+    use "vim-scripts/ReplaceWithRegister"
+
     --  Speed j/k when press
     use "rhysd/accelerated-jk"
 
@@ -298,9 +301,6 @@ return require("packer").startup(
     }
 
     -- use 'AndrewRadev/splitjoin.vim'
-    -- use 'machakann/vim-swap'
-    -- use 'machakann/vim-textobj-delimited'
-
     -- use 'pechorin/any-jump.vim'
 
     use {"liuchengxu/vista.vim", cmd = {"Vista"}}
