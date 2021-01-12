@@ -69,12 +69,6 @@ return require("packer").startup(
       end
     }
     use {
-      "glepnir/zephyr-nvim",
-      config = function()
-        -- require "zephyr"
-      end
-    }
-    use {
       "glepnir/dashboard-nvim",
       config = function()
         vim.g.dashboard_default_executive = "telescope"
@@ -127,12 +121,20 @@ return require("packer").startup(
       config = function()
         require "bufferline".setup {
           options = {
+            view = "multiwindow",
             mappings = false,
             always_show_bufferline = false
           }
         }
       end,
-      requires = {"glepnir/zephyr-nvim"}
+      requires = {
+        {
+          "glepnir/zephyr-nvim",
+          config = function()
+            require "zephyr"
+          end
+        }
+      }
     }
     use "moll/vim-bbye"
 
