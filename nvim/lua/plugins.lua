@@ -302,6 +302,9 @@ return require("packer").startup(
       end
     }
 
+    use "voldikss/vim-translator"
+    use "romainl/vim-qf"
+
     -- use 'AndrewRadev/splitjoin.vim'
     -- use 'pechorin/any-jump.vim'
 
@@ -310,8 +313,6 @@ return require("packer").startup(
     -- === html Plugins === "
     use "alvan/vim-closetag"
     use "AndrewRadev/tagalong.vim"
-
-    -- use "romainl/vim-qf"
 
     -- " === css Plugins === "
     -- use 'hail2u/vim-css3-syntax', { 'for': [ 'css', 'javascript','javascriptreact' ] }
