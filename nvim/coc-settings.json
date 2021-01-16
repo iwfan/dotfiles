@@ -67,6 +67,30 @@
   "coc.source.buffer.firstMatch": false,
   "coc.source.file.ignoreHidden": false,
 
+  // coc-explorer   
+  "explorer.icon.expanded": "▾",
+  "explorer.icon.collapsed": "▸",
+  "explorer.icon.enableNerdfont": true,
+  "explorer.quitOnOpen": true,
+  "explorer.openAction.strategy": "sourceWindow",
+  "explorer.file.hiddenRules": {
+    "extensions": ["o", "a", "obj", "pyc"],
+    "filenames": [".git"],
+    "patternMatches": []
+  },
+  "explorer.git.showIgnored": true,
+  "explorer.file.git.showUntrackedFiles": true,
+  "explorer.git.icon.status.mixed": "*",
+  "explorer.git.icon.status.added": "✚",
+  "explorer.git.icon.status.copied": "@",
+  "explorer.git.icon.status.deleted": "✖",
+  "explorer.git.icon.status.renamed": "➜",
+  "explorer.git.icon.status.ignored": "☒",
+  "explorer.git.icon.status.modified": "✹",
+  "explorer.git.icon.status.unmerged": "═",
+  "explorer.git.icon.status.untracked": "?",
+  "explorer.git.icon.status.unmodified": " ",
+
   // imselect
   "imselect.defaultInput": "com.apple.keylayout.ABC",
   "imselect.enableStatusItem": true,

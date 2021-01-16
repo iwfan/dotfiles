@@ -6,7 +6,7 @@ local map_cr = helpers.map_cr
 helpers.parse_variable_from_table {
   nvim_tree_side = "left",
   nvim_tree_indent_markers = 1,
-  nvim_tree_ignore = {".git", "node_modules", ".cache"},
+  nvim_tree_ignore = {".git", ".cache"},
   nvim_tree_auto_open = 0,
   nvim_tree_auto_close = 1,
   nvim_tree_quit_on_open = 1,
@@ -21,11 +21,11 @@ helpers.parse_variable_from_table {
     default = "",
     symlink = "",
     git = {
-      unstaged = "✚",
+      unstaged = "✹",
       staged = "✓",
       unmerged = "",
       renamed = "➜",
-      untracked = "★"
+      untracked = "?"
     },
     folder = {
       default = "",

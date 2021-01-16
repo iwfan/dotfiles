@@ -50,6 +50,14 @@ helpers.parse_from_definition_table {
     {"VimResized", "*", [[wincmd =]]},
     {"FileType", "help", [[wincmd L]]},
     {"TermOpen", "term://*", "startinsert"},
-    {"TextYankPost", "*", [[silent! lua vim.highlight.on_yank {timeout=500}]]}
+    {"TextYankPost", "*", [[silent! lua vim.highlight.on_yank {timeout=500}]]},
+    {
+      "BufEnter",
+      "NvimTree",
+      table.concat {
+        [[if &ft == 'NvimTree' |]],
+        [[exec 'NvimTreeRefresh' | endif]]
+      }
+    }
   }
 }
