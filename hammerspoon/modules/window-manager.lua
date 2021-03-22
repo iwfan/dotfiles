@@ -1,6 +1,8 @@
+leaderKey = {"ctrl","cmd"}
+
 -- Window resizing
 hs.hotkey.bind(
-    {"cmd", "alt"},
+    leaderKey,
     "h",
     function()
         local win = hs.window.focusedWindow()
@@ -17,7 +19,7 @@ hs.hotkey.bind(
 )
 
 hs.hotkey.bind(
-    {"cmd", "alt"},
+    leaderKey,
     "l",
     function()
         local win = hs.window.focusedWindow()
@@ -34,7 +36,7 @@ hs.hotkey.bind(
 )
 
 hs.hotkey.bind(
-    {"cmd", "alt"},
+    leaderKey,
     "k",
     function()
         local win = hs.window.focusedWindow()
@@ -51,7 +53,7 @@ hs.hotkey.bind(
 )
 
 hs.hotkey.bind(
-    {"cmd", "alt"},
+    leaderKey,
     "j",
     function()
         local win = hs.window.focusedWindow()
@@ -99,7 +101,7 @@ end
 
 -- Toggle full screen between window-center
 hs.hotkey.bind(
-    {"cmd", "alt"},
+    leaderKey,
     "c",
     function()
         local win = hs.window.focusedWindow()
@@ -109,7 +111,7 @@ hs.hotkey.bind(
 
 -- move a window to other screen
 hs.hotkey.bind(
-    {"cmd", "alt"},
+    leaderKey,
     "left",
     function()
         local win = hs.window.focusedWindow()
@@ -117,7 +119,7 @@ hs.hotkey.bind(
     end
 )
 hs.hotkey.bind(
-    {"cmd", "alt"},
+    leaderKey,
     "right",
     function()
         local win = hs.window.focusedWindow()
