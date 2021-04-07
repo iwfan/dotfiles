@@ -9,7 +9,7 @@ local context    = {
   is_windows = is_windows,
   stdpath    = vim.fn.stdpath('data'),
   home       = home,
-  vim_path   = home .. path_sep .. '.config' .. path_sep .. 'nvim'
+  vim_path   = home .. path_sep .. '.config' .. path_sep .. 'nvim',
   cache_path = home .. path_sep .. '.cache'  .. path_sep .. 'vim' .. path_sep
 }
 
