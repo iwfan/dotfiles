@@ -1,4 +1,5 @@
 alias vi="/usr/local/bin/nvim"
+alias nv="/usr/local/bin/nvim"
 alias ls="lsd"
 alias ll="ls -l"
 alias la="ls -la"
