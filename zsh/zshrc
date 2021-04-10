@@ -1,3 +1,12 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
@@ -69,7 +78,7 @@ zinit ice depth=1 wait lucid
 zinit light Aloxaf/fzf-tab
 
 zinit ice depth=1 wait blockf lucid atpull"zinit creinstall -q ."
-zinit light clarketm/zsh-completions
+zinit light zsh-users/zsh-completions
 
 zinit ice depth=1 wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
@@ -90,7 +99,6 @@ zinit ice depth=1 wait"2" lucid
 zinit light MichaelAquilina/zsh-you-should-use
 
 zinit ice depth=1 atload"!source ~/.p10k.zsh" lucid nocd
-# zinit ice depth=1 atload"!source ~/.p10k-evilball.zsh" lucid nocd
 zinit light romkatv/powerlevel10k
 
 source "$(brew --prefix)/etc/profile.d/z.sh"
@@ -99,9 +107,7 @@ source ~/dotfiles/zsh/aliases.zsh
 # source ~/dotfiles/zsh/fzf.zsh
 source ~/dotfiles/zsh/mappings.zsh
 
-POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-
 if [ -z "$TMUX" ]
 then
-    tmux attach -t iwfan || tmux new -s iwfan
+    tmux attach -t f || tmux new -s f
 fi
