@@ -39,6 +39,8 @@ https://sourcegraph.com/github.com/voldikss/dotfiles
 
 # iTerm2 key codes configuration
 
+Item2 colorschema: https://github.com/sindresorhus/iterm2-snazzy
+
 | key            | code       |
 | -------------- | ---------- |
 | Ctrl-Tab       | ^[[27;5;9~ |
