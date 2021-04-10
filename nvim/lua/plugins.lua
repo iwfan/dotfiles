@@ -23,6 +23,7 @@ return require("packer").startup(
     use "tpope/vim-obsession"
     use "tpope/vim-commentary"
     use "tpope/vim-surround"
+    use "tpope/vim-sleuth"
 
     use {"neovim/nvim-lspconfig", disable = true}
     use {"nvim-lua/completion-nvim", disable = true}
@@ -96,16 +97,6 @@ return require("packer").startup(
         require "plugs.galaxyline"
       end,
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
-    }
-    use {
-      "glepnir/indent-guides.nvim",
-      config = function()
-        require "indent_guides".setup {
-          indent_guide_size = 1,
-          indent_start_level = 2,
-          exclude_filetypes = {"NvimTree", "dashboard", "vista", "help", "sagahover", "terminal"}
-        }
-      end
     }
     use "kyazdani42/nvim-tree.lua"
     use {
