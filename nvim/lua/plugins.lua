@@ -19,17 +19,10 @@ return require("packer").startup(
     -- Packer can manage itself as an optional plugin
     use {"wbthomason/packer.nvim", opt = true}
 
-    use "tpope/vim-speeddating"
     use "tpope/vim-repeat"
-    use "tpope/vim-abolish"
     use "tpope/vim-obsession"
     use "tpope/vim-commentary"
     use "tpope/vim-surround"
-    use "tpope/vim-scriptease"
-    use "tpope/vim-dispatch"
-    use "tpope/vim-sleuth"
-
-    use "theprimeagen/vim-be-good"
 
     use {"neovim/nvim-lspconfig", disable = true}
     use {"nvim-lua/completion-nvim", disable = true}
@@ -161,13 +154,6 @@ return require("packer").startup(
     }
 
     use {
-      "norcalli/nvim-terminal.lua",
-      config = function()
-        require "terminal".setup()
-      end
-    }
-
-    use {
       "nvim-telescope/telescope.nvim",
       requires = {
         {"nvim-lua/popup.nvim"},
@@ -200,12 +186,8 @@ return require("packer").startup(
     use "tommcdo/vim-exchange"
     use "vim-scripts/ReplaceWithRegister"
 
-    --  Speed j/k when press
-    use "rhysd/accelerated-jk"
-
     -- Git
     use "tpope/vim-fugitive"
-    use "tpope/vim-rhubarb"
     use "junegunn/gv.vim"
     use "rhysd/git-messenger.vim"
     use "mhinz/vim-signify"
@@ -302,7 +284,6 @@ return require("packer").startup(
     }
 
     use "voldikss/vim-translator"
-    use "romainl/vim-qf"
 
     -- use 'AndrewRadev/splitjoin.vim'
     -- use 'pechorin/any-jump.vim'

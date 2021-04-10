@@ -69,9 +69,6 @@ bind_key("t|<Esc>", map_cmd([[<C-\><C-n>]]):with_noremap())
 bind_key("n|<F3>", map_cu("PackerCompile"))
 bind_key("n|<F4>", map_cu("PackerSync"))
 
-bind_key("n|j", map_cmd("<Plug>(accelerated_jk_gj)"))
-bind_key("n|k", map_cmd("<Plug>(accelerated_jk_gk)"))
-
 bind_key("n|<leader>ff", map_cu("lua require('telescope.builtin').git_files()"))
 bind_key("n|<leader>fa", map_cu("lua require('telescope.builtin').find_files()"))
 bind_key("n|<leader>fb", map_cu("lua require('telescope.builtin').buffers()"))
