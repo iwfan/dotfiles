@@ -72,13 +72,37 @@ gls.left[4] = {
 }
 
 gls.left[5] = {
+  ShowLspClient = {
+    provider = "GetLspClient",
+    condition = function()
+      local tbl = {["dashboard"] = true, [""] = true}
+      if tbl[vim.bo.filetype] then
+        return false
+      end
+      return true
+    end,
+    icon = " LSP:",
+    highlight = {colors.yellow, colors.line_bg, "bold"}
+  }
+}
+
+gls.left[6] = {
+  BlankArea = {
+    provider = function()
+      return " "
+    end,
+    highlight = {colors.fg, colors.line_bg}
+  }
+}
+
+gls.left[7] = {
   DiagnosticError = {
     provider = "DiagnosticError",
     icon = "  ",
     highlight = {colors.red, colors.line_bg}
   }
 }
-gls.left[6] = {
+gls.left[8] = {
   DiagnosticWarn = {
     provider = "DiagnosticWarn",
     icon = "  ",
@@ -86,7 +110,7 @@ gls.left[6] = {
   }
 }
 
-gls.left[7] = {
+gls.left[9] = {
   DiagnosticHint = {
     provider = "DiagnosticHint",
     icon = "  ",
@@ -94,7 +118,7 @@ gls.left[7] = {
   }
 }
 
-gls.left[8] = {
+gls.left[10] = {
   DiagnosticInfo = {
     provider = "DiagnosticInfo",
     icon = "  ",
@@ -102,35 +126,10 @@ gls.left[8] = {
   }
 }
 
-gls.left[9] = {
-  DiffAdd = {
-    provider = "DiffAdd",
-    condition = condition.hide_in_width,
-    icon = "  ",
-    highlight = {colors.green, colors.line_bg}
-  }
-}
-
-gls.left[10] = {
-  DiffModified = {
-    provider = "DiffModified",
-    condition = condition.hide_in_width,
-    icon = " 柳",
-    highlight = {colors.orange, colors.line_bg}
-  }
-}
 gls.left[11] = {
-  DiffRemove = {
-    provider = "DiffRemove",
-    condition = condition.hide_in_width,
-    icon = "  ",
-    highlight = {colors.red, colors.line_bg}
-  }
-}
-gls.left[12] = {
   LeftEnd = {
     provider = function()
-      return ""
+      return " "
     end,
     separator = "",
     separator_highlight = {"NONE", colors.bg},
@@ -179,32 +178,49 @@ gls.right[4] = {
 }
 
 gls.right[5] = {
-  ShowLspClient = {
-    provider = "GetLspClient",
-    separator = " ",
-    separator_highlight = {"NONE", colors.line_bg},
-    condition = function()
-      local tbl = {["dashboard"] = true, [""] = true}
-      if tbl[vim.bo.filetype] then
-        return false
-      end
-      return true
+  BlankArea = {
+    provider = function()
+      return " "
     end,
-    icon = " LSP:",
-    highlight = {colors.yellow, colors.line_bg, "bold"}
+    condition = condition.check_git_workspace,
+    highlight = {colors.violet, colors.line_bg, "bold"}
   }
 }
 
 gls.right[6] = {
-  LineInfo = {
-    provider = "LineColumn",
-    separator = " ",
-    separator_highlight = {"NONE", colors.line_bg},
-    highlight = {colors.fg, colors.line_bg}
+  DiffAdd = {
+    provider = "DiffAdd",
+    condition = condition.hide_in_width,
+    icon = "  ",
+    highlight = {colors.green, colors.line_bg}
   }
 }
 
 gls.right[7] = {
+  DiffModified = {
+    provider = "DiffModified",
+    condition = condition.hide_in_width,
+    icon = " 柳",
+    highlight = {colors.orange, colors.line_bg}
+  }
+}
+gls.right[8] = {
+  DiffRemove = {
+    provider = "DiffRemove",
+    condition = condition.hide_in_width,
+    icon = "  ",
+    highlight = {colors.red, colors.line_bg}
+  }
+}
+
+gls.right[9] = {
+  LineInfo = {
+    provider = "LineColumn",
+    highlight = {colors.fg, colors.line_bg}
+  }
+}
+
+gls.right[10] = {
   ScrollBar = {
     provider = "ScrollBar",
     highlight = {colors.blue, colors.purple}
