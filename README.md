@@ -59,3 +59,11 @@ https://github.com/nathunsmitty/.config/tree/master/nvim
 
 https://github.com/siduck76/neovim-dots
 https://github.com/glepnir/nvim
+
+
+
+# LSP
+pnpm add --global typescript typescript-language-server
+
+# Format
+pnpm add --global prettier lua-fmt
