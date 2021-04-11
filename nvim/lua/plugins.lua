@@ -112,7 +112,8 @@ require("packer").startup(
         requires = {
           {"nvim-lua/popup.nvim"},
           {"nvim-lua/plenary.nvim"},
-          {"nvim-telescope/telescope-fzy-native.nvim"}
+          {"nvim-telescope/telescope-fzy-native.nvim"},
+          {"nvim-telescope/telescope-media-files.nvim"}
         },
         config = function()
           require("telescope").setup {
@@ -130,10 +131,17 @@ require("packer").startup(
               fzy_native = {
                 override_generic_sorter = false,
                 override_file_sorter = true
+              },
+              media_files = {
+                -- filetypes whitelist
+                -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+                filetypes = {"png", "webp", "jpg", "jpeg"},
+                find_cmd = "rg" -- find command (defaults to `fd`)
               }
             }
           }
           require("telescope").load_extension("fzy_native")
+          require("telescope").load_extension("media_files")
         end
       }
     end

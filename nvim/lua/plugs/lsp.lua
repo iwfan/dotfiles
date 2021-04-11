@@ -47,7 +47,11 @@ nvim_lsp.sumneko_lua.setup(
       Lua = {
         diagnostics = {
           enable = true,
-          globals = {"vim"}
+          globals = {"vim", "packer_plugins"}
+        },
+        runtime = {version = "LuaJIT"},
+        workspace = {
+          library = vim.list_extend({[vim.fn.expand("$VIMRUNTIME/lua")] = true}, {})
         }
       }
     },
