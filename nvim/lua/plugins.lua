@@ -35,25 +35,21 @@ return require("packer").startup(
       }
 
       use {
-        "glepnir/galaxyline.nvim",
-        branch = "main",
-        config = function()
-          require "plugs.galaxyline"
-        end,
-        requires = {"kyazdani42/nvim-web-devicons", opt = true}
-      }
-
-      use {
         "Akin909/nvim-bufferline.lua",
         config = appearance.bufferline,
         requires = "moll/vim-bbye"
       }
 
       use {
-        "glepnir/zephyr-nvim",
+        "glepnir/galaxyline.nvim",
+        branch = "main",
         config = function()
-          require "zephyr"
-        end
+          require "plugs.galaxyline"
+        end,
+        requires = {
+          "glepnir/zephyr-nvim",
+          {"kyazdani42/nvim-web-devicons", opt = true}
+        }
       }
     end
 
