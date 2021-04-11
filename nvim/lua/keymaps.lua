@@ -77,10 +77,3 @@ bind_key("n|<leader>fw", map_cu([[lua require('telescope.builtin').grep_string({
 bind_key("n|<leader>ft", map_cu("lua require('telescope.builtin').help_tags()"))
 bind_key("n|<leader>fr", map_cu("lua require('telescope.builtin').registers()"))
 bind_key("n|<leader>fh", map_cu("lua require('telescope.builtin').oldfiles()"))
-
-bind_key("n|[b", map_cr("BufferLineCyclePrev"):with_noremap():with_silent())
-bind_key("n|]b", map_cr("BufferLineCycleNext"):with_noremap():with_silent())
-bind_key("n|b<", map_cr("BufferLineMovePrev"):with_noremap():with_silent())
-bind_key("n|b>", map_cr("BufferLineMoveNext"):with_noremap():with_silent())
-bind_key("n|gb", map_cr("BufferLinePick"):with_noremap():with_silent())
-bind_key("n|<BS>b", map_cr("Bdelete"):with_noremap():with_silent())
