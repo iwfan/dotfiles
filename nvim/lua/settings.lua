@@ -120,8 +120,6 @@ local function setup_options()
     viewoptions = "folds,cursor,curdir,slash,unix",
     sessionoptions = "curdir,help,tabpages,winsize",
     formatoptions = "1jcroql",
-    foldmethod = "expr",
-    foldexpr = "nvim_treesitter#foldexpr()",
     foldlevelstart = 99
   }
 

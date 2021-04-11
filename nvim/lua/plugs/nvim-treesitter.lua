@@ -1,3 +1,5 @@
+vim.api.nvim_command("set foldmethod=expr")
+vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
 require "nvim-treesitter.configs".setup {
   ensure_installed = {
     "bash",
@@ -42,12 +44,6 @@ require "nvim-treesitter.configs".setup {
   },
   indent = {
     enable = true
-  },
-  playground = {
-    enable = true,
-    disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false -- Whether the query persists across vim sessions
   },
   query_linter = {
     enable = true,

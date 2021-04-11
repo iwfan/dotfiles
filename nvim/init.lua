@@ -12,5 +12,4 @@
 require "settings"
 require "keymaps"
 require "plugins"
-require "plugs"
-require "functions"
+require "command"

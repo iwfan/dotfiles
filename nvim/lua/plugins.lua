@@ -14,7 +14,7 @@ if not packer_exists then
   return
 end
 
-return require("packer").startup(
+require("packer").startup(
   function()
     use {"wbthomason/packer.nvim", opt = true}
 
@@ -55,18 +55,20 @@ return require("packer").startup(
 
     -- Language Server
     do
-      use {"neovim/nvim-lspconfig", disable = true}
-      use {"nvim-lua/completion-nvim", disable = true}
-      use {"nvim-lua/lsp-status.nvim", disable = true}
+      use "neovim/nvim-lspconfig"
+      use "kabouzeid/nvim-lspinstall"
+      use {
+        "hrsh7th/nvim-compe",
+        event = "InsertEnter",
+        config = function()
+          require "plugs.compe"
+        end
+      }
       use {
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate"
       }
-      use "nvim-treesitter/completion-treesitter"
       use "nvim-treesitter/nvim-treesitter-textobjects"
-      use "nvim-treesitter/playground"
-      use {"tjdevries/nlua.nvim", disable = true}
-      use {"tjdevries/lsp_extensions.nvim", disable = true}
     end
 
     -- Text Operation
@@ -77,7 +79,12 @@ return require("packer").startup(
       use "junegunn/vim-easy-align"
       use {"mg979/vim-visual-multi", branch = "master"}
       use "andymass/vim-matchup"
-      use "windwp/nvim-autopairs"
+      use {
+        "windwp/nvim-autopairs",
+        config = function()
+          require("nvim-autopairs").setup()
+        end
+      }
       use "tommcdo/vim-exchange"
       use "vim-scripts/ReplaceWithRegister"
 
@@ -109,6 +116,16 @@ return require("packer").startup(
         },
         config = function()
           require("telescope").setup {
+            defaults = {
+              prompt_prefix = "🔭 ",
+              prompt_position = "top",
+              selection_caret = " ",
+              sorting_strategy = "ascending",
+              results_width = 0.6,
+              file_previewer = require "telescope.previewers".vim_buffer_cat.new,
+              grep_previewer = require "telescope.previewers".vim_buffer_vimgrep.new,
+              qflist_previewer = require "telescope.previewers".vim_buffer_qflist.new
+            },
             extensions = {
               fzy_native = {
                 override_generic_sorter = false,
@@ -141,7 +158,6 @@ return require("packer").startup(
       local tools = require "plugs.tools"
       use {
         "norcalli/nvim-colorizer.lua",
-        ft = {"html", "css", "sass", "vim", "tmux", "typescript", "typescriptreact"},
         config = tools.colorizer
       }
       use "junegunn/vim-peekaboo"
@@ -185,3 +201,6 @@ return require("packer").startup(
     end
   end
 )
+
+require "plugs"
+require "plugs"
