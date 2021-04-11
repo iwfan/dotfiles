@@ -43,6 +43,9 @@ end
 
 nvim_lsp.sumneko_lua.setup(
   {
+    cmd = {
+      vim.fn.stdpath("data") .. "/lspinstall/lua/sumneko-lua-language-server"
+    },
     settings = {
       Lua = {
         diagnostics = {
