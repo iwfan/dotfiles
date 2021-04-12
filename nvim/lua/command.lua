@@ -42,6 +42,7 @@ helpers.parse_from_definition_table {
   others = {
     {"BufEnter", [[*.png,*.jpg,*.gif]], [[exec "silent !open ".expand("%") | :bw]]},
     {"BufReadPost", "*", [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]},
+    {"FocusLost", "*", [[silent! wa]]},
     {
       "BufWritePre",
       "*.html,*.css,*.json,*.javascript,*.javascriptreact,*.typescript,*.typescriptreact,*.lua,*.go",
