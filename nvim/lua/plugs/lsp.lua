@@ -27,6 +27,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
   buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 
+  buf_set_keymap("n", "]r", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+  buf_set_keymap("n", "[r", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
     buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
@@ -51,6 +54,23 @@ local on_attach = function(client, bufnr)
       false
     )
   end
+
+  vim.fn.sign_define(
+    "LspDiagnosticsSignError",
+    {texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError"}
+  )
+  vim.fn.sign_define(
+    "LspDiagnosticsSignWarning",
+    {texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning"}
+  )
+  vim.fn.sign_define(
+    "LspDiagnosticsSignHint",
+    {texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint"}
+  )
+  vim.fn.sign_define(
+    "LspDiagnosticsSignInformation",
+    {texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"}
+  )
 end
 
 local servers = {"tsserver", "denols", "rust_analyzer", "pyright"}
