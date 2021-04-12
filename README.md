@@ -63,6 +63,8 @@ https://github.com/glepnir/nvim
 
 
 # LSP
+https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
+
 pnpm add --global typescript typescript-language-server
 
 # Format
