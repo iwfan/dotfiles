@@ -88,8 +88,7 @@ require("packer").startup(
       use "tommcdo/vim-exchange"
       use "vim-scripts/ReplaceWithRegister"
 
-      use "alvan/vim-closetag"
-      use "AndrewRadev/tagalong.vim"
+      use "windwp/nvim-ts-autotag"
     end
 
     -- Search & Replace

@@ -120,7 +120,10 @@ local function setup_options()
     viewoptions = "folds,cursor,curdir,slash,unix",
     sessionoptions = "curdir,help,tabpages,winsize",
     formatoptions = "1jcroql",
-    foldlevelstart = 99
+    foldlevelstart = 99,
+    -- Tmux support
+    ["&t_8f"] = "<Esc>[38;2;%lu;%lu;%lum]",
+    ["&t_8b"] = "<Esc>[48;2;%lu;%lu;%lum]"
   }
 
   local options_table = helpers.table_merge(general_options, behavior_options)

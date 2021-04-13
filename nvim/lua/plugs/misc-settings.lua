@@ -18,11 +18,6 @@ helpers.parse_variable_from_table {
   ["far#source"] = "rg",
   -- eidtor-config
   EditorConfig_exclude_patterns = {"fugitive://.*", "scp://.*"},
-  -- html
-  closetag_filenames = "*.html,*.xhtml,*.phtml,*.wxml",
-  closetag_xhtml_filenames = "*.xhtml,*.jsx,*.js,*.tsx,*.ts",
-  closetag_filetypes = "html,xhtml,phtml,javascript,typescript",
-  tagalong_additional_filetypes = {"wxml"},
   -- Vista
   ["vista#renderer#enable_icon"] = 1,
   vista_disable_statusline = 1,
