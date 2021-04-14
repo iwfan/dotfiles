@@ -62,7 +62,13 @@ require("packer").startup(
         event = "InsertEnter",
         config = function()
           require "plugs.compe"
-        end
+        end,
+        requires = {
+          "hrsh7th/vim-vsnip",
+          config = function()
+            vim.g.vsnip_snippet_dir = os.getenv("HOME") .. "/.config/nvim/snippets"
+          end
+        }
       }
       use {
         "nvim-treesitter/nvim-treesitter",
