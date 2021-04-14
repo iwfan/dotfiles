@@ -43,15 +43,10 @@ helpers.parse_from_definition_table {
     {"BufEnter", [[*.png,*.jpg,*.gif]], [[exec "silent !open ".expand("%") | :bw]]},
     {"BufReadPost", "*", [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]},
     {"FocusLost", "*", [[silent! wa]]},
-    {
-      "BufWritePre",
-      "*.html,*.css,*.json,*.javascript,*.javascriptreact,*.typescript,*.typescriptreact,*.lua,*.go",
-      "lua vim.api.nvim_command('Format')"
-    },
     {"VimResized", "*", [[wincmd =]]},
     {"FileType", "help", [[wincmd L]]},
     {"TermOpen", "term://*", "startinsert"},
-    {"TermOpen", "term://*", "setlocal nonumber"},
+    {"TermOpen", "term://*", "setlocal nonumber norelativenumber"},
     {"TextYankPost", "*", [[silent! lua vim.highlight.on_yank {timeout=500}]]},
     {
       "BufEnter",

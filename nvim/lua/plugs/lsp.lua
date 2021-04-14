@@ -50,6 +50,16 @@ local set_lsp_config = function(client, bufnr)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
+    vim.api.nvim_exec(
+      [[
+      augroup lsp_document_formatter
+        autocmd! * <buffer>
+        autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
+      augroup END
+      ]],
+      false
+    )
+
     buf_set_keymap("n", "<space>p", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   end
   if client.resolved_capabilities.document_range_formatting then
@@ -131,6 +141,11 @@ local eslint = {
   formatStdin = true
 }
 
+local prettier = {
+  formatCommand = "prettier --stdin-filepath ${INPUT}",
+  formatStdin = true
+}
+
 nvim_lsp.efm.setup {
   on_attach = function(client, bufnr)
     client.resolved_capabilities.document_formatting = true
@@ -144,20 +159,27 @@ nvim_lsp.efm.setup {
       [["$HOME/.config/efm-langserver/config.yaml"]]
     }
   },
-  root_dir = function()
-    local js_utils = require "js_utils"
-    if js_utils.eslint_config_exists() or js_utils.prettier_config_exists() then
-      return vim.fn.getcwd()
-    end
-  end,
+  -- root_dir = function()
+  --   local js_utils = require "js_utils"
+  --   if js_utils.eslint_config_exists() or js_utils.prettier_config_exists() then
+  --     return vim.fn.getcwd()
+  --   end
+  -- end,
   settings = {
+    rootMarkers = {".git/"},
     languages = {
       javascript = {eslint},
       javascriptreact = {eslint},
       ["javascript.jsx"] = {eslint},
       typescript = {eslint},
       ["typescript.tsx"] = {eslint},
-      typescriptreact = {eslint}
+      typescriptreact = {eslint},
+      lua = {
+        {formatCommand = "luafmt --indent-count 2 --stdin", formatStdin = true}
+      },
+      html = {prettier},
+      css = {prettier},
+      json = {prettier}
     }
   },
   filetypes = {
@@ -166,12 +188,20 @@ nvim_lsp.efm.setup {
     "javascript.jsx",
     "typescript",
     "typescript.tsx",
-    "typescriptreact"
+    "typescriptreact",
+    "lua",
+    "html",
+    "css",
+    "sass",
+    "scss",
+    "less",
+    "json",
+    "yaml"
   },
   commands = {
     EfmLog = {
       function()
-        vim.api.nvim_command("split $HOME/efmlangserver.log")
+        vim.api.nvim_command("split /tmp/efm.log")
       end
     }
   }

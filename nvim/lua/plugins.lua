@@ -183,23 +183,6 @@ require("packer").startup(
       use "voldikss/vim-translator"
 
       use "editorconfig/editorconfig-vim"
-
-      use {
-        "mhartington/formatter.nvim",
-        cmd = {"Format"},
-        ft = {
-          "typescript",
-          "typescriptreact",
-          "javascript",
-          "javascriptreact",
-          "html",
-          "json",
-          "css",
-          "lua",
-          "go"
-        },
-        config = tools.formatter
-      }
     end
 
     -- Misc
