@@ -38,15 +38,15 @@ function M.eslint_config_exists()
 end
 
 function M.get_js_formatter()
-  if M.prettier_config_exists() and vim.fn.executable("prettier") then
-    return "prettier --parser=typescript"
-  end
-
   if M.eslint_config_exists() and vim.fn.executable("eslint_d") then
     return "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}"
   end
 
-  return ""
+  if M.prettier_config_exists() and vim.fn.executable("prettier") then
+    return "prettier --parser=typescript --stdin-filepath ${INPUT}"
+  end
+
+  return "prettier --parser=typescript --stdin-filepath ${INPUT}"
 end
 
 return M
