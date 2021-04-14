@@ -1,5 +1,23 @@
 local nvim_lsp = require("lspconfig")
-local on_attach = function(client, bufnr)
+
+vim.fn.sign_define(
+  "LspDiagnosticsSignError",
+  {texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError"}
+)
+vim.fn.sign_define(
+  "LspDiagnosticsSignWarning",
+  {texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning"}
+)
+vim.fn.sign_define(
+  "LspDiagnosticsSignHint",
+  {texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint"}
+)
+vim.fn.sign_define(
+  "LspDiagnosticsSignInformation",
+  {texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"}
+)
+
+local set_lsp_config = function(client, bufnr)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
   end
@@ -32,10 +50,10 @@ local on_attach = function(client, bufnr)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    buf_set_keymap("n", "<space>p", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   end
   if client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("v", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+    buf_set_keymap("v", "<space>p", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
 
   -- Set autocommands conditional on server_capabilities
@@ -54,28 +72,24 @@ local on_attach = function(client, bufnr)
       false
     )
   end
-
-  vim.fn.sign_define(
-    "LspDiagnosticsSignError",
-    {texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError"}
-  )
-  vim.fn.sign_define(
-    "LspDiagnosticsSignWarning",
-    {texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning"}
-  )
-  vim.fn.sign_define(
-    "LspDiagnosticsSignHint",
-    {texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint"}
-  )
-  vim.fn.sign_define(
-    "LspDiagnosticsSignInformation",
-    {texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"}
-  )
 end
 
-local servers = {"tsserver", "denols", "rust_analyzer", "pyright"}
+local servers = {"rust_analyzer", "pyright", "bashls"}
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {on_attach = on_attach}
+  nvim_lsp[lsp].setup {on_attach = set_lsp_config}
+end
+
+local ts_servers = {"tsserver", "denols"}
+for _, lsp in ipairs(ts_servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = function(client, bufnr)
+      if client.config.flags then
+        client.config.flags.allow_incremental_sync = true
+      end
+      client.resolved_capabilities.document_formatting = false
+      set_lsp_config(client, bufnr)
+    end
+  }
 end
 
 nvim_lsp.sumneko_lua.setup(
@@ -87,7 +101,16 @@ nvim_lsp.sumneko_lua.setup(
       Lua = {
         diagnostics = {
           enable = true,
-          globals = {"vim", "packer_plugins"}
+          globals = {
+            "vim",
+            "packer_plugins",
+            "use",
+            "describe",
+            "it",
+            "assert",
+            "before_each",
+            "after_each"
+          }
         },
         runtime = {version = "LuaJIT"},
         workspace = {
@@ -95,6 +118,61 @@ nvim_lsp.sumneko_lua.setup(
         }
       }
     },
-    on_attach = on_attach
+    on_attach = set_lsp_config
   }
 )
+
+local eslint = {
+  lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
+  lintStdin = true,
+  lintFormats = {"%f:%l:%c: %m"},
+  lintIgnoreExitCode = true,
+  formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
+  formatStdin = true
+}
+
+nvim_lsp.efm.setup {
+  on_attach = function(client, bufnr)
+    client.resolved_capabilities.document_formatting = true
+    set_lsp_config(client, bufnr)
+  end,
+  init_options = {documentFormatting = true},
+  default_config = {
+    cmd = {
+      "efm-langserver",
+      "-c",
+      [["$HOME/.config/efm-langserver/config.yaml"]]
+    }
+  },
+  root_dir = function()
+    local js_utils = require "js_utils"
+    if js_utils.eslint_config_exists() or js_utils.prettier_config_exists() then
+      return vim.fn.getcwd()
+    end
+  end,
+  settings = {
+    languages = {
+      javascript = {eslint},
+      javascriptreact = {eslint},
+      ["javascript.jsx"] = {eslint},
+      typescript = {eslint},
+      ["typescript.tsx"] = {eslint},
+      typescriptreact = {eslint}
+    }
+  },
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescript.tsx",
+    "typescriptreact"
+  },
+  commands = {
+    EfmLog = {
+      function()
+        vim.api.nvim_command("split $HOME/efmlangserver.log")
+      end
+    }
+  }
+}

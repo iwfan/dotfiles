@@ -104,6 +104,7 @@ local function setup_options()
                       *.zip,**/tmp/**,*.DS_Store,**/node_modules/**",
     pumblend = 10,
     winblend = 10,
+    pumheight = 20,
     hidden = true,
     switchbuf = "useopen,vsplit",
     backspace = "indent,eol,start",
@@ -120,10 +121,7 @@ local function setup_options()
     viewoptions = "folds,cursor,curdir,slash,unix",
     sessionoptions = "curdir,help,tabpages,winsize",
     formatoptions = "1jcroql",
-    foldlevelstart = 99,
-    -- Tmux support
-    ["&t_8f"] = "<Esc>[38;2;%lu;%lu;%lum]",
-    ["&t_8b"] = "<Esc>[48;2;%lu;%lu;%lum]"
+    foldlevelstart = 99
   }
 
   local options_table = helpers.table_merge(general_options, behavior_options)

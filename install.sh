@@ -80,6 +80,8 @@ ln -fs ~/dotfiles/zsh/p10k.zsh ~/.p10k.zsh
 ln -fs ~/dotfiles/zsh/p10k-evilball.zsh ~/.p10k-evilball.zsh
 ln -fs ~/dotfiles/zsh/zshrc ~/.zshrc
 
+ln -fs ~/dotfiles/efm-langserver ~/.config/efm-langserver
+
 success "link custom config file to $HOME"
 
 #source ~/.zshrc

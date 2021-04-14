@@ -88,7 +88,10 @@ require("packer").startup(
       use "tommcdo/vim-exchange"
       use "vim-scripts/ReplaceWithRegister"
 
-      use "windwp/nvim-ts-autotag"
+      use {
+        "windwp/nvim-ts-autotag",
+        requires = "nvim-treesitter/nvim-treesitter"
+      }
     end
 
     -- Search & Replace
@@ -205,6 +208,7 @@ require("packer").startup(
       use "tpope/vim-obsession"
       use "tpope/vim-commentary"
       use "tpope/vim-surround"
+      use "tpope/vim-dispatch"
     end
   end
 )

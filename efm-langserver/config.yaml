@@ -1,0 +1,3 @@
+version: 2
+log-file: /tmp/efm.log
+log-level: 1

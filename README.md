@@ -59,13 +59,16 @@ https://github.com/nathunsmitty/.config/tree/master/nvim
 
 https://github.com/siduck76/neovim-dots
 https://github.com/glepnir/nvim
-
+https://github.com/rockerBOO/dotfiles/tree/current/config/nvim/lua
+https://phelipetls.github.io/posts/configuring-eslint-to-work-with-neovim-lsp/
 
 
 # LSP
 https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
 
-pnpm add --global typescript typescript-language-server
+pnpm add --global typescript typescript-language-server bash-language-server
+
+brew install efm-langserver
 
 # Format
-pnpm add --global prettier lua-fmt
+pnpm add --global lua-fmt prettier eslint eslint_d

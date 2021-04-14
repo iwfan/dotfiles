@@ -14,6 +14,9 @@ bind_key("x| ", map_cmd(""):with_noremap())
 bind_key("n|q", map_cmd(""):with_noremap())
 bind_key("n|Q", map_cmd("q"):with_noremap())
 
+bind_key("n|k", map_cmd([[(v:count == 0 ? 'gk' : 'k')]]):with_noremap():with_expr())
+bind_key("n|j", map_cmd([[(v:count == 0 ? 'gj' : 'j')]]):with_noremap():with_expr())
+
 bind_key("i|<C-a>", map_cmd("<C-o>^"):with_noremap())
 bind_key("c|<C-a>", map_cmd("<HOME>"):with_noremap())
 bind_key("!|<C-b>", map_cmd("<Left>"):with_noremap())
