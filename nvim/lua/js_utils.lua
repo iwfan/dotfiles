@@ -46,7 +46,7 @@ function M.get_js_formatter()
     return "prettier --parser=typescript --stdin-filepath ${INPUT}"
   end
 
-  return "prettier --parser=typescript --stdin-filepath ${INPUT}"
+  return "prettier --stdin-filepath ${INPUT}"
 end
 
 return M
