@@ -1,5 +1,9 @@
 local nvim_lsp = require("lspconfig")
 
+--Enable (broadcasting) snippet capability for completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 vim.fn.sign_define(
   "LspDiagnosticsSignError",
   {texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError"}
@@ -102,35 +106,51 @@ for _, lsp in ipairs(ts_servers) do
   }
 end
 
-nvim_lsp.sumneko_lua.setup(
-  {
-    cmd = {
-      vim.fn.stdpath("data") .. "/lspinstall/lua/sumneko-lua-language-server"
-    },
-    settings = {
-      Lua = {
-        diagnostics = {
-          enable = true,
-          globals = {
-            "vim",
-            "packer_plugins",
-            "use",
-            "describe",
-            "it",
-            "assert",
-            "before_each",
-            "after_each"
-          }
-        },
-        runtime = {version = "LuaJIT"},
-        workspace = {
-          library = vim.list_extend({[vim.fn.expand("$VIMRUNTIME/lua")] = true}, {})
+nvim_lsp.html.setup {
+  on_attach = function(client, bufnr)
+    client.resolved_capabilities.document_formatting = false
+    set_lsp_config(client, bufnr)
+  end,
+  capabilities = capabilities
+}
+
+nvim_lsp.cssls.setup {
+  on_attach = function(client, bufnr)
+    client.resolved_capabilities.document_formatting = false
+    set_lsp_config(client, bufnr)
+  end
+}
+
+nvim_lsp.sumneko_lua.setup {
+  cmd = {
+    vim.fn.stdpath("data") .. "/lspinstall/lua/sumneko-lua-language-server"
+  },
+  settings = {
+    Lua = {
+      diagnostics = {
+        enable = true,
+        globals = {
+          "vim",
+          "packer_plugins",
+          "use",
+          "describe",
+          "it",
+          "assert",
+          "before_each",
+          "after_each"
         }
+      },
+      runtime = {version = "LuaJIT"},
+      workspace = {
+        library = vim.list_extend({[vim.fn.expand("$VIMRUNTIME/lua")] = true}, {})
       }
-    },
-    on_attach = set_lsp_config
-  }
-)
+    }
+  },
+  on_attach = function(client, bufnr)
+    client.resolved_capabilities.document_formatting = false
+    set_lsp_config(client, bufnr)
+  end
+}
 
 local eslint = {
   lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
