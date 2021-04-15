@@ -84,7 +84,10 @@ require("packer").startup(
       use "kana/vim-textobj-entire"
       use "junegunn/vim-easy-align"
       use {"mg979/vim-visual-multi", branch = "master"}
-      use "andymass/vim-matchup"
+      use {
+        "andymass/vim-matchup",
+        config = [[vim.g.matchup_matchparen_offscreen = {}]]
+      }
       use {
         "windwp/nvim-autopairs",
         config = function()
@@ -109,7 +112,8 @@ require("packer").startup(
       use {
         "brooth/far.vim",
         cmd = {"F", "Far", "Fardo"},
-        run = ":UpdateRemotePlugins"
+        run = ":UpdateRemotePlugins",
+        config = [[vim.g.["far#source"] = "rg"]]
       }
     end
 
@@ -159,7 +163,8 @@ require("packer").startup(
       use "tpope/vim-fugitive"
       use {
         "rhysd/git-messenger.vim",
-        cmd = {"GitMessenger", "GitMessengerClose"}
+        cmd = {"GitMessenger", "GitMessengerClose"},
+        config = [[vim.g.git_messenger_no_default_mappings = 1]]
       }
       use {
         "lewis6991/gitsigns.nvim",
@@ -177,9 +182,23 @@ require("packer").startup(
         config = tools.colorizer
       }
       use "junegunn/vim-peekaboo"
-      use "voldikss/vim-floaterm"
-      use {"mbbill/undotree", cmd = {"UndotreeToggle"}}
-      use {"liuchengxu/vista.vim", cmd = {"Vista"}}
+      use {
+        "voldikss/vim-floaterm",
+        config = [[
+            vim.g.floaterm_width = 0.8
+            vim.g.floaterm_height = 0.8
+       ]]
+      }
+      use {
+        "mbbill/undotree",
+        cmd = {"UndotreeToggle"},
+        config = [[vim.g.undotree_WindowLayout = 4]]
+      }
+      use {
+        "liuchengxu/vista.vim",
+        cmd = {"Vista"},
+        config = tools.vista
+      }
       use {
         "ybian/smartim",
         config = function()
@@ -188,7 +207,10 @@ require("packer").startup(
       }
       use "voldikss/vim-translator"
 
-      use "editorconfig/editorconfig-vim"
+      use {
+        "editorconfig/editorconfig-vim",
+        config = [[vim.g.EditorConfig_exclude_patterns = {"fugitive://.*", "scp://.*"}]]
+      }
     end
 
     -- Misc
