@@ -23,17 +23,3 @@ function openlazygit {
 
 zle -N openlazygit;
 bindkey "^G" openlazygit
-
-function openlazynpm {
-    zle_eval lazynpm
-}
-
-zle -N openlazynpm;
-bindkey "^N" openlazynpm
-
-function opennvim {
-    zle_eval nvim
-}
-
-zle -N opennvim;
-bindkey "^E" opennvim
