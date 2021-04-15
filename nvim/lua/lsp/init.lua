@@ -35,7 +35,7 @@ for _, lsp in ipairs(ts_servers) do
     end
   }
 end
-
+-- dump(require "lsp/utils".get_installed_server_config("html"))
 require "lsp/lua"
 require "lsp/html"
 require "lsp/css"
