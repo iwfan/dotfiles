@@ -67,7 +67,10 @@ bind_key("t|<C-h>", map_cmd([[<C-\><C-N><C-w>h]]):with_noremap())
 bind_key("t|<C-j>", map_cmd([[<C-\><C-N><C-w>j]]):with_noremap())
 bind_key("t|<C-k>", map_cmd([[<C-\><C-N><C-w>k]]):with_noremap())
 bind_key("t|<C-l>", map_cmd([[<C-\><C-N><C-w>l]]):with_noremap())
-bind_key("t|<Esc>", map_cmd([[<C-\><C-n>]]):with_noremap())
+bind_key("t|<C-o>", map_cmd([[<C-\><C-N><C-o>]]):with_noremap())
+bind_key("t|<C-n>", map_cmd([[<C-\><C-N>]]):with_noremap())
+bind_key("t|<Esc>", map_cmd([[<C-\><C-N>]]):with_noremap())
+bind_key("n|<C-w><C-t>", map_cmd("<esc>:split<CR>:term<CR>"):with_noremap():with_silent())
 
 bind_key("n|<F3>", map_cu("PackerCompile"))
 bind_key("n|<F4>", map_cu("PackerSync"))
@@ -80,3 +83,14 @@ bind_key("n|<leader>fw", map_cu([[lua require('telescope.builtin').grep_string({
 bind_key("n|<leader>ft", map_cu("lua require('telescope.builtin').help_tags()"))
 bind_key("n|<leader>fr", map_cu("lua require('telescope.builtin').registers()"))
 bind_key("n|<leader>fh", map_cu("lua require('telescope.builtin').oldfiles()"))
+
+bind_key("n|ga", map_cmd("<Plug>(EasyAlign)"))
+bind_key("x|ga", map_cmd("<Plug>(EasyAlign)"))
+
+bind_key("n|<leader>0", map_cu("FloatermToggle"):with_noremap():with_silent())
+bind_key("t|<leader>0", map_cmd([[<C-\><C-n>:FloatermToggle<CR>]]):with_noremap():with_silent())
+bind_key("t|<esc><esc> ", map_cu([[<C-\><C-n>:FloatermKill<CR>]]):with_noremap():with_silent())
+
+bind_key("n|<leader>2", map_cu("Vista ctags"):with_noremap():with_silent())
+bind_key("n|<leader>8", map_cu("UndotreeToggle"):with_noremap():with_silent())
+bind_key("n|<leader>9", map_cmd("<esc>:tabe<CR>:-tabmove<CR>:term lazygit<CR>"):with_noremap():with_silent())
