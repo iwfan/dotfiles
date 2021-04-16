@@ -43,7 +43,6 @@ helpers.parse_from_definition_table {
     {"BufEnter", [[*.png,*.jpg,*.gif]], [[exec "silent !open ".expand("%") | :bw]]},
     {"BufReadPost", "*", [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]},
     {"FocusLost", "*", [[silent! wa]]},
-    {"VimResized", "*", [[wincmd =]]},
     {"FileType", "help", [[wincmd L]]},
     {"TermOpen", "term://*", "startinsert"},
     {"TermOpen", "term://*", "setlocal nonumber norelativenumber"},
