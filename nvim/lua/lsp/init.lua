@@ -23,7 +23,7 @@ for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {on_attach = set_lsp_config}
 end
 
-local ts_servers = {"tsserver", "denols"}
+local ts_servers = {"tsserver"} -- , "denols"
 for _, lsp in ipairs(ts_servers) do
   nvim_lsp[lsp].setup {
     on_attach = function(client, bufnr)

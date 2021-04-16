@@ -12,7 +12,7 @@ local eslint = {
 }
 
 local prettier = {
-  formatCommand = "prettier --stdin-filepath ${INPUT}",
+  formatCommand = js_utils.get_prettier_cmd(),
   formatStdin = true
 }
 

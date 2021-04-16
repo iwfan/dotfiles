@@ -1,3 +1,10 @@
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~"
+alias -- -="cd -"
+
 alias vi="/usr/local/bin/nvim"
 alias nv="/usr/local/bin/nvim"
 alias ls="lsd"
