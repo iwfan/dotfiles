@@ -3,19 +3,17 @@ local M = {}
 function M.colorizer()
   require "colorizer".setup(
     {
-      css = {rgb_fn = true},
-      scss = {rgb_fn = true},
-      sass = {rgb_fn = true},
-      stylus = {rgb_fn = true},
+      html = {rgb_fn = true, hsl_fn = true, css = true, css_fn = true},
+      css = {rgb_fn = true, hsl_fn = true, css = true, css_fn = true},
+      scss = {rgb_fn = true, hsl_fn = true, css = true, css_fn = true},
+      sass = {rgb_fn = true, hsl_fn = true, css = true, css_fn = true},
+      stylus = {rgb_fn = true, hsl_fn = true, css = true, css_fn = true},
       vim = {names = true},
       tmux = {names = false},
       "javascript",
       "javascriptreact",
       "typescript",
-      "typescriptreact",
-      html = {
-        mode = "foreground"
-      }
+      "typescriptreact"
     }
   )
 end
