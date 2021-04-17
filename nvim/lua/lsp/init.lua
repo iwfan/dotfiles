@@ -39,5 +39,6 @@ end
 require "lsp/lua"
 require "lsp/html"
 require "lsp/css"
+require "lsp/emmet"
 require "lsp/efm"
 require "lsp/vue"

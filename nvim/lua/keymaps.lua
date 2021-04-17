@@ -89,7 +89,6 @@ bind_key("n|<leader>fh", map_cu("lua require('telescope.builtin').oldfiles()"):w
 
 bind_key("n|ga", map_cmd("<Plug>(EasyAlign)"))
 bind_key("x|ga", map_cmd("<Plug>(EasyAlign)"))
-bind_key("i|<c-,>", map_cmd("<Plug>(emmet-expand-abbr)"))
 
 bind_key("n|<leader>0", map_cu("FloatermToggle"):with_noremap():with_silent())
 bind_key("t|<leader>0", map_cmd([[<C-\><C-n>:FloatermToggle<CR>]]):with_noremap():with_silent())
