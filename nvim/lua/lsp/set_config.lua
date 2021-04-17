@@ -31,15 +31,15 @@ local set_lsp_config = function(client, bufnr)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_exec(
-      [[
-      augroup lsp_document_formatter
-        autocmd! * <buffer>
-        autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
-      augroup END
-      ]],
-      false
-    )
+    -- vim.api.nvim_exec(
+    --   [[
+    --   augroup lsp_document_formatter
+    --     autocmd! * <buffer>
+    --     autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
+    --   augroup END
+    --   ]],
+    --   false
+    -- )
 
     buf_set_keymap("n", "<space>p", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   end
