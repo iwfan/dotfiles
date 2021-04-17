@@ -78,6 +78,17 @@ require("packer").startup(
         run = ":TSUpdate"
       }
       use "nvim-treesitter/nvim-treesitter-textobjects"
+      use {
+        "mattn/emmet-vim",
+        event = 'InsertEnter',
+        ft = {'html','javascriptreact','vue','typescriptreact'},
+        config = function ()
+            vim.g.user_emmet_complete_tag = 0
+            vim.g.user_emmet_install_global = 0
+            vim.g.user_emmet_install_command = 0
+            vim.g.user_emmet_mode = 'i'
+        end
+      }
     end
 
     -- Text Operation

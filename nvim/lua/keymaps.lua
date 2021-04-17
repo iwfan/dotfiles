@@ -30,8 +30,8 @@ bind_key("i|<C-u>", map_cmd("<C-o>d^"):with_noremap())
 bind_key("!|<C-v>", map_cmd("<C-r>*"):with_noremap())
 bind_key("i|<C-z>", map_cmd("<C-o>u"):with_noremap())
 
-bind_key("i|<C-j>", map_cmd([[("\<C-n>")]]):with_expr())
-bind_key("i|<C-k>", map_cmd([[("\<C-p>")]]):with_expr())
+bind_key("i|<C-j>", map_cmd("<DOWN>"):with_expr())
+bind_key("i|<C-k>", map_cmd("<UP>"):with_expr())
 bind_key("i|<C-c>", map_cmd("<ESC>"):with_noremap())
 
 bind_key("n|<C-h>", map_cmd("<C-w>h"):with_noremap())
@@ -114,6 +114,7 @@ bind_key("n|<leader>fh", map_cu("lua require('telescope.builtin').oldfiles()"):w
 
 bind_key("n|ga", map_cmd("<Plug>(EasyAlign)"))
 bind_key("x|ga", map_cmd("<Plug>(EasyAlign)"))
+bind_key("i|<C-q>", map_cmd("<Plug>(emmet-expand-abbr)"))
 
 bind_key("n|<leader>0", map_cu("FloatermToggle"):with_noremap():with_silent())
 bind_key("t|<leader>0", map_cmd([[<C-\><C-n>:FloatermToggle<CR>]]):with_noremap():with_silent())
