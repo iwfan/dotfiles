@@ -4,7 +4,6 @@ local bind_key = helpers.bind_key
 local map_cmd = helpers.map_cmd
 local map_cr = helpers.map_cr
 local map_cu = helpers.map_cu
-local map_arg = helpers.map_arg
 
 vim.g.mapleader = " "
 
@@ -71,6 +70,32 @@ bind_key("t|<C-o>", map_cmd([[<C-\><C-N><C-o>]]):with_noremap())
 bind_key("t|<C-n>", map_cmd([[<C-\><C-N>]]):with_noremap())
 bind_key("t|<Esc>", map_cmd([[<C-\><C-N>]]):with_noremap())
 bind_key("n|<C-w><C-t>", map_cmd("<esc>:split<CR>:term<CR>"):with_noremap():with_silent())
+
+bind_key(
+  "n|<C-f>",
+  map_cmd("<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>"):with_silent():with_noremap():with_nowait()
+)
+bind_key(
+  "n|<C-b>",
+  map_cmd("<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>"):with_silent():with_noremap():with_nowait(
+
+  )
+)
+bind_key("n|]d", map_cr("Lspsaga diagnostic_jump_next"):with_noremap():with_silent())
+bind_key("n|[d", map_cr("Lspsaga diagnostic_jump_prev"):with_noremap():with_silent())
+bind_key("n|\\d", map_cr("Lspsaga show_line_diagnostics"):with_noremap():with_silent())
+bind_key("n|K", map_cr("Lspsaga hover_doc"):with_noremap():with_silent())
+bind_key("n|<space><cr>", map_cr("Lspsaga code_action"):with_noremap():with_silent())
+bind_key("v|<space><cr>", map_cu("Lspsaga range_code_action"):with_noremap():with_silent())
+bind_key("n|gd", map_cr("Lspsaga preview_definition"):with_noremap():with_silent())
+bind_key("n|gD", map_cmd("<cmd>lua vim.lsp.buf.declaration()<CR>"):with_noremap():with_silent())
+bind_key("n|gi", map_cmd("<cmd>lua vim.lsp.buf.implementation()<CR>"):with_noremap():with_silent())
+bind_key("n|gr", map_cmd("<cmd>lua vim.lsp.buf.references()<CR>"):with_noremap():with_silent())
+bind_key("n|<space>K", map_cr("Lspsaga signature_help"):with_noremap():with_silent())
+bind_key("n|<space>rn", map_cr("Lspsaga rename"):with_noremap():with_silent())
+bind_key("n|gh", map_cr("Lspsaga lsp_finder"):with_noremap():with_silent())
+bind_key("n|D", map_cmd("<cmd>lua vim.lsp.buf.type_definition()<CR>"):with_noremap():with_silent())
+bind_key("n|<Leader>cw", map_cmd("<cmd>lua vim.lsp.buf.workspace_symbol()<CR>"):with_noremap():with_silent())
 
 bind_key("n|<F3>", map_cu("PackerCompile"))
 bind_key("n|<F4>", map_cu("PackerSync"))

@@ -32,6 +32,11 @@ function rhs_config:with_expr()
   return self
 end
 
+function rhs_config:with_nowait()
+  self.options.nowait = true
+  return self
+end
+
 function helpers.map_cmd(rhs)
  return rhs_config:new(rhs)
 end

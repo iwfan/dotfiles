@@ -55,7 +55,10 @@ require("packer").startup(
 
     -- Language Server
     do
-      use "neovim/nvim-lspconfig"
+      use {
+        "neovim/nvim-lspconfig",
+        requires = "glepnir/lspsaga.nvim"
+      }
       use "kabouzeid/nvim-lspinstall"
       use {
         "hrsh7th/nvim-compe",
