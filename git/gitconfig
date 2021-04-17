@@ -48,3 +48,5 @@
   cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [difftool "vimdiff"]
   cmd = nvim -d $REMOTE $LOCAL
+[init]
+	defaultBranch = main
