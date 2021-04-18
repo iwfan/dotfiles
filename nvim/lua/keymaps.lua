@@ -29,9 +29,6 @@ bind_key("n|<C-s>", map_cmd([[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]])
 bind_key("i|<C-u>", map_cmd("<C-o>d^"):with_noremap())
 bind_key("!|<C-v>", map_cmd("<C-r>*"):with_noremap())
 bind_key("i|<C-z>", map_cmd("<C-o>u"):with_noremap())
-
-bind_key("i|<C-j>", map_cmd("<DOWN>"):with_expr())
-bind_key("i|<C-k>", map_cmd("<UP>"):with_expr())
 bind_key("i|<C-c>", map_cmd("<ESC>"):with_noremap())
 
 bind_key("n|<C-h>", map_cmd("<C-w>h"):with_noremap())
