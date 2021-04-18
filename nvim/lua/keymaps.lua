@@ -84,7 +84,7 @@ bind_key("n|\\d", map_cr("Lspsaga show_line_diagnostics"):with_noremap():with_si
 bind_key("n|K", map_cr("Lspsaga hover_doc"):with_noremap():with_silent())
 bind_key("n|<space><cr>", map_cr("Lspsaga code_action"):with_noremap():with_silent())
 bind_key("v|<space><cr>", map_cu("Lspsaga range_code_action"):with_noremap():with_silent())
-bind_key("n|gd", map_cr("Lspsaga preview_definition"):with_noremap():with_silent())
+bind_key("n|gd", map_cr("<cmd>lua vim.lsp.buf.definition()<CR>"):with_noremap():with_silent())
 bind_key("n|gD", map_cmd("<cmd>lua vim.lsp.buf.declaration()<CR>"):with_noremap():with_silent())
 bind_key("n|gi", map_cmd("<cmd>lua vim.lsp.buf.implementation()<CR>"):with_noremap():with_silent())
 bind_key("n|gr", map_cmd("<cmd>lua vim.lsp.buf.references()<CR>"):with_noremap():with_silent())
