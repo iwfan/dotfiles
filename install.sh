@@ -82,6 +82,9 @@ ln -fs ~/dotfiles/zsh/zshrc ~/.zshrc
 
 ln -fs ~/dotfiles/efm-langserver ~/.config/efm-langserver
 
+ln -fs ~/dotfiles/asdf/.default-npm-packages ~/.default-npm-packages
+ln -fs ~/dotfiles/asdf/.tool-versions ~/.tool-versions
+
 success "link custom config file to $HOME"
 
 #source ~/.zshrc

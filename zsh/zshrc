@@ -67,6 +67,9 @@ zinit snippet OMZ::plugins/golang/golang.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
 
+zinit ice wait lucid
+zinit snippet OMZ::plugins/asdf/asdf.plugin.zsh
+
 #+-----------------------+
 #+ Other Zsh Plugins     +
 #+-----------------------+
