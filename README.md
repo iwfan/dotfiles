@@ -72,3 +72,6 @@ brew install efm-langserver
 
 # Format
 pnpm add --global lua-fmt prettier eslint eslint_d
+
+
+brew cask install karabiner-elements hammerspoon 
