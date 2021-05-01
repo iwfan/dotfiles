@@ -50,9 +50,6 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
 
 zinit ice wait lucid
-zinit snippet OMZ::plugins/systemd/systemd.plugin.zsh
-
-zinit ice wait lucid
 zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
 
 zinit ice wait lucid
@@ -74,9 +71,6 @@ zinit snippet OMZ::plugins/asdf/asdf.plugin.zsh
 #+ Other Zsh Plugins     +
 #+-----------------------+
 
-zinit ice depth=1 lucid
-zinit light trystan2k/zsh-tab-title
-
 zinit ice depth=1 wait lucid
 zinit light Aloxaf/fzf-tab
 
@@ -93,13 +87,7 @@ zinit ice depth=1 wait lucid atload"bindkey '$terminfo[kcuu1]' history-substring
 zinit light zsh-users/zsh-history-substring-search
 
 zinit ice depth=1 wait"2" lucid
-zinit light wfxr/forgit
-
-zinit ice depth=1 wait"2" lucid
 zinit light hlissner/zsh-autopair
-
-zinit ice depth=1 wait"2" lucid
-zinit light MichaelAquilina/zsh-you-should-use
 
 zinit ice depth=1 atload"!source ~/.p10k.zsh" lucid nocd
 zinit light romkatv/powerlevel10k
@@ -110,7 +98,7 @@ source ~/dotfiles/zsh/aliases.zsh
 # source ~/dotfiles/zsh/fzf.zsh
 source ~/dotfiles/zsh/mappings.zsh
 
-if [ -z "$TMUX" ]
-then
-    tmux attach -t f || tmux new -s f
-fi
+# if [ -z "$TMUX" ]
+# then
+#     tmux attach -t f || tmux new -s f
+# fi
