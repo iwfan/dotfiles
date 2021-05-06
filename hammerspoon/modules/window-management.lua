@@ -1,7 +1,7 @@
 -- 键位配置
 local window_management_keymapping = {
   title     = '🪟 窗口管理',
-  modifiers = hyper,
+  modifiers = leader,
   trigger   = 'w',
   mappings  = {
     { '退出',           {},                'ESCAPE', 'exit'        },
@@ -147,7 +147,8 @@ if spoon.WinWin then
         if table.contains(repeatableFunction, winFunction) then
             cmodal:bind(modifier, trigger, title, window[winFunction], nil, window[winFunction])
         else
-            cmodal:bind(modifier, trigger, title, window[winFunction], window['exit'])
+            cmodal:bind(modifier, trigger, title, window[winFunction])
+            -- cmodal:bind(modifier, trigger, title, window[winFunction], window['exit'])
         end
     end
 
