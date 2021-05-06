@@ -11,6 +11,8 @@ nvim_lsp.sumneko_lua.setup {
         enable = true,
         globals = {
           "vim",
+          "hs",
+          "spoon",
           "packer_plugins",
           "use",
           "describe",
