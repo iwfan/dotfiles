@@ -1,5 +1,4 @@
 local message = require('modules/status-message')
-
 statusMessage = message.new('窗口管理模式')
 
 
