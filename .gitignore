@@ -108,3 +108,4 @@ nvim/plugin/packer_compiled.vim
 .netrwhist
 tags
 hammerspoon/config.lua
+hammerspoon/.clipboard/

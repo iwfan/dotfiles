@@ -4,9 +4,9 @@
 local width = 30
 local maxSize = 50
 
-local storePath = os.getenv("HOME") .. "/.clipboard"
-local cachePath = storePath .. "/cache.json"
-local imagePath = storePath .. "/images"
+local storePath = config_path .. ".clipboard/"
+local cachePath = storePath .. "cache.json"
+local imagePath = storePath .. "images"
 
 local UTI_TYPE = {
     IMAGE_TIFF = "public.tiff",
@@ -89,6 +89,7 @@ function addHistoryFromPasteboard()
         item.subText = appname .. " / " .. os.date("%Y-%m-%d %H:%M", os.time())
 
         table.insert(history, 1, item)
+        reduceHistorySize()
         saveHistoryIntoCache(history)
     end
 end

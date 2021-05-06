@@ -144,7 +144,7 @@ if spoon.WinWin then
             "moveLeft", "moveRight", "moveUp", "moveDown"
         }
 
-        if table.contains(repeatableFunction, winFunction) then
+        if hs.fnutils.contains(repeatableFunction, winFunction) then
             cmodal:bind(modifier, trigger, title, window[winFunction], nil, window[winFunction])
         else
             cmodal:bind(modifier, trigger, title, window[winFunction])

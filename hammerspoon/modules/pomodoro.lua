@@ -13,7 +13,7 @@ local menu = hs.menubar.new()
 local time = 0
 
 -- Function declarations
-local updateTimer, resume, pause, cancel, begin, initTimer, notify
+local updateTimer, resume, pause, cancel, begin, initTimer, notify, start
 
 notify = function(title, info)
     hs.notify.new({title=title, informativeText=info}):send()
@@ -45,9 +45,11 @@ pause = function()
 end
 
 cancel = function()
-    watch:stop()
-    time = nil
-    initTimer()
+    if watch ~= nil then
+        watch:stop()
+        time = nil
+        initTimer()
+    end
 end
 
 begin = function()
@@ -71,4 +73,16 @@ end
 
 initTimer()
 
-hs.hotkey.bind({ "ctrl", "alt", "cmd", "shift" }, "p", begin)
+start = function()
+    if watch == nil then
+        begin()
+    elseif watch:running() then
+        pause()
+    else
+        resume()
+    end
+end
+
+
+hs.hotkey.bind(leader, "t", start)
+hs.hotkey.bind({ "alt", "shift" }, "t", cancel)
