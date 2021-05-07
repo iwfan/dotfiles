@@ -16,3 +16,5 @@ disable_proxy() {
     export http_proxy=
     export all_proxy=
 }
+
+disable_proxy
