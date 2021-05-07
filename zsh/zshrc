@@ -95,7 +95,7 @@ zinit light romkatv/powerlevel10k
 source "$(brew --prefix)/etc/profile.d/z.sh"
 source ~/dotfiles/zsh/env.zsh
 source ~/dotfiles/zsh/aliases.zsh
-# source ~/dotfiles/zsh/fzf.zsh
+source ~/dotfiles/zsh/fzf.zsh
 source ~/dotfiles/zsh/mappings.zsh
 
 # if [ -z "$TMUX" ]

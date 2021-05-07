@@ -5,6 +5,14 @@ export EDITOR=nvim
 export GOPATH=$HOME/go
 export PATH="/usr/local/sbin:$GOPATH/bin:$PATH"
 
-export https_proxy=http://127.0.0.1:7890
-export http_proxy=http://127.0.0.1:7890
-export all_proxy=socks5://127.0.0.1:7890
+enable_proxy() {
+    export https_proxy=http://127.0.0.1:7890
+    export http_proxy=http://127.0.0.1:7890
+    export all_proxy=socks5://127.0.0.1:7890
+}
+
+disable_proxy() {
+    export https_proxy=
+    export http_proxy=
+    export all_proxy=
+}
