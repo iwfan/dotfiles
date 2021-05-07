@@ -7,8 +7,7 @@ local hspoon_list = {
     "ModalMgr",
     "WinWin",
     "KSheet",
-    "VolumeScroll",
-    "SpoonInstall"
+    "VolumeScroll"
 }
 
 -- 加载 Spoons
@@ -19,10 +18,11 @@ end
 require('modules.config-reload')
 require('modules.window-management')
 require('modules.clipboard')
+require('modules.app-launcher')
 require('modules.app-hints')
 require('modules.cheatsheet')
 require('modules.pomodoro')
--- require('modules.markdown')
+require('modules.markdown')
 
 spoon.VolumeScroll:init()
 spoon.VolumeScroll:start(leader)

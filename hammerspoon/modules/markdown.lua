@@ -1,4 +1,9 @@
-keyUpDown = function(modifiers, key)
+local function isInTerminal()
+  local app = hs.application.frontmostApplication():name()
+  return hs.fnutils.contains({'kitty', 'Terminal', 'iTerm2'}, app)
+end
+
+local function keyUpDown(modifiers, key)
   -- Un-comment & reload config to log each keystroke that we're triggering
   -- log.d('Sending keystroke:', hs.inspect(modifiers), key)
 
@@ -6,12 +11,16 @@ keyUpDown = function(modifiers, key)
 end
 
 
-function wrapSelectedText(wrapCharacters)
+local function wrapSelectedText(wrapCharacters)
   -- Preserve the current contents of the system clipboard
   local originalClipboardContents = hs.pasteboard.getContents()
 
   -- Copy the currently-selected text to the system clipboard
-  keyUpDown('cmd', 'c')
+    if isInTerminal() then
+        hs.eventtap.keyStroke(nil, 'y', 0)
+    else
+        keyUpDown('cmd', 'c')
+    end
 
   -- Allow some time for the command+c keystroke to fire asynchronously before
   -- we try to read from the clipboard
@@ -21,7 +30,12 @@ function wrapSelectedText(wrapCharacters)
     local selectedText = hs.pasteboard.getContents()
     local wrappedText = wrapCharacters .. selectedText .. wrapCharacters
     hs.pasteboard.setContents(wrappedText)
-    keyUpDown('cmd', 'v')
+
+    if isInTerminal() then
+        hs.eventtap.keyStroke(nil, 'p', 0)
+    else
+        keyUpDown('cmd', 'v')
+    end
 
     -- Allow some time for the command+v keystroke to fire asynchronously before
     -- we restore the original clipboard
@@ -31,7 +45,7 @@ function wrapSelectedText(wrapCharacters)
   end)
 end
 
-function inlineLink()
+local function inlineLink()
   -- Fetch URL from the system clipboard
   local linkUrl = hs.pasteboard.getContents()
 
@@ -70,51 +84,24 @@ end
 --   s => wrap the selected text in double tildes ("s" for "strikethrough")
 --   l => convert the currently-selected text to an inline link, using a URL
 --        from the clipboard ("l" for "link")
---------------------------------------------------------------------------------
 
-markdownMode = hs.hotkey.modal.new({}, 'F20')
+spoon.ModalMgr:new("markdown_mode")
+local cmodal = spoon.ModalMgr.modal_list["markdown_mode"]
 
-local message = require('modules/status-message')
-markdownMode.statusMessage = message.new('Markdown Mode (control-m)')
-markdownMode.entered = function()
-  markdownMode.statusMessage:show()
-end
-markdownMode.exited = function()
-  markdownMode.statusMessage:hide()
+local function exit()
+    spoon.ModalMgr:deactivate({"markdown_mode"})
 end
 
--- Bind the given key to call the given function and exit Markdown mode
-function markdownMode.bindWithAutomaticExit(mode, key, fn)
-  mode:bind({}, key, function()
-    mode:exit()
-    fn()
-  end)
-end
+cmodal:bind('', 'escape', '退出 ', exit)
+cmodal:bind('', 'Q', '退出 ', exit)
+cmodal:bind('', 'tab', 'Toggle Cheatsheet', function() spoon.ModalMgr:toggleCheatsheet() end)
+cmodal:bind('', 'b', '加粗', function() wrapSelectedText('**') end, exit)
+cmodal:bind('', 'i', '斜体', function() wrapSelectedText('*') end, exit)
+cmodal:bind('', 's', '删除线', function() wrapSelectedText('~~') end, exit)
+cmodal:bind('', 'l', '链接', function() inlineLink() end, exit)
+cmodal:bind('', 'c', 'Wrap', function() wrapSelectedText('`') end, exit)
 
-markdownMode:bindWithAutomaticExit('b', function()
-  wrapSelectedText('**')
-end)
-
-markdownMode:bindWithAutomaticExit('i', function()
-  wrapSelectedText('*')
-end)
-
-markdownMode:bindWithAutomaticExit('s', function()
-  wrapSelectedText('~~')
-end)
-
-markdownMode:bindWithAutomaticExit('l', function()
-  inlineLink()
-end)
-
-markdownMode:bindWithAutomaticExit('c', function()
-  wrapSelectedText('`')
-end)
-
--- Use Control+m to toggle Markdown Mode
-hs.hotkey.bind({'ctrl'}, 'm', function()
-  markdownMode:enter()
-end)
-markdownMode:bind({'ctrl'}, 'm', function()
-  markdownMode:exit()
+spoon.ModalMgr.supervisor:bind(leader, "M", "Markdown Mode", function()
+    spoon.ModalMgr:deactivateAll()
+    spoon.ModalMgr:activate({"markdown_mode"}, "#FFBD2E", true)
 end)
