@@ -1,15 +1,9 @@
-# dotfiles
-
-1.  ✅ lsp 支持
-2.  ✅ 文件树管理
-3.  ✅ 全局搜索
-4.  tags 管理
-5.  ✅ terminal 集成
-6.  ✅ 剪贴板管理
-
 # fonts
-
 - JetBrains Mono
+
+# colorschema
+
+snazzy
 
 # references vim configuration
 
@@ -36,17 +30,6 @@ https://github.com/vim-test/vim-test
 https://sourcegraph.com/github.com/hardcoreplayers/ThinkVim@master/-/blob/keybinds/leaderkey.vim#L14
 https://sourcegraph.com/github.com/theniceboy/nvim/-/blob/README_cn.md
 https://sourcegraph.com/github.com/voldikss/dotfiles
-
-# iTerm2 key codes configuration
-
-Item2 colorschema: https://github.com/sindresorhus/iterm2-snazzy
-
-| key            | code       |
-| -------------- | ---------- |
-| Ctrl-Tab       | ^[[27;5;9~ |
-| Ctrl-Shift-Tab | ^[[27;6;9~ |
-| Enter          | ^[[13;2u   |
-| Shift-Enter    | ^[[13;5u   |
 
 # LSP
 
