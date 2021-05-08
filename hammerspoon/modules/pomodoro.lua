@@ -47,6 +47,7 @@ end
 cancel = function()
     if watch ~= nil then
         watch:stop()
+        watch = nil
         time = nil
         initTimer()
     end
