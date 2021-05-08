@@ -33,6 +33,8 @@ local window_management_keymapping = {
     { '窗口放大',       {},                '=',      'expand'      },
     { '窗口缩小',       {},                '-',      'shrink'      },
     { '撤销',           {},                'U',      'undo'        },
+    { '最大化',         {},                'M',      'maximize'    },
+    { '最小化',         {'shift'},         'M',      'minimize'    },
     { '全屏',           {},                'F',      'fullscreen'  },
     { '居中',           {},                'C',      'center'      },
   }
@@ -103,6 +105,8 @@ if spoon.WinWin then
         screenUp    = function() spoon.WinWin:moveToScreen("up") end,
         screenDown  = function() spoon.WinWin:moveToScreen("down") end,
         screenNext  = function() spoon.WinWin:moveToScreen("next") end,
+        maximize    = function() spoon.WinWin:moveAndResize("maximize") end,
+        minimize    = function() spoon.WinWin:moveAndResize("minimize") end,
         expand      = function() spoon.WinWin:moveAndResize("expand") end,
         shrink      = function() spoon.WinWin:moveAndResize("shrink") end,
         undo        = function() spoon.WinWin:undo() end,
