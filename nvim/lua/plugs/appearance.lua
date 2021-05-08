@@ -64,9 +64,9 @@ function M.nvim_tree()
         untracked = "?"
       },
       folder = {
-        default = "",
-        open = "",
-        symlink = ""
+        default = "📁",
+        open = "📂",
+        symlink = "🔗"
       }
     }
   }
