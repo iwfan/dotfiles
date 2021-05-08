@@ -23,6 +23,7 @@ helpers.parse_from_definition_table {
         [[setf git | endif]]
       }
     },
+    {"BufNewFile,BufRead", "*.conf", "setf dosini"},
     {"BufNewFile,BufRead", "_ideavimrc", "setf vim"},
     {"BufNewFile,BufRead", "*.tsx,*.jsx", "setf typescriptreact"},
     {"TermOpen", "term://*", "setf terminal"},
