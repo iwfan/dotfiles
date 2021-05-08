@@ -46,6 +46,10 @@ brew "wget"
 brew "z"
 brew "jesseduffield/lazynpm/lazynpm"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD", "with-jansson"]
+
+brew "task"
+brew "timewarrior"
+
 cask "docker"
 cask "font-fantasque-sans-mono"
 cask "font-fantasquesansmono-nerd-font-mono"
