@@ -14,4 +14,11 @@ alias lt="ls --tree"
 alias ra="ranger"
 alias cat="ccat"
 alias n="pnpm"
+
+################[ todo: todo items (https://github.com/todotxt/todo.txt-cli) ]################
 alias td="todo.sh"
+alias tdl="todo.sh ls"
+alias tdla="todo.sh lsa"
+alias tda="todo.sh -t addm"
+alias tdc="todo.sh done"
+alias tdd="todo.sh del"

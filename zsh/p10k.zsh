@@ -41,6 +41,7 @@
     # =========================[ Line #2 ]=========================
     newline                 # \n
     background_jobs         # presence of background jobs
+    todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
     prompt_char             # prompt symbol
   )
 
@@ -94,7 +95,6 @@
     # disk_usage            # disk usage
     # ram                   # free RAM
     # swap                  # used swap
-    todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
     timewarrior             # timewarrior tracking status (https://timewarrior.net/)
     taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
     time                    # current time
@@ -796,7 +796,7 @@
   # typeset -g POWERLEVEL9K_TODO_CONTENT_EXPANSION='$P9K_TODO_FILTERED_TASK_COUNT'
 
   # Custom icon.
-  # typeset -g POWERLEVEL9K_TODO_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  typeset -g POWERLEVEL9K_TODO_VISUAL_IDENTIFIER_EXPANSION='✅'
 
   ###########[ timewarrior: timewarrior tracking status (https://timewarrior.net/) ]############
   # Timewarrior color.
