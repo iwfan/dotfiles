@@ -19,6 +19,11 @@ alias n="pnpm"
 alias td="todo.sh"
 alias tdl="todo.sh ls"
 alias tdla="todo.sh lsa"
-alias tda="todo.sh -t addm"
+alias tda="todo.sh addm"
 alias tdc="todo.sh done"
 alias tdd="todo.sh del"
+
+##############[ taskwarrior: taskwarrior task count (https://taskwarrior.org/) ]##############
+alias t="task"
+alias ta="task add"
+alias td="task del"

@@ -5,6 +5,8 @@ export EDITOR=nvim
 export GOPATH=$HOME/go
 export PATH="/usr/local/sbin:$GOPATH/bin:$PATH"
 
+export HOMEBREW_NO_AUTO_UPDATE=true
+
 enable_proxy() {
     export https_proxy=http://127.0.0.1:7890
     export http_proxy=http://127.0.0.1:7890
