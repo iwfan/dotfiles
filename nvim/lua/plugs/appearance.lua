@@ -54,8 +54,8 @@ function M.nvim_tree()
       ["h"] = tree_cb("close_node")
     },
     nvim_tree_icons = {
-      default = "",
-      symlink = "",
+      default = "🧩",
+      symlink = "🔗",
       git = {
         unstaged = "✹",
         staged = "✓",
