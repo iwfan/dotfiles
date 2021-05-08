@@ -38,8 +38,29 @@ function saveHistoryIntoCache(history)
     cacheFile:close()
 end
 
+function reduceTempraryImage(imagePath)
+   local images = {}
+
+   for file in hs.fs.dir(imagePath) do
+       if file ~= '.' and file ~= '..' then
+           local creation = hs.fs.attributes(imagePath .. '/' .. file, 'creation')
+           table.insert(images, { file = file, creation = creation })
+       end
+   end
+
+    table.sort(images, function (a, b)
+        return a.creation > b.creation
+    end)
+
+    while #images >= maxSize do
+        os.remove(imagePath .. '/' .. images[#images].file)
+        table.remove(images, #images)
+    end
+end
+
 function saveTemporaryImage(image)
     hs.fs.mkdir(imagePath)
+    reduceTempraryImage(imagePath)
     local imageBase64 = hs.base64.encode(image:encodeAsURLString())
     local startIndex = string.len(imageBase64) / 2
     local endIndex = startIndex + 5;
