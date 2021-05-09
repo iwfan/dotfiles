@@ -51,10 +51,12 @@ function M.nvim_tree()
       symlink = "🔗",
       git = {
         unstaged = "✹",
-        staged = "✓",
-        unmerged = "",
-        renamed = "➜",
-        untracked = "?"
+        staged="✓",
+        unmerged="",
+        renamed="➜",
+        untracked = "?",
+        deleted="",
+        ignored="◌"
       },
       folder = {
         default = "📁",
