@@ -28,10 +28,10 @@ local set_lsp_config = function(client, bufnr)
     --   false
     -- )
 
-    buf_set_keymap("n", "<space>gp", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    buf_set_keymap("n", "<space><c-f>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   end
   if client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("v", "<space>gp", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+    buf_set_keymap("v", "<space><c-f>", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
 
   -- Set autocommands conditional on server_capabilities
