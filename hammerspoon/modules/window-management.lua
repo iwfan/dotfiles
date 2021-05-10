@@ -110,7 +110,10 @@ if spoon.WinWin then
         expand      = function() spoon.WinWin:moveAndResize("expand") end,
         shrink      = function() spoon.WinWin:moveAndResize("shrink") end,
         undo        = function() spoon.WinWin:undo() end,
-        fullscreen  = function() spoon.WinWin:moveAndResize("fullscreen") end,
+        fullscreen  = function()
+            local win = hs.window.focusedWindow()
+            win:toggleFullScreen()
+        end,
         center      = function()
             local win = hs.window.focusedWindow()
             win:setFrame(toggleFullAndCenter(win))
