@@ -85,6 +85,7 @@ ln -fs ~/dotfiles/efm-langserver ~/.config/efm-langserver
 ln -fs ~/dotfiles/asdf/.default-npm-packages ~/.default-npm-packages
 ln -fs ~/dotfiles/asdf/.tool-versions ~/.tool-versions
 
+ln -fs ~/dotfiles/alacritty ~/.config/alacritty
 success "link custom config file to $HOME"
 
 #source ~/.zshrc
