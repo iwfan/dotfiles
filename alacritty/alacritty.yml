@@ -72,7 +72,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Maximized
+  startup_mode: Windowed
 
   # Window title
   #title: Alacritty
@@ -111,10 +111,10 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: SauceCodePro Nerd Font
+    family: OperatorMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Regular
+    style: Light
 
   # Bold font face
   bold:
@@ -122,7 +122,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: SauceCodePro Nerd Font
+    family: OperatorMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Medium
@@ -133,10 +133,10 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: SauceCodePro Nerd Font
+    family: OperatorMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Italic
+    style: Light Italic
 
   # Bold italic font face
   bold_italic:
@@ -144,7 +144,7 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: SauceCodePro Nerd Font
+    family: OperatorMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Medium Italic
@@ -157,14 +157,14 @@ font:
   # spacing.
   offset:
     x: 2
-    y: 4
+    y: 12
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
   # right, increasing `y` moves the glyph upward.
   glyph_offset:
     x: 0
-    y: 2
+    y: 8
 
   # Thin stroke font rendering (macOS only)
   #
