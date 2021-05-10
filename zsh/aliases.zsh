@@ -27,5 +27,7 @@ alias tdd="todo.sh del"
 
 ##############[ taskwarrior: taskwarrior task count (https://taskwarrior.org/) ]##############
 alias t="task"
+alias tl="task list"
+alias tc="task completed"
 alias ta="task add"
 alias td="task del"
