@@ -88,8 +88,8 @@ function M.bufferline()
   bind_key("n|b>", map_cr("BufferLineMoveNext"):with_noremap():with_silent())
   bind_key("n|gb", map_cr("BufferLinePick"):with_noremap():with_silent())
   bind_key("n|<BS>b", map_cr("Bdelete"):with_noremap():with_silent())
-  bind_key("n|<M-[>", map_cr("BufferLineCyclePrev"):with_noremap():with_silent())
-  bind_key("n|<M-]>", map_cr("BufferLineCycleNext"):with_noremap():with_silent())
+  bind_key("n|bh", map_cr("BufferLineCyclePrev"):with_noremap():with_silent())
+  bind_key("n|bl", map_cr("BufferLineCycleNext"):with_noremap():with_silent())
 end
 
 return M
