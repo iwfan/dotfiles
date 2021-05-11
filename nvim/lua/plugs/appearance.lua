@@ -62,6 +62,12 @@ function M.nvim_tree()
         default = "📁",
         open = "📂",
         symlink = "🔗"
+      },
+      lsp  = {
+        hint = "",
+        info = "",
+        warning = "",
+        error = "",
       }
     }
   }

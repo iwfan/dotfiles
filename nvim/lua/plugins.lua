@@ -41,16 +41,27 @@ require("packer").startup(
       }
 
       use {
-        "glepnir/galaxyline.nvim",
-        branch = "main",
+        "hoob3rt/lualine.nvim",
         config = function()
-          require "plugs.galaxyline"
+          require "plugs.lualine"
         end,
         requires = {
           "glepnir/zephyr-nvim",
           {"kyazdani42/nvim-web-devicons", opt = true}
         }
       }
+
+      -- use {
+      --   "glepnir/galaxyline.nvim",
+      --   branch = "main",
+      --   config = function()
+      --     require "plugs.galaxyline"
+      --   end,
+      --   requires = {
+      --     "glepnir/zephyr-nvim",
+      --     {"kyazdani42/nvim-web-devicons", opt = true}
+      --   }
+      -- }
     end
 
     -- Language Server
@@ -119,9 +130,19 @@ require("packer").startup(
 
     -- Search & Replace
     do
-      use "haya14busa/incsearch.vim"
-      use "easymotion/vim-easymotion"
-      use "haya14busa/incsearch-easymotion.vim"
+      use {
+        'phaazon/hop.nvim',
+        config = function ()
+            local function map(mode, lhs, rhs, opts)
+                local options = {noremap = true}
+                if opts then options = vim.tbl_extend('force', options, opts) end
+                vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+            end
+            map('n', '<leader>w', '<cmd>HopWord<CR>')
+            map('n', '<leader>l', '<cmd>HopLine<CR>')
+            map('n', '<leader>/', '<cmd>HopPattern<CR>')
+        end
+      }
       -- Find & Replace
       use {
         "brooth/far.vim",

@@ -7,9 +7,6 @@ snazzy
 
 # references vim configuration
 
-Plugin Recommandtion: https://zhuanlan.zhihu.com/p/58816186
-
-- https://github.com/mutewinter/dot_vim
 - https://github.com/ChristianChiarulli/nvim
 - https://github.com/iamcco/dotfiles
 - https://github.com/KyleJKC/nvim
@@ -17,13 +14,6 @@ Plugin Recommandtion: https://zhuanlan.zhihu.com/p/58816186
 - https://github.com/SpaceVim/SpaceVim
 - https://github.com/hardcoreplayers/ThinkVim
 - https://github.com/Shougo/shougo-s-github
-
-https://github.com/svermeulen/vim-easyclip
-https://github.com/liuchengxu/vim-clap
-thaerkh/vim-workspace
-dyng/ctrlsf.vim
-https://github.com/konfekt/fastfold
-https://github.com/pseewald/vim-anyfold
 
 https://github.com/vim-test/vim-test
 

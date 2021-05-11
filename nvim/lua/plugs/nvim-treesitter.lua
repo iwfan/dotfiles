@@ -1,25 +1,7 @@
 vim.api.nvim_command("set foldmethod=expr")
 vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
 require "nvim-treesitter.configs".setup {
-  ensure_installed = {
-    "bash",
-    "css",
-    "dart",
-    "go",
-    "graphql",
-    "html",
-    "java",
-    "javascript",
-    "jsdoc",
-    "json",
-    "jsonc",
-    "lua",
-    "python",
-    "regex",
-    "toml",
-    "typescript",
-    "query"
-  },
+  ensure_installed = "maintained",
   highlight = {
     enable = true
   },
