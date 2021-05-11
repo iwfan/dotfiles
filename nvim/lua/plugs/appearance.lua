@@ -79,23 +79,19 @@ function M.bufferline()
   local helpers = require "helpers"
   local bind_key = helpers.bind_key
   local map_cr = helpers.map_cr
-  require "bufferline".setup {
-    options = {
-      view = "multiwindow",
-      mappings = false,
-      always_show_bufferline = false,
-      show_buffer_close_icons = false
-    }
-  }
 
-  bind_key("n|[b", map_cr("BufferLineCyclePrev"):with_noremap():with_silent())
-  bind_key("n|]b", map_cr("BufferLineCycleNext"):with_noremap():with_silent())
-  bind_key("n|b<", map_cr("BufferLineMovePrev"):with_noremap():with_silent())
-  bind_key("n|b>", map_cr("BufferLineMoveNext"):with_noremap():with_silent())
-  bind_key("n|gb", map_cr("BufferLinePick"):with_noremap():with_silent())
+  vim.api.nvim_exec([[
+    let bufferline = get(g:, 'bufferline', {})
+    let bufferline.animation = v:true
+    let bufferline.auto_hide = v:true
+  ]], false)
+
+  bind_key("n|bh", map_cr("BufferPrevious"):with_noremap():with_silent())
+  bind_key("n|bl", map_cr("BufferNext"):with_noremap():with_silent())
+  bind_key("n|b<", map_cr("BufferMovePrevious"):with_noremap():with_silent())
+  bind_key("n|b>", map_cr("BufferMoveNext"):with_noremap():with_silent())
+  bind_key("n|gb", map_cr("BufferPick"):with_noremap():with_silent())
   bind_key("n|<BS>b", map_cr("Bdelete"):with_noremap():with_silent())
-  bind_key("n|bh", map_cr("BufferLineCyclePrev"):with_noremap():with_silent())
-  bind_key("n|bl", map_cr("BufferLineCycleNext"):with_noremap():with_silent())
 end
 
 return M
