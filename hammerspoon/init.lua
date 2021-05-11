@@ -23,6 +23,7 @@ require('modules.app-hints')
 require('modules.cheatsheet')
 require('modules.pomodoro')
 require('modules.markdown')
+require('modules.search-text')
 
 spoon.VolumeScroll:init()
 spoon.VolumeScroll:start(leader)

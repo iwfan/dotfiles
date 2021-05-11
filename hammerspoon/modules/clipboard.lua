@@ -158,19 +158,4 @@ watcher = hs.timer.new(0.8, function()
 end)
 watcher:start()
 
-local function openUrl()
-    local contentTypes = hs.pasteboard.contentTypes()
-
-    for _, uti in ipairs(contentTypes) do
-        if uti == UTI_TYPE.PLAIN_TEXT then
-            local text = hs.pasteboard.readString()
-            if text ~= nil then
-                pcall(hs.urlevent.openURL, text)
-                return
-            end
-        end
-    end
-end
-
 hs.hotkey.bind({ "cmd", "shift" }, "v", showClipboard)
-hs.hotkey.bind(leader, "o", openUrl)
