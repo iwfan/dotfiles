@@ -68,14 +68,23 @@ vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
-function _G.completions()
-  local npairs = require("nvim-autopairs")
-  if vim.fn.pumvisible() == 1 then
+local remap = vim.api.nvim_set_keymap
+
+-- skip it, if you use another global object
+_G.MUtils= {}
+
+vim.g.completion_confirm_key = ""
+MUtils.completion_confirm=function()
+  local npairs = require('nvim-autopairs')
+  if vim.fn.pumvisible() ~= 0  then
     if vim.fn.complete_info()["selected"] ~= -1 then
-      return vim.fn["compe#confirm"]("<CR>")
+      return vim.fn["compe#confirm"](npairs.esc("<cr>"))
+    else
+      return npairs.esc("<cr>")
     end
+  else
+    return npairs.autopairs_cr()
   end
-  return npairs.check_break_line_char()
 end
 
-vim.api.nvim_set_keymap("i", "<CR>", "v:lua.completions()", {expr = true})
+remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})

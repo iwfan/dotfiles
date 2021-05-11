@@ -11,6 +11,7 @@ bind_key("n| ", map_cmd(""):with_noremap())
 bind_key("x| ", map_cmd(""):with_noremap())
 
 bind_key("n|q", map_cmd(""):with_noremap())
+bind_key("n|<C-q>", map_cmd(""):with_noremap())
 bind_key("n|Q", map_cmd("q"):with_noremap())
 
 bind_key("n|k", map_cmd([[(v:count == 0 ? 'gk' : 'k')]]):with_noremap():with_expr())
@@ -30,6 +31,13 @@ bind_key("i|<C-u>", map_cmd("<C-o>d^"):with_noremap())
 bind_key("!|<C-v>", map_cmd("<C-r>*"):with_noremap())
 bind_key("i|<C-z>", map_cmd("<C-o>u"):with_noremap())
 bind_key("i|<C-c>", map_cmd("<ESC>"):with_noremap())
+
+_G.search_in_google = function (text)
+    os.execute('open "https://google.com/search?q="' .. text)
+end
+
+bind_key("n|<C-q><C-g>", map_cr([[lua search_in_google(vim.fn.expand("<cword>"))]]):with_noremap())
+bind_key("v|<C-q><C-g>", map_cr([["gy<Esc>:lua search_in_google(vim.fn.getreg('g'))]]):with_noremap())
 
 bind_key("n|<C-h>", map_cmd("<C-w>h"):with_noremap())
 bind_key("n|<C-j>", map_cmd("<C-w>j"):with_noremap())
@@ -74,9 +82,7 @@ bind_key(
 )
 bind_key(
   "n|<C-b>",
-  map_cmd("<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>"):with_silent():with_noremap():with_nowait(
-
-  )
+  map_cmd("<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>"):with_silent():with_noremap():with_nowait()
 )
 bind_key("n|]d", map_cr("Lspsaga diagnostic_jump_next"):with_noremap():with_silent())
 bind_key("n|[d", map_cr("Lspsaga diagnostic_jump_prev"):with_noremap():with_silent())

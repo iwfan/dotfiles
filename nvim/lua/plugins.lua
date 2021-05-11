@@ -142,6 +142,7 @@ require("packer").startup(
           {"nvim-telescope/telescope-media-files.nvim"}
         },
         config = function()
+          local actions = require('telescope.actions')
           require("telescope").setup {
             defaults = {
               prompt_prefix = "🔭 ",
@@ -151,7 +152,13 @@ require("packer").startup(
               results_width = 0.6,
               file_previewer = require "telescope.previewers".vim_buffer_cat.new,
               grep_previewer = require "telescope.previewers".vim_buffer_vimgrep.new,
-              qflist_previewer = require "telescope.previewers".vim_buffer_qflist.new
+              qflist_previewer = require "telescope.previewers".vim_buffer_qflist.new,
+              mappings = {
+                  i = {
+                      ["<c-j>"] = actions.move_selection_next,
+                      ["<C-k>"] = actions.move_selection_previous,
+                  },
+              },
             },
             extensions = {
               fzy_native = {
