@@ -2,7 +2,7 @@ local zephyr = require("zephyr")
 local gl = require("galaxyline")
 local condition = require("galaxyline.condition")
 local gls = gl.section
-gl.short_line_list = {"NvimTree", "vista", "dbui", "packer", "vista_kind", "terminal"}
+gl.short_line_list = {"NvimTree", "vista", "dbui", "packer", "vista_kind", "terminal", "dashboard"}
 
 local colors = vim.tbl_extend(
   "force",
@@ -15,44 +15,46 @@ local colors = vim.tbl_extend(
   }
 )
 
-gls.left[1] = {
-  FirstElement = {
-    provider = function()
-      return "▊ "
-    end,
-    highlight = {colors.blue, colors.line_bg}
-  }
-}
-gls.left[2] = {
+-- Inserts a component in lualine_c at left section
+local function ins_left(component)
+  table.insert(gl.section.left, component)
+end
+
+-- Inserts a component in lualine_x ot right section
+local function ins_right(component)
+  table.insert(gl.section.right, component)
+end
+
+ins_left  {
   ViMode = {
     provider = function()
       -- auto change color according the vim mode
       local mode_color = {
-        n = colors.red,
+        n = colors.blue,
         i = colors.green,
-        v = colors.blue,
-        [""] = colors.blue,
-        V = colors.blue,
+        v = colors.red,
+        [""] = colors.red,
+        V = colors.red,
         c = colors.magenta,
-        no = colors.red,
+        no = colors.blue,
         s = colors.orange,
         S = colors.orange,
         [""] = colors.orange,
         ic = colors.yellow,
         R = colors.violet,
         Rv = colors.violet,
-        cv = colors.red,
-        ce = colors.red,
+        cv = colors.blue,
+        ce = colors.blue,
         r = colors.cyan,
         rm = colors.cyan,
         ["r?"] = colors.cyan,
-        ["!"] = colors.red,
-        t = colors.red
+        ["!"] = colors.blue,
+        t = colors.blue
       }
       vim.api.nvim_command("hi GalaxyViMode guifg=" .. mode_color[vim.fn.mode()])
-      return " "
+      return "▊ "
     end,
-    highlight = {colors.red, colors.line_bg, "bold"}
+    highlight = {colors.blue, colors.line_bg, "bold"}
   }
 }
 gls.left[3] = {
@@ -159,7 +161,8 @@ gls.right[2] = {
 gls.right[3] = {
   GitIcon = {
     provider = function()
-      return " "
+      -- return " "
+      return " "
     end,
     condition = condition.check_git_workspace,
     separator = " ",

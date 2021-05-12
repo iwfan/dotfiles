@@ -80,12 +80,18 @@ function M.bufferline()
   local bind_key = helpers.bind_key
   local map_cr = helpers.map_cr
 
+ -- dump(packer_plugins["zephyr-nvim"])
+ --  if not packer_plugins["zephyr-nvim"].loaded then
+ --    vim.cmd [[packadd zephyr-nvim]]
+ --  end
+
   require "bufferline".setup {
     options = {
       view = "multiwindow",
       mappings = false,
       always_show_bufferline = false,
-      show_buffer_close_icons = false
+      show_buffer_close_icons = false,
+      diagnostics = "nvim_lsp"
     }
   }
 

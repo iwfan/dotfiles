@@ -34,12 +34,6 @@ require("packer").startup(
         requires = "kyazdani42/nvim-web-devicons"
       }
 
-      use {
-        "Akin909/nvim-bufferline.lua",
-        config = appearance.bufferline,
-        requires = "moll/vim-bbye"
-      }
-
       -- use {
       --   "hoob3rt/lualine.nvim",
       --   config = function()
@@ -61,6 +55,12 @@ require("packer").startup(
           "glepnir/zephyr-nvim",
           {"kyazdani42/nvim-web-devicons", opt = true}
         }
+      }
+
+      use {
+        "Akin909/nvim-bufferline.lua",
+        config = appearance.bufferline,
+        requires = "moll/vim-bbye"
       }
     end
 
