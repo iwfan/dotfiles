@@ -1,25 +1,16 @@
-require("zephyr")
--- Eviline config for lualine
-
--- Author: shadmansaleh
--- Credit: glepnir
-
+local zephyr = require'zephyr'
 local lualine = require'lualine'
 
--- Color table for highlights
-local colors = {
-  bg       = '#202328',
-  fg       = '#bbc2cf',
-  yellow   = '#ECBE7B',
-  cyan     = '#008080',
-  darkblue = '#081633',
-  green    = '#98be65',
-  orange   = '#FF8800',
-  violet   = '#a9a1e1',
-  magenta  = '#c678dd',
-  blue     = '#51afef';
-  red      = '#ec5f67';
-}
+local colors = vim.tbl_extend(
+  "force",
+  zephyr,
+  {
+    bg = "#353644",
+    fg_green = "#65a380",
+    darkblue = "#081633",
+    purple = "#5d4d7a"
+  }
+)
 
 local conditions = {
   buffer_not_empty = function()
@@ -209,8 +200,7 @@ ins_right {
 
 ins_right {
   'diff',
-  -- Is it me or the symbol for modified us really weird
-  symbols = {added= ' ', modified= '柳 ', removed= ' '},
+  symbols = {added= ' ', modified= '柳', removed= ' '},
   color_added = colors.green,
   color_modified = colors.orange,
   color_removed = colors.red,

@@ -1,12 +1,11 @@
-local helpers = require "helpers"
 local zephyr = require("zephyr")
 local gl = require("galaxyline")
 local condition = require("galaxyline.condition")
 local gls = gl.section
 gl.short_line_list = {"NvimTree", "vista", "dbui", "packer", "vista_kind", "terminal"}
 
-local colors =
-  helpers.table_merge(
+local colors = vim.tbl_extend(
+  "force",
   zephyr,
   {
     line_bg = "#353644",

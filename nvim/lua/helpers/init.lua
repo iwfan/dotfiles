@@ -4,18 +4,4 @@ local keymap_wrapper   = require 'helpers.keymap_wrapper'
 local command_wrapper  = require 'helpers.command_wrapper'
 local variable_wrapper = require 'helpers.variable_wrapper'
 
-local M = {}
-
-function M.table_merge(...)
-  local merged_table = {}
-  for __, table in ipairs{...} do
-    if type(table) == "table" then
-      for key, value in pairs(table) do
-        merged_table[key] = value
-      end
-    end
-  end
-  return merged_table
-end
-
-return M.table_merge(M, option_wrapper, keymap_wrapper, command_wrapper, variable_wrapper)
+return vim.tbl_extend("error", option_wrapper, keymap_wrapper, command_wrapper, variable_wrapper)

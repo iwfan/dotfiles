@@ -124,7 +124,7 @@ local function setup_options()
     foldlevelstart = 99
   }
 
-  local options_table = helpers.table_merge(general_options, behavior_options)
+  local options_table = vim.tbl_extend("force", general_options, behavior_options)
 
   for key, value in pairs(options_table) do
     helpers.bind_option(key, value)
