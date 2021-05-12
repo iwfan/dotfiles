@@ -1,17 +1,8 @@
-local exec = vim.api.nvim_command
-local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
 
-local packer_exists = pcall(exec, [[packadd packer.nvim]])
-
-if not packer_exists then
-  local directory = string.format("%s/site/pack/packer/opt", fn.stdpath("data"))
-
-  fn.mkdir(directory, "p")
-
-  exec(string.format("!git clone %s %s", "https://github.com/wbthomason/packer.nvim", directory .. "/packer.nvim"))
-
-  exec [[packadd packer.nvim]]
-  return
+if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
+    exec 'packadd packer.nvim'
 end
 
 require("packer").startup(
@@ -108,7 +99,17 @@ require("packer").startup(
       use "kana/vim-textobj-user"
       use "kana/vim-textobj-entire"
       use "junegunn/vim-easy-align"
-      use {"mg979/vim-visual-multi", branch = "master"}
+      use {
+        "mg979/vim-visual-multi",
+        config = function ()
+            vim.api.nvim_exec([[
+                let g:VM_maps = {}
+                let g:VM_default_mappings = 0
+                let g:VM_maps["Add Cursor Down"] = '<A-j>'
+                let g:VM_maps["Add Cursor Up"] = '<A-k>'
+            ]], false)
+        end
+      }
       use {
         "andymass/vim-matchup",
         config = [[vim.g.matchup_matchparen_offscreen = {}]]

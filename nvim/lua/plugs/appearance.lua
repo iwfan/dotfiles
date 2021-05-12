@@ -28,10 +28,7 @@ end
 
 function M.nvim_tree()
   local tree_cb = require "nvim-tree.config".nvim_tree_callback
-  local helpers = require "helpers"
-  local bind_key = helpers.bind_key
-  local map_cu = helpers.map_cu
-  helpers.parse_variable_from_table {
+  var_tbl {
     nvim_tree_side = "left",
     nvim_tree_indent_markers = 1,
     nvim_tree_ignore = {".git", ".cache", ".idea", ".DS_Store"},
@@ -72,7 +69,7 @@ function M.nvim_tree()
     }
   }
 
-  bind_key("n|<leader>1", map_cu("NvimTreeToggle"):with_noremap():with_silent())
+  map_cmd("n|<leader>1", "NvimTreeToggle")
 end
 
 function M.bufferline()

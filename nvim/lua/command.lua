@@ -45,7 +45,9 @@ helpers.parse_from_definition_table {
   others = {
     {"BufEnter", [[*.png,*.jpg,*.gif]], [[exec "silent !open ".expand("%") | :bw]]},
     {"BufReadPost", "*", [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]},
-    {"FocusLost", "*", [[silent! wa]]},
+    {"FocusLost", "*", [[silent! wa]]}, --auto save when nvim focus
+    {"BufWritePre", "*", [[%s/\s\+$//e]]}, --remove trailing whitespaces
+    {"BufWritePre", "*", [[%s/\n\+\%$//e]]},
     {"FileType", "help", [[wincmd L]]},
     {"TermOpen", "term://*", "startinsert"},
     {"TermOpen", "term://*", "setlocal nonumber norelativenumber"},

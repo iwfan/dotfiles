@@ -20,28 +20,4 @@ function M.gitsigns()
   }
 end
 
-function M.vista()
-  local helpers = require "helpers"
-
-  helpers.parse_variable_from_table {
-    -- Vista
-    ["vista#renderer#enable_icon"] = 1,
-    vista_disable_statusline = 1,
-    vista_icon_indent = {"╰─▸ ", "├─▸ "},
-    vista_default_executive = "ctags",
-    vista_finder_alternative_executives = {"ctags"},
-    vista_echo_cursor_strategy = "floating_win",
-    vista_executive_for = {
-      vimwiki = "markdown",
-      pandoc = "markdown",
-      markdown = "toc",
-      typescript = "nvim_lsp",
-      typescriptreact = "nvim_lsp",
-      lua = "nvim_lsp"
-    },
-    vista_cursor_delay = 200,
-    vista_update_on_text_changed = 1
-  }
-end
-
 return M

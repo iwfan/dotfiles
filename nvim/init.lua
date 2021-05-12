@@ -10,8 +10,12 @@
 -- Github:   https://github.com/iwfan
 -- License:  MIT License
 
-require "settings"
+require 'global'
+require "set_opt"
 require "keymaps"
-require "plugins"
-require "lsp"
-require "command"
+--require "plugins"
+--require "lsp"
+--require "command"
+
+g.python_host_prog = '/usr/bin/python'
+g.python3_host_prog = '/usr/local/bin/python3'

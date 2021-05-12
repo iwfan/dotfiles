@@ -1,30 +1,22 @@
-local config = require "config"
-local helpers = require "helpers"
-
-local function setup_runtime_env()
-  vim.g.python_host_prog  = config.python_host_prog
-  vim.g.python3_host_prog = config.python3_host_prog
-end
-
 local function disable_distribution_plugins()
-  vim.g.loaded_gzip              = 1
-  vim.g.loaded_tar               = 1
-  vim.g.loaded_tarPlugin         = 1
-  vim.g.loaded_zip               = 1
-  vim.g.loaded_zipPlugin         = 1
-  vim.g.loaded_getscript         = 1
-  vim.g.loaded_getscriptPlugin   = 1
-  vim.g.loaded_vimball           = 1
-  vim.g.loaded_vimballPlugin     = 1
-  vim.g.loaded_matchit           = 1
-  vim.g.loaded_matchparen        = 1
-  vim.g.loaded_2html_plugin      = 1
-  vim.g.loaded_logiPat           = 1
-  vim.g.loaded_rrhelper          = 1
-  vim.g.loaded_netrw             = 1
-  vim.g.loaded_netrwPlugin       = 1
-  vim.g.loaded_netrwSettings     = 1
-  vim.g.loaded_netrwFileHandlers = 1
+  g.loaded_gzip              = 1
+  g.loaded_tar               = 1
+  g.loaded_tarPlugin         = 1
+  g.loaded_zip               = 1
+  g.loaded_zipPlugin         = 1
+  g.loaded_getscript         = 1
+  g.loaded_getscriptPlugin   = 1
+  g.loaded_vimball           = 1
+  g.loaded_vimballPlugin     = 1
+  g.loaded_matchit           = 1
+  g.loaded_matchparen        = 1
+  g.loaded_2html_plugin      = 1
+  g.loaded_logiPat           = 1
+  g.loaded_rrhelper          = 1
+  g.loaded_netrw             = 1
+  g.loaded_netrwPlugin       = 1
+  g.loaded_netrwSettings     = 1
+  g.loaded_netrwFileHandlers = 1
 end
 
 local function setup_options()
@@ -124,13 +116,12 @@ local function setup_options()
     foldlevelstart = 99
   }
 
-  local options_table = vim.tbl_extend("force", general_options, behavior_options)
+  local options_table = tbl_extend("force", general_options, behavior_options)
 
   for key, value in pairs(options_table) do
-    helpers.bind_option(key, value)
+    opt(key, value)
   end
 end
 
-setup_runtime_env()
-setup_options()
 disable_distribution_plugins()
+setup_options()
