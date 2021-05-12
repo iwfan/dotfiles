@@ -1,12 +1,52 @@
 vim.api.nvim_command("set foldmethod=expr")
 vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
 require "nvim-treesitter.configs".setup {
-  ensure_installed = "maintained",
+  ensure_installed = {
+    "bash",
+    "c",
+    "comment",
+    "cpp",
+    "css",
+    "dart",
+    "dockerfile",
+    "erlang",
+    "go",
+    "gomod",
+    "graphql",
+    "html",
+    "java",
+    "javascript",
+    "jsdoc",
+    "json",
+    "jsonc",
+    "latex",
+    "lua",
+    "python",
+    "query",
+    "regex",
+    "regex",
+    "ruby",
+    "rust",
+    "toml",
+    "tsx",
+    "typescript",
+    "vue",
+    "yaml"
+  },
   highlight = {
     enable = true
   },
-  autotag = {
+  indent = {
     enable = true
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "<Enter>",
+      node_incremental = "<Enter>",
+      scope_incremental = "grc",
+      node_decremental = "<BS>"
+    }
   },
   textobjects = {
     select = {
@@ -17,24 +57,46 @@ require "nvim-treesitter.configs".setup {
         ["ac"] = "@class.outer",
         ["ic"] = "@class.inner"
       }
-    }
+    },
+    swap = {
+      enable = true,
+      swap_next = {
+        ["<leader>a"] = "@parameter.inner",
+      },
+      swap_previous = {
+        ["<leader>A"] = "@parameter.inner",
+      },
+    },
+    move = {
+      enable = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
+      goto_next_start = {
+        ["]m"] = "@function.outer",
+        ["]]"] = "@class.outer",
+      },
+      goto_next_end = {
+        ["]M"] = "@function.outer",
+        ["]["] = "@class.outer",
+      },
+      goto_previous_start = {
+        ["[m"] = "@function.outer",
+        ["[["] = "@class.outer",
+      },
+      goto_previous_end = {
+        ["[M"] = "@function.outer",
+        ["[]"] = "@class.outer",
+      },
+    },
+    lsp_interop = {
+      enable = true,
+      peek_definition_code = {
+        ["gdf"] = "@function.outer",
+        ["gdF"] = "@class.outer",
+      },
+    },
   },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm"
-    }
-  },
-  indent = {
+  autotag = {
     enable = true
-  },
-  rainbow = {
-    enable = true,
-    extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-    max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
   },
   query_linter = {
     enable = true,

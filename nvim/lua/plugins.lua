@@ -39,34 +39,28 @@ require("packer").startup(
         config = appearance.bufferline
       }
 
-      -- use {
-      --   "Akin909/nvim-bufferline.lua",
-      --   config = appearance.bufferline,
-      --   requires = "moll/vim-bbye"
-      -- }
-
-      -- use {
-      --   "hoob3rt/lualine.nvim",
-      --   config = function()
-      --     require "plugs.lualine"
-      --   end,
-      --   requires = {
-      --     "glepnir/zephyr-nvim",
-      --     {"kyazdani42/nvim-web-devicons", opt = true}
-      --   }
-      -- }
-
       use {
-        "glepnir/galaxyline.nvim",
-        branch = "main",
+        "hoob3rt/lualine.nvim",
         config = function()
-          require "plugs.galaxyline"
+          require "plugs.lualine"
         end,
         requires = {
           "glepnir/zephyr-nvim",
           {"kyazdani42/nvim-web-devicons", opt = true}
         }
       }
+
+      -- use {
+      --   "glepnir/galaxyline.nvim",
+      --   branch = "main",
+      --   config = function()
+      --     require "plugs.galaxyline"
+      --   end,
+      --   requires = {
+      --     "glepnir/zephyr-nvim",
+      --     {"kyazdani42/nvim-web-devicons", opt = true}
+      --   }
+      -- }
     end
 
     -- Language Server
@@ -94,7 +88,6 @@ require("packer").startup(
         run = ":TSUpdate"
       }
       use "nvim-treesitter/nvim-treesitter-textobjects"
-      use "p00f/nvim-ts-rainbow"
       use {
         "mattn/emmet-vim",
         event = 'InsertEnter',
@@ -270,8 +263,12 @@ require("packer").startup(
       use "tpope/vim-surround"
       use "tpope/vim-dispatch"
     end
-  end
+  end,
+  {
+    display = {
+      open_fn = require('packer.util').float,
+    }
+  }
 )
 
-require "plugs"
 require "plugs"
