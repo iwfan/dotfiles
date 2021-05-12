@@ -36,8 +36,7 @@ require("packer").startup(
 
       use {
         'romgrk/barbar.nvim',
-        config = appearance.bufferline,
-        requires = "moll/vim-bbye"
+        config = appearance.bufferline
       }
 
       -- use {
@@ -95,6 +94,7 @@ require("packer").startup(
         run = ":TSUpdate"
       }
       use "nvim-treesitter/nvim-treesitter-textobjects"
+      use "p00f/nvim-ts-rainbow"
       use {
         "mattn/emmet-vim",
         event = 'InsertEnter',
