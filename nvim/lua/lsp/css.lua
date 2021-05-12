@@ -4,7 +4,7 @@ local set_lsp_config = require("lsp/set_config")
 nvim_lsp.cssls.setup {
   cmd = {
     "node",
-    vim.fn.stdpath("data") .. "/lspinstall/css" .. "/vscode-css/css-language-features/server/dist/node/cssServerMain.js",
+    stdpath .. "/lspinstall/css" .. "/vscode-css/css-language-features/server/dist/node/cssServerMain.js",
     "--stdio"
   },
   filetypes = {"css", "less", "scss"},

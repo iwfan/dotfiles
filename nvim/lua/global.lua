@@ -5,6 +5,7 @@ _G.exec = vim.api.nvim_exec
 _G.cmd = vim.api.nvim_command
 _G.var = vim.api.nvim_set_var
 _G.tbl_extend = vim.tbl_extend
+_G.stdpath    = vim.fn.stdpath('data')
 
 --set vim option
 function _G.opt(key, value)
@@ -42,6 +43,30 @@ end
 
 function _G.map_cmd(mode_and_lhs, rhs, opts)
   map(mode_and_lhs, string.format("<cmd>%s<CR>", rhs), opts)
+end
+
+--autocmd
+function _G.autocmd(event, filetype, command)
+  vim.cmd(table.concat({
+    'autocmd',
+    event,
+    filetype,
+    command
+  }, ' '))
+end
+
+--augroup
+function _G.augroup(group_name, definition)
+  vim.cmd("augroup " .. group_name)
+  vim.cmd("autocmd!")
+
+  for _, def in ipairs(definition)
+  do
+    local event, filetype, command = unpack(def)
+    autocmd(event, filetype, command)
+  end
+
+  vim.cmd("augroup END")
 end
 
 --inspect stuff

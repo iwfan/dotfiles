@@ -8,7 +8,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 nvim_lsp.html.setup {
   cmd = {
     "node",
-    vim.fn.stdpath("data") ..
+    stdpath ..
       "/lspinstall/html" .. "/vscode-html/html-language-features/server/dist/node/htmlServerMain.js",
     "--stdio"
   },

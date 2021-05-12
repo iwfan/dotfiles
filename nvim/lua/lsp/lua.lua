@@ -3,7 +3,7 @@ local set_lsp_config = require("lsp/set_config")
 
 nvim_lsp.sumneko_lua.setup {
   cmd = {
-    vim.fn.stdpath("data") .. "/lspinstall/lua/sumneko-lua-language-server"
+    stdpath .. "/lspinstall/lua/sumneko-lua-language-server"
   },
   settings = {
     Lua = {
