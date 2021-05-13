@@ -23,8 +23,8 @@ insert {
     var_tbl({
       VM_default_mappings = 0;
       VM_maps = {
-        ["Add Cursor Down"] = '<A-j>';
-        ["Add Cursor Up"] = '<A-k>';
+        ["Add Cursor Down"] = '<A-n>';
+        ["Add Cursor Up"] = '<A-p>';
       };
     })
   end
@@ -45,5 +45,7 @@ insert {
 }
 
 insert "junegunn/vim-easy-align"
+insert 'blackCauldron7/surround.nvim'
+insert "vim-scripts/ReplaceWithRegister"
 
 return editor

@@ -68,7 +68,7 @@ ins_left {
 
 ins_left {
   FileName = {
-    provider = {"FileName"},
+    provider = {"FileName", "FileSize"},
     condition = condition.buffer_not_empty,
     highlight = {colors.fg, colors.line_bg, "bold"}
   }
