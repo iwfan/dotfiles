@@ -53,7 +53,7 @@ insert {
   branch = "lua",
   config = function()
     g.indentLine_enabled = 1
-    g.indent_blankline_char = "▏"
+    g.indent_blankline_char = " " -- ▏
 
     g.indent_blankline_filetype_exclude = {'help','dashboard','NvimTree','sagahover','terminal', 'packer'};
     g.indent_blankline_buftype_exclude = {"terminal"}
