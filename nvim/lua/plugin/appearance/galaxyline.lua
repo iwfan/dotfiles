@@ -109,11 +109,10 @@ ins_left {
 ins_left {
   GitIcon = {
     provider = function()
-      -- return " "
       return " "
     end,
     condition = condition.check_git_workspace,
-    separator = " ",
+    separator = "",
     separator_highlight = {"NONE", colors.line_bg},
     highlight = {colors.violet, colors.line_bg, "bold"}
   }
@@ -141,7 +140,7 @@ ins_left {
   DiffAdd = {
     provider = "DiffAdd",
     condition = condition.hide_in_width,
-    icon = "  ",
+    icon = "  ",
     highlight = {colors.green, colors.line_bg}
   }
 }
@@ -150,7 +149,7 @@ ins_left {
   DiffModified = {
     provider = "DiffModified",
     condition = condition.hide_in_width,
-    icon = " 柳",
+    icon = "  ",
     highlight = {colors.orange, colors.line_bg}
   }
 }
@@ -159,56 +158,54 @@ ins_left {
   DiffRemove = {
     provider = "DiffRemove",
     condition = condition.hide_in_width,
-    icon = "  ",
+    icon = "  ",
     highlight = {colors.red, colors.line_bg}
   }
 }
 
-
 ins_left {
   LeftEnd = {
-    provider = function()
-      return " "
-    end,
-    separator = "",
-    separator_highlight = {"NONE", colors.bg},
+    provider = function() return " " end,
     highlight = {colors.bg, colors.bg}
   }
 }
 
+-- ###################################################
 
 ins_right {
-  ShowLspClient = {
-    provider = "GetLspClient",
-    condition = function()
-      local tbl = {["dashboard"] = true, [""] = true}
-      if tbl[vim.bo.filetype] then
-        return false
-      end
-      return true
-    end,
-    icon = " LSP:",
-    highlight = {colors.yellow, colors.line_bg, "bold"}
+  BufferType = {
+    provider = "FileTypeName",
+    condition = condition.hide_in_width,
+    separator = " ",
+    separator_highlight = {"NONE", colors.line_bg},
+    highlight = {colors.blue, colors.line_bg, "bold"}
   }
 }
 
-ins_right {
-  BlankArea = {
-    provider = function()
-      return " "
-    end,
-    highlight = {colors.fg, colors.line_bg}
-  }
-}
-
+--ins_right {
+--  ShowLspClient = {
+--    provider = "GetLspClient",
+--    condition = function()
+--      local tbl = {["dashboard"] = true, [""] = true}
+--      if tbl[vim.bo.filetype] then
+--        return false
+--      end
+--      return true
+--    end,
+--    icon = "  ",
+--    separator = " ",
+--    separator_highlight = {"NONE", colors.line_bg},
+--    highlight = {colors.yellow, colors.line_bg, "bold"}
+--  }
+--}
 
 ins_right {
   FileEncode = {
     provider = "FileEncode",
-    condition = condition.hide_in_width,
     separator = " ",
-    separator_highlight = {"NONE", colors.bg},
-    highlight = {colors.fg, colors.line_bg, "bold"}
+    separator_highlight = {"NONE", colors.line_bg},
+    condition = condition.hide_in_width,
+    highlight = {colors.line_fg, colors.line_bg}
   }
 }
 
@@ -217,14 +214,17 @@ ins_right {
     provider = "FileFormat",
     condition = condition.hide_in_width,
     separator = " ",
-    separator_highlight = {"NONE", colors.line_bg},
-    highlight = {colors.fg, colors.line_bg, "bold"}
+    separator_highlight = {colors.base4, colors.line_bg},
+    highlight = {colors.fg, colors.line_bg}
   }
 }
 
 ins_right {
   LineInfo = {
     provider = "LineColumn",
+    separator = " ▎",
+    separator_highlight = {colors.base4, colors.line_bg},
+    condition = condition.hide_in_width,
     highlight = {colors.fg, colors.line_bg}
   }
 }
@@ -232,6 +232,8 @@ ins_right {
 ins_right {
   ScrollBar = {
     provider = "ScrollBar",
+    separator = " ",
+    separator_highlight = {"NONE", colors.line_bg},
     highlight = {colors.blue, colors.purple}
   }
 }

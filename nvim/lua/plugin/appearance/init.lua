@@ -77,13 +77,13 @@ insert {
         default = "📄",
         symlink = "🔗",
         git = {
-          unstaged = "✹",
-          staged = "✓",
+          unstaged = " ",
+          staged = " ",
           unmerged = "",
-          renamed = "➜",
-          untracked = "?",
-          deleted = "",
-          ignored = "◌"
+          renamed = " ",
+          untracked =" ",
+          deleted = " ",
+          ignored = " "
         },
         folder = {
           default = "📁",
@@ -123,6 +123,8 @@ insert {
       options = {
         view = "multiwindow",
         mappings = false,
+        modified_icon = '',
+        close_icon = ' ',
         always_show_bufferline = false,
         show_buffer_close_icons = false,
         diagnostics = "nvim_lsp"
