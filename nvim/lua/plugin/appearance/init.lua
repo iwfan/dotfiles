@@ -48,7 +48,7 @@ insert {
   config = function() require "plugin.appearance.telescope" end
 }
 
-insert {
+--[[ insert {
   "lukas-reineke/indent-blankline.nvim",
   branch = "lua",
   config = function()
@@ -61,7 +61,7 @@ insert {
     g.indent_blankline_show_trailing_blankline_indent = false
     g.indent_blankline_show_first_indent_level = false
   end
-}
+} ]]
 
 insert "junegunn/vim-peekaboo"
 

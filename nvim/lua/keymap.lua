@@ -5,14 +5,14 @@ map("n|q", "")
 map("n|Q", "q")
 map("n|<C-q>", "")
 
-map("n|d", '"_d')
+--[[ map("n|d", '"_d')
 map("n|x", "d")
 map("x|d", '"_d')
 map("x|x", "d")
 map("n|dd", '"_dd')
 map("n|xx", "dd")
 map("n|D", '"_D')
-map("n|X", "D")
+map("n|X", "D") ]]
 
 map("n|k", [[(v:count == 0 ? 'gk' : 'k')]], { expr = true })
 map("n|j", [[(v:count == 0 ? 'gj' : 'j')]], { expr = true })

@@ -45,7 +45,12 @@ insert {
 }
 
 insert "junegunn/vim-easy-align"
-insert 'blackCauldron7/surround.nvim'
+insert {
+  "blackCauldron7/surround.nvim",
+  config = function()
+    require "surround".setup {}
+  end
+}
 insert "vim-scripts/ReplaceWithRegister"
 
 return editor
