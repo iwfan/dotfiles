@@ -69,6 +69,17 @@ function _G.augroup(group_name, definition)
   vim.cmd("augroup END")
 end
 
+--insert helper
+function _G.insert(tbl, el)
+  if el then
+    return table.insert(tbl, el)
+  else
+    return function(el)
+      return _G.insert(tbl, el)
+    end
+  end
+end
+
 --inspect stuff
 function _G.dump(...)
   local objects = vim.tbl_map(vim.inspect, { ... })
