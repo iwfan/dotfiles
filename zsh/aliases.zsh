@@ -31,3 +31,7 @@ alias tl="task list"
 alias tc="task completed"
 alias ta="task add"
 alias td="task del"
+
+at() {
+  tmux attach -t f || tmux new -s f
+}
