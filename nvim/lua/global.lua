@@ -8,6 +8,19 @@ function _G.insert(tbl, el)
     end
   end
 end
+--list merge
+function _G.list_merge(...)
+  local tbl = {}
+  for _, list in ipairs({ ... })
+  do
+    for _, item in ipairs(list)
+    do
+      table.insert(tbl, item)
+    end
+  end
+  return tbl
+end
+
 --inspect stuff
 function _G.dump(...)
   local objects = vim.tbl_map(vim.inspect, { ... })
@@ -17,12 +30,12 @@ function _G.dump(...)
 end
 
 --make life easier
-_G.g = vim.g
-_G.fn = vim.fn
-_G.exec = vim.api.nvim_exec
-_G.cmd = vim.api.nvim_command
-_G.var = vim.api.nvim_set_var
-_G.stdpath    = vim.fn.stdpath('data')
+_G.g       = vim.g
+_G.fn      = vim.fn
+_G.exec    = vim.api.nvim_exec
+_G.cmd     = vim.api.nvim_command
+_G.var     = vim.api.nvim_set_var
+_G.stdpath = vim.fn.stdpath('data')
 
 --set vim option
 function _G.opt(key, value)

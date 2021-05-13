@@ -30,7 +30,7 @@ local languages = require'plugin.languages'
 local tools = require'plugin.tools'
 local version_control = require'plugin.version_control'
 
-local plugins = vim.tbl_extend('keep', appearance, editor, languages, tools, version_control)
+local plugins = list_merge(appearance, editor, languages, tools, version_control)
 for _, plugin in ipairs(plugins)
 do
   use(plugin)

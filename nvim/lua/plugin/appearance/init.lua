@@ -48,28 +48,6 @@ insert {
   "glepnir/dashboard-nvim",
   config = function()
     g.dashboard_default_executive = "telescope"
-    g.dashboard_custom_section_1 = {
-      new_file = {
-        description = {"  New   File                              SPC t f"},
-        command = "DashboardNewFile"
-      },
-      find_history = {
-        description = {"  Recently opened files                   SPC f h"},
-        command = "DashboardFindHistory"
-      },
-      find_file = {
-        description = {"  Find  File                              SPC f f"},
-        command = "DashboardFindFile"
-      },
-      find_word = {
-        description = {"  Find  Word                              SPC f g"},
-        command = "DashboardFindWord"
-      },
-      find_register = {
-        description = {"  Find  Register                          SPC f r"},
-        command = "DashboardJumpMark"
-      }
-    }
   end
 }
 

@@ -11,12 +11,10 @@
 -- License:  MIT License
 
 require 'global'
-require 'set_opt'
-require 'keymaps'
+require 'option'
+require 'keymap'
 require 'command'
 require 'plugin'
---require "plugins"
---require "lsp"
 
 g.python_host_prog = '/usr/bin/python'
 g.python3_host_prog = '/usr/local/bin/python3'

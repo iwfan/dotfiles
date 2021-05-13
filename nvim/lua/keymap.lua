@@ -86,8 +86,8 @@ map_cmd("n|<Leader>cw", "lua vim.lsp.buf.workspace_symbol()")
 map_cmd("n|<C-f>", "lua require('lspsaga.action').smart_scroll_with_saga(1)", { nowait = true })
 map_cmd("n|<C-b>", "lua require('lspsaga.action').smart_scroll_with_saga(-1)", { nowait = true })
 
-map("n|ga", [[<Plug>(EasyAlign)]])
-map("x|ga", [[<Plug>(EasyAlign)]])
+map("n|ga", [[<Plug>(EasyAlign)]], { noremap = false })
+map("x|ga", [[<Plug>(EasyAlign)]], { noremap = false })
 
 map_cmd("n|<leader>0", "FloatermToggle")
 map("t|<leader>0", [[<C-\><C-n>:FloatermToggle<CR>]])
