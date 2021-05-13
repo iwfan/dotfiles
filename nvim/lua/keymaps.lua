@@ -1,4 +1,4 @@
-g.mapleader = "<Space>"
+g.mapleader = ' '
 map("n|<Space>", "")
 map("x|<Space>", "")
 map("n|q", "")
@@ -85,9 +85,6 @@ map_cmd("n|D", "lua vim.lsp.buf.type_definition()")
 map_cmd("n|<Leader>cw", "lua vim.lsp.buf.workspace_symbol()")
 map_cmd("n|<C-f>", "lua require('lspsaga.action').smart_scroll_with_saga(1)", { nowait = true })
 map_cmd("n|<C-b>", "lua require('lspsaga.action').smart_scroll_with_saga(-1)", { nowait = true })
-
-map_cmd("n|<F3>", "PackerCompile")
-map_cmd("n|<F4>", "PackerSync")
 
 map("n|ga", [[<Plug>(EasyAlign)]])
 map("x|ga", [[<Plug>(EasyAlign)]])

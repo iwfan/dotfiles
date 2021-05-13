@@ -21,12 +21,20 @@ packer.init({
   }
 })
 packer.reset()
+
 use {"wbthomason/packer.nvim", opt = true }
 
 local appearance = require'plugin.appearance'
-dump(appearance)
+local editor = require'plugin.editor'
+local languages = require'plugin.languages'
+local tools = require'plugin.tools'
+local version_control = require'plugin.version_control'
 
-for _, plugin in ipairs(appearance)
+local plugins = vim.tbl_extend('keep', appearance, editor, languages, tools, version_control)
+for _, plugin in ipairs(plugins)
 do
   use(plugin)
 end
+
+map_cmd("n|<F3>", "PackerCompile", { silent = false })
+map_cmd("n|<F4>", "PackerSync", { silent = false })

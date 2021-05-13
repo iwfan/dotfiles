@@ -1,1 +1,0 @@
-require "plugs.nvim-treesitter"

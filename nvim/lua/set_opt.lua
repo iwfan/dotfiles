@@ -116,7 +116,7 @@ local function setup_options()
     foldlevelstart = 99
   }
 
-  local options_table = tbl_extend("force", general_options, behavior_options)
+  local options_table = vim.tbl_extend("force", general_options, behavior_options)
 
   for key, value in pairs(options_table) do
     opt(key, value)

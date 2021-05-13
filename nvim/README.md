@@ -1,1 +1,2 @@
 - https://github.com/shaunsingh/vimrc-dotfiles
+- https://github.com/astier/vlugins

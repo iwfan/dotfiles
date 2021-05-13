@@ -31,10 +31,10 @@ ins_left  {
       -- auto change color according the vim mode
       local mode_color = {
         n = colors.blue,
-        i = colors.green,
-        v = colors.red,
-        [""] = colors.red,
-        V = colors.red,
+        i = colors.red,
+        v = colors.green,
+        [""] = colors.green,
+        V = colors.green,
         c = colors.magenta,
         no = colors.blue,
         s = colors.orange,
@@ -57,14 +57,16 @@ ins_left  {
     highlight = {colors.blue, colors.line_bg, "bold"}
   }
 }
-gls.left[3] = {
+
+ins_left {
   FileIcon = {
     provider = "FileIcon",
     condition = condition.buffer_not_empty,
     highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, colors.line_bg}
   }
 }
-gls.left[4] = {
+
+ins_left {
   FileName = {
     provider = {"FileName"},
     condition = condition.buffer_not_empty,
@@ -72,7 +74,110 @@ gls.left[4] = {
   }
 }
 
-gls.left[5] = {
+ins_left {
+  DiagnosticError = {
+    provider = "DiagnosticError",
+    icon = "  ",
+    highlight = {colors.red, colors.line_bg}
+  }
+}
+
+ins_left {
+  DiagnosticWarn = {
+    provider = "DiagnosticWarn",
+    icon = "  ",
+    highlight = {colors.yellow, colors.line_bg}
+  }
+}
+
+ins_left {
+  DiagnosticHint = {
+    provider = "DiagnosticHint",
+    icon = "  ",
+    highlight = {colors.cyan, colors.line_bg}
+  }
+}
+
+ins_left {
+  DiagnosticInfo = {
+    provider = "DiagnosticInfo",
+    icon = "  ",
+    highlight = {colors.blue, colors.line_bg}
+  }
+}
+
+ins_left {
+  GitIcon = {
+    provider = function()
+      -- return " "
+      return " "
+    end,
+    condition = condition.check_git_workspace,
+    separator = " ",
+    separator_highlight = {"NONE", colors.line_bg},
+    highlight = {colors.violet, colors.line_bg, "bold"}
+  }
+}
+
+ins_left {
+  GitBranch = {
+    provider = "GitBranch",
+    condition = condition.check_git_workspace,
+    highlight = {colors.violet, colors.line_bg, "bold"}
+  }
+}
+
+ins_left {
+  BlankArea = {
+    provider = function()
+      return " "
+    end,
+    condition = condition.check_git_workspace,
+    highlight = {colors.violet, colors.line_bg, "bold"}
+  }
+}
+
+ins_left {
+  DiffAdd = {
+    provider = "DiffAdd",
+    condition = condition.hide_in_width,
+    icon = "  ",
+    highlight = {colors.green, colors.line_bg}
+  }
+}
+
+ins_left {
+  DiffModified = {
+    provider = "DiffModified",
+    condition = condition.hide_in_width,
+    icon = " 柳",
+    highlight = {colors.orange, colors.line_bg}
+  }
+}
+
+ins_left {
+  DiffRemove = {
+    provider = "DiffRemove",
+    condition = condition.hide_in_width,
+    icon = "  ",
+    highlight = {colors.red, colors.line_bg}
+  }
+}
+
+
+ins_left {
+  LeftEnd = {
+    provider = function()
+      return " "
+    end,
+    separator = "",
+    separator_highlight = {"NONE", colors.bg},
+    highlight = {colors.bg, colors.bg}
+  }
+}
+
+
+ins_right {
   ShowLspClient = {
     provider = "GetLspClient",
     condition = function()
@@ -87,7 +192,7 @@ gls.left[5] = {
   }
 }
 
-gls.left[6] = {
+ins_right {
   BlankArea = {
     provider = function()
       return " "
@@ -96,49 +201,8 @@ gls.left[6] = {
   }
 }
 
-gls.left[7] = {
-  DiagnosticError = {
-    provider = "DiagnosticError",
-    icon = "  ",
-    highlight = {colors.red, colors.line_bg}
-  }
-}
-gls.left[8] = {
-  DiagnosticWarn = {
-    provider = "DiagnosticWarn",
-    icon = "  ",
-    highlight = {colors.yellow, colors.line_bg}
-  }
-}
 
-gls.left[9] = {
-  DiagnosticHint = {
-    provider = "DiagnosticHint",
-    icon = "  ",
-    highlight = {colors.cyan, colors.line_bg}
-  }
-}
-
-gls.left[10] = {
-  DiagnosticInfo = {
-    provider = "DiagnosticInfo",
-    icon = "  ",
-    highlight = {colors.blue, colors.line_bg}
-  }
-}
-
-gls.left[11] = {
-  LeftEnd = {
-    provider = function()
-      return " "
-    end,
-    separator = "",
-    separator_highlight = {"NONE", colors.bg},
-    highlight = {colors.bg, colors.bg}
-  }
-}
-
-gls.right[1] = {
+ins_right {
   FileEncode = {
     provider = "FileEncode",
     condition = condition.hide_in_width,
@@ -148,7 +212,7 @@ gls.right[1] = {
   }
 }
 
-gls.right[2] = {
+ins_right {
   FileFormat = {
     provider = "FileFormat",
     condition = condition.hide_in_width,
@@ -158,71 +222,14 @@ gls.right[2] = {
   }
 }
 
-gls.right[3] = {
-  GitIcon = {
-    provider = function()
-      -- return " "
-      return " "
-    end,
-    condition = condition.check_git_workspace,
-    separator = " ",
-    separator_highlight = {"NONE", colors.line_bg},
-    highlight = {colors.violet, colors.line_bg, "bold"}
-  }
-}
-
-gls.right[4] = {
-  GitBranch = {
-    provider = "GitBranch",
-    condition = condition.check_git_workspace,
-    highlight = {colors.violet, colors.line_bg, "bold"}
-  }
-}
-
-gls.right[5] = {
-  BlankArea = {
-    provider = function()
-      return " "
-    end,
-    condition = condition.check_git_workspace,
-    highlight = {colors.violet, colors.line_bg, "bold"}
-  }
-}
-
-gls.right[6] = {
-  DiffAdd = {
-    provider = "DiffAdd",
-    condition = condition.hide_in_width,
-    icon = "  ",
-    highlight = {colors.green, colors.line_bg}
-  }
-}
-
-gls.right[7] = {
-  DiffModified = {
-    provider = "DiffModified",
-    condition = condition.hide_in_width,
-    icon = " 柳",
-    highlight = {colors.orange, colors.line_bg}
-  }
-}
-gls.right[8] = {
-  DiffRemove = {
-    provider = "DiffRemove",
-    condition = condition.hide_in_width,
-    icon = "  ",
-    highlight = {colors.red, colors.line_bg}
-  }
-}
-
-gls.right[9] = {
+ins_right {
   LineInfo = {
     provider = "LineColumn",
     highlight = {colors.fg, colors.line_bg}
   }
 }
 
-gls.right[10] = {
+ins_right {
   ScrollBar = {
     provider = "ScrollBar",
     highlight = {colors.blue, colors.purple}

@@ -1,6 +1,6 @@
 local nvim_lsp = require("lspconfig")
 local set_lsp_config = require("lsp/set_config")
-local js_utils = require("js_utils")
+local js_utils = require("plugin.languages.js_utils")
 
 local eslint = {
   lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
