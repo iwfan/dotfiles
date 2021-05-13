@@ -205,7 +205,7 @@ ins_right {
     separator = " ",
     separator_highlight = {"NONE", colors.line_bg},
     condition = condition.hide_in_width,
-    highlight = {colors.line_fg, colors.line_bg}
+    highlight = {colors.base6, colors.line_bg}
   }
 }
 
@@ -214,18 +214,18 @@ ins_right {
     provider = "FileFormat",
     condition = condition.hide_in_width,
     separator = " ",
-    separator_highlight = {colors.base4, colors.line_bg},
-    highlight = {colors.fg, colors.line_bg}
+    separator_highlight = {"NONE", colors.line_bg},
+    highlight = {colors.base6, colors.line_bg}
   }
 }
 
 ins_right {
   LineInfo = {
     provider = "LineColumn",
-    separator = " ▎",
-    separator_highlight = {colors.base4, colors.line_bg},
+    separator = " ",
+    separator_highlight = {"NONE", colors.line_bg},
     condition = condition.hide_in_width,
-    highlight = {colors.fg, colors.line_bg}
+    highlight = {colors.base7, colors.line_bg}
   }
 }
 

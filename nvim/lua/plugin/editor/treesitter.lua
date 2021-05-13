@@ -1,5 +1,6 @@
 vim.api.nvim_command("set foldmethod=expr")
 vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
+
 require "nvim-treesitter.configs".setup {
   ensure_installed = {
     "bash",
@@ -34,7 +35,8 @@ require "nvim-treesitter.configs".setup {
     "yaml"
   },
   highlight = {
-    enable = true
+    enable = true,
+    use_languagetree = true
   },
   indent = {
     enable = true
@@ -98,9 +100,7 @@ require "nvim-treesitter.configs".setup {
   autotag = {
     enable = true
   },
-  query_linter = {
-    enable = true,
-    use_virtual_text = true,
-    lint_events = {"BufWrite", "CursorHold"}
+  context_commentstring = {
+    enable = true
   }
 }
