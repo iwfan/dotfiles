@@ -71,6 +71,4 @@ insert {
 insert 'hrsh7th/vim-vsnip-integ'
 insert 'rafamadriz/friendly-snippets'
 
-insert "kabouzeid/nvim-lspinstall"
-
 return languages

@@ -18,3 +18,5 @@ require 'plugin'
 
 g.python_host_prog = '/usr/bin/python'
 g.python3_host_prog = '/usr/local/bin/python3'
+
+-- require 'plugin.languages.lsp-install'

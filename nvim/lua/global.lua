@@ -3,8 +3,8 @@ function _G.insert(tbl, el)
   if el then
     return table.insert(tbl, el)
   else
-    return function(el)
-      return _G.insert(tbl, el)
+    return function(el1)
+      return _G.insert(tbl, el1)
     end
   end
 end
@@ -58,7 +58,7 @@ function _G.var_tbl(variable_table)
 end
 
 --mappings
-function _G._map(mode_and_lhs, rhs, opts, fn)
+function _G.map(mode_and_lhs, rhs, opts)
   local options = {
     noremap = true;
     silent = true;
@@ -70,29 +70,11 @@ function _G._map(mode_and_lhs, rhs, opts, fn)
   end
 
   local mode, lhs = mode_and_lhs:match("([^|]*)|?(.*)")
-  fn(mode, lhs, rhs, options)
-end
-
-function _G.map(mode_and_lhs, rhs, opts)
-  _G._map(mode_and_lhs, rhs, opts,
-    function(mode, lhs, rhs, options)
-      vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-    end
-  )
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 function _G.map_cmd(mode_and_lhs, rhs, opts)
   _G.map(mode_and_lhs, string.format("<cmd>%s<CR>", rhs), opts)
-end
-
-function _G.buf_map_cmd(bufnr)
-  return function(mode_and_lhs, rhs, opts)
-    _G._map(mode_and_lhs, rhs, opts,
-      function(mode, lhs, rhs, options)
-        vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, options)
-      end
-    )
-  end
 end
 
 --autocmd
