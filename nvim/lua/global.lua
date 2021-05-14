@@ -69,11 +69,6 @@ function _G.map(mode_and_lhs, rhs, opts)
   end
 
   local mode, lhs = mode_and_lhs:match("([^|]*)|?(.*)")
-
---  if lhs == '<F3>' or lhs == '<F4>' then
---    dump(options)
---  end
-
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
@@ -104,3 +99,47 @@ function _G.augroup(group_name, definition)
 
   vim.cmd("augroup END")
 end
+
+_G.font_icon = {
+  error   = ' ';
+  warn    = ' ';
+  hint    = ' ';
+  info    = ' ';
+  modifiy = ' ';
+  add     = ' ';
+  merge   = '';
+  renamed = ' ';
+  unknown = ' ';
+  deleted = ' ';
+  ignored = ' ';
+  close   = ' ';
+  edit    = '';
+  line    = '│';
+  line1   = '⏽';
+  branch  = ' ';
+  gear    = ' ';
+  light   = '';
+}
+
+_G.emoji_icon = {
+  error         = '🚫';
+  warn          = '⚠️';
+  hint          = '🌀';
+  info          = 'ℹ️';
+  light         = '💡';
+  fire          = '🔥';
+  fix           = '🔧';
+  pin           = '📌';
+  stop          = '🚧';
+  gear          = '⚙️';
+  search        = '🔎';
+  branch        = '🔱';
+  right         = '👉';
+  close         = '❎';
+  diamond       = '💠';
+  file          = '📄';
+  folder        = '📁';
+  folder_opened = '📂';
+  link          = '🔗';
+}
+

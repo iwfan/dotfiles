@@ -9,7 +9,6 @@ var_tbl {
   nvim_tree_git_hl             = 1,
   nvim_tree_tab_open           = 1,
   nvim_tree_width_allow_resize = 1,
-  nvim_tree_lsp_diagnostics    = 1,
   nvim_tree_ignore             = { ".git", ".cache", ".idea", ".DS_Store" },
   nvim_tree_special_files      = { 'README.md', 'Makefile', 'MAKEFILE' },
   nvim_tree_bindings           = {
@@ -17,27 +16,21 @@ var_tbl {
     ["h"] = tree_cb("close_node")
   },
   nvim_tree_icons              = {
-    default     = "📄",
-    symlink     = "🔗",
+    default     = emoji_icon.file,
+    symlink     = emoji_icon.link,
     git         = {
-      unstaged  = " ",
-      staged    = " ",
-      unmerged  = "",
-      renamed   = " ",
-      untracked = " ",
-      deleted   = " ",
-      ignored   = " "
+      unstaged  = font_icon.modifiy,
+      staged    = font_icon.add,
+      unmerged  = font_icon.merge,
+      renamed   = font_icon.renamed,
+      untracked = font_icon.unknown,
+      deleted   = font_icon.deleted,
+      ignored   = font_icon.ignored
     },
     folder      = {
-      default   = "📁",
-      open      = "📂",
-      symlink   = "🔗"
-    },
-    lsp         = {
-      hint      = " ",
-      info      = " ",
-      warning   = " ",
-      error     = " ",
+      default   = emoji_icon.folder,
+      open      = emoji_icon.folder_opened,
+      symlink   = emoji_icon.link
     }
   }
 }

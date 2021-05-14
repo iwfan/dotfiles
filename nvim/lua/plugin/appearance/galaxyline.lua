@@ -79,7 +79,7 @@ ins_left {
 ins_left {
   DiagnosticError = {
     provider = "DiagnosticError",
-    icon = "  ",
+    icon = " " .. emoji_icon.error,
     highlight = {colors.red, colors.line_bg}
   }
 }
@@ -87,7 +87,7 @@ ins_left {
 ins_left {
   DiagnosticWarn = {
     provider = "DiagnosticWarn",
-    icon = "  ",
+    icon = " " .. emoji_icon.warn,
     highlight = {colors.yellow, colors.line_bg}
   }
 }
@@ -95,7 +95,7 @@ ins_left {
 ins_left {
   DiagnosticHint = {
     provider = "DiagnosticHint",
-    icon = "  ",
+    icon = " " .. emoji_icon.hint,
     highlight = {colors.cyan, colors.line_bg}
   }
 }
@@ -103,7 +103,7 @@ ins_left {
 ins_left {
   DiagnosticInfo = {
     provider = "DiagnosticInfo",
-    icon = "  ",
+    icon = " " .. emoji_icon.info,
     highlight = {colors.blue, colors.line_bg}
   }
 }
@@ -111,7 +111,7 @@ ins_left {
 ins_left {
   GitIcon = {
     provider = function()
-      return " "
+      return font_icon.branch
     end,
     condition = condition.check_git_workspace,
     separator = "",
@@ -142,7 +142,7 @@ ins_left {
   DiffAdd = {
     provider = "DiffAdd",
     condition = condition.hide_in_width,
-    icon = "  ",
+    icon = " " .. font_icon.add,
     highlight = {colors.green, colors.line_bg}
   }
 }
@@ -151,7 +151,7 @@ ins_left {
   DiffModified = {
     provider = "DiffModified",
     condition = condition.hide_in_width,
-    icon = "  ",
+    icon = " " .. font_icon.modifiy,
     highlight = {colors.orange, colors.line_bg}
   }
 }
@@ -160,7 +160,7 @@ ins_left {
   DiffRemove = {
     provider = "DiffRemove",
     condition = condition.hide_in_width,
-    icon = "  ",
+    icon = " " .. font_icon.deleted,
     highlight = {colors.red, colors.line_bg}
   }
 }
@@ -183,7 +183,7 @@ ins_right {
      end
      return true
    end,
-   icon = "  ",
+   icon = font_icon.gear .. " ",
    separator = " ",
    separator_highlight = {"NONE", colors.line_bg},
    highlight = {colors.yellow, colors.line_bg, "bold"}
@@ -191,42 +191,16 @@ ins_right {
 }
 
 ins_right {
-  BufferType = {
-    provider = "FileTypeName",
-    condition = condition.hide_in_width,
-    separator = " ▎",
-    separator_highlight = {colors.base4, colors.line_bg},
-    highlight = {colors.blue, colors.line_bg, "bold"}
-  }
-}
-
-ins_right {
-  FileSize = {
-    provider = "FileSize",
-    separator = " ▎",
+  LineInfo = {
+    provider = function()
+      local line = vim.fn.line('.')
+      local column = vim.fn.col('.')
+      return string.format("%3d:%2d", line, column)
+    end,
+    separator = font_icon.line1,
     separator_highlight = {colors.base4, colors.line_bg},
     condition = condition.hide_in_width,
-    highlight = {colors.base6, colors.line_bg}
-  }
-}
-
-ins_right {
-  FileEncode = {
-    provider = "FileEncode",
-    separator = "▎",
-    separator_highlight = {colors.base4, colors.line_bg},
-    condition = condition.hide_in_width,
-    highlight = {colors.base6, colors.line_bg}
-  }
-}
-
-ins_right {
-  FileFormat = {
-    provider = "FileFormat",
-    condition = condition.hide_in_width,
-    separator = " ▎",
-    separator_highlight = {colors.base4, colors.line_bg},
-    highlight = {colors.base6, colors.line_bg}
+    highlight = {colors.bracket, colors.line_bg}
   }
 }
 
@@ -236,16 +210,19 @@ ins_right {
       return "Spaces:" .. vim.api.nvim_buf_get_option(0, "shiftwidth")
     end,
     condition = condition.hide_in_width,
-    separator = " ▎",
+    separator = font_icon.line1,
     separator_highlight = {colors.base4, colors.line_bg},
     highlight = {colors.base6, colors.line_bg}
   }
 }
 
 ins_right {
-  LineInfo = {
-    provider = "LineColumn",
-    separator = " ▎",
+  FileEncode = {
+    provider = function()
+      local encode = vim.bo.fenc ~= '' and vim.bo.fenc or vim.o.enc
+      return encode:upper()
+    end,
+    separator = font_icon.line1,
     separator_highlight = {colors.base4, colors.line_bg},
     condition = condition.hide_in_width,
     highlight = {colors.base6, colors.line_bg}
@@ -253,37 +230,106 @@ ins_right {
 }
 
 ins_right {
-  ScrollBar = {
-    provider = "ScrollBar",
-    separator = "▎",
+  FileFormat = {
+    provider = function()
+      local fileformat = vim.bo.fileformat
+      if fileformat == 'unix' then
+        return 'LF'
+      else
+        return 'CRLF'
+      end
+    end,
+    condition = condition.hide_in_width,
+    separator = font_icon.line1,
     separator_highlight = {colors.base4, colors.line_bg},
-    highlight = {colors.blue, colors.purple}
+    highlight = {colors.base6, colors.line_bg}
   }
 }
 
-gls.short_line_left[1] = {
-  BufferIcon = {
-    provider = "BufferIcon",
-    highlight = {colors.fg, colors.bg}
-  }
-}
-
-gls.short_line_left[2] = {
-  SFileName = {
-    provider = "SFileName",
-    condition = condition.buffer_not_empty,
-    separator = " ",
-    separator_highlight = {"NONE", colors.bg},
-    highlight = {colors.fg, colors.bg, "bold"}
-  }
-}
-
-gls.short_line_left[3] = {
+ins_right {
   BufferType = {
     provider = "FileTypeName",
+    condition = condition.hide_in_width,
+    separator = font_icon.line1,
+    separator_highlight = {colors.base4, colors.line_bg},
+    highlight = {colors.blue, colors.line_bg, "bold"}
+  }
+}
+
+-- format print current file size
+local function format_file_size(file)
+  local size = vim.fn.getfsize(file)
+  if size == 0 or size == -1 or size == -2 then
+    return ''
+  end
+  if size < 1024 then
+    size = size .. 'b'
+  elseif size < 1024 * 1024 then
+    size = string.format('%.1f',size/1024) .. 'k'
+  elseif size < 1024 * 1024 * 1024 then
+    size = string.format('%.1f',size/1024/1024) .. 'm'
+  else
+    size = string.format('%.1f',size/1024/1024/1024) .. 'g'
+  end
+  return size
+end
+
+ins_right {
+  FileSize = {
+    provider = function()
+      local file = vim.fn.expand('%:p')
+      if string.len(file) == 0 then return '' end
+      return format_file_size(file)
+    end,
+    separator = font_icon.line1,
+    separator_highlight = {colors.base4, colors.line_bg},
+    condition = condition.hide_in_width,
+    highlight = {colors.base7, colors.line_bg}
+  }
+}
+
+ins_right {
+  LinePercent = {
+    provider = "LinePercent",
+    separator = font_icon.line1,
+    separator_highlight = {colors.base4, colors.line_bg},
+    highlight = {colors.green, colors.line_bg}
+  }
+}
+
+gls.short_line_left[1] =  {
+  SViMode = {
+    provider = function()
+      return "▊ "
+    end,
+    highlight = {colors.bg_popup, colors.line_bg, "bold"}
+  }
+}
+
+gls.short_line_left[2] =  {
+  SFileIcon = {
+    provider = "FileIcon",
+    condition = condition.buffer_not_empty,
+    highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, colors.line_bg}
+  }
+}
+
+gls.short_line_left[3] =  {
+  SFileName = {
+    provider = "SFileName",
     separator = " ",
-    separator_highlight = {"NONE", colors.bg},
-    highlight = {colors.blue, colors.bg, "bold"}
+    separator_highlight = {"NONE", colors.line_bg},
+    condition = condition.buffer_not_empty,
+    highlight = {colors.fg, colors.line_bg, "bold"}
+  }
+}
+
+gls.short_line_left[4] = {
+  SBufferType = {
+    provider = "FileTypeName",
+    separator = " ",
+    separator_highlight = {"NONE", colors.line_bg},
+    highlight = {colors.blue, colors.line_bg, "bold"}
   }
 }
 

@@ -1,7 +1,7 @@
 require "bufferline".setup {
   options = {
-    modified_icon           = "",
-    close_icon              = " ",
+    modified_icon           = font_icon.edit,
+    close_icon              = font_icon.close,
     max_name_length         = 14,
     max_prefix_length       = 13,
     tab_size                = 20,
