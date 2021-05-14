@@ -1,6 +1,8 @@
 local version_control = {}
 local insert = _G.insert(version_control)
 
+insert { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+
 insert "tpope/vim-fugitive"
 
 insert {
