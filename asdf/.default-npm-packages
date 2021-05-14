@@ -1,10 +1,4 @@
 pnpm
-
-typescript
-typescript-language-server
-bash-language-server
-vscode-html-languageserver-bin
-vscode-css-languageserver-bin
 live-server
 lua-fmt
 prettier

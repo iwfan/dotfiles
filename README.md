@@ -14,13 +14,11 @@ snazzy
 - https://github.com/SpaceVim/SpaceVim
 - https://github.com/hardcoreplayers/ThinkVim
 - https://github.com/Shougo/shougo-s-github
+- https://sourcegraph.com/github.com/hardcoreplayers/ThinkVim@master/-/blob/keybinds/leaderkey.vim#L14
+- https://sourcegraph.com/github.com/theniceboy/nvim/-/blob/README_cn.md
+- https://sourcegraph.com/github.com/voldikss/dotfiles
 
 https://github.com/vim-test/vim-test
-
-https://sourcegraph.com/github.com/hardcoreplayers/ThinkVim@master/-/blob/keybinds/leaderkey.vim#L14
-https://sourcegraph.com/github.com/theniceboy/nvim/-/blob/README_cn.md
-https://sourcegraph.com/github.com/voldikss/dotfiles
-
 # LSP
 
 https://nathansmith.io/posts/neovim-lsp
@@ -45,6 +43,3 @@ brew install efm-langserver
 
 # Format
 pnpm add --global lua-fmt prettier eslint eslint_d
-
-
-brew cask install karabiner-elements hammerspoon 

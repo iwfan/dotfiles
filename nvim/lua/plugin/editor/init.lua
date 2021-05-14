@@ -15,8 +15,13 @@ insert "nvim-treesitter/nvim-treesitter-textobjects"
 insert "windwp/nvim-ts-autotag"
 
 -- comment
--- insert 'terrortylor/nvim-comment'
-insert 'b3nj5m1n/kommentary'
+insert {
+  'terrortylor/nvim-comment',
+  config = function()
+    require('nvim_comment').setup()
+    map_cmd('n|<C-_>', 'CommentToggle')
+  end
+}
 insert 'JoosepAlviste/nvim-ts-context-commentstring'
 
 insert "tpope/vim-fugitive"
@@ -68,6 +73,7 @@ insert "junegunn/vim-easy-align"
 insert {
   "blackCauldron7/surround.nvim",
   config = function()
+    vim.g.surround_mappings_style = 'surround'
     require "surround".setup {}
   end
 }

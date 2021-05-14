@@ -1,3 +1,5 @@
+require 'plugin.languages.install'
+
 vim.fn.sign_define("LspDiagnosticsSignError", {
   texthl = "LspDiagnosticsSignError";
   numhl = "LspDiagnosticsSignError";
