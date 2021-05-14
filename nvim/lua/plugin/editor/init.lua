@@ -13,7 +13,9 @@ insert {
 }
 insert "nvim-treesitter/nvim-treesitter-textobjects"
 insert "windwp/nvim-ts-autotag"
+
 -- comment
+-- insert 'terrortylor/nvim-comment'
 insert 'b3nj5m1n/kommentary'
 insert 'JoosepAlviste/nvim-ts-context-commentstring'
 

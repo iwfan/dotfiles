@@ -35,9 +35,17 @@ require("telescope").setup {
         ["<c-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
       }
+    },
+    extensions = {
+      fzy_native = {
+        override_generic_sorter = false,
+        override_file_sorter = true,
+      }
     }
   }
 }
+
+require('telescope').load_extension('fzy_native')
 
 map_cmd("n|<leader>ff", "lua require('telescope.builtin').find_files()")
 map_cmd("n|<leader>fg", "lua require('telescope.builtin').git_files()")
