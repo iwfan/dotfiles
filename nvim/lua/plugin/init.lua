@@ -28,13 +28,12 @@ local appearance = require'plugin.appearance'
 local editor = require'plugin.editor'
 local languages = require'plugin.languages'
 local tools = require'plugin.tools'
-local version_control = require'plugin.version_control'
 
-local plugins = list_merge(appearance, editor, languages, tools, version_control)
+local plugins = list_merge(appearance, editor, languages, tools)
 for _, plugin in ipairs(plugins)
 do
   use(plugin)
 end
 
-map_cmd("n|<F3>", "PackerCompile", { silent = false })
+map_cmd("n|<F3>", "PackerCompile")
 map_cmd("n|<F4>", "PackerSync", { silent = false })

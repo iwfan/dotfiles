@@ -30,12 +30,13 @@ function _G.dump(...)
 end
 
 --make life easier
-_G.g       = vim.g
-_G.fn      = vim.fn
-_G.exec    = vim.api.nvim_exec
-_G.cmd     = vim.api.nvim_command
-_G.var     = vim.api.nvim_set_var
-_G.stdpath = vim.fn.stdpath('data')
+_G.g           = vim.g
+_G.fn          = vim.fn
+_G.exec        = vim.api.nvim_exec
+_G.cmd         = vim.api.nvim_command
+_G.var         = vim.api.nvim_set_var
+_G.stdpath     = vim.fn.stdpath('data')
+_G.config_path = vim.fn.stdpath('config')
 
 --set vim option
 function _G.opt(key, value)

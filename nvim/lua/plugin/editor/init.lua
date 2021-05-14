@@ -19,6 +19,24 @@ insert "windwp/nvim-ts-autotag"
 insert 'b3nj5m1n/kommentary'
 insert 'JoosepAlviste/nvim-ts-context-commentstring'
 
+insert "tpope/vim-fugitive"
+insert {
+  "lewis6991/gitsigns.nvim",
+  config = function()
+    require("gitsigns").setup {
+      signs = {
+        add = {hl = "GitGutterAdd",                text = "▋"},
+        change = {hl = "GitGutterChange",          text = "▋"},
+        delete = {hl = "GitGutterDelete",          text = "▋"},
+        topdelete = {hl = "GitGutterDeleteChange", text = "▔"},
+        changedelete = {hl = "GitGutterChange",    text = "▎"}
+      },
+      current_line_blame = true
+    }
+  end,
+  requires = {"nvim-lua/plenary.nvim", opt = true}
+}
+
 insert {
   "mg979/vim-visual-multi",
   config = function()

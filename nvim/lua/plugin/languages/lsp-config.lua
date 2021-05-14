@@ -34,6 +34,7 @@ local on_attach = function(client, bufnr)
   map_cmd("n|[d",          "Lspsaga diagnostic_jump_prev")
   map_cmd("n|\\d",         "Lspsaga show_line_diagnostics")
   map_cmd("n|K",           "Lspsaga hover_doc")
+  map_cmd("n|<space>fl",   "Lspsaga lsp_finder")
   map_cmd("n|<space><cr>", "Lspsaga code_action")
   map_cmd("v|<space><cr>", "Lspsaga range_code_action")
   map_cmd("n|gd",          "lua vim.lsp.buf.definition()")
@@ -87,7 +88,7 @@ end
 local lspconf = require("lspconfig")
 
 -- these langs require same lspconfig so put em all in a table and loop through!
-local servers = {"html", "cssls", "tsserver", "bashls",}
+local servers = {"html", "cssls", "tsserver", "bashls", "dockerls", "vuels", "yamlls", "jsonls"}
 
 for _, lang in ipairs(servers) do
     lspconf[lang].setup {
@@ -101,11 +102,8 @@ lspconf.vls.setup {
     cmd = {vls_binary}
 }
 
--- lua lsp settings
-USER = "/home/" .. vim.fn.expand("$USER")
-
-local sumneko_root_path = USER .. "/.config/lua-language-server"
-local sumneko_binary = USER .. "/.config/lua-language-server/bin/Linux/lua-language-server"
+local sumneko_root_path = stdpath .. "/lsp_install/lua-language-server"
+local sumneko_binary = stdpath .. "/lsp_install/lua-language-server/bin/Linux/lua-language-server"
 
 lspconf.sumneko_lua.setup {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
