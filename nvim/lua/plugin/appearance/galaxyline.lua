@@ -15,14 +15,16 @@ local colors = vim.tbl_extend(
   }
 )
 
--- Inserts a component in lualine_c at left section
 local function ins_left(component)
   table.insert(gl.section.left, component)
 end
 
--- Inserts a component in lualine_x ot right section
 local function ins_right(component)
   table.insert(gl.section.right, component)
+end
+
+local function ins_mid(component)
+  table.insert(gl.section.mid, component)
 end
 
 ins_left  {
@@ -68,7 +70,7 @@ ins_left {
 
 ins_left {
   FileName = {
-    provider = {"FileName", "FileSize"},
+    provider = {"FileName"},
     condition = condition.buffer_not_empty,
     highlight = {colors.fg, colors.line_bg, "bold"}
   }
@@ -171,39 +173,48 @@ ins_left {
 }
 
 -- ###################################################
+ins_right {
+ ShowLspClient = {
+   provider = "GetLspClient",
+   condition = function()
+     local tbl = {["dashboard"] = true, [""] = true}
+     if tbl[vim.bo.filetype] then
+       return false
+     end
+     return true
+   end,
+   icon = "  ",
+   separator = " ",
+   separator_highlight = {"NONE", colors.line_bg},
+   highlight = {colors.yellow, colors.line_bg, "bold"}
+ }
+}
 
 ins_right {
   BufferType = {
     provider = "FileTypeName",
     condition = condition.hide_in_width,
-    separator = " ",
-    separator_highlight = {"NONE", colors.line_bg},
+    separator = " ▎",
+    separator_highlight = {colors.base4, colors.line_bg},
     highlight = {colors.blue, colors.line_bg, "bold"}
   }
 }
 
---ins_right {
---  ShowLspClient = {
---    provider = "GetLspClient",
---    condition = function()
---      local tbl = {["dashboard"] = true, [""] = true}
---      if tbl[vim.bo.filetype] then
---        return false
---      end
---      return true
---    end,
---    icon = "  ",
---    separator = " ",
---    separator_highlight = {"NONE", colors.line_bg},
---    highlight = {colors.yellow, colors.line_bg, "bold"}
---  }
---}
+ins_right {
+  FileSize = {
+    provider = "FileSize",
+    separator = " ▎",
+    separator_highlight = {colors.base4, colors.line_bg},
+    condition = condition.hide_in_width,
+    highlight = {colors.base6, colors.line_bg}
+  }
+}
 
 ins_right {
   FileEncode = {
     provider = "FileEncode",
-    separator = " ",
-    separator_highlight = {"NONE", colors.line_bg},
+    separator = "▎",
+    separator_highlight = {colors.base4, colors.line_bg},
     condition = condition.hide_in_width,
     highlight = {colors.base6, colors.line_bg}
   }
@@ -213,8 +224,20 @@ ins_right {
   FileFormat = {
     provider = "FileFormat",
     condition = condition.hide_in_width,
-    separator = " ",
-    separator_highlight = {"NONE", colors.line_bg},
+    separator = " ▎",
+    separator_highlight = {colors.base4, colors.line_bg},
+    highlight = {colors.base6, colors.line_bg}
+  }
+}
+
+ins_right {
+  Tabstop = {
+    provider = function()
+      return "Spaces:" .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+    end,
+    condition = condition.hide_in_width,
+    separator = " ▎",
+    separator_highlight = {colors.base4, colors.line_bg},
     highlight = {colors.base6, colors.line_bg}
   }
 }
@@ -222,23 +245,40 @@ ins_right {
 ins_right {
   LineInfo = {
     provider = "LineColumn",
-    separator = " ",
-    separator_highlight = {"NONE", colors.line_bg},
+    separator = " ▎",
+    separator_highlight = {colors.base4, colors.line_bg},
     condition = condition.hide_in_width,
-    highlight = {colors.base7, colors.line_bg}
+    highlight = {colors.base6, colors.line_bg}
   }
 }
 
 ins_right {
   ScrollBar = {
     provider = "ScrollBar",
-    separator = " ",
-    separator_highlight = {"NONE", colors.line_bg},
+    separator = "▎",
+    separator_highlight = {colors.base4, colors.line_bg},
     highlight = {colors.blue, colors.purple}
   }
 }
 
 gls.short_line_left[1] = {
+  BufferIcon = {
+    provider = "BufferIcon",
+    highlight = {colors.fg, colors.bg}
+  }
+}
+
+gls.short_line_left[2] = {
+  SFileName = {
+    provider = "SFileName",
+    condition = condition.buffer_not_empty,
+    separator = " ",
+    separator_highlight = {"NONE", colors.bg},
+    highlight = {colors.fg, colors.bg, "bold"}
+  }
+}
+
+gls.short_line_left[3] = {
   BufferType = {
     provider = "FileTypeName",
     separator = " ",
@@ -247,17 +287,3 @@ gls.short_line_left[1] = {
   }
 }
 
-gls.short_line_left[2] = {
-  SFileName = {
-    provider = "SFileName",
-    condition = condition.buffer_not_empty,
-    highlight = {colors.fg, colors.bg, "bold"}
-  }
-}
-
-gls.short_line_right[1] = {
-  BufferIcon = {
-    provider = "BufferIcon",
-    highlight = {colors.fg, colors.bg}
-  }
-}
