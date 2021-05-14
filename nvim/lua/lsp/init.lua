@@ -1,5 +1,6 @@
 local nvim_lsp = require("lspconfig")
 local set_lsp_config = require("lsp/set_config")
+
 local servers = {"rust_analyzer", "pyright", "bashls"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {on_attach = set_lsp_config}

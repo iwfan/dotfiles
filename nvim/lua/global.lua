@@ -57,7 +57,7 @@ function _G.var_tbl(variable_table)
 end
 
 --mappings
-function _G.map(mode_and_lhs, rhs, opts)
+function _G._map(mode_and_lhs, rhs, opts, fn)
   local options = {
     noremap = true;
     silent = true;
@@ -69,11 +69,29 @@ function _G.map(mode_and_lhs, rhs, opts)
   end
 
   local mode, lhs = mode_and_lhs:match("([^|]*)|?(.*)")
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+  fn(mode, lhs, rhs, options)
+end
+
+function _G.map(mode_and_lhs, rhs, opts)
+  _G._map(mode_and_lhs, rhs, opts,
+    function(mode, lhs, rhs, options)
+      vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    end
+  )
 end
 
 function _G.map_cmd(mode_and_lhs, rhs, opts)
   _G.map(mode_and_lhs, string.format("<cmd>%s<CR>", rhs), opts)
+end
+
+function _G.buf_map_cmd(bufnr)
+  return function(mode_and_lhs, rhs, opts)
+    _G._map(mode_and_lhs, rhs, opts,
+      function(mode, lhs, rhs, options)
+        vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, options)
+      end
+    )
+  end
 end
 
 --autocmd
