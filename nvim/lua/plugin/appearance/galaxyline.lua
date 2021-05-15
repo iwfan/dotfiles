@@ -8,6 +8,7 @@ local colors = vim.tbl_extend(
   "force",
   zephyr,
   {
+    bg = "#353644",
     line_bg = "#353644",
     fg_green = "#65a380",
     darkblue = "#081633",
@@ -172,21 +173,36 @@ ins_left {
   }
 }
 
+
 -- ###################################################
 ins_right {
+  RightStart = {
+    provider = function() return " " end,
+    highlight = {colors.line_bg, colors.line_bg}
+  }
+}
+
+ins_right {
+  Context = {
+    provider = "VistaPlugin",
+    highlight = {colors.green, colors.line_bg}
+  }
+}
+
+ins_right {
  ShowLspClient = {
-   provider = "GetLspClient",
-   condition = function()
-     local tbl = {["dashboard"] = true, [""] = true}
-     if tbl[vim.bo.filetype] then
-       return false
-     end
-     return true
-   end,
-   icon = font_icon.gear,
-   separator = " ",
-   separator_highlight = {"NONE", colors.line_bg},
-   highlight = {colors.yellow, colors.line_bg, "bold"}
+    provider = "GetLspClient",
+    condition = function()
+      local tbl = {["dashboard"] = true, [""] = true}
+      if tbl[vim.bo.filetype] then
+        return false
+      end
+      return true
+    end,
+    icon = font_icon.gear,
+    separator = font_icon.line1,
+    separator_highlight = {colors.base4, colors.line_bg},
+    highlight = {colors.orange, colors.line_bg}
  }
 }
 

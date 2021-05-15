@@ -14,6 +14,25 @@ insert {
 insert "nvim-treesitter/nvim-treesitter-textobjects"
 insert "windwp/nvim-ts-autotag"
 
+insert {
+  "liuchengxu/vista.vim",
+  config = function ()
+    vim.g['vista#renderer#enable_icon'] = 1
+    vim.g.vista_disable_statusline = 1
+    vim.g.vista_default_executive = 'ctags'
+    vim.g.vista_echo_cursor_strategy = 'floating_win'
+    vim.g.vista_vimwiki_executive = 'markdown'
+    vim.g.vista_executive_for = {
+      vimwiki =  'markdown',
+      pandoc = 'markdown',
+      markdown = 'toc',
+      lua = 'nvim_lsp',
+      typescript = 'nvim_lsp',
+      typescriptreact =  'nvim_lsp',
+    }
+  end
+}
+
 -- comment
 insert {
   'terrortylor/nvim-comment',
