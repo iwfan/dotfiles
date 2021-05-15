@@ -1,50 +1,3 @@
-vim.fn.sign_define("LspDiagnosticsSignError", {
-  texthl = "LspDiagnosticsSignError";
-  numhl = "LspDiagnosticsSignError";
-  text = emoji_icon.error;
-})
-
-vim.fn.sign_define("LspDiagnosticsSignWarning", {
-  texthl = "LspDiagnosticsSignWarning";
-  numhl = "LspDiagnosticsSignWarning";
-  text = emoji_icon.warn;
-})
-
-vim.fn.sign_define("LspDiagnosticsSignHint", {
-  texthl = "LspDiagnosticsSignHint";
-  numhl = "LspDiagnosticsSignHint";
-  text = emoji_icon.hint;
-})
-
-vim.fn.sign_define("LspDiagnosticsSignInformation", {
-  texthl = "LspDiagnosticsSignInformation";
-  numhl = "LspDiagnosticsSignInformation";
-  text = emoji_icon.info;
-})
-
-map_cmd("n|]d",          "Lspsaga diagnostic_jump_next")
-map_cmd("n|[d",          "Lspsaga diagnostic_jump_prev")
-map_cmd("n|\\d",         "Lspsaga show_line_diagnostics")
-map_cmd("n|K",           "Lspsaga hover_doc")
-map_cmd("n|<space>fl",   "Lspsaga lsp_finder")
-map_cmd("n|<space><cr>", "Lspsaga code_action")
-map_cmd("v|<space><cr>", "Lspsaga range_code_action")
-map_cmd("n|gd",          "lua vim.lsp.buf.definition()")
-map_cmd("n|gD",          "lua vim.lsp.buf.declaration()")
-map_cmd("n|gi",          "lua vim.lsp.buf.implementation()")
-map_cmd("n|gr",          "lua vim.lsp.buf.references()")
-map_cmd("n|<space>K",    "Lspsaga signature_help")
-map_cmd("n|<space>rn",   "Lspsaga rename")
-map_cmd("n|gh",          "Lspsaga lsp_finder")
-map_cmd("n|D",           "lua vim.lsp.buf.type_definition()")
-map_cmd("n|<Leader>cw",  "lua vim.lsp.buf.workspace_symbol()")
-map_cmd("n|<C-f>",       "lua require('lspsaga.action').smart_scroll_with_saga(1)", { nowait = true })
-map_cmd("n|<C-b>",       "lua require('lspsaga.action').smart_scroll_with_saga(-1)", { nowait = true })
-map_cmd('n|<space>q',    'TroubleToggle')
-map_cmd("n|<space>fm",   "lua vim.lsp.buf.formatting()")
-map_cmd("v|<space>fm",   "lua vim.lsp.buf.range_formatting()")
-
-
 local enhance_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -84,6 +37,28 @@ local enhance_attach = function(client, bufnr)
     )
   end
 end
+
+map_cmd("n|]d",          "Lspsaga diagnostic_jump_next")
+map_cmd("n|[d",          "Lspsaga diagnostic_jump_prev")
+map_cmd("n|\\d",         "Lspsaga show_line_diagnostics")
+map_cmd("n|K",           "Lspsaga hover_doc")
+map_cmd("n|<space>fl",   "Lspsaga lsp_finder")
+map_cmd("n|<space><cr>", "Lspsaga code_action")
+map_cmd("v|<space><cr>", "Lspsaga range_code_action")
+map_cmd("n|gd",          "lua vim.lsp.buf.definition()")
+map_cmd("n|gD",          "lua vim.lsp.buf.declaration()")
+map_cmd("n|gi",          "lua vim.lsp.buf.implementation()")
+map_cmd("n|gr",          "lua vim.lsp.buf.references()")
+map_cmd("n|<space>K",    "Lspsaga signature_help")
+map_cmd("n|<space>rn",   "Lspsaga rename")
+map_cmd("n|gh",          "Lspsaga lsp_finder")
+map_cmd("n|D",           "lua vim.lsp.buf.type_definition()")
+map_cmd("n|<Leader>cw",  "lua vim.lsp.buf.workspace_symbol()")
+map_cmd("n|<C-f>",       "lua require('lspsaga.action').smart_scroll_with_saga(1)", { nowait = true })
+map_cmd("n|<C-b>",       "lua require('lspsaga.action').smart_scroll_with_saga(-1)", { nowait = true })
+map_cmd('n|<space>q',    'TroubleToggle')
+map_cmd("n|<space>fm",   "lua vim.lsp.buf.formatting()")
+map_cmd("v|<space>fm",   "lua vim.lsp.buf.range_formatting()")
 
 local lspconf = require("lspconfig")
 

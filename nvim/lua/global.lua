@@ -120,6 +120,7 @@ _G.font_icon = {
   branch  = ' ';
   gear    = ' ';
   light   = '';
+  check   = '﫠';
 }
 
 _G.emoji_icon = {

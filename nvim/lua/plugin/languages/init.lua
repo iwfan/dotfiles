@@ -11,10 +11,7 @@ insert {
 insert {
   'glepnir/lspsaga.nvim',
   config = function()
-    local saga = require 'lspsaga'
-    saga.init_lsp_saga({
-      code_action_icon = emoji_icon.fire
-    })
+    require 'plugin.languages.lsp-saga'
   end
 }
 

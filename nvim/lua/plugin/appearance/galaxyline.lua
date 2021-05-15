@@ -168,7 +168,7 @@ ins_left {
 ins_left {
   LeftEnd = {
     provider = function() return " " end,
-    highlight = {colors.bg, colors.bg}
+    highlight = {colors.line_bg, colors.line_bg}
   }
 }
 
@@ -183,7 +183,7 @@ ins_right {
      end
      return true
    end,
-   icon = font_icon.gear .. " ",
+   icon = font_icon.gear,
    separator = " ",
    separator_highlight = {"NONE", colors.line_bg},
    highlight = {colors.yellow, colors.line_bg, "bold"}
