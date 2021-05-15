@@ -49,10 +49,15 @@ insert { 'ray-x/lsp_signature.nvim' }
 insert {
   "windwp/nvim-autopairs",
   config = function()
-    require("nvim-autopairs").setup()
+    require("nvim-autopairs").setup({
+      disable_filetype = { "TelescopePrompt" , "vim" }
+    })
   end
 }
 
+-- insert {
+--   "steelsojka/pears.nvim"
+-- }
 
 insert {
   "hrsh7th/vim-vsnip",

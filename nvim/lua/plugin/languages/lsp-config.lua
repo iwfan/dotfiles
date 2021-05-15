@@ -63,7 +63,7 @@ map_cmd("n|<Leader>cw",  "lua vim.lsp.buf.workspace_symbol()")
 map_cmd("n|<C-f>",       "lua require('lspsaga.action').smart_scroll_with_saga(1)", { nowait = true })
 map_cmd("n|<C-b>",       "lua require('lspsaga.action').smart_scroll_with_saga(-1)", { nowait = true })
 map_cmd('n|<space>q',    'TroubleToggle')
-map_cmd("n|<space>fm",   "lua vim.lsp.buf.formatting()")
+map_cmd("n|<space>fm",   "lua vim.lsp.buf.formatting_sync(nil,1000)")
 map_cmd("v|<space>fm",   "lua vim.lsp.buf.range_formatting()")
 map_cmd("n|<F5>",        "vsplit" .. vim.lsp.get_log_path())
 
