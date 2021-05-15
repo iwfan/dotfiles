@@ -125,8 +125,8 @@ _G.font_icon = {
 }
 
 _G.emoji_icon = {
-  error         = '🚨';
-  error1        = '🚫';
+  error         = '🚫';
+  error1        = '🚨';
   warn          = '🚧';
   warn1         = '⚠️';
   hint          = '🌀';

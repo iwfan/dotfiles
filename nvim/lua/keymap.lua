@@ -29,7 +29,7 @@ map("i|<C-u>", "<C-o>d^")
 map("!|<C-v>", "<C-r>*")
 map("i|<C-c>", "<ESC>")
 map("i|<C-s>", [[empty(expand("%:t")) ? "\<C-o>:w\<Space>" : "<C-o>:w\<CR>"]], { expr = true })
-map("n|<C-s>", [[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]], { expr = true })
+-- map("n|<C-s>", [[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]], { expr = true })
 map("n|<C-q><C-g>", [[:lua fn.system({'open', 'https://google.com/search?q=' .. vim.fn.expand("<cword>")})<CR>]])
 map("v|<C-q><C-g>", [[<ESC>gv"gy<ESC>:lua fn.system({'open', 'https://google.com/search?q=' .. vim.fn.getreg('g')})<CR>]])
 

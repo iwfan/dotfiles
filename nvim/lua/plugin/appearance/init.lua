@@ -15,9 +15,7 @@ insert {
 
 insert {
   "glepnir/dashboard-nvim",
-  config = function()
-    g.dashboard_default_executive = "telescope"
-  end
+  config = function() require 'plugin.appearance.nvim-dashboard' end
 }
 
 insert {
@@ -44,7 +42,8 @@ insert {
   requires = {
     { "nvim-lua/popup.nvim" },
     { "nvim-lua/plenary.nvim" },
-    { "nvim-telescope/telescope-fzy-native.nvim" }
+    { "nvim-telescope/telescope-fzy-native.nvim" },
+    { "nvim-telescope/telescope-project.nvim" }
   },
   config = function() require "plugin.appearance.telescope" end
 }
