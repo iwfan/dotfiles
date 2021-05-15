@@ -121,6 +121,7 @@ _G.font_icon = {
   gear    = ' ';
   light   = '';
   check   = '﫠';
+  ok      = ' ';
 }
 
 _G.emoji_icon = {

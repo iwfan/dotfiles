@@ -297,6 +297,15 @@ ins_right {
   }
 }
 
+ins_right {
+  RightEnd = {
+    provider = function()
+      return " ▊"
+    end,
+    highlight = {colors.bg_popup, colors.line_bg, "bold"}
+  }
+}
+
 gls.short_line_left[1] =  {
   SViMode = {
     provider = function()

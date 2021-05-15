@@ -45,12 +45,7 @@ insert {
     require "plugin.languages.lsp-kind"
   end
 }
-insert {
-  'ray-x/lsp_signature.nvim',
-  config = function()
-    require('lsp_signature').on_attach()
-  end
-}
+insert { 'ray-x/lsp_signature.nvim' }
 insert {
   "windwp/nvim-autopairs",
   config = function()
