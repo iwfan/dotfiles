@@ -1,3 +1,0 @@
-- https://github.com/shaunsingh/vimrc-dotfiles
-- https://github.com/lervag/vlugins
-- https://github.com/siduck76/neovim-dotfiles/

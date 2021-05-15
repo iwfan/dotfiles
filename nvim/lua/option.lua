@@ -101,18 +101,16 @@ local function setup_options()
     switchbuf      = "useopen,vsplit",
     backspace      = "indent,eol,start",
     complete       = ".,w,b,k",
-    completeopt    = "menuone,noselect,noinsert",
+    completeopt    = "longest,noinsert,menuone,noselect,preview",
     inccommand     = "nosplit",
     grepformat     = "%f:%l:%c:%m",
     grepprg        = "rg --hidden --vimgrep --smart-case --",
     display        = "lastline",
-    shortmess      = "aoOTIcF",
     synmaxcol      = 2500,
     diffopt        = "filler,iwhite,internal,algorithm:patience",
     jumpoptions    = "stack",
     viewoptions    = "folds,cursor,curdir,slash,unix",
     sessionoptions = "curdir,help,tabpages,winsize",
-    formatoptions  = "1jcroql",
     foldlevelstart = 99
   }
 
@@ -125,3 +123,4 @@ end
 
 disable_distribution_plugins()
 setup_options()
+

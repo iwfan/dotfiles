@@ -46,7 +46,7 @@ end
 
 map_cmd("n|]d",          "Lspsaga diagnostic_jump_next")
 map_cmd("n|[d",          "Lspsaga diagnostic_jump_prev")
-map_cmd("n|\\d",         "Lspsaga show_line_diagnostics")
+map_cmd([[n|\d]],        "Lspsaga show_line_diagnostics")
 map_cmd("n|K",           "Lspsaga hover_doc")
 map_cmd("n|<space>fl",   "Lspsaga lsp_finder")
 map_cmd("n|<space><cr>", "Lspsaga code_action")
@@ -65,6 +65,7 @@ map_cmd("n|<C-b>",       "lua require('lspsaga.action').smart_scroll_with_saga(-
 map_cmd('n|<space>q',    'TroubleToggle')
 map_cmd("n|<space>fm",   "lua vim.lsp.buf.formatting()")
 map_cmd("v|<space>fm",   "lua vim.lsp.buf.range_formatting()")
+map_cmd("n|<F5>",        "vsplit" .. vim.lsp.get_log_path())
 
 local lspconf = require("lspconfig")
 
@@ -101,6 +102,51 @@ local servers = {
         client.config.flags.allow_incremental_sync = true
       end
       client.resolved_capabilities.document_formatting = false
+
+      local ts_utils = require("nvim-lsp-ts-utils")
+      -- defaults
+      ts_utils.setup {
+        debug = false,
+        disable_commands = false,
+        enable_import_on_completion = false,
+        import_on_completion_timeout = 5000,
+
+        -- eslint
+        eslint_bin = "eslint_d",
+        eslint_args = {"-f", "json", "--stdin", "--stdin-filename", "$FILENAME"},
+        eslint_enable_disable_comments = true,
+
+	      -- experimental settings!
+        -- eslint diagnostics
+        eslint_enable_diagnostics = false,
+        eslint_diagnostics_debounce = 250,
+
+        -- formatting
+        enable_formatting = false,
+        formatter = "prettier",
+        formatter_args = {"--stdin-filepath", "$FILENAME"},
+        format_on_save = false,
+        no_save_after_format = false,
+
+        -- parentheses completion
+        complete_parens = false,
+        signature_help_in_parens = false,
+
+	      -- update imports on file move
+	      update_imports_on_move = false,
+	      require_confirmation_on_move = false,
+	      watch_dir = "/src",
+      }
+
+      -- required to enable ESLint code actions and formatting
+      ts_utils.setup_client(client)
+
+      -- no default maps, so you may want to define some here
+      vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", {silent = true})
+      vim.api.nvim_buf_set_keymap(bufnr, "n", "qq", ":TSLspFixCurrent<CR>", {silent = true})
+      vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", {silent = true})
+      vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", {silent = true})
+
       enhance_attach(client, bufnr)
     end
   },
@@ -109,6 +155,70 @@ local servers = {
   vuels    = { on_attach = enhance_attach },
   bashls   = { on_attach = enhance_attach },
   dockerls = { on_attach = enhance_attach },
+  diagnosticls = {
+    cmd = { "diagnostic-languageserver", "--stdio", "--log-level", "2" },
+    filetypes = {
+      "html", "jade", "markdown", "mdx", "mustache", "vue", "svelte",
+      "css", "less", "scss", "styls",
+      "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx",
+      "json", "yaml", "toml",
+      "lua"
+    },
+    init_options = {
+      linters = {
+        eslint = {
+          sourceName = "eslint",
+          command = "eslint_d",
+          rootPatterns = {".eslintrc.js", "package.json"},
+          debounce = 100,
+          args = {"--stdin", "--stdin-filename", "%filepath", "--format", "json"},
+          parseJson = {
+            errorsRoot = "[0].messages",
+            line = "line",
+            column = "column",
+            endLine = "endLine",
+            endColumn = "endColumn",
+            message = "${message} [${ruleId}]",
+            security = "severity"
+          },
+          securities = {[2] = "error", [1] = "warning"}}
+      },
+      filetypes = {
+        javascript = {"eslint"},
+        javascriptreact = {"eslint"},
+        ["javascript.jsx"] = {"eslint"},
+        typescript = {"eslint"},
+        typescriptreact = {"eslint"},
+        ["typescript.tsx"] = {"eslint"},
+      },
+      formatters = {
+        prettier = {
+          command = "prettier",
+          args = {"--stdin-filepath", "%filepath"}
+        },
+        luafmt = {
+          command = "luafmt",
+          args = {"--indent-count", "2", "--stdin", "%filepath"}
+        },
+      },
+      formatFiletypes = {
+        javascript = {"prettier"},
+        javascriptreact = {"prettier"},
+        ["javascript.jsx"] = {"prettier"},
+        typescript = {"prettier"},
+        typescriptreact = {"prettier"},
+        ["typescript.tsx"] = {"prettier"},
+        lua = {"luafmt"}
+      },
+    },
+    root_dir = function()
+      return vim.loop.cwd()
+    end,
+    on_attach = function(client, bufnr)
+      client.resolved_capabilities.document_formatting = true
+      enhance_attach(client, bufnr)
+    end
+  },
   sumneko_lua = {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
     root_dir = function()

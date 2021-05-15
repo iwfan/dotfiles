@@ -91,11 +91,20 @@ local function check_dockerls()
 end
 check_dockerls()
 
+local function check_diagnostic()
+  if fn.executable('diagnostic-languageserver') == 0 then
+    local answer = fn.confirm("install diagnostic language server?", "&Yes\n&No")
+    if answer == 1 then
+      installNodePkg({ 'diagnostic-languageserver', 'prettier', 'eslint', 'eslint_d' })
+    end
+  end
+end
+check_diagnostic()
+
 if #packages > 0 then
   local cmd = 'npm install -g ' .. table.concat(packages, ' ')
-  print(cmd)
   fn.termopen(cmd, {
-    on_stdout = function() print('stdout') end,
+    on_stdout = function() print(cmd) end,
     on_stderr = function(_, _, e) error(e) end
   })
 end
@@ -105,7 +114,7 @@ local function check_lua()
   local sumneko_root_path = stdpath .. '/lsp-install/lua-language-server'
   local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
 
-  if fn.empty(fn.glob(sumneko_binary .. "/main.lua")) > 0 then
+  -- if fn.empty(fn.glob(sumneko_binary .. "/main.lua")) > 0 then
     -- git clone https://github.com/sumneko/lua-language-server ~/.config/lua-language-server
     -- ( cd ~/.config/lua-language-server/ && git submodule update --init --recursive )
     --
@@ -120,6 +129,6 @@ local function check_lua()
     -- fn.system({'sh', 'compile/install.sh'})
     -- fn.system({'cd', sumneko_root_path })
     -- fn.system({'./3rd/luamake/luamake', 'rebuild'})
-  end
+  -- end
 end
 check_lua()

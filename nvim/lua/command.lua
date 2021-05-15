@@ -37,7 +37,10 @@ augroup('filetype_config', {
   {"BufWritePre", "*", "setlocal formatoptions-=cro formatoptions+=j1"},
   {"BufWritePre", "*.css,*.scss,*.less", "setlocal iskeyword+=-"},
   {"BufWritePre", "*.md", "setlocal wrap"},
-  {"FileType", "make", "setlocal noexpandtab"}
+  {"FileType", "make", "setlocal noexpandtab"},
+  {"TermOpen", "term://*", "startinsert"},
+  {"TermOpen", "term://*", "setlocal nonumber norelativenumber"},
+  {"BufEnter", "*", "set formatoptions-=c shortmess+=c"}
 })
 
 augroup('misc', {
@@ -47,8 +50,6 @@ augroup('misc', {
   {"BufWritePre", "*", [[%s/\s\+$//e]]}, --remove trailing whitespaces
   --{"BufWritePre", "*", [[%s/\n\+\%$//e]]},
   {"FileType", "help", [[wincmd L]]},
-  {"TermOpen", "term://*", "startinsert"},
-  {"TermOpen", "term://*", "setlocal nonumber norelativenumber"},
   {"TextYankPost", "*", [[silent! lua vim.highlight.on_yank {timeout=500}]]},
   {
     "BufEnter",

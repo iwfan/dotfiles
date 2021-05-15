@@ -30,6 +30,7 @@ insert {
       typescript = 'nvim_lsp',
       typescriptreact =  'nvim_lsp',
     }
+    map_cmd("n|<leader>8", "Vista!!")
   end
 }
 
@@ -88,7 +89,13 @@ insert {
   config = [[vim.g.matchup_matchparen_offscreen = {}]]
 }
 
-insert "junegunn/vim-easy-align"
+insert {
+  "junegunn/vim-easy-align",
+  config = function ()
+    map("n|ga", [[<Plug>(EasyAlign)]], { noremap = false })
+    map("x|ga", [[<Plug>(EasyAlign)]], { noremap = false })
+  end
+}
 insert {
   "blackCauldron7/surround.nvim",
   config = function()

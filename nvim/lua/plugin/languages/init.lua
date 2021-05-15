@@ -63,4 +63,6 @@ insert {
 insert 'hrsh7th/vim-vsnip-integ'
 insert 'rafamadriz/friendly-snippets'
 
+insert 'jose-elias-alvarez/nvim-lsp-ts-utils'
+
 return languages

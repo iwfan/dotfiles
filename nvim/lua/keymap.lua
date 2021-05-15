@@ -70,8 +70,7 @@ map("t|<C-n>", [[<C-\><C-N>]])
 map("t|<Esc>", [[<C-\><C-N>]])
 map("n|<C-w><C-t>", "<esc>:split<CR>:term<CR>")
 
-map("n|ga", [[<Plug>(EasyAlign)]], { noremap = false })
-map("x|ga", [[<Plug>(EasyAlign)]], { noremap = false })
+map([[n|\s]], ":%s//g<left><left>")
 
 map_cmd("n|<leader>0", "FloatermToggle")
 map("t|<leader>0", [[<C-\><C-n>:FloatermToggle<CR>]])
