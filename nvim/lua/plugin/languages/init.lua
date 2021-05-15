@@ -35,7 +35,7 @@ insert {
 insert {
   "hrsh7th/nvim-compe",
   config = function()
-    require "plugin.languages.completion"
+    require "plugin.languages.lsp-compe"
   end
 }
 
