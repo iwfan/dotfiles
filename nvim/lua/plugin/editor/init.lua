@@ -55,8 +55,7 @@ insert {
         delete       = {hl = "GitGutterDelete",       text = "▋"},
         topdelete    = {hl = "GitGutterDeleteChange", text = "▔"},
         changedelete = {hl = "GitGutterChange",       text  = "▎"}
-      },
-      current_line_blame = true
+      }
     }
   end,
   requires = {"nvim-lua/plenary.nvim", opt = true}

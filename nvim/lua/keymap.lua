@@ -19,7 +19,6 @@ map("n|j", [[(v:count == 0 ? 'gj' : 'j')]], { expr = true })
 
 map("i|<C-a>", "<C-o>^")
 map("c|<C-a>", "<HOME>")
-map("n|<C-a>", "<Cmd>%y+<CR>")
 map("!|<C-b>", "<Left>")
 map("!|<C-d>", "<Del>")
 map("!|<C-e>", "<END>")
@@ -34,6 +33,7 @@ map("n|<C-s>", [[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]], { expr = tru
 map("n|<C-q><C-g>", [[:lua fn.system({'open', 'https://google.com/search?q=' .. vim.fn.expand("<cword>")})<CR>]])
 map("v|<C-q><C-g>", [[<ESC>gv"gy<ESC>:lua fn.system({'open', 'https://google.com/search?q=' .. vim.fn.getreg('g')})<CR>]])
 
+map("n|<leader>a", "<Cmd>%y+<CR>")
 map("n|<leader><BS>", '"_dd')
 map("n|H", "^")
 map("v|H", "^")

@@ -1,7 +1,7 @@
 local saga = require 'lspsaga'
 
 saga.init_lsp_saga({
-  code_action_icon = emoji_icon.light,
+  code_action_icon = emoji_icon.fire,
   use_saga_diagnostic_sign = true,
   error_sign = emoji_icon.error,
   warn_sign = emoji_icon.warn,
@@ -10,7 +10,7 @@ saga.init_lsp_saga({
   dianostic_header_icon = '   ',
   code_action_prompt = {
     enable = true,
-    sign = true,
+    sign = false,
     sign_priority = 0,
     virtual_text = true,
   },

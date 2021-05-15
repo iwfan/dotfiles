@@ -125,21 +125,22 @@ _G.font_icon = {
 }
 
 _G.emoji_icon = {
-  error         = '🚫';
-  warn          = '⚠️';
+  error         = '🚨';
+  error1        = '🚫';
+  warn          = '🚧';
+  warn1         = '⚠️';
   hint          = '🌀';
-  info          = 'ℹ️';
+  info          = '💡';
+  info1         = 'ℹ️';
   light         = '💡';
   fire          = '🔥';
   fix           = '🔧';
   pin           = '📌';
-  stop          = '🚧';
   gear          = '⚙️';
   search        = '🔎';
   branch        = '🔱';
   right         = '👉';
   close         = '❎';
-  diamond       = '💠';
   file          = '📄';
   folder        = '📁';
   folder_opened = '📂';
