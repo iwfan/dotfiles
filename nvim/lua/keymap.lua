@@ -67,7 +67,7 @@ map("t|<C-k>", [[<C-\><C-N><C-w>k]])
 map("t|<C-l>", [[<C-\><C-N><C-w>l]])
 map("t|<C-o>", [[<C-\><C-N><C-o>]])
 map("t|<C-n>", [[<C-\><C-N>]])
-map("t|<Esc>", [[<C-\><C-N>]])
+map("t|<Esc><Esc>", [[<C-\><C-N>]])
 map("n|<C-w><C-t>", "<esc>:split<CR>:term<CR>")
 
 map([[n|\s]], ":%s//g<left><left>")
