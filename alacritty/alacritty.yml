@@ -104,50 +104,50 @@ window:
 # Font configuration
 font:
   # Normal (roman) font face
-  normal:
+  #normal:
     # Font family
     #
     # Default:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: OperatorMono Nerd Font
+    # family: OperatorMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Light
+    # style: Light
 
   # Bold font face
-  bold:
+  #bold:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: OperatorMono Nerd Font
+    # family: OperatorMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Medium
+    # style: Medium
 
   # Italic font face
-  italic:
+  #italic:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: OperatorMono Nerd Font
+    # family: OperatorMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Light Italic
+    # style: Light Italic
 
   # Bold italic font face
-  bold_italic:
+  #bold_italic:
     # Font family
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: OperatorMono Nerd Font
+    # family: OperatorMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Medium Italic
+    # style: Medium Italic
 
   # Point size
   size: 15.0
@@ -156,15 +156,15 @@ font:
   # of as modifying the line spacing, and `offset.x` as modifying the letter
   # spacing.
   offset:
-    x: 2
-    y: 12
+    x: 0
+    y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
   # right, increasing `y` moves the glyph upward.
   glyph_offset:
     x: 0
-    y: 8
+    y: 0
 
   # Thin stroke font rendering (macOS only)
   #
