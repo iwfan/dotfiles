@@ -139,7 +139,6 @@ insert {
     require "surround".setup {}
   end
 }
-insert "vim-scripts/ReplaceWithRegister"
 insert "wellle/targets.vim"
 insert "tommcdo/vim-exchange"
 --insert "tpope/vim-dispatch"

@@ -96,8 +96,6 @@ insert {
   end
 }
 
-insert "junegunn/vim-peekaboo"
-
 insert {
   "voldikss/vim-floaterm",
   cmd = {
