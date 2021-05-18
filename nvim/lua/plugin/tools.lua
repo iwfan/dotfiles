@@ -8,7 +8,15 @@ insert {
   end
 }
 
-insert "voldikss/vim-translator"
+insert {
+  "voldikss/vim-translator",
+  cmd = {
+    "Translate",
+    "TranslateW",
+    "TranslateR",
+    "TranslateX",
+  }
+}
 
 --insert "tpope/vim-dispatch"
 --insert "wellle/targets.vim"

@@ -100,6 +100,17 @@ insert "junegunn/vim-peekaboo"
 
 insert {
   "voldikss/vim-floaterm",
+  cmd = {
+    'FloatermNew',
+    'FloatermPrev',
+    'FloatermNext',
+    'FloatermFirst',
+    'FloatermLast',
+    'FloatermHide',
+    'FloatermShow',
+    'FloatermKill',
+    'FloatermToggle'
+  },
   config = function()
     var_tbl({
       floaterm_width = 0.9;
