@@ -5,6 +5,12 @@ export EDITOR=nvim
 export GOPATH=$HOME/go
 export PATH="/usr/local/sbin:$GOPATH/bin:$PATH"
 
+export FZF_DEFAULT_COMMAND='fd'
+export FZF_COMPLETION_TRIGGER='/'
+export FZF_DEFAULT_OPTS='--preview "ccat --color=always {}"'
+export FZF_TMUX=1
+export FZF_TMUX_HEIGHT='80%'
+
 export HOMEBREW_NO_AUTO_UPDATE=true
 
 enable_proxy() {
