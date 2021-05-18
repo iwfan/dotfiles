@@ -29,14 +29,14 @@ augroup('filetype_detect', {
 })
 
 augroup('filetype_config', {
-  {"BufWritePre", [[/tmp/*]], "setlocal noundofile"},
-  {"BufWritePre", "COMMIT_EDITMSG", "setlocal noundofile"},
-  {"BufWritePre", "MERGE_MSG", "setlocal noundofile"},
-  {"BufWritePre", [[*.tmp]], "setlocal noundofile"},
-  {"BufWritePre", [[*.bak]], "setlocal noundofile"},
-  {"BufWritePre", "*", "setlocal formatoptions-=cro formatoptions+=j1"},
-  {"BufWritePre", "*.css,*.scss,*.less", "setlocal iskeyword+=-"},
-  {"BufWritePre", "*.md", "setlocal wrap"},
+  {"BufEnter", [[/tmp/*]], "setlocal noundofile"},
+  {"BufEnter", "COMMIT_EDITMSG", "setlocal noundofile"},
+  {"BufEnter", "MERGE_MSG", "setlocal noundofile"},
+  {"BufEnter", [[*.tmp]], "setlocal noundofile"},
+  {"BufEnter", [[*.bak]], "setlocal noundofile"},
+  {"BufEnter", "*", "setlocal formatoptions-=cro formatoptions+=j1"},
+  {"BufEnter", "*.css,*.scss,*.less", "setlocal iskeyword+=-"},
+  {"BufEnter", "markdown", "setlocal wrap"},
   {"FileType", "make", "setlocal noexpandtab"},
   {"TermOpen", "term://*", "startinsert"},
   {"TermOpen", "term://*", "setlocal nonumber norelativenumber"},
@@ -48,7 +48,7 @@ augroup('misc', {
   {"BufReadPost", "*", [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]},
   {"FocusLost", "*", [[silent! wa]]}, --auto save when nvim focus
   {"BufWritePre", "*", [[%s/\s\+$//e]]}, --remove trailing whitespaces
-  --{"BufWritePre", "*", [[%s/\n\+\%$//e]]},
+  {"BufWritePre", "*", [[%s/\n\+\%$//e]]},
   {"FileType", "help", [[wincmd L]]},
   {"TextYankPost", "*", [[silent! lua vim.highlight.on_yank {timeout=500}]]},
   {
