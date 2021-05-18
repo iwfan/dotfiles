@@ -8,7 +8,12 @@ vim.g.dashboard_custom_section = {
     e = {description = {'  Open Neovim Configuration             '}, command = ':e ~/.config/nvim/init.lua'}
 }
 
-map("n|<C-s>", [[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>:SessionSave\<CR>"]], { expr = true })
+function _G.save_session_and_exit()
+  vim.cmd("SessionSave")
+  vim.cmd("xa")
+end
+
+vim.cmd('command! -nargs=0 Q call v:lua.save_session_and_exit()')
 
 vim.g.dashboard_custom_header = {
   "                                                                        ",
