@@ -14,14 +14,14 @@ import:
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-#env:
+env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  # TERM: alacritty
+  TERM: alacritty
 
 window:
   # Window dimensions (changes require restart)
@@ -104,47 +104,47 @@ window:
 # Font configuration
 font:
   # Normal (roman) font face
-  #normal:
+  normal:
     # Font family
     #
     # Default:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    # family: OperatorMono Nerd Font
+    family: SauceCodePro Nerd Font
 
     # The `style` can be specified to pick a specific face.
     # style: Light
 
   # Bold font face
-  #bold:
+  bold:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    # family: OperatorMono Nerd Font
+    family: SauceCodePro Nerd Font
 
     # The `style` can be specified to pick a specific face.
     # style: Medium
 
   # Italic font face
-  #italic:
+  italic:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    # family: OperatorMono Nerd Font
+    family: SauceCodePro Nerd Font
 
     # The `style` can be specified to pick a specific face.
     # style: Light Italic
 
   # Bold italic font face
-  #bold_italic:
+  bold_italic:
     # Font family
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    # family: OperatorMono Nerd Font
+    family: SauceCodePro Nerd Font
 
     # The `style` can be specified to pick a specific face.
     # style: Medium Italic
