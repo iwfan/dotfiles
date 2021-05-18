@@ -59,5 +59,5 @@ augroup('misc', {
       [[exec 'NvimTreeRefresh' | endif]]
     }
   },
-  { "VimEnter", "*", "call vista#RunForNearestMethodOrFunction()" }
+  -- { "VimEnter", "*", "call vista#RunForNearestMethodOrFunction()" }
 })

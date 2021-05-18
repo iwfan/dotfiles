@@ -80,7 +80,7 @@ ins_left {
 ins_left {
   DiagnosticError = {
     provider = "DiagnosticError",
-    icon = " " .. emoji_icon.error,
+    icon = " " .. font_icon.error,
     highlight = {colors.red, colors.line_bg}
   }
 }
@@ -88,7 +88,7 @@ ins_left {
 ins_left {
   DiagnosticWarn = {
     provider = "DiagnosticWarn",
-    icon = " " .. emoji_icon.warn,
+    icon = " " .. font_icon.warn,
     highlight = {colors.yellow, colors.line_bg}
   }
 }
@@ -96,7 +96,7 @@ ins_left {
 ins_left {
   DiagnosticHint = {
     provider = "DiagnosticHint",
-    icon = " " .. emoji_icon.hint,
+    icon = " " .. font_icon.hint,
     highlight = {colors.cyan, colors.line_bg}
   }
 }
@@ -104,7 +104,7 @@ ins_left {
 ins_left {
   DiagnosticInfo = {
     provider = "DiagnosticInfo",
-    icon = " " .. emoji_icon.info,
+    icon = " " .. font_icon.info,
     highlight = {colors.blue, colors.line_bg}
   }
 }
@@ -182,12 +182,12 @@ ins_right {
   }
 }
 
-ins_right {
-  Context = {
-    provider = "VistaPlugin",
-    highlight = {colors.green, colors.line_bg}
-  }
-}
+-- ins_right {
+--   Context = {
+--     provider = "VistaPlugin",
+--     highlight = {colors.green, colors.line_bg}
+--   }
+-- }
 
 ins_right {
  ShowLspClient = {
@@ -200,8 +200,8 @@ ins_right {
       return true
     end,
     icon = font_icon.gear,
-    separator = font_icon.line1,
-    separator_highlight = {colors.base4, colors.line_bg},
+    -- separator = font_icon.line1,
+    -- separator_highlight = {colors.base4, colors.line_bg},
     highlight = {colors.orange, colors.line_bg}
  }
 }

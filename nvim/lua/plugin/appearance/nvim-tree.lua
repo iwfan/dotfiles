@@ -13,8 +13,8 @@ var_tbl {
     ["h"] = tree_cb("close_node")
   },
   nvim_tree_icons              = {
-    default     = emoji_icon.file,
-    symlink     = emoji_icon.link,
+    default     = '',
+    symlink     = '',
     git         = {
       unstaged  = font_icon.modifiy,
       staged    = font_icon.add,
@@ -25,9 +25,12 @@ var_tbl {
       ignored   = font_icon.ignored
     },
     folder      = {
-      default   = emoji_icon.folder,
-      open      = emoji_icon.folder_opened,
-      symlink   = emoji_icon.link
+      default      = "",
+      open         = "",
+      empty        = "",
+      empty_open   = "",
+      symlink      = "",
+      symlink_open = "",
     }
   }
 }
