@@ -80,7 +80,7 @@ ins_left {
 ins_left {
   DiagnosticError = {
     provider = "DiagnosticError",
-    icon = " " .. font_icon.error,
+    icon = font_icon.error,
     highlight = {colors.red, colors.line_bg}
   }
 }
@@ -88,7 +88,7 @@ ins_left {
 ins_left {
   DiagnosticWarn = {
     provider = "DiagnosticWarn",
-    icon = " " .. font_icon.warn,
+    icon = font_icon.warn,
     highlight = {colors.yellow, colors.line_bg}
   }
 }
@@ -96,7 +96,7 @@ ins_left {
 ins_left {
   DiagnosticHint = {
     provider = "DiagnosticHint",
-    icon = " " .. font_icon.hint,
+    icon = font_icon.hint,
     highlight = {colors.cyan, colors.line_bg}
   }
 }
@@ -104,7 +104,7 @@ ins_left {
 ins_left {
   DiagnosticInfo = {
     provider = "DiagnosticInfo",
-    icon = " " .. font_icon.info,
+    icon = font_icon.info,
     highlight = {colors.blue, colors.line_bg}
   }
 }
