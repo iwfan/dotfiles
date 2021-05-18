@@ -33,12 +33,15 @@ map("i|<C-s>", [[empty(expand("%:t")) ? "\<C-o>:w\<Space>" : "<C-o>:w\<CR>"]], {
 map("n|<C-q><C-g>", [[:lua fn.system({'open', 'https://google.com/search?q=' .. vim.fn.expand("<cword>")})<CR>]])
 map("v|<C-q><C-g>", [[<ESC>gv"gy<ESC>:lua fn.system({'open', 'https://google.com/search?q=' .. vim.fn.getreg('g')})<CR>]])
 
-map("n|<leader>a", "<Cmd>%y+<CR>")
-map("n|<leader><BS>", '"_dd')
 map("n|H", "^")
 map("v|H", "^")
 map("n|L", "$")
 map("v|L", "$")
+
+map([[n|\s]], ":%s//g<left><left>", { silent = false })
+map("n|<leader>a", "<Cmd>%y+<CR>")
+map("n|<leader><BS>", '"_dd')
+map_cmd('n|qh', "nohlsearch")
 
 map("n|<C-h>", "<C-w>h")
 map("n|<C-j>", "<C-w>j")
@@ -69,8 +72,6 @@ map("t|<C-o>", [[<C-\><C-N><C-o>]])
 map("t|<C-n>", [[<C-\><C-N>]])
 map("t|<Esc><Esc>", [[<C-\><C-N>]])
 map("n|<C-w><C-t>", "<esc>:split<CR>:term<CR>")
-
-map([[n|\s]], ":%s//g<left><left>")
 
 map_cmd("n|<leader>0", "FloatermToggle")
 map("t|<leader>0", [[<C-\><C-n>:FloatermToggle<CR>]])

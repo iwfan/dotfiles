@@ -140,5 +140,14 @@ insert {
   end
 }
 insert "vim-scripts/ReplaceWithRegister"
+insert "wellle/targets.vim"
+insert "tommcdo/vim-exchange"
+--insert "tpope/vim-dispatch"
+--insert "kana/vim-textobj-user"
+--insert "kana/vim-textobj-entire"
+
+
+
+
 
 return editor

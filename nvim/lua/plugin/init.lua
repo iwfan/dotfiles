@@ -35,5 +35,5 @@ do
   use(plugin)
 end
 
-map_cmd("n|<F3>", "PackerCompile")
+map_cmd("n|<F3>", "PackerCompile", { silent = false })
 map_cmd("n|<F4>", "PackerSync", { silent = false })
