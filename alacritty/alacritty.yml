@@ -21,7 +21,7 @@ env:
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: alacritty
+  TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
@@ -72,7 +72,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Windowed
+  startup_mode: SimpleFullscreen
 
   # Window title
   #title: Alacritty
@@ -114,7 +114,7 @@ font:
     family: SauceCodePro Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    # style: Light
+    style: Light
 
   # Bold font face
   bold:
@@ -125,7 +125,7 @@ font:
     family: SauceCodePro Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    # style: Medium
+    style: Medium
 
   # Italic font face
   italic:
@@ -157,14 +157,14 @@ font:
   # spacing.
   offset:
     x: 0
-    y: 0
+    y: 4
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
   # right, increasing `y` moves the glyph upward.
   glyph_offset:
     x: 0
-    y: 0
+    y: 2
 
   # Thin stroke font rendering (macOS only)
   #
