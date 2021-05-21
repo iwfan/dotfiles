@@ -143,11 +143,11 @@ local servers = {
       enhance_attach(client, bufnr)
     end
   },
-  jsonls   = { on_attach = enhance_attach },
-  yamlls   = { on_attach = enhance_attach },
-  vuels    = { on_attach = enhance_attach },
-  bashls   = { on_attach = enhance_attach },
-  dockerls = { on_attach = enhance_attach },
+  -- jsonls   = { on_attach = enhance_attach },
+  -- yamlls   = { on_attach = enhance_attach },
+  -- vuels    = { on_attach = enhance_attach },
+  -- bashls   = { on_attach = enhance_attach },
+  dockerls = {on_attach = enhance_attach},
   diagnosticls = {
     cmd = { "diagnostic-languageserver", "--stdio", "--log-level", "2" },
     filetypes = {
@@ -182,7 +182,7 @@ local servers = {
         ["javascript.jsx"] = {"eslint"},
         typescript = {"eslint"},
         typescriptreact = {"eslint"},
-        ["typescript.tsx"] = {"eslint"},
+        ["typescript.tsx"] = {"eslint"}
       },
       formatters = {
         prettier = {
@@ -192,7 +192,7 @@ local servers = {
         luafmt = {
           command = "luafmt",
           args = {"--indent-count", "2", "--stdin", "%filepath"}
-        },
+        }
       },
       formatFiletypes = {
         javascript = {"prettier"},
@@ -202,7 +202,7 @@ local servers = {
         typescriptreact = {"prettier"},
         ["typescript.tsx"] = {"prettier"},
         lua = {"luafmt"}
-      },
+      }
     },
     root_dir = function()
       return vim.loop.cwd()
@@ -215,7 +215,7 @@ local servers = {
   sumneko_lua = {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
     root_dir = function()
-        return vim.loop.cwd()
+      return vim.loop.cwd()
     end,
     on_attach = function(client, bufnr)
       client.resolved_capabilities.document_formatting = false
@@ -245,8 +245,8 @@ local servers = {
         },
         workspace = {
           library = {
-              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-              [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
+            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+            [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
           }
         },
         telemetry = {
@@ -260,4 +260,3 @@ local servers = {
 for lang, conf in pairs(servers) do
   lspconf[lang].setup(conf)
 end
-
