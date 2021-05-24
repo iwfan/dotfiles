@@ -9,7 +9,7 @@ export PATH="/usr/local/sbin:$GOPATH/bin:$PATH"
 FD_OPTIONS="--follow --exclude .git --exclude node_modules"
 export FZF_DEFAULT_OPTS="--height 50% --reverse --multi \
   --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file \
-  || (ccat --color=always {} || cat {}) 2> /dev/null | head -300' \
+  || (bat --theme=\"Sublime Snazzy\" --color=always --style=numbers --line-range=:500 {} || cat {}) 2> /dev/null | head -300' \
   --bind='ctrl-d:half-page-down,ctrl-u:half-page-up'"
 export FZF_DEFAULT_COMMAND="git ls-files --cached --others --exclude-standard | fd --type f --type -l $FD_OPTIONS"
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"

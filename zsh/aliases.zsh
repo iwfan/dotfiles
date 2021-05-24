@@ -47,3 +47,37 @@ disable_proxy() {
     export http_proxy=
     export all_proxy=
 }
+
+# Oops savers
+alias gundo='git reset HEAD~'
+
+# Rebase master onto current branch
+gmrebase() {
+    echo "==> Checking out master..."
+    git checkout master
+    echo ""
+    echo "==> Updating master..."
+    git pull
+    echo ""
+    echo "==> Checking back to original branch"
+    git checkout -
+    echo ""
+    echo "==> Rebasing master onto $(git rev-parse --abbrev-ref HEAD)"
+    git rebase master $(git rev-parse --abbrev-ref HEAD)
+    echo ""
+}
+
+gnrebase() {
+    echo "==> Checking out main..."
+    git checkout main
+    echo ""
+    echo "==> Updating main..."
+    git pull
+    echo ""
+    echo "==> Checking back to original branch"
+    git checkout -
+    echo ""
+    echo "==> Rebasing main onto $(git rev-parse --abbrev-ref HEAD)"
+    git rebase main $(git rev-parse --abbrev-ref HEAD)
+    echo ""
+}
