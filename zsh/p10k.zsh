@@ -33,8 +33,6 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     # os_icon                 # os identifier
-    sysproxy                # system proxy
-    background_jobs         # presence of background jobs
     todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
     taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
     timewarrior             # timewarrior tracking status (https://timewarrior.net/)
@@ -45,6 +43,7 @@
     rust_version            # rustc version (https://www.rust-lang.org)
     # =========================[ Line #2 ]=========================
     newline                 # \n
+    background_jobs         # presence of background jobs
     prompt_char             # prompt symbol
   )
 
@@ -55,6 +54,7 @@
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     status                  # exit code of the last command
+    sysproxy                # system proxy
     command_execution_time  # duration of the last command
     direnv                  # direnv status (https://direnv.net/)
     asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)

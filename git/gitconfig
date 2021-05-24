@@ -5,19 +5,26 @@
     editor = nvim
     excludesfile = ~/dotfiles/git/gitignore
     autocrlf = input
-    pager = diff-so-fancy | less --tabs=4 -RFX
-[color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = red bold 52
-    newNormal = green bold
-    newHighlight = green bold 22
-[color "diff"]
-    meta = 11
-    frag = magenta bold
-    commit = yellow bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
+    pager = delta
+[init]
+    defaultBranch = main
+[color]
+    ui = true
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    plus-style = "syntax #012800"
+    minus-style = "syntax #340001"
+    syntax-theme = Monokai Extended
+    side-by-side = false
+    navigate = true
+    features = line-numbers decorations
+    whitespace-error-style = 22 reverse
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = cyan box ul
 [commit]
     verbose = true
 [push]
@@ -34,19 +41,14 @@
     tool = vimdiff
 [diff]
     tool = vimdiff
+    colormoved = dimmed-zebra
 [difftool]
     prompt = false
-[feature]
-    manyFiles = true
-[color]
-    ui = auto
 [branch]
     autoSetupRebase = always
 [includeIf "gitdir:~/working/"]
     path = /Users/f/working/.gitconfig
 [mergetool "vimdiff"]
-  cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+    cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [difftool "vimdiff"]
-  cmd = nvim -d $REMOTE $LOCAL
-[init]
-	defaultBranch = main
+    cmd = nvim -d $REMOTE $LOCAL

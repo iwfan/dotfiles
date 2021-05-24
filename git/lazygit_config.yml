@@ -2,7 +2,9 @@
 git:
   paging:
     colorArg: always
-    pager: diff-so-fancy
+    pager: delta --paging=never
+  pull:
+    mode: 'rebase' # one of 'merge' | 'rebase' | 'ff-only'
 os:
   openCommand: nvim {{filename}}
 reporting: "off"
