@@ -60,6 +60,11 @@ map_cmd("n|<space>fm",   "lua vim.lsp.buf.formatting_sync(nil,1000)")
 map_cmd("v|<space>fm",   "lua vim.lsp.buf.range_formatting()")
 map_cmd("n|<F5>",        "vsplit" .. vim.lsp.get_log_path())
 
+function _G.format_document()
+  vim.lsp.buf.formatting_sync(nil,1000)
+end
+vim.cmd('command! -nargs=0 Format call v:lua.format_document()')
+
 local lspconf = require("lspconfig")
 
 --Enable (broadcasting) snippet capability for completion
@@ -201,6 +206,11 @@ local servers = {
         typescript = {"prettier"},
         typescriptreact = {"prettier"},
         ["typescript.tsx"] = {"prettier"},
+        json = {"prettier"},
+        html = {"prettier"},
+        css = {"prettier"},
+        yaml = {"prettier"},
+        toml = {"prettier"},
         lua = {"luafmt"}
       }
     },
