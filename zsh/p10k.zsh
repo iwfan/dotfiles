@@ -33,6 +33,10 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     # os_icon                 # os identifier
+    sysproxy                # system proxy
+    background_jobs         # presence of background jobs
+    todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
+    taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
     timewarrior             # timewarrior tracking status (https://timewarrior.net/)
     dir                     # current directory
     vcs                     # git status
@@ -41,9 +45,6 @@
     rust_version            # rustc version (https://www.rust-lang.org)
     # =========================[ Line #2 ]=========================
     newline                 # \n
-    background_jobs         # presence of background jobs
-    todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
-    taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
     prompt_char             # prompt symbol
   )
 
@@ -1517,6 +1518,12 @@
   # Type `p10k help segment` for documentation and a more sophisticated example.
   function prompt_example() {
     p10k segment -f 208 -i '⭐' -t 'hello, %n'
+  }
+
+  function prompt_sysproxy(){
+    if [ ! -z "$http_proxy" ]; then
+      p10k segment -f 208 -i '🌐'
+    fi
   }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job

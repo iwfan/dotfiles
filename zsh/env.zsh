@@ -19,17 +19,3 @@ export FZF_TMUX=1
 export FZF_TMUX_HEIGHT='80%'
 
 export HOMEBREW_NO_AUTO_UPDATE=true
-
-enable_proxy() {
-    export https_proxy=http://127.0.0.1:7890
-    export http_proxy=http://127.0.0.1:7890
-    export all_proxy=socks5://127.0.0.1:7890
-}
-
-disable_proxy() {
-    export https_proxy=
-    export http_proxy=
-    export all_proxy=
-}
-
-disable_proxy

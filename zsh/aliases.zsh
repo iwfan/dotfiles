@@ -35,3 +35,15 @@ alias td="task del"
 at() {
   tmux attach -t f || tmux new -s f
 }
+
+enable_proxy() {
+    export https_proxy=http://127.0.0.1:7890
+    export http_proxy=http://127.0.0.1:7890
+    export all_proxy=socks5://127.0.0.1:7890
+}
+
+disable_proxy() {
+    export https_proxy=
+    export http_proxy=
+    export all_proxy=
+}
