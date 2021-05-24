@@ -264,6 +264,19 @@ local servers = {
         }
       }
     }
+  },
+  gopls = {
+    cmd = {"gopls","--remote=auto"},
+    on_attach = enhance_attach,
+    capabilities = capabilities,
+    init_options = {
+      usePlaceholders=true,
+      completeUnimported=true,
+    }
+  },
+  rust_analyzer = {
+    on_attach = enhance_attach,
+    capabilities = capabilities,
   }
 }
 
