@@ -160,7 +160,8 @@ local servers = {
       "css", "less", "scss", "styls",
       "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx",
       "json", "yaml", "toml",
-      "lua"
+      "lua",
+      "go"
     },
     init_options = {
       linters = {
@@ -179,15 +180,30 @@ local servers = {
             message = "${message} [${ruleId}]",
             security = "severity"
           },
-          securities = {[2] = "error", [1] = "warning"}}
+          securities = {[2] = "error", [1] = "warning"}
+        },
+        golint = {
+          sourceName = "golangci-lint",
+          command = "golangci-lint",
+          rootPatterns = {".git", "go.mod"},
+          debounce = 100,
+          args = {"run", "--enable-all", "--out-format", "json", "%filepath"},
+          parseJson = {
+            errorsRoot = "Issues",
+            line = "Pos.Line",
+            column = "Pos.Column",
+            message = "${Text} (${FromLinter})"
+          }
+        }
       },
       filetypes = {
-        javascript = {"eslint"},
-        javascriptreact = {"eslint"},
+        javascript         = {"eslint"},
+        javascriptreact    = {"eslint"},
         ["javascript.jsx"] = {"eslint"},
-        typescript = {"eslint"},
-        typescriptreact = {"eslint"},
-        ["typescript.tsx"] = {"eslint"}
+        typescript         = {"eslint"},
+        typescriptreact    = {"eslint"},
+        ["typescript.tsx"] = {"eslint"},
+        go                 = {"golint"}
       },
       formatters = {
         prettier = {
@@ -197,21 +213,26 @@ local servers = {
         luafmt = {
           command = "luafmt",
           args = {"--indent-count", "2", "--stdin", "%filepath"}
+        },
+        gofmt = {
+          command = "gofmt",
+          args = {"-r", "'(a) -> a'", "-l", "%filepath"}
         }
       },
       formatFiletypes = {
-        javascript = {"prettier"},
-        javascriptreact = {"prettier"},
+        javascript         = {"prettier"},
+        javascriptreact    = {"prettier"},
         ["javascript.jsx"] = {"prettier"},
-        typescript = {"prettier"},
-        typescriptreact = {"prettier"},
+        typescript         = {"prettier"},
+        typescriptreact    = {"prettier"},
         ["typescript.tsx"] = {"prettier"},
-        json = {"prettier"},
-        html = {"prettier"},
-        css = {"prettier"},
-        yaml = {"prettier"},
-        toml = {"prettier"},
-        lua = {"luafmt"}
+        json               = {"prettier"},
+        html               = {"prettier"},
+        css                = {"prettier"},
+        yaml               = {"prettier"},
+        toml               = {"prettier"},
+        lua                = {"luafmt"},
+        go                 = {"gofmt"}
       }
     },
     root_dir = function()
@@ -267,6 +288,10 @@ local servers = {
   },
   gopls = {
     cmd = {"gopls","--remote=auto"},
+    filetypes = { "go", "gomod" },
+    root_dir = function()
+      return vim.loop.cwd()
+    end,
     on_attach = enhance_attach,
     capabilities = capabilities,
     init_options = {
