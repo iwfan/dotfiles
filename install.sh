@@ -20,24 +20,25 @@ if [[ $SHELL != *"zsh"* ]]; then
     success "change default shell to zsh"
 fi
 
-ln -fs ~/dotfiles/git/gitconfig ~/.gitconfig
-ln -fs ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/jesseduffield/lazygit/config.yml
+# Kitty Setup
 ln -fs ~/dotfiles/kitty ~/.config/kitty
-
-# tmux
+#ln -fs ~/dotfiles/alacritty ~/.config/alacritty
+# Zsh Setup
+ln -fs ~/dotfiles/zsh/p10k.zsh ~/.p10k.zsh
+ln -fs ~/dotfiles/zsh/zshrc ~/.zshrc
+# Tmux
 ln -fs ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 ln -fs ~/dotfiles/tmux/tmux.theme.conf ~/.tmux.theme.conf
+# Neovim
+ln -fs ~/dotfiles/nvim ~/.config/nvim
 # ideavimrc
 ln -fs ~/dotfiles/_ideavimrc ~/.ideavimrc
-# neovim
-ln -fs ~/dotfiles/nvim ~/.config/nvim
-#ln -fs ~/dotfiles/ranger ~/.config/ranger
+# Hammerspoon
 ln -fs ~/dotfiles/hammerspoon ~/.hammerspoon
-ln -fs ~/dotfiles/zsh/p10k.zsh ~/.p10k.zsh
-ln -fs ~/dotfiles/zsh/p10k-evilball.zsh ~/.p10k-evilball.zsh
-ln -fs ~/dotfiles/zsh/zshrc ~/.zshrc
-ln -fs ~/dotfiles/asdf/.default-npm-packages ~/.default-npm-packages
+# git config
+ln -fs ~/dotfiles/git/gitconfig ~/.gitconfig
+ln -fs ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/jesseduffield/lazygit/config.yml
+# asdf
 ln -fs ~/dotfiles/asdf/.tool-versions ~/.tool-versions
-ln -fs ~/dotfiles/alacritty ~/.config/alacritty
 
 success "link finished."

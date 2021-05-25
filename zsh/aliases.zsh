@@ -13,8 +13,6 @@ alias ls="lsd"
 alias ll="ls -l"
 alias la="ls -la"
 alias lt="ls --tree"
-alias ra="ranger"
-alias cat="ccat"
 alias n="pnpm"
 
 ################[ todo: todo items (https://github.com/todotxt/todo.txt-cli) ]################
@@ -81,3 +79,14 @@ gnrebase() {
     git rebase main $(git rev-parse --abbrev-ref HEAD)
     echo ""
 }
+
+# npm install global package
+nigp() {
+  npm i -g \
+    pnpm \
+    npkill \
+    live-server \
+    tldr
+}
+
+alias nlsg="npm list -g --depth=0"

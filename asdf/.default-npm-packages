@@ -1,6 +1,3 @@
 pnpm
 live-server
-lua-fmt
-prettier
-eslint
-eslint_d
+tldr
