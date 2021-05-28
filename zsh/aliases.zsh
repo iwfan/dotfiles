@@ -16,7 +16,7 @@ alias lt="ls --tree"
 alias n="pnpm"
 
 ################[ todo: todo items (https://github.com/todotxt/todo.txt-cli) ]################
-alias td="todo.sh"
+alias tdo="todo.sh"
 alias tdl="todo.sh ls"
 alias tdla="todo.sh lsa"
 alias tda="todo.sh addm"
@@ -26,7 +26,7 @@ alias tdd="todo.sh del"
 ##############[ taskwarrior: taskwarrior task count (https://taskwarrior.org/) ]##############
 alias t="task"
 alias tl="task list"
-alias tc="task completed"
+alias tc="task done"
 alias ta="task add"
 alias td="task del"
 
