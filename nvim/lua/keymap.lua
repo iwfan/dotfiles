@@ -14,6 +14,12 @@ map("n|xx", "dd")
 map("n|D", '"_D')
 map("n|X", "D") ]]
 
+
+map("n|H", "^")
+map("v|H", "^")
+map("n|L", "$")
+map("v|L", "$")
+
 map("n|k", [[(v:count == 0 ? 'gk' : 'k')]], { expr = true })
 map("n|j", [[(v:count == 0 ? 'gj' : 'j')]], { expr = true })
 
@@ -33,15 +39,15 @@ map("n|<C-s>", [[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]], { expr = tru
 map("n|<C-q><C-g>", [[:lua fn.system({'open', 'https://google.com/search?q=' .. vim.fn.expand("<cword>")})<CR>]])
 map("v|<C-q><C-g>", [[<ESC>gv"gy<ESC>:lua fn.system({'open', 'https://google.com/search?q=' .. vim.fn.getreg('g')})<CR>]])
 
-map("n|H", "^")
-map("v|H", "^")
-map("n|L", "$")
-map("v|L", "$")
-
 map([[n|\s]], ":%s//g<left><left>", { silent = false })
 map("n|<leader>a", "<Cmd>%y+<CR>")
 map("n|<leader><BS>", '"_dd')
 map_cmd('n|qh', "nohlsearch")
+
+map('n|]w', "g*")
+map('n|[w', "g#")
+map('v|]w', "g*")
+map('v|[w', "g#")
 
 map("n|<C-h>", "<C-w>h")
 map("n|<C-j>", "<C-w>j")
