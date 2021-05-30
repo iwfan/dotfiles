@@ -1,6 +1,7 @@
 # Environment
 set -U TERM        screen-256color
 set -U LANG        en_US.UTF-8
+set -U VISUAL      nvim
 set -U EDITOR      nvim
 set -U HISTCONTROL ignorespace
 
