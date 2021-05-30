@@ -41,7 +41,8 @@ augroup('filetype_config', {
   {"FileType", "make", "setlocal noexpandtab"},
   {"TermOpen", "term://*", "startinsert"},
   {"TermOpen", "term://*", "setlocal nonumber norelativenumber"},
-  {"BufEnter", "*", "set formatoptions-=c shortmess+=c"}
+  {"BufEnter", "*", "set formatoptions-=c shortmess+=c"},
+  {"FileType", "fish", [[set commentstring=#\ %s]]}
 })
 
 augroup('misc', {
