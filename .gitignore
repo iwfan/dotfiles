@@ -109,3 +109,4 @@ nvim/plugin/packer_compiled.vim
 tags
 hammerspoon/config.lua
 hammerspoon/.clipboard/
+fish_variables

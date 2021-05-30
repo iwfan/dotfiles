@@ -15,34 +15,36 @@ info () {
 }
 
 # change default shell to zsh
-if [[ $SHELL != *"zsh"* ]]; then
-    chsh -s $(which zsh)
-    success "change default shell to zsh"
+if [[ $SHELL != *"fish"* ]]; then
+    echo $(which fish) | sudo tee -a /etc/shells
+    chsh -s $(which fish)
+    success "change default shell to fish"
 fi
 
 # Alacritty setup
-ln -Fs ~/dotfiles/alacritty ~/.config/alacritty
+ln -Fhnvs ~/dotfiles/alacritty ~/.config/alacritty
 # Fish setup
-ln -Fs ~/dotfiles/fish ~/.config/fish
-# Kitty Setup
-ln -Fs ~/dotfiles/kitty ~/.config/kitty
-ln -Fs ~/dotfiles/alacritty ~/.config/alacritty
-# Zsh Setup
-ln -s ~/dotfiles/zsh/p10k.zsh ~/.p10k.zsh
-ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
+ln -Fhnvs ~/dotfiles/fish ~/.config/fish
+
+# # Kitty Setup
+# ln -Fhnvs ~/dotfiles/kitty ~/.config/kitty
+# # Zsh Setup
+# ln -Fhnvs ~/dotfiles/zsh/p10k.zsh ~/.p10k.zsh
+# ln -Fhnvs ~/dotfiles/zsh/zshrc ~/.zshrc
+
 # Tmux
-ln -fs ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
-ln -fs ~/dotfiles/tmux/tmux.theme.conf ~/.tmux.theme.conf
+ln -Fhnvs ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
+ln -Fhnvs ~/dotfiles/tmux/tmux.theme.conf ~/.tmux.theme.conf
 # Neovim
-ln -fs ~/dotfiles/nvim ~/.config/nvim
+ln -Fhnvs ~/dotfiles/nvim ~/.config/nvim
 # ideavimrc
-ln -fs ~/dotfiles/_ideavimrc ~/.ideavimrc
+ln -Fhnvs ~/dotfiles/_ideavimrc ~/.ideavimrc
 # Hammerspoon
-ln -fs ~/dotfiles/hammerspoon ~/.hammerspoon
+ln -Fhnvs ~/dotfiles/hammerspoon ~/.hammerspoon
 # git config
-ln -fs ~/dotfiles/git/gitconfig ~/.gitconfig
-ln -fs ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/jesseduffield/lazygit/config.yml
+ln -Fhnvs ~/dotfiles/git/gitconfig ~/.gitconfig
+ln -Fhnvs ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/jesseduffield/lazygit/config.yml
 # asdf
-ln -fs ~/dotfiles/asdf/.tool-versions ~/.tool-versions
+ln -Fhnvs ~/dotfiles/asdf/.tool-versions ~/.tool-versions
 
 success "link finished."
