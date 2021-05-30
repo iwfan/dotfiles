@@ -20,12 +20,16 @@ if [[ $SHELL != *"zsh"* ]]; then
     success "change default shell to zsh"
 fi
 
+# Alacritty setup
+ln -Fs ~/dotfiles/alacritty ~/.config/alacritty
+# Fish setup
+ln -Fs ~/dotfiles/fish ~/.config/fish
 # Kitty Setup
-ln -fs ~/dotfiles/kitty ~/.config/kitty
-#ln -fs ~/dotfiles/alacritty ~/.config/alacritty
+ln -Fs ~/dotfiles/kitty ~/.config/kitty
+ln -Fs ~/dotfiles/alacritty ~/.config/alacritty
 # Zsh Setup
-ln -fs ~/dotfiles/zsh/p10k.zsh ~/.p10k.zsh
-ln -fs ~/dotfiles/zsh/zshrc ~/.zshrc
+ln -s ~/dotfiles/zsh/p10k.zsh ~/.p10k.zsh
+ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
 # Tmux
 ln -fs ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 ln -fs ~/dotfiles/tmux/tmux.theme.conf ~/.tmux.theme.conf

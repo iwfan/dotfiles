@@ -11,6 +11,7 @@ require "nvim-treesitter.configs".setup {
     "dart",
     "dockerfile",
     "erlang",
+    "fish",
     "go",
     "gomod",
     "graphql",

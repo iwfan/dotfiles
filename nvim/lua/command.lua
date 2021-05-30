@@ -21,6 +21,7 @@ augroup('filetype_detect', {
     }
   },
   {"BufNewFile,BufRead", "*.conf", "setf dosini"},
+  {"BufNewFile,BufRead", "*.fish", "setf fish"},
   {"BufNewFile,BufRead", "_ideavimrc", "setf vim"},
   {"BufNewFile,BufRead", "*.tsx,*.jsx", "setf typescriptreact"},
   {"TermOpen", "term://*", "setf terminal"},
