@@ -21,17 +21,11 @@ if [[ $SHELL != *"fish"* ]]; then
     success "change default shell to fish"
 fi
 
-# Alacritty setup
-ln -Fhnvs ~/dotfiles/alacritty ~/.config/alacritty
-# Fish setup
-ln -Fhnvs ~/dotfiles/fish ~/.config/fish
-
 # # Kitty Setup
 ln -Fhnvs ~/dotfiles/kitty ~/.config/kitty
 # # Zsh Setup
 ln -Fhnvs ~/dotfiles/zsh/p10k.zsh ~/.p10k.zsh
 ln -Fhnvs ~/dotfiles/zsh/zshrc ~/.zshrc
-
 # Tmux
 ln -Fhnvs ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 ln -Fhnvs ~/dotfiles/tmux/tmux.theme.conf ~/.tmux.theme.conf
