@@ -36,7 +36,7 @@ ln -Fhnvs ~/dotfiles/_ideavimrc ~/.ideavimrc
 ln -Fhnvs ~/dotfiles/hammerspoon ~/.hammerspoon
 # git config
 ln -Fhnvs ~/dotfiles/git/gitconfig ~/.gitconfig
-ln -Fhnvs ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/jesseduffield/lazygit/config.yml
+ln -Fhnvs ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/lazygit/config.yml
 # asdf
 ln -Fhnvs ~/dotfiles/asdf/.tool-versions ~/.tool-versions
 
