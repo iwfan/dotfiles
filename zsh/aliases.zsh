@@ -11,6 +11,7 @@ alias ll="ls -l"
 alias la="ls -la"
 alias lt="ls --tree"
 alias rm="trash -v"
+alias j="z"
 
 alias n="pnpm"
 alias ni="pnpm i"

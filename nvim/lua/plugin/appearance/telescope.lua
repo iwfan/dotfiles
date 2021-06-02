@@ -8,7 +8,9 @@ require("telescope").setup {
       "--with-filename",
       "--line-number",
       "--column",
-      "--smart-case"
+      "--smart-case",
+      "-g",
+      "!{node_modules,.git}"
     },
     prompt_position      = "top",
     prompt_prefix        = "🔭 ",

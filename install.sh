@@ -15,15 +15,14 @@ info () {
 }
 
 # change default shell to zsh
-if [[ $SHELL != *"fish"* ]]; then
-    echo $(which fish) | sudo tee -a /etc/shells
-    chsh -s $(which fish)
-    success "change default shell to fish"
+if [[ $SHELL != *"zsh"* ]]; then
+    chsh -s $(which zsh)
+    success "change default shell to zsh"
 fi
 
-# # Kitty Setup
+# Kitty Setup
 ln -Fhnvs ~/dotfiles/kitty ~/.config/kitty
-# # Zsh Setup
+# Zsh Setup
 ln -Fhnvs ~/dotfiles/zsh/p10k.zsh ~/.p10k.zsh
 ln -Fhnvs ~/dotfiles/zsh/zshrc ~/.zshrc
 # Tmux

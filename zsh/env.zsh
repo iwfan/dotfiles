@@ -5,7 +5,8 @@ export VISUAL=nvim
 export HISTCONTROL=ignorespace
 export GPG_TTY=tty
 export GOPATH=$HOME/go
-export PATH="/usr/local/sbin:$GOPATH/bin:$HOME/.rbenv/shims:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$GOPATH/bin:$HOME/.rbenv/shims:$PATH"
+export PATH="/usr/local/opt/node@14/bin:$PATH"
 
 FD_OPTIONS="--follow --exclude .git --exclude node_modules"
 export FZF_DEFAULT_OPTS="--height 50% --reverse --multi \
