@@ -96,4 +96,4 @@ source ~/dotfiles/zsh/mappings.zsh
 #     tmux attach -t f || tmux new -s f
 # fi
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
