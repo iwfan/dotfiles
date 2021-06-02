@@ -63,6 +63,9 @@ zinit snippet OMZ::plugins/asdf/asdf.plugin.zsh
 #+-----------------------+
 
 zinit ice depth=1 wait lucid
+zinit light agkozak/zsh-z
+
+zinit ice depth=1 wait lucid
 zinit light Aloxaf/fzf-tab
 
 zinit ice depth=1 wait blockf lucid atpull"zinit creinstall -q ."
