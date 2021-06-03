@@ -16,8 +16,6 @@ info () {
 
 # enable repeating keys on press and hold
 defaults write -g ApplePressAndHoldEnabled 0
-defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
-defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
 defaults write com.apple.Finder AppleShowAllFiles true
 
 # ###########################################################
