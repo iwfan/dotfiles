@@ -14,10 +14,51 @@ info () {
     printf "${blue}$1${normal}\n"
 }
 
-# change default shell to zsh
-if [[ $SHELL != *"zsh"* ]]; then
-    chsh -s $(which zsh)
-    success "change default shell to zsh"
+# enable repeating keys on press and hold
+defaults write -g ApplePressAndHoldEnabled 0
+defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
+defaults write com.apple.Finder AppleShowAllFiles true
+
+# ###########################################################
+# Install non-brew various tools (PRE-BREW Installs)
+# ###########################################################
+info "ensuring build/install tools are available"
+if ! xcode-select --print-path &> /dev/null; then
+
+    # Prompt user to install the XCode Command Line Tools
+    xcode-select --install &> /dev/null
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    # Wait until the XCode Command Line Tools are installed
+    until xcode-select --print-path &> /dev/null; do
+        sleep 5
+    done
+
+    info $? ' XCode Command Line Tools Installed'
+
+    # Prompt user to agree to the terms of the Xcode license
+    # https://github.com/alrra/dotfiles/issues/10
+
+    sudo xcodebuild -license
+    info $? 'Agree with the XCode Command Line Tools licence'
+
+fi
+
+# ###########################################################
+# install homebrew (CLI Packages)
+# ###########################################################
+
+info "checking homebrew..."
+brew_bin=$(which brew) 2>&1 > /dev/null
+if [[ $? != 0 ]]; then
+  action "installing homebrew"
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  if [[ $? != 0 ]]; then
+    info "unable to install homebrew, script $0 abort!"
+    exit 2
+  fi
 fi
 
 # Kitty Setup
