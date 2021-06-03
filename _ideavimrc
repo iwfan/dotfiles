@@ -73,6 +73,11 @@ noremap <leader>y "+y
 noremap <leader>p "_dP
 noremap <leader>x ^d$
 
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
 inoremap <C-h> <left>
 inoremap <C-l> <right>
 inoremap <C-j> <down>
@@ -91,22 +96,17 @@ vnoremap <leader>d y'>p
 nnoremap <leader>i o<Esc>
 " 向上添加新空行，并退出 insert mode
 nnoremap <leader>I O<Esc>
-" 移动到下一个窗口
-nnoremap <leader>ww <c-w>w
-" 水平切割当前窗口
-nnoremap <leader>wv <c-w>v
-" 垂直切割当前窗口
-nnoremap <leader>ws <c-w>s
-" 关闭当前窗口
-nnoremap <leader>wc <c-w>c
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """  ACTION BINDINGS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 noremap / :action Replace<CR>
+
+noremap <C-n> :action SelectNextOccurrence<CR>
+
 noremap <leader>r :action Refactorings.QuickListPopupAction<CR>
-noremap <leader>R :action SurroundWith<CR>
+noremap <leader>w :action SurroundWith<CR>
 " noremap <leader>f :action AceAction<CR>
 
 " map f <Plug>(easymotion-f)
@@ -118,8 +118,8 @@ noremap gf :action AceTargetAction<CR>
 noremap <leader>u :action ShowUsages<CR>
 noremap <leader>U :action FindUsages<CR>
 noremap <leader>t :action FileStructurePopup<CR>
-noremap <leader>wr :action ReopenClosedTab<CR>
-noremap <leader>wm :action MoveEditorToOppositeTabGroup<CR>
+noremap <leader>qr :action ReopenClosedTab<CR>
+noremap <leader>qm :action MoveEditorToOppositeTabGroup<CR>
 
 " navigate paragraph
 noremap ]q :action EditorForwardParagraph<CR>
