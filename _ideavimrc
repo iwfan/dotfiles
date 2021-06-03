@@ -49,9 +49,9 @@ noremap $ g$
 " 不记录到寄存器
 noremap c "_c
 " 上一个单词
-noremap ]w g*
-" 下一个单词
-noremap [w g#
+" noremap ]w g*
+" " 下一个单词
+" noremap [w g#
 
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
@@ -109,10 +109,10 @@ noremap <leader>r :action Refactorings.QuickListPopupAction<CR>
 
 " noremap <leader>f :action AceAction<CR>
 
-map f <Plug>(easymotion-f)
-map F <Plug>(easymotion-F)
-map t <Plug>(easymotion-t)
-map T <Plug>(easymotion-T)
+" map f <Plug>(easymotion-f)
+" map F <Plug>(easymotion-F)
+" map t <Plug>(easymotion-t)
+" map T <Plug>(easymotion-T)
 noremap gf :action AceTargetAction<CR>
 
 noremap <leader>u :action ShowUsages<CR>
@@ -125,14 +125,14 @@ noremap <leader>wm :action MoveEditorToOppositeTabGroup<CR>
 noremap ]q :action EditorForwardParagraph<CR>
 noremap [q :action EditorBackwardParagraph<CR>
 " navigate element
-"noremap [w :action GotoPrevElementUnderCaretUsage<CR>
-"noremap ]w :action GotoNextElementUnderCaretUsage<CR>
+noremap [w :action GotoPrevElementUnderCaretUsage<CR>
+noremap ]w :action GotoNextElementUnderCaretUsage<CR>
 " navigate method
 noremap ]e :action MethodDown<CR>
 noremap [e :action MethodUp<CR>
 " naviagte errors
-noremap ]r :action GotoNextError<CR>
-noremap [r :action GotoPreviousError<CR>
+noremap ]d :action GotoNextError<CR>
+noremap [d :action GotoPreviousError<CR>
 
 " navagate occurrence
 noremap <leader>a :action SelectAllOccurrences<CR>
@@ -143,10 +143,6 @@ noremap [a :action UnselectPreviousOccurrence<CR>
 noremap <leader>s :action ToggleBookmarkWithMnemonic<CR>
 noremap ]s :action GotoNextBookmark<CR>
 noremap [s :action GotoPreviousBookmark<CR>
-
-" navigate diff
-noremap ]d :action NextDiff<CR>
-noremap [d :action PreviousDiff<CR>
 
 noremap ]c :action VcsShowNextChangeMarker<CR>
 noremap [c :action VcsShowPrevChangeMarker<CR>
