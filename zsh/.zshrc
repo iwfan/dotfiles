@@ -1,11 +1,11 @@
+# https://zsh.sourceforge.io/Intro/intro_3.html
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
@@ -83,17 +83,9 @@ zinit light zsh-users/zsh-history-substring-search
 zinit ice depth=1 wait"2" lucid
 zinit light hlissner/zsh-autopair
 
-zinit ice depth=1 atload"!source ~/.p10k.zsh" lucid nocd
+zinit ice depth=1 atload"!source ~/dotfiles/zsh/p10k.zsh" lucid nocd
 zinit light romkatv/powerlevel10k
 
 # source "$(brew --prefix)/etc/profile.d/z.sh"
-source ~/dotfiles/zsh/env.zsh
 source ~/dotfiles/zsh/aliases.zsh
 source ~/dotfiles/zsh/mappings.zsh
-
-# if [ -z "$TMUX" ]
-# then
-#     tmux attach -t f || tmux new -s f
-# fi
-
-# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

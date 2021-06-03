@@ -5,6 +5,7 @@ alias .....="cd ../../../.."
 alias ~="cd ~"
 alias -- -="cd -"
 
+alias reload="source ~/.zshrc"
 alias v="nvim +SessionLoad"
 alias ls="lsd"
 alias ll="ls -l"
@@ -34,7 +35,7 @@ alias tc="task done"
 alias ta="task add"
 alias td="task del"
 
-at() {
+attach_tmux() {
   tmux attach -t f || tmux new -s f
 }
 
