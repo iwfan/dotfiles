@@ -65,7 +65,7 @@ noremap <leader><backspace> "_dd
 " 跳转行首
 noremap H g^
 " 跳转行尾
-noremap L g$
+noremap L g_
 " 取消高亮
 noremap <leader><cr> :noh<CR>
 " 跳转对应括号
@@ -106,7 +106,7 @@ nnoremap <leader>wc <c-w>c
 
 noremap / :action Replace<CR>
 noremap <leader>r :action Refactorings.QuickListPopupAction<CR>
-
+noremap <leader>R :action SurroundWith<CR>
 " noremap <leader>f :action AceAction<CR>
 
 " map f <Plug>(easymotion-f)
@@ -133,17 +133,17 @@ noremap [e :action MethodUp<CR>
 " naviagte errors
 noremap ]d :action GotoNextError<CR>
 noremap [d :action GotoPreviousError<CR>
-
+noremap \d :action ShowErrorDescription<CR>
 " navagate occurrence
 noremap <leader>a :action SelectAllOccurrences<CR>
 noremap ]a :action SelectNextOccurrence<CR>
 noremap [a :action UnselectPreviousOccurrence<CR>
-
 " navigate bookmarks
 noremap <leader>s :action ToggleBookmarkWithMnemonic<CR>
 noremap ]s :action GotoNextBookmark<CR>
 noremap [s :action GotoPreviousBookmark<CR>
-
+noremap \s :action ShowBookmarks<CR>
+" navigate changes
 noremap ]c :action VcsShowNextChangeMarker<CR>
 noremap [c :action VcsShowPrevChangeMarker<CR>
 noremap \c :action VcsShowCurrentChangeMarker<CR>
@@ -153,3 +153,5 @@ noremap <leader>c :action Vcs.QuickListPopupAction<CR>
 " make AceJump acts like easymotion in vim
 noremap <leader>; :action AceLineAction<CR>
 noremap <leader>' :action AceDeclarationAction<CR>
+
+noremap <M-0> :action ActivateTerminalToolWindow<CR>
