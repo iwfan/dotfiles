@@ -2,6 +2,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
 
+# brew "asdf"
 brew "bat"
 brew "curl"
 brew "fd"
@@ -12,7 +13,6 @@ brew "git-delta"
 brew "httpie"
 brew "htop"
 brew "lsd"
-brew "luajit", args: ["HEAD"]
 brew "neovim", args: ["HEAD"]
 brew "oath-toolkit"
 brew "ripgrep"
