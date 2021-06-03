@@ -118,7 +118,6 @@ noremap gf :action AceTargetAction<CR>
 noremap <leader>u :action ShowUsages<CR>
 noremap <leader>U :action FindUsages<CR>
 noremap <leader>t :action FileStructurePopup<CR>
-noremap <leader>g :action Vcs.QuickListPopupAction<CR>
 noremap <leader>wr :action ReopenClosedTab<CR>
 noremap <leader>wm :action MoveEditorToOppositeTabGroup<CR>
 
@@ -148,6 +147,12 @@ noremap [s :action GotoPreviousBookmark<CR>
 " navigate diff
 noremap ]d :action NextDiff<CR>
 noremap [d :action PreviousDiff<CR>
+
+noremap ]c :action VcsShowNextChangeMarker<CR>
+noremap [c :action VcsShowPrevChangeMarker<CR>
+noremap \c :action VcsShowCurrentChangeMarker<CR>
+noremap <bs>c :action Vcs.RollbackChangedLines<CR>
+noremap <leader>c :action Vcs.QuickListPopupAction<CR>
 
 " make AceJump acts like easymotion in vim
 noremap <leader>; :action AceLineAction<CR>
