@@ -10,4 +10,12 @@
 #  cd "$(z -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf -q $_last_z_args)"
 # }
 
-bindkey -s '^G' ' lazygit^M'
+_open_lazygit() {
+	zle -I
+	(
+		lazygit
+	) < /dev/tty
+}
+zle -N _open_lazygit
+
+bindkey "^G" _open_lazygit
