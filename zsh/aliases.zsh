@@ -7,10 +7,12 @@ alias -- -="cd -"
 
 alias reload="source ~/.zshrc"
 alias v="nvim +SessionLoad"
-alias ls="lsd"
-alias ll="ls -l"
-alias la="ls -la"
-alias lt="ls --tree"
+# Long listing like "ls -la"
+alias l='exa -la --group-directories-first --time-style long-iso --color-scale'
+# Tree-like listing with 2-level depth
+alias lt="l -T -L 2"
+alias ls="exa"
+alias la="l"
 alias rm="trash -v"
 alias j="z"
 
@@ -37,5 +39,4 @@ alias td="task del"
 
 # Oops savers
 alias gundo='git reset HEAD~'
-
 alias nlsg="npm list -g --depth=0"

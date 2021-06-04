@@ -74,9 +74,6 @@ zinit light zsh-users/zsh-completions
 zinit ice depth=1 wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
 
-zinit ice depth=1 wait lucid atinit"zstyle ':history-search-multi-word' page-size '20'"
-zinit light zdharma/history-search-multi-word
-
 zinit ice depth=1 wait lucid compile"{src/*.zsh,src/strategies/*.zsh}" atload"_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
 
@@ -89,7 +86,6 @@ zinit light hlissner/zsh-autopair
 zinit ice depth=1 atload"!source ~/dotfiles/zsh/p10k.zsh" lucid nocd
 zinit light romkatv/powerlevel10k
 
-# source "$(brew --prefix)/etc/profile.d/z.sh"
 source ~/dotfiles/zsh/aliases.zsh
 source ~/dotfiles/zsh/functions.zsh
 source ~/dotfiles/zsh/mappings.zsh
