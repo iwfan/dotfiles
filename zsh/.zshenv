@@ -17,12 +17,6 @@ export REACT_EDITOR="nvim"
 export PATH="/usr/local/sbin:$PATH"
 export HOMEBREW_NO_AUTO_UPDATE=true
 
-# Node
-export PATH="/usr/local/opt/node@14/bin:$PATH"
-
-# Ruby
-export PATH="$HOME/.rbenv/shims:$PATH"
-
 # Go
 export GOPATH=$HOME/go
 export GO111MODULE="on"

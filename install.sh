@@ -15,14 +15,17 @@ info () {
 }
 
 # Kitty Setup
-ln -Fhnvs ~/dotfiles/kitty ~/.config/kitty
+# ln -Fhnvs ~/dotfiles/kitty ~/.config/kitty
+
 # Zsh Setup
 ln -Fhnvs ~/dotfiles/zsh/.zshenv ~/.zshenv
 ln -Fhnvs ~/dotfiles/zsh/.zprofile ~/.zprofile
 ln -Fhnvs ~/dotfiles/zsh/.zshrc ~/.zshrc
+
 # Tmux
-ln -Fhnvs ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
-ln -Fhnvs ~/dotfiles/tmux/tmux.theme.conf ~/.tmux.theme.conf
+# ln -Fhnvs ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
+# ln -Fhnvs ~/dotfiles/tmux/tmux.theme.conf ~/.tmux.theme.conf
+
 # Neovim
 ln -Fhnvs ~/dotfiles/nvim ~/.config/nvim
 # ideavimrc
