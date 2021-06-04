@@ -5,7 +5,7 @@ alias .....="cd ../../../.."
 alias ~="cd ~"
 alias -- -="cd -"
 
-alias reload="source ~/.zshrc"
+alias j="z"
 alias v="nvim +SessionLoad"
 # Long listing like "ls -la"
 alias l='exa -la --group-directories-first --time-style long-iso --color-scale'
@@ -14,13 +14,17 @@ alias lt="l -T -L 2"
 alias ls="exa"
 alias la="l"
 alias rm="trash -v"
-alias j="z"
 
 alias n="pnpm"
 alias ni="pnpm i"
 alias ns="pnpm run start"
 alias nd="pnpm run dev"
 alias nt="pnpm run test"
+
+alias y="yarn"
+alias ys="yarn run start"
+alias yd="yarn run dev"
+alias yt="yarn run test"
 
 ################[ todo: todo items (https://github.com/todotxt/todo.txt-cli) ]################
 alias tdo="todo.sh"
