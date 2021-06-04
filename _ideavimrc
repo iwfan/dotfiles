@@ -153,5 +153,3 @@ noremap <leader>c :action Vcs.QuickListPopupAction<CR>
 " make AceJump acts like easymotion in vim
 noremap <leader>; :action AceLineAction<CR>
 noremap <leader>' :action AceDeclarationAction<CR>
-
-noremap <M-0> :action ActivateTerminalToolWindow<CR>
