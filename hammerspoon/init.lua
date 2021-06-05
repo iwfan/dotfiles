@@ -21,7 +21,7 @@ require('modules.clipboard')
 require('modules.app-launcher')
 require('modules.app-hints')
 require('modules.cheatsheet')
-require('modules.pomodoro')
+-- require('modules.pomodoro')
 require('modules.markdown')
 require('modules.search-text')
 
@@ -33,4 +33,3 @@ spoon.ModalMgr.supervisor:bind(leader, "H", "查看 Hammerspoon 手册", functio
 end)
 spoon.ModalMgr.supervisor:bind(leader, "Z", "Toggle Hammerspoon Console", function() hs.toggleConsole() end)
 spoon.ModalMgr.supervisor:enter()
-
