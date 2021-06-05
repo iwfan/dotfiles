@@ -32,6 +32,8 @@ ln -Fhnvs ~/dotfiles/nvim ~/.config/nvim
 ln -Fhnvs ~/dotfiles/_ideavimrc ~/.ideavimrc
 # Hammerspoon
 ln -Fhnvs ~/dotfiles/hammerspoon ~/.hammerspoon
+# karabiner
+ln -Fhnvs ~/dotfiles/karabiner ~/.config/karabiner
 # git config
 ln -Fhnvs ~/dotfiles/git/gitconfig ~/.gitconfig
 ln -Fhnvs ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/lazygit/config.yml
