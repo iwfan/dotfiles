@@ -139,16 +139,19 @@ noremap <leader>a :action SelectAllOccurrences<CR>
 noremap ]a :action SelectNextOccurrence<CR>
 noremap [a :action UnselectPreviousOccurrence<CR>
 " navigate bookmarks
-noremap <leader>s :action ToggleBookmarkWithMnemonic<CR>
 noremap ]s :action GotoNextBookmark<CR>
 noremap [s :action GotoPreviousBookmark<CR>
 noremap \s :action ShowBookmarks<CR>
+noremap <leader>s :action ToggleBookmarkWithMnemonic<CR>
+noremap <bs>s :action ToggleBookmarkWithMnemonic<CR>
 " navigate changes
 noremap ]c :action VcsShowNextChangeMarker<CR>
 noremap [c :action VcsShowPrevChangeMarker<CR>
 noremap \c :action VcsShowCurrentChangeMarker<CR>
 noremap <bs>c :action Vcs.RollbackChangedLines<CR>
 noremap <leader>c :action Vcs.QuickListPopupAction<CR>
+
+noremap <leader><cr> :action ProblemsView.QuickFixes<CR>
 
 " make AceJump acts like easymotion in vim
 noremap <leader>; :action AceLineAction<CR>
