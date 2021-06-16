@@ -50,7 +50,7 @@ require("telescope").setup {
 }
 
 require('telescope').load_extension('fzy_native')
-require('telescope').load_extension('project')
+-- require('telescope').load_extension('project')
 
 map_cmd("n|<leader>ff", "lua require('telescope.builtin').find_files()")
 map_cmd("n|<leader>fg", "lua require('telescope.builtin').git_files()")
