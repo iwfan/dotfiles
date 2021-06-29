@@ -20,6 +20,9 @@ export REACT_EDITOR="nvim"
 export PATH="/usr/local/sbin:$PATH"
 export HOMEBREW_NO_AUTO_UPDATE=true
 
+# Local Nvim
+export PATH="$HOME/Downloads/nvim-osx64/bin/:$PATH"
+
 # Go
 export GOPATH=$HOME/go
 export GO111MODULE="on"
