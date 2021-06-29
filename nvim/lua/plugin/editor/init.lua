@@ -57,6 +57,10 @@ insert {
         changedelete = {hl = "GitGutterChange",       text  = "▎"}
       }
     }
+
+    map_cmd([[n|\c]], 'lua require"gitsigns".preview_hunk()')
+    map_cmd([[n|<BS>c]], 'lua require"gitsigns".reset_hunk()')
+    map_cmd([[v|\c]], 'lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})')
   end,
   requires = {"nvim-lua/plenary.nvim", opt = true}
 }
@@ -144,9 +148,4 @@ insert "tommcdo/vim-exchange"
 --insert "tpope/vim-dispatch"
 --insert "kana/vim-textobj-user"
 --insert "kana/vim-textobj-entire"
-
-
-
-
-
 return editor

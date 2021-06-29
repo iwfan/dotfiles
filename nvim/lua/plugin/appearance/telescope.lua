@@ -1,19 +1,19 @@
 local actions = require('telescope.actions')
 require("telescope").setup {
   defaults = {
-    vimgrep_arguments    = {
-      "rg",
-      "--files",
-      "--hidden",
-      "--color=never",
-      "--no-heading",
-      "--with-filename",
-      "--line-number",
-      "--column",
-      "--smart-case",
-      "-g",
-      "!{node_modules,.git}"
-    },
+    -- vimgrep_arguments    = {
+    --   "rg",
+    --   "--files",
+    --   "--hidden",
+    --   "--color=never",
+    --   "--no-heading",
+    --   "--with-filename",
+    --   "--line-number",
+    --   "--column",
+    --   "--smart-case",
+    --   "-g",
+    --   "!{node_modules,.git}"
+    -- },
     prompt_position      = "top",
     prompt_prefix        = "🔭 ",
     selection_caret      = "👉 ",
