@@ -50,7 +50,6 @@ insert {
 
 insert {
   "lukas-reineke/indent-blankline.nvim",
-  branch = "lua",
   config = function()
     vim.g.indent_blankline_char = font_icon.line
     vim.g.indent_blankline_show_first_indent_level = false

@@ -14,7 +14,6 @@ require("telescope").setup {
     --   "-g",
     --   "!{node_modules,.git}"
     -- },
-    prompt_position      = "top",
     prompt_prefix        = "🔭 ",
     selection_caret      = "👉 ",
     entry_prefix         = "  ",
@@ -24,16 +23,19 @@ require("telescope").setup {
     generic_sorter       = require "telescope.sorters".get_generic_fuzzy_sorter,
     shorten_path         = true,
     winblend             = 10,
-    width                = 0.75,
-    preview_cutoff       = 120,
-    results_height       = 1,
-    results_width        = 0.8,
+    preview_height       = 1,
+    preview_width        = 0.8,
     color_devicons       = true,
     use_less             = true,
     set_env              = {["COLORTERM"] = "truecolor"},
     file_previewer       = require "telescope.previewers".vim_buffer_cat.new,
     grep_previewer       = require "telescope.previewers".vim_buffer_vimgrep.new,
     qflist_previewer     = require "telescope.previewers".vim_buffer_qflist.new,
+    layout_config = {
+      prompt_position    = "top",
+      width              = 0.75,
+      preview_cutoff     = 120,
+    },
     mappings             = {
       i = {
         ["<c-j>"] = actions.move_selection_next,

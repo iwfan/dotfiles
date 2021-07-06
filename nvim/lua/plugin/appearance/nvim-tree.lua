@@ -9,8 +9,8 @@ var_tbl {
   nvim_tree_ignore             = { ".git", ".cache", ".idea", ".DS_Store" },
   nvim_tree_special_files      = { 'README.md', 'Makefile', 'MAKEFILE' },
   nvim_tree_bindings           = {
-    ["l"] = tree_cb("edit"),
-    ["h"] = tree_cb("close_node")
+    { key = "l", cb = tree_cb("edit") },
+    { key = "h", cb = tree_cb("close_node") },
   },
   nvim_tree_icons              = {
     default     = '',
