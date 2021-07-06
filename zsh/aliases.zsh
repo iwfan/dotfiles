@@ -56,4 +56,4 @@ alias it2ul=${HOME}/.iterm2/it2ul
 alias it2universion=${HOME}/.iterm2/it2universion
 
 alias sskq="bundle exec sidekiq -C config/sidekiq.yml"
-alias rs="GRAPHQL_CONSUMER_ORIGINS='localhost:3001, localhost:9090' bundle exec rails s"
+alias rs="GRAPHQL_CONSUMER_ORIGINS='localhost:3001, localhost:1215' bundle exec rails s"
