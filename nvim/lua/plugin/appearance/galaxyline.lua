@@ -357,4 +357,3 @@ gls.short_line_left[4] = {
     highlight = {colors.blue, colors.line_bg, "bold"}
   }
 }
-
