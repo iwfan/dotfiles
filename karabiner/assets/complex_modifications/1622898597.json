@@ -2,15 +2,15 @@
   "title": "iwfan's ruls",
   "rules": [
     {
-      "description": "left controls to escape",
+      "description": "right controls to escape",
       "manipulators": [
         {
           "from": {
-            "key_code": "left_control"
+            "key_code": "right_control"
           },
           "to": [
             {
-              "key_code": "left_control"
+              "key_code": "right_control"
             }
           ],
           "to_if_alone": [
@@ -30,7 +30,7 @@
             "key_code": "k",
             "modifiers": {
               "mandatory": [
-                "left_control"
+                "right_control"
               ],
               "optional": ["any"]
             }
@@ -47,7 +47,7 @@
             "key_code": "h",
             "modifiers": {
               "mandatory": [
-                "left_control"
+                "right_control"
               ],
               "optional": ["any"]
             }
@@ -64,7 +64,7 @@
             "key_code": "j",
             "modifiers": {
               "mandatory": [
-                "left_control"
+                "right_control"
               ],
               "optional": ["any"]
             }
@@ -81,7 +81,7 @@
             "key_code": "l",
             "modifiers": {
               "mandatory": [
-                "left_control"
+                "right_control"
               ],
               "optional": ["any"]
             }
