@@ -19,3 +19,14 @@ _open_lazygit() {
 zle -N _open_lazygit
 
 bindkey "^G" _open_lazygit
+
+
+_open_lazynpm() {
+	zle -I
+	(
+		lazynpm
+	) < /dev/tty
+}
+zle -N _open_lazynpm
+
+bindkey "^N" _open_lazynpm
