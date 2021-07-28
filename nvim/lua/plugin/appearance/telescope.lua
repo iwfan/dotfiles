@@ -21,7 +21,7 @@ require("telescope").setup {
     file_sorter          = require "telescope.sorters".get_fuzzy_file,
     file_ignore_patterns = {},
     generic_sorter       = require "telescope.sorters".get_generic_fuzzy_sorter,
-    shorten_path         = true,
+    path_display         = true,
     winblend             = 10,
     preview_height       = 1,
     preview_width        = 0.8,
@@ -31,7 +31,7 @@ require("telescope").setup {
     file_previewer       = require "telescope.previewers".vim_buffer_cat.new,
     grep_previewer       = require "telescope.previewers".vim_buffer_vimgrep.new,
     qflist_previewer     = require "telescope.previewers".vim_buffer_qflist.new,
-    layout_config = {
+    layout_config        = {
       prompt_position    = "top",
       width              = 0.75,
       preview_cutoff     = 120,
