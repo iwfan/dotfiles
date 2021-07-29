@@ -6,7 +6,20 @@ insert {
   config = function() require 'plugin.appearance.web-devicons' end
 }
 
-insert "glepnir/zephyr-nvim"
+-- insert "glepnir/zephyr-nvim"
+
+insert {
+  "sainnhe/gruvbox-material",
+  config = function()
+    var_tbl {
+      gruvbox_material_enable_bold = 1,
+      gruvbox_material_enable_italic = 1,
+      gruvbox_material_diagnostic_text_highlight = 1,
+      gruvbox_material_sign_column_background = 'none'
+    }
+    vim.cmd([[colorscheme gruvbox-material]])
+  end
+}
 
 insert {
   "norcalli/nvim-colorizer.lua",

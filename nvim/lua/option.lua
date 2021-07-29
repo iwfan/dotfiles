@@ -49,6 +49,7 @@ local function setup_options()
   }
 
   local behavior_options = {
+    background     = 'dark',
     termguicolors  = true,
     relativenumber = true,
     number         = true,
