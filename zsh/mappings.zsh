@@ -10,6 +10,16 @@
 #  cd "$(z -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf -q $_last_z_args)"
 # }
 
+_open_neovim() {
+	zle -I
+	(
+		nvim +SessionLoad
+	) < /dev/tty
+}
+zle -N _open_neovim
+
+bindkey "^V" _open_neovim
+
 _open_lazygit() {
 	zle -I
 	(

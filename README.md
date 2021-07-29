@@ -2,12 +2,22 @@
 
 ![Neovim](./images/neovim.png)
 
+# Terminal
+
+- iTerm2
+- Kitty
+
 # fonts
+
+- FireCode Nerd Font Retina
+- OperatorMono Nerf Font Book
 - JetBrains Mono
 
 # colorschema
 
-snazzy
+- Gruvbox Material iTerm2
+  - bg: #282828
+- Snazzy
 
 # references vim configuration
 
