@@ -15,7 +15,7 @@
           ],
           "to_if_alone": [
             {
-             "key_code": "escape"
+              "key_code": "escape"
             }
           ],
           "type": "basic"
@@ -23,15 +23,13 @@
       ]
     },
     {
-      "description": "ctrl + h/j/k/l == Arrow Keys",
+      "description": "right command + w/a/s/d == Arrow Keys",
       "manipulators": [
         {
           "from": {
-            "key_code": "k",
+            "key_code": "w",
             "modifiers": {
-              "mandatory": [
-                "right_control"
-              ],
+              "mandatory": ["right_command"],
               "optional": ["any"]
             }
           },
@@ -44,11 +42,9 @@
         },
         {
           "from": {
-            "key_code": "h",
+            "key_code": "a",
             "modifiers": {
-              "mandatory": [
-                "right_control"
-              ],
+              "mandatory": ["right_command"],
               "optional": ["any"]
             }
           },
@@ -61,11 +57,9 @@
         },
         {
           "from": {
-            "key_code": "j",
+            "key_code": "s",
             "modifiers": {
-              "mandatory": [
-                "right_control"
-              ],
+              "mandatory": ["right_command"],
               "optional": ["any"]
             }
           },
@@ -78,11 +72,9 @@
         },
         {
           "from": {
-            "key_code": "l",
+            "key_code": "d",
             "modifiers": {
-              "mandatory": [
-                "right_control"
-              ],
+              "mandatory": ["right_command"],
               "optional": ["any"]
             }
           },
