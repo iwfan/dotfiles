@@ -55,9 +55,12 @@ insert {
   end
 }
 
--- insert {
---   "steelsojka/pears.nvim"
--- }
+insert {
+  "mattn/emmet-vim",
+  config = function()
+    -- vim.g.user_emmet_mode = 'a'
+  end
+}
 
 insert {
   "hrsh7th/vim-vsnip",

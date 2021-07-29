@@ -6,8 +6,6 @@ insert {
   config = function() require 'plugin.appearance.web-devicons' end
 }
 
--- insert "glepnir/zephyr-nvim"
-
 insert {
   "sainnhe/gruvbox-material",
   config = function()
