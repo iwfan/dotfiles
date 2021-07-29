@@ -12,7 +12,6 @@ insert {
   "sainnhe/gruvbox-material",
   config = function()
     var_tbl {
-      gruvbox_material_enable_bold = 1,
       gruvbox_material_enable_italic = 1,
       gruvbox_material_diagnostic_text_highlight = 1,
       gruvbox_material_sign_column_background = 'none'

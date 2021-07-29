@@ -83,7 +83,7 @@ zinit light zsh-users/zsh-history-substring-search
 zinit ice depth=1 wait"2" lucid
 zinit light hlissner/zsh-autopair
 
-zinit ice depth=1 atload"!source ~/dotfiles/zsh/p10k.zsh" lucid nocd
+zinit ice depth=1 atload"!source ~/dotfiles/zsh/p10k.pure.zsh" lucid nocd
 zinit light romkatv/powerlevel10k
 
 source ~/dotfiles/zsh/aliases.zsh
