@@ -13,6 +13,22 @@ insert {
 }
 insert "nvim-treesitter/nvim-treesitter-textobjects"
 insert "windwp/nvim-ts-autotag"
+insert {
+  "windwp/nvim-autopairs",
+  config = function()
+    require("nvim-autopairs").setup({
+      disable_filetype = { "TelescopePrompt" , "vim" }
+    })
+  end
+}
+insert {
+  'terrortylor/nvim-comment',
+  config = function()
+    require('nvim_comment').setup()
+    map_cmd('n|<C-_>', 'CommentToggle')
+  end
+}
+insert 'JoosepAlviste/nvim-ts-context-commentstring'
 
 insert {
   "liuchengxu/vista.vim",
@@ -33,16 +49,6 @@ insert {
     map_cmd("n|<leader>8", "Vista!!")
   end
 }
-
--- comment
-insert {
-  'terrortylor/nvim-comment',
-  config = function()
-    require('nvim_comment').setup()
-    map_cmd('n|<C-_>', 'CommentToggle')
-  end
-}
-insert 'JoosepAlviste/nvim-ts-context-commentstring'
 
 insert "tpope/vim-fugitive"
 insert {
