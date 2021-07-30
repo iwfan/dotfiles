@@ -282,16 +282,6 @@ ins_right {
   end,
   right_sep = ' '
 }
--- fileSize
-ins_right {
-  provider = 'file_size',
-  enabled = function() return vim.fn.getfsize(vim.fn.expand('%:t')) > 0 end,
-  hl = {
-    fg = 'skyblue',
-    bg = 'bg'
-  },
-  right_sep = ' '
-}
 -- linePercent
 ins_right {
   provider = 'line_percentage',
@@ -300,14 +290,6 @@ ins_right {
     bg = 'bg'
   },
   right_sep = ' '
-}
--- scrollBar
-ins_right {
-  provider = 'scroll_bar',
-  hl = {
-    fg = 'yellow',
-    bg = 'bg',
-  },
 }
 
 -- INACTIVE
@@ -345,8 +327,7 @@ components.left.inactive[2] = {
   end,
   hl = {
     fg = 'white',
-    bg = 'bg',
-    style = 'bold'
+    bg = 'bg'
   },
   right_sep = ''
 }

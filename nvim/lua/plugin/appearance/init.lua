@@ -29,13 +29,6 @@ insert {
   config = function() require 'plugin.appearance.nvim-tree' end
 }
 
--- insert {
---   "glepnir/galaxyline.nvim",
---   disable = true,
---   branch = "main",
---   config = function() require "plugin.appearance.galaxyline" end
--- }
-
 insert {
   "Akin909/nvim-bufferline.lua",
   requires = "moll/vim-bbye",
@@ -45,11 +38,9 @@ insert {
 insert {
   "famiu/feline.nvim",
   config = function()
-    -- require('feline').setup()
     require "plugin.appearance.feline"
   end
 }
-
 
 insert {
   "nvim-telescope/telescope.nvim",
