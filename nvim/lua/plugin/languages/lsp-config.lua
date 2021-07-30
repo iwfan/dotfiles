@@ -78,7 +78,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   }
 }
 
-local sumneko_root_path = stdpath .. '/lsp-install/lua-language-server'
+local sumneko_root_path = config_path .. '/lsp-install/lua-language-server'
 local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
 
 local servers = {
@@ -155,10 +155,10 @@ local servers = {
       enhance_attach(client, bufnr)
     end
   },
-  -- jsonls   = { on_attach = enhance_attach },
-  -- yamlls   = { on_attach = enhance_attach },
-  -- vuels    = { on_attach = enhance_attach },
-  -- bashls   = { on_attach = enhance_attach },
+  jsonls   = { on_attach = enhance_attach },
+  yamlls   = { on_attach = enhance_attach },
+  vuels    = { on_attach = enhance_attach },
+  bashls   = { on_attach = enhance_attach },
   dockerls = {on_attach = enhance_attach},
   diagnosticls = {
     cmd = { "diagnostic-languageserver", "--stdio", "--log-level", "2" },

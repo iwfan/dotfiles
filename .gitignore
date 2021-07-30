@@ -106,6 +106,7 @@ dist
 nvim/tmp
 nvim/plugin/packer_compiled.vim
 nvim/plugin/packer_compiled.lua
+nvim/lsp-install/
 .netrwhist
 tags
 hammerspoon/config.lua
