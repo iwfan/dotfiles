@@ -7,8 +7,59 @@ insert {
 }
 
 insert {
-  "nvim-treesitter/nvim-treesitter",
-  run = ":TSUpdate",
+  "lukas-reineke/indent-blankline.nvim",
+  config = function()
+    vim.g.indent_blankline_char = font_icon.line
+    vim.g.indent_blankline_show_first_indent_level = false
+    vim.g.indent_blankline_filetype_exclude = {
+      "startify",
+      "dashboard",
+      "dotooagenda",
+      "log",
+      "fugitive",
+      "gitcommit",
+      "packer",
+      "vimwiki",
+      "markdown",
+      "json",
+      "txt",
+      "vista",
+      "help",
+      "todoist",
+      "NvimTree",
+      "peekaboo",
+      "git",
+      "TelescopePrompt",
+      "undotree",
+      "flutterToolsOutline",
+      "" -- for all buffers without a file type
+    }
+    vim.g.indent_blankline_buftype_exclude = {"terminal", "nofile"}
+    vim.g.indent_blankline_show_trailing_blankline_indent = false
+    vim.g.indent_blankline_show_current_context = true
+    vim.g.indent_blankline_context_patterns = {
+      "class",
+      "function",
+      "method",
+      "block",
+      "list_literal",
+      "selector",
+      "^if",
+      "^table",
+      "if_statement",
+      "while",
+      "for"
+    }
+  end
+}
+
+insert {
+  "norcalli/nvim-colorizer.lua",
+  config = function() require "colorizer".setup() end
+}
+
+insert {
+  "nvim-treesitter/nvim-treesitter", run = ":TSUpdate",
   config = function() require 'plugin.editor.treesitter' end
 }
 insert "nvim-treesitter/nvim-treesitter-textobjects"
@@ -134,6 +185,8 @@ insert {
   "andymass/vim-matchup",
   config = [[vim.g.matchup_matchparen_offscreen = {}]]
 }
+
+insert "tversteeg/registers.nvim"
 
 insert {
   "junegunn/vim-easy-align",

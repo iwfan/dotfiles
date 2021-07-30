@@ -44,3 +44,4 @@
 - https://github.com/rockerBOO/dotfiles/tree/current/config/nvim/lua
 - https://phelipetls.github.io/posts/configuring-eslint-to-work-with-neovim-lsp/
 - https://github.com/vim-test/vim-test
+- https://www.locatelli.dev/nv-ide/

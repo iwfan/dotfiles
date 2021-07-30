@@ -24,6 +24,12 @@ local function searchGoogle(text)
     end
 end
 
+local function searchGithub(text)
+    if text ~= nil then
+        pcall(hs.urlevent.openURL, "https://github.com/" .. text)
+    end
+end
+
 local function searchSelectedText()
     local text = current_selection()
     searchGoogle(text)
@@ -50,4 +56,8 @@ local function searchClipboardText()
 end
 
 hs.hotkey.bind(leader, "o", searchSelectedText)
+hs.hotkey.bind(leader, "g", function()
+    local text = current_selection()
+    searchGithub(text)
+end)
 hs.hotkey.bind({ "alt", "shift" }, "o", searchClipboardText)
