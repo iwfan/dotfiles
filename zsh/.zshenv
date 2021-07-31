@@ -32,7 +32,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Bat
 export BAT_PAGER="less -R"
 export BAT_STYLE="changes,numbers"
-export BAT_THEME="TwoDark"
+export BAT_THEME="gruvbox-dark"
 
 # Fd
 export FD_OPTIONS="--hidden --follow --exclude .git --exclude node_modules"
