@@ -35,4 +35,11 @@ var_tbl {
   }
 }
 
+autocmd("BufEnter", "NvimTree",
+  table.concat {
+    [[if &ft == 'NvimTree' |]],
+    [[exec 'NvimTreeRefresh' | endif]]
+  }
+)
+
 map_cmd("n|<leader>1", "NvimTreeToggle")

@@ -2,6 +2,11 @@ local tools = {}
 local insert = _G.insert(tools)
 
 insert {
+  "editorconfig/editorconfig-vim",
+  config = [[vim.g.EditorConfig_exclude_patterns = {"fugitive://.*", "scp://.*"}]]
+}
+
+insert {
   "voldikss/vim-floaterm",
   cmd = {
     'FloatermNew',

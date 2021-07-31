@@ -2,63 +2,6 @@ local editor = {}
 local insert = _G.insert(editor)
 
 insert {
-  "editorconfig/editorconfig-vim",
-  config = [[vim.g.EditorConfig_exclude_patterns = {"fugitive://.*", "scp://.*"}]]
-}
-
-insert {
-  "lukas-reineke/indent-blankline.nvim",
-  config = function()
-    vim.g.indent_blankline_char = font_icon.line
-    vim.g.indent_blankline_show_first_indent_level = false
-    vim.g.indent_blankline_filetype_exclude = {
-      "startify",
-      "dashboard",
-      "dotooagenda",
-      "log",
-      "fugitive",
-      "gitcommit",
-      "packer",
-      "vimwiki",
-      "markdown",
-      "json",
-      "txt",
-      "vista",
-      "help",
-      "todoist",
-      "NvimTree",
-      "peekaboo",
-      "git",
-      "TelescopePrompt",
-      "undotree",
-      "flutterToolsOutline",
-      "" -- for all buffers without a file type
-    }
-    vim.g.indent_blankline_buftype_exclude = {"terminal", "nofile"}
-    vim.g.indent_blankline_show_trailing_blankline_indent = false
-    vim.g.indent_blankline_show_current_context = true
-    vim.g.indent_blankline_context_patterns = {
-      "class",
-      "function",
-      "method",
-      "block",
-      "list_literal",
-      "selector",
-      "^if",
-      "^table",
-      "if_statement",
-      "while",
-      "for"
-    }
-  end
-}
-
-insert {
-  "norcalli/nvim-colorizer.lua",
-  config = function() require "colorizer".setup() end
-}
-
-insert {
   "nvim-treesitter/nvim-treesitter", run = ":TSUpdate",
   config = function() require 'plugin.editor.treesitter' end
 }
@@ -82,25 +25,16 @@ insert {
 insert 'JoosepAlviste/nvim-ts-context-commentstring'
 
 insert {
-  "liuchengxu/vista.vim",
-  config = function ()
-    vim.g['vista#renderer#enable_icon'] = 1
-    vim.g.vista_disable_statusline = 1
-    vim.g.vista_default_executive = 'ctags'
-    vim.g.vista_echo_cursor_strategy = 'floating_win'
-    vim.g.vista_vimwiki_executive = 'markdown'
-    vim.g.vista_executive_for = {
-      vimwiki =  'markdown',
-      pandoc = 'markdown',
-      markdown = 'toc',
-      lua = 'nvim_lsp',
-      typescript = 'nvim_lsp',
-      typescriptreact =  'nvim_lsp',
-    }
-    map_cmd("n|<leader>8", "Vista!!")
-  end
+  "lukas-reineke/indent-blankline.nvim",
+  config = function() require 'plugin.editor.indent-blankline' end
 }
 
+insert {
+  "norcalli/nvim-colorizer.lua",
+  config = function() require "colorizer".setup() end
+}
+
+insert "tpope/vim-repeat"
 insert "tpope/vim-fugitive"
 insert {
   "lewis6991/gitsigns.nvim",
@@ -123,40 +57,7 @@ insert {
 }
 insert {
   "sindrets/diffview.nvim",
-  config = function ()
-    local cb = require'diffview.config'.diffview_callback
-
-    require'diffview'.setup {
-      diff_binaries = false,    -- Show diffs for binaries
-      file_panel = {
-        width = 35,
-        use_icons = true        -- Requires nvim-web-devicons
-      },
-      key_bindings = {
-        -- The `view` bindings are active in the diff buffers, only when the current
-        -- tabpage is a Diffview.
-        view = {
-          ["<tab>"]     = cb("select_next_entry"),  -- Open the diff for the next file
-          ["<s-tab>"]   = cb("select_prev_entry"),  -- Open the diff for the previous file
-          ["<leader>e"] = cb("focus_files"),        -- Bring focus to the files panel
-          ["<leader>b"] = cb("toggle_files"),       -- Toggle the files panel.
-        },
-        file_panel = {
-          ["j"]         = cb("next_entry"),         -- Bring the cursor to the next file entry
-          ["<down>"]    = cb("next_entry"),
-          ["k"]         = cb("prev_entry"),         -- Bring the cursor to the previous file entry.
-          ["<up>"]      = cb("prev_entry"),
-          ["<cr>"]      = cb("select_entry"),       -- Open the diff for the selected entry.
-          ["o"]         = cb("select_entry"),
-          ["R"]         = cb("refresh_files"),      -- Update stats and entries in the file list.
-          ["<tab>"]     = cb("select_next_entry"),
-          ["<s-tab>"]   = cb("select_prev_entry"),
-          ["<leader>e"] = cb("focus_files"),
-          ["<leader>b"] = cb("toggle_files"),
-        }
-      }
-    }
-  end
+  config = function() require 'plugin.editor.diffview' end
 }
 
 insert {
@@ -173,11 +74,44 @@ insert {
 }
 
 insert {
-  'phaazon/hop.nvim',
-  config = function()
-    map_cmd('n|<leader>w', 'HopWord')
-    map_cmd('n|<leader>l', 'HopLine')
-    map_cmd('n|<leader>/', 'HopPattern')
+  "kevinhwang91/nvim-hlslens",
+  config = function() require 'plugin.editor.hlslens' end
+}
+
+
+insert {
+  "windwp/nvim-spectre",
+  config = function() require 'plugin.editor.spectre' end
+}
+
+-- Lightspeed
+insert {
+  "ggandor/lightspeed.nvim",
+  config = function ()
+    require'lightspeed'.setup {
+      jump_to_first_match = true,
+      jump_on_partial_input_safety_timeout = 400,
+      highlight_unique_chars = false,
+      grey_out_search_area = true,
+      match_only_the_start_of_same_char_seqs = true,
+      limit_ft_matches = 5,
+      full_inclusive_prefix_key = '<c-x>',
+    }
+
+    vim.api.nvim_set_keymap('n', 'f', '<Plug>Lightspeed_f', {noremap = false, silent = false})
+    vim.api.nvim_set_keymap('n', 'F', '<Plug>Lightspeed_F', {noremap = false, silent = false})
+    vim.api.nvim_set_keymap('n', 't', '<Plug>Lightspeed_t', {noremap = false, silent = false})
+    vim.api.nvim_set_keymap('n', 'T', '<Plug>Lightspeed_T', {noremap = false, silent = false})
+  end
+}
+
+insert {
+  "nacro90/numb.nvim",
+  config = function ()
+    require('numb').setup{
+      show_numbers = true, -- Enable 'number' for the window while peeking
+      show_cursorline = true -- Enable 'cursorline' for the window while peeking
+    }
   end
 }
 
@@ -195,6 +129,7 @@ insert {
     map("x|ga", [[<Plug>(EasyAlign)]], { noremap = false })
   end
 }
+
 insert {
   "blackCauldron7/surround.nvim",
   config = function()
@@ -202,9 +137,5 @@ insert {
     require "surround".setup {}
   end
 }
-insert "wellle/targets.vim"
-insert "tommcdo/vim-exchange"
---insert "tpope/vim-dispatch"
---insert "kana/vim-textobj-user"
---insert "kana/vim-textobj-entire"
+
 return editor

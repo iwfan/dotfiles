@@ -44,18 +44,10 @@ augroup('filetype_config', {
 })
 
 augroup('misc', {
-  {"BufEnter", [[*.png,*.jpg,*.gif]], [[exec "silent !open ".expand("%") | :bw]]},
+  {"BufEnter", [[*.svg,*.png,*.jpg,*.gif]], [[exec "silent !open ".expand("%") | :bw]]},
   {"FocusLost", "*", [[silent! wa]]}, --auto save when nvim focus
   {"BufWritePre", "*", [[%s/\s\+$//e]]}, --remove trailing whitespaces
   {"BufWritePre", "*", [[%s/\n\+\%$//e]]},
   {"FileType", "help", [[wincmd L]]},
-  {
-    "BufEnter",
-    "NvimTree",
-    table.concat {
-      [[if &ft == 'NvimTree' |]],
-      [[exec 'NvimTreeRefresh' | endif]]
-    }
-  },
   -- { "VimEnter", "*", "call vista#RunForNearestMethodOrFunction()" }
 })
