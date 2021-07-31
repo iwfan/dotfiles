@@ -30,24 +30,12 @@ function _G.dump(...)
 end
 
 --make life easier
-_G.g           = vim.g
 _G.fn          = vim.fn
 _G.exec        = vim.api.nvim_exec
 _G.cmd         = vim.api.nvim_command
 _G.var         = vim.api.nvim_set_var
 _G.stdpath     = vim.fn.stdpath('data')
 _G.config_path = vim.fn.stdpath('config')
-
---set vim option
-function _G.opt(key, value)
-  if pcall(vim.api.nvim_get_option, key) then
-    vim.o[key] = value
-  elseif pcall(vim.api.nvim_buf_get_option, 0, key) then
-    vim.bo[key] = value
-  else
-    vim.wo[key] = value
-  end
-end
 
 --variable
 function _G.var_tbl(variable_table)
@@ -123,27 +111,3 @@ _G.font_icon = {
   check   = '﫠';
   ok      = ' ';
 }
-
-_G.emoji_icon = {
-  error         = '🚫';
-  error1        = '🚨';
-  warn          = '🚧';
-  warn1         = '⚠️';
-  hint          = '🌀';
-  info          = '💡';
-  info1         = 'ℹ️';
-  light         = '💡';
-  fire          = '🔥';
-  fix           = '🔧';
-  pin           = '📌';
-  gear          = '⚙️';
-  search        = '🔎';
-  branch        = '🔱';
-  right         = '👉';
-  close         = '❎';
-  file          = '📄';
-  folder        = '📁';
-  folder_opened = '📂';
-  link          = '🔗';
-}
-

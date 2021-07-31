@@ -13,13 +13,10 @@
 -- Github:   https://github.com/iwfan
 -- License:  MIT License
 
-require 'global'
-require 'option'
+require 'helpers'
+require 'settings'
 require 'keymap'
 require 'command'
 require 'plugin'
-
-g.python_host_prog = '/usr/bin/python'
-g.python3_host_prog = '/usr/local/bin/python3'
 
 -- require 'plugin.languages.lsp-install'

@@ -1,4 +1,4 @@
-g.mapleader = ' '
+vim.g.mapleader = ' '
 map("n|<Space>", "")
 map("x|<Space>", "")
 map("n|q", "")

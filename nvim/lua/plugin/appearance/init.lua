@@ -14,7 +14,8 @@ insert {
       gruvbox_material_diagnostic_text_highlight = 1,
       gruvbox_material_sign_column_background = 'none'
     }
-    vim.cmd([[colorscheme gruvbox-material]])
+    vim.opt.background = 'dark'
+    vim.cmd 'color gruvbox-material'
   end
 }
 

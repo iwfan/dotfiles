@@ -26,7 +26,7 @@ insert {
 insert {
   "ybian/smartim",
   config = function()
-    g.smartim_default = "com.apple.keylayout.ABC"
+    vim.g.smartim_default = "com.apple.keylayout.ABC"
   end
 }
 
