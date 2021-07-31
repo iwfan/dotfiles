@@ -47,6 +47,23 @@ insert {
 }
 
 insert {
+  "simrat39/symbols-outline.nvim",
+  config = function ()
+    vim.g.symbols_outline = {
+      keymaps = {
+        close = {"<Esc>", "q"},
+        goto_location = "<Cr>",
+        focus_location = "o",
+        hover_symbol = "K",
+        rename_symbol = "r",
+        code_actions = "a",
+      },
+    }
+    map_cmd("n|<leader>2", "SymbolsOutline")
+  end
+}
+
+insert {
   "mattn/emmet-vim",
   config = function()
     -- vim.g.user_emmet_mode = 'a'
