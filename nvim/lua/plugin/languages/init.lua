@@ -36,6 +36,44 @@ insert {
   "hrsh7th/nvim-compe",
   config = function()
     require "plugin.languages.lsp-compe"
+  end,
+  requires = {
+    {
+      "L3MON4D3/LuaSnip",
+      wants = "friendly-snippets",
+      config = function()
+        local luasnip = require("luasnip")
+        luasnip.config.set_config(
+          {
+            history = true,
+            updateevents = "TextChanged,TextChangedI"
+          }
+        )
+        require("luasnip/loaders/from_vscode").load()
+      end
+    },
+    "rafamadriz/friendly-snippets",
+    {
+      "hrsh7th/vim-vsnip",
+      config = function()
+        vim.g.vsnip_snippet_dir = os.getenv("HOME") .. "/.config/nvim/snippets"
+      end
+    },
+    'hrsh7th/vim-vsnip-integ'
+  }
+}
+
+insert {
+  "windwp/nvim-autopairs",
+  after = "hrsh7th/nvim-compe",
+  config = function()
+    require("nvim-autopairs").setup({
+      disable_filetype = { "TelescopePrompt" , "vim" }
+    })
+    require("nvim-autopairs.completion.compe").setup({
+      map_cr = true, --  map <CR> on insert mode
+      map_complete = true -- it will auto insert `(` after select function or method item
+    })
   end
 }
 
@@ -69,15 +107,6 @@ insert {
     -- vim.g.user_emmet_mode = 'a'
   end
 }
-
-insert {
-  "hrsh7th/vim-vsnip",
-  config = function()
-    vim.g.vsnip_snippet_dir = os.getenv("HOME") .. "/.config/nvim/snippets"
-  end
-}
-insert 'hrsh7th/vim-vsnip-integ'
-insert 'rafamadriz/friendly-snippets'
 
 insert 'jose-elias-alvarez/nvim-lsp-ts-utils'
 

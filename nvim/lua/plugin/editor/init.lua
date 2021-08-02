@@ -8,14 +8,6 @@ insert {
 insert "nvim-treesitter/nvim-treesitter-textobjects"
 insert "windwp/nvim-ts-autotag"
 insert {
-  "windwp/nvim-autopairs",
-  config = function()
-    require("nvim-autopairs").setup({
-      disable_filetype = { "TelescopePrompt" , "vim" }
-    })
-  end
-}
-insert {
   'terrortylor/nvim-comment',
   config = function()
     require('nvim_comment').setup({
@@ -44,7 +36,13 @@ insert {
 }
 
 insert "tpope/vim-repeat"
-insert "tpope/vim-fugitive"
+insert {
+  "tpope/vim-fugitive",
+  cmd = {
+    "Git"
+  }
+}
+
 insert {
   "lewis6991/gitsigns.nvim",
   config = function()

@@ -24,7 +24,6 @@ augroup('filetype_detect', {
   {"BufNewFile,BufRead", "*.fish", "setf fish"},
   {"BufNewFile,BufRead", "_ideavimrc", "setf vim"},
   {"BufNewFile,BufRead", "*.tsx,*.jsx", "setf typescriptreact"},
-  {"TermOpen", "term://*", "setf terminal"},
   {"BufNewFile,BufRead", ".eslintrc,.prettierrc", "setf json"},
   {"BufNewFile,BufRead", "tsconfig.json", "setf jsonc"}
 })
@@ -38,9 +37,11 @@ augroup('filetype_config', {
   {"BufEnter", "*.css,*.scss,*.less", "setlocal iskeyword+=-"},
   {"BufEnter", "markdown", "setlocal wrap"},
   {"FileType", "make", "setlocal noexpandtab"},
+  {"FileType", "fish", [[set commentstring=#\ %s]]},
+  {"TermOpen", "term://*", "setf terminal"},
   {"TermOpen", "term://*", "startinsert"},
   {"TermOpen", "term://*", "setlocal nonumber norelativenumber"},
-  {"FileType", "fish", [[set commentstring=#\ %s]]}
+  {"TermClose", "term://*", "bd!"}
 })
 
 augroup('misc', {
@@ -49,5 +50,4 @@ augroup('misc', {
   {"BufWritePre", "*", [[%s/\s\+$//e]]}, --remove trailing whitespaces
   {"BufWritePre", "*", [[%s/\n\+\%$//e]]},
   {"FileType", "help", [[wincmd L]]},
-  -- { "VimEnter", "*", "call vista#RunForNearestMethodOrFunction()" }
 })

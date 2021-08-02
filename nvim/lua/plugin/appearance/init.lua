@@ -32,7 +32,7 @@ insert {
 
 insert {
   "Akin909/nvim-bufferline.lua",
-  requires = "moll/vim-bbye",
+  requires = "famiu/bufdelete.nvim",
   config = function() require "plugin.appearance.nvim-bufferline" end
 }
 
