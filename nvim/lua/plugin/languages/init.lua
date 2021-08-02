@@ -28,21 +28,17 @@ insert {
     "hrsh7th/nvim-compe",
     event = "InsertEnter",
     config = function() require "plugin.languages.lsp-compe" end,
-    wants = "LuaSnip",
+    wants = "vim-vsnip",
     requires = {
-        {
-            "L3MON4D3/LuaSnip",
+        {"rafamadriz/friendly-snippets"}, {"hrsh7th/vim-vsnip-integ"}, {
+            "hrsh7th/vim-vsnip",
             wants = "friendly-snippets",
             event = "InsertCharPre",
             config = function()
-                local luasnip = require("luasnip")
-                luasnip.config.set_config({
-                    history = true,
-                    updateevents = "TextChanged,TextChangedI"
-                })
-                require("luasnip/loaders/from_vscode").load()
+                vim.g.vsnip_snippet_dir =
+                    os.getenv('HOME') .. '/.config/nvim/snippets'
             end
-        }, {"rafamadriz/friendly-snippets", event = "InsertCharPre"}
+        }
     }
 }
 
@@ -83,7 +79,21 @@ insert {
     end
 }
 
-insert "mattn/emmet-vim"
+insert {
+    "mattn/emmet-vim",
+    event = 'InsertEnter',
+    ft = {
+        'html', 'css', 'javascript', 'javascriptreact', 'vue', 'typescript',
+        'typescriptreact'
+    },
+    config = function()
+        vim.g.user_emmet_complete_tag = 0
+        vim.g.user_emmet_install_global = 0
+        vim.g.user_emmet_install_command = 0
+        vim.g.user_emmet_mode = 'i'
+    end
+}
+
 insert {"sbdchd/neoformat", cmd = "Neoformat"}
 
 return languages

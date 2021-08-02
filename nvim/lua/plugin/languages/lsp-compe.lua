@@ -31,8 +31,6 @@ require"compe".setup {
     }
 }
 
-local luasnip = prequire('luasnip')
-
 local t = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -48,8 +46,8 @@ end
 _G.tab_complete = function()
     if vim.fn.pumvisible() == 1 then
         return t "<C-n>"
-    elseif luasnip and luasnip.expand_or_jumpable() then
-        return t "<Plug>luasnip-expand-or-jump"
+    elseif vim.fn['vsnip#available'](1) == 1 then
+        return t "<Plug>(vsnip-expand-or-jump)"
     elseif check_back_space() then
         return t "<Tab>"
     else
@@ -59,8 +57,8 @@ end
 _G.s_tab_complete = function()
     if vim.fn.pumvisible() == 1 then
         return t "<C-p>"
-    elseif luasnip and luasnip.jumpable(-1) then
-        return t "<Plug>luasnip-jump-prev"
+    elseif vim.fn['vsnip#jumpable'](-1) == 1 then
+        return t "<Plug>(vsnip-jump-prev)"
     else
         return t "<C-h>"
     end
