@@ -2,18 +2,18 @@ local enhance_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- if client.resolved_capabilities.document_formatting then
-  --   vim.api.nvim_exec(
-  --     [[
-  --     augroup lsp_document_formatter
-  --       autocmd! * <buffer>
-  --       autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
-  --     augroup END
-  --     ]],
-  --     false
-  --   )
-  --   map_cmd("n|<space>fm", "lua vim.lsp.buf.formatting()")
-  -- end
+  if client.resolved_capabilities.document_formatting then
+    vim.api.nvim_exec(
+      [[
+      augroup lsp_document_formatter
+        autocmd! * <buffer>
+        autocmd BufWritePre <buffer> Neoformat
+      augroup END
+      ]],
+      false
+    )
+    -- map_cmd("n|<space>fm", "lua vim.lsp.buf.formatting()")
+  end
 
   -- if client.resolved_capabilities.document_range_formatting then
   --   map_cmd("v|<space>fm", "lua vim.lsp.buf.range_formatting()")
