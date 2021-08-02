@@ -1,113 +1,104 @@
---insert helper
+-- insert helper
 function _G.insert(tbl, el)
-  if el then
-    return table.insert(tbl, el)
-  else
-    return function(el1)
-      return _G.insert(tbl, el1)
+    if el then
+        return table.insert(tbl, el)
+    else
+        return function(el1) return _G.insert(tbl, el1) end
     end
-  end
 end
---list merge
+-- list merge
 function _G.list_merge(...)
-  local tbl = {}
-  for _, list in ipairs({ ... })
-  do
-    for _, item in ipairs(list)
-    do
-      table.insert(tbl, item)
+    local tbl = {}
+    for _, list in ipairs({...}) do
+        for _, item in ipairs(list) do table.insert(tbl, item) end
     end
-  end
-  return tbl
+    return tbl
 end
 
---inspect stuff
+-- inspect stuff
 function _G.dump(...)
-  local objects = vim.tbl_map(vim.inspect, { ... })
-  print(' === ')
-  print(unpack(objects))
-  print(' === ')
+    local objects = vim.tbl_map(vim.inspect, {...})
+    print(' === ')
+    print(unpack(objects))
+    print(' === ')
 end
 
---make life easier
-_G.fn          = vim.fn
-_G.exec        = vim.api.nvim_exec
-_G.cmd         = vim.api.nvim_command
-_G.var         = vim.api.nvim_set_var
-_G.stdpath     = vim.fn.stdpath('data')
+-- make life easier
+_G.fn = vim.fn
+_G.exec = vim.api.nvim_exec
+_G.cmd = vim.api.nvim_command
+_G.var = vim.api.nvim_set_var
+_G.stdpath = vim.fn.stdpath('data')
 _G.config_path = vim.fn.stdpath('config')
 
---variable
-function _G.var_tbl(variable_table)
-  for variable_name, value in pairs(variable_table)
-  do
-    var(variable_name, value)
-  end
+function _G.prequire(...)
+    local status, lib = pcall(require, ...)
+    if (status) then return lib end
+    return nil
 end
 
---mappings
-function _G.map(mode_and_lhs, rhs, opts)
-  local options = {
-    noremap = true;
-    silent = true;
-    expr = false;
-    nowait = false;
-  }
-  if opts then
-    options = vim.tbl_extend('force', options, opts)
-  end
+-- variable
+function _G.var_tbl(variable_table)
+    for variable_name, value in pairs(variable_table) do
+        var(variable_name, value)
+    end
+end
 
-  local mode, lhs = mode_and_lhs:match("([^|]*)|?(.*)")
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+-- mappings
+function _G.map(mode_and_lhs, rhs, opts)
+    local options = {
+        noremap = true,
+        silent = true,
+        expr = false,
+        nowait = false
+    }
+    if opts then options = vim.tbl_extend('force', options, opts) end
+
+    local mode, lhs = mode_and_lhs:match("([^|]*)|?(.*)")
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 function _G.map_cmd(mode_and_lhs, rhs, opts)
-  _G.map(mode_and_lhs, string.format("<cmd>%s<CR>", rhs), opts)
+    _G.map(mode_and_lhs, string.format("<cmd>%s<CR>", rhs), opts)
 end
 
---autocmd
+-- autocmd
 function _G.autocmd(event, filetype, command)
-  vim.cmd(table.concat({
-    'autocmd',
-    event,
-    filetype,
-    command
-  }, ' '))
+    vim.cmd(table.concat({'autocmd', event, filetype, command}, ' '))
 end
 
---augroup
+-- augroup
 function _G.augroup(group_name, definition)
-  vim.cmd("augroup " .. group_name)
-  vim.cmd("autocmd!")
+    vim.cmd("augroup " .. group_name)
+    vim.cmd("autocmd!")
 
-  for _, def in ipairs(definition)
-  do
-    local event, filetype, command = unpack(def)
-    autocmd(event, filetype, command)
-  end
+    for _, def in ipairs(definition) do
+        local event, filetype, command = unpack(def)
+        autocmd(event, filetype, command)
+    end
 
-  vim.cmd("augroup END")
+    vim.cmd("augroup END")
 end
 
 _G.font_icon = {
-  error   = ' ';
-  warn    = ' ';
-  hint    = ' ';
-  info    = ' ';
-  modifiy = ' ';
-  add     = ' ';
-  merge   = ' ';
-  renamed = ' ';
-  unknown = ' ';
-  deleted = ' ';
-  ignored = ' ';
-  close   = ' ';
-  edit    = '';
-  line    = '│';
-  line1   = '⏽';
-  branch  = ' ';
-  gear    = ' ';
-  light   = '';
-  check   = '﫠';
-  ok      = ' ';
+    error = ' ',
+    warn = ' ',
+    hint = ' ',
+    info = ' ',
+    modifiy = ' ',
+    add = ' ',
+    merge = ' ',
+    renamed = ' ',
+    unknown = ' ',
+    deleted = ' ',
+    ignored = ' ',
+    close = ' ',
+    edit = '',
+    line = '│',
+    line1 = '⏽',
+    branch = ' ',
+    gear = ' ',
+    light = '',
+    check = '﫠',
+    ok = ' '
 }
