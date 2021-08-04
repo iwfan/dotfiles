@@ -37,7 +37,5 @@ ln -Fhnvs ~/dotfiles/karabiner ~/.config/karabiner
 # git config
 ln -Fhnvs ~/dotfiles/git/gitconfig ~/.gitconfig
 ln -Fhnvs ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/lazygit/config.yml
-# asdf
-ln -Fhnvs ~/dotfiles/asdf/.tool-versions ~/.tool-versions
 
 success "link finished."

@@ -4,7 +4,7 @@ brew tap "homebrew/bundle"
 brew tap "homebrew/cask"
 brew tap "homebrew/core"
 
-# brew "asdf"
+brew install "asdf"
 brew install "bat"
 brew install "curl"
 brew install "exa"
