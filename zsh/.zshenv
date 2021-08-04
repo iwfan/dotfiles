@@ -20,6 +20,9 @@ export REACT_EDITOR="nvim"
 export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 export HOMEBREW_NO_AUTO_UPDATE=true
 
+# ruby
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
 # Go
 export GOPATH=$HOME/go
 export GO111MODULE="on"

@@ -19,4 +19,5 @@ GlobalPkgList=(
 
 for pkg in ${GlobalPkgList[*]}; do
      echo "npm install -g $pkg"
+     npm install -g $pkg
 done
