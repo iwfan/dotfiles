@@ -41,11 +41,13 @@ require('telescope').load_extension('fzy_native')
 -- require('telescope').load_extension('project')
 
 map_cmd("n|<leader>ff", "lua require('telescope.builtin').find_files()")
+map_cmd("n|<leader>fe", "lua require('telescope.builtin').file_browser()")
 map_cmd("n|<leader>fg", "lua require('telescope.builtin').git_files()")
 map_cmd("n|<leader>fo", "lua require('telescope.builtin').oldfiles()")
 map_cmd("n|<leader>fb", "lua require('telescope.builtin').buffers()")
 map_cmd("n|<leader>fw", "lua require('telescope.builtin').live_grep()")
 map_cmd("n|<leader>fh", "lua require('telescope.builtin').help_tags()")
+map_cmd("n|<leader>fl", "lua require('telescope.builtin').loclist()")
 map_cmd("n|<leader>fr", "lua require('telescope.builtin').registers()")
 map_cmd("n|<leader>fc",
         "lua require('telescope.builtin').current_buffer_fuzzy_find()")
