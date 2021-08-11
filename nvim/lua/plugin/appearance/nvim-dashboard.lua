@@ -24,9 +24,9 @@ vim.g.dashboard_custom_section = {
 }
 
 function _G.save_session_and_exit()
-    vim.cmd("wa")
+    vim.cmd("wa!")
     vim.cmd("SessionSave")
-    vim.cmd("xa")
+    vim.cmd("xa!")
 end
 
 vim.cmd('command! -nargs=0 Q call v:lua.save_session_and_exit()')

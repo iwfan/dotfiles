@@ -35,8 +35,7 @@ insert {
             wants = "friendly-snippets",
             event = "InsertCharPre",
             config = function()
-                vim.g.vsnip_snippet_dir =
-                    os.getenv('HOME') .. '/.config/nvim/snippets'
+                vim.g.vsnip_snippet_dir = config_path .. '/snippets'
             end
         }
     }
@@ -91,6 +90,16 @@ insert {
         vim.g.user_emmet_install_global = 0
         vim.g.user_emmet_install_command = 0
         vim.g.user_emmet_mode = 'i'
+    end
+}
+
+insert {
+    "mattn/vim-sonictemplate",
+    ft = {
+        'javascript', 'javascriptreact', 'vue', 'typescript', 'typescriptreact'
+    },
+    config = function()
+        vim.g.sonictemplate_vim_template_dir = config_path .. '/template'
     end
 }
 
