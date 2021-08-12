@@ -11,7 +11,11 @@ require('formatter').setup({
     filetype = {
         html = {prettier},
         css = {prettier},
+        less = {prettier},
+        scss = {prettier},
         json = {prettier},
+        xml = {prettier},
+        yaml = {prettier},
         javascript = {prettier},
         typescript = {prettier},
         javascriptreact = {prettier},
