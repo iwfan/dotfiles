@@ -6,29 +6,38 @@ local prettier = function()
     }
 end
 
+local filetype_format_conf = {
+    html = { prettier },
+    css = { prettier },
+    less = { prettier },
+    scss = { prettier },
+    json = { prettier },
+    xml = { prettier },
+    yaml = { prettier },
+    toml = { prettier },
+    markdown = { prettier },
+    graphql = { prettier },
+    javascript = { prettier },
+    typescript = { prettier },
+    javascriptreact = { prettier },
+    typescriptreact = { prettier },
+    lua = {
+        function()
+            return { exe = "stylua", args = { "-" }, stdin = true }
+        end,
+    },
+}
+
 require("formatter").setup({
     logging = false,
-    filetype = {
-        html = { prettier },
-        css = { prettier },
-        less = { prettier },
-        scss = { prettier },
-        json = { prettier },
-        xml = { prettier },
-        yaml = { prettier },
-        toml = { prettier },
-        javascript = { prettier },
-        typescript = { prettier },
-        javascriptreact = { prettier },
-        typescriptreact = { prettier },
-        lua = {
-            -- luafmt
-            -- function() return {exe = "lua-format", stdin = true} end
-            function()
-                return { exe = "stylua", args = { "-" }, stdin = true }
-            end,
-        },
-    },
+    filetype = filetype_format_conf,
 })
 
-augroup("FormatAutogroup", { { "BufWritePost", "*", "FormatWrite" } })
+local extname_list = vim.tbl_keys(filetype_format_conf)
+local filetype_list = vim.tbl_map(function(v)
+    return "*." .. v
+end, extname_list)
+
+local filetypes = table.concat(filetype_list, ",")
+
+augroup("FormatAutogroup", { { "BufWritePost", filetypes, "FormatWrite" } })
