@@ -40,6 +40,8 @@ alias td="task del"
 alias gundo='git reset HEAD~'
 alias nlsg="npm list -g --depth=0"
 
+alias ip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
+
 # iTerm2
 alias imgcat=${HOME}/.iterm2/imgcat
 alias imgls=${HOME}/.iterm2/imgls
