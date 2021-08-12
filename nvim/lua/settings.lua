@@ -1,6 +1,6 @@
 -- Environment
-vim.g.python_host_prog = '/usr/bin/python'
-vim.g.python3_host_prog = '/usr/local/bin/python3'
+vim.g.python_host_prog = "/usr/bin/python"
+vim.g.python3_host_prog = "/usr/local/bin/python3"
 
 -- Disable built-in plugins
 vim.g.loaded_gzip = 1
@@ -37,14 +37,13 @@ vim.opt.mouse = "ni"
 vim.opt.magic = true
 vim.opt.errorbells = true
 vim.opt.visualbell = true
-vim.opt.shortmess:append{c = true, S = true}
+vim.opt.shortmess:append({ c = true, S = true })
 
 -- behavior opt
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
 vim.opt.relativenumber = true
 vim.opt.number = true
-vim.opt.cursorline = true
 vim.opt.showmode = false
 vim.opt.showcmd = true
 vim.opt.showtabline = 2
@@ -87,28 +86,40 @@ vim.opt.listchars = {
     trail = "·",
     precedes = "←",
     extends = "→",
-    nbsp = "␣"
+    nbsp = "␣",
 }
-vim.opt.fillchars = {fold = "", eob = " "}
+vim.opt.fillchars = { fold = "", eob = " " }
 vim.opt.pumblend = 10
 vim.opt.winblend = 10
 vim.opt.pumheight = 20
 vim.opt.hidden = true
-vim.opt.switchbuf = {"useopen", "vsplit"}
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+vim.opt.switchbuf = { "useopen", "vsplit" }
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.wildignorecase = true
 vim.opt.wildignore = {
-    ".git", ".hg", ".svn", "*.pyc", "*.o", "*.out", "*.jpg", "*.jpeg", "*.png",
-    "*.gif", "*.zip", "**/tmp/**", "*.DS_Store", "**/node_modules/**"
+    ".git",
+    ".hg",
+    ".svn",
+    "*.pyc",
+    "*.o",
+    "*.out",
+    "*.jpg",
+    "*.jpeg",
+    "*.png",
+    "*.gif",
+    "*.zip",
+    "**/tmp/**",
+    "*.DS_Store",
+    "**/node_modules/**",
 }
 
 -- autocmd
-vim.cmd 'au BufEnter * set formatoptions-=cro formatoptions+=j1'
-vim.cmd 'au TextYankPost * silent! lua vim.highlight.on_yank({timeout=500})'
-vim.cmd [[autocmd BufReadPost * lua Goto_last_pos()]]
+vim.cmd("au BufEnter * set formatoptions-=cro formatoptions+=j1")
+vim.cmd("au TextYankPost * silent! lua vim.highlight.on_yank({timeout=500})")
+vim.cmd([[autocmd BufReadPost * lua Goto_last_pos()]])
 function Goto_last_pos()
     local last_pos = vim.fn.line("'\"")
     if last_pos > 0 and last_pos <= vim.fn.line("$") then
-        vim.api.nvim_win_set_cursor(0, {last_pos, 0})
+        vim.api.nvim_win_set_cursor(0, { last_pos, 0 })
     end
 end
