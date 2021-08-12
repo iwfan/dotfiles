@@ -93,16 +93,4 @@ insert {
     end
 }
 
-insert {
-    "mattn/vim-sonictemplate",
-    ft = {
-        'javascript', 'javascriptreact', 'vue', 'typescript', 'typescriptreact'
-    },
-    config = function()
-        vim.g.sonictemplate_vim_template_dir = config_path .. '/template'
-    end
-}
-
-insert {"sbdchd/neoformat", cmd = "Neoformat"}
-
 return languages

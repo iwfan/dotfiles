@@ -4,15 +4,15 @@ local enhance_attach = function(client, bufnr)
     end
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    if client.resolved_capabilities.document_formatting then
-        vim.api.nvim_exec([[
-      augroup lsp_document_formatter
-        autocmd! * <buffer>
-        autocmd BufWritePre <buffer> Neoformat
-      augroup END
-      ]], false)
-        -- map_cmd("n|<space>fm", "lua vim.lsp.buf.formatting()")
-    end
+    -- if client.resolved_capabilities.document_formatting then
+    --   vim.api.nvim_exec([[
+    -- augroup lsp_document_formatter
+    --   autocmd! * <buffer>
+    --   autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil,1000)
+    -- augroup END
+    -- ]], false)
+    -- map_cmd("n|<space>fm", "lua vim.lsp.buf.formatting()")
+    -- end
 
     -- if client.resolved_capabilities.document_range_formatting then
     --   map_cmd("v|<space>fm", "lua vim.lsp.buf.range_formatting()")
@@ -21,9 +21,9 @@ local enhance_attach = function(client, bufnr)
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
         vim.api.nvim_exec([[
-        hi LspReferenceRead cterm=bold ctermbg=red guibg=#353644
-        hi LspReferenceText cterm=bold ctermbg=red guibg=#353644
-        hi LspReferenceWrite cterm=bold ctermbg=red guibg=#353644
+        hi LspReferenceRead cterm=bold ctermbg=red guibg=#32302f
+        hi LspReferenceText cterm=bold ctermbg=red guibg=#32302f
+        hi LspReferenceWrite cterm=bold ctermbg=red guibg=#32302f
         augroup lsp_document_highlight
           autocmd! * <buffer>
           autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
@@ -56,9 +56,6 @@ map_cmd("n|<space>K", "Lspsaga signature_help")
 -- map_cmd("n|gr", "lua vim.lsp.buf.references()")
 -- map_cmd("n|<space>fm", "lua vim.lsp.buf.formatting_sync(nil,1000)")
 -- map_cmd("v|<space>fm", "lua vim.lsp.buf.range_formatting()")
-
-function _G.format_document() vim.lsp.buf.formatting_sync(nil, 1000) end
-vim.cmd('command! -nargs=0 Format call v:lua.format_document()')
 
 local lspconf = require("lspconfig")
 

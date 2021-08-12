@@ -145,4 +145,9 @@ insert {
     end
 }
 
+insert {
+    "mhartington/formatter.nvim",
+    config = function() require 'plugin.editor.formatter' end
+}
+
 return editor

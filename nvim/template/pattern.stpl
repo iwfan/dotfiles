@@ -1,5 +1,0 @@
-\(\S\+\)\.var$
-	var {{$1}} = {{_cursor_}};
-
-\(\S\+\)\.log$
-	console.log({{$1}}{{_cursor_}})

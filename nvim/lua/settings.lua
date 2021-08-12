@@ -73,6 +73,7 @@ vim.opt.smartcase = true
 vim.opt.infercase = true
 vim.opt.incsearch = true
 vim.opt.hlsearch = true
+vim.opt.grepprg = "rg --vimgrep --no-heading --hidden"
 
 -- line break
 vim.opt.colorcolumn = "+1"
