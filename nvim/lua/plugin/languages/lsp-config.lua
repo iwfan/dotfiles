@@ -2,7 +2,7 @@ local enhance_attach = function(client, bufnr)
     local function buf_set_option(...)
         vim.api.nvim_buf_set_option(bufnr, ...)
     end
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- if client.resolved_capabilities.document_formatting then
     --   vim.api.nvim_exec([[
@@ -20,7 +20,8 @@ local enhance_attach = function(client, bufnr)
 
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
-        vim.api.nvim_exec([[
+        vim.api.nvim_exec(
+            [[
         hi LspReferenceRead cterm=bold ctermbg=red guibg=#32302f
         hi LspReferenceText cterm=bold ctermbg=red guibg=#32302f
         hi LspReferenceWrite cterm=bold ctermbg=red guibg=#32302f
@@ -29,7 +30,9 @@ local enhance_attach = function(client, bufnr)
           autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
           autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
         augroup END
-      ]], false)
+      ]],
+            false
+        )
     end
 end
 
@@ -44,11 +47,9 @@ map_cmd("n|gD", "lua vim.lsp.buf.declaration()")
 map_cmd("n|gi", "lua vim.lsp.buf.implementation()")
 map_cmd("n|<space>rn", "Lspsaga rename")
 map_cmd("n|<space>u", "Lspsaga lsp_finder")
-map_cmd("n|<C-f>", "lua require('lspsaga.action').smart_scroll_with_saga(1)",
-        {nowait = true})
-map_cmd("n|<C-b>", "lua require('lspsaga.action').smart_scroll_with_saga(-1)",
-        {nowait = true})
-map_cmd('n|<space>q', 'TroubleToggle')
+-- map_cmd("n|<C-f>", "lua require('lspsaga.action').smart_scroll_with_saga(1)", { nowait = true })
+-- map_cmd("n|<C-b>", "lua require('lspsaga.action').smart_scroll_with_saga(-1)", { nowait = true })
+map_cmd("n|<space>q", "TroubleToggle")
 map_cmd("n|<F5>", "vsplit" .. vim.lsp.get_log_path())
 map_cmd("n|<space>K", "Lspsaga signature_help")
 -- map_cmd("n|<Leader>cw", "lua vim.lsp.buf.workspace_symbol()")
@@ -63,32 +64,45 @@ local lspconf = require("lspconfig")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {'documentation', 'detail', 'additionalTextEdits'}
+    properties = { "documentation", "detail", "additionalTextEdits" },
 }
 
-local sumneko_root_path = config_path .. '/lsp-install/lua-language-server'
+local sumneko_root_path = config_path .. "/lsp-install/lua-language-server"
 local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
 
 local servers = {
     html = {
         filetypes = {
-            "django-html", "edge", "ejs", "erb", "gohtml", "haml", "handlebars",
-            "hbs", "html", "html-eex", "jade", "markdown", "mdx", "mustache",
-            "vue", "svelte"
+            "django-html",
+            "edge",
+            "ejs",
+            "erb",
+            "gohtml",
+            "haml",
+            "handlebars",
+            "hbs",
+            "html",
+            "html-eex",
+            "jade",
+            "markdown",
+            "mdx",
+            "mustache",
+            "vue",
+            "svelte",
         },
         on_attach = function(client, bufnr)
             client.resolved_capabilities.document_formatting = false
             enhance_attach(client, bufnr)
         end,
-        capabilities = capabilities
+        capabilities = capabilities,
     },
     cssls = {
-        filetypes = {"css", "less", "scss", "styls"},
+        filetypes = { "css", "less", "scss", "styls" },
         on_attach = function(client, bufnr)
             client.resolved_capabilities.document_formatting = false
             enhance_attach(client, bufnr)
         end,
-        capabilities = capabilities
+        capabilities = capabilities,
     },
     tsserver = {
         on_attach = function(client, bufnr)
@@ -99,7 +113,7 @@ local servers = {
 
             local ts_utils = require("nvim-lsp-ts-utils")
             -- defaults
-            ts_utils.setup {
+            ts_utils.setup({
                 debug = false,
                 disable_commands = false,
                 enable_import_on_completion = false,
@@ -108,7 +122,11 @@ local servers = {
                 -- eslint
                 eslint_bin = "eslint_d",
                 eslint_args = {
-                    "-f", "json", "--stdin", "--stdin-filename", "$FILENAME"
+                    "-f",
+                    "json",
+                    "--stdin",
+                    "--stdin-filename",
+                    "$FILENAME",
                 },
                 eslint_enable_disable_comments = true,
 
@@ -120,7 +138,7 @@ local servers = {
                 -- formatting
                 enable_formatting = false,
                 formatter = "prettier",
-                formatter_args = {"--stdin-filepath", "$FILENAME"},
+                formatter_args = { "--stdin-filepath", "$FILENAME" },
                 format_on_save = false,
                 no_save_after_format = false,
 
@@ -131,49 +149,66 @@ local servers = {
                 -- update imports on file move
                 update_imports_on_move = false,
                 require_confirmation_on_move = false,
-                watch_dir = "/src"
-            }
+                watch_dir = "/src",
+            })
 
             -- required to enable ESLint code actions and formatting
             ts_utils.setup_client(client)
 
             -- no default maps, so you may want to define some here
-            vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>",
-                                        {silent = true})
-            vim.api.nvim_buf_set_keymap(bufnr, "n", "qq",
-                                        ":TSLspFixCurrent<CR>", {silent = true})
-            vim.api.nvim_buf_set_keymap(bufnr, "n", "gr",
-                                        ":TSLspRenameFile<CR>", {silent = true})
-            vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>",
-                                        {silent = true})
+            vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", { silent = true })
+            vim.api.nvim_buf_set_keymap(bufnr, "n", "qq", ":TSLspFixCurrent<CR>", { silent = true })
+            vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", { silent = true })
+            vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", { silent = true })
 
             enhance_attach(client, bufnr)
-        end
+        end,
     },
-    tailwindcss = {on_attach = enhance_attach},
-    jsonls = {on_attach = enhance_attach},
-    yamlls = {on_attach = enhance_attach},
-    vuels = {on_attach = enhance_attach},
-    bashls = {on_attach = enhance_attach},
-    dockerls = {on_attach = enhance_attach},
+    tailwindcss = { on_attach = enhance_attach },
+    jsonls = { on_attach = enhance_attach },
+    yamlls = { on_attach = enhance_attach },
+    vuels = { on_attach = enhance_attach },
+    bashls = { on_attach = enhance_attach },
+    dockerls = { on_attach = enhance_attach },
     diagnosticls = {
-        cmd = {"diagnostic-languageserver", "--stdio", "--log-level", "2"},
+        cmd = { "diagnostic-languageserver", "--stdio", "--log-level", "2" },
         filetypes = {
-            "html", "jade", "markdown", "mdx", "mustache", "vue", "svelte",
-            "css", "less", "scss", "styls", "javascript", "javascriptreact",
-            "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx",
-            "json", "yaml", "toml", "lua", "go"
+            "html",
+            "jade",
+            "markdown",
+            "mdx",
+            "mustache",
+            "vue",
+            "svelte",
+            "css",
+            "less",
+            "scss",
+            "styls",
+            "javascript",
+            "javascriptreact",
+            "javascript.jsx",
+            "typescript",
+            "typescriptreact",
+            "typescript.tsx",
+            "json",
+            "yaml",
+            "toml",
+            "lua",
+            "go",
         },
         init_options = {
             linters = {
                 eslint = {
                     sourceName = "eslint",
                     command = "eslint_d",
-                    rootPatterns = {".eslintrc.js", "package.json"},
+                    rootPatterns = { ".eslintrc.js", "package.json" },
                     debounce = 100,
                     args = {
-                        "--stdin", "--stdin-filename", "%filepath", "--format",
-                        "json"
+                        "--stdin",
+                        "--stdin-filename",
+                        "%filepath",
+                        "--format",
+                        "json",
                     },
                     parseJson = {
                         errorsRoot = "[0].messages",
@@ -182,72 +217,76 @@ local servers = {
                         endLine = "endLine",
                         endColumn = "endColumn",
                         message = "${message} [${ruleId}]",
-                        security = "severity"
+                        security = "severity",
                     },
-                    securities = {[2] = "error", [1] = "warning"}
+                    securities = { [2] = "error", [1] = "warning" },
                 },
                 golint = {
                     sourceName = "golangci-lint",
                     command = "golangci-lint",
-                    rootPatterns = {".git", "go.mod"},
+                    rootPatterns = { ".git", "go.mod" },
                     debounce = 100,
-                    args = {"run", "--out-format", "json", "%filepath"},
+                    args = { "run", "--out-format", "json", "%filepath" },
                     parseJson = {
                         errorsRoot = "Issues",
                         line = "Pos.Line",
                         column = "Pos.Column",
-                        message = "${Text} (${FromLinter})"
-                    }
-                }
+                        message = "${Text} (${FromLinter})",
+                    },
+                },
             },
             filetypes = {
-                javascript = {"eslint"},
-                javascriptreact = {"eslint"},
-                ["javascript.jsx"] = {"eslint"},
-                typescript = {"eslint"},
-                typescriptreact = {"eslint"},
-                ["typescript.tsx"] = {"eslint"},
-                go = {"golint"}
+                javascript = { "eslint" },
+                javascriptreact = { "eslint" },
+                ["javascript.jsx"] = { "eslint" },
+                typescript = { "eslint" },
+                typescriptreact = { "eslint" },
+                ["typescript.tsx"] = { "eslint" },
+                go = { "golint" },
             },
             formatters = {
                 prettier = {
                     command = "prettier",
-                    args = {"--stdin-filepath", "%filepath"}
+                    args = { "--stdin-filepath", "%filepath" },
                 },
                 luafmt = {
                     command = "luafmt",
-                    args = {"--indent-count", "2", "--stdin", "%filepath"}
+                    args = { "--indent-count", "2", "--stdin", "%filepath" },
                 },
                 gofmt = {
                     command = "gofmt",
-                    args = {"-r", "'(a) -> a'", "-l", "%filepath"}
-                }
+                    args = { "-r", "'(a) -> a'", "-l", "%filepath" },
+                },
             },
             formatFiletypes = {
-                javascript = {"prettier"},
-                javascriptreact = {"prettier"},
-                ["javascript.jsx"] = {"prettier"},
-                typescript = {"prettier"},
-                typescriptreact = {"prettier"},
-                ["typescript.tsx"] = {"prettier"},
-                json = {"prettier"},
-                html = {"prettier"},
-                css = {"prettier"},
-                yaml = {"prettier"},
-                toml = {"prettier"},
-                lua = {"luafmt"},
-                go = {"gofmt"}
-            }
+                javascript = { "prettier" },
+                javascriptreact = { "prettier" },
+                ["javascript.jsx"] = { "prettier" },
+                typescript = { "prettier" },
+                typescriptreact = { "prettier" },
+                ["typescript.tsx"] = { "prettier" },
+                json = { "prettier" },
+                html = { "prettier" },
+                css = { "prettier" },
+                yaml = { "prettier" },
+                toml = { "prettier" },
+                lua = { "luafmt" },
+                go = { "gofmt" },
+            },
         },
-        root_dir = function() return vim.loop.cwd() end,
+        root_dir = function()
+            return vim.loop.cwd()
+        end,
         on_attach = function(client, bufnr)
             client.resolved_capabilities.document_formatting = true
             enhance_attach(client, bufnr)
-        end
+        end,
     },
     sumneko_lua = {
-        cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-        root_dir = function() return vim.loop.cwd() end,
+        cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+        root_dir = function()
+            return vim.loop.cwd()
+        end,
         on_attach = function(client, bufnr)
             client.resolved_capabilities.document_formatting = false
             enhance_attach(client, bufnr)
@@ -257,36 +296,48 @@ local servers = {
             Lua = {
                 runtime = {
                     version = "LuaJIT",
-                    path = vim.split(package.path, ";")
+                    path = vim.split(package.path, ";"),
                 },
                 diagnostics = {
                     enable = true,
                     globals = {
-                        "vim", "hs", "spoon", "packer_plugins", "use",
-                        "describe", "it", "assert", "before_each", "after_each"
-                    }
+                        "vim",
+                        "hs",
+                        "spoon",
+                        "packer_plugins",
+                        "use",
+                        "describe",
+                        "it",
+                        "assert",
+                        "before_each",
+                        "after_each",
+                    },
                 },
                 workspace = {
                     library = {
                         [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                        [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-                    }
+                        [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+                    },
                 },
-                telemetry = {enable = false}
-            }
-        }
+                telemetry = { enable = false },
+            },
+        },
     },
-    solargraph = {on_attach = enhance_attach},
-    sorbet = {on_attach = enhance_attach},
+    solargraph = { on_attach = enhance_attach },
+    sorbet = { on_attach = enhance_attach },
     gopls = {
-        cmd = {"gopls", "--remote=auto"},
-        filetypes = {"go", "gomod"},
-        root_dir = function() return vim.loop.cwd() end,
+        cmd = { "gopls", "--remote=auto" },
+        filetypes = { "go", "gomod" },
+        root_dir = function()
+            return vim.loop.cwd()
+        end,
         on_attach = enhance_attach,
         capabilities = capabilities,
-        init_options = {usePlaceholders = true, completeUnimported = true}
+        init_options = { usePlaceholders = true, completeUnimported = true },
     },
-    rust_analyzer = {on_attach = enhance_attach, capabilities = capabilities}
+    rust_analyzer = { on_attach = enhance_attach, capabilities = capabilities },
 }
 
-for lang, conf in pairs(servers) do lspconf[lang].setup(conf) end
+for lang, conf in pairs(servers) do
+    lspconf[lang].setup(conf)
+end
