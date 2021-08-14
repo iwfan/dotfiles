@@ -4,39 +4,39 @@ local enhance_attach = function(client, bufnr)
     end
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    if client.resolved_capabilities.document_formatting then
-        vim.api.nvim_exec(
-            [[
-    augroup lsp_document_formatter
-      autocmd! * <buffer>
-      autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil,1000)
-    augroup END
-    ]],
-            false
-        )
-        -- map_cmd("n|<space>fm", "lua vim.lsp.buf.formatting()")
-    end
+    -- if client.resolved_capabilities.document_formatting then
+    --     vim.api.nvim_exec(
+    --         [[
+    -- augroup lsp_document_formatter
+    --   autocmd! * <buffer>
+    --   autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil,1000)
+    -- augroup END
+    -- ]],
+    --         false
+    --     )
+    --     -- map_cmd("n|<space>fm", "lua vim.lsp.buf.formatting()")
+    -- end
 
     -- if client.resolved_capabilities.document_range_formatting then
     --   map_cmd("v|<space>fm", "lua vim.lsp.buf.range_formatting()")
     -- end
 
     -- Set autocommands conditional on server_capabilities
-    if client.resolved_capabilities.document_highlight then
-        vim.api.nvim_exec(
-            [[
-        hi LspReferenceRead cterm=bold ctermbg=red guibg=#32302f
-        hi LspReferenceText cterm=bold ctermbg=red guibg=#32302f
-        hi LspReferenceWrite cterm=bold ctermbg=red guibg=#32302f
-        augroup lsp_document_highlight
-          autocmd! * <buffer>
-          autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-          autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-      ]],
-            false
-        )
-    end
+    -- if client.resolved_capabilities.document_highlight then
+    --     vim.api.nvim_exec(
+    --         [[
+    --     hi LspReferenceRead cterm=bold ctermbg=red guibg=#32302f
+    --     hi LspReferenceText cterm=bold ctermbg=red guibg=#32302f
+    --     hi LspReferenceWrite cterm=bold ctermbg=red guibg=#32302f
+    --     augroup lsp_document_highlight
+    --       autocmd! * <buffer>
+    --       autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+    --       autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    --     augroup END
+    --   ]],
+    --         false
+    --     )
+    -- end
 end
 
 map_cmd("n|]d", "Lspsaga diagnostic_jump_next")
