@@ -29,10 +29,12 @@ end
 
 vim.cmd("command! -nargs=0 Q call v:lua.save_session_and_exit()")
 
-autocmd("VimEnter", "*", "SessionLoad")
+-- autocmd("VimEnter", "*", "SessionLoad")
 autocmd("VimLeave", "*", "SessionSave")
 
 vim.g.dashboard_custom_header = {
+    "                    ",
+    "                    ",
     "       ▄▄        ▄▄ ",
     "     ▄████       ███▄                                            ▄▄ ",
     "   ▄ ▀█████▄     █████                                           ▀▀ ",
