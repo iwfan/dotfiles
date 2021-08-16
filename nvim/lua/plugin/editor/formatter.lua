@@ -12,6 +12,7 @@ local filetype_format_conf = {
     less = { prettier },
     scss = { prettier },
     json = { prettier },
+    jsonc = { prettier },
     xml = { prettier },
     yaml = { prettier },
     toml = { prettier },
