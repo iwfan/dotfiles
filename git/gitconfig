@@ -6,7 +6,7 @@
     excludesfile = ~/dotfiles/git/gitignore
     autocrlf = input
     pager = delta
-	ignorecase = false
+    ignorecase = false
 [init]
     defaultBranch = main
 [color]

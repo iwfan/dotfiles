@@ -78,8 +78,9 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
-inoremap <C-h> <left>
-inoremap <C-l> <right>
+inoremap <C-h> <backspace>
+inoremap <C-f> <right>
+inoremap <C-b> <left>
 inoremap <C-j> <down>
 inoremap <C-k> <up>
 inoremap <C-a> <home>
