@@ -37,6 +37,12 @@ insert({
 })
 
 insert({
+    "ms-jpq/chadtree",
+    branch = "chad",
+    run = "python3 -m chadtree deps",
+})
+
+insert({
     "Akin909/nvim-bufferline.lua",
     requires = "famiu/bufdelete.nvim",
     config = function()

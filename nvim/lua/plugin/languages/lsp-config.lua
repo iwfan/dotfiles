@@ -62,6 +62,7 @@ map_cmd("n|<space>K", "Lspsaga signature_help")
 -- map_cmd("v|<space>fm", "lua vim.lsp.buf.range_formatting()")
 
 local lspconf = require("lspconfig")
+local coq = require("coq")
 
 -- Enable (broadcasting) snippet capability for completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -342,5 +343,5 @@ local servers = {
 }
 
 for lang, conf in pairs(servers) do
-    lspconf[lang].setup(conf)
+    lspconf[lang].setup(coq.lsp_ensure_capabilities(conf))
 end
