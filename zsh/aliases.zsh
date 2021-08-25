@@ -15,6 +15,7 @@ alias ls="exa"
 alias la="l"
 alias rm="trash -v"
 
+alias p="pnpm"
 alias y="yarn"
 alias yb="yarn run build"
 alias ys="yarn run start"
