@@ -6,6 +6,9 @@ map("n|q", "")
 map("n|Q", "q")
 map("n|<C-q>", "")
 
+vim.cmd("command! -nargs=0 Q :q")
+vim.cmd("command! -nargs=0 W :w")
+
 map("n|H", "^")
 map("v|H", "^")
 map("n|L", "$")

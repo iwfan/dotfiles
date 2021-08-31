@@ -112,6 +112,7 @@ vim.opt.wildignore = {
     "*.DS_Store",
     "**/node_modules/**",
 }
+vim.opt.sessionoptions:append({ "options", "resize", "winpos", "terminal" })
 
 -- autocmd
 vim.cmd("au BufEnter * set formatoptions-=cro formatoptions+=j1")
