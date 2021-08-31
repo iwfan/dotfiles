@@ -2,7 +2,9 @@ local function reloadConfigCallback(files)
     for _, file in pairs(files) do
         if file:sub(-4) == ".lua" then
             hs.reload()
-            do return end
+            do
+                return
+            end
         end
     end
 end

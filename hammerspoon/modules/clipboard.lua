@@ -39,21 +39,21 @@ function saveHistoryIntoCache(history)
 end
 
 function reduceTempraryImage(imagePath)
-   local images = {}
+    local images = {}
 
-   for file in hs.fs.dir(imagePath) do
-       if file ~= '.' and file ~= '..' then
-           local creation = hs.fs.attributes(imagePath .. '/' .. file, 'creation')
-           table.insert(images, { file = file, creation = creation })
-       end
-   end
+    for file in hs.fs.dir(imagePath) do
+        if file ~= "." and file ~= ".." then
+            local creation = hs.fs.attributes(imagePath .. "/" .. file, "creation")
+            table.insert(images, { file = file, creation = creation })
+        end
+    end
 
-    table.sort(images, function (a, b)
+    table.sort(images, function(a, b)
         return a.creation > b.creation
     end)
 
     while #images >= maxSize do
-        os.remove(imagePath .. '/' .. images[#images].file)
+        os.remove(imagePath .. "/" .. images[#images].file)
         table.remove(images, #images)
     end
 end
@@ -63,7 +63,7 @@ function saveTemporaryImage(image)
     reduceTempraryImage(imagePath)
     local imageBase64 = hs.base64.encode(image:encodeAsURLString())
     local startIndex = string.len(imageBase64) / 2
-    local endIndex = startIndex + 5;
+    local endIndex = startIndex + 5
     local filename = imagePath .. "/" .. string.sub(imageBase64, startIndex, endIndex) .. ".png"
     image:saveToFile(filename)
     return filename
@@ -93,8 +93,8 @@ function addHistoryFromPasteboard()
             end
 
             item.text = string.gsub(text, "[\r\n]+", " ")
-            item.type = HISTORY_TYPE.TEXT;
-            item.content = text;
+            item.type = HISTORY_TYPE.TEXT
+            item.content = text
             break
         end
     end
@@ -126,8 +126,8 @@ function showClipboard()
         return choice
     end)
 
-    chooser:width(width);
-    chooser:choices(choices);
+    chooser:width(width)
+    chooser:choices(choices)
     chooser:show()
 end
 
