@@ -9,7 +9,6 @@ require("bufferline").setup({
         enforce_regular_tabs = false,
         view = "multiwindow",
         separator_style = "thin",
-        mappings = false,
         always_show_bufferline = false,
         show_buffer_close_icons = false,
         diagnostics = "nvim_lsp",
