@@ -15,6 +15,7 @@ GlobalPkgList=(
     "live-server"
     "firebase-tools"
     "@marp-team/marp-cli"
+    "zx"
 )
 
 for pkg in ${GlobalPkgList[*]}; do

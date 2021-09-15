@@ -157,3 +157,6 @@ noremap <leader><cr> :action ProblemsView.QuickFixes<CR>
 " make AceJump acts like easymotion in vim
 noremap <leader>; :action AceLineAction<CR>
 noremap <leader>' :action AceDeclarationAction<CR>
+
+noremap <C-Enter> :action EditorSelectWord<CR>
+noremap <C-S-Enter> :action EditorUnSelectWord<CR>

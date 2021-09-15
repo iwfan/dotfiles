@@ -1,18 +1,25 @@
 local lsp = require("feline.providers.lsp")
 local vi_mode_utils = require("feline.providers.vi_mode")
 
-local properties = {
-    force_inactive = {
-        filetypes = {},
-        buftypes = {},
-        bufnames = {},
+local force_inactive = {
+    filetypes = {
+        "NvimTree",
+        "dbui",
+        "packer",
+        "startify",
+        "fugitive",
+        "fugitiveblame",
+        "vista",
+        "vista_kind",
+        "dashboard",
     },
+    buftypes = { "terminal" },
+    bufnames = {},
 }
 
 local components = {
-    left = { active = {}, inactive = {} },
-    mid = { active = {}, inactive = {} },
-    right = { active = {}, inactive = {} },
+    active = { {}, {}, {} },
+    inactive = { {}, {} },
 }
 
 local colors = {
@@ -82,32 +89,12 @@ local checkwidth = function()
 end
 
 local function ins_left(component)
-    table.insert(components.left.active, component)
+    table.insert(components.active[1], component)
 end
 
 local function ins_right(component)
-    table.insert(components.right.active, component)
+    table.insert(components.active[3], component)
 end
-
-local function ins_mid(component)
-    table.insert(components.mid.active, component)
-end
-
-properties.force_inactive.filetypes = {
-    "NvimTree",
-    "dbui",
-    "packer",
-    "startify",
-    "fugitive",
-    "fugitiveblame",
-    "vista",
-    "vista_kind",
-    "dashboard",
-}
-
-properties.force_inactive.buftypes = {
-    "terminal",
-}
 
 -- vi-mode
 ins_left({
@@ -305,7 +292,7 @@ ins_right({
 -- INACTIVE
 
 -- fileType
-components.left.inactive[1] = {
+table.insert(components.inactive[1], {
     provider = "file_type",
     hl = {
         fg = "black",
@@ -329,9 +316,9 @@ components.left.inactive[1] = {
         },
         " ",
     },
-}
+})
 
-components.left.inactive[2] = {
+table.insert(components.inactive[1], {
     provider = function()
         return vim.fn.expand("%:F")
     end,
@@ -340,11 +327,11 @@ components.left.inactive[2] = {
         bg = "bg",
     },
     right_sep = "",
-}
+})
 
 require("feline").setup({
     colors = colors,
     vi_mode_colors = vi_mode_colors,
     components = components,
-    properties = properties,
+    force_inactive = force_inactive,
 })
