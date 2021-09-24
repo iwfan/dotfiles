@@ -62,10 +62,6 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " 删除一行,不会记录到剪切板中
 noremap <leader><backspace> "_dd
-" 跳转行首
-noremap H g^
-" 跳转行尾
-noremap L g_
 " 取消高亮
 noremap <leader><cr> :noh<CR>
 " 跳转对应括号
@@ -157,6 +153,15 @@ noremap <leader><cr> :action ProblemsView.QuickFixes<CR>
 " make AceJump acts like easymotion in vim
 noremap <leader>; :action AceLineAction<CR>
 noremap <leader>' :action AceDeclarationAction<CR>
+
+" 跳转行首
+nnoremap H :action EditorLineStart<CR>
+" vnoremap H :action EditorLineStartWithSelection<CR>
+vnoremap H g^
+" 跳转行尾
+nnoremap L :action EditorLineEnd<CR>
+" vnoremap L h:action EditorLineEndWithSelection<CR>
+vnoremap L g_
 
 noremap <C-Enter> :action EditorSelectWord<CR>
 noremap <C-S-Enter> :action EditorUnSelectWord<CR>
