@@ -26,6 +26,7 @@ brew install "task"
 brew install "timewarrior"
 brew install "tmux"
 brew install "trash"
+brew install "tree"
 brew install "wget"
 brew install "jesseduffield/lazygit/lazygit"
 

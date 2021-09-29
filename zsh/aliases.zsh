@@ -6,29 +6,22 @@ alias ~="cd ~"
 alias -- -="cd -"
 
 alias j="z"
-alias v="nvim +SessionLoad"
-# Long listing like "ls -la"
-alias l='exa -la --group-directories-first --time-style long-iso --color-scale'
-# Tree-like listing with 2-level depth
-alias lt="l -T -L 2"
-alias ls="exa"
-alias la="l"
+alias c='pbcopy'
+alias v="nvim"
+alias vi="nvim"
+alias ip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
+alias ls="exa --long --header --git --modified --color-scale"
+alias la="exa -la --long --header --git --modified --color-scale"
+alias lt="tree -L 2"
 alias rm="trash -v"
 
-alias p="pnpm"
+alias n="pnpm"
+alias nlsg="npm list -g --depth=0"
 alias y="yarn"
 alias yb="yarn run build"
 alias ys="yarn run start"
 alias yd="yarn run dev"
 alias yt="yarn run test"
-
-################[ todo: todo items (https://github.com/todotxt/todo.txt-cli) ]################
-alias tdo="todo.sh"
-alias tdl="todo.sh ls"
-alias tdla="todo.sh lsa"
-alias tda="todo.sh addm"
-alias tdc="todo.sh done"
-alias tdd="todo.sh del"
 
 ##############[ taskwarrior: taskwarrior task count (https://taskwarrior.org/) ]##############
 alias t="task"
@@ -37,13 +30,7 @@ alias tc="task done"
 alias ta="task add"
 alias td="task del"
 
-# Oops savers
-alias gundo='git reset HEAD~'
-alias nlsg="npm list -g --depth=0"
-
-alias ip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
-
-# iTerm2
+# i -TTerl2
 alias imgcat=${HOME}/.iterm2/imgcat
 alias imgls=${HOME}/.iterm2/imgls
 alias it2api=${HOME}/.iterm2/it2api
