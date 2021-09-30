@@ -41,32 +41,17 @@ insert({
     end,
 })
 
--- insert({
---     "hrsh7th/nvim-compe",
---     event = "InsertEnter",
---     config = function()
---         require("plugin.languages.lsp-compe")
---     end,
---     wants = "vim-vsnip",
---     requires = {
---         { "rafamadriz/friendly-snippets" },
---         { "hrsh7th/vim-vsnip-integ" },
---         {
---             "hrsh7th/vim-vsnip",
---             wants = "friendly-snippets",
---             event = "InsertCharPre",
---             config = function()
---                 vim.g.vsnip_snippet_dir = config_path .. "/snippets"
---             end,
---         },
---     },
--- })
-
 insert({
     "ms-jpq/coq_nvim",
     branch = "coq",
     config = function()
-        vim.g.coq_settings = { auto_start = true }
+        vim.g.coq_settings = {
+            auto_start = true,
+            keymap = {
+                bigger_preview = "<C-0>",
+                jump_to_mark = "<C-g>",
+            },
+        }
     end,
 })
 insert({ "ms-jpq/coq.artifacts", branch = "artifacts" }) -- 9000+ Snippets
