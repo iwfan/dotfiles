@@ -73,21 +73,6 @@ local vi_mode_text = {
     NONE = "<>",
 }
 
-local buffer_not_empty = function()
-    if vim.fn.empty(vim.fn.expand("%:t")) ~= 1 then
-        return true
-    end
-    return false
-end
-
-local checkwidth = function()
-    local squeeze_width = vim.fn.winwidth(0) / 2
-    if squeeze_width > 40 then
-        return true
-    end
-    return false
-end
-
 local function ins_left(component)
     table.insert(components.active[1], component)
 end
@@ -121,7 +106,16 @@ ins_left({
         val.style = "bold"
         return val
     end,
-    right_sep = "",
+    right_sep = " ",
+})
+
+ins_left({
+    provider = "file_info",
+    hl = {
+        fg = "white",
+        bg = "bg",
+    },
+    right_sep = " ",
 })
 
 -- diagnosticErrors
@@ -319,8 +313,9 @@ table.insert(components.inactive[1], {
 })
 
 table.insert(components.inactive[1], {
-    provider = function()
-        return vim.fn.expand("%:F")
+    provider = "file_info",
+    enabled = function(winid)
+        return vim.api.nvim_win_get_width(winid) > 80
     end,
     hl = {
         fg = "white",

@@ -6,8 +6,15 @@ map("n|q", "")
 map("n|Q", "q")
 map("n|<C-q>", "")
 
-vim.cmd("command! -nargs=0 Q :q")
-vim.cmd("command! -nargs=0 W :w")
+vim.cmd("command! -bang -nargs=* -complete=file E e<bang> <args>")
+vim.cmd("command! -bang -nargs=* -complete=file W w<bang> <args>")
+vim.cmd("command! -bang -nargs=* -complete=file Wq wq<bang> <args>")
+vim.cmd("command! -bang -nargs=* -complete=file WQ wq<bang> <args>")
+vim.cmd("command! -bang Wa wa<bang>")
+vim.cmd("command! -bang WA wa<bang>")
+vim.cmd("command! -bang Q q<bang>")
+vim.cmd("command! -bang QA qa<bang>")
+vim.cmd("command! -bang Qa qa<bang>")
 
 map("n|H", "^")
 map("v|H", "^")
@@ -44,9 +51,7 @@ map(
 )
 
 map([[n|\s]], ":%s//g<left><left>", { silent = false })
-map("n|<leader>a", "<Cmd>%y+<CR>")
 map("n|<leader><BS>", '"_dd')
-map_cmd("n|qh", "nohlsearch")
 
 map("n|]w", "g*")
 map("n|[w", "g#")

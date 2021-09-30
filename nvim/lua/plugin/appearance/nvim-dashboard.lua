@@ -3,7 +3,7 @@ vim.g.dashboard_default_executive = "telescope"
 vim.g.dashboard_custom_section = {
     a = {
         description = { "  Reload Last Session            SPC r s" },
-        command = "SessionLoad",
+        command = "RestoreSession",
     },
     b = {
         description = { "  Recently Opened Files          SPC f o" },

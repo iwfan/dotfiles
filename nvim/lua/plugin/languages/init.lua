@@ -2,6 +2,17 @@ local languages = {}
 local insert = _G.insert(languages)
 
 insert({
+    "williamboman/nvim-lsp-installer",
+    cmd = {
+        "LspInstallInfo",
+        "LspInstall",
+        "LspUninstall",
+        "LspUninstallAll",
+        "LspPrintInstalled",
+    },
+})
+
+insert({
     "neovim/nvim-lspconfig",
     config = function()
         require("plugin.languages.lsp-config")
@@ -30,22 +41,26 @@ insert({
     end,
 })
 
--- insert {
+-- insert({
 --     "hrsh7th/nvim-compe",
 --     event = "InsertEnter",
---     config = function() require "plugin.languages.lsp-compe" end,
+--     config = function()
+--         require("plugin.languages.lsp-compe")
+--     end,
 --     wants = "vim-vsnip",
 --     requires = {
---         {"rafamadriz/friendly-snippets"}, {"hrsh7th/vim-vsnip-integ"}, {
+--         { "rafamadriz/friendly-snippets" },
+--         { "hrsh7th/vim-vsnip-integ" },
+--         {
 --             "hrsh7th/vim-vsnip",
 --             wants = "friendly-snippets",
 --             event = "InsertCharPre",
 --             config = function()
---                 vim.g.vsnip_snippet_dir = config_path .. '/snippets'
---             end
---         }
---     }
--- }
+--                 vim.g.vsnip_snippet_dir = config_path .. "/snippets"
+--             end,
+--         },
+--     },
+-- })
 
 insert({
     "ms-jpq/coq_nvim",
