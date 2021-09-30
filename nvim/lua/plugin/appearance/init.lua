@@ -28,18 +28,31 @@ insert({
     end,
 })
 
-insert({
-    "kyazdani42/nvim-tree.lua",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-        require("plugin.appearance.nvim-tree")
-    end,
-})
+-- insert({
+--     "kyazdani42/nvim-tree.lua",
+--     requires = "kyazdani42/nvim-web-devicons",
+--     config = function()
+--         require("plugin.appearance.nvim-tree")
+--     end,
+-- })
 
 insert({
     "ms-jpq/chadtree",
     branch = "chad",
     run = "python3 -m chadtree deps",
+    config = function()
+        local chadtree_settings = {
+            keymap = {
+                primary = { "<enter>", "l" },
+                collapse = { "h" },
+            },
+            theme = {
+                text_colour_set = "solarized_universal",
+            },
+        }
+        vim.api.nvim_set_var("chadtree_settings", chadtree_settings)
+        map_cmd("n|<C-e>", "CHADopen")
+    end,
 })
 
 insert({

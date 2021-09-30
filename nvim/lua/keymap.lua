@@ -25,6 +25,7 @@ map("n|<leader>d", '"_d')
 map("v|<leader>d", '"_d')
 map("n|<leader>p", '"_dP')
 map("n|<leader>x", "0d$")
+map("n|<leader>l", [[:lua vim.fn.setqflist({})]])
 
 map("n|n", "'Nn'[v:searchforward]", { expr = true })
 map("n|N", "'nN'[v:searchforward]", { expr = true })
