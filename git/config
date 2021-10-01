@@ -3,7 +3,7 @@
     email = i.wangfancn@gmail.com
 [core]
     editor = nvim
-    excludesfile = ~/dotfiles/git/gitignore
+    excludesfile = ~/dotfiles/git/ignore
     autocrlf = input
     pager = delta
     ignorecase = false

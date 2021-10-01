@@ -14,28 +14,26 @@ info () {
     printf "${blue}$1${normal}\n"
 }
 
-# Kitty Setup
-# ln -Fhnvs ~/dotfiles/kitty ~/.config/kitty
-
 # Zsh Setup
-ln -Fhnvs ~/dotfiles/zsh/.zshenv ~/.zshenv
-ln -Fhnvs ~/dotfiles/zsh/.zprofile ~/.zprofile
-ln -Fhnvs ~/dotfiles/zsh/.zshrc ~/.zshrc
+ln -Fhnvs ~/dotfiles/zsh/.zshenv ~/.config/zsh/.zshenv
+ln -Fhnvs ~/dotfiles/zsh/.zprofile ~/.config/zsh/.zprofile
+ln -Fhnvs ~/dotfiles/zsh/.zshrc ~/.config/zsh/.zshrc
 
 # Tmux
-ln -Fhnvs ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
-ln -Fhnvs ~/dotfiles/tmux/tmux.theme.conf ~/.tmux.theme.conf
+ln -Fhnvs ~/dotfiles/tmux/tmux.conf ~/.config/zsh/.tmux.conf
+ln -Fhnvs ~/dotfiles/tmux/tmux.theme.conf ~/.config/zsh/.tmux.theme.conf
 
 # Neovim
 ln -Fhnvs ~/dotfiles/nvim ~/.config/nvim
 # ideavimrc
-ln -Fhnvs ~/dotfiles/_ideavimrc ~/.ideavimrc
+ln -Fhnvs ~/dotfiles/ideavim ~/.config/ideavim
 # Hammerspoon
-ln -Fhnvs ~/dotfiles/hammerspoon ~/.hammerspoon
+defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
+ln -Fhnvs ~/dotfiles/hammerspoon ~/.config/hammerspoon
 # karabiner
 ln -Fhnvs ~/dotfiles/karabiner ~/.config/karabiner
 # git config
-ln -Fhnvs ~/dotfiles/git/gitconfig ~/.gitconfig
+ln -Fhnvs ~/dotfiles/git ~/.config/git
 ln -Fhnvs ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/lazygit/config.yml
 
 success "link finished."

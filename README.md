@@ -19,6 +19,10 @@
   - bg: #282828
 - Snazzy
 
+# Zsh
+
+https://stackoverflow.com/a/21163441/8575574
+
 # references vim configuration
 
 - https://github.com/shaunsingh/vimrc-dotfiles

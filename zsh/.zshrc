@@ -47,9 +47,6 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
 zinit ice wait lucid
-zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
-
-zinit ice wait lucid
 zinit snippet OMZ::plugins/extract/extract.plugin.zsh
 
 zinit ice wait lucid
