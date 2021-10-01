@@ -41,4 +41,4 @@ end, extname_list)
 
 local filetypes = table.concat(filetype_list, ",")
 
-augroup("FormatAutogroup", { { "BufWritePost", filetypes, "FormatWrite" } })
+augroup("FormatAutogroup", { { "BufWritePre", filetypes, "FormatWrite" } })

@@ -86,7 +86,12 @@ zinit light hlissner/zsh-autopair
 zinit ice depth=1 atload"!source ~/dotfiles/zsh/p10k.pure.zsh" lucid nocd
 zinit light romkatv/powerlevel10k
 
+#### FIG ENV VARIABLES ####
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
+
 source ~/dotfiles/zsh/aliases.zsh
 source ~/dotfiles/zsh/functions.zsh
+source ~/dotfiles/zsh/vi.zsh
 source ~/dotfiles/zsh/mappings.zsh
 test -e /Users/f/.iterm2_shell_integration.zsh && source /Users/f/.iterm2_shell_integration.zsh || true

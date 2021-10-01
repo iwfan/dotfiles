@@ -116,7 +116,7 @@ ins_left({
         fg = "white",
         bg = "bg",
     },
-    right_sep = " ",
+    right_sep = "",
 })
 
 -- diagnosticErrors
