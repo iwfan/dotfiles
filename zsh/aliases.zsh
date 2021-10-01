@@ -1,19 +1,26 @@
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ~="cd ~"
+alias ...="../.."
+alias ....="../../.."
+alias .....="../../../.."
 alias -- -="cd -"
+alias doc="$HOME/Documents"
+alias dow="$HOME/Downloads"
+alias dot="$HOME/dotfiles"
 
 alias j="z"
 alias c='pbcopy'
+alias d='dirs -v'
+
 alias v="nvim"
 alias vi="nvim"
-alias ip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
+
 alias ls="exa --long --header --git --modified --color-scale"
 alias la="exa -la --long --header --git --modified --color-scale"
 alias lt="tree -L 2"
+alias cp='cp -iv'
+alias mv='mv -iv'
 alias rm="trash -v"
+
+alias ip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
 
 alias n="pnpm"
 alias nlsg="npm list -g --depth=0"

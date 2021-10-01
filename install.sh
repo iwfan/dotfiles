@@ -20,8 +20,7 @@ ln -Fhnvs ~/dotfiles/zsh/.zprofile ~/.config/zsh/.zprofile
 ln -Fhnvs ~/dotfiles/zsh/.zshrc ~/.config/zsh/.zshrc
 
 # Tmux
-ln -Fhnvs ~/dotfiles/tmux/tmux.conf ~/.config/zsh/.tmux.conf
-ln -Fhnvs ~/dotfiles/tmux/tmux.theme.conf ~/.config/zsh/.tmux.theme.conf
+ln -Fhnvs ~/dotfiles/tmux ~/.config/tmux
 
 # Neovim
 ln -Fhnvs ~/dotfiles/nvim ~/.config/nvim
