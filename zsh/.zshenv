@@ -1,8 +1,6 @@
 # https://zsh.sourceforge.io/Intro/intro_3.html
 
 export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
-export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export DOTFILES="$HOME/dotfiles"
 export ZINIT_HOME="${ZDOTDIR:-$HOME}/.zinit"

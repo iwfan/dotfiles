@@ -95,13 +95,6 @@ insert({
 })
 
 insert({
-    "kevinhwang91/nvim-hlslens",
-    config = function()
-        require("plugin.editor.hlslens")
-    end,
-})
-
-insert({
     "windwp/nvim-spectre",
     config = function()
         require("plugin.editor.spectre")

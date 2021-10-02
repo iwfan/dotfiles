@@ -9,3 +9,5 @@ source ~/dotfiles/zsh/aliases.zsh
 source ~/dotfiles/zsh/functions.zsh
 source ~/dotfiles/zsh/mappings.zsh
 test -e /Users/f/.iterm2_shell_integration.zsh && source /Users/f/.iterm2_shell_integration.zsh || true
+
+enable_proxy
