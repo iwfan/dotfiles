@@ -5,10 +5,12 @@ export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
 export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export DOTFILES="$HOME/dotfiles"
+export ZINIT_HOME="${ZDOTDIR:-$HOME}/.zinit"
+export ZINIT_BIN_DIR_NAME="bin"
 
 # Locale
 export LANG=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 export TERM=screen-256color
 export GPG_TTY=tty

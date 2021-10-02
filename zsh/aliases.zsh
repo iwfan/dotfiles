@@ -21,6 +21,8 @@ alias mv='mv -iv'
 alias rm="trash -v"
 
 alias ip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
+# https://stackoverflow.com/a/15503178/1820217
+alias gitlog="git ls-files -z | xargs -0n1 git blame -w --show-email | perl -n -e '/^.*?\((.*?)\s+[\d]{4}/; print $1,"\n"' | sort -f | uniq -c | sort -n"
 
 alias n="pnpm"
 alias nlsg="npm list -g --depth=0"
