@@ -1,7 +1,12 @@
 local enhance_attach = function(client, bufnr)
+    local function buf_set_keymap(...)
+        vim.api.nvim_buf_set_keymap(bufnr, ...)
+    end
     local function buf_set_option(...)
         vim.api.nvim_buf_set_option(bufnr, ...)
     end
+
+    -- Enable completion triggered by <c-x><c-o>
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- if client.resolved_capabilities.document_formatting then
@@ -22,44 +27,48 @@ local enhance_attach = function(client, bufnr)
     -- end
 
     -- Set autocommands conditional on server_capabilities
-    -- if client.resolved_capabilities.document_highlight then
-    --     vim.api.nvim_exec(
-    --         [[
-    --     hi LspReferenceRead cterm=bold ctermbg=red guibg=#32302f
-    --     hi LspReferenceText cterm=bold ctermbg=red guibg=#32302f
-    --     hi LspReferenceWrite cterm=bold ctermbg=red guibg=#32302f
-    --     augroup lsp_document_highlight
-    --       autocmd! * <buffer>
-    --       autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-    --       autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-    --     augroup END
-    --   ]],
-    --         false
-    --     )
-    -- end
+    if client.resolved_capabilities.document_highlight then
+        vim.api.nvim_exec(
+            [[
+        hi LspReferenceRead cterm=bold ctermbg=red guibg=#32302f
+        hi LspReferenceText cterm=bold ctermbg=red guibg=#32302f
+        hi LspReferenceWrite cterm=bold ctermbg=red guibg=#32302f
+        augroup lsp_document_highlight
+          autocmd! * <buffer>
+          autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+          autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+        augroup END
+      ]],
+            false
+        )
+    end
+
+    -- Mappings.
+    local opts = { noremap = true, silent = true }
+
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+    buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+    buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    buf_set_keymap("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+    buf_set_keymap("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+    buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+    buf_set_keymap("n", "<space><cr>", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+    buf_set_keymap("n", "\\d", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+    buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+    buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+    buf_set_keymap("n", "<space>d", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+    buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+    buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+    buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+
+    -- buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
-map_cmd("n|]d", "Lspsaga diagnostic_jump_next")
-map_cmd("n|[d", "Lspsaga diagnostic_jump_prev")
-map_cmd([[n|\d]], "Lspsaga show_line_diagnostics")
-map_cmd("n|K", "Lspsaga hover_doc")
-map_cmd("n|<space><cr>", "Lspsaga code_action")
-map_cmd("v|<space><cr>", "Lspsaga range_code_action")
-map_cmd("n|gd", "lua vim.lsp.buf.definition()")
-map_cmd("n|gD", "lua vim.lsp.buf.declaration()")
-map_cmd("n|gi", "lua vim.lsp.buf.implementation()")
-map_cmd("n|<space>rn", "Lspsaga rename")
-map_cmd("n|<space>u", "Lspsaga lsp_finder")
-map_cmd("n|<space>q", "TroubleToggle")
+map_cmd("n|<space>t", "TroubleToggle")
 map_cmd("n|<F5>", "vsplit" .. vim.lsp.get_log_path())
-map_cmd("n|<space>K", "Lspsaga signature_help")
--- map_cmd("n|<C-f>", "lua require('lspsaga.action').smart_scroll_with_saga(1)", { nowait = true })
--- map_cmd("n|<C-b>", "lua require('lspsaga.action').smart_scroll_with_saga(-1)", { nowait = true })
--- map_cmd("n|<Leader>cw", "lua vim.lsp.buf.workspace_symbol()")
--- map_cmd("n|D", "lua vim.lsp.buf.type_definition()")
--- map_cmd("n|gr", "lua vim.lsp.buf.references()")
--- map_cmd("n|<space>fm", "lua vim.lsp.buf.formatting_sync(nil,1000)")
--- map_cmd("v|<space>fm", "lua vim.lsp.buf.range_formatting()")
 
 local lspconf = require("lspconfig")
 local coq = require("coq")

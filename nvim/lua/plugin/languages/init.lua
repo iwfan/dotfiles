@@ -20,9 +20,9 @@ insert({
 })
 
 insert({
-    "glepnir/lspsaga.nvim",
+    "kosayoda/nvim-lightbulb",
     config = function()
-        require("plugin.languages.lsp-saga")
+        vim.cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
     end,
 })
 
@@ -60,14 +60,6 @@ insert({
     "windwp/nvim-autopairs",
     config = function()
         require("nvim-autopairs").setup({ disable_filetype = { "TelescopePrompt" } })
-    end,
-})
-
-insert({
-    "onsails/lspkind-nvim",
-    event = "BufEnter",
-    config = function()
-        require("plugin.languages.lsp-kind")
     end,
 })
 
