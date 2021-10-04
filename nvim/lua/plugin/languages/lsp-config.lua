@@ -9,36 +9,19 @@ local enhance_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    -- if client.resolved_capabilities.document_formatting then
-    --     vim.api.nvim_exec(
-    --         [[
-    -- augroup lsp_document_formatter
-    --   autocmd! * <buffer>
-    --   autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil,1000)
-    -- augroup END
-    -- ]],
-    --         false
-    --     )
-    --     -- map_cmd("n|<space>fm", "lua vim.lsp.buf.formatting()")
-    -- end
-
-    -- if client.resolved_capabilities.document_range_formatting then
-    --   map_cmd("v|<space>fm", "lua vim.lsp.buf.range_formatting()")
-    -- end
-
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
         vim.api.nvim_exec(
             [[
-        hi LspReferenceRead cterm=bold ctermbg=red guibg=#32302f
-        hi LspReferenceText cterm=bold ctermbg=red guibg=#32302f
-        hi LspReferenceWrite cterm=bold ctermbg=red guibg=#32302f
-        augroup lsp_document_highlight
-          autocmd! * <buffer>
-          autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-          autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-      ]],
+              hi LspReferenceRead cterm=bold ctermbg=red guibg=#32302f
+              hi LspReferenceText cterm=bold ctermbg=red guibg=#32302f
+              hi LspReferenceWrite cterm=bold ctermbg=red guibg=#32302f
+              augroup lsp_document_highlight
+                autocmd! * <buffer>
+                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+              augroup END
+            ]],
             false
         )
     end
@@ -64,11 +47,8 @@ local enhance_attach = function(client, bufnr)
     buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
     buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
 
-    -- buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    buf_set_keymap("n", "<F5>", "vsplit" .. vim.lsp.get_log_path(), opts)
 end
-
-map_cmd("n|<space>t", "TroubleToggle")
-map_cmd("n|<F5>", "vsplit" .. vim.lsp.get_log_path())
 
 local lspconf = require("lspconfig")
 local coq = require("coq")
@@ -129,40 +109,43 @@ local servers = {
             ts_utils.setup({
                 debug = false,
                 disable_commands = false,
-                enable_import_on_completion = false,
-                import_on_completion_timeout = 5000,
-
+                enable_import_on_completion = true,
+                -- import all
+                import_all_timeout = 5000, -- ms
+                import_all_priorities = {
+                    buffers = 4, -- loaded buffer names
+                    buffer_content = 3, -- loaded buffer content
+                    local_files = 2, -- git files or files with relative path markers
+                    same_file = 1, -- add to existing import statement
+                },
+                import_all_scan_buffers = 100,
+                import_all_select_source = false,
                 -- eslint
+                eslint_enable_code_actions = true,
+                eslint_enable_disable_comments = true,
+                eslint_enable_diagnostics = false,
                 eslint_bin = "eslint_d",
-                eslint_args = {
+                eslint_opts = {
                     "-f",
                     "json",
                     "--stdin",
                     "--stdin-filename",
                     "$FILENAME",
                 },
-                eslint_enable_disable_comments = true,
-
-                -- experimental settings!
-                -- eslint diagnostics
-                eslint_enable_diagnostics = false,
-                eslint_diagnostics_debounce = 250,
 
                 -- formatting
                 enable_formatting = false,
                 formatter = "prettier",
-                formatter_args = { "--stdin-filepath", "$FILENAME" },
-                format_on_save = false,
-                no_save_after_format = false,
-
-                -- parentheses completion
-                complete_parens = false,
-                signature_help_in_parens = false,
+                formatter_opts = { "--stdin-filepath", "$FILENAME" },
 
                 -- update imports on file move
                 update_imports_on_move = false,
                 require_confirmation_on_move = false,
-                watch_dir = "/src",
+                watch_dir = nil,
+
+                -- filter diagnostics
+                filter_out_diagnostics_by_severity = {},
+                filter_out_diagnostics_by_code = {},
             })
 
             -- required to enable ESLint code actions and formatting
