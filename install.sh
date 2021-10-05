@@ -15,7 +15,7 @@ info () {
 }
 
 # Zsh Setup
-ln -Fhnvs ~/dotfiles/zsh/.zshenv ~/.config/zsh/.zshenv
+ln -Fhnvs ~/dotfiles/zsh/.zshenv ~/.zshenv
 ln -Fhnvs ~/dotfiles/zsh/.zprofile ~/.config/zsh/.zprofile
 ln -Fhnvs ~/dotfiles/zsh/.zshrc ~/.config/zsh/.zshrc
 

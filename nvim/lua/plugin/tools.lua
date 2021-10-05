@@ -2,31 +2,32 @@ local tools = {}
 local insert = _G.insert(tools)
 
 insert({
-    "rmagatti/auto-session",
-    config = function()
-        require("auto-session").setup({
-            auto_session_enabled = false,
-            auto_save_enabled = true,
-            auto_restore_enabled = false,
-        })
-    end,
-})
-
-insert({
     "ybian/smartim",
     config = function()
         vim.g.smartim_default = "com.apple.keylayout.ABC"
     end,
 })
 
+insert("tpope/vim-repeat")
+insert({ "tpope/vim-fugitive", cmd = { "Git" } })
 insert({
-    "voldikss/vim-translator",
-    cmd = {
-        "Translate",
-        "TranslateW",
-        "TranslateR",
-        "TranslateX",
-    },
+    "lewis6991/gitsigns.nvim",
+    config = function()
+        require("gitsigns").setup({
+            signs = {
+                add = { hl = "GitGutterAdd", text = "▋" },
+                change = { hl = "GitGutterChange", text = "▋" },
+                delete = { hl = "GitGutterDelete", text = "▋" },
+                topdelete = { hl = "GitGutterDeleteChange", text = "▔" },
+                changedelete = { hl = "GitGutterChange", text = "▎" },
+            },
+        })
+
+        map_cmd([[n|\c]], 'lua require"gitsigns".preview_hunk()')
+        map_cmd([[n|<BS>c]], 'lua require"gitsigns".reset_hunk()')
+        map_cmd([[v|\c]], 'lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})')
+    end,
+    requires = { "nvim-lua/plenary.nvim", opt = true },
 })
 
 return tools
