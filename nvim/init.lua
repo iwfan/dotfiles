@@ -15,10 +15,8 @@
 -- Github:   https://github.com/iwfan/dotfiles
 -- License:  MIT License
 
-require 'helpers'
-require 'settings'
-require 'keymap'
-require 'command'
-require 'plugin'
-
--- require 'plugin.languages.lsp-install'
+require "global"
+require "setting"
+require "keymap"
+require "autocmd"
+require "plugin"

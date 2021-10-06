@@ -6,22 +6,24 @@ map("n|<Esc>", ":noh<cr>:echo<cr><esc>")
 map("n|q", "")
 map("n|Q", "q")
 map("n|<C-q>", "")
-
 map("n|H", "^")
 map("v|H", "^")
 map("n|L", "$")
 map("v|L", "g_")
+map("n|n", "'Nn'[v:searchforward]", { expr = true })
+map("n|N", "'nN'[v:searchforward]", { expr = true })
+map("n|k", [[(v:count == 0 ? 'gk' : 'k')]], { expr = true })
+map("n|j", [[(v:count == 0 ? 'gj' : 'j')]], { expr = true })
+map([[n|\s]], ":%s//g<left><left>", { silent = false })
 
 map("n|<leader>d", '"_d')
 map("v|<leader>d", '"_d')
 map("n|<leader>p", '"_dP')
 map("n|<leader>x", "0d$")
-map("n|<leader>l", [[:lua vim.fn.setqflist({})]])
-
-map("n|n", "'Nn'[v:searchforward]", { expr = true })
-map("n|N", "'nN'[v:searchforward]", { expr = true })
-map("n|k", [[(v:count == 0 ? 'gk' : 'k')]], { expr = true })
-map("n|j", [[(v:count == 0 ? 'gj' : 'j')]], { expr = true })
+map("n|<leader><bs>", '"_dd')
+map("n|<C-s>", [[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]], { expr = true })
+map("n|<C-q><C-g>", [[:lua searching_google(vim.fn.expand("<cword>"))<CR>]])
+map("v|<C-q><C-g>", [[<ESC>gv"gy<ESC>:lua searching_google(vim.fn.getreg('g'))<CR>]])
 
 map("i|<C-a>", "<C-o>^")
 map("c|<C-a>", "<HOME>")
@@ -33,22 +35,10 @@ map("!|<C-h>", "<BS>")
 map("i|<C-k>", "<C-o>d$")
 map("i|<C-u>", "<C-o>d^")
 map("!|<C-v>", "<C-r>*")
-map("i|<C-c>", "<ESC>")
-map("i|<C-s>", [[empty(expand("%:t")) ? "\<C-o>:w\<Space>" : "<C-o>:w\<CR>"]], { expr = true })
-map("n|<C-s>", [[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]], { expr = true })
-map("n|<C-q><C-g>", [[:lua fn.system({'open', 'https://google.com/search?q=' .. vim.fn.expand("<cword>")})<CR>]])
-map(
-    "v|<C-q><C-g>",
-    [[<ESC>gv"gy<ESC>:lua fn.system({'open', 'https://google.com/search?q=' .. vim.fn.getreg('g')})<CR>]]
-)
-
-map([[n|\s]], ":%s//g<left><left>", { silent = false })
-map("n|<leader><BS>", '"_dd')
-
-map("n|]w", "g*")
-map("n|[w", "g#")
-map("v|]w", "g*")
-map("v|[w", "g#")
+map("i|,", ",<C-g>u")
+map("i|.", ".<C-g>u")
+map("i|!", "!<C-g>u")
+map("i|?", "?<C-g>u")
 
 map("n|<C-h>", "<C-w>h")
 map("n|<C-j>", "<C-w>j")
@@ -63,6 +53,16 @@ map_cmd("n|<C-w>x", "10new +terminal | setlocal nobuflisted")
 map_cmd("n|<C-w>t", "terminal")
 map_cmd("n|<C-w>g", "tabe | term lazygit")
 
+map("n|]w", "g*")
+map("n|[w", "g#")
+map("v|]w", "g*")
+map("v|[w", "g#")
+map_cmd("n|]q", "cnext")
+map_cmd("n|[q", "cprev")
+map_cmd("n|<bs>q", "cclose")
+map_cmd("n|]Q", "lnext")
+map_cmd("n|[Q", "lprev")
+
 map("v|<", "<gv")
 map("v|>", ">gv")
 map("n|<", "<<")
@@ -75,20 +75,14 @@ map("i|<A-j>", "<Esc>:m .+1<CR>==gi")
 map("v|<A-k>", ":m '<-2<CR>gv=gv")
 map("v|<A-j>", ":m '>+1<CR>gv=gv")
 
-map("t|<C-h>", [[<C-\><C-N><C-w>h]])
-map("t|<C-j>", [[<C-\><C-N><C-w>j]])
-map("t|<C-k>", [[<C-\><C-N><C-w>k]])
-map("t|<C-l>", [[<C-\><C-N><C-w>l]])
-map("t|<C-o>", [[<C-\><C-N><C-o>]])
-map("t|<C-n>", [[<C-\><C-N>]])
 map("t|<Esc><Esc>", [[<C-\><C-N>]])
 
-vim.cmd("command! -bang -nargs=* -complete=file E e<bang> <args>")
-vim.cmd("command! -bang -nargs=* -complete=file W w<bang> <args>")
-vim.cmd("command! -bang -nargs=* -complete=file Wq wq<bang> <args>")
-vim.cmd("command! -bang -nargs=* -complete=file WQ wq<bang> <args>")
-vim.cmd("command! -bang Wa wa<bang>")
-vim.cmd("command! -bang WA wa<bang>")
-vim.cmd("command! -bang Q q<bang>")
-vim.cmd("command! -bang QA qa<bang>")
-vim.cmd("command! -bang Qa qa<bang>")
+vim.cmd "command! -bang -nargs=* -complete=file E e<bang> <args>"
+vim.cmd "command! -bang -nargs=* -complete=file W w<bang> <args>"
+vim.cmd "command! -bang -nargs=* -complete=file Wq wq<bang> <args>"
+vim.cmd "command! -bang -nargs=* -complete=file WQ wq<bang> <args>"
+vim.cmd "command! -bang Wa wa<bang>"
+vim.cmd "command! -bang WA wa<bang>"
+vim.cmd "command! -bang Q q<bang>"
+vim.cmd "command! -bang QA qa<bang>"
+vim.cmd "command! -bang Qa qa<bang>"
