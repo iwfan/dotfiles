@@ -81,9 +81,7 @@ require("packer").startup {
             {
                 "nvim-treesitter/nvim-treesitter",
                 run = ":TSUpdate",
-                config = function()
-                    require("p.nvim-treesitter").setup()
-                end,
+                config = [[require("p.nvim-treesitter").setup()]],
             },
             "nvim-treesitter/playground",
             "nvim-treesitter/nvim-treesitter-textobjects",
@@ -99,7 +97,7 @@ require("packer").startup {
             },
             {
                 "terrortylor/nvim-comment",
-                config = [[require("p.nvim-comment")).setup()]],
+                config = [[require("p.nvim-comment").setup()]],
             },
             "JoosepAlviste/nvim-ts-context-commentstring",
             {
@@ -114,18 +112,12 @@ require("packer").startup {
         -- LSP
         use {
             {
-                "williamboman/nvim-lsp-installer",
-                cmd = {
-                    "LspInstallInfo",
-                    "LspInstall",
-                    "LspUninstall",
-                    "LspUninstallAll",
-                    "LspPrintInstalled",
-                },
-            },
-            {
                 "neovim/nvim-lspconfig",
                 config = [[require("p.nvim-lsp").setup()]],
+            },
+            {
+                "williamboman/nvim-lsp-installer",
+                requires = "neovim/nvim-lspconfig",
             },
             "jose-elias-alvarez/nvim-lsp-ts-utils",
         }
@@ -137,20 +129,19 @@ require("packer").startup {
             },
             {
                 "kyazdani42/nvim-tree.lua",
+                after = "nvim-web-devicons",
                 config = [[require("p.nvim-tree")]],
             },
             {
                 "Akin909/nvim-bufferline.lua",
+                after = "nvim-web-devicons",
                 requires = "famiu/bufdelete.nvim",
                 config = [[require("p.nvim-bufferline")]],
             },
             {
                 "famiu/feline.nvim",
+                after = "nvim-web-devicons",
                 config = [[require("p.nvim-feline")]],
-            },
-            {
-                "glepnir/dashboard-nvim",
-                config = [[require("p.nvim-dashboard")]],
             },
             {
                 "sainnhe/gruvbox-material",
@@ -193,7 +184,7 @@ require("packer").startup {
                 ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
             },
             {
-                "janko/vim-test",
+                "vim-test/vim-test",
                 config = [[require("p.vim-test").setup()]],
             },
         }

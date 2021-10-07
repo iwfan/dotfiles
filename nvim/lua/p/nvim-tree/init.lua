@@ -51,7 +51,3 @@ require("nvim-tree").setup {
         },
     },
 }
-
-autocmd("BufEnter", "NvimTree", "NvimTreeRefresh")
-map_cmd("n|<C-e>", "NvimTreeToggle")
-map_cmd("n|<C-E>", "NvimTreeFindFile")

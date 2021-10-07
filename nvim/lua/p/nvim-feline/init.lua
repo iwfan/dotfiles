@@ -57,23 +57,6 @@ local vi_mode_colors = {
     NONE = "yellow",
 }
 
-local vi_mode_text = {
-    NORMAL = "<|",
-    OP = "<|",
-    INSERT = "|>",
-    VISUAL = "<>",
-    BLOCK = "<>",
-    REPLACE = "<>",
-    ["V-REPLACE"] = "<>",
-    ENTER = "<>",
-    MORE = "<>",
-    SELECT = "<>",
-    COMMAND = "<|",
-    SHELL = "<|",
-    TERM = "<|",
-    NONE = "<>",
-}
-
 local function ins_left(component)
     table.insert(components.active[1], component)
 end
@@ -91,20 +74,6 @@ ins_left {
         val.fg = vi_mode_utils.get_mode_color()
         val.style = "bold"
 
-        return val
-    end,
-    right_sep = "",
-}
--- vi-symbol
-ins_left {
-    provider = function()
-        return vi_mode_text[vi_mode_utils.get_vim_mode()]
-    end,
-    hl = function()
-        local val = {}
-        val.fg = vi_mode_utils.get_mode_color()
-        val.bg = "bg"
-        val.style = "bold"
         return val
     end,
     right_sep = " ",

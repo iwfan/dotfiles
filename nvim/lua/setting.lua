@@ -54,11 +54,12 @@ vim.opt.joinspaces = false
 vim.opt.foldlevel = 1
 vim.opt.foldnestmax = 10
 vim.opt.foldlevelstart = 99
-vim.opt.inccommand = "split"
-vim.opt.updatetime = 50
+vim.opt.inccommand = "nosplit"
+vim.opt.updatetime = 250
 
 -- tabs & indent
--- vim.opt.smartindent = true
+vim.opt.smartindent = true
+vim.opt.breakindent = true
 vim.opt.shiftround = true
 
 -- search

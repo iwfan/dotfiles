@@ -44,7 +44,7 @@ M.setup = function()
             ["diagnosticls"] = setup_diagnosticls,
             ["sumneko_lua"] = setup_sumneko_lua,
             ["gopls"] = function()
-                default_opt.init_options = { usePlaceholders = true, completeUnimported = true }
+                default_opts.init_options = { usePlaceholders = true, completeUnimported = true }
             end,
         }
 

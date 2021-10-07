@@ -27,8 +27,6 @@ augroup("filetype_config", {
 })
 
 augroup("misc", {
-    { "WinEnter", "*", "set cursorline" },
-    { "WinLeave", "*", "set nocursorline" },
     {
         "BufEnter",
         [[*.png,*.jpg,*.gif]],
@@ -37,5 +35,4 @@ augroup("misc", {
     { "FocusLost", "*", [[silent! wa]] }, -- auto save when nvim focus
     { "BufWritePre", "*", [[%s/\s\+$//e]] }, -- remove trailing whitespaces
     { "BufWritePre", "*", [[%s/\n\+\%$//e]] },
-    { "FileType", "help", [[wincmd L]] },
 })
