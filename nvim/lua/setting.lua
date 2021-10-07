@@ -34,7 +34,6 @@ vim.opt.writebackup = false
 vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.mouse = "ni"
-vim.opt.magic = true
 vim.opt.errorbells = true
 vim.opt.visualbell = true
 vim.opt.shortmess:append { c = true, S = true }
@@ -45,31 +44,26 @@ vim.opt.termguicolors = true
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.showmode = false
-vim.opt.showcmd = true
 vim.opt.showtabline = 2
 vim.opt.signcolumn = "yes"
 vim.opt.virtualedit = "block"
+vim.opt.scrolloff = 5
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.joinspaces = false
 vim.opt.foldlevel = 1
 vim.opt.foldnestmax = 10
 vim.opt.foldlevelstart = 99
+vim.opt.inccommand = "split"
+vim.opt.updatetime = 50
 
 -- tabs & indent
-vim.opt.tabstop = 2
-vim.opt.softtabstop = -1
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.smartindent = true
+-- vim.opt.smartindent = true
 vim.opt.shiftround = true
 
 -- search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.infercase = true
-vim.opt.incsearch = true
-vim.opt.hlsearch = true
 vim.opt.grepprg = "rg --vimgrep --no-heading --hidden"
 
 -- line break

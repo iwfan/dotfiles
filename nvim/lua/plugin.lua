@@ -24,6 +24,13 @@ require("packer").startup {
         -- tpope
         use {
             "tpope/vim-sensible",
+            "tpope/vim-unimpaired",
+            {
+                "tpope/vim-sleuth",
+                setup = function()
+                    vim.g.sleuth_automatic = 0
+                end,
+            },
             "tpope/vim-repeat",
             {
                 "tpope/vim-fugitive",
