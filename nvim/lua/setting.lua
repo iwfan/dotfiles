@@ -36,7 +36,6 @@ vim.opt.undofile = true
 vim.opt.mouse = "ni"
 vim.opt.errorbells = true
 vim.opt.visualbell = true
-vim.opt.shortmess:append { c = true, S = true }
 
 -- behavior opt
 vim.opt.clipboard = "unnamedplus"

@@ -14,6 +14,14 @@ local function setup_handlers()
             prefix = "",
         },
         signs = false, -- rely on highlight styles instead, don't want to clobber signcolumn
+        underline = true,
+        update_in_insert = false, -- update diagnostics insert mode
+    })
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = "single",
+    })
+    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+        border = "single",
     })
 end
 
