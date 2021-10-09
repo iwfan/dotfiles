@@ -83,7 +83,7 @@ require("packer").startup {
                 run = ":TSUpdate",
                 config = [[require("p.nvim-treesitter").setup()]],
             },
-            "nvim-treesitter/playground",
+            { "nvim-treesitter/playground", cmd = { "TSPlaygroundToggle" } },
             "nvim-treesitter/nvim-treesitter-textobjects",
             {
                 "windwp/nvim-ts-autotag",
