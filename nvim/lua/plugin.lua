@@ -141,7 +141,7 @@ require("packer").startup {
         use {
             {
                 "kyazdani42/nvim-web-devicons",
-                config = [[require("p.nvim-devicons")]],
+                config = [[require("p.nvim-devicons").setup()]],
             },
             {
                 "kyazdani42/nvim-tree.lua",
@@ -180,13 +180,8 @@ require("packer").startup {
                 "norcalli/nvim-colorizer.lua",
                 config = function()
                     require("colorizer").setup({ "*" }, {
-                        RGB = true, -- #RGB hex codes
-                        RRGGBB = true, -- #RRGGBB hex codes
-                        RRGGBBAA = true, -- #RRGGBBAA hex codes
-                        rgb_fn = true, -- CSS rgb() and rgba() functions
-                        hsl_fn = true, -- CSS hsl() and hsla() functions
-                        css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-                        css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+                        RRGGBBAA = true,
+                        css = true,
                     })
                 end,
             },
@@ -213,6 +208,23 @@ require("packer").startup {
                 config = [[require("p.nvim-gitsigns").setup()]],
             },
             "psliwka/vim-smoothie",
+            {
+                "tversteeg/registers.nvim",
+                setup = function()
+                    vim.g.registers_return_symbol = " "
+                    vim.g.registers_tab_symbol = " "
+                    vim.g.registers_space_symbol = "␣"
+                    vim.g.registers_show_empty_registers = 0
+                    vim.g.registers_trim_whitespace = 0
+                    vim.g.registers_hide_only_whitespace = 1
+                end,
+            },
+            {
+                "jghauser/mkdir.nvim",
+                config = function()
+                    require "mkdir"
+                end,
+            },
             {
                 "ybian/smartim",
                 config = function()

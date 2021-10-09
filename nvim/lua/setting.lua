@@ -54,7 +54,8 @@ vim.opt.foldlevel = 1
 vim.opt.foldnestmax = 10
 vim.opt.foldlevelstart = 99
 vim.opt.inccommand = "nosplit"
-vim.opt.updatetime = 250
+vim.opt.updatetime = 300
+vim.opt.shortmess:append { c = true }
 
 -- tabs & indent
 vim.opt.smartindent = true
