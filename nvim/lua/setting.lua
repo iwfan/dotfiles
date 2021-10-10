@@ -26,14 +26,13 @@ vim.g.loaded_netrwFileHandlers = 1
 
 -- general opt
 vim.opt.fileformats = "unix,mac,dos"
-vim.opt.lazyredraw = true
 vim.opt.autowrite = true
 vim.opt.autowriteall = true
 vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
 vim.opt.undofile = true
-vim.opt.mouse = "ni"
+vim.opt.mouse = "a"
 vim.opt.errorbells = true
 vim.opt.visualbell = true
 
@@ -42,6 +41,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
 vim.opt.relativenumber = true
 vim.opt.number = true
+vim.opt.cursorline = true
 vim.opt.showmode = false
 vim.opt.showtabline = 2
 vim.opt.signcolumn = "yes"
@@ -58,6 +58,9 @@ vim.opt.updatetime = 300
 vim.opt.shortmess:append { c = true }
 
 -- tabs & indent
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 vim.opt.smartindent = true
 vim.opt.breakindent = true
 vim.opt.shiftround = true

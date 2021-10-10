@@ -160,6 +160,11 @@ require("packer").startup {
                 config = [[require("p.nvim-feline")]],
             },
             {
+                "SmiteshP/nvim-gps",
+                requires = "nvim-treesitter/nvim-treesitter",
+                config = [[require("p.nvim-gps").setup()]],
+            },
+            {
                 "sainnhe/gruvbox-material",
                 config = function()
                     var_tbl {
@@ -207,13 +212,21 @@ require("packer").startup {
                 requires = "nvim-lua/plenary.nvim",
                 config = [[require("p.nvim-gitsigns").setup()]],
             },
-            "psliwka/vim-smoothie",
+            {
+                "karb94/neoscroll.nvim",
+                config = function()
+                    require("neoscroll").setup()
+                    local t = {}
+                    t["gg"] = { "scroll", { "-2*vim.api.nvim_buf_line_count(0)", "true", "1", "5" } }
+                    t["G"] = { "scroll", { "2*vim.api.nvim_buf_line_count(0)", "true", "1", "5" } }
+                    require("neoscroll.config").set_mappings(t)
+                end,
+            },
             {
                 "tversteeg/registers.nvim",
                 setup = function()
                     vim.g.registers_return_symbol = " "
                     vim.g.registers_tab_symbol = " "
-                    vim.g.registers_space_symbol = "␣"
                     vim.g.registers_show_empty_registers = 0
                     vim.g.registers_trim_whitespace = 0
                     vim.g.registers_hide_only_whitespace = 1

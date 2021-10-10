@@ -8,8 +8,6 @@ require("bufferline").setup {
     },
 }
 
-map_cmd("n|[b", "BufferLineCycleNext")
-map_cmd("n|]b", "BufferLineCyclePrev")
 map_cmd("n|b<", "BufferLineMovePrev")
 map_cmd("n|b>", "BufferLineMoveNext")
 map_cmd("n|gb", "BufferLinePick")
