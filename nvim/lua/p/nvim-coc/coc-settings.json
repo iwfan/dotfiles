@@ -1,4 +1,6 @@
 {
+  "npm.binPath": "yarn",
+
   // coc settings
   "coc.preferences.enableMessageDialog": true,
   "coc.preferences.formatOnSaveFiletypes": [
@@ -50,6 +52,41 @@
     "default": "\uf29c"
   },
 
+  // explorer
+  "explorer.sources": [
+    {
+      "name": "file",
+      "expand": true
+    }
+  ],
+  "explorer.file.showHiddenFiles": true,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.icon.source": "nvim-web-devicons",
+  "explorer.previewAction.onHover": "labeling",
+  "explorer.file.git.showUntrackedFiles": "system",
+  "explorer.file.column.indent.indentLine": true,
+  "explorer.file.root.template": "[git & 1][hidden & 1][root] [fullpath]",
+  "explorer.file.child.template": "[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5]",
+  "explorer.git.icon.rootStatus.ahead": "⇡",
+  "explorer.git.icon.rootStatus.behind": "⇣",
+  "explorer.git.icon.rootStatus.added": "",
+  "explorer.git.icon.rootStatus.renamed": "",
+  "explorer.git.icon.rootStatus.deleted": "",
+  "explorer.git.icon.rootStatus.stashed": "$",
+  "explorer.git.icon.rootStatus.modified": "",
+  "explorer.git.icon.rootStatus.untracked": "",
+  "explorer.git.icon.rootStatus.conflicted": "=",
+  "explorer.git.icon.status.mixed": "",
+  "explorer.git.icon.status.added": "",
+  "explorer.git.icon.status.copied": "",
+  "explorer.git.icon.status.deleted": "",
+  "explorer.git.icon.status.renamed": "",
+  "explorer.git.icon.status.modified": "",
+  "explorer.git.icon.status.unmerged": "",
+  "explorer.git.icon.status.untracked": "",
+  "explorer.git.icon.status.ignored": "!",
+  "explorer.git.icon.status.unmodified": " ",
+
   //diagnostic
   "diagnostic.highlightOffset": 9999999,
   "diagnostic.errorSign": "\uf05c",
@@ -61,6 +98,10 @@
   "diagnostic.separateRelatedInformationAsDiagnostics": true,
 
   // coc source
+  "coc.source.issues.priority": 99,
+  "coc.source.file.priority": 90,
+  "coc.source.around.priority": 1,
+  "coc.source.buffer.priority": 1,
   "coc.source.around.firstMatch": false,
   "coc.source.buffer.firstMatch": false,
   "coc.source.file.ignoreHidden": false,
@@ -72,15 +113,19 @@
 
   //git
   "git.enableGutters": true,
-  "git.branchCharacter": "\uf418",
-  "git.addGBlameToBufferVar": true,
   "git.addGBlameToVirtualText": true,
-  "git.virtualTextPrefix": " 👉 ",
-  "git.addedSign.text": "▋",
-  "git.changedSign.text": "▋",
-  "git.removedSign.text": "▋",
-  "git.topRemovedSign.text": "▔",
-  "git.changeRemovedSign.text": "▋",
+  "git.virtualTextPrefix": "     ",
+  "git.branchCharacter": "\uf418",
+  "git.addedSign.text": "▏",
+  "git.changedSign.text": "▏",
+  "git.removedSign.text": "▏",
+  "git.topRemovedSign.text": "‾",
+  "git.changeRemovedSign.text": "≃",
+  "git.addedSign.hlGroup": "GitAddHi",
+  "git.changedSign.hlGroup": "GitModifyHi",
+  "git.removedSign.hlGroup": "GitDeleteHi",
+  "git.topRemovedSign.hlGroup": "GitDeleteHi",
+  "git.changeRemovedSign.hlGroup": "GitDeleteHi",
 
   "codeLens.enable": true,
   "html.format.enable": true,
@@ -88,31 +133,51 @@
   "javascript.showUnused": true,
   "javascript.suggest.names": true,
   "javascript.suggestionActions.enabled": true,
-  // emmet
-  "emmet.includeLanguages": {
-    "vue-html": "html",
-    "javascript": "javascriptreact"
+
+  // snippets
+  "snippets.priority": 90,
+  "snippets.ultisnips.enable": false,
+  "snippets.textmateSnippetsRoots": ["~/dotfiles/nvim/snippets"],
+  "snippets.extends": {
+    "typescript": ["javascript"],
+    "javascriptreact": ["javascript"]
   },
 
-  "eslint.filetypes": [
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "javascriptreact",
-    "typescript.tsx"
-  ],
-  "eslint.autoFix": true,
+  // emment
+  "emmet.priority": 3,
+  "emmet.showAbbreviationSuggestions": true,
+  "emmet.includeLanguages": {
+    "vue-html": "html",
+    "javascript": "javascriptreact",
+    "eruby": "html"
+  },
+
+  "eslint.packageManager": "pnpm",
   "eslint.autoFixOnSave": true,
 
   // prettier
   "prettier.eslintIntegration": true,
-  "prettier.tslintIntegration": true,
+  "prettier.tslintIntegration": false,
   "prettier.stylelintIntegration": true,
-  "prettier.statusItemText": "🥳",
-  "prettier.printWidth": 100,
-  "prettier.disableLanguages": [],
-  "prettier.formatterPriority": 1,
-  "prettier.useTabs": false,
-  "prettier.trailingComma": "all",
-  "prettier.singleQuote": false,
+  "prettier.statusItemText": "",
+
+  // typescript
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+  "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+  "typescript.format.insertSpaceAfterConstructor": true,
+  "javascript.format.insertSpaceAfterConstructor": true,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+
+  // coc-lua
+  "Lua.diagnostics.globals": ["vim"],
+  "Lua.runtime.version": "Lua 5.1",
+  "Lua.telemetry.enable": false,
+
+  // vimlsp
+  "vimlsp.indexes.runtimepath": true,
+  "vimlsp.indexes.gap": 10,
+  "vimlsp.indexes.count": 3,
+  "vimlsp.suggest.fromVimruntime": true
 }

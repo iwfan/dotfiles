@@ -19,6 +19,11 @@ M.setup = function()
         end,
     }
     map_cmd("n|<C-_>", "CommentToggle")
+
+    augroup("set-commentstring", {
+        { "BufEnter", "*.json", [[:lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")]] },
+        { "BufFilePost", "*.json", [[:lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")]] },
+    })
 end
 
 return M

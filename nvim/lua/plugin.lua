@@ -119,34 +119,6 @@ require("packer").startup {
             config = [[require("p.nvim-coc").setup()]],
         }
 
-        -- use {
-        --     {
-        --         "neovim/nvim-lspconfig",
-        --         config = [[require("p.nvim-lsp").setup()]],
-        --     },
-        --     {
-        --         "williamboman/nvim-lsp-installer",
-        --         requires = "neovim/nvim-lspconfig",
-        --     },
-        --     "jose-elias-alvarez/nvim-lsp-ts-utils",
-        --     {
-        --         "hrsh7th/cmp-nvim-lsp",
-        --         after = "nvim-lspconfig",
-        --     },
-        --     {
-        --         "hrsh7th/cmp-buffer",
-        --         after = "cmp-nvim-lsp",
-        --     },
-        --     {
-        --         "hrsh7th/cmp-path",
-        --         after = "cmp-buffer",
-        --     },
-        --     {
-        --         "hrsh7th/nvim-cmp",
-        --         config = [[require("p.nvim-lsp.completion").setup()]],
-        --     },
-        -- }
-
         use {
             {
                 "kyazdani42/nvim-web-devicons",
@@ -154,8 +126,11 @@ require("packer").startup {
             },
             {
                 "kyazdani42/nvim-tree.lua",
+                lock = true,
+                disable = true,
                 after = "nvim-web-devicons",
-                config = [[require("p.nvim-tree")]],
+                setup = [[require("p.nvim-tree").set_val()]],
+                config = [[require("p.nvim-tree").setup()]],
             },
             {
                 "Akin909/nvim-bufferline.lua",
@@ -172,6 +147,10 @@ require("packer").startup {
                 "SmiteshP/nvim-gps",
                 requires = "nvim-treesitter/nvim-treesitter",
                 config = [[require("p.nvim-gps").setup()]],
+            },
+            {
+                "glepnir/dashboard-nvim",
+                setup = [[require("p.nvim-dashboard")]],
             },
             {
                 "sainnhe/gruvbox-material",
@@ -225,7 +204,18 @@ require("packer").startup {
             {
                 "karb94/neoscroll.nvim",
                 config = function()
-                    require("neoscroll").setup()
+                    require("neoscroll").setup {
+                        -- All these keys will be mapped to their corresponding default scrolling animation
+                        mappings = {
+                            "<C-u>",
+                            "<C-d>",
+                            "<C-b>",
+                            "<C-f>",
+                            "zt",
+                            "zz",
+                            "zb",
+                        },
+                    }
                     local t = {}
                     t["gg"] = { "scroll", { "-2*vim.api.nvim_buf_line_count(0)", "true", "1", "5" } }
                     t["G"] = { "scroll", { "2*vim.api.nvim_buf_line_count(0)", "true", "1", "5" } }
@@ -309,10 +299,3 @@ require("packer").startup {
         compile_on_sync = true,
     },
 }
-
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]]

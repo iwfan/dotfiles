@@ -3,7 +3,7 @@ local vi_mode_utils = require "feline.providers.vi_mode"
 
 local force_inactive = {
     filetypes = {
-        "CHADTree",
+        "coc-explorer",
         "NvimTree",
         "dbui",
         "packer",

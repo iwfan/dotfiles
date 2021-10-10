@@ -1,0 +1,27 @@
+-- use {
+--     {
+--         "neovim/nvim-lspconfig",
+--         config = [[require("p.nvim-lsp").setup()]],
+--     },
+--     {
+--         "williamboman/nvim-lsp-installer",
+--         requires = "neovim/nvim-lspconfig",
+--     },
+--     "jose-elias-alvarez/nvim-lsp-ts-utils",
+--     {
+--         "hrsh7th/cmp-nvim-lsp",
+--         after = "nvim-lspconfig",
+--     },
+--     {
+--         "hrsh7th/cmp-buffer",
+--         after = "cmp-nvim-lsp",
+--     },
+--     {
+--         "hrsh7th/cmp-path",
+--         after = "cmp-buffer",
+--     },
+--     {
+--         "hrsh7th/nvim-cmp",
+--         config = [[require("p.nvim-lsp.completion").setup()]],
+--     },
+-- }
