@@ -1,0 +1,118 @@
+{
+  // coc settings
+  "coc.preferences.enableMessageDialog": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "html",
+    "css",
+    "sass",
+    "vue",
+    "markdown",
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "jsonc",
+    "javascriptreact",
+    "typescript.tsx",
+    "vim"
+  ],
+
+  // suggest
+  "suggest.enablePreselect": true,
+  "suggest.enablePreview": true,
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.completionItemKindLabels": {
+    "keyword": "\uf1de",
+    "variable": "\ue79b",
+    "value": "\uf89f",
+    "operator": "\u03a8",
+    "constructor": "\uf0ad",
+    "function": "\u0192",
+    "reference": "\ufa46",
+    "constant": "\uf8fe",
+    "method": "\uf09a",
+    "struct": "\ufb44",
+    "class": "\uf0e8",
+    "interface": "\uf417",
+    "text": "\ue612",
+    "enum": "\uf435",
+    "enumMember": "\uf02b",
+    "module": "\uf40d",
+    "color": "\ue22b",
+    "property": "\ue624",
+    "field": "\uf9be",
+    "unit": "\uf475",
+    "event": "\ufacd",
+    "file": "\uf723",
+    "folder": "\uf114",
+    "snippet": "\ue60b",
+    "typeParameter": "\uf728",
+    "default": "\uf29c"
+  },
+
+  //diagnostic
+  "diagnostic.highlightOffset": 9999999,
+  "diagnostic.errorSign": "\uf05c",
+  "diagnostic.warningSign": "\uf071",
+  "diagnostic.infoSign": "\uf06a",
+  "diagnostic.hintSign": "\uf864",
+  "diagnostic.virtualTextPrefix": " ❯❯❯ ",
+  "diagnostic.virtualText": true,
+  "diagnostic.separateRelatedInformationAsDiagnostics": true,
+
+  // coc source
+  "coc.source.around.firstMatch": false,
+  "coc.source.buffer.firstMatch": false,
+  "coc.source.file.ignoreHidden": false,
+
+  // imselect
+  "imselect.defaultInput": "com.apple.keylayout.ABC",
+  "imselect.enableStatusItem": true,
+  "imselect.enableFloating": false,
+
+  //git
+  "git.enableGutters": true,
+  "git.branchCharacter": "\uf418",
+  "git.addGBlameToBufferVar": true,
+  "git.addGBlameToVirtualText": true,
+  "git.virtualTextPrefix": " 👉 ",
+  "git.addedSign.text": "▋",
+  "git.changedSign.text": "▋",
+  "git.removedSign.text": "▋",
+  "git.topRemovedSign.text": "▔",
+  "git.changeRemovedSign.text": "▋",
+
+  "codeLens.enable": true,
+  "html.format.enable": true,
+  "javascript.referencesCodeLens.enable": true,
+  "javascript.showUnused": true,
+  "javascript.suggest.names": true,
+  "javascript.suggestionActions.enabled": true,
+  // emmet
+  "emmet.includeLanguages": {
+    "vue-html": "html",
+    "javascript": "javascriptreact"
+  },
+
+  "eslint.filetypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "javascriptreact",
+    "typescript.tsx"
+  ],
+  "eslint.autoFix": true,
+  "eslint.autoFixOnSave": true,
+
+  // prettier
+  "prettier.eslintIntegration": true,
+  "prettier.tslintIntegration": true,
+  "prettier.stylelintIntegration": true,
+  "prettier.statusItemText": "🥳",
+  "prettier.printWidth": 100,
+  "prettier.disableLanguages": [],
+  "prettier.formatterPriority": 1,
+  "prettier.useTabs": false,
+  "prettier.trailingComma": "all",
+  "prettier.singleQuote": false,
+}

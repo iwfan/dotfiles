@@ -47,8 +47,7 @@ map("n|<leader>x", "0d$")
 map("n|<leader><bs>", '"_dd')
 map("n|<leader><leader>", "<C-^>")
 map("n|<Esc>", ":noh<cr>:echo<cr><esc>")
--- bad habit
--- map("n|<C-s>", [[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]], { expr = true })
+map("n|<C-s>", [[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]], { expr = true })
 map("n|<C-g>s", [[:lua searching_google(vim.fn.expand("<cword>"))<CR>]])
 map("v|<C-g>s", [[<ESC>gv"gy<ESC>:lua searching_google(vim.fn.getreg('g'))<CR>]])
 

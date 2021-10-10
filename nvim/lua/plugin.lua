@@ -97,6 +97,7 @@ require("packer").startup {
             },
             {
                 "terrortylor/nvim-comment",
+                event = "BufRead",
                 config = [[require("p.nvim-comment").setup()]],
             },
             "JoosepAlviste/nvim-ts-context-commentstring",
@@ -109,34 +110,42 @@ require("packer").startup {
             },
         }
 
-        -- LSP
         use {
-            {
-                "neovim/nvim-lspconfig",
-                config = [[require("p.nvim-lsp").setup()]],
-            },
-            {
-                "williamboman/nvim-lsp-installer",
-                requires = "neovim/nvim-lspconfig",
-            },
-            "jose-elias-alvarez/nvim-lsp-ts-utils",
-            {
-                "hrsh7th/cmp-nvim-lsp",
-                after = "nvim-lspconfig",
-            },
-            {
-                "hrsh7th/cmp-buffer",
-                after = "cmp-nvim-lsp",
-            },
-            {
-                "hrsh7th/cmp-path",
-                after = "cmp-buffer",
-            },
-            {
-                "hrsh7th/nvim-cmp",
-                config = [[require("p.nvim-lsp.completion").setup()]],
-            },
+            "neoclide/coc.nvim",
+            branch = "release",
+            setup = function()
+                vim.g.coc_config_home = config_path .. "/lua/p/nvim-coc/"
+            end,
+            config = [[require("p.nvim-coc").setup()]],
         }
+
+        -- use {
+        --     {
+        --         "neovim/nvim-lspconfig",
+        --         config = [[require("p.nvim-lsp").setup()]],
+        --     },
+        --     {
+        --         "williamboman/nvim-lsp-installer",
+        --         requires = "neovim/nvim-lspconfig",
+        --     },
+        --     "jose-elias-alvarez/nvim-lsp-ts-utils",
+        --     {
+        --         "hrsh7th/cmp-nvim-lsp",
+        --         after = "nvim-lspconfig",
+        --     },
+        --     {
+        --         "hrsh7th/cmp-buffer",
+        --         after = "cmp-nvim-lsp",
+        --     },
+        --     {
+        --         "hrsh7th/cmp-path",
+        --         after = "cmp-buffer",
+        --     },
+        --     {
+        --         "hrsh7th/nvim-cmp",
+        --         config = [[require("p.nvim-lsp.completion").setup()]],
+        --     },
+        -- }
 
         use {
             {
@@ -209,6 +218,7 @@ require("packer").startup {
             "editorconfig/editorconfig-vim",
             {
                 "lewis6991/gitsigns.nvim",
+                event = "BufRead",
                 requires = "nvim-lua/plenary.nvim",
                 config = [[require("p.nvim-gitsigns").setup()]],
             },

@@ -147,6 +147,7 @@ ins_right {
         fg = "yellow",
         style = "bold",
     },
+    left_sep = " ",
 }
 -- diffAdd
 ins_right {
