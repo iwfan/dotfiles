@@ -142,36 +142,68 @@ ins_left {
 
 -- gitBranch
 ins_right {
-    provider = "git_branch",
+    provider = function()
+        local git_branch = vim.g.coc_git_status
+        return git_branch or ""
+    end,
     hl = {
         fg = "yellow",
         style = "bold",
     },
     left_sep = " ",
 }
+
+local buffer_not_empty = function()
+    return vim.fn.empty(vim.fn.expand "%:t") ~= 1
+end
+
 -- diffAdd
 ins_right {
-    provider = "git_diff_added",
+    provider = function()
+        local git_status = vim.b.coc_git_status
+        git_status = git_status and string.match(git_status, "+%d+") or ""
+        return string.gsub(git_status, "+", " ") or ""
+    end,
+    enabled = buffer_not_empty,
     hl = {
         fg = "green",
     },
+    left_sep = " ",
 }
 -- diffModfified
 ins_right {
-    provider = "git_diff_changed",
+    provider = function()
+        local git_status = vim.b.coc_git_status
+        git_status = git_status and string.match(git_status, "~%d+") or ""
+        return string.gsub(git_status, "~", " ") or ""
+    end,
+    enabled = buffer_not_empty,
     hl = {
         fg = "orange",
     },
+    left_sep = " ",
 }
 -- diffRemove
 ins_right {
-    provider = "git_diff_removed",
+    provider = function()
+        local git_status = vim.b.coc_git_status
+        git_status = git_status and string.match(git_status, "-%d+") or ""
+        return string.gsub(git_status, "-", " ") or ""
+    end,
+    enabled = buffer_not_empty,
     hl = {
         fg = "red",
     },
+    left_sep = " ",
 }
 
--- RIGHT
+ins_right {
+    provider = function()
+        return vim.g.coc_status
+    end,
+    enabled = buffer_not_empty,
+    left_sep = " ",
+}
 
 -- lineInfo
 ins_right {

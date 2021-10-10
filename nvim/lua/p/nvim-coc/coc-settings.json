@@ -23,6 +23,7 @@
   "suggest.enablePreselect": true,
   "suggest.enablePreview": true,
   "suggest.triggerAfterInsertEnter": true,
+  "suggest.snippetsSupport": true,
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
     "variable": "\ue79b",
@@ -52,6 +53,26 @@
     "default": "\uf29c"
   },
 
+  //diagnostic
+  "diagnostic.errorSign": "\uf05c",
+  "diagnostic.warningSign": "\uf071",
+  "diagnostic.infoSign": "\uf06a",
+  "diagnostic.hintSign": "\uf864",
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextPrefix": "  ",
+  "diagnostic.separateRelatedInformationAsDiagnostics": true,
+
+  "codeLens.enable": true,
+
+  // coc source
+  "coc.source.issues.priority": 99,
+  "coc.source.file.priority": 90,
+  "coc.source.around.priority": 1,
+  "coc.source.buffer.priority": 1,
+  "coc.source.around.firstMatch": false,
+  "coc.source.buffer.firstMatch": false,
+  "coc.source.file.ignoreHidden": false,
+
   // explorer
   "explorer.sources": [
     {
@@ -61,14 +82,12 @@
   ],
   "explorer.icon.enableNerdfont": true,
   "explorer.icon.source": "nvim-web-devicons",
-  "explorer.file.reveal.auto": false,
   "explorer.file.hiddenRules": {
     "extensions": ["o", "a", "obj", "pyc"],
-    "filenames": [".git"],
-    "patternMatches": ["^\\."]
+    "filenames": [".DS_Store"],
+    "patternMatches": ["^\\.git", "^\\.idea"]
   },
-  "explorer.file.reveal.whenOpen": true,
-  "explorer.file.showHiddenFiles": true,
+  "explorer.file.showHiddenFiles": false,
   "explorer.file.git.showUntrackedFiles": "system",
   "explorer.file.column.indent.indentLine": true,
   "explorer.file.root.template": "[git & 1] [root] [fullpath]",
@@ -96,47 +115,25 @@
     "l": ["wait", "expandable?", ["expanded?", "collapse", "expand"], "open"]
   },
 
-  //diagnostic
-  "diagnostic.highlightOffset": 9999999,
-  "diagnostic.errorSign": "\uf05c",
-  "diagnostic.warningSign": "\uf071",
-  "diagnostic.infoSign": "\uf06a",
-  "diagnostic.hintSign": "\uf864",
-  "diagnostic.virtualTextPrefix": " ❯❯❯ ",
-  "diagnostic.virtualText": true,
-  "diagnostic.separateRelatedInformationAsDiagnostics": true,
-
-  // coc source
-  "coc.source.issues.priority": 99,
-  "coc.source.file.priority": 90,
-  "coc.source.around.priority": 1,
-  "coc.source.buffer.priority": 1,
-  "coc.source.around.firstMatch": false,
-  "coc.source.buffer.firstMatch": false,
-  "coc.source.file.ignoreHidden": false,
+  //git
+  "git.addGBlameToVirtualText": true,
+  "git.addGBlameToBufferVar": true,
+  "git.branchCharacter": "\uf418",
+  "git.changedDecorator": "*",
+  "git.conflictedDecorator": "x",
+  "git.stagedDecorator": "●",
+  "git.untrackedDecorator": "…",
+  "git.addedSign.text": "▎",
+  "git.changedSign.text": "▎",
+  "git.removedSign.text": "▎",
+  "git.topRemovedSign.text": "▔",
+  "git.changeRemovedSign.text": "▎",
 
   // imselect
   "imselect.defaultInput": "com.apple.keylayout.ABC",
-  "imselect.enableStatusItem": true,
+  "imselect.enableStatusItem": false,
   "imselect.enableFloating": false,
 
-  //git
-  "git.enableGutters": true,
-  "git.addGBlameToVirtualText": true,
-  "git.virtualTextPrefix": "     ",
-  "git.branchCharacter": "\uf418",
-  "git.addedSign.text": "▏",
-  "git.changedSign.text": "▏",
-  "git.removedSign.text": "▏",
-  "git.topRemovedSign.text": "‾",
-  "git.changeRemovedSign.text": "≃",
-  "git.addedSign.hlGroup": "GitAddHi",
-  "git.changedSign.hlGroup": "GitModifyHi",
-  "git.removedSign.hlGroup": "GitDeleteHi",
-  "git.topRemovedSign.hlGroup": "GitDeleteHi",
-  "git.changeRemovedSign.hlGroup": "GitDeleteHi",
-
-  "codeLens.enable": true,
   "html.format.enable": true,
   "javascript.referencesCodeLens.enable": true,
   "javascript.showUnused": true,

@@ -19,21 +19,23 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
+nmap <silent> [D <Plug>(coc-diagnostic-prev-error)
+nmap <silent> ]D <Plug>(coc-diagnostic-next-error)
+nmap <silent> \d <Plug>(coc-diagnostic-info)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gD <Plug>(coc-declaration)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gu <Plug>(coc-references-used)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -53,10 +55,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>rf <Plug>(coc-refactor)
 
 augroup mygroup
   autocmd!
@@ -65,11 +64,6 @@ augroup mygroup
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader><cr>  <Plug>(coc-codeaction)
@@ -99,3 +93,20 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " autocmd BufEnter * if (winnr("$") == 1 && &filetype != 'coc-explorer') | exe ':CocCommand explorer --no-focus' | endif
 "" if only one buffer named 'coc-explorer' is shown, then exit
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+
+" navigate chunks of current buffer
+nmap [c <Plug>(coc-git-prevchunk)
+nmap ]c <Plug>(coc-git-nextchunk)
+" navigate conflicts of current buffer
+nmap [C <Plug>(coc-git-prevconflict)
+nmap ]C <Plug>(coc-git-nextconflict)
+" show chunk diff at current position
+nmap \c <Plug>(coc-git-chunkinfo)
+nmap <bs>c <cmd>CocCommand git.chunkUndo<cr>
+" show commit contains current position
+nmap \C <Plug>(coc-git-commit)
+" create text object for git chunks
+omap ih <Plug>(coc-git-chunk-inner)
+xmap ih <Plug>(coc-git-chunk-inner)
+omap ah <Plug>(coc-git-chunk-outer)
+xmap ah <Plug>(coc-git-chunk-outer)

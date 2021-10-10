@@ -197,12 +197,15 @@ require("packer").startup {
             "editorconfig/editorconfig-vim",
             {
                 "lewis6991/gitsigns.nvim",
+                disable = true,
                 event = "BufRead",
                 requires = "nvim-lua/plenary.nvim",
                 config = [[require("p.nvim-gitsigns").setup()]],
             },
+            "psliwka/vim-smoothie",
             {
                 "karb94/neoscroll.nvim",
+                disable = true,
                 config = function()
                     require("neoscroll").setup {
                         -- All these keys will be mapped to their corresponding default scrolling animation
@@ -240,6 +243,7 @@ require("packer").startup {
             },
             {
                 "ybian/smartim",
+                disable = true,
                 config = function()
                     vim.g.smartim_default = "com.apple.keylayout.ABC"
                 end,
@@ -269,6 +273,7 @@ require("packer").startup {
             },
             {
                 "mattn/emmet-vim",
+                disable = true,
                 event = "InsertEnter",
                 ft = {
                     "html",
