@@ -72,16 +72,16 @@ require("packer").startup {
                 config = [[require("p.nvim-treesitter").setup()]],
             },
             "nvim-treesitter/nvim-treesitter-textobjects",
-            -- {
-            --     "windwp/nvim-ts-autotag",
-            --     ft = { "html", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue" },
-            -- },
-            -- {
-            --     "windwp/nvim-autopairs",
-            --     config = function()
-            --         require("nvim-autopairs").setup { disable_filetype = { "TelescopePrompt" } }
-            --     end,
-            -- },
+            {
+                "windwp/nvim-ts-autotag",
+                ft = { "html", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue" },
+            },
+            {
+                "windwp/nvim-autopairs",
+                config = function()
+                    require("nvim-autopairs").setup { disable_filetype = { "TelescopePrompt" } }
+                end,
+            },
             {
                 "terrortylor/nvim-comment",
                 event = "BufRead",
