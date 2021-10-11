@@ -50,6 +50,7 @@ require("packer").startup {
         use {
             {
                 "nvim-telescope/telescope.nvim",
+                disable = true,
                 requires = {
                     "nvim-lua/popup.nvim",
                     "nvim-lua/plenary.nvim",
@@ -59,21 +60,8 @@ require("packer").startup {
             },
             {
                 "windwp/nvim-spectre",
+                disable = true,
                 config = [[require("p.nvim-spectre")]],
-            },
-            {
-                "ggandor/lightspeed.nvim",
-                config = function()
-                    require("lightspeed").setup {
-                        jump_to_first_match = true,
-                        jump_on_partial_input_safety_timeout = 400,
-                        highlight_unique_chars = false,
-                        grey_out_search_area = true,
-                        match_only_the_start_of_same_char_seqs = true,
-                        limit_ft_matches = 5,
-                        full_inclusive_prefix_key = "<c-x>",
-                    }
-                end,
             },
         }
 
@@ -83,18 +71,17 @@ require("packer").startup {
                 run = ":TSUpdate",
                 config = [[require("p.nvim-treesitter").setup()]],
             },
-            { "nvim-treesitter/playground", cmd = { "TSPlaygroundToggle" } },
             "nvim-treesitter/nvim-treesitter-textobjects",
-            {
-                "windwp/nvim-ts-autotag",
-                ft = { "html", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue" },
-            },
-            {
-                "windwp/nvim-autopairs",
-                config = function()
-                    require("nvim-autopairs").setup { disable_filetype = { "TelescopePrompt" } }
-                end,
-            },
+            -- {
+            --     "windwp/nvim-ts-autotag",
+            --     ft = { "html", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue" },
+            -- },
+            -- {
+            --     "windwp/nvim-autopairs",
+            --     config = function()
+            --         require("nvim-autopairs").setup { disable_filetype = { "TelescopePrompt" } }
+            --     end,
+            -- },
             {
                 "terrortylor/nvim-comment",
                 event = "BufRead",
@@ -111,12 +98,15 @@ require("packer").startup {
         }
 
         use {
-            "neoclide/coc.nvim",
-            branch = "release",
-            setup = function()
-                vim.g.coc_config_home = config_path .. "/lua/p/nvim-coc/"
-            end,
-            config = [[require("p.nvim-coc").setup()]],
+            {
+                "neoclide/coc.nvim",
+                branch = "release",
+                setup = function()
+                    vim.g.coc_config_home = config_path .. "/lua/p/nvim-coc/"
+                end,
+                config = [[require("p.nvim-coc").setup()]],
+            },
+            "honza/vim-snippets",
         }
 
         use {
@@ -203,26 +193,19 @@ require("packer").startup {
                 config = [[require("p.nvim-gitsigns").setup()]],
             },
             "psliwka/vim-smoothie",
+            "farmergreg/vim-lastplace",
             {
-                "karb94/neoscroll.nvim",
-                disable = true,
+                "ggandor/lightspeed.nvim",
                 config = function()
-                    require("neoscroll").setup {
-                        -- All these keys will be mapped to their corresponding default scrolling animation
-                        mappings = {
-                            "<C-u>",
-                            "<C-d>",
-                            "<C-b>",
-                            "<C-f>",
-                            "zt",
-                            "zz",
-                            "zb",
-                        },
+                    require("lightspeed").setup {
+                        jump_to_first_match = true,
+                        jump_on_partial_input_safety_timeout = 400,
+                        highlight_unique_chars = false,
+                        grey_out_search_area = true,
+                        match_only_the_start_of_same_char_seqs = true,
+                        limit_ft_matches = 5,
+                        full_inclusive_prefix_key = "<c-x>",
                     }
-                    local t = {}
-                    t["gg"] = { "scroll", { "-2*vim.api.nvim_buf_line_count(0)", "true", "1", "5" } }
-                    t["G"] = { "scroll", { "2*vim.api.nvim_buf_line_count(0)", "true", "1", "5" } }
-                    require("neoscroll.config").set_mappings(t)
                 end,
             },
             {
@@ -239,13 +222,6 @@ require("packer").startup {
                 "jghauser/mkdir.nvim",
                 config = function()
                     require "mkdir"
-                end,
-            },
-            {
-                "ybian/smartim",
-                disable = true,
-                config = function()
-                    vim.g.smartim_default = "com.apple.keylayout.ABC"
                 end,
             },
             {
@@ -270,26 +246,6 @@ require("packer").startup {
             {
                 "mhartington/formatter.nvim",
                 config = [[require("p.nvim-formatter")]],
-            },
-            {
-                "mattn/emmet-vim",
-                disable = true,
-                event = "InsertEnter",
-                ft = {
-                    "html",
-                    "css",
-                    "javascript",
-                    "javascriptreact",
-                    "vue",
-                    "typescript",
-                    "typescriptreact",
-                },
-                config = function()
-                    vim.g.user_emmet_complete_tag = 0
-                    vim.g.user_emmet_install_global = 0
-                    vim.g.user_emmet_install_command = 0
-                    vim.g.user_emmet_mode = "i"
-                end,
             },
         }
     end,

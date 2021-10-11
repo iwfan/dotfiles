@@ -3,21 +3,7 @@
 
   // coc settings
   "coc.preferences.enableMessageDialog": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "html",
-    "css",
-    "sass",
-    "vue",
-    "markdown",
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "json",
-    "jsonc",
-    "javascriptreact",
-    "typescript.tsx",
-    "vim"
-  ],
+  "coc.preferences.formatOnSaveFiletypes": ["prisma"],
 
   // suggest
   "suggest.enablePreselect": true,
@@ -53,6 +39,8 @@
     "default": "\uf29c"
   },
 
+  "codeLens.enable": true,
+
   //diagnostic
   "diagnostic.errorSign": "\uf05c",
   "diagnostic.warningSign": "\uf071",
@@ -62,16 +50,8 @@
   "diagnostic.virtualTextPrefix": "  ",
   "diagnostic.separateRelatedInformationAsDiagnostics": true,
 
-  "codeLens.enable": true,
-
-  // coc source
-  "coc.source.issues.priority": 99,
-  "coc.source.file.priority": 90,
-  "coc.source.around.priority": 1,
-  "coc.source.buffer.priority": 1,
-  "coc.source.around.firstMatch": false,
-  "coc.source.buffer.firstMatch": false,
-  "coc.source.file.ignoreHidden": false,
+  // list
+  "list.source.files.defaultOptions": ["--number-select"],
 
   // explorer
   "explorer.sources": [
@@ -132,15 +112,8 @@
   "imselect.enableStatusItem": false,
   "imselect.enableFloating": false,
 
-  "html.format.enable": true,
-  "javascript.referencesCodeLens.enable": true,
-  "javascript.showUnused": true,
-  "javascript.suggest.names": true,
-  "javascript.suggestionActions.enabled": true,
-
   // snippets
   "snippets.priority": 90,
-  "snippets.ultisnips.enable": false,
   "snippets.textmateSnippetsRoots": ["~/dotfiles/nvim/snippets"],
   "snippets.extends": {
     "typescript": ["javascript"],
@@ -158,12 +131,13 @@
 
   "eslint.packageManager": "pnpm",
   "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
 
   // prettier
   "prettier.eslintIntegration": true,
   "prettier.tslintIntegration": false,
   "prettier.stylelintIntegration": true,
-  "prettier.statusItemText": "",
+  "prettier.statusItemText": "Prettier",
 
   // typescript
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
@@ -175,7 +149,7 @@
   "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
 
   // coc-lua
-  "Lua.diagnostics.globals": ["vim"],
+  "Lua.diagnostics.globals": ["vim", "hs", "spoon", "utf8"],
   "Lua.runtime.version": "Lua 5.1",
   "Lua.telemetry.enable": false,
 

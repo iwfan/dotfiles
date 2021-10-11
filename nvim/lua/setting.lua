@@ -56,6 +56,7 @@ vim.opt.foldlevelstart = 99
 vim.opt.inccommand = "nosplit"
 vim.opt.updatetime = 300
 vim.opt.shortmess:append { c = true }
+vim.opt.jumpoptions = "stack"
 
 -- tabs & indent
 vim.opt.tabstop = 2
@@ -113,11 +114,3 @@ vim.opt.sessionoptions:append { "options", "resize", "winpos", "terminal" }
 
 -- autocmd
 vim.cmd "au BufEnter * set formatoptions-=cro formatoptions+=j1"
-vim.cmd "au TextYankPost * silent! lua vim.highlight.on_yank({timeout=500})"
-vim.cmd [[autocmd BufReadPost * lua Goto_last_pos()]]
-function Goto_last_pos()
-    local last_pos = vim.fn.line "'\""
-    if last_pos > 0 and last_pos <= vim.fn.line "$" then
-        vim.api.nvim_win_set_cursor(0, { last_pos, 0 })
-    end
-end
