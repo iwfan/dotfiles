@@ -131,15 +131,6 @@ ins_left {
     },
 }
 
-ins_left {
-    provider = function()
-        return require("nvim-gps").get_location()
-    end,
-    enabled = function()
-        return require("nvim-gps").is_available()
-    end,
-}
-
 -- gitBranch
 ins_right {
     provider = function()

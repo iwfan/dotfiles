@@ -134,11 +134,6 @@ require("packer").startup {
                 config = [[require("p.nvim-feline")]],
             },
             {
-                "SmiteshP/nvim-gps",
-                requires = "nvim-treesitter/nvim-treesitter",
-                config = [[require("p.nvim-gps").setup()]],
-            },
-            {
                 "glepnir/dashboard-nvim",
                 setup = [[require("p.nvim-dashboard")]],
             },

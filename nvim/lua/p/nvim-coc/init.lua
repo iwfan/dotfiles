@@ -16,6 +16,7 @@ local function setup_global_extensions()
         "coc-imselect",
         "coc-json",
         "coc-lists",
+        "coc-postfix",
         "coc-prettier",
         "coc-prisma",
         "coc-sh",
@@ -34,7 +35,7 @@ end
 
 local function setup_keymaps()
     map_cmd("n|<C-e>", "CocCommand explorer")
-    map_cmd("n|/", "CocList words")
+    map_cmd("n|g/", "CocList words")
     map_cmd("n|<leader>/", "CocList grep")
     map_cmd("n|<leader>p", "CocList files")
     map_cmd("n|<leader>o", "CocList mru")
