@@ -199,7 +199,7 @@ ins_right {
 
 ins_right {
     provider = function()
-        return vim.g.coc_status
+        return vim.g.coc_status or ""
     end,
     enabled = buffer_not_empty,
     left_sep = " ",
