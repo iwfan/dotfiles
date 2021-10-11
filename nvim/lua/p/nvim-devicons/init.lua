@@ -23,18 +23,23 @@ M.setup = function()
                 color = "#519ABA",
                 name = "ts",
             },
+            json = {
+                icon = "ﬥ ",
+                color = "#EBCB8B",
+                name = "json",
+            },
             png = {
-                icon = " ",
+                icon = "",
                 color = "#BD77DC",
                 name = "png",
             },
             jpg = {
-                icon = " ",
+                icon = "",
                 color = "#BD77DC",
                 name = "jpg",
             },
             jpeg = {
-                icon = " ",
+                icon = "",
                 color = "#BD77DC",
                 name = "jpeg",
             },
