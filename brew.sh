@@ -38,3 +38,4 @@ brew install --cask "appcleaner"
 brew install --cask "the-unarchiver"
 brew install --cask "clashx"
 brew install --cask "telegram"
+brew install --cask squirrel
