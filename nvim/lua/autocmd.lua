@@ -19,11 +19,9 @@ augroup("filetype_config", {
     { "BufEnter", "*.css,*.scss,*.less", "setlocal iskeyword+=-" },
     { "BufEnter", "markdown", "setlocal wrap" },
     { "FileType", "make", "setlocal noexpandtab" },
-    { "FileType", "fish", [[set commentstring=#\ %s]] },
-    { "TermOpen", "term://*", "setf terminal" },
     { "TermOpen", "term://*", "startinsert" },
     { "TermOpen", "term://*", "setlocal nonumber norelativenumber" },
-    { "TermClose", "term://*", "bd!" },
+    { "TermClose", "term://*", [[if &filetype == 'term' | bd! | else | stopinsert | endif]] },
 })
 
 augroup("misc", {
@@ -32,6 +30,7 @@ augroup("misc", {
         [[*.png,*.jpg,*.gif]],
         [[exec "silent !open ".expand("%") | :bw]],
     },
+    { "InsertEnter", "*", "noh" },
     { "FocusLost", "*", [[silent! wa]] }, -- auto save when nvim focus
     { "BufWritePre", "*", [[%s/\s\+$//e]] }, -- remove trailing whitespaces
     { "BufWritePre", "*", [[%s/\n\+\%$//e]] },

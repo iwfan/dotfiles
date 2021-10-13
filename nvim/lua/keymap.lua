@@ -29,22 +29,24 @@ map("i|!", "!<C-g>u")
 map("i|?", "?<C-g>u")
 
 map("n|<C-h>", "<C-w>h")
+map("n|<C-l>", "<C-w>l")
 map("n|<C-j>", "<C-w>j")
 map("n|<C-k>", "<C-w>k")
-map("n|<C-l>", "<C-w>l")
+map("t|<C-H>", [[<c-\><c-n><c-w>h]])
+map("t|<C-L>", [[<c-\><c-n><c-w>l]])
+map("t|<C-J>", [[<c-\><c-n><c-w>j]])
+map("t|<C-K>", [[<c-\><c-n><c-w>k]])
+map("t|<Esc><Esc>", [[<C-\><C-N>]])
+
 map_cmd("n|<C-w><up>", "res +5")
 map_cmd("n|<C-w><down>", "res -5")
 map_cmd("n|<C-w><right>", "vertical resize +5")
 map_cmd("n|<C-w><left>", "vertical resize -5")
-map_cmd("n|<C-w>t", "vnew +terminal | setlocal nobuflisted")
-map_cmd("n|<C-w>b", "10new +terminal | setlocal nobuflisted")
-map_cmd("n|<C-w>g", "tabe | term lazygit")
 
--- map("n|<leader>d", '"_d')
--- map("v|<leader>d", '"_d')
--- map("n|<leader>p", '"_dP')
--- map("n|<leader>x", "0d$")
--- map("n|<leader><leader>", "<C-^>")
+map_cmd("n|<C-w>t", "vnew +term | setlocal nobuflisted ft=term")
+map_cmd("n|<C-w>b", "10new +term | setlocal nobuflisted ft=term")
+map_cmd("n|<C-w>g", "tabe +term=lazygit | setlocal ft=term")
+
 map("n|<leader><bs>", '"_dd')
 map("n|<Esc>", ":noh<cr>:echo<cr><esc>")
 map("n|<C-s>", [[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]], { expr = true })
@@ -67,8 +69,6 @@ map("i|<A-k>", "<Esc>:m .-2<CR>==gi")
 map("i|<A-j>", "<Esc>:m .+1<CR>==gi")
 map("v|<A-k>", ":m '<-2<CR>gv=gv")
 map("v|<A-j>", ":m '>+1<CR>gv=gv")
-
-map("t|<Esc><Esc>", [[<C-\><C-N>]])
 
 vim.cmd "command! -bang -nargs=* -complete=file E e<bang> <args>"
 vim.cmd "command! -bang -nargs=* -complete=file W w<bang> <args>"
