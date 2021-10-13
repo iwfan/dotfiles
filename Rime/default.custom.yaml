@@ -1,0 +1,10 @@
+# Rime default settings
+# encoding: utf-8
+
+patch:
+  schema_list:
+    - schema: double_pinyin_flypy # 小鹤双拼
+    - schema: luna_pinyin_simp # 朙月拼音 简化字
+    - schema: luna_pinyin # 朙月拼音
+
+  menu/page_size: 9 # 候选词个数
