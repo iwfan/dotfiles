@@ -84,6 +84,12 @@ require("packer").startup {
             },
             {
                 "terrortylor/nvim-comment",
+                disable = true,
+                event = "BufRead",
+                config = [[require("p.nvim-comment").setup()]],
+            },
+            {
+                "numToStr/Comment.nvim",
                 event = "BufRead",
                 config = [[require("p.nvim-comment").setup()]],
             },
