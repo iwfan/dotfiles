@@ -22,21 +22,21 @@ vim.g.dashboard_custom_header = {
 vim.g.dashboard_default_executive = "telescope"
 
 vim.g.dashboard_custom_section = {
-    a = {
-        description = { "  Reload Last Session            SPC r s" },
-        command = "SessionLoad",
+    s = {
+        description = { "  Reload Last Session            SPC s" },
+        command = "CocCommand session.load",
     },
-    b = {
-        description = { "  Recently Opened Files          SPC f o" },
-        command = "Telescope oldfiles",
+    o = {
+        description = { "  Recently Opened Files          SPC o" },
+        command = "CocList mru",
     },
-    c = {
-        description = { "  Open Project                   SPC f p" },
-        command = "Telescope project",
+    g = {
+        description = { "  Git Status                     SPC g" },
+        command = "CocList gstatus",
     },
-    d = {
-        description = { "  Find File                      SPC f f" },
-        command = "Telescope find_files",
+    f = {
+        description = { "  Find File                      SPC p" },
+        command = "CocList files",
     },
 }
 

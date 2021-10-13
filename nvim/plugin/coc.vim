@@ -103,15 +103,15 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 "" if only one buffer named 'coc-explorer' is shown, then exit
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
-" navigate chunks of current buffer
-nmap [c <Plug>(coc-git-prevchunk)
-nmap ]c <Plug>(coc-git-nextchunk)
-" navigate conflicts of current buffer
-nmap [C <Plug>(coc-git-prevconflict)
-nmap ]C <Plug>(coc-git-nextconflict)
 " show chunk diff at current position
 nmap \c <Plug>(coc-git-chunkinfo)
 nmap <bs>c <cmd>CocCommand git.chunkUndo<cr>
+" navigate chunks of current buffer
+nmap [c <Plug>(coc-git-prevchunk)\c
+nmap ]c <Plug>(coc-git-nextchunk)\c
+" navigate conflicts of current buffer
+nmap [C <Plug>(coc-git-prevconflict)
+nmap ]C <Plug>(coc-git-nextconflict)
 " show commit contains current position
 nmap \C <Plug>(coc-git-commit)
 " create text object for git chunks
