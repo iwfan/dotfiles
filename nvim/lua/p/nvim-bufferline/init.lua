@@ -10,5 +10,5 @@ require("bufferline").setup {
 
 map_cmd("n|b<", "BufferLineMovePrev")
 map_cmd("n|b>", "BufferLineMoveNext")
-map_cmd("n|\b", "BufferLinePick")
+map_cmd([[n|\b]], "BufferLinePick")
 map_cmd("n|<bs>b", "Bdelete!")

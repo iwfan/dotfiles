@@ -28,7 +28,7 @@ augroup("misc", {
     {
         "BufEnter",
         [[*.png,*.jpg,*.gif]],
-        [[exec "silent !open ".expand("%") | :bw]],
+        [[exec "silent !open ".expand("%")]],
     },
     { "InsertEnter", "*", "noh" },
     { "FocusLost", "*", [[silent! wa]] }, -- auto save when nvim focus
