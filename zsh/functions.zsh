@@ -77,3 +77,16 @@ fif() {
   if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
   rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
 }
+
+j() {
+  if [[ -z "$*" ]]; then
+    cd "$(zshz -l 2>&1 | fzf +s | sed 's/^[0-9,.]* *//')"
+  else
+    _last_z_args="$@"
+    zshz "$@"
+  fi
+}
+
+jj() {
+  cd "$(zshz -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf -q $_last_z_args)"
+}

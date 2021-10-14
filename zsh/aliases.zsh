@@ -6,7 +6,6 @@ alias doc="$HOME/Documents"
 alias dow="$HOME/Downloads"
 alias dot="$HOME/dotfiles"
 
-alias j="z"
 alias c='pbcopy'
 alias d='dirs -v'
 
