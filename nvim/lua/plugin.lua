@@ -33,18 +33,18 @@ require("packer").startup {
             },
             "tpope/vim-repeat",
             {
-                "tpope/vim-fugitive",
-                cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" },
-            },
-            {
                 "tpope/vim-obsession",
                 cmd = { "Obsess" },
             },
-            {
-                "tpope/vim-dispatch",
-                cmd = { "Dispatch", "Make", "Focus", "Start" },
-                requires = { "radenling/vim-dispatch-neovim" },
-            },
+            -- {
+            --     "tpope/vim-fugitive",
+            --     cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" },
+            -- },
+            -- {
+            --     "tpope/vim-dispatch",
+            --     cmd = { "Dispatch", "Make", "Focus", "Start" },
+            --     requires = { "radenling/vim-dispatch-neovim" },
+            -- },
         }
 
         use {
@@ -186,6 +186,11 @@ require("packer").startup {
                 event = "BufRead",
                 requires = "nvim-lua/plenary.nvim",
                 config = [[require("p.nvim-gitsigns").setup()]],
+            },
+            {
+                "sindrets/diffview.nvim",
+                cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+                config = [[require'diffview'.setup()]],
             },
             "psliwka/vim-smoothie",
             "farmergreg/vim-lastplace",
