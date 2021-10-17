@@ -19,8 +19,8 @@ M.setup = function()
         ignore = "^$",
         pre_hook = update_commentstring,
     }
-    local lang = require "Comment.lang"
-    lang.set("json", { "//%s" })
+    local ft = require "Comment.ft"
+    ft.set("json", { "//%s" })
     map_cmd("n|<C-_>", "lua require('Comment').toggle()")
 end
 

@@ -20,7 +20,7 @@ augroup("filetype_config", {
     { "BufEnter", "markdown", "setlocal wrap" },
     { "FileType", "make", "setlocal noexpandtab" },
     { "TermOpen", "term://*", "startinsert" },
-    { "TermOpen", "term://*", "setlocal nonumber norelativenumber" },
+    { "TermOpen", "term://*", "setlocal nonumber norelativenumber signcolumn=no" },
     { "TermClose", "term://*", [[if &filetype == 'term' | bd! | else | stopinsert | endif]] },
 })
 
