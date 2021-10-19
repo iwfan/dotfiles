@@ -11,16 +11,17 @@ augroup("filetype_detect", {
 })
 
 augroup("filetype_config", {
-    { "BufEnter", [[/tmp/*]], "setlocal noundofile" },
-    { "BufEnter", "COMMIT_EDITMSG", "setlocal noundofile" },
-    { "BufEnter", "MERGE_MSG", "setlocal noundofile" },
-    { "BufEnter", [[*.tmp]], "setlocal noundofile" },
-    { "BufEnter", [[*.bak]], "setlocal noundofile" },
-    { "BufEnter", "*.css,*.scss,*.less", "setlocal iskeyword+=-" },
-    { "BufEnter", "markdown", "setlocal wrap" },
-    { "FileType", "make", "setlocal noexpandtab" },
+    { "BufEnter", [[/tmp/*]], "setl noundofile" },
+    { "BufEnter", "COMMIT_EDITMSG", "setl noundofile" },
+    { "BufEnter", "MERGE_MSG", "setl noundofile" },
+    { "BufEnter", [[*.tmp]], "setl noundofile" },
+    { "BufEnter", [[*.bak]], "setl noundofile" },
+    { "BufEnter", "*.css,*.scss,*.less", "setl iskeyword+=-" },
+    { "BufEnter", "markdown", "setl wrap" },
+    { "FileType", "scss", "setl iskeyword+=@-@" },
+    { "FileType", "make", "setl noexpandtab" },
     { "TermOpen", "term://*", "startinsert" },
-    { "TermOpen", "term://*", "setlocal nonumber norelativenumber signcolumn=no" },
+    { "TermOpen", "term://*", "setl nonumber norelativenumber signcolumn=no" },
     { "TermClose", "term://*", [[if &filetype == 'term' | bd! | else | stopinsert | endif]] },
 })
 
