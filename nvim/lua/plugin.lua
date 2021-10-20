@@ -60,7 +60,6 @@ require("packer").startup {
             },
             {
                 "windwp/nvim-spectre",
-                disable = true,
                 config = [[require("p.nvim-spectre")]],
             },
         }
