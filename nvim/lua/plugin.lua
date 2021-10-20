@@ -58,8 +58,10 @@ require("packer").startup {
                 },
                 config = [[require("p.nvim-telescope").setup()]],
             },
+            "nvim-lua/plenary.nvim",
             {
                 "windwp/nvim-spectre",
+                requires = "nvim-lua/plenary.nvim",
                 config = [[require("p.nvim-spectre")]],
             },
         }
