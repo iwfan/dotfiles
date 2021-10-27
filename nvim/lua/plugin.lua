@@ -80,7 +80,7 @@ require("packer").startup {
             {
                 "windwp/nvim-autopairs",
                 config = function()
-                    require("nvim-autopairs").setup { disable_filetype = { "TelescopePrompt" } }
+                    require("nvim-autopairs").setup {}
                 end,
             },
             {
