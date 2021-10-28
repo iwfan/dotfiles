@@ -10,6 +10,7 @@ GlobalPkgList=(
     "diagnostic-languageserver"
     "dockerfile-language-server-nodejs"
     "bash-language-server"
+    "graphql-language-service-cli"
     "vls"
     "yarn"
     "live-server"

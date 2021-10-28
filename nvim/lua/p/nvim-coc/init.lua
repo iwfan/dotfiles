@@ -10,7 +10,6 @@ local function setup_global_extensions()
         "coc-floatinput",
         "coc-git",
         "coc-go",
-        -- "coc-graphql",
         "coc-html",
         "coc-highlight",
         "coc-imselect",

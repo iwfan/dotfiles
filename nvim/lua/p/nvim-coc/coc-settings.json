@@ -157,5 +157,14 @@
   "vimlsp.indexes.runtimepath": true,
   "vimlsp.indexes.gap": 10,
   "vimlsp.indexes.count": 3,
-  "vimlsp.suggest.fromVimruntime": true
+  "vimlsp.suggest.fromVimruntime": true,
+
+  "languageserver": {
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      // customize filetypes to your needs
+      "filetypes": ["typescript", "typescriptreact", "graphql"]
+    }
+  }
 }
