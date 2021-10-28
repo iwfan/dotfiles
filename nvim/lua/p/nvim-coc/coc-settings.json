@@ -39,7 +39,7 @@
     "default": "\uf29c"
   },
 
-  "codeLens.enable": true,
+  "codeLens.enable": false,
 
   //diagnostic
   "diagnostic.errorSign": "\uf05c",
