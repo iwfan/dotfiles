@@ -15,6 +15,7 @@ set multiple-cursors
 set commentary
 set argtextobj
 set easymotion
+set NERDTree
 set textobj-entire
 set exchange
 set ReplaceWithRegister
