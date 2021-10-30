@@ -36,15 +36,15 @@ require("packer").startup {
                 "tpope/vim-obsession",
                 cmd = { "Obsess" },
             },
-            -- {
-            --     "tpope/vim-fugitive",
-            --     cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" },
-            -- },
-            -- {
-            --     "tpope/vim-dispatch",
-            --     cmd = { "Dispatch", "Make", "Focus", "Start" },
-            --     requires = { "radenling/vim-dispatch-neovim" },
-            -- },
+            {
+                "tpope/vim-fugitive",
+                cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" },
+            },
+            {
+                "tpope/vim-dispatch",
+                cmd = { "Dispatch", "Make", "Focus", "Start" },
+                requires = { "radenling/vim-dispatch-neovim" },
+            },
         }
 
         use {
