@@ -41,7 +41,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
 vim.opt.relativenumber = true
 vim.opt.number = true
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.showmode = false
 vim.opt.showtabline = 2
 vim.opt.signcolumn = "yes"
@@ -55,6 +55,7 @@ vim.opt.foldnestmax = 10
 vim.opt.foldlevelstart = 99
 vim.opt.inccommand = "nosplit"
 vim.opt.updatetime = 300
+vim.opt.redrawtime = 1500
 vim.opt.shortmess:append { c = true }
 vim.opt.jumpoptions = "stack"
 
@@ -65,9 +66,9 @@ vim.opt.softtabstop = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.breakindent = true
-vim.opt.shiftround = true
 
 -- search
+vim.opt.hlsearch = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.grepprg = "rg --vimgrep --no-heading --hidden"
@@ -77,13 +78,16 @@ vim.opt.colorcolumn = "+1"
 vim.opt.wrap = false
 vim.opt.whichwrap = "b,s,h,l,<,>,[,],~"
 vim.opt.showbreak = "↪ "
+vim.opt.backspace = { "eol", "start", "indent" }
+vim.opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 
 vim.opt.list = true
 vim.opt.listchars = {
     tab = " ",
     trail = "·",
-    precedes = "←",
-    extends = "→",
+    lead = "·",
+    extends = "»",
+    precedes = "«",
     nbsp = "␣",
 }
 vim.opt.fillchars = { fold = "", eob = " " }
