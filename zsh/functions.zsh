@@ -90,3 +90,11 @@ j() {
 jj() {
   cd "$(zshz -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf -q $_last_z_args)"
 }
+
+port() {
+  lsof -nP -iTCP -sTCP:LISTEN | grep $1
+}
+
+pid() {
+  ps -Ao user,pid,command | grep -v grep | grep $1
+}
