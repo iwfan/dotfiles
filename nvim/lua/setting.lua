@@ -85,7 +85,6 @@ vim.opt.list = true
 vim.opt.listchars = {
     tab = " ",
     trail = "·",
-    lead = "·",
     extends = "»",
     precedes = "«",
     nbsp = "␣",

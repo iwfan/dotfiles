@@ -16,8 +16,9 @@ end
 
 M.setup = function()
     require("Comment").setup {
-        ignore = "^$",
-        pre_hook = update_commentstring,
+        pre_hook = function()
+            return require("ts_context_commentstring.internal").calculate_commentstring()
+        end,
     }
     local ft = require "Comment.ft"
     ft.set("json", { "//%s" })
