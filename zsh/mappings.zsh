@@ -13,6 +13,7 @@ _open_neovim() {
 zle -N _open_neovim
 
 bindkey "^V" _open_neovim
+bindkey -s '^o' 'nvim $(fzf)^M'
 
 _open_lazygit() {
 	zle -I
@@ -22,7 +23,8 @@ _open_lazygit() {
 }
 zle -N _open_lazygit
 
-bindkey "^G" _open_lazygit
+# bindkey "^G" _open_lazygit
+bindkey -s '^g' 'gitui^M'
 
 _open_lazynpm() {
 	zle -I
