@@ -23,8 +23,8 @@ _open_lazygit() {
 }
 zle -N _open_lazygit
 
-# bindkey "^G" _open_lazygit
-bindkey -s '^g' 'gitui^M'
+bindkey "^G" _open_lazygit
+# bindkey -s '^g' 'gitui^M'
 
 _open_lazynpm() {
 	zle -I
