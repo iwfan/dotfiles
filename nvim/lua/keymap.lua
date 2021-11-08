@@ -45,7 +45,7 @@ map_cmd("n|<C-w><left>", "vertical resize -5")
 
 map_cmd("n|<C-w>t", "vnew +term | setlocal nobuflisted ft=term")
 map_cmd("n|<C-w>b", "10new +term | setlocal nobuflisted ft=term")
-map_cmd("n|<C-w>g", "tabe +term=gitui | setlocal ft=term")
+map_cmd("n|<C-w>g", "tabe +term=lazygit | setlocal ft=term")
 
 map("n|<leader><bs>", '"_dd')
 map("n|<Esc>", ":noh<cr>:echo<cr><esc>")

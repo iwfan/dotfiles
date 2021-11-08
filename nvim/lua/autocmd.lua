@@ -21,9 +21,8 @@ augroup("filetype_config", {
     { "FileType", "scss", "setl iskeyword+=@-@" },
     { "FileType", "make", "setl noexpandtab" },
     { "TermOpen", "term://*", "startinsert" },
-    { "TermOpen", "term://*", "setl nonumber norelativenumber signcolumn=no laststatus=0" },
+    { "TermOpen", "term://*", "setl nonumber norelativenumber signcolumn=no" },
     { "TermClose", "term://*", [[if &filetype == 'term' | bd! | else | stopinsert | endif]] },
-    { "TermClose", "term://*", "setl laststatus=2" },
 })
 
 augroup("misc", {
