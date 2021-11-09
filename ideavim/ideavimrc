@@ -29,6 +29,12 @@ set clipboard^=unnamed,unnamedplus,ideaput
 
 let g:argtextobj_pairs="[:],(:),<:>"
 
+let g:NERDTreeMapActivateNode="l"
+let g:NERDTreeMapPreview="gl"
+let g:NERDTreeMapOpenVSplit="<C-v>"
+let g:NERDTreeMapJumpRoot="H"
+let g:NERDTreeMapJumpParent="h"
+
 " 自动切换为英文, 需要 IdeaVimExtension 中文
 set keep-english-in-normal
 " set keep-english-in-normal-and-restore-in-insert
