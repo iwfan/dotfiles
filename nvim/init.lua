@@ -21,10 +21,42 @@ if ok then
     --impatient.enable_profile()
 end
 
-require "global"
-require "setting"
-require "keymap"
-require "autocmd"
-require "plugin"
+--disable builtin plugins
+local disabled_built_ins = {
+    "2html_plugin",
+    "getscript",
+    "getscriptPlugin",
+    "gzip",
+    "logipat",
+    "netrw",
+    "netrwPlugin",
+    "netrwSettings",
+    "netrwFileHandlers",
+    "matchit",
+    "tar",
+    "tarPlugin",
+    "rrhelper",
+    "spellfile_plugin",
+    "vimball",
+    "vimballPlugin",
+    "zip",
+    "zipPlugin",
+}
 
-pcall(require, "packer_compiled")
+for _, plugin in pairs(disabled_built_ins) do
+    vim.g["loaded_" .. plugin] = 1
+end
+
+-- load options, mappings, and plugins
+local conf_modules = {
+    "global",
+    "setting",
+    "keymap",
+    "autocmd",
+    "plugin",
+    "packer_compiled",
+}
+
+for i = 1, #conf_modules, 1 do
+    pcall(require, conf_modules[i])
+end
