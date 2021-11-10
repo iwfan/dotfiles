@@ -39,7 +39,7 @@ vim.opt.foldlevelstart = 99
 vim.opt.inccommand = "nosplit"
 vim.opt.updatetime = 300
 vim.opt.redrawtime = 1500
-vim.opt.shortmess:append { c = true }
+vim.opt.shortmess:append "casI" -- disable intro
 vim.opt.jumpoptions = "stack"
 
 -- tabs & indent
@@ -59,7 +59,7 @@ vim.opt.grepprg = "rg --vimgrep --no-heading --hidden"
 -- line break
 vim.opt.colorcolumn = "+1"
 vim.opt.wrap = false
-vim.opt.whichwrap = "b,s,h,l,<,>,[,],~"
+vim.opt.whichwrap:append "<>hl" -- clean aligned wraps
 vim.opt.showbreak = "↪ "
 vim.opt.backspace = { "eol", "start", "indent" }
 vim.opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
