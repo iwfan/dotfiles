@@ -23,8 +23,15 @@ require("packer").startup {
 
         -- Startup
         use {
-            "nathom/filetype.nvim",
-            config = [[require("p.nvim-filetype").setup()]],
+            {
+                "nathom/filetype.nvim",
+                config = [[require("p.nvim-filetype").setup()]],
+            },
+            "lewis6991/impatient.nvim",
+            {
+                "tweekmonster/startuptime.vim",
+                cmd = "StartupTime",
+            },
         }
 
         -- tpope
@@ -258,6 +265,8 @@ require("packer").startup {
         }
     end,
     config = {
+        -- Move to lua dir so impatient.nvim can cache it
+        compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
         git = { clone_timeout = 120 },
         display = {
             open_fn = function()
