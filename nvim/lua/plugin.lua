@@ -21,6 +21,12 @@ require("packer").startup {
         -- Packer can manage itself
         use "wbthomason/packer.nvim"
 
+        -- Startup
+        use {
+            "nathom/filetype.nvim",
+            config = [[require("p.nvim-filetype").setup()]],
+        }
+
         -- tpope
         use {
             "tpope/vim-sensible",

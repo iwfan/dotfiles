@@ -2,6 +2,9 @@
 vim.g.python_host_prog = "/usr/bin/python"
 vim.g.python3_host_prog = "/usr/local/bin/python3"
 
+-- Do not source the default filetype.vim
+vim.g.did_load_filetypes = 1
+
 -- Disable built-in plugins
 vim.g.loaded_gzip = 1
 vim.g.loaded_tar = 1
