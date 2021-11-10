@@ -4,24 +4,19 @@
 
 # Terminal
 
-- iTerm2
 - Kitty
+- iTerm2
 
 # fonts
 
+- Cascadia Code PL
 - FireCode Nerd Font Retina
-- OperatorMono Nerf Font Book
 - JetBrains Mono
 
 # colorschema
 
-- Gruvbox Material iTerm2
-  - bg: #282828
+- Gruvbox Material Medium
 - Snazzy
-
-# Zsh
-
-https://stackoverflow.com/a/21163441/8575574
 
 # references vim configuration
 
