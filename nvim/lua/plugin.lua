@@ -1,20 +1,25 @@
-local install_path = ("%s/site/pack/packer/start/packer.nvim"):format(stdpath)
+local packer_path = ("%s/site/pack/packer/start/packer.nvim"):format(stdpath)
 
-local function install_packer()
-    vim.fn.termopen(("git clone --depth=1 https://github.com/wbthomason/packer.nvim %q"):format(install_path))
+function _G.packer_install()
+    print "Cloning packer.."
+    -- remove the dir before cloning
+    vim.fn.delete(packer_path, "rf")
+    vim.fn.system {
+      "git",
+      "clone",
+      "https://github.com/wbthomason/packer.nvim",
+      "--depth",
+      "1",
+      packer_path,
+    }
     vim.cmd "packadd packer.nvim"
 end
 
-if fn.empty(fn.glob(install_path)) > 0 then
-    install_packer()
+if fn.empty(fn.glob(packer_path)) > 0 then
+    packer_install()
 end
 
-function _G.packer_upgrade()
-    vim.fn.delete(install_path, "rf")
-    install_packer()
-end
-
-vim.cmd [[command! PackerUpgrade :call v:lua.packer_upgrade()]]
+vim.cmd [[command! PackerUpgrade :call v:lua.packer_install()]]
 
 require("packer").startup {
     function(use, use_rocks)

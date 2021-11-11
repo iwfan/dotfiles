@@ -1,9 +1,7 @@
--- Environment
-vim.g.python_host_prog = "/usr/bin/python"
-vim.g.python3_host_prog = "/usr/local/bin/python3"
-
 -- Do not source the default filetype.vim
 vim.g.did_load_filetypes = 1
+-- avoid stupid menu.vim (saves ~100ms)
+vim.g.did_install_default_menus = 1
 
 -- Options
 
@@ -36,11 +34,12 @@ vim.opt.joinspaces = false
 vim.opt.foldlevel = 1
 vim.opt.foldnestmax = 10
 vim.opt.foldlevelstart = 99
-vim.opt.inccommand = "nosplit"
+vim.opt.inccommand = "split"
 vim.opt.updatetime = 300
 vim.opt.redrawtime = 1500
-vim.opt.shortmess:append "casI" -- disable intro
+vim.opt.shortmess:append "casI"
 vim.opt.jumpoptions = "stack"
+vim.opt.startofline = false
 
 -- tabs & indent
 vim.opt.tabstop = 2
@@ -59,7 +58,7 @@ vim.opt.grepprg = "rg --vimgrep --no-heading --hidden"
 -- line break
 vim.opt.colorcolumn = "+1"
 vim.opt.wrap = false
-vim.opt.whichwrap:append "<>hl" -- clean aligned wraps
+vim.opt.whichwrap:append "<>hl"
 vim.opt.showbreak = "↪ "
 vim.opt.backspace = { "eol", "start", "indent" }
 vim.opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
