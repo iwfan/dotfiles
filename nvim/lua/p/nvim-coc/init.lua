@@ -34,15 +34,16 @@ end
 
 local function setup_keymaps()
     map_cmd("n|<leader>e", "CocCommand explorer")
-    map_cmd("n|<M-e>", "CocCommand explorer")
+    map_cmd("n|<M-S-e>", "CocCommand explorer")
     map_cmd("n|<C-f>", "CocList words")
     map_cmd("n|<C-b>", "CocList buffers")
     map_cmd("n|<leader>/", "CocList grep")
     map_cmd("n|<leader>p", "CocList files --hidden")
+    map_cmd("n|<M-p>", "CocList files --hidden")
     map_cmd("n|<leader>o", "CocList mru")
     map_cmd("n|<M-o>", "CocList mru")
     map_cmd("n|<leader>g", "CocList gstatus")
-    map_cmd("n|<leader>P", "CocList lists")
+    map_cmd("n|<M-S-p>", "CocList lists")
 end
 
 M.setup = function()

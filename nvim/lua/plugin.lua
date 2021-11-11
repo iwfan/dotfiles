@@ -250,8 +250,8 @@ require("packer").startup {
                     var_tbl {
                         VM_default_mappings = 0,
                         VM_maps = {
-                            ["Add Cursor Down"] = "<A-n>",
-                            ["Add Cursor Up"] = "<A-p>",
+                            ["Add Cursor Down"] = "<M-j>",
+                            ["Add Cursor Up"] = "<M-k>",
                         },
                     }
                 end,
