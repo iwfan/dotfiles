@@ -15,10 +15,9 @@
 -- Github:   https://github.com/iwfan/dotfiles
 -- License:  MIT License
 
-local ok, impatient = pcall(require, "impatient")
-if ok then
-    -- NOTE: currently broken, will fix soon
-    --impatient.enable_profile()
+local ok, _ = pcall(require, "impatient")
+if not ok then
+    vim.notify("impatient.nvim not installed", vim.log.levels.WARN)
 end
 
 --disable builtin plugins

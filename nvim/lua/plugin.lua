@@ -5,12 +5,12 @@ function _G.packer_install()
     -- remove the dir before cloning
     vim.fn.delete(packer_path, "rf")
     vim.fn.system {
-      "git",
-      "clone",
-      "https://github.com/wbthomason/packer.nvim",
-      "--depth",
-      "1",
-      packer_path,
+        "git",
+        "clone",
+        "https://github.com/wbthomason/packer.nvim",
+        "--depth",
+        "1",
+        packer_path,
     }
     vim.cmd "packadd packer.nvim"
 end
@@ -66,6 +66,7 @@ require("packer").startup {
         }
 
         use {
+            "nvim-lua/plenary.nvim",
             {
                 "nvim-telescope/telescope.nvim",
                 disable = true,
@@ -76,7 +77,6 @@ require("packer").startup {
                 },
                 config = [[require("p.nvim-telescope").setup()]],
             },
-            "nvim-lua/plenary.nvim",
             {
                 "windwp/nvim-spectre",
                 requires = "nvim-lua/plenary.nvim",
