@@ -104,8 +104,7 @@ dist
 .tern-port
 
 nvim/tmp
-nvim/plugin/packer_compiled.vim
-nvim/plugin/packer_compiled.lua
+nvim/lua/packer_compiled.lua
 nvim/lsp-install/
 .netrwhist
 tags
