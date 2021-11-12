@@ -18,6 +18,9 @@ M.setup = function()
                 [".*git/config"] = "gitconfig", -- Included in the plugin
             },
             function_extensions = {
+                qf = function()
+                    vim.cmd [[set nobuflisted]]
+                end,
                 css = function()
                     vim.cmd [[setl iskeyword+=-]]
                 end,

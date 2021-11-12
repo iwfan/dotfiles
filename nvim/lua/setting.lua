@@ -35,6 +35,7 @@ vim.opt.foldlevel = 1
 vim.opt.foldnestmax = 10
 vim.opt.foldlevelstart = 99
 vim.opt.inccommand = "split"
+vim.opt.timeoutlen = 500
 vim.opt.updatetime = 300
 vim.opt.redrawtime = 1500
 vim.opt.shortmess:append "casI"
@@ -96,6 +97,3 @@ vim.opt.wildignore = {
     "**/node_modules/**",
 }
 vim.opt.sessionoptions:append { "options", "resize", "winpos", "terminal" }
-
--- autocmd
-vim.cmd "au BufEnter * set formatoptions-=cro formatoptions+=j1"
