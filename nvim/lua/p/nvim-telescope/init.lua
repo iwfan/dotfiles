@@ -1,23 +1,9 @@
 local M = {}
 
 local function keymaps()
-    map_cmd("n|<leader>ff", "lua require'p.nvim-telescope.find_files'.find()")
-    map_cmd("n|<leader>fw", "lua require'p.nvim-telescope.find_files'.grep()")
-    map_cmd("n|<leader>fq", "lua require'p.nvim-telescope.lsp'.workspace_symbols()")
-    map_cmd("n|<leader>fo", "Telescope oldfiles")
-    map_cmd("n|<leader>fb", "Telescope buffers")
-    map_cmd("n|<leader>fc", "Telescope current_buffer_fuzzy_find")
-    map_cmd("n|<leader>fe", "Telescope file_browser")
-    map_cmd("n|<leader>fh", "Telescope help_tags")
-    map_cmd("n|<leader>fl", "Telescope loclist")
-    map_cmd("n|<leader>fr", "Telescope registers")
-    map_cmd("n|<leader>fm", "Telescope marks")
-    map_cmd("n|<leader>fk", "Telescope keymaps")
-    map_cmd("n|<leader>fgs", "Telescope git_status")
-    map_cmd("n|<leader>fgS", "Telescope git_stash")
-    map_cmd("n|<leader>fgb", "Telescope git_branches")
-    map_cmd("n|<leader>fgc", "Telescope git_commits")
-    map_cmd("n|<leader>fgC", "Telescope git_bcommits")
+    map_cmd("n|<M-p>", "lua require'p.nvim-telescope.find_files'.find()")
+    map_cmd("n|<M-S-f>", "lua require'p.nvim-telescope.find_files'.grep()")
+    map_cmd("n|<M-S-p>", "Telescope")
 end
 
 M.setup = function()
@@ -68,7 +54,7 @@ M.setup = function()
                 },
             },
             extensions = {
-                fzy_native = {
+                fzf = {
                     override_generic_sorter = true,
                     override_file_sorter = true,
                 },
@@ -76,7 +62,7 @@ M.setup = function()
         },
     }
 
-    require("telescope").load_extension "fzy_native"
+    require("telescope").load_extension "fzf"
     keymaps()
 end
 

@@ -114,8 +114,3 @@ nmap [C <Plug>(coc-git-prevconflict)
 nmap ]C <Plug>(coc-git-nextconflict)
 " show commit contains current position
 nmap \C <Plug>(coc-git-commit)
-" create text object for git chunks
-omap ih <Plug>(coc-git-chunk-inner)
-xmap ih <Plug>(coc-git-chunk-inner)
-omap ah <Plug>(coc-git-chunk-outer)
-xmap ah <Plug>(coc-git-chunk-outer)

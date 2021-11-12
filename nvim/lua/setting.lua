@@ -97,3 +97,6 @@ vim.opt.wildignore = {
     "**/node_modules/**",
 }
 vim.opt.sessionoptions:append { "options", "resize", "winpos", "terminal" }
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

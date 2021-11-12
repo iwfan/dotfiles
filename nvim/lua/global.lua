@@ -95,8 +95,8 @@ end
 
 _G.font_icon = {
     error = " ",
-    warn = " ",
-    hint = " ",
+    warn = " ",
+    hint = " ",
     info = " ",
     modifiy = " ",
     add = " ",
@@ -112,6 +112,7 @@ _G.font_icon = {
     branch = " ",
     gear = " ",
     light = "",
+    light_dash = "",
     check = "﫠",
     ok = " ",
 }

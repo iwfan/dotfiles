@@ -69,11 +69,10 @@ require("packer").startup {
             "nvim-lua/plenary.nvim",
             {
                 "nvim-telescope/telescope.nvim",
-                disable = true,
                 requires = {
                     "nvim-lua/popup.nvim",
                     "nvim-lua/plenary.nvim",
-                    "nvim-telescope/telescope-fzy-native.nvim",
+                    { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
                 },
                 config = [[require("p.nvim-telescope").setup()]],
             },
@@ -148,9 +147,9 @@ require("packer").startup {
                 config = [[require("p.nvim-bufferline")]],
             },
             {
-                "famiu/feline.nvim",
-                after = "nvim-web-devicons",
-                config = [[require("p.nvim-feline")]],
+                "nvim-lualine/lualine.nvim",
+                requires = { "kyazdani42/nvim-web-devicons", opt = true },
+                config = [[require("p.nvim-lualine")]],
             },
             {
                 "glepnir/dashboard-nvim",
@@ -202,7 +201,6 @@ require("packer").startup {
             "github/copilot.vim",
             {
                 "lewis6991/gitsigns.nvim",
-                disable = true,
                 event = "BufRead",
                 requires = "nvim-lua/plenary.nvim",
                 config = [[require("p.nvim-gitsigns").setup()]],
@@ -212,8 +210,6 @@ require("packer").startup {
                 cmd = { "DiffviewOpen", "DiffviewFileHistory" },
                 config = [[require'diffview'.setup()]],
             },
-            "psliwka/vim-smoothie",
-            "farmergreg/vim-lastplace",
             {
                 "ggandor/lightspeed.nvim",
                 config = function()
@@ -226,22 +222,6 @@ require("packer").startup {
                         limit_ft_matches = 5,
                         full_inclusive_prefix_key = "<c-x>",
                     }
-                end,
-            },
-            {
-                "tversteeg/registers.nvim",
-                setup = function()
-                    vim.g.registers_return_symbol = " "
-                    vim.g.registers_tab_symbol = " "
-                    vim.g.registers_show_empty_registers = 0
-                    vim.g.registers_trim_whitespace = 0
-                    vim.g.registers_hide_only_whitespace = 1
-                end,
-            },
-            {
-                "jghauser/mkdir.nvim",
-                config = function()
-                    require "mkdir"
                 end,
             },
             {
@@ -266,6 +246,30 @@ require("packer").startup {
             {
                 "mhartington/formatter.nvim",
                 config = [[require("p.nvim-formatter")]],
+            },
+            {
+                "tversteeg/registers.nvim",
+                setup = function()
+                    vim.g.registers_return_symbol = " "
+                    vim.g.registers_tab_symbol = " "
+                    vim.g.registers_show_empty_registers = 0
+                    vim.g.registers_trim_whitespace = 0
+                    vim.g.registers_hide_only_whitespace = 1
+                end,
+            },
+            "psliwka/vim-smoothie",
+            "farmergreg/vim-lastplace",
+            {
+                "ybian/smartim",
+                setup = function()
+                    vim.g.smartim_default = "com.apple.keylayout.ABC"
+                end,
+            },
+            {
+                "jghauser/mkdir.nvim",
+                config = function()
+                    require "mkdir"
+                end,
             },
         }
     end,

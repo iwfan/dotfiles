@@ -24,7 +24,7 @@ M.setup = function()
                 name = "ts",
             },
             json = {
-                icon = "ﬥ ",
+                icon = "",
                 color = "#EBCB8B",
                 name = "json",
             },

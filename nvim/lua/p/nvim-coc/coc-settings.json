@@ -3,12 +3,12 @@
 
   // coc settings
   "coc.preferences.enableMessageDialog": true,
+  "coc.preferences.extensionUpdateCheck": "weekly",
   "coc.preferences.formatOnSaveFiletypes": ["prisma"],
 
   // suggest
   "suggest.enablePreselect": true,
   "suggest.enablePreview": true,
-  "suggest.triggerAfterInsertEnter": true,
   "suggest.snippetsSupport": true,
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
@@ -39,19 +39,14 @@
     "default": "\uf29c"
   },
 
-  "codeLens.enable": false,
-
   //diagnostic
-  "diagnostic.errorSign": "\uf05c",
-  "diagnostic.warningSign": "\uf071",
-  "diagnostic.infoSign": "\uf06a",
-  "diagnostic.hintSign": "\uf864",
+  "diagnostic.errorSign": " ",
+  "diagnostic.warningSign": " ",
+  "diagnostic.infoSign": " ",
+  "diagnostic.hintSign": " ",
   "diagnostic.virtualText": true,
-  "diagnostic.virtualTextPrefix": "  ",
+  "diagnostic.virtualTextPrefix": " ",
   "diagnostic.separateRelatedInformationAsDiagnostics": true,
-
-  // list
-  "list.source.files.defaultOptions": ["--number-select"],
 
   // explorer
   "explorer.sources": [
@@ -70,47 +65,13 @@
   "explorer.file.showHiddenFiles": false,
   "explorer.file.git.showUntrackedFiles": "system",
   "explorer.file.column.indent.indentLine": true,
-  "explorer.file.root.template": "[git | 1]  [root] [fullpath]",
-  "explorer.file.child.template": "[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5]",
+  "explorer.file.root.template": "  [root] [fullpath]",
+  "explorer.file.child.template": " [selection | clip | 1] [indent][icon | 1] [filename omitCenter 1][modified][readonly] [linkIcon & 1]",
   "explorer.git.icon.rootStatus.ahead": "⇡",
   "explorer.git.icon.rootStatus.behind": "⇣",
-  "explorer.git.icon.rootStatus.added": "",
-  "explorer.git.icon.rootStatus.renamed": "",
-  "explorer.git.icon.rootStatus.deleted": "",
-  "explorer.git.icon.rootStatus.stashed": "$",
-  "explorer.git.icon.rootStatus.modified": "",
-  "explorer.git.icon.rootStatus.untracked": "",
-  "explorer.git.icon.rootStatus.conflicted": "=",
-  "explorer.git.icon.status.mixed": "",
-  "explorer.git.icon.status.added": "",
-  "explorer.git.icon.status.copied": "",
-  "explorer.git.icon.status.deleted": "",
-  "explorer.git.icon.status.renamed": "",
-  "explorer.git.icon.status.modified": "",
-  "explorer.git.icon.status.unmerged": "",
-  "explorer.git.icon.status.untracked": "",
-  "explorer.git.icon.status.ignored": "!",
-  "explorer.git.icon.status.unmodified": " ",
   "explorer.keyMappings.global": {
     "l": ["wait", "expandable?", ["expanded?", "collapse", "expand"], "open"]
   },
-
-  //git
-  "git.branchCharacter": "\uf418",
-  "git.changedDecorator": "*",
-  "git.conflictedDecorator": "x",
-  "git.stagedDecorator": "●",
-  "git.untrackedDecorator": "…",
-  "git.addedSign.text": "▎",
-  "git.changedSign.text": "▎",
-  "git.removedSign.text": "▎",
-  "git.topRemovedSign.text": "▔",
-  "git.changeRemovedSign.text": "▎",
-
-  // imselect
-  "imselect.defaultInput": "com.apple.keylayout.ABC",
-  "imselect.enableStatusItem": false,
-  "imselect.enableFloating": false,
 
   // snippets
   "snippets.priority": 90,
