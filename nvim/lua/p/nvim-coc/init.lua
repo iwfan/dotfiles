@@ -30,6 +30,7 @@ end
 local function setup_keymaps()
     map_cmd("n|<leader>e", "CocCommand explorer")
     map_cmd("n|<M-S-e>", "CocCommand explorer")
+    map_cmd("n|<M-t>", "CocOutline")
 end
 
 M.setup = function()
