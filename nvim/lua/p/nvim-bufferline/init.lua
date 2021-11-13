@@ -8,10 +8,13 @@ require("bufferline").setup {
     },
 }
 
-map_cmd("n|[b", "BufferLineCyclePrev")
-map_cmd("n|]b", "BufferLineCycleNext")
 map_cmd("n|<M-{>", "BufferLineCyclePrev")
 map_cmd("n|<M-}>", "BufferLineCycleNext")
+map_cmd("n|C<Tab>", "BufferLinePick")
+map_cmd("n|<M-w>", "Bdelete!")
+
+map_cmd("n|[b", "BufferLineCyclePrev")
+map_cmd("n|]b", "BufferLineCycleNext")
 map_cmd("n|[B", "BufferLineMovePrev")
 map_cmd("n|]B", "BufferLineMoveNext")
 map_cmd("n|<leader>b", "BufferLinePick")
