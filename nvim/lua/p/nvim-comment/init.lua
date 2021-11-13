@@ -22,7 +22,7 @@ M.setup = function()
     }
     local ft = require "Comment.ft"
     ft.set("json", { "//%s" })
-    map_cmd("n|<C-_>", "lua require('Comment').toggle()")
+    map_cmd([[n|<M-/>]], "lua require('Comment').toggle()")
 end
 
 return M

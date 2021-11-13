@@ -16,6 +16,11 @@ vim.opt.undofile = true
 vim.opt.mouse = "a"
 vim.opt.errorbells = true
 vim.opt.visualbell = true
+vim.opt.updatetime = 300
+vim.opt.timeoutlen = 500
+vim.opt.ttimeoutlen = 10
+vim.opt.redrawtime = 1500
+vim.opt.confirm = true
 
 -- behavior opt
 vim.opt.clipboard = "unnamedplus"
@@ -35,10 +40,18 @@ vim.opt.foldlevel = 1
 vim.opt.foldnestmax = 10
 vim.opt.foldlevelstart = 99
 vim.opt.inccommand = "split"
-vim.opt.timeoutlen = 500
-vim.opt.updatetime = 300
-vim.opt.redrawtime = 1500
-vim.opt.shortmess:append "casI"
+vim.opt.shortmess = {
+    t = true, -- truncate file messages at start
+    A = true, -- ignore annoying swap file messages
+    o = true, -- file-read message overwrites previous
+    O = true, -- file-read message overwrites previous
+    T = true, -- truncate non-file messages in middle
+    f = true, -- (file x of x) instead of just (x of x
+    F = true, -- Don't give file info when editing a file, NOTE: this breaks autocommand messages
+    s = true,
+    c = true,
+    W = true, -- Don't show [w] or written when writing
+}
 vim.opt.jumpoptions = "stack"
 vim.opt.startofline = false
 
@@ -54,7 +67,8 @@ vim.opt.breakindent = true
 vim.opt.hlsearch = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.grepprg = "rg --vimgrep --no-heading --hidden"
+vim.o.grepprg = [[rg --glob "!.git" --no-heading --vimgrep --follow $*]]
+vim.opt.grepformat = vim.opt.grepformat ^ { "%f:%l:%c:%m" }
 
 -- line break
 vim.opt.colorcolumn = "+1"
@@ -72,12 +86,21 @@ vim.opt.listchars = {
     precedes = "«",
     nbsp = "␣",
 }
-vim.opt.fillchars = { fold = "", eob = " " }
+vim.opt.fillchars = {
+    vert = "▕", -- alternatives │
+    fold = " ",
+    eob = " ", -- suppress ~ at EndOfBuffer
+    diff = "╱", -- alternatives = ⣿ ░ ─
+    msgsep = "‾",
+    foldopen = "▾",
+    foldsep = "│",
+    foldclose = "▸",
+}
 vim.opt.pumblend = 10
 vim.opt.winblend = 10
 vim.opt.pumheight = 20
 vim.opt.hidden = true
-vim.opt.switchbuf = { "useopen", "vsplit" }
+vim.opt.switchbuf = { "useopen", "uselast" }
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.wildignorecase = true
 vim.opt.wildignore = {
@@ -97,6 +120,31 @@ vim.opt.wildignore = {
     "**/node_modules/**",
 }
 vim.opt.sessionoptions:append { "options", "resize", "winpos", "terminal" }
+vim.opt.diffopt = vim.opt.diffopt
+    + {
+        "vertical",
+        "iwhite",
+        "hiddenoff",
+        "foldcolumn:0",
+        "context:4",
+        "algorithm:histogram",
+        "indent-heuristic",
+    }
+vim.opt.formatoptions = {
+    ["1"] = true,
+    ["2"] = true, -- Use indent from 2nd line of a paragraph
+    q = true, -- continue comments with gq"
+    c = true, -- Auto-wrap comments using textwidth
+    r = true, -- Continue comments when pressing Enter
+    n = true, -- Recognize numbered lists
+    t = false, -- autowrap lines using text width value
+    j = true, -- remove a comment leader when joining lines.
+    -- Only break if the line was not longer than 'textwidth' when the insert
+    -- started and only at a white character that has been entered during the
+    -- current insert command.
+    l = true,
+    v = true,
+}
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
