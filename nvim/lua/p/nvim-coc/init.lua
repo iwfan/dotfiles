@@ -10,6 +10,7 @@ local function setup_global_extensions()
         "coc-go",
         "coc-html",
         "coc-highlight",
+        "coc-jest",
         "coc-json",
         "coc-postfix",
         "coc-prettier",

@@ -92,6 +92,19 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
+" Run jest for current project
+command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
+
+" Run jest for current file
+command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
+
+" Run jest for current test
+nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
+
+" Init jest in current cwd, require global jest command exists
+command! JestInit :call CocAction('runCommand', 'jest.init')
+
+
 "" if only one buffer is shown and it's name is not 'coc-explorer', then show coc-explorer
 " autocmd BufEnter * if (winnr("$") == 1 && &filetype != 'coc-explorer') | exe ':CocCommand explorer --no-focus' | endif
 "" if only one buffer named 'coc-explorer' is shown, then exit

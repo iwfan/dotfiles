@@ -20,7 +20,6 @@ vim.opt.updatetime = 300
 vim.opt.timeoutlen = 500
 vim.opt.ttimeoutlen = 10
 vim.opt.redrawtime = 1500
-vim.opt.confirm = true
 
 -- behavior opt
 vim.opt.clipboard = "unnamedplus"
@@ -38,7 +37,9 @@ vim.opt.splitright = true
 vim.opt.joinspaces = false
 vim.opt.inccommand = "split"
 vim.opt.jumpoptions = "stack"
-vim.opt.startofline = false
+vim.opt.hidden = true
+vim.opt.switchbuf = { "useopen", "uselast" }
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- tabs & indent
 vim.opt.tabstop = 2
@@ -78,9 +79,6 @@ vim.opt.fillchars = {
 vim.opt.pumblend = 10
 vim.opt.winblend = 10
 vim.opt.pumheight = 20
-vim.opt.hidden = true
-vim.opt.switchbuf = { "useopen", "uselast" }
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.wildignorecase = true
 vim.opt.wildignore = {
     ".git",
