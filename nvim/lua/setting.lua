@@ -36,22 +36,7 @@ vim.opt.scrolloff = 5
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.joinspaces = false
-vim.opt.foldlevel = 1
-vim.opt.foldnestmax = 10
-vim.opt.foldlevelstart = 99
 vim.opt.inccommand = "split"
-vim.opt.shortmess = {
-    t = true, -- truncate file messages at start
-    A = true, -- ignore annoying swap file messages
-    o = true, -- file-read message overwrites previous
-    O = true, -- file-read message overwrites previous
-    T = true, -- truncate non-file messages in middle
-    f = true, -- (file x of x) instead of just (x of x
-    F = true, -- Don't give file info when editing a file, NOTE: this breaks autocommand messages
-    s = true,
-    c = true,
-    W = true, -- Don't show [w] or written when writing
-}
 vim.opt.jumpoptions = "stack"
 vim.opt.startofline = false
 
@@ -67,7 +52,7 @@ vim.opt.breakindent = true
 vim.opt.hlsearch = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.o.grepprg = [[rg --glob "!.git" --no-heading --vimgrep --follow $*]]
+vim.opt.grepprg = [[rg --glob "!.git" --no-heading --vimgrep --follow $*]]
 vim.opt.grepformat = vim.opt.grepformat ^ { "%f:%l:%c:%m" }
 
 -- line break
@@ -82,19 +67,13 @@ vim.opt.list = true
 vim.opt.listchars = {
     tab = " ",
     trail = "·",
-    extends = "»",
-    precedes = "«",
+    extends = "",
+    precedes = "",
     nbsp = "␣",
 }
 vim.opt.fillchars = {
-    vert = "▕", -- alternatives │
     fold = " ",
-    eob = " ", -- suppress ~ at EndOfBuffer
-    diff = "╱", -- alternatives = ⣿ ░ ─
-    msgsep = "‾",
-    foldopen = "▾",
-    foldsep = "│",
-    foldclose = "▸",
+    eob = " ",
 }
 vim.opt.pumblend = 10
 vim.opt.winblend = 10
@@ -119,17 +98,19 @@ vim.opt.wildignore = {
     "*.DS_Store",
     "**/node_modules/**",
 }
+vim.opt.shortmess = {
+    t = true, -- truncate file messages at start
+    A = true, -- ignore annoying swap file messages
+    o = true, -- file-read message overwrites previous
+    O = true, -- file-read message overwrites previous
+    T = true, -- truncate non-file messages in middle
+    f = true, -- (file x of x) instead of just (x of x
+    F = true, -- Don't give file info when editing a file, NOTE: this breaks autocommand messages
+    s = true,
+    c = true,
+    W = true, -- Don't show [w] or written when writing
+}
 vim.opt.sessionoptions:append { "options", "resize", "winpos", "terminal" }
-vim.opt.diffopt = vim.opt.diffopt
-    + {
-        "vertical",
-        "iwhite",
-        "hiddenoff",
-        "foldcolumn:0",
-        "context:4",
-        "algorithm:histogram",
-        "indent-heuristic",
-    }
 vim.opt.formatoptions = {
     ["1"] = true,
     ["2"] = true, -- Use indent from 2nd line of a paragraph
@@ -146,5 +127,8 @@ vim.opt.formatoptions = {
     v = true,
 }
 
+vim.opt.foldlevel = 1
+vim.opt.foldnestmax = 10
+vim.opt.foldlevelstart = 99
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
