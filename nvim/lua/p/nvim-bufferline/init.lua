@@ -11,7 +11,6 @@ require("bufferline").setup {
             local present_type, type = pcall(function()
                 return vim.api.nvim_buf_get_var(buf_number, "term_type")
             end)
-
             if present_type then
                 if type == "vert" then
                     return false
