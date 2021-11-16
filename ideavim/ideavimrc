@@ -2,7 +2,7 @@ set showmode
 set number
 set relativenumber
 set scrolloff=5
-set hlsearch
+set nohlsearch
 set incsearch
 set ignorecase
 set smartcase
@@ -15,7 +15,7 @@ set multiple-cursors
 set commentary
 set argtextobj
 set easymotion
-set NERDTree
+" set NERDTree
 set textobj-entire
 set exchange
 set ReplaceWithRegister
