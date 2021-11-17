@@ -35,7 +35,7 @@ vim.opt.scrolloff = 5
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.joinspaces = false
-vim.opt.inccommand = "split"
+vim.opt.inccommand = "nosplit"
 vim.opt.jumpoptions = "stack"
 vim.opt.hidden = true
 vim.opt.switchbuf = { "useopen", "uselast" }
@@ -53,8 +53,10 @@ vim.opt.breakindent = true
 vim.opt.hlsearch = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.grepprg = [[rg --glob "!.git" --no-heading --vimgrep --follow $*]]
-vim.opt.grepformat = vim.opt.grepformat ^ { "%f:%l:%c:%m" }
+vim.opt.showmatch = true
+vim.opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
+-- vim.opt.grepprg = [[rg --glob "!.git" --no-heading --vimgrep --follow $*]]
+-- vim.opt.grepformat = vim.opt.grepformat ^ { "%f:%l:%c:%m" }
 
 -- line break
 vim.opt.colorcolumn = "+1"
@@ -62,7 +64,6 @@ vim.opt.wrap = false
 vim.opt.whichwrap:append "<>hl"
 vim.opt.showbreak = "↪ "
 vim.opt.backspace = { "eol", "start", "indent" }
-vim.opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 
 vim.opt.list = true
 vim.opt.listchars = {
@@ -96,34 +97,34 @@ vim.opt.wildignore = {
     "*.DS_Store",
     "**/node_modules/**",
 }
-vim.opt.shortmess = {
-    t = true, -- truncate file messages at start
-    A = true, -- ignore annoying swap file messages
-    o = true, -- file-read message overwrites previous
-    O = true, -- file-read message overwrites previous
-    T = true, -- truncate non-file messages in middle
-    f = true, -- (file x of x) instead of just (x of x
-    F = true, -- Don't give file info when editing a file, NOTE: this breaks autocommand messages
-    s = true,
-    c = true,
-    W = true, -- Don't show [w] or written when writing
-}
-vim.opt.sessionoptions:append { "options", "resize", "winpos", "terminal" }
-vim.opt.formatoptions = {
-    ["1"] = true,
-    ["2"] = true, -- Use indent from 2nd line of a paragraph
-    q = true, -- continue comments with gq"
-    c = true, -- Auto-wrap comments using textwidth
-    r = true, -- Continue comments when pressing Enter
-    n = true, -- Recognize numbered lists
-    t = false, -- autowrap lines using text width value
-    j = true, -- remove a comment leader when joining lines.
-    -- Only break if the line was not longer than 'textwidth' when the insert
-    -- started and only at a white character that has been entered during the
-    -- current insert command.
-    l = true,
-    v = true,
-}
+-- vim.opt.shortmess = {
+--     t = true, -- truncate file messages at start
+--     A = true, -- ignore annoying swap file messages
+--     o = true, -- file-read message overwrites previous
+--     O = true, -- file-read message overwrites previous
+--     T = true, -- truncate non-file messages in middle
+--     f = true, -- (file x of x) instead of just (x of x
+--     F = true, -- Don't give file info when editing a file, NOTE: this breaks autocommand messages
+--     s = true,
+--     c = true,
+--     W = true, -- Don't show [w] or written when writing
+-- }
+-- vim.opt.sessionoptions:append { "options", "resize", "winpos", "terminal" }
+-- vim.opt.formatoptions = {
+--     ["1"] = true,
+--     ["2"] = true, -- Use indent from 2nd line of a paragraph
+--     q = true, -- continue comments with gq"
+--     c = true, -- Auto-wrap comments using textwidth
+--     r = true, -- Continue comments when pressing Enter
+--     n = true, -- Recognize numbered lists
+--     t = false, -- autowrap lines using text width value
+--     j = true, -- remove a comment leader when joining lines.
+--     -- Only break if the line was not longer than 'textwidth' when the insert
+--     -- started and only at a white character that has been entered during the
+--     -- current insert command.
+--     l = true,
+--     v = true,
+-- }
 
 vim.opt.foldlevel = 1
 vim.opt.foldnestmax = 10

@@ -183,22 +183,9 @@ require("packer").startup {
             },
         }
 
-        -- test & debugging
-        use {
-            {
-                "puremourning/vimspector",
-                setup = [[require('p.vimspector').setup()]],
-                ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-            },
-            {
-                "vim-test/vim-test",
-                config = [[require("p.vim-test").setup()]],
-            },
-        }
-
         use {
             "editorconfig/editorconfig-vim",
-            "github/copilot.vim",
+            -- "github/copilot.vim",
             {
                 "lewis6991/gitsigns.nvim",
                 event = "BufRead",

@@ -22,6 +22,7 @@ M.setup = function()
             "query",
             "regex",
             "ruby",
+            "rust",
             "scss",
             "svelte",
             "toml",
