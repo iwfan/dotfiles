@@ -6,6 +6,7 @@ M.setup = function()
             extensions = {
                 conf = "dosini",
                 tmux = "dosini",
+                scss = "scss",
             },
             literal = {
                 ideavimrc = "vim",
