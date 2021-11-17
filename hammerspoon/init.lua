@@ -20,6 +20,7 @@ require "modules.window-management"
 require "modules.clipboard"
 require "modules.app-launcher"
 require "modules.app-hints"
+require "modules.switch-im"
 require "modules.cheatsheet"
 -- require("modules.pomodoro")
 require "modules.markdown"
