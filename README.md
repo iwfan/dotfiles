@@ -41,3 +41,4 @@
 - https://github.com/LunarVim/LunarVim
 - https://www.locatelli.dev/nv-ide/
 - https://github.com/NvChad/NvChad
+- https://github.dev/mhartington/dotfiles
