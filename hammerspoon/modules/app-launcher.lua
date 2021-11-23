@@ -1,10 +1,10 @@
-spoon.ModalMgr:new("app_luncher")
+spoon.ModalMgr:new "app_luncher"
 local cmodal = spoon.ModalMgr.modal_list["app_luncher"]
 cmodal:bind("", "escape", "退出 ", function()
-    spoon.ModalMgr:deactivate({ "app_luncher" })
+    spoon.ModalMgr:deactivate { "app_luncher" }
 end)
 cmodal:bind("", "Q", "退出 ", function()
-    spoon.ModalMgr:deactivate({ "app_luncher" })
+    spoon.ModalMgr:deactivate { "app_luncher" }
 end)
 cmodal:bind("", "tab", "Toggle Cheatsheet", function()
     spoon.ModalMgr:toggleCheatsheet()
@@ -25,13 +25,13 @@ for _, v in ipairs(hsapp_list) do
         if located_name then
             cmodal:bind("", v.key, located_name, function()
                 hs.application.launchOrFocusByBundleID(v.id)
-                spoon.ModalMgr:deactivate({ "app_luncher" })
+                spoon.ModalMgr:deactivate { "app_luncher" }
             end)
         end
     elseif v.name then
         cmodal:bind("", v.key, v.name, function()
             hs.application.launchOrFocus(v.name)
-            spoon.ModalMgr:deactivate({ "app_luncher" })
+            spoon.ModalMgr:deactivate { "app_luncher" }
         end)
     end
 end
