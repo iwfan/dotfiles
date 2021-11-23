@@ -11,33 +11,33 @@ M.setup = function()
     local actions = require "telescope.actions"
     require("telescope").setup {
         defaults = {
-            vimgrep_arguments = {
-                "rg",
-                "--hidden",
-                "--color=never",
-                "--no-heading",
-                "--with-filename",
-                "--line-number",
-                "--column",
-                "--smart-case",
-            },
+            -- vimgrep_arguments = {
+            --     "rg",
+            --     "--hidden",
+            --     "--color=never",
+            --     "--no-heading",
+            --     "--with-filename",
+            --     "--line-number",
+            --     "--column",
+            --     "--smart-case",
+            -- },
             prompt_prefix = " ❯ ",
             selection_caret = "❯ ",
-            entry_prefix = "  ",
-            file_sorter = require("telescope.sorters").get_fzy_sorter,
             sorting_strategy = "ascending",
-            selection_strategy = "reset",
             file_ignore_patterns = {},
             color_devicons = true,
-            use_less = true,
-            set_env = { ["COLORTERM"] = "truecolor" },
+            file_sorter = require("telescope.sorters").get_fzy_sorter,
             file_previewer = require("telescope.previewers").vim_buffer_cat.new,
             grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
             qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
             layout_config = {
                 prompt_position = "top",
-                width = 0.75,
-                preview_cutoff = 120,
+                horizontal = {
+                    mirror = false,
+                },
+                vertical = {
+                    mirror = false,
+                },
             },
             mappings = {
                 i = {
@@ -56,8 +56,9 @@ M.setup = function()
             },
             extensions = {
                 fzf = {
-                    override_generic_sorter = true,
+                    override_generic_sorter = false,
                     override_file_sorter = true,
+                    case_mode = "smart_case",
                 },
             },
         },

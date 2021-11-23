@@ -3,20 +3,12 @@ local M = {}
 M.setup = function()
     require("filetype").setup {
         overrides = {
-            extensions = {
-                conf = "dosini",
-                tmux = "dosini",
-                scss = "scss",
-            },
             literal = {
                 ideavimrc = "vim",
                 [".eslintrc"] = "json",
                 [".prettierrc"] = "json",
                 ["tsconfig.json"] = "jsonc",
                 ["jsconfig.json"] = "jsonc",
-            },
-            complex = {
-                [".*git/config"] = "gitconfig", -- Included in the plugin
             },
             function_extensions = {
                 qf = function()
