@@ -1,4 +1,4 @@
-_G.config_path = os.getenv "HOME" .. "/.hammerspoon/"
+_G.config_path = os.getenv "HOME" .. "/.config/hammerspoon/"
 _G.hyper = { "cmd", "ctrl", "shift" }
 _G.leader = { "alt" }
 

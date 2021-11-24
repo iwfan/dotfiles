@@ -6,14 +6,13 @@ end)
 cmodal:bind("", "Q", "退出 ", function()
     spoon.ModalMgr:deactivate { "app_luncher" }
 end)
-cmodal:bind("", "tab", "Toggle Cheatsheet", function()
-    spoon.ModalMgr:toggleCheatsheet()
-end)
 local hsapp_list = {
     { key = "f", name = "Finder" },
-    { key = "s", name = "Safari" },
+    { key = "s", name = "Spotify" },
     { key = "t", name = "Terminal" },
     { key = "k", name = "Kitty" },
+    { key = "n", name = "Notion" },
+    { key = "b", name = "Brave Browser" },
     { key = "w", name = "Wechat" },
     { key = "e", name = "Microsoft Edge" },
     { key = "v", id = "com.apple.ActivityMonitor" },

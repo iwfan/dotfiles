@@ -11,4 +11,4 @@ end
 
 _ReloadWatcher = hs.pathwatcher.new(config_path, reloadConfigCallback):start()
 
-hs.alert.show("Config Reload Success")
+hs.alert.show "Config Reload Success"

@@ -42,3 +42,4 @@
 - https://www.locatelli.dev/nv-ide/
 - https://github.com/NvChad/NvChad
 - https://github.dev/mhartington/dotfiles
+- https://github.dev/ecosse3/nvim
