@@ -9,7 +9,7 @@ end)
 local hsapp_list = {
     { key = "f", name = "Finder" },
     { key = "s", name = "Spotify" },
-    { key = "t", name = "iTerm" },
+    { key = "i", name = "iTerm" },
     { key = "k", name = "Kitty" },
     { key = "n", name = "Notion" },
     { key = "b", name = "Brave Browser" },
