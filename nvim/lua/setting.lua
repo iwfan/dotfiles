@@ -28,7 +28,6 @@ vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.cursorline = false
 vim.opt.showmode = false
-vim.opt.ruler = false
 vim.opt.showtabline = 2
 vim.opt.scrolloff = 5
 vim.opt.splitbelow = true
@@ -64,7 +63,6 @@ vim.opt.virtualedit = "block"
 vim.opt.wrap = false
 vim.opt.whichwrap:append "<>hl"
 vim.opt.showbreak = "↪ "
-vim.opt.backspace = { "eol", "start", "indent" }
 
 vim.opt.list = true
 vim.opt.listchars = {

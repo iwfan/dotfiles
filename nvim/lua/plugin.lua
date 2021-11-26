@@ -43,13 +43,13 @@ require("packer").startup {
         use {
             "tpope/vim-sensible",
             "tpope/vim-unimpaired",
+            "tpope/vim-repeat",
             {
                 "tpope/vim-sleuth",
                 setup = function()
                     vim.g.sleuth_automatic = 0
                 end,
             },
-            "tpope/vim-repeat",
             {
                 "tpope/vim-obsession",
                 cmd = { "Obsess" },
@@ -62,24 +62,6 @@ require("packer").startup {
                 "tpope/vim-dispatch",
                 cmd = { "Dispatch", "Make", "Focus", "Start" },
                 requires = { "radenling/vim-dispatch-neovim" },
-            },
-        }
-
-        use {
-            "nvim-lua/plenary.nvim",
-            {
-                "nvim-telescope/telescope.nvim",
-                requires = {
-                    "nvim-lua/popup.nvim",
-                    "nvim-lua/plenary.nvim",
-                    { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-                },
-                config = [[require("p.nvim-telescope").setup()]],
-            },
-            {
-                "windwp/nvim-spectre",
-                requires = "nvim-lua/plenary.nvim",
-                config = [[require("p.nvim-spectre")]],
             },
         }
 
@@ -112,6 +94,24 @@ require("packer").startup {
                 config = function()
                     vim.g.matchup_matchparen_offscreen = { method = "popup" }
                 end,
+            },
+        }
+
+        use {
+            "nvim-lua/plenary.nvim",
+            {
+                "nvim-telescope/telescope.nvim",
+                requires = {
+                    "nvim-lua/popup.nvim",
+                    "nvim-lua/plenary.nvim",
+                    { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+                },
+                config = [[require("p.nvim-telescope").setup()]],
+            },
+            {
+                "windwp/nvim-spectre",
+                requires = "nvim-lua/plenary.nvim",
+                config = [[require("p.nvim-spectre")]],
             },
         }
 
