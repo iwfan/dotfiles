@@ -9,11 +9,12 @@ end)
 local hsapp_list = {
     { key = "f", name = "Finder" },
     { key = "s", name = "Spotify" },
-    { key = "i", name = "iTerm" },
+    { key = "i", name = "Intellij IDEA" },
     { key = "k", name = "Kitty" },
     { key = "n", name = "Notion" },
     { key = "b", name = "Brave Browser" },
     { key = "w", name = "Wechat" },
+    { key = "c", name = "Visual Studio Code" },
     { key = "e", name = "Microsoft Edge" },
     { key = "v", id = "com.apple.ActivityMonitor" },
     { key = "y", id = "com.apple.systempreferences" },
