@@ -41,7 +41,6 @@ M.setup = function()
             enable = true,
             keymaps = {
                 init_selection = "<Enter>",
-                scope_incremental = "<Enter>",
                 node_incremental = "<Enter>",
                 node_decremental = "<BS>",
             },
