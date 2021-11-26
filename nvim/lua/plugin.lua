@@ -197,23 +197,10 @@ require("packer").startup {
                 cmd = { "DiffviewOpen", "DiffviewFileHistory" },
                 config = [[require'diffview'.setup()]],
             },
-            {
-                "ggandor/lightspeed.nvim",
-                config = function()
-                    require("lightspeed").setup {
-                        jump_to_first_match = true,
-                        jump_on_partial_input_safety_timeout = 400,
-                        highlight_unique_chars = false,
-                        grey_out_search_area = true,
-                        match_only_the_start_of_same_char_seqs = true,
-                        limit_ft_matches = 5,
-                        full_inclusive_prefix_key = "<c-x>",
-                    }
-                end,
-            },
+            "ggandor/lightspeed.nvim",
             {
                 "mg979/vim-visual-multi",
-                config = function()
+                setup = function()
                     var_tbl {
                         VM_default_mappings = 0,
                         VM_maps = {
@@ -226,12 +213,11 @@ require("packer").startup {
             {
                 "blackCauldron7/surround.nvim",
                 config = function()
-                    vim.g.surround_mappings_style = "surround"
-                    require("surround").setup {}
+                    require("surround").setup { mappings_style = "surround" }
                 end,
             },
             {
-                "mhartington/formatter.nvim",
+                "lukas-reineke/format.nvim",
                 config = [[require("p.nvim-formatter")]],
             },
             {

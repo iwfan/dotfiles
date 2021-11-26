@@ -1,10 +1,12 @@
-local prettier = function()
-    return {
-        exe = "prettier",
-        args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
-        stdin = true,
-    }
-end
+local prettier = {
+    {
+        cmd = {
+            function(file)
+                return string.format("prettier -w %s", file)
+            end,
+        },
+    },
+}
 
 local filetype_format_conf = {
     html = { prettier },
@@ -23,20 +25,17 @@ local filetype_format_conf = {
     javascriptreact = { prettier },
     typescriptreact = { prettier },
     lua = {
-        function()
-            return {
-                exe = "stylua",
-                args = { "--stdin-filepath", vim.fn.expand "%:t", "-" },
-                stdin = true,
-            }
-        end,
+        {
+            cmd = {
+                function(file)
+                    return string.format("stylua %s", file)
+                end,
+            },
+        },
     },
 }
 
-require("formatter").setup {
-    logging = false,
-    filetype = filetype_format_conf,
-}
+require("format").setup(filetype_format_conf)
 
 local extname_list = vim.tbl_keys(filetype_format_conf)
 local filetype_list = vim.tbl_map(function(v)
@@ -44,5 +43,4 @@ local filetype_list = vim.tbl_map(function(v)
 end, extname_list)
 
 local filetypes = table.concat(filetype_list, ",")
-
 augroup("FormatAutogroup", { { "BufWritePre", filetypes, "FormatWrite" } })
