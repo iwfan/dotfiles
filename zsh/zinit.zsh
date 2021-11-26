@@ -61,9 +61,6 @@ zinit ice wait lucid
 zinit light agkozak/zsh-z
 
 zinit ice wait lucid
-zinit light trystan2k/zsh-tab-title
-
-zinit ice wait lucid
 zinit light Aloxaf/fzf-tab
 
 zinit ice wait lucid
