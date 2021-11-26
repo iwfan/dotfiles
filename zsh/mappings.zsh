@@ -3,6 +3,8 @@ export KEYTIMEOUT=1
 bindkey -v
 bindkey -M vicmd "H" vi-beginning-of-line
 bindkey -M vicmd "L" vi-end-of-line
+bindkey -M vicmd v edit-command-line
+bindkey "^X^E" edit-command-line
 
 _open_neovim() {
 	zle -I
@@ -24,7 +26,6 @@ _open_lazygit() {
 zle -N _open_lazygit
 
 bindkey "^G" _open_lazygit
-# bindkey -s '^g' 'gitui^M'
 
 _open_lazynpm() {
 	zle -I

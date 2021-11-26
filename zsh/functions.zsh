@@ -14,43 +14,6 @@ disable_proxy() {
     unset all_proxy
 }
 
-# Rebase master onto current branch
-gmrebase() {
-    echo "==> Checking out master..."
-    git checkout master
-    echo ""
-    echo "==> Updating master..."
-    git pull
-    echo ""
-    echo "==> Checking back to original branch"
-    git checkout -
-    echo ""
-    echo "==> Rebasing master onto $(git rev-parse --abbrev-ref HEAD)"
-    git rebase master $(git rev-parse --abbrev-ref HEAD)
-    echo ""
-}
-
-gnrebase() {
-    echo "==> Checking out main..."
-    git checkout main
-    echo ""
-    echo "==> Updating main..."
-    git pull
-    echo ""
-    echo "==> Checking back to original branch"
-    git checkout -
-    echo ""
-    echo "==> Rebasing main onto $(git rev-parse --abbrev-ref HEAD)"
-    git rebase main $(git rev-parse --abbrev-ref HEAD)
-    echo ""
-}
-
-fe() {
-  local files
-  IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0))
-  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
-}
-
 # Modified version where you can press
 #   - CTRL-O to open with `open` command,
 #   - CTRL-E or Enter key to open with the $EDITOR
@@ -62,14 +25,6 @@ fo() {
   if [ -n "$file" ]; then
     [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
   fi
-}
-
-# fd - cd to selected directory
-fd() {
-  local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune \
-                  -o -type d -print 2> /dev/null | fzf +m) &&
-  cd "$dir"
 }
 
 # find-in-file - usage: fif <searchTerm>
@@ -89,6 +44,10 @@ j() {
 
 jj() {
   cd "$(zshz -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf -q $_last_z_args)"
+}
+
+ip () {
+  ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'
 }
 
 port() {
