@@ -28,9 +28,8 @@ vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.cursorline = false
 vim.opt.showmode = false
+vim.opt.ruler = false
 vim.opt.showtabline = 2
-vim.opt.signcolumn = "yes"
-vim.opt.virtualedit = "block"
 vim.opt.scrolloff = 5
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -39,7 +38,7 @@ vim.opt.inccommand = "nosplit"
 vim.opt.jumpoptions = "stack"
 vim.opt.hidden = true
 vim.opt.switchbuf = { "useopen", "uselast" }
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.completeopt = { "menu", "menuone", "noinsert", "noselect" }
 
 -- tabs & indent
 vim.opt.tabstop = 2
@@ -53,13 +52,15 @@ vim.opt.breakindent = true
 vim.opt.hlsearch = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.opt.infercase = true
 vim.opt.showmatch = true
 vim.opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 vim.opt.grepprg = [[rg --glob "!.git" --no-heading --vimgrep --follow $*]]
-vim.opt.grepformat = vim.opt.grepformat ^ { "%f:%l:%c:%m" }
 
 -- line break
+vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "+1"
+vim.opt.virtualedit = "block"
 vim.opt.wrap = false
 vim.opt.whichwrap:append "<>hl"
 vim.opt.showbreak = "↪ "
@@ -76,6 +77,7 @@ vim.opt.listchars = {
 vim.opt.fillchars = {
     fold = " ",
     eob = " ",
+    diff = "╱",
 }
 vim.opt.pumblend = 10
 vim.opt.winblend = 10
