@@ -34,22 +34,23 @@ M.setup = function()
         },
         highlight = {
             enable = true,
-            use_languagetree = true,
-            additional_vim_regex_highlighting = true,
+            additional_vim_regex_highlighting = false,
         },
         indent = { enable = true },
         incremental_selection = {
             enable = true,
             keymaps = {
                 init_selection = "<Enter>",
+                scope_incremental = "<Enter>",
                 node_incremental = "<Enter>",
-                scope_incremental = "grc",
                 node_decremental = "<BS>",
             },
         },
         textobjects = {
             select = {
                 enable = true,
+                -- Automatically jump forward to textobj, similar to targets.vim
+                lookahead = true,
                 keymaps = {
                     ["af"] = "@function.outer",
                     ["if"] = "@function.inner",
@@ -83,11 +84,7 @@ M.setup = function()
                 },
             },
             lsp_interop = {
-                enable = true,
-                peek_definition_code = {
-                    ["gdf"] = "@function.outer",
-                    ["gdF"] = "@class.outer",
-                },
+                enable = false,
             },
         },
         autotag = { enable = true },

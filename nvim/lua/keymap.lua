@@ -97,8 +97,6 @@ map("n|<M-x>", ":echo '<M-x> key !!!'<CR>")
 map("n|<M-y>", ":echo '<M-y> key !!!'<CR>")
 map("n|<M-z>", ":echo '<M-z> key !!!'<CR>")
 
-map("n|C<Enter>", ":echo '<Ctrl-Enter> key !!!'<CR>")
-map("n|S<Enter>", ":echo '<Shift-Enter> key !!!'<CR>")
 map("n|C-S<Enter>", ":echo '<Ctrl-Shift-Enter> key !!!'<CR>")
 map("n|<M-'>", [[:echo "<M-'> key !!!"<CR>]])
 map("n|<M-,>", [[:echo "<M-,> key !!!"<CR>]])
