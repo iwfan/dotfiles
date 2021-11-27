@@ -1,10 +1,8 @@
 local prettier = {
-    {
-        cmd = {
-            function(file)
-                return string.format("prettier -w %s", file)
-            end,
-        },
+    cmd = {
+        function(file)
+            return string.format("prettier -w %s", file)
+        end,
     },
 }
 
