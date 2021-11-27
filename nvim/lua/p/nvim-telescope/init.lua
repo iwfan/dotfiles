@@ -1,10 +1,10 @@
 local M = {}
 
 local function keymaps()
-    map_cmd("n|<M-p>", "lua require'p.nvim-telescope.find_files'.find()")
-    map_cmd("n|<M-f>", "Telescope current_buffer_fuzzy_find")
-    map_cmd("n|<M-S-f>", "lua require'p.nvim-telescope.find_files'.grep()")
-    map_cmd("n|<M-S-p>", "Telescope")
+    map_cmd("n|<space>o", "lua require'p.nvim-telescope.find_files'.find()")
+    map_cmd("n|<C-f>", "Telescope current_buffer_fuzzy_find")
+    map_cmd("n|<sapce>f", "lua require'p.nvim-telescope.find_files'.grep()")
+    map_cmd("n|<space><space>", "Telescope")
 end
 
 M.setup = function()
