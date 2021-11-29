@@ -20,6 +20,7 @@ alias mv='mv -iv'
 alias rm="trash -v"
 
 alias n="pnpm"
+alias i="pnpm install --prefer-offline"
 alias nlsg="npm list -g --depth=0"
 alias y="yarn"
 alias yb="yarn run build"
