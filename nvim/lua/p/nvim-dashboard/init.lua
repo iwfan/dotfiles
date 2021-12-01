@@ -22,22 +22,13 @@ vim.g.dashboard_custom_header = {
 vim.g.dashboard_default_executive = "telescope"
 
 vim.g.dashboard_custom_section = {
-    a = {
-        description = { "  Recently Opened Files" },
-        command = "Telescope oldfiles",
-    },
-    b = {
-        description = { "  Git Status           " },
-        command = "Telescope git_status",
-    },
-    c = {
-        description = { "  Find File            " },
-        command = "Telescope find_files",
-    },
-    d = {
-        description = { "  Reload Last Session  " },
-        command = "SessionLoad",
-    },
+    a = { description = { "  Find File                 SPC f f" }, command = "Telescope find_files" },
+    b = { description = { "  Git Status                SPC f g" }, command = "Telescope git_status" },
+    c = { description = { "  Recents                   SPC f o" }, command = "Telescope oldfiles" },
+    d = { description = { "  Find Word                 SPC f w" }, command = "Telescope live_grep" },
+    e = { description = { "洛 New File                  SPC f n" }, command = "DashboardNewFile" },
+    f = { description = { "  Bookmarks                 SPC b m" }, command = "Telescope marks" },
+    g = { description = { "  Load Last Session         SPC l  " }, command = "SessionLoad" },
 }
 
 local predefined_quotes = {
