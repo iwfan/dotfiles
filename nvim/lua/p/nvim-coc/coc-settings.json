@@ -4,7 +4,7 @@
   // coc settings
   "coc.preferences.enableMessageDialog": true,
   "coc.preferences.extensionUpdateCheck": "weekly",
-  "coc.preferences.formatOnSaveFiletypes": ["prisma"],
+  "coc.preferences.colorSupport": false,
 
   // suggest
   "suggest.enablePreselect": true,

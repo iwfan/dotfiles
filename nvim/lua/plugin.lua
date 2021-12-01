@@ -34,6 +34,7 @@ require("packer").startup {
         -- tpope
         use { "tpope/vim-sensible" }
         use { "tpope/vim-unimpaired" }
+        use { "tpope/vim-surround" }
         use { "tpope/vim-repeat" }
         use { "tpope/vim-fugitive", cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" } }
         -- use {
@@ -78,20 +79,19 @@ require("packer").startup {
         }
 
         use {
-            {
-                "nvim-telescope/telescope.nvim",
-                requires = {
-                    "nvim-lua/popup.nvim",
-                    "nvim-lua/plenary.nvim",
-                    { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-                },
-                config = [[require("p.nvim-telescope").setup()]],
+            "nvim-telescope/telescope.nvim",
+            requires = {
+                { "nvim-lua/popup.nvim" },
+                { "nvim-lua/plenary.nvim" },
+                { "nvim-telescope/telescope-fzf-native.nvim" },
             },
-            {
-                "windwp/nvim-spectre",
-                requires = "nvim-lua/plenary.nvim",
-                config = [[require("p.nvim-spectre")]],
-            },
+            config = [[require("p.nvim-telescope").setup()]],
+        }
+        use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+        use {
+            "windwp/nvim-spectre",
+            requires = "nvim-lua/plenary.nvim",
+            config = [[require("p.nvim-spectre")]],
         }
 
         use { "github/copilot.vim" }
@@ -200,12 +200,6 @@ require("packer").startup {
                         ["Add Cursor Up"] = "<M-k>",
                     },
                 }
-            end,
-        }
-        use {
-            "blackCauldron7/surround.nvim",
-            config = function()
-                require("surround").setup { mappings_style = "surround" }
             end,
         }
 

@@ -80,12 +80,18 @@ vim.opt.fillchars = {
     eob = " ",
     diff = "╱",
 }
--- disable nvim intro
-vim.opt.shortmess:append "sI"
+vim.opt.shortmess:append "csI"
 vim.opt.sessionoptions:append { "options", "resize", "winpos", "terminal" }
+
+vim.cmd [[
+  function! CustomFold()
+    return printf('   %-6d%s', v:foldend - v:foldstart + 1, getline(v:foldstart))
+  endfunction
+]]
 
 vim.opt.foldlevel = 1
 vim.opt.foldnestmax = 10
 vim.opt.foldlevelstart = 99
+vim.opt.foldtext = "CustomFold()"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

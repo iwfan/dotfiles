@@ -1,9 +1,9 @@
 local M = {}
 
 local function keymaps()
-    map_cmd("n|<space>o", "lua require'p.nvim-telescope.find_files'.find()")
+    map_cmd("n|<space>o", "Telescope find_files")
+    map_cmd("n|<space>f", "Telescope live_grep")
     map_cmd("n|<C-f>", "Telescope current_buffer_fuzzy_find")
-    map_cmd("n|<sapce>f", "lua require'p.nvim-telescope.find_files'.grep()")
     map_cmd("n|<space><space>", "Telescope")
 end
 
@@ -12,7 +12,7 @@ M.setup = function()
     require("telescope").setup {
         defaults = {
             prompt_prefix = "  ",
-            selection_caret = "  ",
+            selection_caret = " ",
             sorting_strategy = "ascending",
             layout_config = {
                 prompt_position = "top",

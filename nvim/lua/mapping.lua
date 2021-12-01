@@ -63,6 +63,8 @@ map("n|[w", "g#")
 map("v|]w", "g*")
 map("v|[w", "g#")
 
+map("x|K", ":move '<-2<CR>gv-gv")
+map("x|J", ":move '>+1<CR>gv-gv")
 map("v|<", "<gv")
 map("v|>", ">gv")
 map("n|<", "<<")
