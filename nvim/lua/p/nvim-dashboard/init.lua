@@ -593,4 +593,4 @@ local function generate_quota()
     return quota
 end
 
-vim.g.dashboard_custom_footer = generate_quota()
+-- vim.g.dashboard_custom_footer = generate_quota()

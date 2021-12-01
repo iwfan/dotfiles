@@ -10,7 +10,7 @@ function! s:check_back_space() abort
 endfunction
 
 inoremap <silent><expr> <TAB>
-	  \ pumvisible() ? "\<C-n>" :
+	  \ pumvisible() ? coc#_select_confirm() :
 	  \ coc#expandableOrJumpable() ?
 	  \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
 	  \ <SID>check_back_space() ? "\<TAB>" :
@@ -22,13 +22,6 @@ inoremap <silent><expr> <CR>
 	  \ pumvisible() ? coc#_select_confirm() :
 	  \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
 	  \ "\<CR>"
-
-inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-inoremap <silent><expr> <C-l>
-	  \ pumvisible() ? coc#_select_confirm() :
-	  \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-	  \ "\<C-l>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
