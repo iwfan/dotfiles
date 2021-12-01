@@ -58,11 +58,6 @@ require("packer").startup {
                 "tpope/vim-fugitive",
                 cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" },
             },
-            {
-                "tpope/vim-dispatch",
-                cmd = { "Dispatch", "Make", "Focus", "Start" },
-                requires = { "radenling/vim-dispatch-neovim" },
-            },
         }
 
         use {
@@ -175,10 +170,27 @@ require("packer").startup {
             {
                 "norcalli/nvim-colorizer.lua",
                 config = function()
-                    require("colorizer").setup({ "*" }, {
-                        RRGGBBAA = true,
-                        css = true,
-                    })
+                    require("colorizer").setup {
+                        css = { css = true },
+                        less = { css = true },
+                        scss = { css = true },
+                        sass = { css = true },
+                        vue = { css = true },
+                        "javascript",
+                        "javascriptreact",
+                        "typescriptreact",
+                        "typescript",
+                        "lua",
+                        "json",
+                        "tmux",
+                        "conf",
+                        "dosini",
+                        "readme",
+                        html = {
+                            css = true,
+                            mode = "foreground",
+                        },
+                    }
                 end,
             },
         }
