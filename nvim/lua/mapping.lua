@@ -40,16 +40,18 @@ map("n|<C-h>", [[<c-w>h]])
 map("n|<C-l>", [[<c-w>l]])
 map("n|<C-j>", [[<c-w>j]])
 map("n|<C-k>", [[<c-w>k]])
-map_cmd("n|<C-w><up>", "res +5")
-map_cmd("n|<C-w><down>", "res -5")
-map_cmd("n|<C-w><right>", "vertical resize +5")
-map_cmd("n|<C-w><left>", "vertical resize -5")
+map_cmd("n|<C-w><up>", "res -10")
+map_cmd("n|<C-w><down>", "res +10")
+map_cmd("n|<C-w><right>", "vertical resize -10")
+map_cmd("n|<C-w><left>", "vertical resize +10")
 
 map_cmd("n|<C-w>t", "vnew +term | setlocal nobuflisted ft=term")
 map_cmd("n|<C-w>b", "10new +term | setlocal nobuflisted ft=term")
 map_cmd("n|<C-w>g", "tabe +term=lazygit | setlocal ft=term")
 
 map("n|<leader><bs>", '"_dd')
+-- Don't copy the replaced text after pasting in visual mode
+map("v|p", '"_dP')
 map("n|<Esc>", ":noh<cr>:echo<cr><esc>")
 map("n|<C-s>", [[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]], { expr = true })
 map("n|<M-s>", [[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]], { expr = true })
@@ -65,35 +67,3 @@ map("v|<", "<gv")
 map("v|>", ">gv")
 map("n|<", "<<")
 map("n|>", ">>")
-
-map("n|<M-a>", ":echo '<M-a> key !!!'<CR>")
-map("n|<M-b>", ":echo '<M-b> key !!!'<CR>")
-map("n|<M-d>", ":echo '<M-d> key !!!'<CR>")
-map("n|<M-f>", ":echo '<M-f> key !!!'<CR>")
-map("n|<M-g>", ":echo '<M-g> key !!!'<CR>")
-map("n|<M-i>", ":echo '<M-i> key !!!'<CR>")
-map("n|<M-l>", ":echo '<M-l> key !!!'<CR>")
-map("n|<M-o>", ":echo '<M-o> key !!!'<CR>")
-map("n|<M-r>", ":echo '<M-r> key !!!'<CR>")
-map("n|<M-u>", ":echo '<M-u> key !!!'<CR>")
-map("n|<M-x>", ":echo '<M-x> key !!!'<CR>")
-map("n|<M-y>", ":echo '<M-y> key !!!'<CR>")
-map("n|<M-z>", ":echo '<M-z> key !!!'<CR>")
-map("n|C-S<Enter>", ":echo '<Ctrl-Shift-Enter> key !!!'<CR>")
-map("n|<M-'>", [[:echo "<M-'> key !!!"<CR>]])
-map("n|<M-,>", [[:echo "<M-,> key !!!"<CR>]])
-map("n|<M-;>", [[:echo "<M-;> key !!!"<CR>]])
-map("n|<M-:>", [[:echo "<M-:> key !!!"<CR>]])
-map([[n|<M-\>]], [[:echo "\\ key !!!"<CR>]])
-map("n|<M-]>", ":echo '<M-]> key !!!'<CR>")
-map("n|<M-[>", ":echo '<M-[> key !!!'<CR>")
-
-vim.cmd "command! -bang -nargs=* -complete=file E e<bang> <args>"
-vim.cmd "command! -bang -nargs=* -complete=file W w<bang> <args>"
-vim.cmd "command! -bang -nargs=* -complete=file Wq wq<bang> <args>"
-vim.cmd "command! -bang -nargs=* -complete=file WQ wq<bang> <args>"
-vim.cmd "command! -bang Wa wa<bang>"
-vim.cmd "command! -bang WA wa<bang>"
-vim.cmd "command! -bang Q q<bang>"
-vim.cmd "command! -bang QA qa<bang>"
-vim.cmd "command! -bang Qa qa<bang>"

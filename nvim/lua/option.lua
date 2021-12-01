@@ -37,6 +37,10 @@ vim.opt.jumpoptions = "stack"
 vim.opt.hidden = true
 vim.opt.switchbuf = { "useopen", "uselast" }
 vim.opt.completeopt = { "menu", "menuone", "noinsert", "noselect" }
+vim.opt.pumblend = 10
+vim.opt.winblend = 10
+vim.opt.pumheight = 20
+vim.opt.wildignorecase = true
 
 -- tabs & indent
 vim.opt.tabstop = 2
@@ -76,38 +80,8 @@ vim.opt.fillchars = {
     eob = " ",
     diff = "╱",
 }
-vim.opt.pumblend = 10
-vim.opt.winblend = 10
-vim.opt.pumheight = 20
-vim.opt.wildignorecase = true
-vim.opt.wildignore = {
-    ".git",
-    ".hg",
-    ".svn",
-    "*.pyc",
-    "*.o",
-    "*.out",
-    "*.jpg",
-    "*.jpeg",
-    "*.png",
-    "*.gif",
-    "*.zip",
-    "**/tmp/**",
-    "*.DS_Store",
-    "**/node_modules/**",
-}
-vim.opt.shortmess = {
-    t = true, -- truncate file messages at start
-    A = true, -- ignore annoying swap file messages
-    o = true, -- file-read message overwrites previous
-    O = true, -- file-read message overwrites previous
-    T = true, -- truncate non-file messages in middle
-    f = true, -- (file x of x) instead of just (x of x
-    F = true, -- Don't give file info when editing a file, NOTE: this breaks autocommand messages
-    s = true,
-    c = true,
-    W = true, -- Don't show [w] or written when writing
-}
+-- disable nvim intro
+vim.opt.shortmess:append "sI"
 vim.opt.sessionoptions:append { "options", "resize", "winpos", "terminal" }
 
 vim.opt.foldlevel = 1

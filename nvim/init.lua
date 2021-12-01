@@ -49,8 +49,8 @@ end
 -- load options, mappings, and plugins
 local conf_modules = {
     "global",
-    "setting",
-    "keymap",
+    "option",
+    "mapping",
     "autocmd",
     "plugin",
     "packer_compiled",
