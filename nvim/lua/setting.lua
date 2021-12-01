@@ -33,7 +33,6 @@ vim.opt.scrolloff = 5
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.joinspaces = false
-vim.opt.inccommand = "nosplit"
 vim.opt.jumpoptions = "stack"
 vim.opt.hidden = true
 vim.opt.switchbuf = { "useopen", "uselast" }

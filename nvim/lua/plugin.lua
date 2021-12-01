@@ -185,7 +185,7 @@ require("packer").startup {
 
         use {
             "editorconfig/editorconfig-vim",
-            -- "github/copilot.vim",
+            "github/copilot.vim",
             {
                 "lewis6991/gitsigns.nvim",
                 event = "BufRead",
