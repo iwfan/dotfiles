@@ -21,15 +21,6 @@ M.setup = function()
                 i = {
                     ["<C-j>"] = actions.move_selection_next,
                     ["<C-k>"] = actions.move_selection_previous,
-                    ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-                    ["<Esc>"] = actions.close,
-                    ["<Tab>"] = actions.toggle_selection + actions.move_selection_next,
-                    ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_previous,
-                },
-                n = {
-                    ["<C-j>"] = actions.move_selection_next,
-                    ["<C-k>"] = actions.move_selection_previous,
-                    ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
                 },
             },
             extensions = {

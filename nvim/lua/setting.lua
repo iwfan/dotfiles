@@ -115,7 +115,3 @@ vim.opt.foldnestmax = 10
 vim.opt.foldlevelstart = 99
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-
-vim.cmd "set formatoptions-=c"
-vim.cmd "set formatoptions-=r"
-vim.cmd "set formatoptions-=o"
