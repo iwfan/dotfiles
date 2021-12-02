@@ -134,9 +134,17 @@ require("packer").startup {
             config = [[require("p.nvim-tree").setup()]],
         }
         use {
+            "ojroques/nvim-bufdel",
+            config = function()
+                require("bufdel").setup {
+                    next = "cycle", -- or 'alternate'
+                    quit = false,
+                }
+            end,
+        }
+        use {
             "Akin909/nvim-bufferline.lua",
             after = "nvim-web-devicons",
-            requires = "famiu/bufdelete.nvim",
             config = [[require("p.nvim-bufferline")]],
         }
         use {

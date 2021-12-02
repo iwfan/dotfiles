@@ -1,8 +1,6 @@
 require("indent_blankline").setup {
-    indentLine_enabled = 1,
     char = "▏",
-    show_current_context = true,
-    show_current_context_start = false,
+    use_treesitter = true,
     filetype_exclude = {
         "help",
         "terminal",
