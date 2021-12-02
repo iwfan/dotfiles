@@ -34,7 +34,7 @@ map("t|<C-H>", [[<c-\><c-n><c-w>h]])
 map("t|<C-L>", [[<c-\><c-n><c-w>l]])
 map("t|<C-J>", [[<c-\><c-n><c-w>j]])
 map("t|<C-K>", [[<c-\><c-n><c-w>k]])
-map("t|<C-_>", [[<C-\><C-N>]])
+map("t|<C-[>", [[<C-\><C-n>]])
 
 map("n|<C-h>", [[<c-w>h]])
 map("n|<C-l>", [[<c-w>l]])
