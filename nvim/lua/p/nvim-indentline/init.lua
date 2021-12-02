@@ -24,7 +24,7 @@ require("indent_blankline").setup {
         "git",
         "", -- for all buffers without a file type
     },
-    buftype_exclude = { "terminal" },
+    buftype_exclude = { "terminal", "telescope" },
     show_trailing_blankline_indent = false,
     show_first_indent_level = false,
 }

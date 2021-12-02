@@ -36,14 +36,8 @@ require("packer").startup {
         use { "tpope/vim-unimpaired" }
         use { "tpope/vim-surround" }
         use { "tpope/vim-repeat" }
+        use { "tpope/vim-sleuth" }
         use { "tpope/vim-fugitive", cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" } }
-        use {
-            "tpope/vim-sleuth",
-            setup = function()
-                -- vim.g.sleuth_automatic = 0
-            end,
-        }
-        -- use { "editorconfig/editorconfig-vim" }
 
         use { "nvim-lua/plenary.nvim" }
         use {
