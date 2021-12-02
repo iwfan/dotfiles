@@ -19,6 +19,7 @@ M.setup = function()
                 linehl = "GitSignsChangeLn",
             },
         },
+        current_line_blame = true,
     }
 
     map_cmd([[n|\c]], 'lua require"gitsigns".preview_hunk()')

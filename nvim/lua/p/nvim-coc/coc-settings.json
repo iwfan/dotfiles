@@ -40,10 +40,10 @@
   },
 
   //diagnostic
-  "diagnostic.errorSign": " ",
-  "diagnostic.warningSign": " ",
-  "diagnostic.infoSign": " ",
-  "diagnostic.hintSign": " ",
+  "diagnostic.errorSign": "", // " ",
+  "diagnostic.warningSign": "", // " ",
+  "diagnostic.infoSign": "", // " ",
+  "diagnostic.hintSign": "", // " ",
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": " ",
   "diagnostic.separateRelatedInformationAsDiagnostics": true,
