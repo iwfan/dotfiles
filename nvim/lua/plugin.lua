@@ -38,6 +38,17 @@ require("packer").startup {
         use { "tpope/vim-repeat" }
         use { "tpope/vim-sleuth" }
         use { "tpope/vim-fugitive", cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" } }
+        use { "tpope/vim-obsession" }
+        use {
+            "dhruvasagar/vim-prosession",
+            after = "vim-obsession",
+            setup = function()
+                var_tbl {
+                    prosession_default_session = 1,
+                    prosession_dir = vim.fn.stdpath "data" .. "/sessions/",
+                }
+            end,
+        }
 
         use { "nvim-lua/plenary.nvim" }
         use {
@@ -206,7 +217,7 @@ require("packer").startup {
         }
 
         -- Misc
-        use { "rmagatti/auto-session", config = [[require("p.nvim-session").setup()]] }
+        use { "kshenoy/vim-signature" }
         use { "psliwka/vim-smoothie" }
         use { "farmergreg/vim-lastplace" }
         use {
