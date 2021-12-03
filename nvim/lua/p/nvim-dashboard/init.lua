@@ -28,7 +28,10 @@ vim.g.dashboard_custom_section = {
     d = { description = { "  Find Word                 SPC f w" }, command = "Telescope live_grep" },
     e = { description = { "洛 New File                  SPC f n" }, command = "DashboardNewFile" },
     f = { description = { "  Bookmarks                 SPC b m" }, command = "Telescope marks" },
-    g = { description = { "  Load Last Session         SPC l  " }, command = "SessionLoad" },
+    g = {
+        description = { "  Load Last Session         SPC l  " },
+        command = "silent lua vim.cmd('RestoreSession')",
+    },
 }
 
 local predefined_quotes = {

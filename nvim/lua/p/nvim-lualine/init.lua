@@ -66,7 +66,7 @@ require("lualine").setup {
         },
         lualine_c = { "filename" },
         lualine_x = { "g:coc_status" },
-        lualine_y = { tabstop, "encoding", eol, "filetype" },
+        lualine_y = { { require("auto-session-library").current_session_name }, tabstop, "encoding", eol, "filetype" },
         lualine_z = { "progress", { "location", separator = { right = "" }, cond = conditions.hide_in_width } },
     },
     inactive_sections = {

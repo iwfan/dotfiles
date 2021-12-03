@@ -206,6 +206,7 @@ require("packer").startup {
         }
 
         -- Misc
+        use { "rmagatti/auto-session", config = [[require("p.nvim-session").setup()]] }
         use { "psliwka/vim-smoothie" }
         use { "farmergreg/vim-lastplace" }
         use {
