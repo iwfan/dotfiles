@@ -16,11 +16,11 @@ local conditions = {
 
 local function eol()
     local fileformat = vim.bo.fileformat
-    return fileformat == "unix" and "LF" or "CRLF"
+    return fileformat == "unix" and font_icon.mac or font_icon.dos
 end
 
 local function tabstop()
-    return "Spaces:" .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+    return font_icon.indent .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
 local function session()
@@ -52,26 +52,25 @@ require("lualine").setup {
             },
             {
                 "mode",
-                fmt = function(str)
-                    return str:sub(1, 1)
-                end,
                 separator = { left = "", right = "" },
+                padding = { left = 0, right = 1 },
             },
         },
         lualine_b = {
             {
                 "branch",
-                icon = "",
-                cond = conditions.hide_in_width,
-            },
-            {
-                "diff",
+                icon = font_icon.branch,
                 cond = conditions.hide_in_width,
             },
             {
                 "diagnostics",
                 sources = { "nvim_lsp", "coc" },
-                symbols = { error = " ", warn = " ", info = " ", hint = " " },
+                symbols = {
+                    error = font_icon.error,
+                    warn = font_icon.warn,
+                    info = font_icon.info,
+                    hint = font_icon.hint,
+                },
                 diagnostics_color = {
                     error = { fg = colors.red },
                     warn = { fg = colors.yellow },

@@ -38,6 +38,7 @@ require("packer").startup {
         use { "tpope/vim-repeat" }
         use { "tpope/vim-sleuth" }
         use { "tpope/vim-fugitive", cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" } }
+        use { "github/copilot.vim" }
         use { "tpope/vim-obsession" }
         use {
             "dhruvasagar/vim-prosession",
@@ -99,7 +100,6 @@ require("packer").startup {
             config = [[require("p.nvim-spectre")]],
         }
 
-        use { "github/copilot.vim" }
         use {
             {
                 "neoclide/coc.nvim",
@@ -139,13 +139,8 @@ require("packer").startup {
             config = [[require("p.nvim-tree").setup()]],
         }
         use {
-            "ojroques/nvim-bufdel",
-            config = function()
-                require("bufdel").setup {
-                    next = "cycle", -- or 'alternate'
-                    quit = false,
-                }
-            end,
+            "mhinz/vim-sayonara",
+            cmd = "Sayonara",
         }
         use {
             "Akin909/nvim-bufferline.lua",

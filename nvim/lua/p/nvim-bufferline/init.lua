@@ -29,7 +29,7 @@ require("bufferline").setup {
 map_cmd("n|<M-{>", "BufferLineCyclePrev")
 map_cmd("n|<M-}>", "BufferLineCycleNext")
 map_cmd("n|C<Tab>", "BufferLinePick")
-map_cmd("n|<M-w>", "BufDel")
+map_cmd("n|<M-w>", "Sayonara!")
 
 map_cmd("n|[b", "BufferLineCyclePrev")
 map_cmd("n|]b", "BufferLineCycleNext")
@@ -37,7 +37,7 @@ map_cmd("n|[B", "BufferLineMovePrev")
 map_cmd("n|]B", "BufferLineMoveNext")
 map_cmd("n|<leader>b", "BufferLinePick")
 map_cmd("n|\\b", "BufferLinePick")
-map_cmd("n|<bs>b", "BufDel")
+map_cmd("n|<bs>b", "Sayonara")
 
 map_cmd("n|<Space>1", "BufferLineGoToBuffer 1")
 map_cmd("n|<Space>2", "BufferLineGoToBuffer 2")
