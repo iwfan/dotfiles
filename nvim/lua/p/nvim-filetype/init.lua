@@ -12,7 +12,8 @@ M.setup = function()
             },
             function_extensions = {
                 qf = function()
-                    vim.cmd [[set nobuflisted]]
+                    vim.bo.filetype = "qf"
+                    vim.cmd [[setl nobuflisted nonumber norelativenumber]]
                 end,
                 css = function()
                     vim.bo.filetype = "css"

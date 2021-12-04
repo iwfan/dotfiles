@@ -44,7 +44,20 @@ require("lualine").setup {
         },
     },
     sections = {
-        lualine_a = { { session, separator = { left = "", right = "" } } },
+        lualine_a = {
+            {
+                session,
+                separator = { left = "", right = "" },
+                padding = { left = 1, right = 0 },
+            },
+            {
+                "mode",
+                fmt = function(str)
+                    return str:sub(1, 1)
+                end,
+                separator = { left = "", right = "" },
+            },
+        },
         lualine_b = {
             {
                 "branch",
