@@ -27,6 +27,11 @@ local function session()
     return vim.fn["ObsessionStatus"](" ", " ")
 end
 
+local function file_path()
+    local filepath = vim.fn.expand "%:p"
+    return vim.fn.fnamemodify(filepath, ":~:.")
+end
+
 require("lualine").setup {
     options = {
         section_separators = { left = "", right = "" },
@@ -80,13 +85,20 @@ require("lualine").setup {
                 cond = conditions.hide_in_width,
             },
         },
-        lualine_c = { "filename" },
+        lualine_c = { file_path },
         lualine_x = { "g:coc_status" },
         lualine_y = { tabstop, "encoding", eol, "filetype" },
-        lualine_z = { "progress", { "location", separator = { right = "" }, cond = conditions.hide_in_width } },
+        lualine_z = {
+            {
+                "location",
+                padding = { left = 0, right = 1 },
+                cond = conditions.hide_in_width,
+            },
+            { "progress", separator = { right = "" }, padding = { left = 0, right = 1 } },
+        },
     },
     inactive_sections = {
-        lualine_a = { { "filename", separator = { left = "" } } },
+        lualine_a = { { file_path, separator = { left = "" } } },
         lualine_b = {},
         lualine_c = {},
         lualine_x = {},
