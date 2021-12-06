@@ -36,7 +36,7 @@ vim.opt.joinspaces = false
 vim.opt.jumpoptions = "stack"
 vim.opt.hidden = true
 vim.opt.switchbuf = { "useopen", "uselast" }
-vim.opt.completeopt = { "menu", "menuone", "noinsert", "noselect" }
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.pumblend = 10
 vim.opt.winblend = 10
 vim.opt.pumheight = 20
@@ -81,7 +81,8 @@ vim.opt.fillchars = {
     diff = "╱",
 }
 vim.opt.shortmess:append "csI"
-vim.opt.sessionoptions:append { "options", "resize", "winpos", "terminal" }
+vim.opt.sessionoptions:append { "winpos", "options", "resize", "terminal" }
+vim.opt.sessionoptions:remove { "winsize" }
 
 vim.cmd [[
   function! CustomFold()

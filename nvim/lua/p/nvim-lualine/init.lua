@@ -85,7 +85,7 @@ require("lualine").setup {
                 cond = conditions.hide_in_width,
             },
         },
-        lualine_c = { file_path },
+        lualine_c = { { file_path, cond = conditions.buffer_not_empty } },
         lualine_x = { "g:coc_status" },
         lualine_y = { tabstop, "encoding", eol, "filetype" },
         lualine_z = {
@@ -98,7 +98,7 @@ require("lualine").setup {
         },
     },
     inactive_sections = {
-        lualine_a = { { file_path, separator = { left = "" } } },
+        lualine_a = { { file_path, cond = conditions.buffer_not_empty, separator = { left = "" } } },
         lualine_b = {},
         lualine_c = {},
         lualine_x = {},
