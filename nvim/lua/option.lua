@@ -81,8 +81,8 @@ vim.opt.fillchars = {
     diff = "╱",
 }
 vim.opt.shortmess:append "csI"
-vim.opt.sessionoptions:append { "winpos", "options", "resize", "terminal" }
-vim.opt.sessionoptions:remove { "winsize" }
+-- vim.opt.sessionoptions:append { "winpos", "options", "resize", "terminal" }
+-- vim.opt.sessionoptions:remove { "winsize" }
 
 vim.cmd [[
   function! CustomFold()
