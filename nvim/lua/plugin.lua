@@ -36,7 +36,19 @@ require("packer").startup {
         use { "tpope/vim-unimpaired" }
         use { "tpope/vim-surround" }
         use { "tpope/vim-repeat" }
-        use { "tpope/vim-sleuth" }
+        use {
+            "editorconfig/editorconfig-vim",
+            setup = function()
+                vim.g.EditorConfig_exclude_patterns = { "fugitive://.*", "scp://.*" }
+            end,
+        }
+        use {
+            "tpope/vim-sleuth",
+            setup = function()
+                vim.g.sleuth_automatic = 0
+            end,
+            cmd = "Sleuth",
+        }
         use { "tpope/vim-fugitive", cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" } }
         use { "github/copilot.vim" }
         use { "tpope/vim-obsession" }

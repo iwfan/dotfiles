@@ -82,6 +82,7 @@ vim.opt.fillchars = {
 }
 vim.opt.shortmess:append "csI"
 
+vim.opt.foldlevelstart = 99
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.indentexpr = "nvim_treesitter#indent()"

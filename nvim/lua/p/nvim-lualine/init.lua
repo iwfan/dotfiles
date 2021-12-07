@@ -20,7 +20,10 @@ local function eol()
 end
 
 local function tabstop()
-    return font_icon.indent .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+    local expandtab = vim.bo.expandtab
+    local sw = vim.bo.shiftwidth
+    local indent_type = expandtab and "spc" or "tab"
+    return indent_type .. "~" .. sw
 end
 
 local function session()
