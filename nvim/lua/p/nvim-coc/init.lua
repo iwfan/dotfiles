@@ -5,7 +5,6 @@ local function setup_global_extensions()
         "coc-css",
         "coc-emmet",
         "coc-eslint",
-        "coc-explorer",
         "coc-floatinput",
         "coc-html",
         "coc-jest",
@@ -18,13 +17,8 @@ local function setup_global_extensions()
     }
 end
 
-local function setup_keymaps()
-    map_cmd("n|<leader>e", "CocCommand explorer")
-end
-
 M.setup = function()
     setup_global_extensions()
-    setup_keymaps()
 end
 
 return M

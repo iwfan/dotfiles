@@ -145,7 +145,6 @@ require("packer").startup {
         }
         use {
             "kyazdani42/nvim-tree.lua",
-            disable = true,
             after = "nvim-web-devicons",
             setup = [[require("p.nvim-tree").set_val()]],
             config = [[require("p.nvim-tree").setup()]],
