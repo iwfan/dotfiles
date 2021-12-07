@@ -17,10 +17,3 @@ augroup("misc", {
     { "BufWritePre", "*", [[%s/\s\+$//e]] }, -- remove trailing whitespaces
     { "BufWritePre", "*", [[%s/\n\+\%$//e]] },
 })
-
-local skeletons_path = config_path .. "/skeletons"
-
-augroup("write_skeleton", {
-    { "BufNewFile", "*.tsx", "0r " .. skeletons_path .. "/tsx.tsx" },
-    { "BufNewFile", "*.lua", "0r " .. skeletons_path .. "/module.lua" },
-})
