@@ -13,6 +13,7 @@ GlobalPkgList=(
     "graphql-language-service-cli"
     "vls"
     "yarn"
+    "pnpm"
     "live-server"
     "firebase-tools"
     "@marp-team/marp-cli"

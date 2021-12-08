@@ -43,6 +43,7 @@ require("lualine").setup {
         disabled_filetypes = {
             "coc-explorer",
             "coctree",
+            "nnn",
             "NvimTree",
             "packer",
             "startify",
@@ -61,7 +62,6 @@ require("lualine").setup {
             {
                 "mode",
                 separator = { left = "", right = "" },
-                padding = { left = 0, right = 1 },
             },
         },
         lualine_b = {

@@ -29,6 +29,12 @@ require("packer").startup {
         -- Startup
         use { "lewis6991/impatient.nvim" }
         use { "nathom/filetype.nvim", config = [[require("p.nvim-filetype").setup()]] }
+        use {
+            "antoinemadec/FixCursorHold.nvim",
+            setup = function()
+                vim.g.cursorhold_updatetime = 300
+            end,
+        }
         use { "tweekmonster/startuptime.vim", cmd = "StartupTime" }
 
         -- tpope
@@ -57,7 +63,6 @@ require("packer").startup {
             after = "vim-obsession",
             setup = function()
                 var_tbl {
-                    prosession_default_session = 1,
                     prosession_dir = vim.fn.stdpath "data" .. "/sessions/",
                 }
             end,
@@ -144,14 +149,21 @@ require("packer").startup {
             setup = [[require("p.nvim-dashboard")]],
         }
         use {
-            "kyazdani42/nvim-tree.lua",
-            after = "nvim-web-devicons",
-            setup = [[require("p.nvim-tree").set_val()]],
-            config = [[require("p.nvim-tree").setup()]],
+            "luukvbaal/nnn.nvim",
+            config = function()
+                require("nnn").setup()
+                map_cmd("n|<leader>e", "NnnPicker")
+            end,
         }
         use {
-            "mhinz/vim-sayonara",
-            cmd = "Sayonara",
+            "ojroques/nvim-bufdel",
+            config = function()
+                require("bufdel").setup {
+                    next = "cycle",
+                    quit = false,
+                }
+            end,
+            cmd = "BufDel",
         }
         use {
             "Akin909/nvim-bufferline.lua",

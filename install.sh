@@ -22,6 +22,7 @@ ln -Fhnvs ~/dotfiles/zsh/.zshrc ~/.config/zsh/.zshrc
 # Tmux
 ln -Fhnvs ~/dotfiles/tmux ~/.config/tmux
 
+ln -Fhnvs ~/dotfiles/yabai ~/.config/yabai
 # Neovim
 ln -Fhnvs ~/dotfiles/nvim ~/.config/nvim
 # ideavimrc

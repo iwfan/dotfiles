@@ -31,3 +31,13 @@ _open_lazygit() {
 zle -N _open_lazygit
 
 bindkey "^G" _open_lazygit
+
+_open_nnn() {
+	zle -I
+	(
+		nnn -eH
+	) < /dev/tty
+}
+zle -N _open_nnn
+
+bindkey "^F" _open_nnn
