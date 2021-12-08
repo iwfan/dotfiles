@@ -1,0 +1,26 @@
+set number on
+set mouse on
+set relativenumber on
+set icons on
+set drawbox on
+set scrolloff 5
+set incsearch on
+set info ['size', 'time']
+set hiddenfiles '.git'
+
+set previewer ~/.config/lf/pv.sh
+
+map x :cut
+map d :delete
+
+
+cmd open ${{
+    test -L $f && f=$(readlink -f $f)
+    case $(file --mime-type $f -b) in
+        text/*) vi $fx;;
+        *) for f in $fx; do open $f > /dev/null 2> /dev/null & done;;
+    esac
+}}
+
+
+cmd trash          # deletes 'trash' command
