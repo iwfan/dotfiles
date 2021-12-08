@@ -149,13 +149,6 @@ require("packer").startup {
             setup = [[require("p.nvim-dashboard")]],
         }
         use {
-            "luukvbaal/nnn.nvim",
-            config = function()
-                require("nnn").setup()
-                map_cmd("n|<leader>e", "NnnPicker")
-            end,
-        }
-        use {
             "ojroques/nvim-bufdel",
             config = function()
                 require("bufdel").setup {

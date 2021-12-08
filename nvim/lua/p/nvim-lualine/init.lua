@@ -57,11 +57,12 @@ require("lualine").setup {
             {
                 session,
                 separator = { left = "", right = "" },
-                padding = { left = 1, right = 0 },
+                padding = { left = 0, right = 0 },
             },
             {
                 "mode",
                 separator = { left = "", right = "" },
+                padding = { left = 0, right = 0 },
             },
         },
         lualine_b = {
@@ -88,7 +89,7 @@ require("lualine").setup {
                 cond = conditions.hide_in_width,
             },
         },
-        lualine_c = { { file_path, cond = conditions.buffer_not_empty } },
+        lualine_c = {},
         lualine_x = { "g:coc_status" },
         lualine_y = { tabstop, "encoding", eol, "filetype" },
         lualine_z = {

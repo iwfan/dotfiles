@@ -55,10 +55,3 @@ export FZF_DEFAULT_OPTS="--height 80% --reverse --info=inline --color \"border:#
 export FZF_DEFAULT_COMMAND="git ls-files --cached --others --exclude-standard 2>/dev/null || fd --type f --type l $FD_OPTIONS"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
-
-# nnn
-BLK="0B" CHR="0B" DIR="04" EXE="06" REG="00" HARDLINK="06" SYMLINK="06" MISSING="00" ORPHAN="09" FIFO="06" SOCK="0B" OTHER="06"
-export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
-export NNN_BMS="d:$HOME/dotfiles;c:$HOME/code/"
-export NNN_PLUG="p:preview-tui;"
-export NNN_FIFO=/tmp/nnn.fifo

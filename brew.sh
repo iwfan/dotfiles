@@ -29,7 +29,7 @@ brew install "trash"
 brew install "tree"
 brew install "wget"
 brew install "jesseduffield/lazygit/lazygit"
-brew install "nnn"
+brew install "lf"
 
 brew install --cask "iterm2"
 brew install --cask "docker"

@@ -19,12 +19,16 @@ ln -Fhnvs ~/dotfiles/zsh/.zshenv ~/.zshenv
 ln -Fhnvs ~/dotfiles/zsh/.zprofile ~/.config/zsh/.zprofile
 ln -Fhnvs ~/dotfiles/zsh/.zshrc ~/.config/zsh/.zshrc
 
+# kitty
+ln -Fhnvs ~/dotfiles/kitty ~/.config/kitty
+# lf
+ln -Fhnvs ~/dotfiles/lf ~/.config/lf
 # Tmux
 ln -Fhnvs ~/dotfiles/tmux ~/.config/tmux
-
-ln -Fhnvs ~/dotfiles/yabai ~/.config/yabai
 # Neovim
 ln -Fhnvs ~/dotfiles/nvim ~/.config/nvim
+
+ln -Fhnvs ~/dotfiles/yabai ~/.config/yabai
 # ideavimrc
 ln -Fhnvs ~/dotfiles/ideavim ~/.config/ideavim
 # Hammerspoon

@@ -32,12 +32,12 @@ zle -N _open_lazygit
 
 bindkey "^G" _open_lazygit
 
-_open_nnn() {
+_open_lf() {
 	zle -I
 	(
-		nnn -eH
+		lf
 	) < /dev/tty
 }
-zle -N _open_nnn
+zle -N _open_lf
 
-bindkey "^F" _open_nnn
+bindkey "^F" _open_lf
