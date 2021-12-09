@@ -19,12 +19,12 @@ require "modules.config-reload"
 -- require "modules.window-management"
 -- require "modules.clipboard"
 -- require "modules.app-launcher"
-require "modules.app-hints"
+-- require "modules.app-hints"
 require "modules.switch-im"
-require "modules.cheatsheet"
--- require("modules.pomodoro")
-require "modules.markdown"
 require "modules.search-text"
+-- require "modules.cheatsheet"
+-- require "modules.pomodoro"
+-- require "modules.markdown"
 
 spoon.VolumeScroll:init()
 spoon.VolumeScroll:start(leader)

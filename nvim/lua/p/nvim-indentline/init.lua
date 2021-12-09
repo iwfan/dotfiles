@@ -5,6 +5,7 @@ require("indent_blankline").setup {
         "help",
         "terminal",
         "dashboard",
+        "DiffviewFiles",
         "packer",
         "lspinfo",
         "TelescopePrompt",

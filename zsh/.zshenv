@@ -5,6 +5,7 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export DOTFILES="$HOME/dotfiles"
 export ZINIT_HOME="${ZDOTDIR:-$HOME}/.zinit"
 export ZINIT_BIN_DIR_NAME="bin"
+export KEYTIMEOUT=1
 
 # Locale
 export LANG=en_US.UTF-8
@@ -43,18 +44,38 @@ export BAT_PAGER="less -R"
 export BAT_STYLE="changes,numbers"
 export BAT_THEME="gruvbox-dark"
 
+# RG
+export RG_OPTIONS="--smart-case --follow"
+
 # Fd
 export FD_OPTIONS="--hidden --follow --exclude .git --exclude node_modules"
 
 # Fzf
-export FZF_DEFAULT_OPTS="--height 80% --reverse --info=inline --color \"border:#b877db\"\
+export FZF_DEFAULT_COMMAND="fd $FD_OPTIONS"
+export FZF_BASE_OPTS="-m --ansi --height 40% --reverse --info inline --tabstop=4 \
+  --bind 'ctrl-r:change-prompt(> )+reload($FZF_DEFAULT_COMMAND)' \
+  --bind 'ctrl-o:execute(cd {})' \
+  --bind 'ctrl-y:execute-silent(echo {} | pbcopy)+abort' \
+  --preview='' --preview-window=''"
+
+export FZF_DEFAULT_OPTS="$FZF_BASE_OPTS \
+  --bind 'ctrl-d:change-prompt(Dirs> )+reload(fd -t d $FD_OPTIONS)' \
+  --bind 'ctrl-f:change-prompt(Files> )+reload(fd -t f $FD_OPTIONS)' \
+  --bind 'ctrl-/:toggle-preview' \
   --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file \
   || (bat --color=always --style=numbers --line-range=:500 {} || cat {}) 2> /dev/null | head -300' \
-  --preview-window='right:60%:wrap' \
-  --bind='ctrl-d:half-page-down,ctrl-u:half-page-up'"
-export FZF_DEFAULT_COMMAND="git ls-files --cached --others --exclude-standard 2>/dev/null || fd --type f --type l $FD_OPTIONS"
+  --preview-window='right:60%:wrap'"
+
+export FZF_CTRL_R_OPTS="$FZF_BASE_OPTS"
+# Paste the selected files and directories onto the command-line
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="$FZF_BASE_OPTS"
+# cd into the selected directory
 export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
+export FZF_ALT_C_OPTS="$FZF_BASE_OPTS"
+
+export FZF_COMPLETION_TRIGGER='\'
+export FZF_COMPLETION_OPTS='--border --info=inline'
 
 export LF_ICONS="\
 di=:\

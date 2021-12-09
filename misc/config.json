@@ -1,0 +1,14 @@
+{
+  "Prompt": "[peco]",
+  "StickySelection": true,
+  "MaxScanBufferSize": 256,
+  "Use256Color": true,
+  "Layout": "bottom-up",
+  "Style": {
+    "Basic": ["on_default", "default"],
+    "SavedSelection": ["bold", "on_0", "blue"],
+    "Selected": ["bold", "on_0", "default"],
+    "Query": ["cyan", "bold"],
+    "Matched": ["red"]
+  }
+}
