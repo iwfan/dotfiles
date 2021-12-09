@@ -16,9 +16,9 @@ for _, v in pairs(hspoon_list) do
 end
 
 require "modules.config-reload"
-require "modules.window-management"
+-- require "modules.window-management"
 -- require "modules.clipboard"
-require "modules.app-launcher"
+-- require "modules.app-launcher"
 require "modules.app-hints"
 require "modules.switch-im"
 require "modules.cheatsheet"

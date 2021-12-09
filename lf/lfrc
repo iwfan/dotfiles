@@ -1,3 +1,8 @@
+set shell zsh
+set shellopts '-euy'
+set ifs "\n"
+set filesep "\n"  # default already
+
 set number on
 set mouse on
 set relativenumber on
@@ -6,6 +11,7 @@ set drawbox on
 set scrolloff 5
 set incsearch on
 set hiddenfiles '.git'
+set info size:time
 
 map <enter> shell
 map A push %mkdir<space>
@@ -31,3 +37,17 @@ cmd open ${{
         *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
     esac
 }}
+
+cmd copy_filename %{{
+  $(basename $f | pbcopy)
+  echo "copied: $(basename $f)"
+}}
+
+cmd copy_filepath %{{
+  $(realpath $f | pbcopy)
+  echo "copied: $(realpath $f)"
+}}
+
+map y :copy_filename
+map Y :copy
+map <c-y> :copy_filepath
