@@ -15,11 +15,14 @@ map x :cut
 cmd trash %trash $fx
 map d :trash
 
+map g~ cd ~/
 map gc cd ~/.config
 map gv cd ~/.config/nvim
 map gl cd ~/.config/lf
-map gw cd ~/workplace
-map g~ cd ~/
+map gf cd ~/gd/goldendata-frontend
+map gd cd ~/gd/goldendata
+
+# map f $nvim $(fzf)
 
 cmd open ${{
     test -L $f && f=$(readlink -f $f)
