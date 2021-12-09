@@ -5,22 +5,26 @@ set icons on
 set drawbox on
 set scrolloff 5
 set incsearch on
-set info ['size', 'time']
 set hiddenfiles '.git'
 
-set previewer ~/.config/lf/pv.sh
-
+map <enter> shell
+map A push %mkdir<space>
+map a push %touch<space>
 map x :cut
-map d :delete
 
+cmd trash %trash $fx
+map d :trash
+
+map gc cd ~/.config
+map gv cd ~/.config/nvim
+map gl cd ~/.config/lf
+map gw cd ~/workplace
+map g~ cd ~/
 
 cmd open ${{
     test -L $f && f=$(readlink -f $f)
     case $(file --mime-type $f -b) in
-        text/*) vi $fx;;
-        *) for f in $fx; do open $f > /dev/null 2> /dev/null & done;;
+        text/*|application/json) $EDITOR "$f";;
+        *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
     esac
 }}
-
-
-cmd trash          # deletes 'trash' command
