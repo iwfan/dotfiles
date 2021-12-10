@@ -12,9 +12,9 @@ alias d='dirs -v'
 alias v="nvim"
 alias vi="nvim"
 
-alias ls="exa --long --header --git --modified --color-scale"
-alias la="exa -la --long --header --git --modified --color-scale"
-alias lt="tree -L 2"
+alias ls="exa --long --git --modified --color-scale --icons --group-directories-first --time-style=iso"
+alias la="ls -a"
+alias lt="exa -a --icons --color-scale --tree -L 2 "
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm="trash -v"
