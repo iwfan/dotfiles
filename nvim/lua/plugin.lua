@@ -37,6 +37,71 @@ require("packer").startup {
         }
         use { "tweekmonster/startuptime.vim", cmd = "StartupTime" }
 
+        -- Treesitter
+        use {
+            "nvim-treesitter/nvim-treesitter",
+            run = ":TSUpdate",
+            config = [[require("p.nvim-treesitter").setup()]],
+        }
+        use "nvim-treesitter/nvim-treesitter-textobjects"
+        use {
+            "windwp/nvim-ts-autotag",
+            ft = { "html", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue" },
+        }
+        use {
+            "windwp/nvim-autopairs",
+            config = "require('nvim-autopairs').setup()",
+        }
+        use "JoosepAlviste/nvim-ts-context-commentstring"
+        use {
+            "numToStr/Comment.nvim",
+            event = "BufRead",
+            config = [[require("p.nvim-comment").setup()]],
+        }
+        use {
+            "andymass/vim-matchup",
+            event = "VimEnter",
+            config = function()
+                vim.g.matchup_matchparen_offscreen = { method = "popup" }
+            end,
+        }
+
+        -- Telescope
+        use {
+            "nvim-telescope/telescope.nvim",
+            requires = {
+                { "nvim-lua/popup.nvim" },
+                { "nvim-lua/plenary.nvim" },
+                { "nvim-telescope/telescope-fzf-native.nvim" },
+            },
+            config = [[require("p.nvim-telescope").setup()]],
+        }
+        use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+        use {
+            "windwp/nvim-spectre",
+            requires = "nvim-lua/plenary.nvim",
+            config = [[require("p.nvim-spectre")]],
+        }
+
+        -- LSP
+        use { "neovim/nvim-lspconfig", config = "require('lsp.config')" }
+
+        -- LSP Cmp
+        use { "hrsh7th/cmp-nvim-lsp" }
+        use { "hrsh7th/cmp-nvim-lua" }
+        use { "hrsh7th/cmp-buffer" }
+        use { "hrsh7th/cmp-path" }
+        use { "hrsh7th/cmp-calc" }
+        use { "quangnguyen30192/cmp-nvim-ultisnips" }
+        use { "hrsh7th/nvim-cmp", event = "InsertEnter", config = "require('lsp.cmp')" }
+
+        -- LSP Addons
+        use { "williamboman/nvim-lsp-installer", config = "require('lsp.installer')" }
+        use { "tami5/lspsaga.nvim", config = "require('lsp.saga').setup()" }
+        use { "onsails/lspkind-nvim" }
+        use { "folke/lsp-trouble.nvim", config = "require('lsp.trouble')" }
+        use { "jose-elias-alvarez/nvim-lsp-ts-utils", after = { "nvim-treesitter" } }
+
         -- tpope
         use { "tpope/vim-sensible" }
         use { "tpope/vim-unimpaired" }
@@ -66,67 +131,6 @@ require("packer").startup {
                     prosession_dir = vim.fn.stdpath "data" .. "/sessions/",
                 }
             end,
-        }
-
-        use { "nvim-lua/plenary.nvim" }
-        use {
-            {
-                "nvim-treesitter/nvim-treesitter",
-                run = ":TSUpdate",
-                config = [[require("p.nvim-treesitter").setup()]],
-            },
-            "nvim-treesitter/nvim-treesitter-textobjects",
-            {
-                "windwp/nvim-ts-autotag",
-                ft = { "html", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue" },
-            },
-            {
-                "windwp/nvim-autopairs",
-                config = function()
-                    require("nvim-autopairs").setup {}
-                end,
-            },
-            {
-                "numToStr/Comment.nvim",
-                event = "BufRead",
-                config = [[require("p.nvim-comment").setup()]],
-            },
-            "JoosepAlviste/nvim-ts-context-commentstring",
-            {
-                "andymass/vim-matchup",
-                event = "VimEnter",
-                config = function()
-                    vim.g.matchup_matchparen_offscreen = { method = "popup" }
-                end,
-            },
-        }
-
-        use {
-            "nvim-telescope/telescope.nvim",
-            requires = {
-                { "nvim-lua/popup.nvim" },
-                { "nvim-lua/plenary.nvim" },
-                { "nvim-telescope/telescope-fzf-native.nvim" },
-            },
-            config = [[require("p.nvim-telescope").setup()]],
-        }
-        use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-        use {
-            "windwp/nvim-spectre",
-            requires = "nvim-lua/plenary.nvim",
-            config = [[require("p.nvim-spectre")]],
-        }
-
-        use {
-            {
-                "neoclide/coc.nvim",
-                branch = "release",
-                setup = function()
-                    vim.g.coc_config_home = config_path .. "/lua/p/nvim-coc/"
-                end,
-                config = [[require("p.nvim-coc").setup()]],
-            },
-            "honza/vim-snippets",
         }
 
         -- Appearance

@@ -1,9 +1,9 @@
-local runtime_path = vim.split(package.path, ";")
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
+return function(opts)
+    local runtime_path = vim.split(package.path, ";")
+    table.insert(runtime_path, "lua/?.lua")
+    table.insert(runtime_path, "lua/?/init.lua")
 
-return function(default_opts)
-    default_opts.settings = {
+    opts.settings = {
         Lua = {
             runtime = {
                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
@@ -36,5 +36,5 @@ return function(default_opts)
             },
         },
     }
-    return default_opts
+    return opts
 end
