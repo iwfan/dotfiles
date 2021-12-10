@@ -29,10 +29,4 @@ require "modules.search-text"
 spoon.VolumeScroll:init()
 spoon.VolumeScroll:start(leader)
 
-spoon.ModalMgr.supervisor:bind(leader, "H", "查看 Hammerspoon 手册", function()
-    hs.urlevent.openURL "https://www.hammerspoon.org/docs/"
-end)
-spoon.ModalMgr.supervisor:bind(leader, "Z", "Toggle Hammerspoon Console", function()
-    hs.toggleConsole()
-end)
 spoon.ModalMgr.supervisor:enter()
