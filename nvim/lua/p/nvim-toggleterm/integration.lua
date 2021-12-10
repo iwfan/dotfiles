@@ -31,29 +31,31 @@ end
 map_cmd("n|<c-w>g", "lua _lazygit_toggle()")
 map_cmd("n|<leader>g", "lua _lazygit_toggle()")
 
-function _lf_toggle()
+function _lf_toggle(path)
     local tmpfile = "/tmp/lf_chosenfile"
-    local lf_cmd = "lf -selection-path=" .. tmpfile .. " " .. vim.fn.expand "%"
+    local lf_cmd = "lf -selection-path=" .. tmpfile .. " " .. vim.fn.expand(path)
 
     local lf = Terminal:new {
         cmd = lf_cmd,
         start_in_insert = true,
-        close_on_exit = true,
         direction = "window",
         on_open = hide_line,
-        on_close = function(term)
+        on_close = function()
             show_line()
             if vim.fn.filereadable(tmpfile) then
-                local file = vim.fn.readfile(tmpfile)
-                if file[1] ~= nil then
-                    vim.api.nvim_command("edit " .. file[1])
+                local ok, selected_file = pcall(vim.fn.readfile, tmpfile)
+                if ok then
+                    for _, v in ipairs(selected_file) do
+                        vim.defer_fn(function()
+                            vim.api.nvim_command("edit " .. v)
+                        end, 10)
+                    end
                 end
                 vim.fn.delete(tmpfile)
             end
-            term:shutdown()
         end,
     }
     lf:open()
 end
 
-map_cmd("n|<leader>e", "lua _lf_toggle()")
+map_cmd("n|<leader>e", "lua _lf_toggle('%')")

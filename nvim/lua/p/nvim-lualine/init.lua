@@ -63,7 +63,7 @@ require("lualine").setup {
             },
             {
                 "diagnostics",
-                sources = { "nvim_diagnostic" },
+                sources = { "nvim_diagnostic", "coc" },
                 symbols = {
                     error = font_icon.error,
                     warn = font_icon.warn,
