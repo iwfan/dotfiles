@@ -12,7 +12,6 @@ set scrolloff 5
 set incsearch on
 set hiddenfiles '.git'
 
-map <enter> shell
 map A push %mkdir<space>
 map a push %touch<space>
 map x :cut

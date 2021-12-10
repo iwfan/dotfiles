@@ -149,22 +149,13 @@ require("packer").startup {
             setup = [[require("p.nvim-dashboard")]],
         }
         use {
-            "ojroques/nvim-bufdel",
-            config = function()
-                require("bufdel").setup {
-                    next = "cycle",
-                    quit = false,
-                }
-            end,
-            cmd = "BufDel",
-        }
-        use {
-            "Akin909/nvim-bufferline.lua",
+            "romgrk/barbar.nvim",
             after = "nvim-web-devicons",
-            config = [[require("p.nvim-bufferline")]],
+            config = [[require("p.nvim-barbar")]],
         }
         use {
             "nvim-lualine/lualine.nvim",
+            disable = true,
             after = "nvim-web-devicons",
             config = [[require("p.nvim-lualine")]],
         }
@@ -245,16 +236,6 @@ require("packer").startup {
             "ybian/smartim",
             setup = function()
                 vim.g.smartim_default = "com.apple.keylayout.ABC"
-            end,
-        }
-        use {
-            "tversteeg/registers.nvim",
-            setup = function()
-                vim.g.registers_return_symbol = " "
-                vim.g.registers_tab_symbol = " "
-                vim.g.registers_show_empty_registers = 0
-                vim.g.registers_trim_whitespace = 0
-                vim.g.registers_hide_only_whitespace = 1
             end,
         }
     end,

@@ -40,5 +40,4 @@ ln -Fhnvs ~/dotfiles/karabiner ~/.config/karabiner
 ln -Fhnvs ~/dotfiles/git ~/.config/git
 ln -Fhnvs ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/lazygit/config.yml
 
-ln -Fhnvs ~/dotfiles/gitui ~/.config/gitui
 success "link finished."
