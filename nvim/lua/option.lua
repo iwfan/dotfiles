@@ -37,6 +37,7 @@ vim.opt.pumblend = 10
 vim.opt.winblend = 10
 vim.opt.pumheight = 20
 vim.opt.wildignorecase = true
+vim.opt.wildignore = "*node_modules/**"
 
 -- tabs & indent
 vim.opt.tabstop = 2
@@ -47,7 +48,6 @@ vim.opt.smartindent = true
 vim.opt.breakindent = true
 
 -- search
-vim.opt.hlsearch = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.infercase = true

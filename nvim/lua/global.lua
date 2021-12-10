@@ -93,6 +93,10 @@ function _G.searching_google(keyword)
     fn.system { "open", "https://google.com/search?q=" .. keyword }
 end
 
+function _G.searching_deepl(keyword)
+    fn.system { "open", "https://deepl.com/zh/translator#en/zh/" .. keyword }
+end
+
 _G.font_icon = {
     error = " ",
     warn = " ",

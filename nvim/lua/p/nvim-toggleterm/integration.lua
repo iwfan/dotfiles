@@ -24,14 +24,14 @@ local lazygit = Terminal:new {
     on_close = show_line,
 }
 
-function _lazygit_toggle()
+function Lazygit_toggle()
     lazygit:toggle()
 end
 
-map_cmd("n|<c-w>g", "lua _lazygit_toggle()")
-map_cmd("n|<leader>g", "lua _lazygit_toggle()")
+map_cmd("n|<c-w>g", "lua Lazygit_toggle()")
+map_cmd("n|<leader>g", "lua Lazygit_toggle()")
 
-function _lf_toggle(path)
+function LF_toggle(path)
     local tmpfile = "/tmp/lf_chosenfile"
     local lf_cmd = "lf -selection-path=" .. tmpfile .. " " .. vim.fn.expand(path)
 
@@ -58,4 +58,4 @@ function _lf_toggle(path)
     lf:open()
 end
 
-map_cmd("n|<leader>e", "lua _lf_toggle('%')")
+map_cmd("n|<leader>e", "lua LF_toggle('%')")

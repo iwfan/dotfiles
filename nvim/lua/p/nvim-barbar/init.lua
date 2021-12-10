@@ -39,23 +39,23 @@ local function hi(name, fg, bg, attr)
     vim.cmd("hi! clear " .. name)
 
     if attr ~= nil then
-        vim.cmd("hi! " .. name .. " guifg=" .. fg .. " guibg=" .. bg .. " gui=" .. attr)
+        vim.highlight.create(name, { guifg = fg, guibg = bg, gui = attr }, true)
     elseif fg ~= nil and bg ~= nil then
-        vim.cmd("hi! " .. name .. " guifg=" .. fg .. " guibg=" .. bg)
+        vim.highlight.create(name, { guifg = fg, guibg = bg }, true)
     end
 end
 
 hi("BufferCurrent", "#d4be98", "#504945", "bold")
 hi("BufferCurrentIndex", "#d8a657", "#504945")
 hi("BufferCurrentMod", "#d8a657", "#504945")
-hi("BufferCurrentSign", "#d8a657", "#504945")
+hi("BufferCurrentSign", "#7daea3", "#504945")
 hi("BufferCurrentTarget", "#ea6962", "#504945", "bold")
-hi "BufferVisible"
-hi "BufferVisibleIndex"
-hi "BufferVisibleMod"
-hi "BufferVisibleSign"
-hi "BufferVisibleTarget"
-hi "BufferInactive"
+hi("BufferVisible", "#ddc7a1", "#504945")
+hi("BufferVisibleIndex", "#d8a657", "#504945")
+hi("BufferVisibleMod", "#d8a657", "#504945")
+hi("BufferVisibleSign", "#d8a657", "#504945")
+hi("BufferVisibleTarget", "red", "#504945", "bold")
+hi("BufferInactive", "#a89984", "#32302f")
 hi "BufferInactiveIndex"
 hi "BufferInactiveMod"
 hi "BufferInactiveSign"
