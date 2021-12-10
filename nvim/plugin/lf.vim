@@ -6,8 +6,6 @@ function! LF(path)
       if a:code == 0
         bd!
       endif
-      " stopinsert
-      " exe 'bdelete! ' . expand('<abuf>')
       try
         if filereadable(s:choice_file_path)
           for f in readfile(s:choice_file_path)

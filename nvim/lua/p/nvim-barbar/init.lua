@@ -1,6 +1,6 @@
 vim.g.bufferline = {
     animation = true,
-    auto_hide = true,
+    auto_hide = false,
     tabpages = true,
     closable = false,
     clickable = true,
@@ -34,3 +34,32 @@ map_cmd("n|]B", "BufferMoveNext")
 map_cmd("n|<leader>b", "BufferPick")
 map_cmd("n|\\b", "BufferPin")
 map_cmd("n|<bs>b", "BufferClose")
+
+local function hi(name, fg, bg, attr)
+    vim.cmd("hi! clear " .. name)
+
+    if attr ~= nil then
+        vim.cmd("hi! " .. name .. " guifg=" .. fg .. " guibg=" .. bg .. " gui=" .. attr)
+    elseif fg ~= nil and bg ~= nil then
+        vim.cmd("hi! " .. name .. " guifg=" .. fg .. " guibg=" .. bg)
+    end
+end
+
+hi("BufferCurrent", "#d4be98", "#504945", "bold")
+hi("BufferCurrentIndex", "#d8a657", "#504945")
+hi("BufferCurrentMod", "#d8a657", "#504945")
+hi("BufferCurrentSign", "#d8a657", "#504945")
+hi("BufferCurrentTarget", "#ea6962", "#504945", "bold")
+hi "BufferVisible"
+hi "BufferVisibleIndex"
+hi "BufferVisibleMod"
+hi "BufferVisibleSign"
+hi "BufferVisibleTarget"
+hi "BufferInactive"
+hi "BufferInactiveIndex"
+hi "BufferInactiveMod"
+hi "BufferInactiveSign"
+hi "BufferInactiveTarget"
+hi "BufferCurrentIcon"
+hi "BufferVisibleIcon"
+hi "BufferInactiveIcon"

@@ -155,7 +155,6 @@ require("packer").startup {
         }
         use {
             "nvim-lualine/lualine.nvim",
-            disable = true,
             after = "nvim-web-devicons",
             config = [[require("p.nvim-lualine")]],
         }
@@ -202,6 +201,7 @@ require("packer").startup {
                 }
             end,
         }
+        use { "akinsho/toggleterm.nvim", config = [[require("p.nvim-toggleterm")]] }
 
         -- Operations
         use { "ggandor/lightspeed.nvim" }

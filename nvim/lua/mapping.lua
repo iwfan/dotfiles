@@ -45,15 +45,8 @@ map_cmd("n|<C-w><down>", "res +10")
 map_cmd("n|<C-w><right>", "vertical resize -10")
 map_cmd("n|<C-w><left>", "vertical resize +10")
 
-map_cmd("n|<C-w>t", "vnew +term | setlocal nobuflisted ft=term")
-map_cmd("n|<C-w>b", "10new +term | setlocal nobuflisted ft=term")
-map_cmd("n|<C-w>g", "tabe +term=lazygit | setlocal ft=term")
-map_cmd("n|<leader>e", [[LFC]])
-
 map("n|<leader><bs>", '"_dd')
--- Don't copy the replaced text after pasting in visual mode
 map("v|p", '"_dP')
-map("n|<Esc>", ":noh<cr>:echo<cr><esc>")
 map("n|<C-s>", [[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]], { expr = true })
 map("n|<M-s>", [[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]], { expr = true })
 map("n|<C-g>s", [[:lua searching_google(vim.fn.expand("<cword>"))<CR>]])

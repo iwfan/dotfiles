@@ -16,7 +16,7 @@ local conditions = {
 
 local function eol()
     local fileformat = vim.bo.fileformat
-    return fileformat == "unix" and font_icon.mac or font_icon.dos
+    return fileformat == "unix" and "lf" or "crlf"
 end
 
 local function tabstop()
@@ -37,8 +37,8 @@ end
 
 require("lualine").setup {
     options = {
-        section_separators = { left = "", right = "" },
-        component_separators = { left = "|", right = "|" },
+        section_separators = "",
+        component_separators = "", -- |
         theme = "gruvbox-material",
         disabled_filetypes = {
             "coc-explorer",
@@ -53,19 +53,9 @@ require("lualine").setup {
         },
     },
     sections = {
-        lualine_a = {
-            {
-                session,
-                separator = { left = "", right = "" },
-                padding = { left = 0, right = 0 },
-            },
-            {
-                "mode",
-                separator = { left = "", right = "" },
-                padding = { left = 0, right = 0 },
-            },
-        },
-        lualine_b = {
+        lualine_a = {},
+        lualine_b = { session },
+        lualine_c = {
             {
                 "branch",
                 icon = font_icon.branch,
@@ -73,7 +63,7 @@ require("lualine").setup {
             },
             {
                 "diagnostics",
-                sources = { "nvim_lsp", "coc" },
+                sources = { "nvim_diagnostic" },
                 symbols = {
                     error = font_icon.error,
                     warn = font_icon.warn,
@@ -89,25 +79,24 @@ require("lualine").setup {
                 cond = conditions.hide_in_width,
             },
         },
-        lualine_c = {},
-        lualine_x = { "g:coc_status" },
-        lualine_y = { tabstop, "encoding", eol, "filetype" },
-        lualine_z = {
-            {
-                "location",
-                padding = { left = 0, right = 1 },
-                cond = conditions.hide_in_width,
-            },
-            { "progress", separator = { right = "" }, padding = { left = 0, right = 1 } },
+        lualine_x = {
+            tabstop,
+            "encoding",
+            eol,
+            "filetype",
+            "location",
+            "progress",
         },
+        lualine_y = {},
+        lualine_z = {},
     },
     inactive_sections = {
-        lualine_a = { { file_path, cond = conditions.buffer_not_empty, separator = { left = "" } } },
+        lualine_a = {},
         lualine_b = {},
-        lualine_c = {},
-        lualine_x = {},
+        lualine_c = { { file_path, cond = conditions.buffer_not_empty } },
+        lualine_x = { "filetype" },
         lualine_y = {},
-        lualine_z = { { "filetype", separator = { right = "" } } },
+        lualine_z = {},
     },
     tabline = {},
     extensions = {},
