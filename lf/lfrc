@@ -19,6 +19,8 @@ map x :cut
 cmd trash %trash $fx
 map d :trash
 
+map <enter> :open
+
 map g~ cd ~/
 map gc cd ~/.config
 map gv cd ~/.config/nvim
