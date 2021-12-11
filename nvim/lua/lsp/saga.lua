@@ -12,6 +12,18 @@ function M.setup()
             virtual_text = false,
         },
         code_action_keys = { quit = { "q", "<ESC>" }, exec = "<CR>" },
+        rename_action_keys = {
+            quit = "<C-c>",
+            exec = "<CR>",
+        },
+        finder_action_keys = {
+            open = { "o", "l", "<CR>" },
+            vsplit = "<c-v>",
+            split = "<c-s>",
+            quit = { "q", "<ESC>" },
+            scroll_down = "<C-d>",
+            scroll_up = "<C-u>",
+        },
         border_style = "round",
     }
 end
@@ -26,7 +38,7 @@ function M.setup_keymap(bufnr)
         })
     end
 
-    buf_map("n|gd", "lua vim.lsp.buf.definition()")
+    buf_map("n|gd", "Lspsaga lsp_finder")
     buf_map("n|gD", "Lspsaga preview_definition")
     buf_map("n|gr", "Lspsaga lsp_finder")
     buf_map("n|gi", "Lspsaga implement")

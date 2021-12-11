@@ -1,17 +1,20 @@
 local M = {}
 
-local function keymaps()
-    map_cmd("n|<space>o", "Telescope find_files")
-    map_cmd("n|<space>f", "Telescope live_grep")
-    map_cmd("n|<space>m", "Telescope marks")
-    map_cmd("n|<C-f>", "Telescope current_buffer_fuzzy_find")
-    map_cmd("n|<space><space>", "Telescope")
-end
-
 M.setup = function()
     local actions = require "telescope.actions"
     require("telescope").setup {
         defaults = {
+            vimgrep_arguments = {
+                "rg",
+                "--color=never",
+                "--no-heading",
+                "--with-filename",
+                "--line-number",
+                "--column",
+                "--smart-case",
+                "--hidden",
+                "--glob=!.git/",
+            },
             prompt_prefix = "  ",
             selection_caret = " ",
             sorting_strategy = "ascending",
@@ -20,9 +23,18 @@ M.setup = function()
             },
             mappings = {
                 i = {
-                    -- ["<esc>"] = actions.close,
-                    ["<C-j>"] = actions.move_selection_next,
-                    ["<C-k>"] = actions.move_selection_previous,
+                    ["<C-n>"] = actions.move_selection_next,
+                    ["<C-p>"] = actions.move_selection_previous,
+                    ["<C-c>"] = actions.close,
+                    ["<C-j>"] = actions.cycle_history_next,
+                    ["<C-k>"] = actions.cycle_history_prev,
+                    ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+                    ["<CR>"] = actions.select_default + actions.center,
+                },
+                n = {
+                    ["<C-n>"] = actions.move_selection_next,
+                    ["<C-p>"] = actions.move_selection_previous,
+                    ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
                 },
             },
             extensions = {
@@ -35,14 +47,33 @@ M.setup = function()
             },
         },
         pickers = {
-            ["find_files"] = {
-                hidden = true,
+            find_files = {
+                find_command = {
+                    "fd",
+                    "--type=file",
+                    "--hidden",
+                    "--exclude=.git",
+                    "--exclude=.idea",
+                    "--exclude=node_modules",
+                    "--exclude=dist",
+                    "--exclude=out",
+                    "--exclude=.next",
+                    "--exclude=.cache",
+                },
+            },
+            live_grep = {
+                --@usage don't include the filename in the search results
+                only_sort_text = true,
             },
         },
     }
 
     require("telescope").load_extension "fzf"
-    keymaps()
+
+    map_cmd("n|<space>o", "Telescope find_files")
+    map_cmd("n|<space>f", "Telescope live_grep")
+    map_cmd("n|<space>m", "Telescope marks")
+    map_cmd("n|<space><space>", "Telescope")
 end
 
 return M

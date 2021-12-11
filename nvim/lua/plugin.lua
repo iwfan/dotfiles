@@ -22,7 +22,7 @@ end
 vim.cmd [[command! PackerUpgrade :call v:lua.packer_install()]]
 
 require("packer").startup {
-    function(use, use_rocks)
+    function(use)
         -- Packer can manage itself
         use { "wbthomason/packer.nvim" }
 
@@ -45,10 +45,6 @@ require("packer").startup {
         }
         use "nvim-treesitter/nvim-treesitter-textobjects"
         use {
-            "windwp/nvim-ts-autotag",
-            ft = { "html", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue" },
-        }
-        use {
             "windwp/nvim-autopairs",
             config = "require('nvim-autopairs').setup()",
         }
@@ -57,6 +53,10 @@ require("packer").startup {
             "numToStr/Comment.nvim",
             event = "BufRead",
             config = [[require("p.nvim-comment").setup()]],
+        }
+        use {
+            "windwp/nvim-ts-autotag",
+            ft = { "html", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue" },
         }
         use {
             "andymass/vim-matchup",
@@ -92,6 +92,9 @@ require("packer").startup {
         use { "hrsh7th/cmp-buffer" }
         use { "hrsh7th/cmp-path" }
         use { "hrsh7th/cmp-calc" }
+        use { "L3MON4D3/LuaSnip" }
+        use { "saadparwaiz1/cmp_luasnip" }
+        use { "rafamadriz/friendly-snippets" }
         use { "hrsh7th/nvim-cmp", event = "InsertEnter", config = "require('lsp.cmp')" }
 
         -- LSP Addons
@@ -106,6 +109,7 @@ require("packer").startup {
         use { "tpope/vim-unimpaired" }
         use { "tpope/vim-surround" }
         use { "tpope/vim-repeat" }
+        use { "tpope/vim-abolish" }
         use {
             "editorconfig/editorconfig-vim",
             setup = function()
@@ -126,9 +130,9 @@ require("packer").startup {
             "dhruvasagar/vim-prosession",
             after = "vim-obsession",
             setup = function()
-                var_tbl {
-                    prosession_dir = vim.fn.stdpath "data" .. "/sessions/",
-                }
+                vim.g.prosession_on_startup = 1
+                vim.g.prosession_default_session = 0
+                vim.g.prosession_dir = vim.fn.stdpath "data" .. "/sessions/"
             end,
         }
 
@@ -136,12 +140,9 @@ require("packer").startup {
         use {
             "sainnhe/gruvbox-material",
             config = function()
-                var_tbl {
-                    gruvbox_material_enable_italic = 1,
-                    gruvbox_material_diagnostic_text_highlight = 1,
-                    gruvbox_material_sign_column_background = "none",
-                }
-                vim.opt.background = "dark"
+                vim.g.gruvbox_material_enable_italic = 1
+                vim.g.gruvbox_material_diagnostic_text_highlight = 1
+                vim.g.gruvbox_material_sign_column_background = "none"
                 vim.cmd "color gruvbox-material"
             end,
         }
@@ -204,10 +205,7 @@ require("packer").startup {
                 }
             end,
         }
-        use { "akinsho/toggleterm.nvim", config = [[require("p.nvim-toggleterm")]] }
 
-        -- Operations
-        use { "ggandor/lightspeed.nvim" }
         use {
             "mg979/vim-visual-multi",
             setup = function()
@@ -220,21 +218,36 @@ require("packer").startup {
                 }
             end,
         }
-
-        -- Misc
-        use { "kshenoy/vim-signature" }
-        use { "psliwka/vim-smoothie" }
-        use { "farmergreg/vim-lastplace" }
         use {
-            "jghauser/mkdir.nvim",
-            config = function()
-                require "mkdir"
+            "kevinhwang91/nvim-hlslens",
+            setup = function()
+                map("n|n", "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>")
+                map("n|N", "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>")
+                map("n|*", "*<Cmd>lua require('hlslens').start()<CR>")
+                map("n|#", "#<Cmd>lua require('hlslens').start()<CR>")
+                map("n|]w", "g*<Cmd>lua require('hlslens').start()<CR>")
+                map("n|[w", "g#<Cmd>lua require('hlslens').start()<CR>")
             end,
         }
         use {
-            "lukas-reineke/format.nvim",
-            config = [[require("p.nvim-formatter")]],
+            "tversteeg/registers.nvim",
+            setup = function()
+                vim.g.registers_return_symbol = " "
+                vim.g.registers_tab_symbol = " "
+                vim.g.registers_show_empty_registers = 0
+                vim.g.registers_trim_whitespace = 1
+                vim.g.registers_hide_only_whitespace = 1
+            end,
         }
+        use { "akinsho/toggleterm.nvim", config = "require('p.nvim-toggleterm')" }
+        use { "lukas-reineke/format.nvim", config = "require('p.nvim-formatter')" }
+        use { "luukvbaal/stabilize.nvim", config = "require('stabilize').setup()" }
+        use { "jghauser/mkdir.nvim", config = "require('mkdir')" }
+        use { "ggandor/lightspeed.nvim" }
+        use { "kshenoy/vim-signature" }
+        use { "psliwka/vim-smoothie" }
+        use { "farmergreg/vim-lastplace" }
+        use { "lambdalisue/suda.vim" }
         use {
             "ybian/smartim",
             setup = function()

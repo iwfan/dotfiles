@@ -22,8 +22,9 @@ vim.opt.ttimeoutlen = 10
 vim.opt.redrawtime = 1500
 
 -- behavior opt
-vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
+vim.opt.background = "dark"
+vim.opt.clipboard = "unnamedplus"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.showtabline = 2
