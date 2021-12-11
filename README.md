@@ -1,16 +1,23 @@
 # Neovim
 
-![Dashboard](./images/Dashboard.png)
-![Editor](./images/Editor.png)
-![LSP](./images/LSP.png)
-![LF](./images/LF.png)
-![Lazyigt](./images/Lazygit.png)
+|         |              Preview                 |
+| :-----: | :----------------------------------: |
+| Landing | ![Dashboard](./images/Dashboard.png) |
+| Editor  | ![Editor](./images/Editor.png)       |
+| LSP     | ![LSP](./images/LSP.png)             |
+| LF      | ![LF](./images/LF.png)               |
+| Lazygit | ![Lazyigt](./images/Lazygit.png)     |
 
-# Terminal
 
-Terminal: Kitty
-Fonts: Cascadia Code PL
-colorschema: Gruvbox Material
+# Terminal Environment
+
+- Terminal: [Kitty](https://github.com/kovidgoyal/kitty)
+- Fonts: [Cascadia Code PL](https://github.com/microsoft/cascadia-code/releases)
+- Colorschema: [Gruvbox Material](https://github.com/sainnhe/gruvbox-material)
+- [Tmux](https://github.com/tmux/tmux)
+- [Lazygit](https://github.com/jesseduffield/lazygit)
+- [Lf](https://github.com/gokcehan/lf)
+
 
 # references
 
