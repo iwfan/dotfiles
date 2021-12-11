@@ -103,6 +103,15 @@ require("packer").startup {
         use { "onsails/lspkind-nvim" }
         use { "folke/lsp-trouble.nvim", config = "require('lsp.trouble')" }
         use { "jose-elias-alvarez/nvim-lsp-ts-utils", after = { "nvim-treesitter" } }
+        use {
+            "simrat39/symbols-outline.nvim",
+            setup = function()
+                vim.g.symbols_outline = {
+                    width = 40,
+                }
+            end,
+            cmd = "SymbolsOutline",
+        }
 
         -- tpope
         use { "tpope/vim-sensible" }
