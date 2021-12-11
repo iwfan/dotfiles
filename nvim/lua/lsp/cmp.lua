@@ -1,14 +1,6 @@
 local cmp = require "cmp"
-local cmp_ultisnips_mappings = require "cmp_nvim_ultisnips.mappings"
 
 cmp.setup {
-    snippet = {
-        expand = function(args)
-            vim.fn["UltiSnips#Anon"](args.body)
-        end,
-    },
-
-    -- You must set mapping if you want.
     mapping = {
         ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
         ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
@@ -21,12 +13,8 @@ cmp.setup {
             c = cmp.mapping.close(),
         },
         ["<CR>"] = cmp.mapping.confirm { select = true },
-        ["<Tab>"] = cmp.mapping(function(fallback)
-            cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-            cmp_ultisnips_mappings.jump_backwards(fallback)
-        end, { "i", "s" }),
+        ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
     },
 
     formatting = {
@@ -49,7 +37,6 @@ cmp.setup {
 
     sources = {
         { name = "nvim_lsp" },
-        { name = "ultisnips" },
         { name = "buffer" },
         { name = "path" },
         { name = "calc" },

@@ -92,7 +92,6 @@ require("packer").startup {
         use { "hrsh7th/cmp-buffer" }
         use { "hrsh7th/cmp-path" }
         use { "hrsh7th/cmp-calc" }
-        use { "quangnguyen30192/cmp-nvim-ultisnips" }
         use { "hrsh7th/nvim-cmp", event = "InsertEnter", config = "require('lsp.cmp')" }
 
         -- LSP Addons

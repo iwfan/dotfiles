@@ -46,9 +46,9 @@ function LF_toggle(path)
                 local ok, selected_file = pcall(vim.fn.readfile, tmpfile)
                 if ok then
                     for _, v in ipairs(selected_file) do
-                        vim.defer_fn(function()
+                        vim.schedule(function()
                             vim.api.nvim_command("edit " .. v)
-                        end, 10)
+                        end)
                     end
                 end
                 vim.fn.delete(tmpfile)
