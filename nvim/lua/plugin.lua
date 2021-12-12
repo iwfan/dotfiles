@@ -114,11 +114,8 @@ require("packer").startup {
         }
 
         -- tpope
-        use { "tpope/vim-sensible" }
-        use { "tpope/vim-unimpaired" }
         use { "tpope/vim-surround" }
         use { "tpope/vim-repeat" }
-        use { "tpope/vim-abolish" }
         use {
             "editorconfig/editorconfig-vim",
             setup = function()
@@ -139,10 +136,11 @@ require("packer").startup {
             "dhruvasagar/vim-prosession",
             after = "vim-obsession",
             setup = function()
-                vim.g.prosession_on_startup = 1
+                vim.g.prosession_on_startup = 0
                 vim.g.prosession_default_session = 0
                 vim.g.prosession_dir = vim.fn.stdpath "data" .. "/sessions/"
             end,
+            cmd = { "Prosession", "ProsessionDelete" },
         }
 
         -- Appearance
@@ -177,6 +175,7 @@ require("packer").startup {
             cmd = { "DiffviewOpen", "DiffviewFileHistory" },
             config = [[require'diffview'.setup()]],
         }
+        use { "kevinhwang91/nvim-bqf", ft = "qf" }
         use {
             "lewis6991/gitsigns.nvim",
             event = "BufRead",

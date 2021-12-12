@@ -16,10 +16,7 @@ vim.opt.undofile = true
 vim.opt.mouse = "a"
 vim.opt.errorbells = true
 vim.opt.visualbell = true
-vim.opt.updatetime = 300
-vim.opt.timeoutlen = 500
-vim.opt.ttimeoutlen = 10
-vim.opt.redrawtime = 1500
+vim.opt.ttimeoutlen = 100
 
 -- behavior opt
 vim.opt.termguicolors = true
