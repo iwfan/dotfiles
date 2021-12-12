@@ -11,7 +11,7 @@ local server_opts = {
     tsserver = require "lsp.servers.typescript",
     gopls = require "lsp.servers.go",
     graphql = require "lsp.servers.graphql",
-    ["sumneko_lua"] = require "lsp.servers.lua",
+    sumneko_lua = require "lsp.servers.lua",
     eslint = require "lsp.servers.eslint",
 }
 
@@ -34,5 +34,4 @@ lsp_installer.on_server_ready(function(server)
     }
 
     server:setup(server_opts[server.name] and server_opts[server.name](opts) or opts)
-    vim.cmd [[ do User LspAttachBuffers ]]
 end)

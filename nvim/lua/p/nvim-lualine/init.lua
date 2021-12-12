@@ -35,6 +35,42 @@ local function file_path()
     return vim.fn.fnamemodify(filepath, ":~:.")
 end
 
+local function lsp()
+    local msg = ""
+    local priority_map = {
+        bash = 1,
+        tsserver = 1,
+        sumneko_lua = 1,
+        gopls = 1,
+        graphql = 2,
+        jsonls = 2,
+        yamlls = 2,
+        html = 2,
+        cssls = 3,
+        tailwindcss = 10,
+        eslint = 10,
+    }
+    local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+    local clients = vim.lsp.get_active_clients()
+    if next(clients) == nil then
+        return msg
+    end
+    local client_names = {}
+    for _, client in ipairs(clients) do
+        local filetypes = client.config.filetypes
+        if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+            table.insert(client_names, client.name)
+        end
+    end
+    if next(client_names) == nil then
+        return msg
+    end
+    table.sort(client_names, function(left, right)
+        return priority_map[left] < priority_map[right]
+    end)
+    return " " .. client_names[1]
+end
+
 require("lualine").setup {
     options = {
         section_separators = "",
@@ -80,6 +116,7 @@ require("lualine").setup {
             },
         },
         lualine_x = {
+            lsp,
             tabstop,
             "encoding",
             eol,

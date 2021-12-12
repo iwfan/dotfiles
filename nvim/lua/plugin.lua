@@ -99,7 +99,6 @@ require("packer").startup {
 
         -- LSP Addons
         use { "williamboman/nvim-lsp-installer", config = "require('lsp.installer')" }
-        use { "tami5/lspsaga.nvim", config = "require('lsp.saga').setup()" }
         use { "onsails/lspkind-nvim" }
         use { "folke/lsp-trouble.nvim", config = "require('lsp.trouble')" }
         use { "jose-elias-alvarez/nvim-lsp-ts-utils", after = { "nvim-treesitter" } }
@@ -211,6 +210,18 @@ require("packer").startup {
                         mode = "foreground",
                     },
                 }
+            end,
+        }
+
+        use {
+            "mattn/emmet-vim",
+            event = "InsertEnter",
+            ft = { "html", "css", "javascript", "javascriptreact", "vue", "typescript", "typescriptreact" },
+            setup = function()
+                vim.g.user_emmet_complete_tag = 0
+                vim.g.user_emmet_install_global = 0
+                vim.g.user_emmet_install_command = 0
+                vim.g.user_emmet_mode = "i"
             end,
         }
 

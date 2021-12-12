@@ -5,12 +5,9 @@ for type, icon in pairs(signs) do
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-        spacing = 5,
-        prefix = "",
-    },
-    signs = false, -- rely on highlight styles instead, don't want to clobber signcolumn
-    underline = true,
-    update_in_insert = false, -- update diagnostics insert mode
-})
+function _G.open_lsp_log()
+    local path = vim.lsp.get_log_path()
+    vim.cmd("tabedit " .. path)
+end
+
+vim.cmd "command! -nargs=0 LspLog call v:lua.open_lsp_log()"
