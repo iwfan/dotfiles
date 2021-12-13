@@ -99,8 +99,10 @@ require("packer").startup {
 
         -- LSP Addons
         use { "williamboman/nvim-lsp-installer", config = "require('lsp.installer')" }
-        use { "tami5/lspsaga.nvim", config = "require('lsp.saga').setup()" }
         use { "onsails/lspkind-nvim" }
+        use { "kosayoda/nvim-lightbulb" }
+        use { "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" }
+        use { "rmagatti/goto-preview", config = "require('goto-preview').setup {}" }
         use { "folke/lsp-trouble.nvim", config = "require('lsp.trouble')" }
         use { "jose-elias-alvarez/nvim-lsp-ts-utils", after = { "nvim-treesitter" } }
         use {

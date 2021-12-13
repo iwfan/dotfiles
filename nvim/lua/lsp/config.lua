@@ -1,9 +1,14 @@
-local signs = { Error = font_icon.error, Warn = font_icon.warn, Hint = font_icon.hint, Info = font_icon.info }
+local signs = { Error = font_icon.error, Warn = font_icon.warn, Hint = " ", Info = font_icon.info }
 
 for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+vim.fn.sign_define(
+    "LightBulbSign",
+    { text = "💡", texthl = "DiagnosticSignHint", linehl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" }
+)
 
 function _G.open_lsp_log()
     local path = vim.lsp.get_log_path()

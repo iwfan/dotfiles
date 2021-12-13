@@ -23,8 +23,6 @@ return function(opts)
 
         require("nvim-lsp-ts-utils").setup {
             enable_import_on_completion = true,
-            update_imports_on_move = true,
-            require_confirmation_on_move = true,
         }
 
         require("nvim-lsp-ts-utils").setup_client(client)
