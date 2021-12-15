@@ -51,6 +51,7 @@ export RG_OPTIONS="--smart-case --follow"
 export FD_OPTIONS="--hidden --follow --exclude .git --exclude node_modules"
 
 # Fzf
+export DISABLE_FZF_KEY_BINDINGS="true"
 export FZF_DEFAULT_COMMAND="fd $FD_OPTIONS"
 export FZF_BASE_OPTS="-m --ansi --height 40% --reverse --info inline --tabstop=4 \
   --bind 'ctrl-r:change-prompt(> )+reload($FZF_DEFAULT_COMMAND)' \

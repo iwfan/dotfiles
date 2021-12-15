@@ -101,8 +101,6 @@ require("packer").startup {
         use { "williamboman/nvim-lsp-installer", config = "require('lsp.installer')" }
         use { "onsails/lspkind-nvim" }
         use { "kosayoda/nvim-lightbulb" }
-        use { "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" }
-        use { "rmagatti/goto-preview", config = "require('goto-preview').setup {}" }
         use { "folke/lsp-trouble.nvim", config = "require('lsp.trouble')" }
         use { "jose-elias-alvarez/nvim-lsp-ts-utils", after = { "nvim-treesitter" } }
         use {
@@ -140,6 +138,7 @@ require("packer").startup {
             setup = function()
                 vim.g.prosession_on_startup = 0
                 vim.g.prosession_default_session = 0
+                vim.g.prosession_per_branch = 1
                 vim.g.prosession_dir = vim.fn.stdpath "data" .. "/sessions/"
             end,
             cmd = { "Prosession", "ProsessionDelete" },

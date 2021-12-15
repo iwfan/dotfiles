@@ -5,10 +5,7 @@ for type, icon in pairs(signs) do
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-vim.fn.sign_define(
-    "LightBulbSign",
-    { text = "💡", texthl = "DiagnosticSignHint", linehl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" }
-)
+vim.fn.sign_define("LightBulbSign", { text = "💡" })
 
 function _G.open_lsp_log()
     local path = vim.lsp.get_log_path()
