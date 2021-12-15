@@ -101,7 +101,7 @@ require("packer").startup {
         use { "williamboman/nvim-lsp-installer", config = "require('lsp.installer')" }
         use { "onsails/lspkind-nvim" }
         use { "kosayoda/nvim-lightbulb" }
-        use { "folke/lsp-trouble.nvim", config = "require('lsp.trouble')" }
+        use { "folke/lsp-trouble.nvim", config = "require('trouble').setup {}" }
         use { "jose-elias-alvarez/nvim-lsp-ts-utils", after = { "nvim-treesitter" } }
         use {
             "simrat39/symbols-outline.nvim",
