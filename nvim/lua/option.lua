@@ -17,6 +17,7 @@ vim.opt.mouse = "a"
 vim.opt.errorbells = true
 vim.opt.visualbell = true
 vim.opt.ttimeoutlen = 100
+vim.opt.updatetime = 300
 
 -- behavior opt
 vim.opt.termguicolors = true

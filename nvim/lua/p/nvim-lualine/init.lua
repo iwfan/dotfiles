@@ -100,7 +100,7 @@ require("lualine").setup {
             },
             {
                 "diagnostics",
-                sources = { "nvim_diagnostic" },
+                sources = { "nvim_diagnostic", "coc" },
                 symbols = {
                     error = font_icon.error,
                     warn = font_icon.warn,
@@ -117,7 +117,9 @@ require("lualine").setup {
             },
         },
         lualine_x = {
-            lsp,
+            -- lsp,
+            "b:coc_snippet_active",
+            "g:coc_status",
             tabstop,
             "encoding",
             eol,
