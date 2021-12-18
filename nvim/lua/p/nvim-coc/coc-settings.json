@@ -51,8 +51,6 @@
     "~/.local/share/nvim/site/pack/packer/start/friendly-snippets/snippets",
     "~/.local/share/nvim/site/pack/packer/start/friendly-snippets/snippets/javascript"
   ],
-  "snippets.ultisnips.enable": false,
-  "snippets.snipmate.enable": false,
   "snippets.extends": {
     "typescript": ["javascript"],
     "typescriptreact": ["javascript", "react-ts"],

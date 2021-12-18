@@ -48,19 +48,18 @@ _G.enter_complete = function()
     end
 end
 
-_G.prev_snippet = function()
-    if vim.fn["coc#expandableOrJumpable"]() == 1 then
-        return t "<C-R>=coc#rpc#request('snippetPrev', [])<cr>"
-    else
-        return t "<C-h>"
-    end
-end
+_G.show_documentation = function()
+    local filetypes = {
+        "vim",
+        "help",
+    }
 
-_G.next_snippet = function()
-    if vim.fn["coc#expandableOrJumpable"]() == 1 then
-        return t "<C-R>=coc#rpc#request('snippetNext', [])<cr>"
+    if vim.tbl_contains(filetypes, vim.bo.filetype) then
+        vim.api.nvim_command("h " .. vim.fn.expand "<cword>")
+    elseif vim.fn["coc#rpc#ready"]() == 1 then
+        vim.fn["CocActionAsync"] "doHover"
     else
-        return t "<C-l>"
+        vim.api.nvim_command("Man " .. vim.fn.expand "<cword>")
     end
 end
 
@@ -92,10 +91,6 @@ M.config = function()
     vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true, silent = true })
     vim.api.nvim_set_keymap("i", "<CR>", "v:lua.enter_complete()", { expr = true, silent = true })
     vim.api.nvim_set_keymap("s", "<CR>", "v:lua.enter_complete()", { expr = true, silent = true })
-    vim.api.nvim_set_keymap("i", "<C-h>", "v:lua.prev_snippet()", { expr = true, silent = true })
-    vim.api.nvim_set_keymap("s", "<C-h>", "v:lua.prev_snippet()", { expr = true, silent = true })
-    vim.api.nvim_set_keymap("i", "<C-l>", "v:lua.next_snippet()", { expr = true, silent = true })
-    vim.api.nvim_set_keymap("s", "<C-l>", "v:lua.next_snippet()", { expr = true, silent = true })
 
     vim.api.nvim_set_keymap("n", "\\d", "<Plug>(coc-diagnostic-info)", { silent = true })
     vim.api.nvim_set_keymap("n", "[d", "<Plug>(coc-diagnostic-prev)", { silent = true })

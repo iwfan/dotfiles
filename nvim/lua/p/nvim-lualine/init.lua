@@ -118,7 +118,6 @@ require("lualine").setup {
         },
         lualine_x = {
             -- lsp,
-            "b:coc_snippet_active",
             "g:coc_status",
             tabstop,
             "encoding",
