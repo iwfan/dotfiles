@@ -4,7 +4,14 @@
   "coc.preferences.enableMessageDialog": true,
   "coc.preferences.extensionUpdateCheck": "weekly",
   "coc.preferences.colorSupport": false,
+  "coc.preferences.useQuickfixForLocations": true,
   "coc.preferences.snippetStatusText": "SNIP",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "scss",
+    "markdown",
+    "typescript",
+    "typescriptreact"
+  ],
 
   "suggest.enablePreselect": true,
   "suggest.enablePreview": true,

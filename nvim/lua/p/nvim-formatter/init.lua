@@ -40,5 +40,5 @@ local filetype_list = vim.tbl_map(function(v)
     return "*." .. v
 end, extname_list)
 
-local filetypes = table.concat(filetype_list, ",")
-augroup("FormatAutogroup", { { "BufWritePre", filetypes, "FormatWrite" } })
+-- local filetypes = table.concat(filetype_list, ",")
+-- augroup("FormatAutogroup", { { "BufWritePre", filetypes, "FormatWrite" } })
