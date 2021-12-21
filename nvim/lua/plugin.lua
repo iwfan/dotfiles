@@ -88,7 +88,6 @@ require("packer").startup {
             "neoclide/coc.nvim",
             branch = "release",
             setup = [[require("p.nvim-coc").setup()]],
-            config = [[require("p.nvim-coc").config()]],
             requires = { "rafamadriz/friendly-snippets" },
         }
 
