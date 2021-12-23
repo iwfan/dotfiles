@@ -60,6 +60,7 @@ M.setup = function()
                     "--exclude=.next",
                     "--exclude=.cache",
                 },
+                theme = "ivy",
             },
             live_grep = {
                 --@usage don't include the filename in the search results
@@ -72,7 +73,8 @@ M.setup = function()
 
     map_cmd("n|<space>o", "Telescope find_files")
     map_cmd("n|<space>f", "Telescope live_grep")
-    map_cmd("n|<space>m", "Telescope marks")
+    map_cmd("n|<space>b", "Telescope buffers theme=dropdown")
+    map_cmd("n|<space>m", "Telescope marks theme=dropdown")
     map_cmd("n|<space><space>", "Telescope")
 end
 

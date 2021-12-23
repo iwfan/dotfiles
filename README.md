@@ -1,13 +1,12 @@
 # Neovim
 
-|         |              Preview                 |
+|         |               Preview                |
 | :-----: | :----------------------------------: |
 | Landing | ![Dashboard](./images/Dashboard.png) |
-| Editor  | ![Editor](./images/Editor.png)       |
-| LSP     | ![LSP](./images/LSP.png)             |
-| LF      | ![LF](./images/LF.png)               |
-| Lazygit | ![Lazyigt](./images/Lazygit.png)     |
-
+| Editor  |    ![Editor](./images/Editor.png)    |
+|   LSP   |       ![LSP](./images/LSP.png)       |
+|   LF    |        ![LF](./images/LF.png)        |
+| Lazygit |   ![Lazyigt](./images/Lazygit.png)   |
 
 # Terminal Environment
 
@@ -18,10 +17,10 @@
 - [Lazygit](https://github.com/jesseduffield/lazygit)
 - [Lf](https://github.com/gokcehan/lf)
 
-
 # references
 
 - https://www.locatelli.dev/nv-ide/
 - https://github.dev/ecosse3/nvim
 - https://github.com/LunarVim/LunarVim
 - https://github.com/NvChad/NvChad
+- https://github.com/albingroen/quick.nvim

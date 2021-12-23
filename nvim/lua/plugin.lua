@@ -227,7 +227,7 @@ require("packer").startup {
             end,
         }
         use { "akinsho/toggleterm.nvim", config = "require('p.nvim-toggleterm')" }
-        use { "lukas-reineke/format.nvim", config = "require('p.nvim-formatter')" }
+        use { "lukas-reineke/format.nvim", disable = true, config = "require('p.nvim-formatter')" }
         use { "luukvbaal/stabilize.nvim", config = "require('stabilize').setup()" }
         use { "jghauser/mkdir.nvim", config = "require('mkdir')" }
         use { "ggandor/lightspeed.nvim" }

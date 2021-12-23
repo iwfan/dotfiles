@@ -36,7 +36,6 @@ map_cmd("n|[b", "BufferPrevious")
 map_cmd("n|]b", "BufferNext")
 map_cmd("n|[B", "BufferMovePrevious")
 map_cmd("n|]B", "BufferMoveNext")
-map_cmd("n|<leader>b", "BufferPick")
 map_cmd("n|\\b", "BufferPin")
 map_cmd("n|<bs>b", "BufferClose")
 

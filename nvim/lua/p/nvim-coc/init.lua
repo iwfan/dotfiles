@@ -13,6 +13,7 @@ M.setup = function()
         "coc-json",
         "coc-prettier",
         "coc-snippets",
+        "coc-stylua",
         "coc-lua",
         "coc-tailwindcss",
         "coc-tsserver",

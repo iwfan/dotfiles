@@ -5,12 +5,15 @@
   "coc.preferences.extensionUpdateCheck": "weekly",
   "coc.preferences.colorSupport": false,
   "coc.preferences.useQuickfixForLocations": true,
-  "coc.preferences.snippetStatusText": "SNIP",
   "coc.preferences.formatOnSaveFiletypes": [
     "scss",
     "markdown",
     "typescript",
-    "typescriptreact"
+    "json",
+    "javascript",
+    "javascriptreact",
+    "typescriptreact",
+    "lua"
   ],
 
   "suggest.enablePreselect": true,
