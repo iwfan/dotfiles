@@ -94,6 +94,7 @@ require("packer").startup {
         -- tpope
         use { "tpope/vim-surround" }
         use { "tpope/vim-repeat" }
+        use { "tpope/vim-unimpaired" }
         use {
             "editorconfig/editorconfig-vim",
             setup = function()

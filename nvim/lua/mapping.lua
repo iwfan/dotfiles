@@ -30,6 +30,9 @@ map("n|[w", "g#")
 map("v|]w", "g*")
 map("v|[w", "g#")
 
+map_cmd("n|\\q", ":copen")
+map_cmd("n|<bs>q", ":cclose")
+
 map("x|K", ":move '<-2<CR>gv-gv")
 map("x|J", ":move '>+1<CR>gv-gv")
 map("v|<", "<gv")
