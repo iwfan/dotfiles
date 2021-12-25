@@ -1,3 +1,6 @@
+-- HACK: work-around for https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
+vim.wo.colorcolumn = "99999"
+
 require("indent_blankline").setup {
     char = "▏",
     use_treesitter = true,
@@ -8,6 +11,7 @@ require("indent_blankline").setup {
         "DiffviewFiles",
         "packer",
         "lspinfo",
+        "Trouble",
         "TelescopePrompt",
         "TelescopeResults",
         "startify",
@@ -28,4 +32,27 @@ require("indent_blankline").setup {
     buftype_exclude = { "terminal", "telescope" },
     show_trailing_blankline_indent = false,
     show_first_indent_level = false,
+    show_current_context = true,
+    context_patterns = {
+        "class",
+        "return",
+        "function",
+        "method",
+        "^if",
+        "^while",
+        "jsx_element",
+        "^for",
+        "^object",
+        "^table",
+        "block",
+        "arguments",
+        "if_statement",
+        "else_clause",
+        "jsx_element",
+        "jsx_self_closing_element",
+        "try_statement",
+        "catch_clause",
+        "import_statement",
+        "operation_type",
+    },
 }
