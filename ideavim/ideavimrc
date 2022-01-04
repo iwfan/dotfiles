@@ -2,42 +2,34 @@ set showmode
 set number
 set relativenumber
 set scrolloff=5
-set nohlsearch
+set hlsearch
 set incsearch
-set ignorecase
 set smartcase
-set infercase
+set clipboard^=unnamed,unnamedplus,ideaput
 
-" 启用vim surround功能: ys / cs / ds /S
 set surround
-" 启用 multiple cursors <A-n> / <A-x> / <A-p> / g<A-n>
-set multiple-cursors
 set commentary
 set argtextobj
 set easymotion
-" set NERDTree
+set multiple-cursors
 set textobj-entire
 set exchange
 set ReplaceWithRegister
 set highlightedyank
-
 set ideajoin
 set ideamarks
 set idearefactormode=keep
-" 共享系统粘贴板
-set clipboard^=unnamed,unnamedplus,ideaput
+
+" 自动切换为英文, 需要 IdeaVimExtension 中文
+set keep-english-in-normal
+" set keep-english-in-normal-and-restore-in-insert
 
 let g:argtextobj_pairs="[:],(:),<:>"
-
 let g:NERDTreeMapActivateNode="l"
 let g:NERDTreeMapPreview="gl"
 let g:NERDTreeMapOpenVSplit="<C-v>"
 let g:NERDTreeMapJumpRoot="H"
 let g:NERDTreeMapJumpParent="h"
-
-" 自动切换为英文, 需要 IdeaVimExtension 中文
-set keep-english-in-normal
-" set keep-english-in-normal-and-restore-in-insert
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -49,38 +41,19 @@ let mapleader = " "
 " Don't use Ex mode, use Q for formatting.
 map Q gq
 " 在折行情况下好用
-noremap j gj
-noremap k gk
-noremap 0 g0
-noremap $ g$
-" 不记录到寄存器
-noremap c "_c
-" 上一个单词
-" noremap ]w g*
-" " 下一个单词
-" noremap [w g#
-
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
+map j gj
+map k gk
+map 0 g0
+map $ g$
 
 " 删除一行,不会记录到剪切板中
-noremap <leader><backspace> "_dd
+nnoremap <leader><backspace> "_dd
 " 取消高亮
-noremap <leader><cr> :noh<CR>
-" 跳转对应括号
-noremap <leader>y "+y
-noremap <leader>p "_dP
-noremap <leader>x ^d$
-
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-
+nnoremap <esc> :noh<CR><esc>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 inoremap <C-h> <backspace>
 inoremap <C-f> <right>
 inoremap <C-b> <left>
@@ -89,38 +62,25 @@ inoremap <C-k> <up>
 inoremap <C-a> <home>
 inoremap <C-e> <end>
 inoremap <C-d> <delete>
-inoremap <C-i> <C-o>o
 inoremap <C-v> <C-o><C-r>*
-
-" 复制当前行
-nnoremap <leader>d Yp
-" 复制选中内容
-vnoremap <leader>d y'>p
-" 向下添加新空行，并退出 insert mode
-nnoremap <leader>i o<Esc>
-" 向上添加新空行，并退出 insert mode
-nnoremap <leader>I O<Esc>
-
+vnoremap p "_dP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """  ACTION BINDINGS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-noremap / :action Replace<CR>
+nnoremap / :action Replace<CR>
+nnoremap <leader>f <Plug>(easymotion-s)
+nnoremap <leader>e <Plug>(easymotion-f)
 
-noremap <C-n> :action SelectNextOccurrence<CR>
-
+nnoremap <Enter> :action EditorSelectWord<CR>
+nnoremap <C-S-Enter> :action EditorUnSelectWord<CR>
+nnoremap <C-n> :action SelectNextOccurrence<CR>
 noremap <leader>r :action Refactorings.QuickListPopupAction<CR>
 noremap <leader>w :action SurroundWith<CR>
-" noremap <leader>f :action AceAction<CR>
 
-" map f <Plug>(easymotion-f)
-" map F <Plug>(easymotion-F)
-" map t <Plug>(easymotion-t)
-" map T <Plug>(easymotion-T)
-noremap gf :action AceTargetAction<CR>
-
-noremap <leader>u :action ShowUsages<CR>
-noremap <leader>U :action FindUsages<CR>
+map gf :action AceTargetAction<CR>
+map gr :action ShowUsages<CR>
+map gR :action FindUsages<CR>
 noremap <leader>t :action FileStructurePopup<CR>
 noremap <leader>qr :action ReopenClosedTab<CR>
 noremap <leader>qm :action MoveEditorToOppositeTabGroup<CR>
@@ -169,6 +129,3 @@ vnoremap H g^
 nnoremap L :action EditorLineEnd<CR>
 " vnoremap L h:action EditorLineEndWithSelection<CR>
 vnoremap L g_
-
-noremap <C-Enter> :action EditorSelectWord<CR>
-noremap <C-S-Enter> :action EditorUnSelectWord<CR>

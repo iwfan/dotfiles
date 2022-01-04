@@ -33,7 +33,8 @@ map_cmd("n|<leader>g", "lua Lazygit_toggle()")
 
 function LF_toggle(path)
     local tmpfile = "/tmp/lf_chosenfile"
-    local lf_cmd = "lf -selection-path=" .. tmpfile .. " " .. vim.fn.expand(path)
+    local path_name = vim.fn.escape(vim.fn.expand(path), "[]()\\（） ")
+    local lf_cmd = "lf -selection-path=" .. tmpfile .. " " .. path_name
 
     local lf = Terminal:new {
         cmd = lf_cmd,
