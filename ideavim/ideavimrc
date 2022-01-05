@@ -79,8 +79,8 @@ noremap <leader>r :action Refactorings.QuickListPopupAction<CR>
 noremap <leader>w :action SurroundWith<CR>
 
 map gf :action AceTargetAction<CR>
-map gr :action ShowUsages<CR>
-map gR :action FindUsages<CR>
+map <leader>u :action ShowUsages<CR>
+map <leader>U :action FindUsages<CR>
 noremap <leader>t :action FileStructurePopup<CR>
 noremap <leader>qr :action ReopenClosedTab<CR>
 noremap <leader>qm :action MoveEditorToOppositeTabGroup<CR>

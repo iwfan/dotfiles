@@ -23,6 +23,7 @@ export VISUAL=nvim
 export EDITOR="nvim"
 export GIT_EDITOR="nvim"
 export REACT_EDITOR="nvim"
+export PAGER=most
 
 #Homebrew's sbin
 export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
