@@ -7,7 +7,6 @@ augroup("yank_highlight", {
 })
 
 augroup("misc", {
-    { "FocusLost", "*", [[silent! wa]] }, -- auto save when nvim focus
     { "BufWritePre", "*", [[%s/\s\+$//e]] }, -- remove trailing whitespaces
     { "BufWritePre", "*", [[%s/\n\+\%$//e]] },
 })
