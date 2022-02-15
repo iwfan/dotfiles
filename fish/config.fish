@@ -9,7 +9,3 @@ set -gx MCFLY_INTERFACE_VIEW BOTTOM
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
-
-
-# Z
-# Git
