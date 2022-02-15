@@ -15,6 +15,13 @@ set -gx PAGER most
 # Homebrew's sbin
 fish_add_path /usr/local/sbin
 set -gx HOMEBREW_NO_AUTO_UPDATE true
+if test -d (brew --prefix)"/share/fish/completions"
+    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
+end
+
+if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+end
 
 # Go
 set -gx GOPATH $HOME/go
