@@ -1,10 +1,11 @@
 source /usr/local/opt/asdf/libexec/asdf.fish
 
+set -gx STARSHIP_CONFIG $HOME/dotfiles/starship/starship.toml
 starship init fish | source
 
-mcfly init fish | source
 set -gx MCFLY_FUZZY 2
-set -gx MCFLY_INTERFACE_VIEW BOTTOM
+set -e MCFLY_INTERFACE_VIEW
+mcfly init fish | source
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
