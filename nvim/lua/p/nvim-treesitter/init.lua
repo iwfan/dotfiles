@@ -12,6 +12,7 @@ M.setup = function()
             "comment",
             "css",
             "dockerfile",
+            "fish",
             "go",
             "gomod",
             "graphql",
