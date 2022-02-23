@@ -26,4 +26,4 @@ _open_lf() {
 }
 zle -N _open_lf
 
-bindkey "^F" _open_lf
+bindkey "^T" _open_lf

@@ -31,16 +31,7 @@ zinit ice wait lucid
 zinit snippet OMZ::lib/completion.zsh
 
 zinit ice wait lucid
-zinit snippet OMZ::lib/grep.zsh
-
-zinit ice wait lucid
 zinit snippet OMZ::plugins/git/git.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/extract/extract.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
 
 zinit ice wait lucid
 zinit snippet OMZ::plugins/asdf/asdf.plugin.zsh
@@ -60,15 +51,6 @@ zinit wait lucid for \
 zinit ice wait lucid
 zinit light agkozak/zsh-z
 
-zinit ice wait lucid
-zinit light Aloxaf/fzf-tab
-
-zinit ice wait lucid
-zinit light hlissner/zsh-autopair
-
 # Load pure theme
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
-
-zinit ice as"completion"
-zinit snippet OMZP::docker/_docker

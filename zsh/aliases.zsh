@@ -1,7 +1,6 @@
 alias ...="../.."
 alias ....="../../.."
 alias .....="../../../.."
-alias -- -="cd -"
 alias doc="$HOME/Documents"
 alias dow="$HOME/Downloads"
 alias dot="$HOME/dotfiles"

@@ -59,3 +59,5 @@ local conf_modules = {
 for i = 1, #conf_modules, 1 do
     pcall(require, conf_modules[i])
 end
+
+vim.cmd [[hi Normal guibg=NONE ctermbg=NONE]]
