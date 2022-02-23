@@ -33,24 +33,17 @@ zinit snippet OMZ::lib/completion.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
-zinit ice wait lucid
-zinit snippet OMZ::plugins/asdf/asdf.plugin.zsh
-
 #+-----------------------+
 #+ Other Zsh Plugins     +
 #+-----------------------+
 
-zinit wait lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma-continuum/fast-syntax-highlighting \
- atpull"zinit creinstall -q ." atload"zicompinit; zicdreplay" blockf \
-    zsh-users/zsh-completions \
- atload"!_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions
+# zinit wait lucid for \
+#  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+#     zdharma-continuum/fast-syntax-highlighting \
+#  atpull"zinit creinstall -q ." atload"zicompinit; zicdreplay" blockf \
+#     zsh-users/zsh-completions \
+#  atload"!_zsh_autosuggest_start" \
+#     zsh-users/zsh-autosuggestions
 
 zinit ice wait lucid
 zinit light agkozak/zsh-z
-
-# Load pure theme
-zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-zinit light sindresorhus/pure
