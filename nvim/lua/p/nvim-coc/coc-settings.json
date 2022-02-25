@@ -3,7 +3,6 @@
 
   "coc.preferences.enableMessageDialog": true,
   "coc.preferences.extensionUpdateCheck": "weekly",
-  "coc.preferences.colorSupport": false,
   "coc.preferences.useQuickfixForLocations": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "scss",
@@ -94,13 +93,5 @@
 
   "Lua.diagnostics.globals": ["vim", "hs", "spoon", "utf8"],
   "Lua.runtime.version": "Lua 5.1",
-  "Lua.telemetry.enable": false,
-
-  "languageserver": {
-    "graphql": {
-      "command": "graphql-lsp",
-      "args": ["server", "-m", "stream"],
-      "filetypes": ["typescript", "typescriptreact", "graphql"]
-    }
-  }
+  "Lua.telemetry.enable": false
 }

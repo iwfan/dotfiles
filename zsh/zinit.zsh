@@ -47,3 +47,7 @@ zinit snippet OMZ::plugins/git/git.plugin.zsh
 
 zinit ice wait lucid
 zinit light agkozak/zsh-z
+
+# Load pure theme
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+zinit light sindresorhus/pure
