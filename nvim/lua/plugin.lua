@@ -206,33 +206,10 @@ require("packer").startup {
                 }
             end,
         }
-        use {
-            "kevinhwang91/nvim-hlslens",
-            setup = function()
-                map("n|n", "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>")
-                map("n|N", "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>")
-                map("n|*", "*<Cmd>lua require('hlslens').start()<CR>")
-                map("n|#", "#<Cmd>lua require('hlslens').start()<CR>")
-                map("n|]w", "g*<Cmd>lua require('hlslens').start()<CR>")
-                map("n|[w", "g#<Cmd>lua require('hlslens').start()<CR>")
-            end,
-        }
-        use {
-            "tversteeg/registers.nvim",
-            setup = function()
-                vim.g.registers_return_symbol = " "
-                vim.g.registers_tab_symbol = " "
-                vim.g.registers_show_empty_registers = 0
-                vim.g.registers_trim_whitespace = 1
-                vim.g.registers_hide_only_whitespace = 1
-            end,
-        }
         use { "akinsho/toggleterm.nvim", config = "require('p.nvim-toggleterm')" }
-        use { "lukas-reineke/format.nvim", disable = true, config = "require('p.nvim-formatter')" }
         use { "luukvbaal/stabilize.nvim", config = "require('stabilize').setup()" }
         use { "jghauser/mkdir.nvim", config = "require('mkdir')" }
         use { "ggandor/lightspeed.nvim" }
-        use { "kshenoy/vim-signature" }
         use { "psliwka/vim-smoothie" }
         use { "farmergreg/vim-lastplace" }
         use { "lambdalisue/suda.vim" }
