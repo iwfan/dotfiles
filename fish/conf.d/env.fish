@@ -42,19 +42,17 @@ set -gx FD_OPTIONS "--hidden --follow --exclude .git --exclude node_modules"
 
 # Fzf
 set -gx DISABLE_FZF_KEY_BINDINGS true
-set -gx FZF_DEFAULT_COMMAND "fd $FD_OPTIONS"
-set -gx FZF_BASE_OPTS "-m --ansi --height 40% --reverse --info inline --tabstop=4 \
-  --bind 'ctrl-r:change-prompt(> )+reload($FZF_DEFAULT_COMMAND)' \
-  --bind 'ctrl-o:execute(cd {})' \
+set -gx FZF_DEFAULT_COMMAND "fd -t f $FD_OPTIONS"
+set -gx FZF_BASE_OPTS "-m --ansi --height 40% --reverse --info inline --tabstop=4 --prompt 'File❯ ' \
+  --bind 'ctrl-r:change-prompt(❯ )+reload(fd $FD_OPTIONS)' \
   --bind 'ctrl-y:execute-silent(echo {} | pbcopy)+abort' \
   --preview='' --preview-window=''"
 
 set -gx FZF_DEFAULT_OPTS "$FZF_BASE_OPTS \
-  --bind 'ctrl-d:change-prompt(Dirs> )+reload(fd -t d $FD_OPTIONS)' \
-  --bind 'ctrl-f:change-prompt(Files> )+reload(fd -t f $FD_OPTIONS)' \
+  --bind 'ctrl-d:change-prompt(Dir❯ )+reload(fd -t d $FD_OPTIONS)' \
+  --bind 'ctrl-f:change-prompt(File❯ )+reload(fd -t f $FD_OPTIONS)' \
   --bind 'ctrl-/:toggle-preview' \
-  --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file \
-  || (bat --color=always --style=numbers --line-range=:500 {} || cat {}) 2> /dev/null | head -300' \
+  --preview='string match -q \"*binary\" (file --mime {} ); and echo {} is a binary file; or bat --color=always --style=numbers --line-range=:100 {}' \
   --preview-window='right:60%:wrap'"
 
 set -gx LF_ICONS "di=:ln=:ex=:fi=:*.ml=λ:*.mli=λ:*.styl=:*.scss=:*.py=:*.pyc=:*.pyd=:*.pyo=:*.php=:*.markdown=:*.md=:*.json=:*.js=:*.bmp=:*.gif=:*.ico=:*.jpeg=:*.jpg=:*.png=:*.svg=:*.svgz=:*.tga=:*.tiff=:*.xmb=:*.xcf=:*.xpm=:*.xspf=:*.xwd=:*.cr2=:*.dng=:*.3fr=:*.ari=:*.arw=:*.bay=:*.crw=:*.cr3=:*.cap=:*.data=:*.dcs=:*.dcr=:*drf=:*.eip=:*.erf=:*.fff=:*.gpr=:*.iiq=:*.k25=:*.kdc=:*.mdc=:.*mef=:*.mos=:.*.mrw=:.*.obm=:*.orf=:*.pef=:*.ptx=:*.pxn=:*.r3d=:*.raf=:*.raw=:*.rwl=:*.rw2=:*.rwz=:*.sr2=:*.srf=:*.srf=:*.srw=:*.tif=:*.x3f=:*.ejs=:*.htm=:*.html=:*.slim=:*.xml=:*.mustasche=:*.css=:*.less=:*.bat=:*.conf=:*.ini=:*.rc=:*.yml=:*.cfg=:*.rc=:*.rss=:*.coffee=:*.twig=:*.c++=:*.cc=:*.c=:*.cpp=:*.cxx=:*.c=:*.h=:*.hs=:*.lhs=:*.lua=:*.jl=:*.go=:*.ts=:*.db=:*.dump=:*.sql=:*.sln=:*.suo=:*.exe=:*.diff=:*.sum=:*.md5=:*.sha512=:*.scala=:*.java=:*.jar=:*.xul=:*.clj=:*.cljc=:*.pl=:*.pm=:*.t=:*.cljs=:*.edn=:*.rb=:*.fish=:*.sh=:*.bash=:*.dart=:*.f#=:*.fs=:*.fsi=:*.fsscript=:*.fsx=:*.rlib=:*.rs=:*.d=:*.erl=:*.hrl=:*.ai=:*.psb=:*.psd=:*.jsx=:*.vim=:*.vimrc=:*.aac=:*.anx=:*.asf=:*.au=:*.axa=:*.flac=:*.m2a=:*.m4a=:*.mid=:*.midi=:*.mp3=:*.mpc=:*.oga=:*.ogg=:*.ogx=:*.ra=:*.ram=:*.rm=:*.spx=:*.wav=:*.wma=:*.ac3=:*.avi=:*.flv=:*.mkv=:*.mov=:*.mov=:*.mp4=:*.mpeg=:*.mpg=:*.webm=:*.epub=:*.pdf=:*.fb2=:*.djvu=:*.7z=:*.apk=:*.bz2=:*.cab=:*.cpio=:*.deb=:*.gem=:*.gz=:*.gzip=:*.lh=:*.lzh=:*.lzma=:*.rar=:*.rpm=:*.tar=:*.tgz=:*.xz=:*.zip=:*.cbr=:*.cbz=:*.log=:*.doc=:*.docx=:*.adoc=:*.xls=:*.xls=:*.xlsmx=:*.pptx=:*.ppt=:*.Xdefaults=:*.Xresources=:*.bashprofile=:*.bash_profile=:*.bashrc=:*.dmrc=:*.d_store=:*.fasd=:*.gitconfig=:*.gitignore=:*.jack-settings=:*.mime.types=:*.nvidia-settings-rc=:*.pam_environment=:*.profile=:*.recently-used=:*.selected_editor=:*.xinitpurc=:*.zprofile=:*.yarnc=:*.snclirc=:*.tmux.conf=:*.urlview=:*.config=:*.ini=:*.user-dirs.dirs=:*.mimeapps.list=:*.offlineimaprc=:*.msmtprc=:*.Xauthority=:*.config=sub=:srt=:idx=:*.mbsyncrc=:*lfrc="
