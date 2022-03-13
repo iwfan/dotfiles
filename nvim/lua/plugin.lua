@@ -35,7 +35,6 @@ require("packer").startup {
                 vim.g.cursorhold_updatetime = 300
             end,
         }
-        use { "tweekmonster/startuptime.vim", cmd = "StartupTime" }
 
         -- Treesitter
         use {
@@ -57,13 +56,6 @@ require("packer").startup {
         use {
             "windwp/nvim-ts-autotag",
             ft = { "html", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue" },
-        }
-        use {
-            "andymass/vim-matchup",
-            event = "VimEnter",
-            config = function()
-                vim.g.matchup_matchparen_offscreen = { method = "popup" }
-            end,
         }
 
         -- Telescope
@@ -95,33 +87,8 @@ require("packer").startup {
         use { "tpope/vim-surround" }
         use { "tpope/vim-repeat" }
         use { "tpope/vim-unimpaired" }
-        use {
-            "editorconfig/editorconfig-vim",
-            setup = function()
-                vim.g.EditorConfig_exclude_patterns = { "fugitive://.*", "scp://.*" }
-            end,
-        }
-        use {
-            "tpope/vim-sleuth",
-            setup = function()
-                vim.g.sleuth_automatic = 0
-            end,
-            cmd = "Sleuth",
-        }
         use { "tpope/vim-fugitive", cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" } }
         use { "github/copilot.vim" }
-        use { "tpope/vim-obsession" }
-        use {
-            "dhruvasagar/vim-prosession",
-            after = "vim-obsession",
-            setup = function()
-                vim.g.prosession_on_startup = 0
-                vim.g.prosession_default_session = 0
-                vim.g.prosession_per_branch = 1
-                vim.g.prosession_dir = vim.fn.stdpath "data" .. "/sessions/"
-            end,
-            cmd = { "Prosession", "ProsessionDelete" },
-        }
 
         -- Appearance
         use {
@@ -135,9 +102,9 @@ require("packer").startup {
         }
         use { "kyazdani42/nvim-web-devicons", config = [[require("nvim-web-devicons").setup()]] }
         use {
-            "glepnir/dashboard-nvim",
-            after = "nvim-web-devicons",
-            setup = [[require("p.nvim-dashboard")]],
+            "startup-nvim/startup.nvim",
+            requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons" },
+            config = [[require("p.nvim-startup")]],
         }
         use {
             "romgrk/barbar.nvim",
@@ -209,10 +176,9 @@ require("packer").startup {
         use { "akinsho/toggleterm.nvim", config = "require('p.nvim-toggleterm')" }
         use { "luukvbaal/stabilize.nvim", config = "require('stabilize').setup()" }
         use { "jghauser/mkdir.nvim", config = "require('mkdir')" }
+        use { "gpanders/editorconfig.nvim" }
         use { "ggandor/lightspeed.nvim" }
-        use { "psliwka/vim-smoothie" }
         use { "farmergreg/vim-lastplace" }
-        use { "lambdalisue/suda.vim" }
         use {
             "ybian/smartim",
             setup = function()

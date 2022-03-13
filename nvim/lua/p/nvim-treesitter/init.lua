@@ -96,10 +96,6 @@ M.setup = function()
             enable = true,
         },
         context_commentstring = { enable = true, enable_autocmd = false },
-        matchup = {
-            enable = true, -- mandatory, false will disable the whole extension
-            disable = { "c", "ruby" }, -- optional, list of language that will be disabled
-        },
     }
 end
 
