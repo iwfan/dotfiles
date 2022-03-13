@@ -25,6 +25,7 @@ vim.opt.background = "dark"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.cursorline = true
 vim.opt.showtabline = 2
 vim.opt.scrolloff = 5
 vim.opt.splitbelow = true

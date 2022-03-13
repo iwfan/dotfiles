@@ -27,7 +27,7 @@ local settings = {
         title = "Header",
         margin = 5,
         content = startup_custom_header,
-        highlight = "Statement",
+        highlight = "Operator",
         default_color = "",
         oldfiles_amount = 0,
     },

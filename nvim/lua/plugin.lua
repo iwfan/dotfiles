@@ -177,6 +177,7 @@ require("packer").startup {
         use { "luukvbaal/stabilize.nvim", config = "require('stabilize').setup()" }
         use { "jghauser/mkdir.nvim", config = "require('mkdir')" }
         use { "gpanders/editorconfig.nvim" }
+        use { "karb94/neoscroll.nvim", config = "require('neoscroll').setup()" }
         use { "ggandor/lightspeed.nvim" }
         use { "farmergreg/vim-lastplace" }
         use {
