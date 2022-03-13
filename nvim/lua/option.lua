@@ -16,7 +16,7 @@ vim.opt.undofile = true
 vim.opt.mouse = "a"
 vim.opt.errorbells = true
 vim.opt.visualbell = true
-vim.opt.ttimeoutlen = 100
+vim.opt.timeoutlen = 300
 vim.opt.updatetime = 300
 
 -- behavior opt
@@ -66,7 +66,7 @@ vim.opt.showbreak = "↪ "
 vim.opt.list = true
 vim.opt.listchars = {
     tab = " ",
-    trail = "·",
+    trail = "•",
     extends = "",
     precedes = "",
     nbsp = "␣",

@@ -15,8 +15,8 @@ M.setup = function()
                 "--hidden",
                 "--glob=!.git/",
             },
-            prompt_prefix = "  ",
-            selection_caret = " ",
+            prompt_prefix = " ",
+            selection_caret = " ",
             sorting_strategy = "ascending",
             layout_config = {
                 prompt_position = "top",

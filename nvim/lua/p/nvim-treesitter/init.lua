@@ -24,6 +24,7 @@ M.setup = function()
             "json5",
             "jsonc",
             "lua",
+            "norg",
             "python",
             "query",
             "regex",
