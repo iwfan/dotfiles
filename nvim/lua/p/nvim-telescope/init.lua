@@ -61,6 +61,9 @@ M.setup = function()
                     "--exclude=.cache",
                 },
             },
+            oldfiles = {
+                only_cwd = true,
+            },
             live_grep = {
                 --@usage don't include the filename in the search results
                 only_sort_text = true,
