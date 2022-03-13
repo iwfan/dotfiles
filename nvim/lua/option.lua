@@ -21,7 +21,6 @@ vim.opt.updatetime = 300
 
 -- behavior opt
 vim.opt.termguicolors = true
-vim.opt.background = "dark"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.number = true
 vim.opt.relativenumber = true

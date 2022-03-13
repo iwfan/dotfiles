@@ -1,16 +1,12 @@
 set fish_greeting
 
-set -gx TERMINAL kitty
 set -gx SHELL /usr/local/bin/fish
-# set -gx TERM screen-256color
-# set -gx TERM xterm-256color
 set -gx GPG_TTY tty
 
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
 set -gx VISUAL nvim
 set -gx EDITOR nvim
-set -gx PAGER most
 
 # Homebrew's sbin
 fish_add_path /usr/local/sbin
