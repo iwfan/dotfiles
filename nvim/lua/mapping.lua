@@ -32,11 +32,6 @@ map("t|<C-J>", [[<c-\><c-n><c-w>j]])
 map("t|<C-K>", [[<c-\><c-n><c-w>k]])
 map("t|<C-]>", [[<C-\><C-n>]])
 
-map("c|(", "()<left>")
-map("c|[", "[]<left>")
-map("c|'", "''<left>")
-map('c|"', '""<left>')
-
 map("n|]w", "g*")
 map("n|[w", "g#")
 map("v|]w", "g*")
