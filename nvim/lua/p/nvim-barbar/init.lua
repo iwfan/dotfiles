@@ -39,6 +39,13 @@ map_cmd("n|]B", "BufferMoveNext")
 map_cmd("n|\\b", "BufferPin")
 map_cmd("n|<bs>b", "BufferClose")
 
+map_cmd("n|[f", "BufferPrevious")
+map_cmd("n|]f", "BufferNext")
+map_cmd("n|[F", "BufferMovePrevious")
+map_cmd("n|]F", "BufferMoveNext")
+map_cmd("n|\\f", "BufferPin")
+map_cmd("n|<bs>f", "BufferClose")
+
 local function hi(name, fg, bg, attr)
     vim.cmd("hi! clear " .. name)
 
