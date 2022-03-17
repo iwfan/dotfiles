@@ -69,6 +69,7 @@ vim.opt.listchars = {
     extends = "",
     precedes = "",
     nbsp = "␣",
+    -- eol = "↴",
 }
 vim.opt.fillchars = {
     fold = " ",
