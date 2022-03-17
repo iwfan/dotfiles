@@ -41,7 +41,7 @@ local settings = {
         content = {
             { "  Recent Files", "Telescope oldfiles theme=ivy", "SPC ?" },
             { "  Git Status", "Telescope git_status theme=ivy", "SPC ?" },
-            { "  Find File", "Telescope find_files theme=ivy", "SPC o" },
+            { "  Find File", "Telescope find_files theme=ivy", "SPC p" },
             { "  Find Word", "Telescope live_grep theme=ivy", "SPC f" },
             { "  Bookmarks", "Telescope marks theme=ivy", "SPC m" },
         },

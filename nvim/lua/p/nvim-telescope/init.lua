@@ -73,11 +73,13 @@ M.setup = function()
 
     require("telescope").load_extension "fzf"
 
-    map_cmd("n|<space>o", "Telescope find_files theme=ivy")
+    map_cmd("n|<space>o", "Telescope oldfiles theme=ivy")
+    map_cmd("n|<space>p", "Telescope find_files theme=ivy")
     map_cmd("n|<space>f", "Telescope live_grep theme=ivy")
-    map_cmd("n|<space>b", "Telescope buffers theme=ivy")
+    map_cmd("n|<space>b", "Telescope buffers theme=cursor")
+    map_cmd("n|<space>r", "Telescope registers theme=ivy")
     map_cmd("n|<space>m", "Telescope marks theme=ivy")
-    map_cmd("n|<space><space>", "Telescope")
+    map("n|<space><space>", ":Telescope <space>")
 end
 
 return M
