@@ -7,6 +7,7 @@ set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
 set -gx VISUAL nvim
 set -gx EDITOR nvim
+set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 # Homebrew's sbin
 fish_add_path /usr/local/sbin
@@ -28,7 +29,7 @@ fish_add_path $GOPATH/bin
 # Bat
 set -gx BAT_PAGER "less -R"
 set -gx BAT_STYLE "changes,numbers"
-set -gx BAT_THEME "gruvbox-dark"
+set -gx BAT_THEME "ansi"
 
 # RG
 set -gx RG_OPTIONS "--smart-case --follow"
