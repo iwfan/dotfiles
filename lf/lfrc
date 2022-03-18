@@ -1,6 +1,5 @@
 set shellopts '-eu'
 set ifs "\n"
-set period 1
 set number on
 set mouse on
 set relativenumber on
@@ -9,21 +8,10 @@ set drawbox on
 set scrolloff 5
 set tabstop 4
 set incsearch on
+set ignorecase true
 set hiddenfiles '.git'
-set previewer ~/.config/lf/pv.sh
-
-map <enter> shell
-
-map <c-f> $lf -remote "send $id select $(fzf)"
-map <c-o> $lf -remote "send $id cd $(fzf)"
-map <c-r> reload
-
-map A push %mkdir<space>
-map a push %touch<space>
-map x :cut
-
-cmd trash %trash $fx
-map d :trash
+set previewer ~/.config/lf/lf_kitty_preview.sh
+set cleaner ~/.config/lf/lf_kitty_clean.sh
 
 cmd open ${{
     test -L $f && f=$(readlink -f $f)
@@ -35,16 +23,29 @@ cmd open ${{
 
 cmd copy_filename %{{
   $(basename $f | pbcopy)
-  echo "copied: $(basename $f)"
+  echo "Copied: $(basename $f)"
 }}
 
 cmd copy_filepath %{{
   $(realpath $f | pbcopy)
-  echo "copied: $(realpath $f)"
+  echo "Copied: $(realpath $f)"
 }}
 
-map y :copy_filename
-map Y :copy
-map <c-y> :copy_filepath
+cmd trash %trash $fx
+
+map <enter> shell
+
+map <c-f> $lf -remote "send $id select $(fzf)"
+map <c-o> $lf -remote "send $id cd $(fzf)"
+map <c-r> reload
+
+map A push %mkdir<space>
+map a push %touch<space>
+map x cut
+map d trash
+map y copy
+map Y copy_filename
+map <c-y> copy_filepath
+map C clear
 
 map i :set info size:time

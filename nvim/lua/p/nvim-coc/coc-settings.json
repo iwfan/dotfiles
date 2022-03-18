@@ -47,6 +47,7 @@
     "default": "\uf29c"
   },
 
+  "diagnostic.enableSign": false,
   "diagnostic.errorSign": "", // " ",
   "diagnostic.warningSign": "", // " ",
   "diagnostic.infoSign": "", // " ",
