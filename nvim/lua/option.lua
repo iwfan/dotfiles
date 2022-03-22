@@ -74,6 +74,7 @@ vim.opt.listchars = {
 vim.opt.fillchars = {
     fold = " ",
     eob = " ",
-    diff = "╱",
+    diff = " ",
+    -- diff = "╱",
 }
 vim.opt.shortmess:append "csI"
