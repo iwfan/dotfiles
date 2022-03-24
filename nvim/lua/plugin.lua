@@ -88,7 +88,15 @@ require("packer").startup {
         use { "tpope/vim-repeat" }
         use { "tpope/vim-unimpaired" }
         use { "tpope/vim-fugitive", cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" } }
-        use { "github/copilot.vim" }
+        use {
+            "github/copilot.vim",
+            setup = function()
+                vim.cmd [[
+                    let g:copilot_no_tab_map = v:true
+                    imap <silent><script><expr> <C-F> copilot#Accept("\<CR>")
+                ]]
+            end,
+        }
 
         -- Appearance
         use {
