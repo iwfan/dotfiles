@@ -19,7 +19,7 @@ end
 local lazygit = Terminal:new {
     cmd = "lazygit",
     start_in_insert = true,
-    direction = "window",
+    direction = "float",
     on_open = hide_line,
     on_close = show_line,
 }
@@ -39,7 +39,7 @@ function LF_toggle(path)
     local lf = Terminal:new {
         cmd = lf_cmd,
         start_in_insert = true,
-        direction = "window",
+        direction = "float",
         on_open = hide_line,
         on_close = function()
             show_line()

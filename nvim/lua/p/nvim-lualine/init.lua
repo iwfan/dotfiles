@@ -76,7 +76,8 @@ require("lualine").setup {
     options = {
         section_separators = "",
         component_separators = "", -- |
-        theme = "gruvbox-material",
+        -- theme = "gruvbox-material",
+        theme = "auto",
         disabled_filetypes = {
             "coc-explorer",
             "coctree",

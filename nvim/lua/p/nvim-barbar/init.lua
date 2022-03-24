@@ -22,15 +22,7 @@ vim.g.bufferline = {
     no_name_title = nil,
 }
 
-map_cmd("n|<M-{>", "BufferPrevious")
-map_cmd("n|<M-}>", "BufferNext")
-map_cmd("n|<M-w>", "BufferClose")
-
-map_cmd("n|\\<Tab>", "BufferPin")
 map_cmd("n|<leader><Tab>", "BufferPick")
-map_cmd("n|<bs><Tab>", "BufferClose")
-map_cmd("n|[<Tab>", "BufferMovePrevious")
-map_cmd("n|]<Tab>", "BufferMoveNext")
 
 map_cmd("n|[b", "BufferPrevious")
 map_cmd("n|]b", "BufferNext")

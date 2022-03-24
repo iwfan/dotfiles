@@ -7,7 +7,7 @@ local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
 
 return {
-    color_scheme = "Gruvbox Dark",
+    color_scheme = "GitHub Dark",
     font = wezterm.font_with_fallback {
         "Cascadia Code PL",
         "IBM Plex Mono",
@@ -36,6 +36,10 @@ return {
             mods = "CMD|SHIFT",
             action = wezterm.action { SplitVertical = { domain = "CurrentPaneDomain" } },
         },
+        { key = "[", mods = "CMD", action = wezterm.action { ActivatePaneDirection = "Left" } },
+        { key = "]", mods = "CMD", action = wezterm.action { ActivatePaneDirection = "Right" } },
+        { key = "UpArrow", mods = "CTRL|SHIFT", action = wezterm.action { ActivatePaneDirection = "Up" } },
+        { key = "DownArrow", mods = "CTRL|SHIFT", action = wezterm.action { ActivatePaneDirection = "Down" } },
         { key = "Enter", mods = "CMD", action = "QuickSelect" },
     },
 }

@@ -39,7 +39,6 @@ M.setup = function()
     ft.set("json", { "//%s" })
     ft.set("scheme", { ";%s" })
     ft.set("lua", { "--%s", "--[[%s]]--" })
-    map_cmd([[n|<M-/>]], "lua require('Comment').toggle()")
 end
 
 return M

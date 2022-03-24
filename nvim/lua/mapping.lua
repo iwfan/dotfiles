@@ -45,9 +45,7 @@ map("x|<c-j>", ":move '>+1<CR>gv-gv")
 map("n|<leader><bs>", '"_dd')
 
 map("i|<C-s>", "<C-o><cmd>w<cr>")
-map("i|<M-s>", "<C-o><cmd>w<cr>")
 map("n|<C-s>", [[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]], { expr = true })
-map("n|<M-s>", [[empty(expand('%:t')) ? ":w\<Space>" : ":w\<CR>"]], { expr = true })
 
 map("n|<C-q>o", [[:lua searching_google(vim.fn.expand("<cword>"))<CR>]])
 map("n|<C-q>t", [[:lua searching_deepl(vim.fn.expand("<cword>"))<CR>]])
