@@ -16,16 +16,16 @@ local function hide_line()
     vim.opt.showcmd = false
 end
 
-local lazygit = Terminal:new {
-    cmd = "lazygit",
-    start_in_insert = true,
-    direction = "float",
-    on_open = hide_line,
-    on_close = show_line,
-}
-
 function Lazygit_toggle()
-    lazygit:toggle()
+    local lazygit = Terminal:new {
+        cmd = "lazygit",
+        start_in_insert = true,
+        close_on_exit = true,
+        direction = "tab",
+        on_open = hide_line,
+        on_close = show_line,
+    }
+    lazygit:open()
 end
 
 map_cmd("n|<c-w>g", "lua Lazygit_toggle()")
@@ -39,7 +39,8 @@ function LF_toggle(path)
     local lf = Terminal:new {
         cmd = lf_cmd,
         start_in_insert = true,
-        direction = "float",
+        close_on_exit = true,
+        direction = "tab",
         on_open = hide_line,
         on_close = function()
             show_line()

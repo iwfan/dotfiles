@@ -10,13 +10,13 @@ return {
     color_scheme = "GitHub Dark",
     font = wezterm.font_with_fallback {
         "Cascadia Code PL",
-        "IBM Plex Mono",
         "JetBrains Mono",
+        "PingFang SC",
+        "IBM Plex Mono",
         "Fira Code",
-        "DengXian",
     },
     font_size = 14,
-    line_height = 1.15,
+    line_height = 1.2,
     window_padding = {
         left = "1cell",
         right = "1cell",
