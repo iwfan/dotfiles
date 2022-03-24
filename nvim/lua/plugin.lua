@@ -179,7 +179,6 @@ require("packer").startup {
         use { "gpanders/editorconfig.nvim" }
         use { "karb94/neoscroll.nvim", config = "require('neoscroll').setup()" }
         use { "ggandor/lightspeed.nvim" }
-        use { "wellle/targets.vim" }
         use { "farmergreg/vim-lastplace" }
         use {
             "ybian/smartim",

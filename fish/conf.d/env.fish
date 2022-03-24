@@ -26,6 +26,9 @@ set -gx GO111MODULE on
 set -gx GOPROXY "https://goproxy.cn"
 fish_add_path $GOPATH/bin
 
+# Guile Scheme
+set -gx GUILE_AUTO_COMPILE 0
+
 # Bat
 set -gx BAT_PAGER "less -R"
 set -gx BAT_STYLE "changes,numbers"
