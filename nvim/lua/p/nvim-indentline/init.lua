@@ -16,6 +16,7 @@ require("indent_blankline").setup {
         "json",
         "yaml",
         "toml",
+        "scheme",
     },
     buftype_exclude = { "terminal", "telescope" },
 }

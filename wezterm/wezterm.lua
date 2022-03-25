@@ -16,7 +16,7 @@ return {
     font_size = 14,
     line_height = 1.2,
     default_cursor_style = "BlinkingBlock",
-    window_background_opacity = 0.94,
+    window_background_opacity = 0.96,
     window_close_confirmation = "AlwaysPrompt",
     window_padding = {
         left = "1cell",
