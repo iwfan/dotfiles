@@ -33,7 +33,7 @@ cmd copy_filepath %{{
 
 cmd trash %trash $fx
 
-map <enter> shell
+map <enter> open
 
 map <c-f> $lf -remote "send $id select $(fzf)"
 map <c-o> $lf -remote "send $id cd $(fzf)"
