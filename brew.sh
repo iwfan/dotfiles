@@ -30,7 +30,6 @@ brew install "trash"
 brew install "wget"
 
 brew install --cask "kitty"
-brew install --cask "iterm2"
 brew install --cask "docker"
 brew install --cask "hammerspoon"
 brew install --cask "karabiner-elements"
