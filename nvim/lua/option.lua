@@ -6,20 +6,14 @@ vim.g.did_install_default_menus = 1
 -- Options
 
 -- general opt
-vim.opt.fileformats = "unix,mac,dos"
 vim.opt.autowrite = true
 vim.opt.autowriteall = true
-vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.mouse = "a"
-vim.opt.errorbells = true
-vim.opt.visualbell = true
-vim.opt.timeoutlen = 300
-vim.opt.updatetime = 300
-
--- behavior opt
+vim.opt.timeoutlen = 800
+vim.opt.lazyredraw = true
 vim.opt.termguicolors = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.number = true
