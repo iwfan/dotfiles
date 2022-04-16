@@ -1,32 +1,14 @@
-local packer_path = ("%s/site/pack/packer/start/packer.nvim"):format(stdpath)
-
-function _G.packer_install()
-    print "Cloning packer.."
-    -- remove the dir before cloning
-    vim.fn.delete(packer_path, "rf")
-    vim.fn.system {
-        "git",
-        "clone",
-        "https://github.com/wbthomason/packer.nvim",
-        "--depth",
-        "1",
-        packer_path,
-    }
-    vim.cmd "packadd packer.nvim"
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-if fn.empty(fn.glob(packer_path)) > 0 then
-    packer_install()
-end
-
-vim.cmd [[command! PackerUpgrade :call v:lua.packer_install()]]
-
-require("packer").startup {
-    function(use)
+require('packer').startup({function(use)
         -- Packer can manage itself
         use { "wbthomason/packer.nvim" }
 
-        -- Startup
+        -- -- Startup
         use { "lewis6991/impatient.nvim" }
         use { "nathom/filetype.nvim", config = [[require("p.nvim-filetype").setup()]] }
         use {
@@ -138,7 +120,6 @@ require("packer").startup {
         use {
             "lewis6991/gitsigns.nvim",
             event = "BufRead",
-            requires = "nvim-lua/plenary.nvim",
             config = [[require("p.nvim-gitsigns").setup()]],
         }
         use {
@@ -186,8 +167,6 @@ require("packer").startup {
             end,
         }
         use { "akinsho/toggleterm.nvim", config = "require('p.nvim-toggleterm')" }
-        use { "luukvbaal/stabilize.nvim", config = "require('stabilize').setup()" }
-        use { "jghauser/mkdir.nvim", config = "require('mkdir')" }
         use { "gpanders/editorconfig.nvim" }
         use { "karb94/neoscroll.nvim", config = "require('neoscroll').setup()" }
         use { "ggandor/lightspeed.nvim" }
@@ -198,17 +177,22 @@ require("packer").startup {
                 vim.g.smartim_default = "com.apple.keylayout.ABC"
             end,
         }
-    end,
-    config = {
-        -- Move to lua dir so impatient.nvim can cache it
-        compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
-        git = { clone_timeout = 120 },
-        display = {
-            open_fn = function()
-                return require("packer.util").float { border = "single" }
-            end,
-        },
-        auto_clean = true,
-        compile_on_sync = true,
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+end,
+config = {
+    -- Move to lua dir so impatient.nvim can cache it
+    compile_path = vim.fn.stdpath "config" .. "/lua/p/packer_compiled.lua",
+    git = { clone_timeout = 120 },
+    display = {
+        open_fn = function()
+            return require("packer.util").float { border = "single" }
+        end,
     },
-}
+    auto_clean = true,
+    compile_on_sync = true,
+}})

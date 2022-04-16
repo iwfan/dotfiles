@@ -13,49 +13,34 @@
 --
 -- Author:   Zi莱卷 <i.wangfancn@gmail.com>
 -- Github:   https://github.com/iwfan/dotfiles
--- License:  MIT License
 
-local ok, _ = pcall(require, "impatient")
+local lua_runtime_path = vim.fn.stdpath('config') .. "/lua"
+local user_config_path = lua_runtime_path .. "/f"
+
+if vim.fn.empty(vim.fn.glob(user_config_path)) > 0 then
+    vim.notify("user config path is empty", vim.log.levels.ERROR)
+    return
+end
+
+local ok = pcall(require, "impatient")
 if not ok then
     vim.notify("impatient.nvim not installed", vim.log.levels.WARN)
 end
 
---disable builtin plugins
-local disabled_built_ins = {
-    "2html_plugin",
-    "getscript",
-    "getscriptPlugin",
-    "gzip",
-    "logipat",
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
-    "matchit",
-    "tar",
-    "tarPlugin",
-    "rrhelper",
-    "spellfile_plugin",
-    "vimball",
-    "vimballPlugin",
-    "zip",
-    "zipPlugin",
-}
+local config_modules_paths = vim.fn.split(vim.fn.globpath(user_config_path, '*.lua'), '\n')
 
-for _, plugin in pairs(disabled_built_ins) do
-    vim.g["loaded_" .. plugin] = 1
+local function path_transformer(path)
+    return path:gsub('^' .. lua_runtime_path .. '/', ''):match("(.+)%..+$")
 end
 
--- load options, mappings, and plugins
-local conf_modules = {
-    "global",
-    "option",
-    "mapping",
-    "autocmd",
-    "plugin",
-    "packer_compiled",
-}
+local modules = vim.tbl_map(path_transformer, config_modules_paths)
 
-for i = 1, #conf_modules, 1 do
-    pcall(require, conf_modules[i])
+for _, module in pairs(modules) do
+    local ok = pcall(require, module)
+    if not ok then
+        vim.notify("Can not require module: " .. module, vim.log.levels.WARN)
+    end
 end
+
+require('p')
+require('p.packer_compiled')

@@ -96,17 +96,17 @@ require("lualine").setup {
         lualine_c = {
             {
                 "branch",
-                icon = font_icon.branch,
+                icon = FONT_ICON.branch,
                 cond = conditions.hide_in_width,
             },
             {
                 "diagnostics",
                 sources = { "nvim_diagnostic", "coc" },
                 symbols = {
-                    error = font_icon.error,
-                    warn = font_icon.warn,
-                    info = font_icon.info,
-                    hint = font_icon.hint,
+                    error = FONT_ICON.error,
+                    warn = FONT_ICON.warn,
+                    info = FONT_ICON.info,
+                    hint = FONT_ICON.hint,
                 },
                 diagnostics_color = {
                     error = { fg = colors.red },

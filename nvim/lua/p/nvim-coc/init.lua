@@ -1,7 +1,7 @@
 local M = {}
 
 M.setup = function()
-    vim.g.coc_config_home = config_path .. "/lua/p/nvim-coc/"
+    vim.g.coc_config_home = vim.fn.stdpath('config') .. "/lua/p/nvim-coc/"
     vim.g.coc_global_extensions = {
         "coc-css",
         "coc-cssmodules",

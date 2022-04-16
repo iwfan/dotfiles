@@ -1,7 +1,7 @@
 local Terminal = require("toggleterm.terminal").Terminal
 
 local function show_line()
-    vim.opt.laststatus = 2
+    vim.opt.laststatus = 3
     vim.opt.showtabline = 2
     vim.opt.showmode = true
     vim.opt.ruler = true
@@ -18,7 +18,7 @@ end
 
 function Lazygit_toggle()
     local lazygit = Terminal:new {
-        cmd = "lazygit",
+        cmd = "gitui",
         start_in_insert = true,
         close_on_exit = true,
         direction = "tab",

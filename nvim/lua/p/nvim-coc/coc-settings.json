@@ -11,8 +11,7 @@
     "json",
     "javascript",
     "javascriptreact",
-    "typescriptreact",
-    "lua"
+    "typescriptreact"
   ],
 
   "suggest.enablePreselect": true,
