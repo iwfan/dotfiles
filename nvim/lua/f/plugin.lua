@@ -34,6 +34,12 @@ require("packer").startup {
                 vim.fn.execute "color gruvbox-material"
             end,
         }
+        use {
+            "ishan9299/nvim-solarized-lua",
+            config = function()
+                -- vim.fn.execute "color solarized"
+            end,
+        }
         use { "kyazdani42/nvim-web-devicons", config = [[require("nvim-web-devicons").setup()]] }
         use { "romgrk/barbar.nvim", config = [[require("p.nvim-barbar")]] }
         use { "nvim-lualine/lualine.nvim", config = [[require("p.nvim-lualine")]] }
@@ -69,6 +75,8 @@ require("packer").startup {
         -- LSP
         use { "neovim/nvim-lspconfig", config = "require('lsp.lsp_config')" }
         use { "b0o/schemastore.nvim" }
+        use { "jose-elias-alvarez/null-ls.nvim", config = "require('lsp.null-ls')" }
+        use { "jose-elias-alvarez/nvim-lsp-ts-utils" }
 
         -- LSP Cmp
         use { "hrsh7th/cmp-nvim-lsp" }

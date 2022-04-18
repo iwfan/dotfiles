@@ -22,7 +22,7 @@ local function buf_autocmd_document_formatting()
         group = LspDocumentFormattingGroup,
         buffer = 0,
         callback = function()
-            vim.lsp.buf.formatting_sync()
+            vim.lsp.buf.formatting_sync(nil, 2000)
         end,
     })
 end
