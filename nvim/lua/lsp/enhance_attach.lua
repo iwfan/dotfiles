@@ -1,11 +1,30 @@
 local function buf_autocmd_document_highlight()
-    vim.cmd [[
-          augroup lsp_document_highlight
-            autocmd! * <buffer>
-            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-          augroup END
-        ]]
+    local LspDocumentHighlightGroup = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
+    vim.api.nvim_create_autocmd("CursorHold", {
+        group = LspDocumentHighlightGroup,
+        buffer = 0,
+        callback = function()
+            vim.lsp.buf.document_highlight()
+        end,
+    })
+    vim.api.nvim_create_autocmd("CursorMoved", {
+        group = LspDocumentHighlightGroup,
+        buffer = 0,
+        callback = function()
+            vim.lsp.buf.clear_references()
+        end,
+    })
+end
+
+local function buf_autocmd_document_formatting()
+    local LspDocumentFormattingGroup = vim.api.nvim_create_augroup("LspDocumentFormatting", { clear = true })
+    vim.api.nvim_create_autocmd("CursorHold", {
+        group = LspDocumentFormattingGroup,
+        buffer = 0,
+        callback = function()
+            vim.lsp.buf.formatting_sync()
+        end,
+    })
 end
 
 return function(client, bufnr)
@@ -25,14 +44,7 @@ return function(client, bufnr)
     end
 
     if client.resolved_capabilities.document_formatting then
-        local ext = vim.fn.expand "%:e"
-        -- augroup("lsp_format", {
-        --     {
-        --         "BufWritePre",
-        --         "*." .. ext,
-        --         "lua vim.lsp.buf.formatting_sync(nil,1000)",
-        --     },
-        -- })
+        buf_autocmd_document_formatting()
     end
 
     vim.cmd [[ autocmd CursorHold,CursorHoldI <buffer> lua require'nvim-lightbulb'.update_lightbulb{} ]]

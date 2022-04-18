@@ -1,24 +1,48 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+local packer_bootstrap = nil
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    packer_bootstrap = fn.system {
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "https://github.com/wbthomason/packer.nvim",
+        install_path,
+    }
 end
 
-require('packer').startup({function(use)
-        -- Packer can manage itself
+require("packer").startup {
+    function(use)
         use { "wbthomason/packer.nvim" }
-
-        -- -- Startup
-        use { "lewis6991/impatient.nvim" }
-        use { "nathom/filetype.nvim", config = [[require("p.nvim-filetype").setup()]] }
         use {
             "antoinemadec/FixCursorHold.nvim",
             setup = function()
                 vim.g.cursorhold_updatetime = 300
             end,
         }
+        use { "nvim-lua/popup.nvim" }
+        use { "nvim-lua/plenary.nvim" }
+        use {
+            "sainnhe/gruvbox-material",
+            config = function()
+                vim.g.gruvbox_material_enable_italic = 1
+                vim.g.gruvbox_material_sign_column_background = "none"
+                vim.g.gruvbox_material_better_performance = 1
+                vim.g.gruvbox_material_transparent_background = 1
+                vim.g.gruvbox_material_current_word = "grey background"
+                vim.fn.execute "color gruvbox-material"
+            end,
+        }
+        use { "kyazdani42/nvim-web-devicons", config = [[require("nvim-web-devicons").setup()]] }
+        use { "romgrk/barbar.nvim", config = [[require("p.nvim-barbar")]] }
+        use { "nvim-lualine/lualine.nvim", config = [[require("p.nvim-lualine")]] }
 
-        -- Treesitter
+        use {
+            "nvim-telescope/telescope.nvim",
+            config = [[require("p.nvim-telescope").setup()]],
+        }
+
         use {
             "nvim-treesitter/nvim-treesitter",
             run = ":TSUpdate",
@@ -37,32 +61,36 @@ require('packer').startup({function(use)
         }
         use {
             "windwp/nvim-ts-autotag",
-            ft = { "html", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue" },
+            ft = { "html", "javascriptreact", "typescriptreact", "svelte", "svg", "vue" },
         }
 
-        -- Telescope
-        use {
-            "nvim-telescope/telescope.nvim",
-            requires = {
-                { "nvim-lua/popup.nvim" },
-                { "nvim-lua/plenary.nvim" },
-                { "nvim-telescope/telescope-fzf-native.nvim" },
-            },
-            config = [[require("p.nvim-telescope").setup()]],
-        }
-        use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-        use {
-            "windwp/nvim-spectre",
-            requires = "nvim-lua/plenary.nvim",
-            config = [[require("p.nvim-spectre")]],
-        }
+        -- LSP
+        use { "neovim/nvim-lspconfig", config = "require('lsp.config')" }
 
-        -- CoC
+        -- LSP Cmp
+        use { "hrsh7th/cmp-nvim-lsp" }
+        use { "hrsh7th/cmp-nvim-lua" }
+        use { "hrsh7th/cmp-buffer" }
+        use { 'hrsh7th/cmp-path' }
+        use { 'hrsh7th/cmp-cmdline' }
+        use { "L3MON4D3/LuaSnip" }
+        use { "saadparwaiz1/cmp_luasnip" }
+        use { "hrsh7th/nvim-cmp", config = "require('lsp.cmp')" }
+
+        -- LSP Addons
+        use { "williamboman/nvim-lsp-installer", config = "require('lsp.installer')" }
+        use { "onsails/lspkind-nvim" }
+        use { "kosayoda/nvim-lightbulb" }
+        use { "folke/lsp-trouble.nvim", config = "require('trouble').setup {}" }
+        use { "jose-elias-alvarez/nvim-lsp-ts-utils", after = { "nvim-treesitter" } }
         use {
-            "neoclide/coc.nvim",
-            branch = "release",
-            setup = [[require("p.nvim-coc").setup()]],
-            requires = { "rafamadriz/friendly-snippets" },
+            "simrat39/symbols-outline.nvim",
+            setup = function()
+                vim.g.symbols_outline = {
+                    width = 40,
+                }
+            end,
+            cmd = "SymbolsOutline",
         }
 
         -- tpope
@@ -82,39 +110,14 @@ require('packer').startup({function(use)
             end,
         }
 
-        -- Appearance
-        use {
-            "sainnhe/gruvbox-material",
-            config = function()
-                vim.g.gruvbox_material_enable_italic = 1
-                vim.g.gruvbox_material_sign_column_background = "none"
-                vim.g.gruvbox_material_better_performance = 1
-                vim.g.gruvbox_material_transparent_background = 1
-                vim.g.gruvbox_material_current_word = "grey background"
-                vim.cmd "color gruvbox-material"
-            end,
-        }
-        use { "kyazdani42/nvim-web-devicons", config = [[require("nvim-web-devicons").setup()]] }
-        use {
-            "startup-nvim/startup.nvim",
-            requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons" },
-            config = [[require("p.nvim-startup")]],
-        }
-        use {
-            "romgrk/barbar.nvim",
-            after = "nvim-web-devicons",
-            config = [[require("p.nvim-barbar")]],
-        }
-        use {
-            "nvim-lualine/lualine.nvim",
-            after = "nvim-web-devicons",
-            config = [[require("p.nvim-lualine")]],
-        }
         use {
             "sindrets/diffview.nvim",
-            after = "nvim-web-devicons",
             cmd = { "DiffviewOpen", "DiffviewFileHistory" },
             config = [[require'diffview'.setup()]],
+        }
+        use {
+            "windwp/nvim-spectre",
+            config = [[require("p.nvim-spectre")]],
         }
         use { "kevinhwang91/nvim-bqf", ft = "qf" }
         use {
@@ -153,7 +156,6 @@ require('packer').startup({function(use)
                 }
             end,
         }
-
         use {
             "mg979/vim-visual-multi",
             setup = function()
@@ -168,7 +170,6 @@ require('packer').startup({function(use)
         }
         use { "akinsho/toggleterm.nvim", config = "require('p.nvim-toggleterm')" }
         use { "gpanders/editorconfig.nvim" }
-        use { "karb94/neoscroll.nvim", config = "require('neoscroll').setup()" }
         use { "ggandor/lightspeed.nvim" }
         use { "farmergreg/vim-lastplace" }
         use {
@@ -178,21 +179,20 @@ require('packer').startup({function(use)
             end,
         }
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end,
-config = {
-    -- Move to lua dir so impatient.nvim can cache it
-    compile_path = vim.fn.stdpath "config" .. "/lua/p/packer_compiled.lua",
-    git = { clone_timeout = 120 },
-    display = {
-        open_fn = function()
-            return require("packer.util").float { border = "single" }
-        end,
+        -- Automatically set up your configuration after cloning packer.nvim
+        -- Put this at the end after all plugins
+        if packer_bootstrap then
+            require("packer").sync()
+        end
+    end,
+    config = {
+        git = { clone_timeout = 120 },
+        display = {
+            open_fn = function()
+                return require("packer.util").float { border = "single" }
+            end,
+        },
+        auto_clean = true,
+        compile_on_sync = true,
     },
-    auto_clean = true,
-    compile_on_sync = true,
-}})
+}

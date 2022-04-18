@@ -13,7 +13,6 @@ local server_opts = {
     graphql = require "lsp.servers.graphql",
     sumneko_lua = require "lsp.servers.luals",
     eslint = require "lsp.servers.eslint",
-    emmet_ls = require "lsp.servers.emmet",
 }
 
 for server_name, _ in pairs(server_opts) do

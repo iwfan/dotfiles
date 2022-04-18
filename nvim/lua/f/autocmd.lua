@@ -1,12 +1,12 @@
 local CursorLineControlGroup = vim.api.nvim_create_augroup("CursorLineControl", { clear = true })
 local set_cursorline = function(event, value, pattern)
-  vim.api.nvim_create_autocmd(event, {
-    group = CursorLineControlGroup,
-    pattern = pattern,
-    callback = function()
-      vim.opt_local.cursorline = value
-    end,
-  })
+    vim.api.nvim_create_autocmd(event, {
+        group = CursorLineControlGroup,
+        pattern = pattern,
+        callback = function()
+            vim.opt_local.cursorline = value
+        end,
+    })
 end
 set_cursorline("WinLeave", false)
 set_cursorline("WinEnter", true)
@@ -16,7 +16,7 @@ local LuaHighlightGroup = vim.api.nvim_create_augroup("LuaHighlight", { clear = 
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = LuaHighlightGroup,
     callback = function()
-        vim.highlight.on_yank { higroup="IncSearch", timeout=300, on_macro = true }
+        vim.highlight.on_yank { higroup = "IncSearch", timeout = 300, on_macro = true }
     end,
 })
 
@@ -24,7 +24,7 @@ local MiscGroup = vim.api.nvim_create_augroup("Misc", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
     group = MiscGroup,
     callback = function()
-        vim.cmd [[%s/\s\+$//e]]
-        vim.cmd [[%s/\n\+\%$//e]]
+        vim.fn.execute [[%s/\s\+$//e]]
+        vim.fn.execute [[%s/\n\+\%$//e]]
     end,
 })

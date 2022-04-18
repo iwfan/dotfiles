@@ -37,14 +37,6 @@ M.setup = function()
                     ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
                 },
             },
-            extensions = {
-                fzf = {
-                    fuzzy = true, -- false will only do exact matching
-                    override_generic_sorter = true, -- override the generic sorter
-                    override_file_sorter = true, -- override the file sorter
-                    case_mode = "smart_case",
-                },
-            },
         },
         pickers = {
             find_files = {
@@ -70,8 +62,6 @@ M.setup = function()
             },
         },
     }
-
-    require("telescope").load_extension "fzf"
 
     map_cmd("n|<space>o", "Telescope oldfiles theme=ivy")
     map_cmd("n|<space>p", "Telescope find_files theme=ivy")

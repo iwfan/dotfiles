@@ -57,7 +57,6 @@ M.setup = function()
         },
         highlight = {
             enable = true,
-            use_languagetree = true,
         },
         indent = { enable = true },
         incremental_selection = {
@@ -82,8 +81,8 @@ M.setup = function()
             },
             swap = {
                 enable = true,
-                swap_next = { ["<leader>a"] = "@parameter.inner" },
-                swap_previous = { ["<leader>A"] = "@parameter.inner" },
+                swap_next = { ["ga"] = "@parameter.inner" },
+                swap_previous = { ["gA"] = "@parameter.inner" },
             },
             move = {
                 enable = true,
@@ -106,7 +105,12 @@ M.setup = function()
                 },
             },
             lsp_interop = {
-                enable = false,
+                enable = true,
+                border = 'none',
+                peek_definition_code = {
+                    ["<leader>df"] = "@function.outer",
+                    ["<leader>dF"] = "@class.outer",
+                },
             },
         },
         autotag = {

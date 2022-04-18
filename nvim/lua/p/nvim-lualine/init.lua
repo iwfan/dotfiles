@@ -75,30 +75,21 @@ end
 require("lualine").setup {
     options = {
         section_separators = "",
-        component_separators = "", -- |
+        component_separators = "",
+        globalstatus = true,
         -- theme = "gruvbox-material",
         theme = "auto",
-        disabled_filetypes = {
-            "coc-explorer",
-            "coctree",
-            "nnn",
-            "NvimTree",
-            "packer",
-            "startify",
-            "fugitive",
-            "fugitiveblame",
-            "dashboard",
-        },
     },
     sections = {
-        lualine_a = {},
-        lualine_b = { session },
-        lualine_c = {
+        lualine_a = {
             {
                 "branch",
                 icon = FONT_ICON.branch,
                 cond = conditions.hide_in_width,
             },
+        },
+        lualine_b = {
+            session,
             {
                 "diagnostics",
                 sources = { "nvim_diagnostic", "coc" },
@@ -115,10 +106,11 @@ require("lualine").setup {
                     hint = { fg = colors.cyan },
                 },
                 cond = conditions.hide_in_width,
-            },
+            }
         },
+        lualine_c = {},
         lualine_x = {
-            -- lsp,
+            lsp,
             "g:coc_status",
             tabstop,
             "encoding",

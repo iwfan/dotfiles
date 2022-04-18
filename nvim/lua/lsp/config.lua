@@ -1,4 +1,4 @@
-local signs = { Error = font_icon.error, Warn = font_icon.warn, Hint = " ", Info = font_icon.info }
+local signs = { Error = FONT_ICON.error, Warn = FONT_ICON.warn, Hint = " ", Info = FONT_ICON.info }
 
 for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type

@@ -78,8 +78,8 @@ return function(default_opts)
                 args = { "--stdin-filepath", "%filepath" },
             },
             luafmt = {
-                command = "luafmt",
-                args = { "--indent-count", "2", "--stdin", "%filepath" },
+                command = "stylua",
+                args = { "%filepath" },
             },
             gofmt = {
                 command = "gofmt",
