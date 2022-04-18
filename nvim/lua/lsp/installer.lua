@@ -2,20 +2,17 @@ local lsp_installer = require "nvim-lsp-installer"
 local lsp_installer_servers = require "nvim-lsp-installer.servers"
 
 local server_opts = {
-    bashls = require "lsp.servers.bash",
     html = require "lsp.servers.html",
     cssls = require "lsp.servers.css",
     tailwindcss = require "lsp.servers.tailwind",
     jsonls = require "lsp.servers.json",
-    yamlls = require "lsp.servers.yaml",
     tsserver = require "lsp.servers.typescript",
     gopls = require "lsp.servers.go",
-    graphql = require "lsp.servers.graphql",
     sumneko_lua = require "lsp.servers.luals",
     eslint = require "lsp.servers.eslint",
 }
 
-for server_name, _ in pairs(server_opts) do
+for server_name in pairs(server_opts) do
     local server_available, server = lsp_installer_servers.get_server(server_name)
     if server_available then
         if not server:is_installed() then

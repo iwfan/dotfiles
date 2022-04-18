@@ -37,12 +37,14 @@ require("packer").startup {
         use { "kyazdani42/nvim-web-devicons", config = [[require("nvim-web-devicons").setup()]] }
         use { "romgrk/barbar.nvim", config = [[require("p.nvim-barbar")]] }
         use { "nvim-lualine/lualine.nvim", config = [[require("p.nvim-lualine")]] }
-
         use {
             "nvim-telescope/telescope.nvim",
             config = [[require("p.nvim-telescope").setup()]],
         }
-
+        use {
+            "startup-nvim/startup.nvim",
+            config = [[require("p.nvim-startup")]],
+        }
         use {
             "nvim-treesitter/nvim-treesitter",
             run = ":TSUpdate",
@@ -53,36 +55,40 @@ require("packer").startup {
             "windwp/nvim-autopairs",
             config = "require('nvim-autopairs').setup()",
         }
+        use {
+            "windwp/nvim-ts-autotag",
+            ft = { "html", "javascriptreact", "typescriptreact", "svelte", "svg", "vue" },
+        }
         use "JoosepAlviste/nvim-ts-context-commentstring"
         use {
             "numToStr/Comment.nvim",
             event = "BufRead",
             config = [[require("p.nvim-comment").setup()]],
         }
-        use {
-            "windwp/nvim-ts-autotag",
-            ft = { "html", "javascriptreact", "typescriptreact", "svelte", "svg", "vue" },
-        }
 
         -- LSP
-        use { "neovim/nvim-lspconfig", config = "require('lsp.config')" }
+        use { "neovim/nvim-lspconfig", config = "require('lsp.lsp_config')" }
+        use { "b0o/schemastore.nvim" }
 
         -- LSP Cmp
         use { "hrsh7th/cmp-nvim-lsp" }
         use { "hrsh7th/cmp-nvim-lua" }
         use { "hrsh7th/cmp-buffer" }
-        use { 'hrsh7th/cmp-path' }
-        use { 'hrsh7th/cmp-cmdline' }
+        use { "hrsh7th/cmp-path" }
+        use { "hrsh7th/cmp-cmdline" }
         use { "L3MON4D3/LuaSnip" }
         use { "saadparwaiz1/cmp_luasnip" }
+        use { "rafamadriz/friendly-snippets" }
+        use { "onsails/lspkind-nvim" }
         use { "hrsh7th/nvim-cmp", config = "require('lsp.cmp')" }
 
         -- LSP Addons
         use { "williamboman/nvim-lsp-installer", config = "require('lsp.installer')" }
-        use { "onsails/lspkind-nvim" }
-        use { "kosayoda/nvim-lightbulb" }
-        use { "folke/lsp-trouble.nvim", config = "require('trouble').setup {}" }
-        use { "jose-elias-alvarez/nvim-lsp-ts-utils", after = { "nvim-treesitter" } }
+        use {
+            "folke/lsp-trouble.nvim",
+            config = "require('lsp.trouble')",
+            cmd = { "Trouble", "TroubleToggle", "TroubleClose", "TroubleRefresh" },
+        }
         use {
             "simrat39/symbols-outline.nvim",
             setup = function()
