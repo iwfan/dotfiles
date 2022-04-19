@@ -3,7 +3,6 @@ local lsp_installer_servers = require "nvim-lsp-installer.servers"
 
 local server_opts = {
     cssls = require "lsp.servers.css",
-    cssmodules_ls = require "lsp.servers.cssmodules_ls",
     eslint = require "lsp.servers.eslint",
     gopls = require "lsp.servers.go",
     html = require "lsp.servers.html",
