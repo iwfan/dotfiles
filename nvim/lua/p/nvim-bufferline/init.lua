@@ -20,7 +20,7 @@ map_cmd("n|[b", "BufferLineCyclePrev")
 map_cmd("n|]b", "BufferLineCycleNext")
 map_cmd("n|[B", "BufferLineMovePrev")
 map_cmd("n|]B", "BufferLineMoveNext")
-map_cmd("n|\\b", "BufferLinePick")
+map_cmd("n|\\b", "BufferLineTogglePin")
 map_cmd("n|<bs>b", "Bdelete!")
 
 map_cmd("n|[f", "BufferLineCyclePrev")
