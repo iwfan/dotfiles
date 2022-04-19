@@ -50,6 +50,7 @@ local function lsp()
         tailwindcss = 10,
         eslint = 10,
         emmet_ls = 10,
+        cssmodules_ls = 10
     }
     local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
     local clients = vim.lsp.get_active_clients()
@@ -90,6 +91,9 @@ require("lualine").setup {
         },
         lualine_b = {
             session,
+        },
+        lualine_c = {
+            lsp,
             {
                 "diagnostics",
                 sources = { "nvim_diagnostic", "coc" },
@@ -99,19 +103,16 @@ require("lualine").setup {
                     info = FONT_ICON.info,
                     hint = FONT_ICON.hint,
                 },
-                diagnostics_color = {
-                    error = { fg = colors.red },
-                    warn = { fg = colors.yellow },
-                    info = { fg = colors.skyblue },
-                    hint = { fg = colors.cyan },
-                },
+                -- diagnostics_color = {
+                --     error = { fg = colors.red },
+                --     warn = { fg = colors.yellow },
+                --     info = { fg = colors.skyblue },
+                --     hint = { fg = colors.cyan },
+                -- },
                 cond = conditions.hide_in_width,
-            }
+            },
         },
-        lualine_c = {},
         lualine_x = {
-            lsp,
-            "g:coc_status",
             tabstop,
             "encoding",
             eol,

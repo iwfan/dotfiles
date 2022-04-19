@@ -23,6 +23,7 @@ return function(opts)
 
         require("nvim-lsp-ts-utils").setup {
             enable_import_on_completion = true,
+            auto_inlay_hints = false,
         }
 
         require("nvim-lsp-ts-utils").setup_client(client)

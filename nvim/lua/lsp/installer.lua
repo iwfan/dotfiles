@@ -2,14 +2,15 @@ local lsp_installer = require "nvim-lsp-installer"
 local lsp_installer_servers = require "nvim-lsp-installer.servers"
 
 local server_opts = {
-    html = require "lsp.servers.html",
     cssls = require "lsp.servers.css",
-    tailwindcss = require "lsp.servers.tailwind",
-    jsonls = require "lsp.servers.json",
-    tsserver = require "lsp.servers.typescript",
-    gopls = require "lsp.servers.go",
-    sumneko_lua = require "lsp.servers.luals",
+    cssmodules_ls = require "lsp.servers.cssmodules_ls",
     eslint = require "lsp.servers.eslint",
+    gopls = require "lsp.servers.go",
+    html = require "lsp.servers.html",
+    jsonls = require "lsp.servers.json",
+    sumneko_lua = require "lsp.servers.luals",
+    tailwindcss = require "lsp.servers.tailwind",
+    tsserver = require "lsp.servers.typescript",
 }
 
 for server_name in pairs(server_opts) do

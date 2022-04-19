@@ -18,7 +18,7 @@ end
 
 function Lazygit_toggle()
     local lazygit = Terminal:new {
-        cmd = "gitui",
+        cmd = "lazygit",
         start_in_insert = true,
         close_on_exit = true,
         direction = "tab",

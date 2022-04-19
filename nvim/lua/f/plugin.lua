@@ -31,13 +31,14 @@ require("packer").startup {
                 vim.g.gruvbox_material_better_performance = 1
                 vim.g.gruvbox_material_transparent_background = 1
                 vim.g.gruvbox_material_current_word = "grey background"
-                vim.fn.execute "color gruvbox-material"
+                -- vim.fn.execute "color gruvbox-material"
             end,
         }
         use {
             "ishan9299/nvim-solarized-lua",
             config = function()
-                -- vim.fn.execute "color solarized"
+                vim.g.solarized_diffmode = "low"
+                vim.fn.execute "color solarized"
             end,
         }
         use { "kyazdani42/nvim-web-devicons", config = [[require("nvim-web-devicons").setup()]] }

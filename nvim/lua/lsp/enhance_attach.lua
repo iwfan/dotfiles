@@ -22,7 +22,7 @@ local function buf_autocmd_document_formatting()
         group = LspDocumentFormattingGroup,
         buffer = 0,
         callback = function()
-            vim.lsp.buf.formatting_sync(nil, 2000)
+            vim.lsp.buf.formatting_seq_sync(nil, 2000)
         end,
     })
 end
@@ -69,5 +69,5 @@ return function(client, bufnr)
     buf_set_keymap("n", "[D", "<cmd>lua vim.diagnostic.goto_prev({severity_limit = 'Error'})<CR>", opts)
     buf_set_keymap("n", "]D", "<cmd>lua vim.diagnostic.goto_next({severity_limit = 'Error'})<CR>", opts)
 
-    -- buf_set_keymap("n", "<space>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    buf_set_keymap("n", "<c-q>m", "<cmd>lua vim.lsp.buf.formatting_seq_sync(nil, 2000)<CR>", opts)
 end
