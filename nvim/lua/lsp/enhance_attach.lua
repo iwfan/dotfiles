@@ -69,5 +69,7 @@ return function(client, bufnr)
     buf_set_keymap("n", "[D", "<cmd>lua vim.diagnostic.goto_prev({severity_limit = 'Error'})<CR>", opts)
     buf_set_keymap("n", "]D", "<cmd>lua vim.diagnostic.goto_next({severity_limit = 'Error'})<CR>", opts)
 
-    buf_set_keymap("n", "<c-q>m", "<cmd>lua vim.lsp.buf.formatting_seq_sync(nil, 2000)<CR>", opts)
+    buf_set_keymap("n", "<c-q>p", "<cmd>lua vim.lsp.buf.formatting_seq_sync(nil, 2000)<CR>", opts)
+
+    vim.api.nvim_create_user_command("Format", vim.lsp.buf.formatting, { desc = "Format file with LSP" })
 end
