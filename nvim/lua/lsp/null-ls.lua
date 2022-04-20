@@ -11,13 +11,14 @@ null_ls.setup {
         null_ls.builtins.formatting.eslint_d.with {
             prefer_local = "node_modules/.bin",
         },
-        null_ls.builtins.diagnostics.markdownlint,
         null_ls.builtins.formatting.prettierd.with {
             env = {
                 PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
             },
         },
-        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.stylua.with {
+            extra_args = { "--config-path", vim.fn.expand "~/dotfiles/stylua.toml" },
+        },
         null_ls.builtins.code_actions.gitsigns,
     },
 }
