@@ -45,18 +45,17 @@ vim.lsp.handlers["textDocument/definition"] = function(_, result)
     end
 end
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.handlers["textDocument/publishDiagnostics"],
-    {
-        signs = {
-            severity_limit = "Error",
-        },
-        underline = {
-            severity_limit = "Warning",
-        },
-        virtual_text = true,
-    }
-)
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = true,
+    virtual_text = {
+        spacing = 5,
+        severity_limit = "Warning",
+    },
+    signs = {
+        severity_limit = "Warning",
+    },
+    update_in_insert = true,
+})
 
 function _G.open_lsp_log()
     local path = vim.lsp.get_log_path()
