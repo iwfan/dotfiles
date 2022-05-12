@@ -51,6 +51,9 @@ require("packer").startup {
         use {
             "nvim-telescope/telescope.nvim",
             config = [[require("p.nvim-telescope").setup()]],
+            requires = {
+                "nvim-telescope/telescope-ui-select.nvim",
+            },
         }
         use {
             "startup-nvim/startup.nvim",

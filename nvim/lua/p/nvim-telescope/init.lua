@@ -61,7 +61,16 @@ M.setup = function()
                 only_sort_text = true,
             },
         },
+        extensions = {
+            ["ui-select"] = {
+                require("telescope.themes").get_dropdown {
+                    -- even more opts
+                },
+            },
+        },
     }
+
+    require("telescope").load_extension "ui-select"
 
     map_cmd("n|<space>o", "Telescope oldfiles theme=ivy")
     map_cmd("n|<space>p", "Telescope find_files theme=ivy")
