@@ -119,32 +119,6 @@ require("packer").startup {
         use { "tpope/vim-repeat" }
         use { "tpope/vim-unimpaired" }
         use { "tpope/vim-fugitive", cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" } }
-        -- use {
-        --     "github/copilot.vim",
-        --     setup = function()
-        --         vim.g.copilot_no_tab_map = true
-        --         vim.g.copilot_filetypes = {
-        --             telescope = false,
-        --             terminal = false,
-        --             xml = false,
-        --         }
-        --     end,
-        -- }
-
-        use {
-            "zbirenbaum/copilot.lua",
-            event = { "VimEnter" },
-            after = "bufferline.nvim",
-            config = function()
-                vim.defer_fn(function()
-                    require("copilot").setup { ft_disable = { "telescope", "terminal" } }
-                end, 100)
-            end,
-        }
-        use {
-            "zbirenbaum/copilot-cmp",
-            after = { "copilot.lua", "nvim-cmp" },
-        }
 
         use {
             "sindrets/diffview.nvim",
