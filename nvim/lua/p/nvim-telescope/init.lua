@@ -72,13 +72,13 @@ M.setup = function()
 
     require("telescope").load_extension "ui-select"
 
-    map_cmd("n|<space>o", "Telescope oldfiles theme=ivy")
-    map_cmd("n|<space>p", "Telescope find_files theme=ivy")
-    map_cmd("n|<space>f", "Telescope live_grep theme=ivy")
-    map_cmd("n|<space>b", "Telescope buffers theme=ivy")
-    map_cmd("n|<space>r", "Telescope registers theme=ivy")
-    map_cmd("n|<space>m", "Telescope marks theme=ivy")
-    map("n|<space><space>", ":Telescope <space>")
+    vim.keymap.set("n", "<space>o", "<cmd>Telescope oldfiles<cr>")
+    vim.keymap.set("n", "<space>p", "<cmd>Telescope find_files<cr>")
+    vim.keymap.set("n", "<space>f", "<cmd>Telescope live_grep<cr>")
+    vim.keymap.set("n", "<space>b", "<cmd>Telescope buffers<cr>")
+    vim.keymap.set("n", "<space>r", "<cmd>Telescope registers<cr>")
+    vim.keymap.set("n", "<space>m", "<cmd>Telescope marks<cr>")
+    vim.keymap.set("n", "<space><space>", "<cmd>Telescope <space>")
 end
 
 return M

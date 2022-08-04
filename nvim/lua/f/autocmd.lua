@@ -1,28 +1,43 @@
-local CursorLineControlGroup = vim.api.nvim_create_augroup("CursorLineControl", { clear = true })
-local set_cursorline = function(event, value, pattern)
-    vim.api.nvim_create_autocmd(event, {
-        group = CursorLineControlGroup,
-        pattern = pattern,
-        callback = function()
-            vim.opt_local.cursorline = value
-        end,
-    })
-end
-set_cursorline("WinLeave", false)
-set_cursorline("WinEnter", true)
-set_cursorline("FileType", false, "TelescopePrompt")
+local autocmd_group = vim.api.nvim_create_augroup("neovim_autocmd", { clear = true })
 
-local LuaHighlightGroup = vim.api.nvim_create_augroup("LuaHighlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-    group = LuaHighlightGroup,
+vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
+    group = autocmd_group,
     callback = function()
-        vim.highlight.on_yank { higroup = "IncSearch", timeout = 300, on_macro = true }
+        if vim.o.nu and vim.fn.mode() ~= "i" then
+            vim.o.rnu = true
+        end
+        vim.o.cul = true
     end,
 })
 
-local MiscGroup = vim.api.nvim_create_augroup("Misc", { clear = true })
+vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
+    group = autocmd_group,
+    callback = function()
+        if vim.o.nu then
+            vim.o.rnu = false
+        end
+        vim.o.cul = false
+    end,
+})
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+    group = autocmd_group,
+    callback = function()
+        vim.opt.formatoptions = vim.opt.formatoptions
+            - "o" -- O and o, don't continue comments
+            + "r" -- But do continue when pressing enter.
+    end,
+})
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+    group = autocmd_group,
+    callback = function()
+        vim.highlight.on_yank { higroup = "IncSearch", timeout = 200 }
+    end,
+})
+
 vim.api.nvim_create_autocmd("BufWritePre", {
-    group = MiscGroup,
+    group = autocmd_group,
     callback = function()
         vim.fn.execute [[%s/\s\+$//e]]
         vim.fn.execute [[%s/\n\+\%$//e]]

@@ -1,10 +1,7 @@
 require("bufferline").setup {
     options = {
         themable = true,
-        close_command = nil,
-        right_mouse_command = nil, -- can be a string | function, see "Mouse actions"
-        left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
-        middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
+        left_mouse_command = "buffer %d",
         show_buffer_close_icons = false,
         modified_icon = "●",
         left_trunc_marker = "",
@@ -16,16 +13,16 @@ require("bufferline").setup {
     },
 }
 
-map_cmd("n|[b", "BufferLineCyclePrev")
-map_cmd("n|]b", "BufferLineCycleNext")
-map_cmd("n|[B", "BufferLineMovePrev")
-map_cmd("n|]B", "BufferLineMoveNext")
-map_cmd("n|\\b", "BufferLineTogglePin")
-map_cmd("n|<bs>b", "Bdelete!")
+vim.keymap.set("n", "[b", "<cmd>BufferLineCyclePrev<cr>")
+vim.keymap.set("n", "]b", "<cmd>BufferLineCycleNext<cr>")
+vim.keymap.set("n", "[B", "<cmd>BufferLineMovePrev<cr>")
+vim.keymap.set("n", "]B", "<cmd>BufferLineMoveNext<cr>")
+vim.keymap.set("n", "\\b", "<cmd>BufferLineTogglePin<cr>")
+vim.keymap.set("n", "<bs>b", "<cmd>Bdelete!<cr>")
 
-map_cmd("n|[f", "BufferLineCyclePrev")
-map_cmd("n|]f", "BufferLineCycleNext")
-map_cmd("n|[F", "BufferLineMovePrev")
-map_cmd("n|]F", "BufferLineMoveNext")
-map_cmd("n|\\f", "BufferLinePick")
-map_cmd("n|<bs>f", "Bdelete!")
+vim.keymap.set("n", "[f", "<cmd>BufferLineCyclePrev<cr>")
+vim.keymap.set("n", "]f", "<cmd>BufferLineCycleNext<cr>")
+vim.keymap.set("n", "[F", "<cmd>BufferLineMovePrev<cr>")
+vim.keymap.set("n", "]F", "<cmd>BufferLineMoveNext<cr>")
+vim.keymap.set("n", "\\f", "<cmd>BufferLinePick<cr>")
+vim.keymap.set("n", "<bs>f", "<cmd>Bdelete!<cr>")

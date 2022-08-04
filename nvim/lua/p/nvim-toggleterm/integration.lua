@@ -28,8 +28,8 @@ function Lazygit_toggle()
     lazygit:open()
 end
 
-map_cmd("n|<c-w>g", "lua Lazygit_toggle()")
-map_cmd("n|<leader>g", "lua Lazygit_toggle()")
+vim.keymap.set("n", "<c-w>g", "<cmd>lua Lazygit_toggle()<cr>")
+vim.keymap.set("n", "<space>g", "<cmd>lua Lazygit_toggle()<cr>")
 
 function LF_toggle(path)
     local tmpfile = "/tmp/lf_chosenfile"
@@ -60,4 +60,4 @@ function LF_toggle(path)
     lf:open()
 end
 
-map_cmd("n|<leader>e", "lua LF_toggle('%')")
+vim.keymap.set("n", "<space>e", "<cmd>lua LF_toggle('%')<cr>")

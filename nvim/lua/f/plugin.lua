@@ -34,30 +34,30 @@ require("packer").startup {
             end,
         }
         use {
-            "ishan9299/nvim-solarized-lua",
-            config = function()
-                vim.g.solarized_diffmode = "low"
-                -- vim.fn.execute "color solarized"
-            end,
+            "glepnir/dashboard-nvim",
+            config = [[require("p.nvim-startup")]],
         }
-        use { "kyazdani42/nvim-web-devicons", config = [[require("nvim-web-devicons").setup()]] }
+        use {
+            "glepnir/galaxyline.nvim",
+            branch = "main",
+            config = function()
+                -- require "my_statusline"
+            end,
+            requires = { "kyazdani42/nvim-web-devicons", opt = true },
+        }
         use {
             "akinsho/bufferline.nvim",
-            tag = "*",
-            requires = { "famiu/bufdelete.nvim" },
+            tag = "v2.*",
+            requires = { "kyazdani42/nvim-web-devicons", "famiu/bufdelete.nvim" },
             config = [[require("p.nvim-bufferline")]],
         }
-        use { "nvim-lualine/lualine.nvim", config = [[require("p.nvim-lualine")]] }
+        -- use { "nvim-lualine/lualine.nvim", config = [[require("p.nvim-lualine")]] }
         use {
             "nvim-telescope/telescope.nvim",
             config = [[require("p.nvim-telescope").setup()]],
             requires = {
                 "nvim-telescope/telescope-ui-select.nvim",
             },
-        }
-        use {
-            "startup-nvim/startup.nvim",
-            config = [[require("p.nvim-startup")]],
         }
         use {
             "nvim-treesitter/nvim-treesitter",
@@ -126,7 +126,7 @@ require("packer").startup {
             config = [[require'diffview'.setup()]],
         }
         use {
-            "windwp/nvim-spectre",
+            "nvim-pack/nvim-spectre",
             config = [[require("p.nvim-spectre")]],
         }
         use { "kevinhwang91/nvim-bqf", ft = "qf" }
@@ -169,12 +169,10 @@ require("packer").startup {
         use {
             "mg979/vim-visual-multi",
             setup = function()
-                var_tbl {
-                    VM_default_mappings = 0,
-                    VM_maps = {
-                        ["Add Cursor Down"] = "<M-j>",
-                        ["Add Cursor Up"] = "<M-k>",
-                    },
+                vim.g.VM_default_mappings = 0
+                vim.g.VM_maps = {
+                    ["Add Cursor Down"] = "<M-j>",
+                    ["Add Cursor Up"] = "<M-k>",
                 }
             end,
         }

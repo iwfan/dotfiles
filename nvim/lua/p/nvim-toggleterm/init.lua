@@ -20,7 +20,7 @@ require("toggleterm").setup {
     },
 }
 
-map_cmd("n|<C-w>t", "ToggleTerm")
-map_cmd("n|<C-w>b", "ToggleTerm direction=horizontal")
+vim.keymap.set("n", "<C-w>t", "<cmd>ToggleTerm<cr>")
+vim.keymap.set("n", "<C-w>b", "<cmd>ToggleTerm direction=horizontal<cr>")
 
 require "p.nvim-toggleterm.integration"

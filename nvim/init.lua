@@ -30,6 +30,8 @@ end
 
 local modules = vim.tbl_map(path_transformer, config_modules_paths)
 
+table.sort(modules)
+
 for _, module in pairs(modules) do
     local ok = pcall(require, module)
     if not ok then

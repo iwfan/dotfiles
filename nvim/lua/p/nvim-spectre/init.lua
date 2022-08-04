@@ -1,2 +1,2 @@
-map_cmd("n|<C-q>f", "lua require('spectre').open_visual({select_word=true})")
-map_cmd("v|<C-q>f", "lua require('spectre').open_visual()")
+vim.keymap.set("n", "<C-q>f", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>")
+vim.keymap.set("v", "<C-q>f", "<cmd>lua require('spectre').open_visual()<cr>")

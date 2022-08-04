@@ -1,4 +1,6 @@
-local startup_custom_header = {
+local db = require "dashboard"
+
+db.custom_header = {
     "                                                                                  ",
     "     ▄▄        ▄▄                                                                 ",
     "   ▄████       ███▄                                            ▄▄                 ",
@@ -18,65 +20,41 @@ local startup_custom_header = {
     ) .. "",
 }
 
-local settings = {
-    header = {
-        type = "text",
-        oldfiles_directory = false,
-        align = "center",
-        fold_section = false,
-        title = "Header",
-        margin = 5,
-        content = startup_custom_header,
-        highlight = "Operator",
-        default_color = "",
-        oldfiles_amount = 0,
+db.custom_center = {
+    {
+        icon = " ",
+        desc = "Recent Files                            ",
+        action = "Telescope oldfiles",
+        shortcut = "SPC o",
     },
-    body = {
-        type = "mapping",
-        oldfiles_directory = false,
-        align = "center",
-        fold_section = false,
-        title = "Basic Commands",
-        margin = 5,
-        content = {
-            { "  Recent Files", "Telescope oldfiles theme=ivy", "SPC ?" },
-            { "  Git Status", "Telescope git_status theme=ivy", "SPC ?" },
-            { "  Find File", "Telescope find_files theme=ivy", "SPC p" },
-            { "  Find Word", "Telescope live_grep theme=ivy", "SPC f" },
-            { "  Bookmarks", "Telescope marks theme=ivy", "SPC m" },
-        },
-        highlight = "String",
-        default_color = "",
-        oldfiles_amount = 0,
+    {
+        icon = " ",
+        desc = "Find Files                              ",
+        action = "Telescope find_files find_command=rg,--hidden,--files",
+        shortcut = "SPC p",
     },
-    footer = {
-        type = "text",
-        oldfiles_directory = false,
-        align = "center",
-        fold_section = false,
-        title = "Footer",
-        margin = 5,
-        content = { "Touching fish makes working efficiently." },
-        highlight = "Comment",
-        default_color = "",
-        oldfiles_amount = 0,
+    {
+        icon = " ",
+        desc = "Live Grep                               ",
+        action = "Telescope live_grep",
+        shortcut = "SPC f",
     },
-
-    options = {
-        mapping_keys = true,
-        cursor_column = 0.5,
-        empty_lines_between_mappings = true,
-        disable_statuslines = true,
-        paddings = { 1, 3, 3, 0 },
+    {
+        icon = " ",
+        desc = "Git Status                              ",
+        action = "Telescope git_status",
+        shortcut = "SPC g",
     },
-    mappings = {
-        execute_command = "<CR>",
-        open_file = "o",
-        open_file_split = "<c-o>",
-        open_section = "<TAB>",
-        open_help = "?",
+    {
+        icon = " ",
+        desc = "Bookmarks                               ",
+        action = "Telescope marks",
+        shortcut = "SPC m",
     },
-    parts = { "header", "body", "footer" },
+    {
+        icon = " ",
+        desc = "Update Plugins                          ",
+        action = "PackerUpdate",
+        shortcut = "     ",
+    },
 }
-
-require("startup").setup(settings)

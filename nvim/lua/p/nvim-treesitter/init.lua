@@ -108,8 +108,8 @@ M.setup = function()
                 enable = true,
                 border = 'none',
                 peek_definition_code = {
-                    ["<leader>df"] = "@function.outer",
-                    ["<leader>dF"] = "@class.outer",
+                    ["<space>df"] = "@function.outer",
+                    ["<space>dF"] = "@class.outer",
                 },
             },
         },
