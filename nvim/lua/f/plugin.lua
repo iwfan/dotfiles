@@ -40,9 +40,7 @@ require("packer").startup {
         use {
             "glepnir/galaxyline.nvim",
             branch = "main",
-            config = function()
-                -- require "my_statusline"
-            end,
+            config = [[require("p.nvim-statusline")]],
             requires = { "kyazdani42/nvim-web-devicons", opt = true },
         }
         use {
@@ -51,11 +49,12 @@ require("packer").startup {
             requires = { "kyazdani42/nvim-web-devicons", "famiu/bufdelete.nvim" },
             config = [[require("p.nvim-bufferline")]],
         }
-        -- use { "nvim-lualine/lualine.nvim", config = [[require("p.nvim-lualine")]] }
         use {
             "nvim-telescope/telescope.nvim",
+            tag = "0.1.0",
             config = [[require("p.nvim-telescope").setup()]],
             requires = {
+                "nvim-lua/plenary.nvim",
                 "nvim-telescope/telescope-ui-select.nvim",
             },
         }

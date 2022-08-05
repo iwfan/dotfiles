@@ -15,8 +15,8 @@ M.setup = function()
                 "--hidden",
                 "--glob=!.git/",
             },
-            prompt_prefix = " ",
-            selection_caret = " ",
+            prompt_prefix = " ",
+            selection_caret = " ",
             sorting_strategy = "ascending",
             layout_config = {
                 prompt_position = "top",
@@ -63,9 +63,7 @@ M.setup = function()
         },
         extensions = {
             ["ui-select"] = {
-                require("telescope.themes").get_dropdown {
-                    -- even more opts
-                },
+                require("telescope.themes").get_dropdown {},
             },
         },
     }

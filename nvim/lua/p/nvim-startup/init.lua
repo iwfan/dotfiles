@@ -2,6 +2,7 @@ local db = require "dashboard"
 
 db.custom_header = {
     "                                                                                  ",
+    "                                                                                  ",
     "     ▄▄        ▄▄                                                                 ",
     "   ▄████       ███▄                                            ▄▄                 ",
     " ▄ ▀█████▄     █████                                           ▀▀                 ",
@@ -13,47 +14,47 @@ db.custom_header = {
     " ▀   ▐      ▀█████ █                                                              ",
     "   ▀▄▐       ▀████                                                                ",
     "     ▀         ▀                                                                  ",
-    "                                                                                  ",
     "                                                           version: " .. vim.fn.matchstr(
         vim.fn.execute "version",
         [[NVIM v\zs[^\n]*]]
     ) .. "",
+    "                                                                                  ",
 }
 
 db.custom_center = {
     {
         icon = " ",
-        desc = "Recent Files                            ",
+        desc = "Recent Files                  ",
         action = "Telescope oldfiles",
         shortcut = "SPC o",
     },
     {
         icon = " ",
-        desc = "Find Files                              ",
+        desc = "Find Files                    ",
         action = "Telescope find_files find_command=rg,--hidden,--files",
         shortcut = "SPC p",
     },
     {
         icon = " ",
-        desc = "Live Grep                               ",
+        desc = "Live Grep                     ",
         action = "Telescope live_grep",
         shortcut = "SPC f",
     },
     {
         icon = " ",
-        desc = "Git Status                              ",
+        desc = "Git Status                    ",
         action = "Telescope git_status",
         shortcut = "SPC g",
     },
     {
         icon = " ",
-        desc = "Bookmarks                               ",
+        desc = "Bookmarks                     ",
         action = "Telescope marks",
         shortcut = "SPC m",
     },
     {
         icon = " ",
-        desc = "Update Plugins                          ",
+        desc = "Update Plugins                ",
         action = "PackerUpdate",
         shortcut = "     ",
     },
