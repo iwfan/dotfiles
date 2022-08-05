@@ -30,7 +30,7 @@ fish_add_path $GOPATH/bin
 set -gx GUILE_AUTO_COMPILE 0
 
 # Bat
-set -gx BAT_PAGER "less -R"
+set -gx BAT_PAGER "less -RF"
 set -gx BAT_STYLE "changes,numbers"
 set -gx BAT_THEME "ansi"
 
