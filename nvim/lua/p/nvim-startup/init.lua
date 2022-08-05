@@ -31,7 +31,7 @@ db.custom_center = {
     {
         icon = " ",
         desc = "Find Files                    ",
-        action = "Telescope find_files find_command=rg,--hidden,--files",
+        action = "Telescope find_files",
         shortcut = "SPC p",
     },
     {

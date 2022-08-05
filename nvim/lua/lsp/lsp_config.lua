@@ -6,60 +6,28 @@ for type, icon in pairs(signs) do
 end
 
 vim.diagnostic.config {
-    virtual_text = true,
-    signs = {
-        active = signs,
-    },
-    update_in_insert = true,
-    underline = true,
-    severity_sort = true,
-    float = {
-        focusable = false,
-        style = "minimal",
-        border = "rounded",
-        source = "always",
-        header = "",
-        prefix = "",
-    },
-}
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = "rounded",
-})
-
--- Jump directly to the first available definition every time.
-vim.lsp.handlers["textDocument/definition"] = function(_, result)
-    if not result or vim.tbl_isempty(result) then
-        print "[LSP] Could not find definition"
-        return
-    end
-
-    if vim.tbl_islist(result) then
-        vim.lsp.util.jump_to_location(result[1], "utf-8")
-    else
-        vim.lsp.util.jump_to_location(result, "utf-8")
-    end
-end
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true,
     virtual_text = {
-        spacing = 5,
-        severity_limit = "Warning",
+        prefix = "",
+        format = function(diagnostic)
+            if diagnostic.severity == vim.diagnostic.severity.ERROR then
+                return "  " .. diagnostic.message
+            elseif diagnostic.severity == vim.diagnostic.severity.WARN then
+                return "  " .. diagnostic.message
+            end
+            return nil
+        end,
     },
-    signs = {
-        severity_limit = "Warning",
-    },
-    update_in_insert = true,
-})
 
-function _G.open_lsp_log()
+    signs = {
+        severity = vim.diagnostic.severity.ERROR,
+    },
+    float = { severity_sort = true },
+    update_in_insert = true,
+    severity_sort = true,
+}
+
+vim.api.nvim_create_user_command("LspLog", function()
     local path = vim.lsp.get_log_path()
     vim.cmd("tabedit " .. path)
-end
-
-vim.cmd "command! -nargs=0 LspLog call v:lua.open_lsp_log()"
+end, { force = true, nargs = 0 })

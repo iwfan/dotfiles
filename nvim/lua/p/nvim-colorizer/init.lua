@@ -1,0 +1,21 @@
+require("colorizer").setup {
+    css = { css = true },
+    less = { css = true },
+    scss = { css = true },
+    sass = { css = true },
+    vue = { css = true },
+    "javascript",
+    "javascriptreact",
+    "typescriptreact",
+    "typescript",
+    "lua",
+    "json",
+    "tmux",
+    "conf",
+    "dosini",
+    "readme",
+    html = {
+        css = true,
+        mode = "foreground",
+    },
+}

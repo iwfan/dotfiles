@@ -1,82 +1,76 @@
-local M = {}
-
-M.setup = function()
-    local actions = require "telescope.actions"
-    require("telescope").setup {
-        defaults = {
-            vimgrep_arguments = {
-                "rg",
-                "--color=never",
-                "--no-heading",
-                "--with-filename",
-                "--line-number",
-                "--column",
-                "--smart-case",
+local actions = require "telescope.actions"
+require("telescope").setup {
+    defaults = {
+        vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--hidden",
+            "--glob=!.git/",
+        },
+        prompt_prefix = " ",
+        selection_caret = " ",
+        sorting_strategy = "ascending",
+        layout_config = {
+            prompt_position = "top",
+        },
+        mappings = {
+            i = {
+                ["<C-n>"] = actions.move_selection_next,
+                ["<C-p>"] = actions.move_selection_previous,
+                ["<C-c>"] = actions.close,
+                ["<C-j>"] = actions.cycle_history_next,
+                ["<C-k>"] = actions.cycle_history_prev,
+                ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+                ["<CR>"] = actions.select_default + actions.center,
+            },
+            n = {
+                ["<C-n>"] = actions.move_selection_next,
+                ["<C-p>"] = actions.move_selection_previous,
+                ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+            },
+        },
+    },
+    pickers = {
+        find_files = {
+            find_command = {
+                "fd",
+                "--type=file",
                 "--hidden",
-                "--glob=!.git/",
-            },
-            prompt_prefix = " ",
-            selection_caret = " ",
-            sorting_strategy = "ascending",
-            layout_config = {
-                prompt_position = "top",
-            },
-            mappings = {
-                i = {
-                    ["<C-n>"] = actions.move_selection_next,
-                    ["<C-p>"] = actions.move_selection_previous,
-                    ["<C-c>"] = actions.close,
-                    ["<C-j>"] = actions.cycle_history_next,
-                    ["<C-k>"] = actions.cycle_history_prev,
-                    ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-                    ["<CR>"] = actions.select_default + actions.center,
-                },
-                n = {
-                    ["<C-n>"] = actions.move_selection_next,
-                    ["<C-p>"] = actions.move_selection_previous,
-                    ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-                },
+                "--exclude=.git",
+                "--exclude=.idea",
+                "--exclude=node_modules",
+                "--exclude=dist",
+                "--exclude=out",
+                "--exclude=.next",
+                "--exclude=.cache",
             },
         },
-        pickers = {
-            find_files = {
-                find_command = {
-                    "fd",
-                    "--type=file",
-                    "--hidden",
-                    "--exclude=.git",
-                    "--exclude=.idea",
-                    "--exclude=node_modules",
-                    "--exclude=dist",
-                    "--exclude=out",
-                    "--exclude=.next",
-                    "--exclude=.cache",
-                },
-            },
-            oldfiles = {
-                only_cwd = true,
-            },
-            live_grep = {
-                --@usage don't include the filename in the search results
-                only_sort_text = true,
-            },
+        oldfiles = {
+            only_cwd = true,
         },
-        extensions = {
-            ["ui-select"] = {
-                require("telescope.themes").get_dropdown {},
-            },
+        live_grep = {
+            --@usage don't include the filename in the search results
+            only_sort_text = true,
         },
-    }
+    },
+    extensions = {
+        ["ui-select"] = {
+            require("telescope.themes").get_dropdown {},
+        },
+    },
+}
 
-    require("telescope").load_extension "ui-select"
+require("telescope").load_extension "ui-select"
 
-    vim.keymap.set("n", "<space>o", "<cmd>Telescope oldfiles<cr>")
-    vim.keymap.set("n", "<space>p", "<cmd>Telescope find_files<cr>")
-    vim.keymap.set("n", "<space>f", "<cmd>Telescope live_grep<cr>")
-    vim.keymap.set("n", "<space>b", "<cmd>Telescope buffers<cr>")
-    vim.keymap.set("n", "<space>r", "<cmd>Telescope registers<cr>")
-    vim.keymap.set("n", "<space>m", "<cmd>Telescope marks<cr>")
-    vim.keymap.set("n", "<space><space>", "<cmd>Telescope <space>")
-end
-
-return M
+vim.keymap.set("n", "<space>o", "<cmd>Telescope oldfiles<cr>")
+vim.keymap.set("n", "<space>p", "<cmd>Telescope find_files<cr>")
+vim.keymap.set("n", "<space>f", "<cmd>Telescope live_grep<cr>")
+vim.keymap.set("n", "<space>b", "<cmd>Telescope buffers<cr>")
+vim.keymap.set("n", "<space>r", "<cmd>Telescope registers<cr>")
+vim.keymap.set("n", "<space>m", "<cmd>Telescope marks<cr>")
+vim.keymap.set("n", "<space><space>", "<cmd>Telescope <space>")

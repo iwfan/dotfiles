@@ -2,12 +2,20 @@ vim.g.mapleader = " "
 
 vim.keymap.set("n", "k", [[(v:count == 0 ? 'gk' : 'k')]], { expr = true })
 vim.keymap.set("n", "j", [[(v:count == 0 ? 'gj' : 'j')]], { expr = true })
-vim.keymap.set({ "n", "v" }, "H", "^")
-vim.keymap.set({ "n", "v" }, "L", "g_")
+
+vim.keymap.set({ "n", "v", "o" }, "H", "^")
+vim.keymap.set({ "n", "v", "o" }, "L", "g_")
+vim.keymap.set({ "n", "v", "o" }, "M", "%")
+vim.keymap.set({ "n", "v", "o" }, "]w", "g*")
+vim.keymap.set({ "n", "v", "o" }, "[w", "g#")
+
+vim.keymap.set("n", "n", "nzz")
+vim.keymap.set("n", "N", "Nzz")
+
 vim.keymap.set("n", "q", "")
-vim.keymap.set("n", "<C-q>", "")
 vim.keymap.set("n", "gq", "q")
 vim.keymap.set("n", "<esc>", "<cmd>noh<cr><esc>")
+vim.keymap.set("n", "<space><bs>", '"_dd')
 
 vim.keymap.set("i", "<C-a>", "<C-o>^")
 vim.keymap.set("c", "<C-a>", "<HOME>")
@@ -30,12 +38,9 @@ vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("n", "<", "<<")
 vim.keymap.set("n", ">", ">>")
 
-vim.keymap.set({ "n", "v" }, "]w", "g*")
-vim.keymap.set({ "n", "v" }, "[w", "g#")
-
 vim.keymap.set("x", "<c-k>", ":move '<-2<CR>gv-gv")
 vim.keymap.set("x", "<c-j>", ":move '>+1<CR>gv-gv")
-vim.keymap.set("n", "<space><bs>", '"_dd')
+
 vim.keymap.set("n", "\\q", "<cmd>copen<cr>")
 vim.keymap.set("n", "<bs>q", "<cmd>cclose<cr>")
 

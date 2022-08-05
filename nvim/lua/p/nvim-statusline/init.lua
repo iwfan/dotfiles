@@ -1,5 +1,6 @@
 local statusline = require "galaxyline"
 local condition = require "galaxyline.condition"
+local lsp_status = require "lsp-status"
 
 local colors = {
     bg = "#32302f",
@@ -30,41 +31,11 @@ end
 
 local function lsp()
     local msg = " "
-    local priority_map = {
-        bash = 1,
-        tsserver = 1,
-        sumneko_lua = 1,
-        gopls = 1,
-        graphql = 2,
-        jsonls = 2,
-        yamlls = 2,
-        html = 2,
-        cssls = 3,
-        tailwindcss = 10,
-        eslint = 10,
-        emmet_ls = 10,
-        cssmodules_ls = 10,
-        ["null-ls"] = 10,
-    }
-    local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
     local clients = vim.lsp.get_active_clients()
     if next(clients) == nil then
         return msg
     end
-    local client_names = {}
-    for _, client in ipairs(clients) do
-        local filetypes = client.config.filetypes
-        if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-            table.insert(client_names, client.name)
-        end
-    end
-    if next(client_names) == nil then
-        return msg
-    end
-    table.sort(client_names, function(left, right)
-        return priority_map[left] < priority_map[right]
-    end)
-    return " " .. client_names[1]
+    return lsp_status.status()
 end
 
 statusline.short_line_list = { "NvimTree", "vista", "dbui", "packer", "vista_kind", "terminal", "dashboard" }
@@ -75,6 +46,15 @@ insert_left {
             return "    "
         end,
         highlight = { colors.grey },
+    },
+}
+
+insert_left {
+    PreGitBranch = {
+        provider = function()
+            return ""
+        end,
+        condition = condition.check_git_workspace,
         separator = "",
         separator_highlight = { colors.bg },
     },
@@ -97,6 +77,7 @@ insert_left {
             return ""
         end,
         separator = "",
+        condition = condition.buffer_not_empty,
         separator_highlight = { colors.bg },
     },
 }

@@ -1,5 +1,5 @@
-return function(opts)
-    opts.settings = {
+return function(on_attach, capabilities)
+    local settings = {
         Lua = {
             diagnostics = {
                 globals = {
@@ -16,6 +16,7 @@ return function(opts)
                 },
             },
             workspace = {
+                checkThirdParty = false,
                 -- Make the server aware of Neovim runtime files
                 library = vim.api.nvim_get_runtime_file("", true),
             },
@@ -25,5 +26,17 @@ return function(opts)
             },
         },
     }
-    return opts
+
+    local luadev = require("lua-dev").setup {
+        lspconfig = {
+            on_attach = on_attach,
+            settings = settings,
+            flags = {
+                debounce_text_changes = 150,
+            },
+            capabilities = capabilities,
+        },
+    }
+
+    require("lspconfig").sumneko_lua.setup(luadev)
 end
