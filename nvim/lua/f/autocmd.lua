@@ -20,12 +20,14 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave"
     end,
 })
 
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "FileType" }, {
     group = autocmd_group,
     callback = function()
-        vim.opt.formatoptions = vim.opt.formatoptions
-            - "o" -- O and o, don't continue comments
-            + "r" -- But do continue when pressing enter.
+        if string.find(vim.o.fo, "o") then
+            vim.opt.formatoptions = vim.opt.formatoptions
+                - "o" -- O and o, don't continue comments
+                + "r" -- But do continue when pressing enter.
+        end
     end,
 })
 

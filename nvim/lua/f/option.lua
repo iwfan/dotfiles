@@ -74,12 +74,5 @@ vim.opt.fillchars = {
     fold = " ",
     eob = " ",
     diff = " ",
-    horiz = "━",
-    horizup = "┻",
-    horizdown = "┳",
-    vert = "┃",
-    vertleft = "┫",
-    vertright = "┣",
-    verthoriz = "╋",
 }
 -- }}}

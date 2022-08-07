@@ -147,7 +147,6 @@ insert_right {
         end,
         separator = "",
         highlight = { colors.grey, colors.bg },
-        condition = condition.buffer_not_empty,
         separator_highlight = { colors.bg },
     },
 }
@@ -201,7 +200,7 @@ insert_right {
             local column = vim.fn.col "."
             return string.format("%3d:%2d", line, column)
         end,
-        separator = "  ",
+        separator = " ",
         icon = "",
         condition = condition.hide_in_width,
         highlight = { colors.grey, colors.bg },
@@ -216,7 +215,6 @@ insert_right {
         end,
         separator = "",
         separator_highlight = { colors.bg },
-        condition = condition.buffer_not_empty,
     },
 }
 

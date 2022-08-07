@@ -120,12 +120,12 @@ return function(bufnr)
         codeaction.range_code_action()
     end, bufopts)
 
-    -- scroll down hover doc or scroll in definition preview
-    vim.keymap.set("n", "<C-d>", function()
-        action.smart_scroll_with_saga(1)
-    end, bufopts)
-    -- scroll up hover doc
-    vim.keymap.set("n", "<C-u>", function()
-        action.smart_scroll_with_saga(-1)
-    end, bufopts)
+    -- -- scroll down hover doc or scroll in definition preview
+    -- vim.keymap.set("n", "<C-d>", function()
+    --     action.smart_scroll_with_saga(1)
+    -- end, bufopts)
+    -- -- scroll up hover doc
+    -- vim.keymap.set("n", "<C-u>", function()
+    --     action.smart_scroll_with_saga(-1)
+    -- end, bufopts)
 end

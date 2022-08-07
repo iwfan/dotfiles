@@ -3,7 +3,7 @@ local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 local packer_bootstrap = nil
 if fn.empty(fn.glob(install_path)) > 0 then
     packer_bootstrap =
-    fn.system { "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path }
+        fn.system { "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path }
     vim.cmd [[packadd packer.nvim]]
 end
 
@@ -79,7 +79,7 @@ require("packer").startup {
             { "folke/lua-dev.nvim" },
             { "b0o/schemastore.nvim" },
             { "hrsh7th/cmp-nvim-lsp" },
-            { "jose-elias-alvarez/null-ls.nvim", config = "require('lsp.null-ls')" },
+            { "jose-elias-alvarez/null-ls.nvim" },
             { "williamboman/mason-lspconfig.nvim", config = "require('lsp.mason-lspconfig')" },
             { "hrsh7th/cmp-nvim-lua" },
             { "hrsh7th/cmp-buffer" },
@@ -94,26 +94,17 @@ require("packer").startup {
         use {
             { "tpope/vim-repeat" },
             { "tpope/vim-fugitive", cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" } },
-            { "tpope/vim-surround" },
-            {
-                "windwp/nvim-autopairs",
-                config = function()
-                    require("nvim-autopairs").setup {
-                        disable_filetype = { "TelescopePrompt", "vim" },
-                    }
-                end,
-            },
-            "windwp/nvim-ts-autotag",
-            {
-                "numToStr/Comment.nvim",
-                config = "require('p.nvim-comment')",
-            },
+            { "kylechui/nvim-surround", config = "require('nvim-surround').setup()" },
+            { "windwp/nvim-autopairs", config = "require('nvim-autopairs').setup()" },
+            { "windwp/nvim-ts-autotag" },
+            { "numToStr/Comment.nvim", config = "require('p.nvim-comment')" },
         }
 
         use {
             "sindrets/diffview.nvim",
             cmd = { "DiffviewOpen", "DiffviewFileHistory" },
             config = [[require'diffview'.setup()]],
+            requires = "nvim-lua/plenary.nvim",
         }
         use {
             "nvim-pack/nvim-spectre",
@@ -144,7 +135,8 @@ require("packer").startup {
                 }
             end,
         }
-        use { "akinsho/toggleterm.nvim", config = "require('p.nvim-toggleterm')" }
+        use { "akinsho/toggleterm.nvim", tag = "v2.*", config = "require('p.nvim-toggleterm')" }
+        use { "karb94/neoscroll.nvim", config = "require('neoscroll').setup()" }
         use { "gpanders/editorconfig.nvim" }
         use { "ggandor/lightspeed.nvim" }
         use { "farmergreg/vim-lastplace" }

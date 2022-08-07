@@ -1,4 +1,5 @@
 local actions = require "telescope.actions"
+
 require("telescope").setup {
     defaults = {
         vimgrep_arguments = {
@@ -66,9 +67,9 @@ require("telescope").setup {
 }
 
 require("telescope").load_extension "ui-select"
+require("telescope").load_extension "enhanced_find_files"
 
-vim.keymap.set("n", "<space>o", "<cmd>Telescope oldfiles<cr>")
-vim.keymap.set("n", "<space>p", "<cmd>Telescope find_files<cr>")
+vim.keymap.set("n", "<space>p", "<cmd>Telescope enhanced_find_files<cr>")
 vim.keymap.set("n", "<space>f", "<cmd>Telescope live_grep<cr>")
 vim.keymap.set("n", "<space>b", "<cmd>Telescope buffers<cr>")
 vim.keymap.set("n", "<space>r", "<cmd>Telescope registers<cr>")
