@@ -37,23 +37,6 @@ require("telescope").setup {
         },
     },
     pickers = {
-        find_files = {
-            find_command = {
-                "fd",
-                "--type=file",
-                "--hidden",
-                "--exclude=.git",
-                "--exclude=.idea",
-                "--exclude=node_modules",
-                "--exclude=dist",
-                "--exclude=out",
-                "--exclude=.next",
-                "--exclude=.cache",
-            },
-        },
-        oldfiles = {
-            only_cwd = true,
-        },
         live_grep = {
             --@usage don't include the filename in the search results
             only_sort_text = true,

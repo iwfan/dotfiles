@@ -23,15 +23,9 @@ db.custom_header = {
 
 db.custom_center = {
     {
-        icon = " ",
-        desc = "Recent Files                  ",
-        action = "Telescope oldfiles",
-        shortcut = "SPC o",
-    },
-    {
         icon = " ",
         desc = "Find Files                    ",
-        action = "Telescope find_files",
+        action = "Telescope enhanced_find_files",
         shortcut = "SPC p",
     },
     {
