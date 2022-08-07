@@ -141,13 +141,26 @@ insert_right {
 }
 
 insert_right {
+    RightSepLeftBlank = {
+        provider = function()
+            return ""
+        end,
+        separator = "",
+        highlight = { colors.grey, colors.bg },
+        condition = condition.buffer_not_empty,
+        separator_highlight = { colors.bg },
+    },
+}
+
+insert_right {
     Tabstop = {
         provider = function()
             return "SPC:" .. vim.api.nvim_buf_get_option(0, "shiftwidth")
         end,
-        separator = " ",
+        separator = "",
         condition = condition.hide_in_width,
-        highlight = { colors.grey },
+        highlight = { colors.grey, colors.bg },
+        separator_highlight = { colors.bg, colors.bg },
     },
 }
 
@@ -157,9 +170,10 @@ insert_right {
             local encode = vim.bo.fenc ~= "" and vim.bo.fenc or vim.o.enc
             return encode:upper()
         end,
-        separator = " ",
+        separator = "  ",
         condition = condition.hide_in_width,
-        highlight = { colors.grey },
+        highlight = { colors.grey, colors.bg },
+        separator_highlight = { colors.bg, colors.bg },
     },
 }
 
@@ -174,8 +188,9 @@ insert_right {
             end
         end,
         condition = condition.hide_in_width,
-        separator = " ",
-        highlight = { colors.grey },
+        separator = "  ",
+        highlight = { colors.grey, colors.bg },
+        separator_highlight = { colors.bg, colors.bg },
     },
 }
 
@@ -186,10 +201,22 @@ insert_right {
             local column = vim.fn.col "."
             return string.format("%3d:%2d", line, column)
         end,
-        separator = " ",
+        separator = "  ",
         icon = "",
         condition = condition.hide_in_width,
-        highlight = { colors.grey },
+        highlight = { colors.grey, colors.bg },
+        separator_highlight = { colors.bg, colors.bg },
+    },
+}
+
+insert_right {
+    RightSepRightBlank = {
+        provider = function()
+            return ""
+        end,
+        separator = "",
+        separator_highlight = { colors.bg },
+        condition = condition.buffer_not_empty,
     },
 }
 
