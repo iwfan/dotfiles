@@ -12,6 +12,8 @@ require("indent_blankline").setup {
         "sass",
         "lua",
         "go",
+        "ruby",
+        "erb",
         "rust",
         "json",
         "yaml",
