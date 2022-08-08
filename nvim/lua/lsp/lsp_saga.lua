@@ -1,5 +1,4 @@
 local saga = require "lspsaga"
-local action = require "lspsaga.action"
 local diagnostic = require "lspsaga.diagnostic"
 local codeaction = require "lspsaga.codeaction"
 
@@ -43,8 +42,8 @@ saga.init_lsp_saga {
     },
     -- finder icons
     finder_icons = {
-        def = "  ",
-        ref = "諭 ",
+        def = "  ",
+        ref = "  ",
         link = "  ",
     },
     -- finder do lsp request timeout
@@ -66,7 +65,6 @@ saga.init_lsp_saga {
     },
     rename_action_quit = "<C-c>",
     rename_in_select = true,
-    definition_preview_icon = "  ",
     -- show symbols in winbar must nightly
     symbol_in_winbar = {
         in_custom = false,
@@ -98,9 +96,7 @@ saga.init_lsp_saga {
 return function(bufnr)
     local bufopts = { silent = true, buffer = bufnr }
     vim.keymap.set("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", bufopts)
-    vim.keymap.set("n", "gd", "<cmd>Lspsaga preview_definition<CR>", bufopts)
-    vim.keymap.set("n", "gi", "<cmd>Lspsaga implement<CR>", bufopts)
-    vim.keymap.set("n", "gs", "<cmd>Lspsaga signature_help<CR>", bufopts)
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
     vim.keymap.set("n", "<M-r>", "<cmd>Lspsaga rename<CR>", bufopts)
     vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", bufopts)
 
@@ -119,13 +115,4 @@ return function(bufnr)
         vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
         codeaction.range_code_action()
     end, bufopts)
-
-    -- -- scroll down hover doc or scroll in definition preview
-    -- vim.keymap.set("n", "<C-d>", function()
-    --     action.smart_scroll_with_saga(1)
-    -- end, bufopts)
-    -- -- scroll up hover doc
-    -- vim.keymap.set("n", "<C-u>", function()
-    --     action.smart_scroll_with_saga(-1)
-    -- end, bufopts)
 end

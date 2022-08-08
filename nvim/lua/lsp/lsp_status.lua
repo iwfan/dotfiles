@@ -18,10 +18,7 @@ nvim_status.config {
     end,
     diagnostics = false,
     current_function = false,
-    indicator_errors = FONT_ICON.error,
-    indicator_warnings = FONT_ICON.warn,
-    indicator_info = FONT_ICON.hint,
-    indicator_hint = FONT_ICON.info,
     status_symbol = "  ",
+    spinner_frames = { "⠲", "⠴", "⠦", "⠖" },
     update_interval = 100,
 }
