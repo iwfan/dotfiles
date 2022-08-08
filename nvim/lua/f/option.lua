@@ -43,7 +43,6 @@ vim.opt.scrolloff = 10
 vim.opt.pumblend = 10
 vim.opt.winblend = 10
 vim.opt.pumheight = 20
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- tabs & indent
 vim.opt.tabstop = 2

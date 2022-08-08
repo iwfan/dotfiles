@@ -1,29 +1,14 @@
 local cmp = require "cmp"
 local luasnip = require "luasnip"
+local types = require "luasnip.util.types"
+
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 cmp.setup {
-    preselect = cmp.PreselectMode.None,
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
         end,
-    },
-    duplicates = {
-        nvim_lsp = 1,
-        luasnip = 1,
-        buffer = 1,
-        path = 1,
-    },
-    confirm_opts = {
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = false,
-    },
-    experimental = {
-        ghost_text = false,
-        native_menu = false,
-    },
-    completion = {
-        keyword_length = 1,
     },
     mapping = {
         ["<Up>"] = cmp.mapping.select_prev_item(),
@@ -99,10 +84,10 @@ cmp.setup {
     },
 
     sources = {
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "buffer" },
-        { name = "nvim_lua" },
+        { name = "luasnip", priority = 9999, keyword_length = 2, max_item_count = 2 },
+        { name = "nvim_lsp", keyword_length = 3 },
+        { name = "nvim_lua", keyword_length = 3 },
+        { name = "buffer", keyword_length = 3 },
         { name = "path" },
     },
 }
@@ -125,12 +110,17 @@ cmp.setup.cmdline(":", {
     }),
 })
 
-require("luasnip").config.set_config {
+luasnip.config.set_config {
     history = true,
     updateevents = "TextChanged,TextChangedI",
+    delete_check_events = "TextChanged",
+    ext_opts = { [types.choiceNode] = { active = { virt_text = { { "choiceNode", "Comment" } } } } },
     enable_autosnippets = true,
 }
-require("luasnip.loaders.from_vscode").lazy_load()
+
+require("luasnip.loaders.from_vscode").lazy_load {
+    paths = { vim.fn.stdpath "data" .. "/site/pack/packer/opt/friendly-snippets" },
+}
 
 local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })

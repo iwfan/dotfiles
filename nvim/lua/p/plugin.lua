@@ -87,7 +87,7 @@ require("packer").startup {
             { "hrsh7th/cmp-cmdline" },
             { "L3MON4D3/LuaSnip" },
             { "saadparwaiz1/cmp_luasnip" },
-            { "rafamadriz/friendly-snippets" },
+            { "rafamadriz/friendly-snippets", opt = true },
             { "hrsh7th/nvim-cmp", config = "require('lsp.cmp')" },
         }
 

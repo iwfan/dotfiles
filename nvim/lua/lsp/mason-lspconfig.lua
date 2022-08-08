@@ -14,7 +14,6 @@ require("mason-lspconfig").setup {
         "yamlls",
         "gopls",
         "sumneko_lua",
-        "solargraph",
     },
 }
 
