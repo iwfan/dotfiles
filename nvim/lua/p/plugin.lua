@@ -41,7 +41,20 @@ require("packer").startup {
                     vim.g.gruvbox_material_enable_italic = 1
                     vim.g.gruvbox_material_sign_column_background = "none"
                     vim.g.gruvbox_material_better_performance = 1
+                    vim.g.gruvbox_material_transparent_background = 0
+                    vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
                     vim.fn.execute "color gruvbox-material"
+
+                    vim.schedule(function()
+                        vim.fn.execute "highlight LspSagaDiagnosticError gui=none cterm=none"
+                        vim.fn.execute "highlight LspSagaErrorTrunCateLine gui=none cterm=none"
+                        vim.fn.execute "highlight LspSagaDiagnosticWarn gui=none cterm=none"
+                        vim.fn.execute "highlight LspSagaWarnTrunCateLine gui=none cterm=none"
+                        vim.fn.execute "highlight LspSagaDiagnosticInfo gui=none cterm=none"
+                        vim.fn.execute "highlight LspSagaInfoTrunCateLine gui=none cterm=none"
+                        vim.fn.execute "highlight LspSagaDiagnosticHint gui=none cterm=none"
+                        vim.fn.execute "highlight LspSagaHintTrunCateLine gui=none cterm=none"
+                    end, 150)
                 end,
             },
         }
@@ -139,6 +152,14 @@ require("packer").startup {
         use { "karb94/neoscroll.nvim", config = "require('neoscroll').setup()" }
         use { "gpanders/editorconfig.nvim" }
         use { "ggandor/lightspeed.nvim" }
+        use {
+            "iamcco/markdown-preview.nvim",
+            run = "cd app && npm install",
+            setup = function()
+                vim.g.mkdp_filetypes = { "markdown" }
+            end,
+            ft = { "markdown" },
+        }
         use { "farmergreg/vim-lastplace" }
         use {
             "ybian/smartim",
