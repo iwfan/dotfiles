@@ -1,0 +1,21 @@
+{
+  "snip222": {
+    "prefix": "rrc",
+    "body": [
+      "import React from 'react'",
+      "",
+      "type ${TM_FILENAME_BASE}Props = {",
+      "",
+      "}",
+      "",
+      "const ${TM_FILENAME_BASE}: React.FC<${TM_FILENAME_BASE}Props > = ({ }) => {",
+      "  return (",
+      "    <div>",
+      "    </div>",
+      "  )",
+      "}",
+      "",
+      "export default ${TM_FILENAME_BASE}",
+    ],
+  },
+}

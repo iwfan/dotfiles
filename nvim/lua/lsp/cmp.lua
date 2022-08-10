@@ -85,10 +85,10 @@ cmp.setup {
 
     sources = {
         { name = "luasnip", priority = 9999, keyword_length = 2, max_item_count = 2 },
-        { name = "nvim_lsp", keyword_length = 3 },
-        { name = "nvim_lua", keyword_length = 3 },
-        { name = "buffer", keyword_length = 3 },
-        { name = "path" },
+        { name = "nvim_lsp", keyword_length = 2 },
+        { name = "nvim_lua", keyword_length = 2 },
+        { name = "buffer", keyword_length = 2 },
+        { name = "path", keyword_length = 2 },
     },
 }
 
@@ -120,6 +120,10 @@ luasnip.config.set_config {
 
 require("luasnip.loaders.from_vscode").lazy_load {
     paths = { vim.fn.stdpath "data" .. "/site/pack/packer/opt/friendly-snippets" },
+}
+
+require("luasnip.loaders.from_vscode").lazy_load {
+    paths = { vim.fn.stdpath "config" .. "/snippets" },
 }
 
 local cmp_autopairs = require "nvim-autopairs.completion.cmp"

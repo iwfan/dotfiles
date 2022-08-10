@@ -152,6 +152,7 @@ require("packer").startup {
         use { "karb94/neoscroll.nvim", config = "require('neoscroll').setup()" }
         use { "gpanders/editorconfig.nvim" }
         use { "ggandor/lightspeed.nvim" }
+        use { "andymass/vim-matchup" }
         use {
             "iamcco/markdown-preview.nvim",
             run = "cd app && npm install",
