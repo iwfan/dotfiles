@@ -46,8 +46,25 @@ null_ls.setup {
                 PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
             },
         },
+        null_ls.builtins.formatting.prettier.with {
+            prefer_local = "node_modules/.bin",
+            filetypes = { "astro" },
+            extra_args = { "--plugin-search-dir", "." },
+        },
         null_ls.builtins.formatting.stylua.with {
             extra_args = { "--config-path", vim.fn.expand "~/dotfiles/stylua.toml" },
         },
     },
+    on_attach = function(client, bufnr)
+        if client.resolved_capabilities.document_formatting then
+            vim.api.nvim_create_user_command("F", vim.lsp.buf.formatting, { force = true, nargs = 0 })
+
+            local LspDocumentFormattingGroup = vim.api.nvim_create_augroup("LspDocumentFormatting", { clear = true })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = LspDocumentFormattingGroup,
+                buffer = bufnr,
+                callback = vim.lsp.buf.formatting,
+            })
+        end
+    end,
 }

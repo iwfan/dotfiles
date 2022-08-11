@@ -29,7 +29,11 @@ return function(on_attach, capabilities)
 
     local luadev = require("lua-dev").setup {
         lspconfig = {
-            on_attach = on_attach,
+            on_attach = function(client, bufnr)
+                client.resolved_capabilities.document_formatting = false
+                client.resolved_capabilities.document_range_formatting = false
+                on_attach(client, bufnr)
+            end,
             settings = settings,
             flags = {
                 debounce_text_changes = 150,

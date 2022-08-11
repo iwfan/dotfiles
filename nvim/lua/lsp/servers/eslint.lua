@@ -8,8 +8,9 @@ return function(on_attach, capabilities)
         end,
         capabilities = capabilities,
         settings = {
-            format = {
+            codeActionOnSave = {
                 enable = true,
+                mode = "all",
             },
         },
     }
