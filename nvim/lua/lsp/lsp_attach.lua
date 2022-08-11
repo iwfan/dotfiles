@@ -25,7 +25,11 @@ local function buf_autocmd_document_formatting()
         group = LspDocumentFormattingGroup,
         buffer = 0,
         callback = function()
-            vim.lsp.buf.formatting_seq_sync(nil, 1000)
+            -- 0.7
+            vim.lsp.buf.formatting_sync(nil, 2000) -- 2 seconds
+
+            -- 0.8
+            -- vim.lsp.buf.format { timeout_ms = 2000 }
         end,
     })
 end

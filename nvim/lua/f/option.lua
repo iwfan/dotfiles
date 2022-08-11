@@ -29,6 +29,7 @@ vim.g.loaded_netrwFileHandlers = 1
 vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.autowrite = true
+vim.opt.autowriteall = true
 vim.opt.termguicolors = true
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
