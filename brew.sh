@@ -28,6 +28,8 @@ brew install "stylua"
 brew install "tmux"
 brew install "trash"
 brew install "wget"
+brew install "glow"
+brew install "slides"
 
 brew install --cask "kitty"
 brew install --cask "docker"

@@ -61,3 +61,15 @@ function LF_toggle(path)
 end
 
 vim.keymap.set("n", "<space>e", "<cmd>lua LF_toggle('%')<cr>")
+
+vim.api.nvim_create_user_command("Glow", function()
+    local path_name = vim.fn.escape(vim.fn.expand "%:p", "[]()\\（） ")
+    Terminal:new({
+        cmd = "glow -p " .. path_name,
+        start_in_insert = true,
+        close_on_exit = true,
+        direction = "tab",
+        on_open = hide_line,
+        on_close = show_line,
+    }):open()
+end, { complete = "file", nargs = "*", bang = true })
