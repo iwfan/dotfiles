@@ -1,8 +1,7 @@
 alias ... "cd ../.."
 alias .... "cd ../../.."
 
-alias ls "exa --long --git --modified --color-scale --icons --group-directories-first --time-style=iso"
-alias la "ls -a"
+alias ls "exa --icons"
 alias lt "exa -a --icons --color-scale --tree -L 2 "
 
 alias cp 'cp -iv'
