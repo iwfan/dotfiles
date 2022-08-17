@@ -151,7 +151,7 @@ require("packer").startup {
         use { "akinsho/toggleterm.nvim", tag = "v2.*", config = "require('p.nvim-toggleterm')" }
         use { "karb94/neoscroll.nvim", config = "require('neoscroll').setup()" }
         use { "gpanders/editorconfig.nvim" }
-        use { "ggandor/lightspeed.nvim" }
+        use { "ggandor/leap.nvim", config = "require('leap').setup()" }
         use {
             "andymass/vim-matchup",
             setup = function()
