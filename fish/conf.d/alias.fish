@@ -1,8 +1,10 @@
 alias ... "cd ../.."
 alias .... "cd ../../.."
 
-alias ls "exa --icons"
-alias lt "exa -a --icons --color-scale --tree -L 2 "
+alias ls "exa -F"
+alias la "exa -F -a"
+alias ll "exa -F -al"
+alias lt "exa -a --tree -L 2 --long --icons --git-ignore"
 
 alias cp 'cp -iv'
 alias mv 'mv -iv'
