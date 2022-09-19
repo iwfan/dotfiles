@@ -73,4 +73,9 @@ vim.opt.fillchars = {
     eob = " ",
     diff = " ",
 }
+
+-- spell check
+-- vim.opt.spell = true
+vim.opt.spelllang:append "en_us,cjk"
+vim.opt.spelloptions:append "camel"
 -- }}}
