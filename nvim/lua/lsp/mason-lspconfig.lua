@@ -57,7 +57,7 @@ null_ls.setup {
         },
     },
     on_attach = function(client, bufnr)
-        if client.resolved_capabilities.document_formatting then
+        if client.server_capabilities.document_formatting then
             vim.api.nvim_create_user_command("F", vim.lsp.buf.formatting, { force = true, nargs = 0 })
 
             local LspDocumentFormattingGroup = vim.api.nvim_create_augroup("LspDocumentFormatting", { clear = true })

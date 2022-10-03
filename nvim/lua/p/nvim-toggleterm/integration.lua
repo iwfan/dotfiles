@@ -3,6 +3,7 @@ local Terminal = require("toggleterm.terminal").Terminal
 local function show_line()
     vim.opt.laststatus = 3
     vim.opt.showtabline = 2
+    vim.opt.cmdheight = 1
     vim.opt.showmode = true
     vim.opt.ruler = true
     vim.opt.showcmd = true
@@ -10,6 +11,7 @@ end
 
 local function hide_line()
     vim.opt.laststatus = 0
+    vim.opt.cmdheight = 0
     vim.opt.showtabline = 0
     vim.opt.showmode = false
     vim.opt.ruler = false

@@ -37,11 +37,11 @@ return function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- Set autocommands conditional on server_capabilities
-    if client.resolved_capabilities.document_highlight then
+    if client.server_capabilities.document_highlight then
         buf_autocmd_document_highlight(bufnr)
     end
 
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.document_formatting then
         buf_autocmd_document_formatting(bufnr)
     end
 
