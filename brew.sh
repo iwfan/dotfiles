@@ -30,6 +30,7 @@ brew install "trash"
 brew install "wget"
 brew install "glow"
 brew install "slides"
+brew install zoxide
 
 brew install --cask "kitty"
 brew install --cask "docker"

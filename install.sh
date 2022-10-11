@@ -27,6 +27,8 @@ ln -Fhnvs ~/dotfiles/tmux ~/.config/tmux
 # Neovim
 ln -Fhnvs ~/dotfiles/nvim ~/.config/nvim
 
+ln -Fhnvs ~/dotfiles/starship/starship.toml ~/.config/starship.toml
+
 ln -Fhnvs ~/dotfiles/yabai ~/.config/yabai
 # ideavimrc
 ln -Fhnvs ~/dotfiles/ideavim ~/.config/ideavim
