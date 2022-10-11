@@ -22,19 +22,13 @@ ln -Fhnvs ~/dotfiles/zsh/.zshrc ~/.config/zsh/.zshrc
 ln -Fhnvs ~/dotfiles/kitty ~/.config/kitty
 # lf
 ln -Fhnvs ~/dotfiles/lf ~/.config/lf
-# Tmux
-ln -Fhnvs ~/dotfiles/tmux ~/.config/tmux
 # Neovim
 ln -Fhnvs ~/dotfiles/nvim ~/.config/nvim
 
 ln -Fhnvs ~/dotfiles/starship/starship.toml ~/.config/starship.toml
 
-ln -Fhnvs ~/dotfiles/yabai ~/.config/yabai
 # ideavimrc
 ln -Fhnvs ~/dotfiles/ideavim ~/.config/ideavim
-# Hammerspoon
-defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
-ln -Fhnvs ~/dotfiles/hammerspoon ~/.config/hammerspoon
 # karabiner
 ln -Fhnvs ~/dotfiles/karabiner ~/.config/karabiner
 # git config
