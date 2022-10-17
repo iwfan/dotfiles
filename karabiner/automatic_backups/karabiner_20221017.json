@@ -1,7 +1,7 @@
 {
     "global": {
         "check_for_updates_on_startup": true,
-        "show_in_menu_bar": false,
+        "show_in_menu_bar": true,
         "show_profile_name_in_menu_bar": false
     },
     "profiles": [
@@ -16,15 +16,15 @@
                 },
                 "rules": [
                     {
-                        "description": "left controls to escape",
+                        "description": "right controls to escape",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "left_control"
+                                    "key_code": "right_control"
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_control"
+                                        "key_code": "right_control"
                                     }
                                 ],
                                 "to_if_alone": [
@@ -37,14 +37,14 @@
                         ]
                     },
                     {
-                        "description": "ctrl + h/j/k/l == Arrow Keys",
+                        "description": "right command + w/a/s/d == Arrow Keys",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "k",
+                                    "key_code": "w",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "right_command"
                                         ],
                                         "optional": [
                                             "any"
@@ -60,10 +60,10 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "h",
+                                    "key_code": "a",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "right_command"
                                         ],
                                         "optional": [
                                             "any"
@@ -79,10 +79,10 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "j",
+                                    "key_code": "s",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "right_command"
                                         ],
                                         "optional": [
                                             "any"
@@ -98,10 +98,10 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "l",
+                                    "key_code": "d",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "right_command"
                                         ],
                                         "optional": [
                                             "any"
@@ -128,6 +128,19 @@
                         "is_pointing_device": false,
                         "product_id": 832,
                         "vendor_id": 1452
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": true,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 61166,
+                        "vendor_id": 6421
                     },
                     "ignore": false,
                     "manipulate_caps_lock_led": true,
@@ -268,7 +281,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "left_control"
+                            "key_code": "right_control"
                         }
                     ]
                 }
