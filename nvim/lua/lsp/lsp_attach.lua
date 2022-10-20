@@ -1,5 +1,4 @@
 local set_saga_keymap = require "lsp.lsp_saga"
-local lsp_status = require "lsp-status"
 
 local function buf_autocmd_document_highlight(bufnr)
     local LspDocumentHighlightGroup = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
@@ -31,7 +30,6 @@ local function buf_autocmd_document_formatting(bufnr)
 end
 
 return function(client, bufnr)
-    lsp_status.on_attach(client)
 
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")

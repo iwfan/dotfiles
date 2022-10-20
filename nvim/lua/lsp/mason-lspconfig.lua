@@ -1,7 +1,4 @@
 local enhance_attach = require "lsp.lsp_attach"
-local lsp_status = require "lsp-status"
-
-lsp_status.register_progress()
 
 require("mason-lspconfig").setup {
     ensure_installed = {
@@ -19,9 +16,7 @@ require("mason-lspconfig").setup {
 
 require("mason-lspconfig").setup_handlers {
     function(server_name)
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities = vim.tbl_extend("keep", capabilities, lsp_status.capabilities) or {}
-        capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
         local opts = {
             on_attach = enhance_attach,

@@ -66,10 +66,6 @@ require("packer").startup {
                 config = "require('p.nvim-treesitter')",
             },
             "nvim-treesitter/nvim-treesitter-textobjects",
-            {
-                "nvim-treesitter/nvim-treesitter-context",
-                config = "require('p.nvim-treesitter.context')",
-            },
             "JoosepAlviste/nvim-ts-context-commentstring",
             {
                 "nvim-telescope/telescope.nvim",
@@ -86,10 +82,10 @@ require("packer").startup {
         use {
             { "williamboman/mason.nvim", config = "require('mason').setup()" },
             { "neovim/nvim-lspconfig", config = "require('lsp.lsp_config')" },
-            { "nvim-lua/lsp-status.nvim", config = "require('lsp.lsp_status')" },
+            { "j-hui/fidget.nvim", config = "require('fidget').setup{}" },
             { "glepnir/lspsaga.nvim", branch = "main" },
             { "jose-elias-alvarez/typescript.nvim" },
-            { "folke/lua-dev.nvim" },
+            { "folke/neodev.nvim" },
             { "b0o/schemastore.nvim" },
             { "hrsh7th/cmp-nvim-lsp" },
             { "jose-elias-alvarez/null-ls.nvim" },

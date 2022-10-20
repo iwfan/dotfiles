@@ -1,6 +1,5 @@
 local statusline = require "galaxyline"
 local condition = require "galaxyline.condition"
-local lsp_status = require "lsp-status"
 
 local colors = {
     bg = "#32302f",
@@ -30,12 +29,12 @@ local function insert_right(component)
 end
 
 local function lsp()
-    local msg = " "
+    local msg = "   "
     local clients = vim.lsp.get_active_clients()
     if next(clients) == nil then
         return msg
     end
-    return lsp_status.status()
+    return "   "
 end
 
 statusline.short_line_list = { "NvimTree", "vista", "dbui", "packer", "vista_kind", "terminal", "dashboard" }

@@ -24,23 +24,21 @@ return function(on_attach, capabilities)
             telemetry = {
                 enable = false,
             },
+            completion = {
+                callSnippet = "Replace"
+            }
         },
     }
 
-    local luadev = require("lua-dev").setup {
-        lspconfig = {
-            on_attach = function(client, bufnr)
-                client.server_capabilities.document_formatting = false
-                client.server_capabilities.document_range_formatting = false
-                on_attach(client, bufnr)
-            end,
-            settings = settings,
-            flags = {
-                debounce_text_changes = 150,
-            },
-            capabilities = capabilities,
-        },
-    }
+    require("neodev").setup {}
 
-    require("lspconfig").sumneko_lua.setup(luadev)
+    require("lspconfig").sumneko_lua.setup {
+        on_attach = function(client, bufnr)
+            client.server_capabilities.document_formatting = false
+            client.server_capabilities.document_range_formatting = false
+            on_attach(client, bufnr)
+        end,
+        settings = settings,
+        capabilities = capabilities,
+    }
 end
