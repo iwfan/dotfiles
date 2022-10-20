@@ -1,6 +1,4 @@
 local saga = require "lspsaga"
-local diagnostic = require "lspsaga.diagnostic"
-local codeaction = require "lspsaga.codeaction"
 
 saga.init_lsp_saga {
     diagnostic_header = { " ", " ", " ", " " },
@@ -34,19 +32,16 @@ return function(bufnr)
     vim.keymap.set("n", "<M-r>", "<cmd>Lspsaga rename<CR>", bufopts)
     vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", bufopts)
 
-    vim.keymap.set("n", "\\d", diagnostic.show_line_diagnostics, bufopts)
-    vim.keymap.set("n", "[d", diagnostic.goto_prev, bufopts)
-    vim.keymap.set("n", "]d", diagnostic.goto_next, bufopts)
+    vim.keymap.set("n", "\\D", "<cmd>Lspsaga show_line_diagnostics<CR>", bufopts)
+    vim.keymap.set("n", "\\d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", bufopts)
+    vim.keymap.set("n", "[d",  "<cmd>Lspsaga diagnostic_jump_prev<CR>", bufopts)
+    vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", bufopts)
     vim.keymap.set("n", "[D", function()
-        diagnostic.goto_prev { severity = vim.diagnostic.severity.ERROR }
+         require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
     end, bufopts)
     vim.keymap.set("n", "]D", function()
-        diagnostic.goto_next { severity = vim.diagnostic.severity.ERROR }
+        require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
     end, bufopts)
 
-    vim.keymap.set("n", "<space><enter>", codeaction.code_action, bufopts)
-    vim.keymap.set("v", "<space><enter>", function()
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
-        codeaction.range_code_action()
-    end, bufopts)
+    vim.keymap.set({"n","v"}, "<space><enter>", "<cmd>Lspsaga code_action<CR>", bufopts)
 end
