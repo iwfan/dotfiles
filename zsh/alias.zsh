@@ -22,4 +22,4 @@ alias i="pnpm install --prefer-offline"
 alias nlsg="npm list -g --depth=0"
 
 alias sskq="bundle exec sidekiq -C config/sidekiq.yml"
-alias rs="GD_FE=local GRAPHQL_CONSUMER_ORIGINS='localhost:3001, localhost:1215, localhost:4200' bundle exec rails s webrick -u"
+alias rs="GD_FE=local GD_FE_VITE=on GRAPHQL_CONSUMER_ORIGINS='localhost:3001, localhost:1215, localhost:4200' bundle exec rails s -u webrick"
