@@ -4,4 +4,4 @@ source ~/dotfiles/zsh/mappings.zsh
 source ~/dotfiles/zsh/functions.zsh
 source ~/dotfiles/zsh/zoxide.zsh
 
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
