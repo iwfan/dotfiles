@@ -15,24 +15,22 @@ info () {
 }
 
 # Zsh Setup
-ln -Fhnvs ~/dotfiles/zsh/.zshenv ~/.zshenv
-ln -Fhnvs ~/dotfiles/zsh/.zshrc ~/.config/zsh/.zshrc
-
+ln -s ~/dotfiles/zsh/.zshenv ~/.zshenv
+ln -s ~/dotfiles/zsh/.zshrc ~/.config/zsh/.zshrc
+# fish-shell
+ln -s ~/dotfiles/fish ~/.config/fish
 # kitty
-ln -Fhnvs ~/dotfiles/kitty ~/.config/kitty
+ln -s ~/dotfiles/kitty ~/.config/kitty
 # lf
-ln -Fhnvs ~/dotfiles/lf ~/.config/lf
+ln -s ~/dotfiles/lf ~/.config/lf
 # Neovim
-ln -Fhnvs ~/dotfiles/nvim ~/.config/nvim
-
-ln -Fhnvs ~/dotfiles/starship/starship.toml ~/.config/starship.toml
-
+ln -s ~/dotfiles/nvim ~/.config/nvim
 # ideavimrc
-ln -Fhnvs ~/dotfiles/ideavim ~/.config/ideavim
-# karabiner
-ln -Fhnvs ~/dotfiles/karabiner ~/.config/karabiner
+ln -s ~/dotfiles/ideavim ~/.config/ideavim
+# starship prompt
+ln -s ~/dotfiles/starship/starship.toml ~/.config/starship.toml
 # git config
-ln -Fhnvs ~/dotfiles/git ~/.config/git
-ln -Fhnvs ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/lazygit/config.yml
+ln -s ~/dotfiles/git ~/.config/git
+ln -s ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/lazygit/config.yml
 
 success "link finished."

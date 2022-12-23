@@ -3,7 +3,6 @@ alias ...="cd ../../"
 alias ....="cd ../../../"
 
 alias v="nvim"
-alias vi="nvim"
 
 alias ls="exa"
 alias ll="exa --long --classify --links --header --git --sort=date --group-directories-first --time-style=long-iso"

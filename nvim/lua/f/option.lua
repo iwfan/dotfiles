@@ -26,41 +26,41 @@ vim.g.loaded_netrwFileHandlers = 1
 -- }}}
 
 -- Options {{{
-vim.opt.swapfile = false
-vim.opt.undofile = true
-vim.opt.autowrite = true
-vim.opt.autowriteall = true
-vim.opt.termguicolors = true
-vim.opt.mouse = "a"
-vim.opt.clipboard = "unnamedplus"
-vim.opt.number = true
-vim.opt.showtabline = 2
-vim.opt.laststatus = 3
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.scrolloff = 10
-vim.opt.pumblend = 10
-vim.opt.winblend = 10
-vim.opt.pumheight = 20
+vim.o.autowrite = true
+vim.o.autowriteall = true
+vim.o.termguicolors = true
+vim.o.mouse = "a"
+vim.o.clipboard = "unnamedplus"
+vim.o.showtabline = 2
+vim.o.laststatus = 3
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.o.scrolloff = 10
+vim.o.pumblend = 10
+vim.o.winblend = 10
+vim.o.pumheight = 20
+vim.bo.swapfile = false
+vim.bo.undofile = true
+vim.wo.number = true
 
 -- tabs & indent
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.softtabstop = 2
-vim.opt.expandtab = true
-vim.opt.smartindent = true
-vim.opt.breakindent = true
+vim.bo.tabstop = 2
+vim.bo.shiftwidth = 2
+vim.bo.softtabstop = 2
+vim.bo.expandtab = true
+vim.bo.smartindent = true
+vim.wo.breakindent = true
 
 -- search
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.matchpairs:append "<:>"
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.bo.matchpairs = "(:),{:},[:],<:>"
 
 -- line break
-vim.opt.signcolumn = "yes"
-vim.opt.virtualedit = "block"
-vim.opt.showbreak = "↪ "
-vim.opt.list = true
+vim.wo.signcolumn = "yes"
+vim.wo.virtualedit = "block"
+vim.wo.showbreak = "↪ "
+vim.wo.list = true
 vim.opt.listchars = {
     tab = " ",
     trail = "·",
@@ -76,6 +76,6 @@ vim.opt.fillchars = {
 
 -- spell check
 -- vim.opt.spell = true
-vim.opt.spelllang:append "en_us,cjk"
-vim.opt.spelloptions:append "camel"
+vim.bo.spelllang = "en,en_us,cjk"
+vim.bo.spelloptions = "camel"
 -- }}}
