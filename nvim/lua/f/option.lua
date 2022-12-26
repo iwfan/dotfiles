@@ -44,6 +44,7 @@ vim.o.completeopt = 'menuone,noselect'
 vim.bo.swapfile = false
 vim.bo.undofile = true
 vim.wo.number = true
+vim.wo.cursorline = true
 
 -- tabs & indent
 vim.bo.tabstop = 2

@@ -34,8 +34,8 @@ return function(on_attach, capabilities)
 
     require("lspconfig").sumneko_lua.setup {
         on_attach = function(client, bufnr)
-            client.server_capabilities.document_formatting = false
-            client.server_capabilities.document_range_formatting = false
+            client.server_capabilities.document_formatting = true
+            client.server_capabilities.document_range_formatting = true
             on_attach(client, bufnr)
         end,
         settings = settings,
