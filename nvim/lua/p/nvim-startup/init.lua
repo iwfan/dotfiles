@@ -49,7 +49,7 @@ db.custom_center = {
     {
         icon = " ",
         desc = "Update Plugins                ",
-        action = "PackerUpdate",
+        action = "Lazy update",
         shortcut = "     ",
     },
 }
