@@ -34,5 +34,6 @@ require("Comment").setup {
 
 local ft = require "Comment.ft"
 ft.set("json", { "//%s" })
+ft.set("beancount", { ";%s" })
 ft.set("scheme", { ";%s" })
 ft.set("lua", { "--%s", "--[[%s]]--" })
