@@ -6,7 +6,7 @@ function lfi
         /bin/rm -f $file
         if test -d "$dir"
             if test "$dir" != (pwd)
-                commandline -a "cd $dir"
+                commandline -r "cd $dir"
                 commandline -f execute
             end
         end
