@@ -7,6 +7,7 @@ set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
 set -gx VISUAL nvim
 set -gx EDITOR nvim
+set -gx PAGER ov
 set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 # Homebrew's sbin
