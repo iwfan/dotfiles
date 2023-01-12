@@ -17,7 +17,6 @@ brew install "git-delta"
 brew install httpie
 brew install "jesseduffield/lazygit/lazygit"
 brew install lf
-brew install mcfly
 brew install most
 brew install neovim
 brew install ripgrep
@@ -34,3 +33,4 @@ brew install --cask "appcleaner"
 brew install --cask "the-unarchiver"
 brew install --cask "clashx"
 brew install --cask "telegram"
+brew install --cask "squirrel"

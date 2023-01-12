@@ -1,0 +1,11 @@
+# Rime custom settings
+# encoding: utf-8
+
+patch:
+  schema_list:
+    # 小鹤双拼
+    - schema: double_pinyin_flypy
+    # 朙月拼音
+    - schema: luna_pinyin_simp
+    # 大写数字
+    - schema: numbers

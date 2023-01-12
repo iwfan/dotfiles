@@ -112,3 +112,5 @@ hammerspoon/config.lua
 hammerspoon/.clipboard/
 fish_variables
 tmux/plugins
+Rime/build
+Rime/*.userdb

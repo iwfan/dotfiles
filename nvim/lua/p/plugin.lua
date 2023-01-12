@@ -209,10 +209,4 @@ require("lazy").setup {
     end,
   },
   { "farmergreg/vim-lastplace" },
-  {
-    "ybian/smartim",
-    init = function()
-      vim.g.smartim_default = "com.apple.keylayout.ABC"
-    end,
-  },
 }
