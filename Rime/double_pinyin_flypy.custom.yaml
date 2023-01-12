@@ -29,10 +29,6 @@ patch:
 
   #載入朙月拼音擴充詞庫
   'translator/dictionary': luna_pinyin.extended
-  'translator/preedit_format': {}
-
-  recognizer/patterns/punct: "^/([0-9]0?|[A-Za-z]+)$"
-
 
   ### 双拼使用自定义词典 custom_phrase.txt
   custom_phrase:
