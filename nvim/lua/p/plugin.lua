@@ -49,9 +49,7 @@ require("lazy").setup {
     config = function()
       vim.g.gruvbox_material_background = "hard"
       vim.g.gruvbox_material_enable_italic = 1
-      vim.g.gruvbox_material_sign_column_background = "none"
       vim.g.gruvbox_material_better_performance = 1
-      vim.g.gruvbox_material_transparent_background = 0
       vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
       vim.cmd.colorscheme "gruvbox-material"
     end,
@@ -59,9 +57,7 @@ require("lazy").setup {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    build = function()
-      pcall(require("nvim-treesitter.install").update { with_sync = true })
-    end,
+    build = ":TSUpdate",
     config = function()
       require "p.nvim-treesitter"
     end,
