@@ -110,6 +110,9 @@ cmp.setup.cmdline(":", {
     }),
 })
 
+local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
 luasnip.config.set_config {
     history = true,
     updateevents = "TextChanged,TextChangedI",
@@ -119,12 +122,9 @@ luasnip.config.set_config {
 }
 
 require("luasnip.loaders.from_vscode").lazy_load {
-    paths = { vim.fn.stdpath "data" .. "/site/pack/packer/opt/friendly-snippets" },
+    paths = { vim.fn.stdpath "data" .. "/lazy/friendly-snippets" },
 }
 
 require("luasnip.loaders.from_vscode").lazy_load {
     paths = { vim.fn.stdpath "config" .. "/snippets" },
 }
-
-local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })

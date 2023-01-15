@@ -9,3 +9,6 @@ patch:
     - schema: luna_pinyin_simp
     # 大写数字
     - schema: numbers
+
+  menu:
+    page_size: 9

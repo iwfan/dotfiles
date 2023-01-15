@@ -12,9 +12,12 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup {
+  "gpanders/editorconfig.nvim",
   {
-      "glepnir/dashboard-nvim",
-      config = function() require('p.nvim-startup') end,
+    "glepnir/dashboard-nvim",
+    config = function()
+      require "p.nvim-startup"
+    end,
   },
   {
     "glepnir/galaxyline.nvim",
@@ -50,7 +53,7 @@ require("lazy").setup {
       vim.g.gruvbox_material_better_performance = 1
       vim.g.gruvbox_material_transparent_background = 0
       vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
-      vim.fn.execute "color gruvbox-material"
+      vim.cmd.colorscheme "gruvbox-material"
     end,
   },
 
@@ -156,12 +159,6 @@ require("lazy").setup {
     dependencies = "nvim-lua/plenary.nvim",
   },
   {
-    "nvim-pack/nvim-spectre",
-    config = function()
-      require "p.nvim-spectre"
-    end,
-  },
-  {
     "lewis6991/gitsigns.nvim",
     event = "BufRead",
     config = function()
@@ -183,30 +180,26 @@ require("lazy").setup {
     end,
   },
   {
+    "kevinhwang91/nvim-hlslens",
+    event = "BufRead",
+  },
+  { "kevinhwang91/nvim-ufo", event = "BufRead", dependencies = "kevinhwang91/promise-async" },
+  {
     "mg979/vim-visual-multi",
     event = "BufRead",
-    init = function()
-      vim.g.VM_default_mappings = 0
-      vim.g.VM_maps = {
-        ["Add Cursor Down"] = "<M-j>",
-        ["Add Cursor Up"] = "<M-k>",
-      }
-    end,
   },
-  { "gpanders/editorconfig.nvim" },
   {
     "ggandor/leap.nvim",
     event = "BufRead",
-    config = function()
-      require("leap").set_default_keymaps()
-    end,
   },
   {
     "andymass/vim-matchup",
     event = "BufRead",
-    init = function()
-      vim.g.matchup_matchparen_offscreen = { method = "" }
+  },
+  {
+    "nvim-pack/nvim-spectre",
+    config = function()
+      require "p.nvim-spectre"
     end,
   },
-  { "farmergreg/vim-lastplace" },
 }

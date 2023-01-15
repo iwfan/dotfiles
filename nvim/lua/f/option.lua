@@ -26,44 +26,39 @@ vim.g.loaded_netrwFileHandlers = 1
 -- }}}
 
 -- Options {{{
-vim.o.autowrite = true
-vim.o.autowriteall = true
-vim.o.termguicolors = true
-vim.o.mouse = "a"
-vim.o.updatetime = 250
-vim.o.clipboard = "unnamedplus"
-vim.o.showtabline = 2
-vim.o.laststatus = 3
-vim.o.splitbelow = true
-vim.o.splitright = true
-vim.o.scrolloff = 10
-vim.o.pumblend = 10
-vim.o.winblend = 10
-vim.o.pumheight = 20
-vim.o.completeopt = 'menuone,noselect'
-vim.bo.swapfile = false
-vim.bo.undofile = true
-vim.wo.number = true
-vim.wo.cursorline = true
-
--- tabs & indent
-vim.bo.tabstop = 2
-vim.bo.shiftwidth = 2
-vim.bo.softtabstop = 2
-vim.bo.expandtab = true
-vim.bo.smartindent = true
-vim.wo.breakindent = true
-
--- search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.bo.matchpairs = "(:),{:},[:],<:>"
-
--- line break
-vim.wo.signcolumn = "yes"
-vim.wo.virtualedit = "block"
-vim.wo.showbreak = "↪ "
-vim.wo.list = true
+vim.opt.autowrite = true
+vim.opt.autowriteall = true
+vim.opt.swapfile = false
+vim.opt.undofile = true
+vim.opt.mouse = "a"
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 600
+vim.opt.termguicolors = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.clipboard = "unnamedplus"
+vim.opt.completeopt = 'menuone,noselect'
+vim.opt.virtualedit = "block"
+vim.opt.showtabline = 2
+vim.opt.laststatus = 3
+vim.opt.number = true
+vim.opt.colorcolumn = "+1"
+vim.opt.signcolumn = "yes"
+vim.opt.cursorline = true
+vim.opt.scrolloff = 10
+vim.opt.pumblend = 10
+vim.opt.winblend = 10
+vim.opt.pumheight = 20
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.breakindent = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.showbreak = "↪ "
+vim.opt.list = true
 vim.opt.listchars = {
     tab = " ",
     trail = "·",
@@ -72,13 +67,15 @@ vim.opt.listchars = {
     nbsp = "␣",
 }
 vim.opt.fillchars = {
-    fold = " ",
     eob = " ",
     diff = " ",
+    fold = " ",
+    foldclose = "",
+    foldopen = ""
 }
 
 -- spell check
 -- vim.opt.spell = true
-vim.bo.spelllang = "en,en_us,cjk"
-vim.bo.spelloptions = "camel"
+vim.opt.spelllang = "en,en_us,cjk"
+vim.opt.spelloptions = "camel"
 -- }}}

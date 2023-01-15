@@ -1,8 +1,3 @@
-vim.opt.foldlevelstart = 99
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.indentexpr = "nvim_treesitter#indent()"
-
 require("nvim-treesitter.configs").setup {
   ensure_installed = {
     "astro",
