@@ -1,6 +1,6 @@
 {
   "snip222": {
-    "prefix": "rrc",
+    "prefix": "rfc",
     "body": [
       "import React from 'react'",
       "",
@@ -8,14 +8,14 @@
       "",
       "}",
       "",
-      "const ${TM_FILENAME_BASE}: React.FC<${TM_FILENAME_BASE}Props > = ({ }) => {",
+      "const ${TM_FILENAME_BASE}: React.FC<${TM_FILENAME_BASE}Props> = ({ }) => {",
       "  return (",
       "    <div>",
       "    </div>",
       "  )",
       "}",
       "",
-      "export default ${TM_FILENAME_BASE}",
-    ],
-  },
+      "export default ${TM_FILENAME_BASE}"
+    ]
+  }
 }

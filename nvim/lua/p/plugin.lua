@@ -13,6 +13,7 @@ vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup {
   "gpanders/editorconfig.nvim",
+  "kyazdani42/nvim-web-devicons",
   {
     "glepnir/dashboard-nvim",
     config = function()
@@ -20,10 +21,7 @@ require("lazy").setup {
     end,
   },
   {
-    "glepnir/galaxyline.nvim",
-    branch = "main",
-    event = "BufRead",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    "rebelot/heirline.nvim",
     config = function()
       require "p.nvim-statusline"
     end,
@@ -54,7 +52,6 @@ require("lazy").setup {
       vim.cmd.colorscheme "gruvbox-material"
     end,
   },
-
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
@@ -123,6 +120,7 @@ require("lazy").setup {
   },
 
   { "tpope/vim-repeat" },
+  { "tpope/vim-sleuth" },
   { "tpope/vim-fugitive", cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" } },
   {
     "kylechui/nvim-surround",
@@ -163,21 +161,17 @@ require("lazy").setup {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead",
+    event = "BufReadPost",
     config = function()
       require "p.nvim-indentline"
     end,
   },
   {
     "norcalli/nvim-colorizer.lua",
-    event = "BufRead",
+    event = "BufReadPost",
     config = function()
       require "p.nvim-colorizer"
     end,
-  },
-  {
-    "kevinhwang91/nvim-hlslens",
-    event = "BufRead",
   },
   { "kevinhwang91/nvim-ufo", event = "BufRead", dependencies = "kevinhwang91/promise-async" },
   {
@@ -196,6 +190,12 @@ require("lazy").setup {
     "nvim-pack/nvim-spectre",
     config = function()
       require "p.nvim-spectre"
+    end,
+  },
+  {
+    "asiryk/auto-hlsearch.nvim",
+    config = function()
+      require("auto-hlsearch").setup()
     end,
   },
 }
