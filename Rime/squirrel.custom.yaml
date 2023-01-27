@@ -10,16 +10,16 @@ patch:
 
     mac_light:
       name: Mac浅色
-      horizontal: true             # true横排，false竖排
-      candidate_format: "%c %@ "   # 用 1/6 em 空格 U+2005 来控制编号 %c 和候选词 %@ 前后的空间
-      corner_radius: 5                             # 窗口圆角
-      hilited_corner_radius: 5                     # 高亮圆角
-      line_spacing: 10                             # 行间距(适用于竖排)
-      border_height: 4                             # 窗口上下高度，大于圆角半径才生效
-      border_width: 4                              # 窗口左右宽度，大于圆角半径才生效
-      font_face: "PingFangSC"                      # 候选词字体
-      font_point: 16                               # 候选字大小
-      label_font_point: 13                         # 候选编号大小
+      horizontal: true                        # true横排，false竖排
+      candidate_format: "%c %@ "              # 用 1/6 em 空格 U+2005 来控制编号 %c 和候选词 %@ 前后的空间
+      corner_radius: 5                        # 窗口圆角
+      hilited_corner_radius: 5                # 高亮圆角
+      line_spacing: 10                        # 行间距(适用于竖排)
+      border_height: 4                        # 窗口上下高度，大于圆角半径才生效
+      border_width: 4                         # 窗口左右宽度，大于圆角半径才生效
+      font_face: "PingFangSC"                 # 候选词字体
+      font_point: 16                          # 候选字大小
+      label_font_point: 13                    # 候选编号大小
       text_color: 0x424242                    # 拼音行文字颜色
       back_color: 0xFFFFFF                    # 候选条背景色
       border_color: 0xFFFFFF                  # 边框色
@@ -34,16 +34,16 @@ patch:
 
     mac_dark:
       name: Mac深色
-      horizontal: true             # true横排，false竖排
-      candidate_format: "%c %@ "   # 用 1/6 em 空格 U+2005 来控制编号 %c 和候选词 %@ 前后的空间
-      corner_radius: 5                             # 窗口圆角
-      hilited_corner_radius: 5                     # 高亮圆角
-      line_spacing: 10                              # 行间距(适用于竖排)
-      border_height: 4                             # 窗口上下高度，大于圆角半径才生效
-      border_width: 4                              # 窗口左右宽度，大于圆角半径才生效
-      font_face: "PingFangSC"                      # 候选词字体
-      font_point: 16                               # 候选字大小
-      label_font_point: 13                         # 候选编号大小
+      horizontal: true                        # true横排，false竖排
+      candidate_format: "%c %@ "              # 用 1/6 em 空格 U+2005 来控制编号 %c 和候选词 %@ 前后的空间
+      corner_radius: 5                        # 窗口圆角
+      hilited_corner_radius: 5                # 高亮圆角
+      line_spacing: 10                        # 行间距(适用于竖排)
+      border_height: 4                        # 窗口上下高度，大于圆角半径才生效
+      border_width: 4                         # 窗口左右宽度，大于圆角半径才生效
+      font_face: "PingFangSC"                 # 候选词字体
+      font_point: 16                          # 候选字大小
+      label_font_point: 13                    # 候选编号大小
       text_color: 0x424242                    # 拼音行文字颜色
       back_color: 0x252a2e                    # 候选条背景色
       border_color: 0x050505                  # 边框色

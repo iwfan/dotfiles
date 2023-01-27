@@ -3,12 +3,8 @@
 
 patch:
   schema_list:
-    # 小鹤双拼
     - schema: double_pinyin_flypy
-    # 朙月拼音
-    - schema: luna_pinyin_simp
-    # 大写数字
-    - schema: numbers
+    - schema: rime_ice
 
   menu:
     page_size: 9

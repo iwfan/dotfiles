@@ -116,3 +116,5 @@ Rime/build
 Rime/*.userdb
 Rime/installation.yaml
 Rime/user.yaml
+Rime/en_dicts
+Rime/cn_dicts
