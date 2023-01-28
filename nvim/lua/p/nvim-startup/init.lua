@@ -1,55 +1,42 @@
-local db = require "dashboard"
-
-db.custom_header = {
-    "                                                                                  ",
-    "                                                                                  ",
-    "     ▄▄        ▄▄                                                                 ",
-    "   ▄████       ███▄                                            ▄▄                 ",
-    " ▄ ▀█████▄     █████                                           ▀▀                 ",
-    " ▌ ▀▄██████    █████     ▌ ▄▀▀▄▄   ▄▄▀▀ ▄    ▄ ▀▀▄▄ ▓█▄    ▄█▌▐██ ▐██▄███▄▄▓███▄  ",
-    " ▌    ▀█████▄  █████     ▌     ▐  ▓      █ ▄▀     ▐▌ ██▄  ▄█▌ ▐██ ▐██   ▐██   ▓██ ",
-    " ▌   ▐  ██████ █████     ▌     ▐▌ █▀▀▀▀▀▀▀ █       █  ██ ▐██  ▐██ ▐██   ▐██   ▐██ ",
-    " ▌   ▐   ▀█████▄████     ▌     ▐▌ █        ▀▄      █   ████   ▐██ ▐██   ▐██   ▐██ ",
-    " ▌   ▐    ▀█████▄▀██     ▌     ▐   ▀▀▄▄▄▀▀   ▀▄▄▄▀▀    ▐▀▀    ▐▀▀ ▐▀▀   ▐▀▀   ▐▀▀ ",
-    " ▀   ▐      ▀█████ █                                                              ",
-    "   ▀▄▐       ▀████                                                                ",
-    "     ▀         ▀                                                                  ",
-    "                                                           version: " .. vim.fn.matchstr(
-        vim.fn.execute "version",
-        [[NVIM v\zs[^\n]*]]
-    ) .. "",
-    "                                                                                  ",
-}
-
-db.custom_center = {
-    {
-        icon = " ",
-        desc = "Find Files                    ",
-        action = "Telescope enhanced_find_files",
-        shortcut = "SPC p",
-    },
-    {
-        icon = " ",
-        desc = "Live Grep                     ",
-        action = "Telescope live_grep",
-        shortcut = "SPC f",
-    },
-    {
-        icon = " ",
-        desc = "Git Status                    ",
-        action = "Telescope git_status",
-        shortcut = "SPC g",
-    },
-    {
-        icon = " ",
-        desc = "Bookmarks                     ",
-        action = "Telescope marks",
-        shortcut = "SPC m",
-    },
-    {
-        icon = " ",
-        desc = "Update Plugins                ",
-        action = "Lazy update",
-        shortcut = "     ",
+require("dashboard").setup {
+    theme = "hyper",
+    config = {
+        header = {
+            "                                                                                  ",
+            "                                                                                  ",
+            "                                                                                  ",
+            "                                                                                  ",
+            "     ▄▄        ▄▄                                                                 ",
+            "   ▄████       ███▄                                            ▄▄                 ",
+            " ▄ ▀█████▄     █████                                           ▀▀                 ",
+            " ▌ ▀▄██████    █████     ▌ ▄▀▀▄▄   ▄▄▀▀ ▄    ▄ ▀▀▄▄ ▓█▄    ▄█▌▐██ ▐██▄███▄▄▓███▄  ",
+            " ▌    ▀█████▄  █████     ▌     ▐  ▓      █ ▄▀     ▐▌ ██▄  ▄█▌ ▐██ ▐██   ▐██   ▓██ ",
+            " ▌   ▐  ██████ █████     ▌     ▐▌ █▀▀▀▀▀▀▀ █       █  ██ ▐██  ▐██ ▐██   ▐██   ▐██ ",
+            " ▌   ▐   ▀█████▄████     ▌     ▐▌ █        ▀▄      █   ████   ▐██ ▐██   ▐██   ▐██ ",
+            " ▌   ▐    ▀█████▄▀██     ▌     ▐   ▀▀▄▄▄▀▀   ▀▄▄▄▀▀    ▐▀▀    ▐▀▀ ▐▀▀   ▐▀▀   ▐▀▀ ",
+            " ▀   ▐      ▀█████ █                                                              ",
+            "   ▀▄▐       ▀████                                                                ",
+            "     ▀         ▀                                                                  ",
+            "                                                           version: "
+                .. vim.fn.matchstr(vim.fn.execute "version", [[NVIM v\zs[^\n]*]])
+                .. "",
+            "                                                                                  ",
+        },
+        shortcut = {
+            { desc = " Update", group = "@property", action = "Lazy update", key = "u" },
+            {
+                desc = " Files",
+                group = "String",
+                action = "Telescope enhanced_find_files",
+                key = "p",
+            },
+            {
+                desc = " Git Status",
+                group = "Label",
+                action = "Telescope git_status",
+                key = "g",
+            },
+        },
+        project = { action = "Telescope enhanced_find_files cwd=" },
     },
 }

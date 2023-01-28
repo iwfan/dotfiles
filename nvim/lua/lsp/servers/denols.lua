@@ -1,5 +1,5 @@
 return function(on_attach, capabilities)
-    local nvim_lsp = require("lspconfig")
+    local nvim_lsp = require "lspconfig"
     nvim_lsp.denols.setup {
         on_attach = on_attach,
         capabilities = capabilities,

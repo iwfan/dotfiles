@@ -37,7 +37,7 @@ vim.opt.termguicolors = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.clipboard = "unnamedplus"
-vim.opt.completeopt = 'menuone,noselect'
+vim.opt.completeopt = "menuone,noselect"
 vim.opt.virtualedit = "block"
 vim.opt.showtabline = 2
 vim.opt.laststatus = 3
@@ -71,7 +71,7 @@ vim.opt.fillchars = {
     diff = " ",
     fold = " ",
     foldclose = "",
-    foldopen = ""
+    foldopen = "",
 }
 
 -- spell check

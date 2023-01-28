@@ -18,7 +18,7 @@ require("mason-lspconfig").setup {
 
 require("mason-lspconfig").setup_handlers {
     function(server_name)
-        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
         local opts = {
             on_attach = enhance_attach,

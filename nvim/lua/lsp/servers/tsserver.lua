@@ -9,7 +9,7 @@ return function(on_attach, capabilities)
                 on_attach(client, bufnr)
             end,
             capabilities = capabilities,
-            root_dir = require("lspconfig").util.root_pattern("package.json"),
+            root_dir = require("lspconfig").util.root_pattern "package.json",
         },
     }
 end

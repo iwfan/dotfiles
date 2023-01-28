@@ -25,8 +25,8 @@ return function(on_attach, capabilities)
                 enable = false,
             },
             completion = {
-                callSnippet = "Replace"
-            }
+                callSnippet = "Replace",
+            },
         },
     }
 
