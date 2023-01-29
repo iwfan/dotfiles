@@ -24,6 +24,18 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
     end,
 })
 
+-- https://github.com/mhinz/vim-galore#smarter-cursorline
+vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
+    callback = function()
+        vim.opt_local.cursorline = true
+    end,
+})
+vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave " }, {
+    callback = function()
+        vim.opt_local.cursorline = false
+    end,
+})
+
 vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function()
         vim.fn.execute [[%s/\s\+$//e]]

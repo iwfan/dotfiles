@@ -25,8 +25,8 @@ vim.g.matchup_matchparen_offscreen = { method = "" }
 -- multiple cursor
 vim.g.VM_default_mappings = 0
 vim.g.VM_maps = {
-    ["Add Cursor Down"] = "<M-j>",
-    ["Add Cursor Up"] = "<M-k>",
+    ["Add Cursor Down"] = "<M-n>",
+    ["Add Cursor Up"] = "<M-p>",
 }
 
 -- leap
