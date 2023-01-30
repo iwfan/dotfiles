@@ -124,6 +124,10 @@ local Diagnostics = {
     update = { "DiagnosticChanged", "BufEnter" },
 
     {
+        provider = "![",
+        hl = { fg = colors.gray, bg = colors.bright_bg }
+    },
+    {
         provider = function(self)
             return self.errors > 0 and (self.error_icon .. self.errors .. " ")
         end,
@@ -147,6 +151,11 @@ local Diagnostics = {
         end,
         hl = { fg = "diag_hint", bg = "bright_bg" },
     },
+    {
+        provider = "]",
+        hl = { fg = colors.gray, bg = colors.bright_bg }
+    },
+
 }
 
 local Git = {

@@ -1,4 +1,4 @@
-local signs = { Error = FONT_ICON.error, Warn = FONT_ICON.warn, Hint = FONT_ICON.hint, Info = FONT_ICON.info }
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
 for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
@@ -11,9 +11,9 @@ vim.diagnostic.config {
         prefix = "",
         format = function(diagnostic)
             if diagnostic.severity == vim.diagnostic.severity.ERROR then
-                return "  " .. diagnostic.message
+                return "  " .. diagnostic.message
             elseif diagnostic.severity == vim.diagnostic.severity.WARN then
-                return "  " .. diagnostic.message
+                return "  " .. diagnostic.message
             end
             return nil
         end,

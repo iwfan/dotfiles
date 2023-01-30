@@ -13,16 +13,3 @@ end
 function _G.searching_deepl(keyword)
     vim.fn.system { "open", "https://deepl.com/zh/translator#en/zh/" .. keyword }
 end
-
-_G.FONT_ICON = {
-    error = " ",
-    warn = " ",
-    info = " ",
-    hint = " ",
-    branch = " ",
-    modifiy = " ",
-    add = " ",
-    deleted = " ",
-    close = " ",
-    edit = "",
-}
