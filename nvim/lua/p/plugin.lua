@@ -205,4 +205,10 @@ require("lazy").setup {
             require("auto-hlsearch").setup()
         end,
     },
+    {
+        "junegunn/vim-easy-align",
+        config = function()
+            vim.keymap.set({ "n", "x" }, "ga", "<Plug>(EasyAlign)")
+        end,
+    },
 }

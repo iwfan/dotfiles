@@ -2,7 +2,7 @@ local enhance_attach = require "lsp.lsp_attach"
 
 require("mason-lspconfig").setup {
     ensure_installed = {
-        "beancount",
+        -- "beancount", -- High CPU usage
         "denols",
         "html",
         "cssls",
