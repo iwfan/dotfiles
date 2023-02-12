@@ -15,15 +15,7 @@ require("lazy").setup {
     "gpanders/editorconfig.nvim",
     "nvim-tree/nvim-web-devicons",
     {
-        "glepnir/dashboard-nvim",
-        event = "VimEnter",
-        config = function()
-            require "p.nvim-startup"
-        end,
-    },
-    {
         "rebelot/heirline.nvim",
-        event = "BufRead",
         config = function()
             require "p.nvim-statusline"
         end,
@@ -180,7 +172,6 @@ require("lazy").setup {
             require "p.nvim-colorizer"
         end,
     },
-    { "kevinhwang91/nvim-ufo", event = "BufRead", dependencies = "kevinhwang91/promise-async" },
     {
         "mg979/vim-visual-multi",
         event = "BufRead",

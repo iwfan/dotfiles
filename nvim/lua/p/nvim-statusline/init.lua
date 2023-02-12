@@ -1,27 +1,18 @@
 local conditions = require "heirline.conditions"
 local utils = require "heirline.utils"
+local gruvbox_material_colors = require "lualine/themes/gruvbox-material"
 
 local colors = {
-    bright_bg = utils.get_highlight("Folded").bg,
-    bright_fg = utils.get_highlight("Folded").fg,
-    red = utils.get_highlight("DiagnosticError").fg,
-    dark_red = utils.get_highlight("DiffDelete").bg,
-    green = utils.get_highlight("String").fg,
-    blue = utils.get_highlight("Function").fg,
-    gray = utils.get_highlight("NonText").fg,
-    orange = utils.get_highlight("Constant").fg,
-    purple = utils.get_highlight("Statement").fg,
-    cyan = utils.get_highlight("Special").fg,
-    diag_warn = utils.get_highlight("DiagnosticSignWarn").fg,
-    diag_error = utils.get_highlight("DiagnosticSignError").fg,
-    diag_hint = utils.get_highlight("DiagnosticSignHint").fg,
-    diag_info = utils.get_highlight("DiagnosticSignInfo").fg,
-    git_del = utils.get_highlight("diffRemoved").fg,
-    git_add = utils.get_highlight("diffAdded").fg,
-    git_change = utils.get_highlight("diffChanged").fg,
+    bg = gruvbox_material_colors.inactive.a.bg,
+    fg = gruvbox_material_colors.inactive.a.fg,
+    red = gruvbox_material_colors.visual.a.bg,
+    green = gruvbox_material_colors.insert.a.bg,
+    blue = gruvbox_material_colors.command.a.bg,
+    gray = gruvbox_material_colors.insert.b.bg,
+    orange = gruvbox_material_colors.replace.a.bg,
+    purple = gruvbox_material_colors.terminal.a.bg,
+    cyan = gruvbox_material_colors.command.a.bg,
 }
-
-require("heirline").load_colors(colors)
 
 local Align = { provider = "%=" }
 local Space = { provider = " " }
@@ -50,7 +41,7 @@ local FileIcon = {
         return self.icon and (self.icon .. " ")
     end,
     hl = function(self)
-        return { fg = self.icon_color, bg = "bright_bg" }
+        return { fg = self.icon_color, bg = colors.bg }
     end,
 }
 
@@ -65,7 +56,7 @@ local FileName = {
         end
         return filename
     end,
-    hl = { fg = "bright_fg", bg = "bright_bg" },
+    hl = { fg = colors.fg, bg = colors.bg },
 }
 
 local FileFlags = {
@@ -74,14 +65,14 @@ local FileFlags = {
             return vim.bo.modified
         end,
         provider = " [+]",
-        hl = { fg = "green", bg = "bright_bg" },
+        hl = { fg = colors.green, bg = colors.bg },
     },
     {
         condition = function()
             return not vim.bo.modifiable or vim.bo.readonly
         end,
         provider = " ",
-        hl = { fg = "orange", bg = "bright_bg" },
+        hl = { fg = colors.orange, bg = colors.bg },
     },
 }
 
@@ -108,10 +99,10 @@ local Diagnostics = {
     condition = conditions.has_diagnostics,
 
     static = {
-        error_icon = vim.fn.sign_getdefined("DiagnosticSignError")[1].text,
-        warn_icon = vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text,
-        info_icon = vim.fn.sign_getdefined("DiagnosticSignInfo")[1].text,
-        hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
+        error_icon = " ",
+        warn_icon = " ",
+        info_icon = " ",
+        hint_icon = " ",
     },
 
     init = function(self)
@@ -124,38 +115,41 @@ local Diagnostics = {
     update = { "DiagnosticChanged", "BufEnter" },
 
     {
-        provider = "![",
-        hl = { fg = colors.gray, bg = colors.bright_bg }
+        provider = "󱚠 ",
+        hl = { fg = colors.fg, bg = colors.bg },
+    },
+    {
+        provider = "[",
+        hl = { fg = colors.gray, bg = colors.bg },
     },
     {
         provider = function(self)
             return self.errors > 0 and (self.error_icon .. self.errors .. " ")
         end,
-        hl = { fg = "diag_error", bg = "bright_bg" },
+        hl = { fg = colors.red, bg = colors.bg },
     },
     {
         provider = function(self)
             return self.warnings > 0 and (self.warn_icon .. self.warnings .. " ")
         end,
-        hl = { fg = "diag_warn", bg = "bright_bg" },
+        hl = { fg = colors.orange, bg = colors.bg },
     },
     {
         provider = function(self)
             return self.info > 0 and (self.info_icon .. self.info .. " ")
         end,
-        hl = { fg = "diag_info", bg = "bright_bg" },
+        hl = { fg = colors.green, bg = colors.bg },
     },
     {
         provider = function(self)
             return self.hints > 0 and (self.hint_icon .. self.hints)
         end,
-        hl = { fg = "diag_hint", bg = "bright_bg" },
+        hl = { fg = colors.blue, bg = colors.bg },
     },
     {
         provider = "]",
-        hl = { fg = colors.gray, bg = colors.bright_bg }
+        hl = { fg = colors.gray, bg = colors.bg },
     },
-
 }
 
 local Git = {
@@ -174,13 +168,13 @@ local Git = {
         name = "heirline_git",
     },
 
-    hl = { fg = colors.bright_fg, bg = "bright_bg" },
+    hl = { fg = colors.fg, bg = colors.bg },
 
     { -- git branch name
         provider = function(self)
             return " " .. self.status_dict.head
         end,
-        hl = { fg = "green", bold = true },
+        hl = { fg = colors.green, bold = true },
     },
     -- You could handle delimiters, icons and counts similar to Diagnostics
     {
@@ -194,21 +188,21 @@ local Git = {
             local count = self.status_dict.added or 0
             return count > 0 and ("+" .. count)
         end,
-        hl = { fg = "git_add" },
+        hl = { fg = colors.green },
     },
     {
         provider = function(self)
             local count = self.status_dict.removed or 0
             return count > 0 and ("-" .. count)
         end,
-        hl = { fg = "git_del" },
+        hl = { fg = colors.red },
     },
     {
         provider = function(self)
             local count = self.status_dict.changed or 0
             return count > 0 and ("~" .. count)
         end,
-        hl = { fg = "git_change" },
+        hl = { fg = colors.blue },
     },
     {
         condition = function(self)
@@ -223,7 +217,7 @@ local FileEncoding = {
         local encode = vim.bo.fenc ~= "" and vim.bo.fenc or vim.o.enc
         return encode:upper()
     end,
-    hl = { fg = colors.bright_fg, bg = colors.bright_bg },
+    hl = { fg = colors.fg, bg = colors.bg },
 }
 
 local FileFormat = {
@@ -235,14 +229,14 @@ local FileFormat = {
             return "CRLF"
         end
     end,
-    hl = { fg = colors.bright_fg, bg = colors.bright_bg },
+    hl = { fg = colors.fg, bg = colors.bg },
 }
 
 local FileType = {
     provider = function()
         return string.upper(vim.bo.filetype)
     end,
-    hl = { fg = colors.bright_fg, bg = colors.bright_bg, bold = true },
+    hl = { fg = colors.fg, bg = colors.bg, bold = true },
 }
 
 local IndentSize = {
@@ -250,15 +244,15 @@ local IndentSize = {
         provider = function()
             return vim.api.nvim_buf_get_option(0, "shiftwidth")
         end,
-        hl = { fg = colors.bright_fg, bg = colors.bright_bg },
+        hl = { fg = colors.fg, bg = colors.bg },
     },
-    { provider = "x", hl = { fg = colors.gray, bg = colors.bright_bg } },
-    { provider = "SPC", hl = { fg = colors.bright_fg, bg = colors.bright_bg } },
+    { provider = "x", hl = { fg = colors.gray, bg = colors.bg } },
+    { provider = "SPC", hl = { fg = colors.fg, bg = colors.bg } },
 }
 
 local Ruler = {
     provider = "%l:%c %P",
-    hl = { fg = colors.bright_fg, bg = colors.bright_bg },
+    hl = { fg = colors.fg, bg = colors.bg },
 }
 
 local Spell = {
@@ -266,7 +260,7 @@ local Spell = {
         return vim.wo.spell
     end,
     provider = " SPELL",
-    hl = { fg = "orange", bg = colors.bright_bg, bold = true },
+    hl = { fg = colors.orange, bg = colors.bg, bold = true },
 }
 
 local HelpFileName = {

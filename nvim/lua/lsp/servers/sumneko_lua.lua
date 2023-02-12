@@ -32,7 +32,7 @@ return function(on_attach, capabilities)
 
     require("neodev").setup {}
 
-    require("lspconfig").sumneko_lua.setup {
+    require("lspconfig").lua_ls.setup {
         on_attach = function(client, bufnr)
             client.server_capabilities.document_formatting = true
             client.server_capabilities.document_range_formatting = true
