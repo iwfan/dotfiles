@@ -12,7 +12,7 @@ require("mason-lspconfig").setup {
         "jsonls",
         "yamlls",
         "gopls",
-        "sumneko_lua",
+        "lua_ls",
     },
 }
 
