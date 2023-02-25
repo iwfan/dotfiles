@@ -19,6 +19,7 @@ require("indent_blankline").setup {
         "scheme",
     },
     buftype_exclude = { "terminal", "telescope", "prompt", "nofile" },
+    use_treesitter = true,
     show_current_context = true,
     show_current_context_start = false,
     show_trailing_blankline_indent = false,

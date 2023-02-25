@@ -41,14 +41,8 @@ require("telescope").setup {
             only_sort_text = true,
         },
     },
-    extensions = {
-        ["ui-select"] = {
-            require("telescope.themes").get_dropdown {},
-        },
-    },
 }
 
-require("telescope").load_extension "ui-select"
 require("telescope").load_extension "enhanced_find_files"
 
 vim.keymap.set("n", "<space>p", "<cmd>Telescope enhanced_find_files<cr>")

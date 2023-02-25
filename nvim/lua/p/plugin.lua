@@ -15,6 +15,13 @@ require("lazy").setup {
     "gpanders/editorconfig.nvim",
     "nvim-tree/nvim-web-devicons",
     {
+        'glepnir/dashboard-nvim',
+        event = 'VimEnter',
+        config = function()
+            require('p.nvim-startup')
+        end,
+    },
+    {
         "rebelot/heirline.nvim",
         config = function()
             require "p.nvim-statusline"
@@ -63,9 +70,23 @@ require("lazy").setup {
         config = function()
             require "p.nvim-telescope"
         end,
-        dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-ui-select.nvim" },
+        dependencies = { "nvim-lua/plenary.nvim" },
     },
-
+    {
+        "stevearc/dressing.nvim",
+        config = function ()
+            require("dressing").setup({
+                input = {
+                    default_prompt = "➤ ",
+                    win_options = { winhighlight = "Normal:Normal,NormalNC:Normal" },
+                },
+                select = {
+                    backend = { "telescope", "builtin" },
+                    builtin = { win_options = { winhighlight = "Normal:Normal,NormalNC:Normal" } },
+                },
+            })
+        end
+    },
     {
         "neovim/nvim-lspconfig",
         config = function()
@@ -116,23 +137,24 @@ require("lazy").setup {
     { "tpope/vim-repeat" },
     { "tpope/vim-fugitive", cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" } },
     {
-        "nmac427/guess-indent.nvim",
+        "Darazaki/indent-o-matic",
         config = function()
-            require("guess-indent").setup {}
+          require("indent-o-matic").setup {}
+          require("indent-o-matic").detect()
         end,
     },
     {
         "kylechui/nvim-surround",
         event = "BufRead",
         config = function()
-            require("nvim-surround").setup()
+          require("nvim-surround").setup()
         end,
     },
     {
         "windwp/nvim-autopairs",
         event = "BufRead",
         config = function()
-            require("nvim-autopairs").setup()
+          require("nvim-autopairs").setup()
         end,
     },
     { "windwp/nvim-ts-autotag", event = "BufRead" },
@@ -194,6 +216,13 @@ require("lazy").setup {
         "asiryk/auto-hlsearch.nvim",
         config = function()
             require("auto-hlsearch").setup()
+        end,
+    },
+    {
+        "tversteeg/registers.nvim",
+        event ="BufReadPost",
+        config = function()
+            require("registers").setup()
         end,
     },
     {
