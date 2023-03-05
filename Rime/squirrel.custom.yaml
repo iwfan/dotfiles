@@ -77,6 +77,7 @@ patch:
       no_inline: true
     com.microsoft.VSCode:
       ascii_mode: true
+      vim_mode: true
     ru.keepcoder.Telegram:
       inline: true
     net.kovidgoyal.kitty:
@@ -86,5 +87,8 @@ patch:
       ascii_mode: true
       inline: true
     com.jetbrains.WebStorm:
+      ascii_mode: true
+      vim_mode: true
+    com.jetbrains.rubymine:
       ascii_mode: true
       vim_mode: true
