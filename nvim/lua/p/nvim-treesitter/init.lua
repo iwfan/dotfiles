@@ -42,7 +42,7 @@ require("nvim-treesitter.configs").setup {
         "zig",
     },
     highlight = {
-        enable = true,
+        enable = not vim.g.vscode,
     },
     indent = { enable = true },
     incremental_selection = {
