@@ -21,7 +21,6 @@ local FileNameBlock = {
     init = function(self)
         self.filename = vim.api.nvim_buf_get_name(0)
     end,
-
     on_click = {
         callback = function()
             vim.cmd "lua LF_toggle('%')"
@@ -95,25 +94,20 @@ FileNameBlock = utils.insert(
 )
 
 local Diagnostics = {
-
     condition = conditions.has_diagnostics,
-
     static = {
         error_icon = " ",
         warn_icon = " ",
         info_icon = " ",
         hint_icon = " ",
     },
-
     init = function(self)
         self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
         self.warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
         self.hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
         self.info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
     end,
-
     update = { "DiagnosticChanged", "BufEnter" },
-
     {
         provider = "󱚠 ",
         hl = { fg = colors.fg, bg = colors.bg },
@@ -154,22 +148,18 @@ local Diagnostics = {
 
 local Git = {
     condition = conditions.is_git_repo,
-
     init = function(self)
         ---@diagnostic disable-next-line: undefined-field
         self.status_dict = vim.b.gitsigns_status_dict
         self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or self.status_dict.changed ~= 0
     end,
-
     on_click = {
         callback = function()
             vim.cmd "lua Lazygit_toggle()"
         end,
         name = "heirline_git",
     },
-
     hl = { fg = colors.fg, bg = colors.bg },
-
     { -- git branch name
         provider = function(self)
             return " " .. self.status_dict.head
@@ -281,7 +271,6 @@ local SpecialStatusline = {
             filetype = { "^git.*", "fugitive" },
         }
     end,
-
     FileType,
     Space,
     HelpFileName,
@@ -308,6 +297,13 @@ local DefaultStatusline = {
     Space,
     Diagnostics,
     Align,
+    {
+        provider = function()
+            return '{…}%3{codeium#GetStatusString()}'
+        end,
+        hl = { fg = colors.fg, bg = colors.bg },
+    },
+    Space,
     FileType,
     Spell,
     Space,

@@ -30,7 +30,7 @@ require("dashboard").setup {
                 desc_hl = 'String',
                 action = "Telescope enhanced_find_files",
                 key = "p",
-                key_hl = 'Number',
+                key_hl = 'Comment',
             },
             {
                 icon = " ",
@@ -39,7 +39,7 @@ require("dashboard").setup {
                 desc_hl = 'String',
                 action = "Telescope git_status",
                 key = "g",
-                key_hl = 'Number',
+                key_hl = 'Comment',
             },
             {
                 icon = ' ',
@@ -47,7 +47,7 @@ require("dashboard").setup {
                 desc = 'Update',
                 desc_hl = 'String',
                 key = 'u',
-                key_hl = 'Number',
+                key_hl = 'Comment',
                 action = 'Lazy update'
             },
             {
@@ -56,7 +56,7 @@ require("dashboard").setup {
                 desc = 'Old Files',
                 desc_hl = 'String',
                 key = 'o',
-                key_hl = 'Number',
+                key_hl = 'Comment',
                 action = 'Telescope oldfiles'
             }
         },

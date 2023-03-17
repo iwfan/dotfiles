@@ -15,10 +15,10 @@ require("lazy").setup {
     "gpanders/editorconfig.nvim",
     "nvim-tree/nvim-web-devicons",
     {
-        'glepnir/dashboard-nvim',
-        event = 'VimEnter',
+        "glepnir/dashboard-nvim",
+        event = "VimEnter",
         config = function()
-            require('p.nvim-startup')
+            require "p.nvim-startup"
         end,
     },
     {
@@ -74,8 +74,8 @@ require("lazy").setup {
     },
     {
         "stevearc/dressing.nvim",
-        config = function ()
-            require("dressing").setup({
+        config = function()
+            require("dressing").setup {
                 input = {
                     default_prompt = "➤ ",
                     win_options = { winhighlight = "Normal:Normal,NormalNC:Normal" },
@@ -84,8 +84,8 @@ require("lazy").setup {
                     backend = { "telescope", "builtin" },
                     builtin = { win_options = { winhighlight = "Normal:Normal,NormalNC:Normal" } },
                 },
-            })
-        end
+            }
+        end,
     },
     {
         "neovim/nvim-lspconfig",
@@ -133,28 +133,29 @@ require("lazy").setup {
             "rafamadriz/friendly-snippets",
         },
     },
+    { "Exafunction/codeium.vim", config = function() end },
 
     { "tpope/vim-repeat" },
     { "tpope/vim-fugitive", cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" } },
     {
         "Darazaki/indent-o-matic",
         config = function()
-          require("indent-o-matic").setup {}
-          require("indent-o-matic").detect()
+            require("indent-o-matic").setup {}
+            require("indent-o-matic").detect()
         end,
     },
     {
         "kylechui/nvim-surround",
         event = "BufRead",
         config = function()
-          require("nvim-surround").setup()
+            require("nvim-surround").setup()
         end,
     },
     {
         "windwp/nvim-autopairs",
         event = "BufRead",
         config = function()
-          require("nvim-autopairs").setup()
+            require("nvim-autopairs").setup()
         end,
     },
     { "windwp/nvim-ts-autotag", event = "BufRead" },
@@ -220,7 +221,7 @@ require("lazy").setup {
     },
     {
         "tversteeg/registers.nvim",
-        event ="BufReadPost",
+        event = "BufReadPost",
         config = function()
             require("registers").setup()
         end,
