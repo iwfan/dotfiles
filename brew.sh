@@ -1,10 +1,7 @@
 #!/usr/bin/env zsh
 
-brew tap "homebrew/bundle"
-brew tap "homebrew/cask"
-brew tap "homebrew/core"
-
 brew install asdf
+brew install atuin
 brew install bat
 brew install curl
 brew install exa
