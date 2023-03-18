@@ -58,6 +58,47 @@ local FileName = {
     hl = { fg = colors.fg, bg = colors.bg },
 }
 
+local modes = setmetatable({
+    ["n"] = {"NORMAL", "N"},
+    ["no"] = {"N·OPERATOR", "N·P"},
+    ["v"] = {"VISUAL", "V"},
+    ["V"] = {"V·LINE", "V·L"},
+    [""] = {"V·BLOCK", "V·B"},
+    [""] = {"V·BLOCK", "V·B"},
+    ["s"] = {"SELECT", "S"},
+    ["S"] = {"S·LINE", "S·L"},
+    [""] = {"S·BLOCK", "S·B"},
+    ["i"] = {"INSERT", "I"},
+    ["ic"] = {"INSERT", "I"},
+    ["R"] = {"REPLACE", "R"},
+    ["Rv"] = {"V·REPLACE", "V·R"},
+    ["c"] = {"COMMAND", "C"},
+    ["cv"] = {"VIM·EX", "V·E"},
+    ["ce"] = {"EX", "E"},
+    ["r"] = {"PROMPT", "P"},
+    ["rm"] = {"MORE", "M"},
+    ["r?"] = {"CONFIRM", "C"},
+    ["!"] = {"SHELL", "S"},
+    ["t"] = {"TERMINAL", "T"}
+}, {
+    __index = function()
+        return {"UNKNOWN", "U"} -- handle edge cases
+    end
+})
+
+local Mode = {
+    provider = function()
+        local mode = modes[vim.api.nvim_get_mode().mode]
+        if vim.api.nvim_win_get_width(0) <= 80 then
+            return string.format("%s ", mode[2]) -- short name
+        else
+            return string.format("%s ", mode[1]) -- long name
+        end
+    end,
+    hl = { fg = colors.fg, bg = colors.bg },
+}
+
+
 local FileFlags = {
     {
         condition = function()
@@ -293,6 +334,7 @@ local InactiveStatusline = {
 }
 
 local DefaultStatusline = {
+    Mode,
     Git,
     Space,
     Diagnostics,

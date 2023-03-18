@@ -13,8 +13,8 @@ table.insert(vimgrep_arguments, "!**/.git/*")
 telescope.setup {
     defaults = {
         vimgrep_arguments = vimgrep_arguments,
-        prompt_prefix = " ",
-        selection_caret = " ",
+        prompt_prefix = "  ",
+        selection_caret = "➜ ",
         sorting_strategy = "ascending",
         layout_config = {
             prompt_position = "top",
@@ -25,6 +25,11 @@ telescope.setup {
                 ["<C-j>"] = actions.cycle_history_next,
                 ["<C-k>"] = actions.cycle_history_prev,
             },
+            n = {
+                ["<C-n>"] = actions.move_selection_next,
+                ["<C-p>"] = actions.move_selection_previous,
+            },
+
         },
     },
     pickers = {

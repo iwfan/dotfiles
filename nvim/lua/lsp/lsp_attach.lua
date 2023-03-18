@@ -38,7 +38,7 @@ return function(client, bufnr)
     local bufopts = { silent = true, buffer = bufnr }
     vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, bufopts)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-    vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
     vim.keymap.set("n", "gI", vim.lsp.buf.implementation, bufopts)
 
     vim.keymap.set("n", "<M-r>", vim.lsp.buf.rename, bufopts)

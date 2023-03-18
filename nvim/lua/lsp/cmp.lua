@@ -1,6 +1,5 @@
 local cmp = require "cmp"
 local luasnip = require "luasnip"
-local types = require "luasnip.util.types"
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 

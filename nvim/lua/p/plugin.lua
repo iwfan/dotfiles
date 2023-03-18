@@ -167,6 +167,12 @@ require("lazy").setup {
         end,
     },
     {
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup()
+        end,
+    },
+    {
         "sindrets/diffview.nvim",
         cmd = { "DiffviewOpen", "DiffviewFileHistory" },
         config = function()
@@ -219,6 +225,7 @@ require("lazy").setup {
             require("auto-hlsearch").setup()
         end,
     },
+    { "farmergreg/vim-lastplace", event = "BufReadPost" },
     {
         "tversteeg/registers.nvim",
         event = "BufReadPost",

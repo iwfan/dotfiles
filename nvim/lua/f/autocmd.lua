@@ -1,7 +1,9 @@
--- Check if we need to reload the file when it changed
-vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, { command = "checktime" })
+local autocmd = vim.api.nvim_create_autocmd
 
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "FileType" }, {
+-- Check if we need to reload the file when it changed
+autocmd({ "FocusGained", "TermClose", "TermLeave" }, { command = "checktime" })
+
+autocmd({ "BufNewFile", "BufRead", "FileType" }, {
     callback = function()
         if string.find(vim.o.fo, "o") then
             vim.opt.formatoptions = vim.opt.formatoptions
@@ -11,51 +13,41 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "FileType" }, {
     end,
 })
 
-vim.api.nvim_create_autocmd("TextYankPost", {
+autocmd("TextYankPost", {
     callback = function()
         vim.highlight.on_yank { higroup = "IncSearch", timeout = 200 }
     end,
 })
 
 -- resize splits if window got resized
-vim.api.nvim_create_autocmd({ "VimResized" }, {
+autocmd({ "VimResized" }, {
     callback = function()
         vim.cmd "tabdo wincmd ="
     end,
 })
 
 -- https://github.com/mhinz/vim-galore#smarter-cursorline
-vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
+autocmd({ "InsertLeave", "WinEnter" }, {
     callback = function()
         vim.opt_local.cursorline = true
+        vim.opt_local.relativenumber = true
     end,
 })
-vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave " }, {
+autocmd({ "InsertEnter", "WinLeave " }, {
     callback = function()
         vim.opt_local.cursorline = false
+        vim.opt_local.relativenumber = false
     end,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
+autocmd("BufWritePre", {
     callback = function()
         vim.fn.execute [[%s/\s\+$//e]]
         vim.fn.execute [[%s/\n\+\%$//e]]
     end,
 })
 
--- go to last loc when opening a buffer
-vim.api.nvim_create_autocmd("BufReadPost", {
-    callback = function()
-        local mark = vim.api.nvim_buf_get_mark(0, '"')
-        local lcount = vim.api.nvim_buf_line_count(0)
-        if mark[1] > 0 and mark[1] <= lcount then
-            pcall(vim.api.nvim_win_set_cursor, 0, mark)
-        end
-    end,
-})
-
--- close some filetypes with <q>
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
     pattern = {
         "qf",
         "help",
@@ -67,13 +59,12 @@ vim.api.nvim_create_autocmd("FileType", {
         "tsplayground",
         "PlenaryTestPopup",
     },
-    callback = function(event)
-        vim.bo[event.buf].buflisted = false
-        vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+    callback = function()
+        vim.opt_local.buflisted = false
     end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
     pattern = { "gitcommit", "markdown" },
     callback = function()
         vim.opt_local.wrap = true
