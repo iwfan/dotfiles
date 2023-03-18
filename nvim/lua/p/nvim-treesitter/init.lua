@@ -105,7 +105,7 @@ require("nvim-treesitter.configs").setup {
         enable = true,
         filetypes = { "typescriptreact", "javascriptreact", "vue", "svelte", "html", "xml", "svg" },
     },
-    context_commentstring = { enable = true, enable_autocmd = false },
+    context_commentstring = { enable = true },
     matchup = {
         enable = true,
         disable = { "c", "markdown" }, -- optional, list of language that will be disabled

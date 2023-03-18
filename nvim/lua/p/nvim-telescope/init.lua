@@ -1,18 +1,18 @@
+local telescope = require "telescope"
+local telescopeConfig = require "telescope.config"
 local actions = require "telescope.actions"
 
-require("telescope").setup {
+-- Clone the default Telescope configuration
+local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+-- I want to search in hidden/dot files.
+table.insert(vimgrep_arguments, "--hidden")
+-- I don't want to search in the `.git` directory.
+table.insert(vimgrep_arguments, "--glob")
+table.insert(vimgrep_arguments, "!**/.git/*")
+
+telescope.setup {
     defaults = {
-        vimgrep_arguments = {
-            "rg",
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
-            "--hidden",
-            "--glob=!.git/",
-        },
+        vimgrep_arguments = vimgrep_arguments,
         prompt_prefix = " ",
         selection_caret = " ",
         sorting_strategy = "ascending",
@@ -21,25 +21,27 @@ require("telescope").setup {
         },
         mappings = {
             i = {
-                ["<C-n>"] = actions.move_selection_next,
-                ["<C-p>"] = actions.move_selection_previous,
-                ["<C-c>"] = actions.close,
+                ["<esc>"] = actions.close,
                 ["<C-j>"] = actions.cycle_history_next,
                 ["<C-k>"] = actions.cycle_history_prev,
-                ["<CR>"] = actions.select_default + actions.center,
-            },
-            n = {
-                ["<C-n>"] = actions.move_selection_next,
-                ["<C-p>"] = actions.move_selection_previous,
-                ["q"] = actions.close,
             },
         },
     },
     pickers = {
-        live_grep = {
-            --@usage don't include the filename in the search results
-            only_sort_text = true,
-        },
+        -- enhanced_find_files = {theme = "ivy", layout_config = {height = 0.4}},
+        -- find_files = {theme = "ivy", layout_config = {height = 0.4}},
+        -- git_files = {theme = "ivy", layout_config = {height = 0.4}},
+        -- live_grep = {theme = "ivy", only_sort_text = true, layout_config = {height = 0.4}},
+        -- buffers = {theme = "ivy", layout_config = {height = 0.4}},
+        -- keymaps = {theme = "ivy", layout_config = {height = 0.4}},
+        -- file_browser = {theme = "ivy", layout_config = {height = 0.4}},
+        -- treesitter = {theme = "ivy", layout_config = {height = 0.4}},
+        -- help_tags = {theme = "ivy", layout_config = {height = 0.5}},
+        -- man_pages = {
+        --     sections = {"1", "2", "3"},
+        --     theme = "ivy",
+        --     layout_config = {height = 0.4}
+        -- }
     },
 }
 
