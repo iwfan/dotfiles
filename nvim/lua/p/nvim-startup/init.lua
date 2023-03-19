@@ -28,7 +28,7 @@ require("dashboard").setup {
                 icon_hl = '@property',
                 desc = "Find File",
                 desc_hl = 'String',
-                action = "Telescope enhanced_find_files",
+                action = "Telescope enhanced_find_files theme=ivy",
                 key = "p",
                 key_hl = 'Comment',
             },
@@ -37,7 +37,7 @@ require("dashboard").setup {
                 icon_hl = '@property',
                 desc = "Git Status",
                 desc_hl = 'String',
-                action = "Telescope git_status",
+                action = "Telescope git_status theme=ivy",
                 key = "g",
                 key_hl = 'Comment',
             },
@@ -57,7 +57,7 @@ require("dashboard").setup {
                 desc_hl = 'String',
                 key = 'o',
                 key_hl = 'Comment',
-                action = 'Telescope oldfiles'
+                action = 'Telescope oldfiles theme=ivy'
             }
         },
     }

@@ -29,8 +29,10 @@ autocmd({ "VimResized" }, {
 -- https://github.com/mhinz/vim-galore#smarter-cursorline
 autocmd({ "InsertLeave", "WinEnter" }, {
     callback = function()
-        vim.opt_local.cursorline = true
-        vim.opt_local.relativenumber = true
+        if not vim.bo.filetype ~= 'help' then
+            vim.opt_local.cursorline = true
+            vim.opt_local.relativenumber = true
+        end
     end,
 })
 autocmd({ "InsertEnter", "WinLeave " }, {

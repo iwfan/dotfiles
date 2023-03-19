@@ -59,30 +59,30 @@ local FileName = {
 }
 
 local modes = setmetatable({
-    ["n"] = {"NORMAL", "N"},
-    ["no"] = {"N·OPERATOR", "N·P"},
-    ["v"] = {"VISUAL", "V"},
-    ["V"] = {"V·LINE", "V·L"},
-    [""] = {"V·BLOCK", "V·B"},
-    [""] = {"V·BLOCK", "V·B"},
-    ["s"] = {"SELECT", "S"},
-    ["S"] = {"S·LINE", "S·L"},
-    [""] = {"S·BLOCK", "S·B"},
-    ["i"] = {"INSERT", "I"},
-    ["ic"] = {"INSERT", "I"},
-    ["R"] = {"REPLACE", "R"},
-    ["Rv"] = {"V·REPLACE", "V·R"},
-    ["c"] = {"COMMAND", "C"},
-    ["cv"] = {"VIM·EX", "V·E"},
-    ["ce"] = {"EX", "E"},
-    ["r"] = {"PROMPT", "P"},
-    ["rm"] = {"MORE", "M"},
-    ["r?"] = {"CONFIRM", "C"},
-    ["!"] = {"SHELL", "S"},
-    ["t"] = {"TERMINAL", "T"}
+    ["n"] = {"󰰔 NORMAL", "N"},
+    ["no"] = {"󰲟 N·OPERATOR", "N·P"},
+    ["v"] = {"󰰬 VISUAL", "V"},
+    ["V"] = {"󰰬 V·LINE", "V·L"},
+    [""] = {"󰰬 V·BLOCK", "V·B"},
+    [""] = {"󰰬 V·BLOCK", "V·B"},
+    ["s"] = {"󰰣 SELECT", "S"},
+    ["S"] = {"󰰣 S·LINE", "S·L"},
+    [""] = {"󰰣 S·BLOCK", "S·B"},
+    ["i"] = {"󰰅 INSERT", "I"},
+    ["ic"] = {"󰰅 INSERT", "I"},
+    ["R"] = {"󰰠 REPLACE", "R"},
+    ["Rv"] = {"󰰠 V·REPLACE", "V·R"},
+    ["c"] = {"󰯳 COMMAND", "C"},
+    ["cv"] = {"󰰲 VIM·EX", "V·E"},
+    ["ce"] = {"󰰲 EX", "E"},
+    ["r"] = {"󰰚 PROMPT", "P"},
+    ["rm"] = {"󰰑 MORE", "M"},
+    ["r?"] = {"󰰝 CONFIRM", "C"},
+    ["!"] = {"󰰦 SHELL", "S"},
+    ["t"] = {"󰰦 TERMINAL", "󰰦 T"}
 }, {
     __index = function()
-        return {"UNKNOWN", "U"} -- handle edge cases
+        return {"󰰩 UNKNOWN", "U"} -- handle edge cases
     end
 })
 
@@ -334,6 +334,10 @@ local InactiveStatusline = {
 }
 
 local DefaultStatusline = {
+    {
+        provider = "",
+        hl = { fg = colors.bg, bg = '#1d2021' },
+    },
     Mode,
     Git,
     Space,
@@ -356,6 +360,10 @@ local DefaultStatusline = {
     IndentSize,
     Space,
     Ruler,
+    {
+        provider = "",
+        hl = { fg = colors.bg, bg = '#1d2021' },
+    },
 }
 
 require("heirline").setup {

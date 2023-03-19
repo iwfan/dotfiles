@@ -1,5 +1,6 @@
 local cmp = require "cmp"
 local luasnip = require "luasnip"
+local icons = require "lsp.lspkind_icons"
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
@@ -68,18 +69,11 @@ cmp.setup {
     },
 
     formatting = {
-        format = function(entry, vim_item)
-            local icons = require "lsp.lspkind_icons"
-            vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
-
-            vim_item.menu = ({
-                nvim_lsp = "[LSP]",
-                nvim_lua = "[Lua]",
-                buffer = "[BUF]",
-            })[entry.source.name]
-
-            return vim_item
-        end,
+      format = function(_, vim_item)
+        vim_item.menu = vim_item.kind
+        vim_item.kind = icons[vim_item.kind]
+        return vim_item
+      end,
     },
 
     sources = {
