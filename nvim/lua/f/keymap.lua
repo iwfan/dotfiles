@@ -35,7 +35,7 @@ vim.keymap.set("i", ",", ",<c-g>u")
 vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", ";", ";<c-g>u")
 
--- fase move code
+-- fast move code
 vim.keymap.set("n", "<M-j>", ":m .+1<CR>==", { desc = "Move down" })
 vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv", { desc = "Move down" })
 vim.keymap.set("i", "<M-j>", "<ESC>:m .+1<CR>==gi", { desc = "Move down" })
@@ -59,6 +59,8 @@ vim.keymap.set("t", "<C-L>", [[<c-\><c-n><c-w>l]])
 vim.keymap.set("t", "<C-J>", [[<c-\><c-n><c-w>j]])
 vim.keymap.set("t", "<C-K>", [[<c-\><c-n><c-w>k]])
 vim.keymap.set("t", "<C-]>", [[<C-\><C-n>]])
+vim.keymap.set("n", "<C-w>t", [[<cmd>vsplit term://fish<CR>]])
+vim.keymap.set("n", "<C-w>b", [[<cmd>split term://fish<CR>]])
 vim.keymap.set("n", "<M-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
 vim.keymap.set("n", "<M-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
 vim.keymap.set("n", "<M-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })

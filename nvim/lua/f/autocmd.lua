@@ -1,8 +1,5 @@
 local autocmd = vim.api.nvim_create_autocmd
 
--- Check if we need to reload the file when it changed
-autocmd({ "FocusGained", "TermClose", "TermLeave" }, { command = "checktime" })
-
 autocmd({ "BufNewFile", "BufRead", "FileType" }, {
     callback = function()
         if string.find(vim.o.fo, "o") then
@@ -13,23 +10,10 @@ autocmd({ "BufNewFile", "BufRead", "FileType" }, {
     end,
 })
 
-autocmd("TextYankPost", {
-    callback = function()
-        vim.highlight.on_yank { higroup = "IncSearch", timeout = 200 }
-    end,
-})
-
--- resize splits if window got resized
-autocmd({ "VimResized" }, {
-    callback = function()
-        vim.cmd "tabdo wincmd ="
-    end,
-})
-
 -- https://github.com/mhinz/vim-galore#smarter-cursorline
 autocmd({ "InsertLeave", "WinEnter" }, {
     callback = function()
-        if not vim.bo.filetype ~= 'help' then
+        if not vim.tbl_contains({ "term", "help", "dashboard" }, vim.bo.filetype) then
             vim.opt_local.cursorline = true
             vim.opt_local.relativenumber = true
         end
@@ -39,6 +23,36 @@ autocmd({ "InsertEnter", "WinLeave " }, {
     callback = function()
         vim.opt_local.cursorline = false
         vim.opt_local.relativenumber = false
+    end,
+})
+
+autocmd("TextYankPost", {
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
+
+autocmd("TermOpen", {
+    pattern = { "term://*" },
+    callback = function()
+        vim.opt_local.number = false
+        vim.opt_local.relativenumber = false
+        vim.bo.filetype = 'term'
+        vim.cmd("startinsert")
+    end,
+})
+
+autocmd("TermClose", {
+    pattern = { "term://*" },
+    callback = function()
+        vim.cmd("bd")
+    end,
+})
+
+-- resize splits if window got resized
+autocmd({ "VimResized" }, {
+    callback = function()
+        vim.cmd "tabdo wincmd ="
     end,
 })
 

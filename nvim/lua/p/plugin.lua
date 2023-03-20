@@ -133,8 +133,6 @@ require("lazy").setup {
             "rafamadriz/friendly-snippets",
         },
     },
-    { "Exafunction/codeium.vim", config = function() end },
-
     { "tpope/vim-repeat" },
     { "tpope/vim-fugitive", cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" } },
     {

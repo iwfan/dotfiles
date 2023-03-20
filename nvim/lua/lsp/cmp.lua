@@ -69,24 +69,23 @@ cmp.setup {
     },
 
     formatting = {
-      format = function(_, vim_item)
-        vim_item.menu = vim_item.kind
-        vim_item.kind = icons[vim_item.kind]
-        return vim_item
-      end,
+        format = function(_, vim_item)
+            vim_item.menu = vim_item.kind
+            vim_item.kind = icons[vim_item.kind]
+            return vim_item
+        end,
     },
-
-    sources = {
-        { name = "luasnip", keyword_length = 2, max_item_count = 6 },
-        { name = "nvim_lsp", keyword_length = 2 },
-        { name = "nvim_lua", keyword_length = 2 },
-        { name = "buffer", keyword_length = 2 },
-        { name = "path", keyword_length = 2 },
-    },
+    sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+        { name = "nvim_lua" },
+        { name = "luasnip", max_item_count = 4 },
+    }, {
+        { name = "buffer" },
+    }),
 }
 
 -- `/` cmdline setup.
-cmp.setup.cmdline("/", {
+cmp.setup.cmdline({ "/", "?" }, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
         { name = "buffer" },

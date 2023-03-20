@@ -343,12 +343,6 @@ local DefaultStatusline = {
     Space,
     Diagnostics,
     Align,
-    {
-        provider = function()
-            return '{…}%3{codeium#GetStatusString()}'
-        end,
-        hl = { fg = colors.fg, bg = colors.bg },
-    },
     Space,
     FileType,
     Spell,
@@ -367,21 +361,5 @@ local DefaultStatusline = {
 }
 
 require("heirline").setup {
-    statusline = {
-        hl = function()
-            if conditions.is_active() then
-                return "StatusLine"
-            else
-                return "StatusLineNC"
-            end
-        end,
-
-        -- the first statusline with no condition, or which condition returns true is used.
-        -- think of it as a switch case with breaks to stop fallthrough.
-        fallthrough = false,
-
-        SpecialStatusline,
-        InactiveStatusline,
-        DefaultStatusline,
-    },
+    statusline = DefaultStatusline,
 }

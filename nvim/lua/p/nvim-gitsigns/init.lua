@@ -1,10 +1,11 @@
 require("gitsigns").setup {
     signs = {
-        add = { hl = "GitSignsAdd", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-        change = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-        delete = { hl = "GitSignsDelete", text = "_", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-        topdelete = { hl = "GitSignsDelete", text = "‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-        changedelete = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "_" },
+        topdelete = { text = "‾" },
+        changedelete = { text = "▎" },
+        untracked = { text = "▎" },
     },
     on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
@@ -39,24 +40,23 @@ require("gitsigns").setup {
         -- Actions
         map({ "n", "v" }, "<space>hs", ":Gitsigns stage_hunk<CR>")
         map({ "n", "v" }, "<space>hr", ":Gitsigns reset_hunk<CR>")
-        map("n", "<space>hS", gs.stage_buffer)
-        map("n", "<space>hu", gs.undo_stage_hunk)
-        map("n", "<space>hR", gs.reset_buffer)
-        map("n", "<space>hp", gs.preview_hunk)
+        map("n", "<space>hS", gs.stage_buffer, { desc = "Stage Buffer" })
+        map("n", "<space>hu", gs.undo_stage_hunk, { desc = "Undo Stage Hunk" })
+        map("n", "<space>hR", gs.reset_buffer, { desc = "Reset Buffer" })
         map("n", "<space>hb", function()
             gs.blame_line { full = true }
-        end)
-        map("n", "<space>tb", gs.toggle_current_line_blame)
-        map("n", "<space>hd", gs.diffthis)
+        end, { desc = "Blame Line" })
+        map("n", "<space>tb", gs.toggle_current_line_blame, { desc = "Toggle Current Line Blame" })
+        map("n", "<space>hd", gs.diffthis, { desc = "Diff this buffer" })
         map("n", "<space>hD", function()
             gs.diffthis "~"
         end)
-        map("n", "<space>td", gs.toggle_deleted)
-        map("n", "\\c", gs.preview_hunk)
-        map("n", "<bs>c", gs.reset_hunk)
+        map("n", "<space>td", gs.toggle_deleted, { desc = "Toggle Deleted" })
+        map("n", "\\c", gs.preview_hunk, { desc = "Preview Hunk" })
+        map("n", "<bs>c", gs.reset_hunk, { desc = "Reset Hunk" })
         map("v", "<bs>c", function()
             gs.reset_hunk { vim.fn.line ".", vim.fn.line "v" }
-        end)
+        end, { desc = "Reset Hunk" })
         -- Text object
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
     end,

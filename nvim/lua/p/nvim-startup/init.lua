@@ -58,7 +58,16 @@ require("dashboard").setup {
                 key = 'o',
                 key_hl = 'Comment',
                 action = 'Telescope oldfiles theme=ivy'
-            }
+            },
+            {
+                icon = ' ',
+                icon_hl = '@property',
+                desc = 'Check Health',
+                desc_hl = 'String',
+                key = 'c',
+                key_hl = 'Comment',
+                action = 'checkhealth'
+            },
         },
     }
 }
