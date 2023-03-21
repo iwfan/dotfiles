@@ -23,6 +23,6 @@ if [[ "$filetype" =~ json$ ]]; then
 fi
 
 if [[ "$filetype" =~ ^image ]]; then
-    kitty +icat --silent --transfer-mode file --place "${w}x${h}@${x}x${y}" "$file"
+    kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$file" < /dev/null > /dev/tty
     exit 1
 fi

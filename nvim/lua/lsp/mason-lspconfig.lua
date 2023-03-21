@@ -38,7 +38,6 @@ local null_ls = require "null-ls"
 
 null_ls.setup {
     sources = {
-        -- null_ls.builtins.diagnostics.cspell,
         null_ls.builtins.formatting.prettierd.with {
             env = {
                 PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
@@ -53,16 +52,4 @@ null_ls.setup {
             extra_args = { "--config-path", vim.fn.expand "~/dotfiles/stylua.toml" },
         },
     },
-    on_attach = function(client, bufnr)
-        if client.server_capabilities.document_formatting then
-            vim.api.nvim_create_user_command("F", vim.lsp.buf.formatting, { force = true, nargs = 0 })
-
-            local LspDocumentFormattingGroup = vim.api.nvim_create_augroup("LspDocumentFormatting", { clear = true })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                group = LspDocumentFormattingGroup,
-                buffer = bufnr,
-                callback = vim.lsp.buf.formatting,
-            })
-        end
-    end,
 }

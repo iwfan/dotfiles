@@ -60,7 +60,7 @@ require("dashboard").setup {
                 action = 'Telescope oldfiles theme=ivy'
             },
             {
-                icon = ' ',
+                icon = '󰨯 ',
                 icon_hl = '@property',
                 desc = 'Check Health',
                 desc_hl = 'String',

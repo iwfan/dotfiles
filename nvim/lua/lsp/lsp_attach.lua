@@ -18,8 +18,17 @@ end
 
 local function buf_autocmd_document_formatting(bufnr)
     vim.api.nvim_create_user_command("Format", function()
-        vim.lsp.buf.format()
+        vim.lsp.buf.format({ timeout_ms = 2000 })
     end, { force = true, nargs = 0 })
+
+    local LspDocumentFormattingGroup = vim.api.nvim_create_augroup("LspDocumentFormatting", { clear = true })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+        group = LspDocumentFormattingGroup,
+        buffer = bufnr,
+        callback = function()
+            vim.lsp.buf.format({ timeout_ms = 2000 })
+        end,
+    })
 end
 
 return function(client, bufnr)
