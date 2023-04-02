@@ -43,6 +43,7 @@ require("nvim-treesitter.configs").setup {
     },
     highlight = {
         enable = not vim.g.vscode,
+        additional_vim_regex_highlighting = false,
     },
     indent = { enable = true },
     incremental_selection = {
