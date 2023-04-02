@@ -15,6 +15,20 @@ require("lazy").setup {
     "gpanders/editorconfig.nvim",
     "nvim-tree/nvim-web-devicons",
     {
+        "neanias/everforest-nvim",
+        lazy = false,
+        priority = 1000, -- make sure to load this before all the other start plugins
+        config = function()
+            require("everforest").setup {
+                background = "medium",
+                transparent_background_level = 1,
+                italics = false,
+                disable_italic_comments = false,
+            }
+            require("everforest").load()
+        end,
+    },
+    {
         "glepnir/dashboard-nvim",
         event = "VimEnter",
         config = function()
@@ -29,7 +43,7 @@ require("lazy").setup {
     },
     {
         "akinsho/bufferline.nvim",
-        version = "*",
+        version = "v3.*",
         event = "BufRead",
         dependencies = "famiu/bufdelete.nvim",
         config = function()
@@ -41,16 +55,6 @@ require("lazy").setup {
         version = "*",
         config = function()
             require "p.nvim-toggleterm"
-        end,
-    },
-    {
-        "sainnhe/gruvbox-material",
-        config = function()
-            vim.g.gruvbox_material_background = "hard"
-            vim.g.gruvbox_material_enable_italic = 1
-            vim.g.gruvbox_material_better_performance = 1
-            vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
-            vim.cmd.colorscheme "gruvbox-material"
         end,
     },
     {
@@ -112,7 +116,6 @@ require("lazy").setup {
                 end,
             },
             "jose-elias-alvarez/typescript.nvim",
-            "folke/neodev.nvim",
             "jose-elias-alvarez/null-ls.nvim",
         },
     },

@@ -30,8 +30,6 @@ return function(on_attach, capabilities)
         },
     }
 
-    require("neodev").setup {}
-
     require("lspconfig").lua_ls.setup {
         on_attach = function(client, bufnr)
             client.server_capabilities.document_formatting = true

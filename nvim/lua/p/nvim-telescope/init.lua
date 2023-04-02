@@ -29,7 +29,6 @@ telescope.setup {
                 ["<C-n>"] = actions.move_selection_next,
                 ["<C-p>"] = actions.move_selection_previous,
             },
-
         },
     },
 }
@@ -37,8 +36,8 @@ telescope.setup {
 require("telescope").load_extension "enhanced_find_files"
 
 vim.keymap.set("n", "<space>p", "<cmd>Telescope enhanced_find_files theme=ivy<cr>")
-vim.keymap.set("n", "<space>f", "<cmd>Telescope live_grep<cr>")
-vim.keymap.set("n", "<space>b", "<cmd>Telescope buffers<cr>")
-vim.keymap.set("n", "<space>r", "<cmd>Telescope registers<cr>")
-vim.keymap.set("n", "<space>m", "<cmd>Telescope marks<cr>")
+vim.keymap.set("n", "<space>f", "<cmd>Telescope live_grep theme=ivy<cr>")
+vim.keymap.set("n", "<space>b", "<cmd>Telescope buffers theme=ivy<cr>")
+vim.keymap.set("n", "<space>r", "<cmd>Telescope registers theme=ivy<cr>")
+vim.keymap.set("n", "<space>m", "<cmd>Telescope marks theme=ivy<cr>")
 vim.keymap.set("n", "<space><space>", "<cmd>Telescope<cr>")

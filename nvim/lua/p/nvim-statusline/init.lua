@@ -1,21 +1,95 @@
 local conditions = require "heirline.conditions"
 local utils = require "heirline.utils"
-local gruvbox_material_colors = require "lualine/themes/gruvbox-material"
 
 local colors = {
-    bg = gruvbox_material_colors.inactive.a.bg,
-    fg = gruvbox_material_colors.inactive.a.fg,
-    red = gruvbox_material_colors.visual.a.bg,
-    green = gruvbox_material_colors.insert.a.bg,
-    blue = gruvbox_material_colors.command.a.bg,
-    gray = gruvbox_material_colors.insert.b.bg,
-    orange = gruvbox_material_colors.replace.a.bg,
-    purple = gruvbox_material_colors.terminal.a.bg,
-    cyan = gruvbox_material_colors.command.a.bg,
+    bg = utils.get_highlight("StatusLine").bg,
+    fg = "#d3c6aa",
+    red = "#e67e80",
+    orange = "#e69875",
+    yellow = "#dbbc7f",
+    green = "#a7c080",
+    aqua = "#83c092",
+    blue = "#7fbbb3",
+    purple = "#d699b6",
+    grey = "#7a8478",
+    grey1 = "#859289",
+    grey2 = "#9da9a0",
 }
 
 local Align = { provider = "%=" }
 local Space = { provider = " " }
+
+local ViMode = {
+    -- get vim current mode, this information will be required by the provider
+    -- and the highlight functions, so we compute it only once per component
+    -- evaluation and store it as a component attribute
+    init = function(self)
+        self.mode = vim.fn.mode(1) -- :h mode()
+    end,
+    -- Now we define some dictionaries to map the output of mode() to the
+    -- corresponding string and color. We can put these into `static` to compute
+    -- them at initialisation time.
+    static = {
+        mode_names = {
+            -- change the strings if you like it vvvvverbose!
+            n = "󰰔 NORMAL",
+            no = "󰲟 N·OPERATOR",
+            nov = "N?",
+            noV = "N?",
+            ["no\22"] = "N?",
+            niI = "Ni",
+            niR = "Nr",
+            niV = "Nv",
+            nt = "Nt",
+            v = "󰰬 VISUAL",
+            vs = "󰰬 VISUAL",
+            V = "󰰬 V·LINE",
+            Vs = "󰰬 VISUAL",
+            ["\22"] = "󰰬 V·BLOCK",
+            ["\22s"] = "󰰬 V·BLOCK",
+            s = "󰰣 SELECT",
+            S = "󰰣 S·LINE",
+            ["\19"] = "󰰣 S·BLOCK",
+            i = "󰰅 INSERT",
+            ic = "󰰅 INSERT",
+            ix = "Ix",
+            R = "󰰠 REPLACE",
+            Rc = "Rc",
+            Rx = "Rx",
+            Rv = "󰰠 V·REPLACE",
+            Rvc = "Rv",
+            Rvx = "Rv",
+            c = "󰯳 COMMAND",
+            cv = "󰰲 VIM·EX",
+            r = "󰰚 PROMPT",
+            rm = "󰰑 MORE",
+            ["r?"] = "󰰝 CONFIRM",
+            ["!"] = "󰰦 SHELL",
+            t = "󰰦 TERMINAL",
+        },
+    },
+    -- We can now access the value of mode() that, by now, would have been
+    -- computed by `init()` and use it to index our strings dictionary.
+    -- note how `static` fields become just regular attributes once the
+    -- component is instantiated.
+    -- To be extra meticulous, we can also add some vim statusline syntax to
+    -- control the padding and make sure our string is always at least 2
+    -- characters long. Plus a nice Icon.
+    provider = function(self)
+        return self.mode_names[self.mode]
+    end,
+    -- Same goes for the highlight. Now the foreground will change according to the current mode.
+    hl = { fg = colors.fg, bg = colors.bg },
+    -- Re-evaluate the component only on ModeChanged event!
+    -- Also allorws the statusline to be re-evaluated when entering operator-pending mode
+    update = {
+        "ModeChanged",
+        pattern = "*:*",
+        callback = vim.schedule_wrap(function()
+            vim.cmd "redrawstatus"
+        end),
+    },
+}
 
 local FileNameBlock = {
     init = function(self)
@@ -57,47 +131,6 @@ local FileName = {
     end,
     hl = { fg = colors.fg, bg = colors.bg },
 }
-
-local modes = setmetatable({
-    ["n"] = {"󰰔 NORMAL", "N"},
-    ["no"] = {"󰲟 N·OPERATOR", "N·P"},
-    ["v"] = {"󰰬 VISUAL", "V"},
-    ["V"] = {"󰰬 V·LINE", "V·L"},
-    [""] = {"󰰬 V·BLOCK", "V·B"},
-    [""] = {"󰰬 V·BLOCK", "V·B"},
-    ["s"] = {"󰰣 SELECT", "S"},
-    ["S"] = {"󰰣 S·LINE", "S·L"},
-    [""] = {"󰰣 S·BLOCK", "S·B"},
-    ["i"] = {"󰰅 INSERT", "I"},
-    ["ic"] = {"󰰅 INSERT", "I"},
-    ["R"] = {"󰰠 REPLACE", "R"},
-    ["Rv"] = {"󰰠 V·REPLACE", "V·R"},
-    ["c"] = {"󰯳 COMMAND", "C"},
-    ["cv"] = {"󰰲 VIM·EX", "V·E"},
-    ["ce"] = {"󰰲 EX", "E"},
-    ["r"] = {"󰰚 PROMPT", "P"},
-    ["rm"] = {"󰰑 MORE", "M"},
-    ["r?"] = {"󰰝 CONFIRM", "C"},
-    ["!"] = {"󰰦 SHELL", "S"},
-    ["t"] = {"󰰦 TERMINAL", "󰰦 T"}
-}, {
-    __index = function()
-        return {"󰰩 UNKNOWN", "U"} -- handle edge cases
-    end
-})
-
-local Mode = {
-    provider = function()
-        local mode = modes[vim.api.nvim_get_mode().mode]
-        if vim.api.nvim_win_get_width(0) <= 80 then
-            return string.format("%s ", mode[2]) -- short name
-        else
-            return string.format("%s ", mode[1]) -- long name
-        end
-    end,
-    hl = { fg = colors.fg, bg = colors.bg },
-}
-
 
 local FileFlags = {
     {
@@ -155,7 +188,7 @@ local Diagnostics = {
     },
     {
         provider = "[",
-        hl = { fg = colors.gray, bg = colors.bg },
+        hl = { fg = colors.grey, bg = colors.bg },
     },
     {
         provider = function(self)
@@ -183,7 +216,7 @@ local Diagnostics = {
     },
     {
         provider = "]",
-        hl = { fg = colors.gray, bg = colors.bg },
+        hl = { fg = colors.grey, bg = colors.bg },
     },
 }
 
@@ -201,7 +234,8 @@ local Git = {
         name = "heirline_git",
     },
     hl = { fg = colors.fg, bg = colors.bg },
-    { -- git branch name
+    {
+        -- git branch name
         provider = function(self)
             return " " .. self.status_dict.head
         end,
@@ -248,7 +282,7 @@ local FileEncoding = {
         local encode = vim.bo.fenc ~= "" and vim.bo.fenc or vim.o.enc
         return encode:upper()
     end,
-    hl = { fg = colors.fg, bg = colors.bg },
+    hl = { fg = colors.grey, bg = colors.bg },
 }
 
 local FileFormat = {
@@ -260,14 +294,14 @@ local FileFormat = {
             return "CRLF"
         end
     end,
-    hl = { fg = colors.fg, bg = colors.bg },
+    hl = { fg = colors.grey, bg = colors.bg },
 }
 
 local FileType = {
     provider = function()
         return string.upper(vim.bo.filetype)
     end,
-    hl = { fg = colors.fg, bg = colors.bg, bold = true },
+    hl = { fg = colors.grey1, bg = colors.bg, bold = true },
 }
 
 local IndentSize = {
@@ -275,15 +309,15 @@ local IndentSize = {
         provider = function()
             return vim.api.nvim_buf_get_option(0, "shiftwidth")
         end,
-        hl = { fg = colors.fg, bg = colors.bg },
+        hl = { fg = colors.grey1, bg = colors.bg },
     },
-    { provider = "x", hl = { fg = colors.gray, bg = colors.bg } },
-    { provider = "SPC", hl = { fg = colors.fg, bg = colors.bg } },
+    { provider = "x", hl = { fg = colors.grey, bg = colors.bg } },
+    { provider = "SPC", hl = { fg = colors.grey, bg = colors.bg } },
 }
 
 local Ruler = {
     provider = "%l:%c %P",
-    hl = { fg = colors.fg, bg = colors.bg },
+    hl = { fg = colors.grey, bg = colors.bg },
 }
 
 local Spell = {
@@ -335,10 +369,13 @@ local InactiveStatusline = {
 
 local DefaultStatusline = {
     {
-        provider = "",
-        hl = { fg = colors.bg, bg = '#1d2021' },
+        provider = " ",
+        hl = { fg = colors.bg, bg = "NONE" },
     },
-    Mode,
+    ViMode,
+    Space,
+    FileNameBlock,
+    Space,
     Git,
     Space,
     Diagnostics,
@@ -355,8 +392,8 @@ local DefaultStatusline = {
     Space,
     Ruler,
     {
-        provider = "",
-        hl = { fg = colors.bg, bg = '#1d2021' },
+        provider = " ",
+        hl = { fg = colors.bg, bg = "NONE" },
     },
 }
 

@@ -1,6 +1,6 @@
 require("bufferline").setup {
     options = {
-        themable = true,
+        themable = false,
         left_mouse_command = "buffer %d",
         show_buffer_close_icons = false,
         modified_icon = "●",
@@ -9,7 +9,7 @@ require("bufferline").setup {
         show_close_icon = false,
         show_tab_indicators = true,
         enforce_regular_tabs = false,
-        always_show_bufferline = true,
+        always_show_bufferline = false,
     },
 }
 

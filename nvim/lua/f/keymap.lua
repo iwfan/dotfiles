@@ -30,6 +30,7 @@ vim.keymap.set("!", "<M-b>", "<S-Left>")
 vim.keymap.set("i", "<C-s>", "<c-g>u<C-o><cmd>w<CR><ESC>", { desc = "Save file" })
 vim.keymap.set("n", "<C-s>", "<cmd>w<CR><ESC>", { desc = "Save file" })
 vim.keymap.set("i", "<S-Tab>", "<BS>")
+
 -- Add undo break-points
 vim.keymap.set("i", ",", ",<c-g>u")
 vim.keymap.set("i", ".", ".<c-g>u")
@@ -75,9 +76,14 @@ vim.keymap.set({ "n", "v", "o" }, "[w", "g#")
 -- misc
 vim.keymap.set("n", "q", "<Nop>")
 vim.keymap.set("n", "gq", "q")
+vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("x", "p", [["_dP]])
+vim.keymap.set("x", "<leader>p", [[p]])
+vim.keymap.set("n", "<space><bs>", [["_dd]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set("n", "<space>qq", "<cmd>qa<CR>", { desc = "Quit all" })
 vim.keymap.set("n", "<esc>", "<esc><cmd>noh<CR><cmd>call feedkeys(':','nx')<CR>", { desc = "Clear all" })
-vim.keymap.set("n", "<space><bs>", '"_dd')
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "[<space>", ":<c-u>put! =repeat(nr2char(10), v:count1)<CR>'[", { silent = true })
 vim.keymap.set("n", "]<space>", ":<c-u>put =repeat(nr2char(10), v:count1)<CR>", { silent = true })
 

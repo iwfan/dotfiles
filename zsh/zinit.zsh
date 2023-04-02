@@ -54,15 +54,3 @@ zinit wait lucid light-mode for \
 #   atload"bindkey '^[\f' autosuggest-accept" \
 #   atload"_zsh_autosuggest_start" \
 #   for zsh-users/zsh-autosuggestions
-
-# # Can't use `wait` mode, else hooks get not registered for the first prompt.
-# zinit lucid light-mode \
-#   atinit"zstyle ':completion:*' extra-verbose yes" \
-#   atinit"zstyle ':completion:*' remote-access no" \
-#   atinit"zstyle ':autocomplete:*' default-context ''" \
-#   atinit"zstyle ':autocomplete:*' widget-style menu-select" \
-#   atinit"zstyle ':autocomplete:*' fzf-completion yes" \
-#   atinit"zstyle ':autocomplete:*' min-delay 0.05" \
-#   atinit"zstyle ':autocomplete:*' min-input 0" \
-#   atinit"zstyle ':autocomplete:*' ignored-input ''" \
-#   for marlonrichert/zsh-autocomplete

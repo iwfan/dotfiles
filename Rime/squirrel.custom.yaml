@@ -92,3 +92,5 @@ patch:
     com.jetbrains.rubymine:
       ascii_mode: true
       vim_mode: true
+    dev.warp.Warp-Stable:
+      ascii_mode: true
