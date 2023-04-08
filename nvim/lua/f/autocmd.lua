@@ -37,15 +37,15 @@ autocmd("TermOpen", {
     callback = function()
         vim.opt_local.number = false
         vim.opt_local.relativenumber = false
-        vim.bo.filetype = 'term'
-        vim.cmd("startinsert")
+        vim.bo.filetype = "term"
+        vim.cmd "startinsert"
     end,
 })
 
 autocmd("TermClose", {
     pattern = { "term://*" },
     callback = function()
-        vim.cmd("bd")
+        vim.cmd "bd"
     end,
 })
 

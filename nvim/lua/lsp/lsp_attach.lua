@@ -18,7 +18,7 @@ end
 
 local function buf_autocmd_document_formatting(bufnr)
     vim.api.nvim_create_user_command("Format", function()
-        vim.lsp.buf.format { timeout_ms = 2000 }
+        vim.lsp.buf.format { timeout_ms = 250 }
     end, { force = true, nargs = 0 })
 
     local LspDocumentFormattingGroup = vim.api.nvim_create_augroup("LspDocumentFormatting", { clear = true })
@@ -26,7 +26,7 @@ local function buf_autocmd_document_formatting(bufnr)
         group = LspDocumentFormattingGroup,
         buffer = bufnr,
         callback = function()
-            vim.lsp.buf.format { timeout_ms = 2000 }
+            vim.lsp.buf.format { timeout_ms = 250 }
         end,
     })
 end
@@ -45,7 +45,7 @@ return function(client, bufnr)
     end
 
     local bufopts = { silent = true, buffer = bufnr }
-    vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, bufopts)
+    vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references theme=ivy<cr>", bufopts)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)

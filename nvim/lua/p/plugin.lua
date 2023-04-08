@@ -12,7 +12,6 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup {
-    "gpanders/editorconfig.nvim",
     "nvim-tree/nvim-web-devicons",
     {
         "neanias/everforest-nvim",
@@ -137,7 +136,34 @@ require("lazy").setup {
         },
     },
     { "tpope/vim-repeat" },
-    { "tpope/vim-fugitive", cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" } },
+    {
+        "tpope/vim-fugitive",
+        cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" },
+        config = function()
+            local fugitive = vim.api.nvim_create_augroup("fugitive", {})
+
+            local autocmd = vim.api.nvim_create_autocmd
+            autocmd("BufWinEnter", {
+                group = fugitive,
+                pattern = "*",
+                callback = function()
+                    if vim.bo.ft ~= "fugitive" then
+                        return
+                    end
+
+                    local bufnr = vim.api.nvim_get_current_buf()
+                    local opts = { buffer = bufnr, remap = false }
+                    vim.keymap.set("n", "<leader>p", function()
+                        vim.cmd.Git "push"
+                    end, opts)
+
+                    vim.keymap.set("n", "<leader>P", function()
+                        vim.cmd.Git { "pull", "--rebase" }
+                    end, opts)
+                end,
+            })
+        end,
+    },
     {
         "Darazaki/indent-o-matic",
         config = function()
@@ -171,6 +197,12 @@ require("lazy").setup {
         "folke/which-key.nvim",
         config = function()
             require("which-key").setup()
+        end,
+    },
+    {
+        "folke/zen-mode.nvim",
+        config = function()
+            require("zen-mode").setup()
         end,
     },
     {

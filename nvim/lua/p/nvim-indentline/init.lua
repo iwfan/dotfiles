@@ -8,6 +8,7 @@ require("indent_blankline").setup {
         "css",
         "scss",
         "sass",
+        "less",
         "lua",
         "go",
         "ruby",
