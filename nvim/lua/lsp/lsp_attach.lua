@@ -21,14 +21,14 @@ local function buf_autocmd_document_formatting(bufnr)
         vim.lsp.buf.format { timeout_ms = 250 }
     end, { force = true, nargs = 0 })
 
-    local LspDocumentFormattingGroup = vim.api.nvim_create_augroup("LspDocumentFormatting", { clear = true })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-        group = LspDocumentFormattingGroup,
-        buffer = bufnr,
-        callback = function()
-            vim.lsp.buf.format { timeout_ms = 250 }
-        end,
-    })
+    -- local LspDocumentFormattingGroup = vim.api.nvim_create_augroup("LspDocumentFormatting", { clear = true })
+    -- vim.api.nvim_create_autocmd("BufWritePre", {
+    --     group = LspDocumentFormattingGroup,
+    --     buffer = bufnr,
+    --     callback = function()
+    --         vim.lsp.buf.format { timeout_ms = 250 }
+    --     end,
+    -- })
 end
 
 return function(client, bufnr)
