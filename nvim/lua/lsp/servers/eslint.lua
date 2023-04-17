@@ -8,10 +8,7 @@ return function(on_attach, capabilities)
         end,
         capabilities = capabilities,
         settings = {
-            codeActionOnSave = {
-                enable = true,
-                mode = "all",
-            },
+            autoFixOnSave = true,
         },
     }
 end
