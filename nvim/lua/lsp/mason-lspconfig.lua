@@ -10,7 +10,6 @@ require("mason-lspconfig").setup {
         "tsserver",
         "eslint",
         "jsonls",
-        "yamlls",
         "gopls",
         "lua_ls",
     },

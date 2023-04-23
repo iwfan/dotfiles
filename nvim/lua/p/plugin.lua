@@ -258,7 +258,7 @@ require("lazy").setup {
             require("auto-hlsearch").setup()
         end,
     },
-    { "farmergreg/vim-lastplace", event = "BufReadPost" },
+    -- { "farmergreg/vim-lastplace", event = "BufReadPost" },
     {
         "tversteeg/registers.nvim",
         event = "BufReadPost",

@@ -17,7 +17,7 @@ abbr -a -g ns "npm run start"
 abbr -a -g nlsg "npm list -g --depth=0"
 
 abbr -a -g sskq "bundle exec sidekiq -C config/sidekiq.yml"
-abbr -a -g rs "GD_POSTGRES_HOST=127.0.0.1 GD_FE=local GD_FE_VITE=true GRAPHQL_CONSUMER_ORIGINS='localhost:3001, localhost:1215, localhost:4200' bundle exec rails s"
+abbr -a -g rs "GD_POSTGRES_HOST=127.0.0.1 GD_FE=local GD_FE_VITE=true GRAPHQL_CONSUMER_ORIGINS='localhost:3001, localhost:3002, localhost:1215, localhost:4200' bundle exec rails s"
 
 function multicd
     echo cd (string repeat -n (math (string length -- $argv[1]) - 1) ../)
