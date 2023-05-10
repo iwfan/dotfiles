@@ -6,8 +6,8 @@ git:
   pull:
     mode: 'rebase' # one of 'merge' | 'rebase' | 'ff-only'
 os:
-  editCommand: 'nvim'
-  editCommandTemplate: '{{editor}} +{{line}} -- {{filename}}'
-  openCommand: zed {{filename}}
+  edit: 'nvim'
+  editAtLine: '{{editor}} +{{line}} -- {{filename}}'
+  open: zed {{filename}}
 reporting: "off"
 startuppopupversion: 1

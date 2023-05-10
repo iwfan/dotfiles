@@ -5,7 +5,7 @@ return function(_, capabilities)
             client.server_capabilities.document_formatting = false
             client.server_capabilities.document_range_formatting = false
         end,
-        autostart = false,
+        -- autostart = false,
         capabilities = capabilities,
     }
 end
