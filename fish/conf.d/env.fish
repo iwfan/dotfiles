@@ -1,7 +1,4 @@
-set fish_greeting
-
 set -gx GPG_TTY tty
-
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
 set -gx VISUAL nvim
