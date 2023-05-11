@@ -21,6 +21,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 export HOMEBREW_NO_AUTO_UPDATE=true
 
+export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+
 # ruby
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
