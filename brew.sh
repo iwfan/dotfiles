@@ -10,19 +10,19 @@ brew install fish
 brew install fzf
 brew install gh
 brew install git
-brew install "git-delta"
+brew install git-delta
+brew install glow
 brew install httpie
-brew install "jesseduffield/lazygit/lazygit"
+brew install jesseduffield/lazydocker/lazydocker
+brew install jesseduffield/lazygit/lazygit
 brew install lf
-brew install most
 brew install neovim
 brew install ripgrep
+brew install slides
 brew install starship
 brew install stylua
 brew install trash
 brew install wget
-brew install glow
-brew install slides
 brew install zoxide
 
 brew install --cask "kitty"
