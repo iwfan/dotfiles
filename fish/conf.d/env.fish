@@ -22,8 +22,6 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 
-set -gx DOCKER_HOST "unix://$HOME/.colima/default/docker.sock"
-
 # Go
 set -gx GOPATH $HOME/go
 set -gx GO111MODULE on
