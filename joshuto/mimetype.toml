@@ -1,0 +1,38 @@
+[class]
+text_default = [
+  { command = "nvim" },
+  { command = "bat", args = [ "--paging=always" ], confirm_exit = true }
+]
+
+reader_default = [
+ { command = "open" },
+]
+
+[extension]
+
+## text formats
+cmake.inherit  = "text_default"
+conf.inherit   = "text_default"
+csv.inherit    = "text_default"
+pdf.inherit    = "reader_default"
+bz2.app_list   = [ { command = "tar", args = [ "-xvjf" ], confirm_exit = true } ]
+gz.app_list    = [ { command = "tar", args = [ "-xvzf" ], confirm_exit = true } ]
+tar.app_list   = [ { command = "tar", args = [ "-xvf" ], confirm_exit = true } ]
+tgz.app_list   = [ { command = "tar", args = [ "-xvzf" ], confirm_exit = true } ]
+rar.app_list   = [ { command = "unrar", args = [ "x" ], confirm_exit = true } ]
+xz.app_list    = [ { command = "tar", args = [ "-xvJf" ], confirm_exit = true } ]
+zip.app_list   = [ { command = "unzip", confirm_exit = true } ]
+
+[mimetype]
+
+# text/*
+[mimetype.text]
+inherit = "text_default"
+
+# application/octet-stream
+[mimetype.application.subtype.octet-stream]
+inherit = "reader_default"
+
+# text/*
+[mimetype.video]
+inherit = "reader_default"

@@ -1,3 +1,3 @@
 bind \cg 'lazygit'
 bind \cv 'nvim'
-bind \ct 'lfi'
+bind \ct 'tfm'

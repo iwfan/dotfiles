@@ -29,13 +29,13 @@ end
 vim.keymap.set("n", "<c-w>g", "<cmd>lua Lazygit_toggle()<cr>")
 vim.keymap.set("n", "<space>g", "<cmd>lua Lazygit_toggle()<cr>")
 
-function LF_toggle(path)
-    local tmpfile = "/tmp/lf_chosenfile"
+function joshuto_toggle(path)
+    local tmpfile = "/tmp/joshuto_chosenfile"
     local path_name = vim.fn.escape(vim.fn.expand(path), "[]()\\（） ")
-    local lf_cmd = "lf -selection-path=" .. tmpfile .. " " .. path_name
+    local joshuto_cmd = "joshuto --file-chooser --output-file=" .. tmpfile .. " " .. path_name
 
-    local lf = Terminal:new {
-        cmd = lf_cmd,
+    local joshuto = Terminal:new {
+        cmd = joshuto_cmd,
         start_in_insert = true,
         close_on_exit = true,
         direction = "tab",
@@ -55,10 +55,10 @@ function LF_toggle(path)
             end
         end,
     }
-    lf:open()
+    joshuto:open()
 end
 
-vim.keymap.set("n", "<space>e", "<cmd>lua LF_toggle('%')<cr>")
+vim.keymap.set("n", "<space>e", "<cmd>lua joshuto_toggle('%:p:h')<cr>")
 
 vim.api.nvim_create_user_command("Glow", function()
     local path_name = vim.fn.escape(vim.fn.expand "%:p", "[]()\\（） ")
