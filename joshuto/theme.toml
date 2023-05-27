@@ -1,0 +1,50 @@
+[selection]
+fg = "light_yellow"
+bold = true
+
+[visual_mode_selection]
+fg = "light_red"
+bold = true
+
+[selection.prefix]
+prefix = "  "
+size = 2
+
+[executable]
+fg = "light_green"
+bold = true
+
+[regular]
+fg = "#d3c6aa"
+
+[directory]
+fg = "light_blue"
+bold = true
+
+[link]
+fg = "cyan"
+bold = true
+
+[link_invalid]
+fg = "red"
+bold = true
+
+[socket]
+fg = "light_magenta"
+bold = true
+
+[ext]
+
+wav.fg  = "magenta"
+flac.fg = "magenta"
+mp3.fg  = "magenta"
+amr.fg  = "magenta"
+
+7z.fg   = "red"
+bz2.fg  = "red"
+gz.fg   = "red"
+rar.fg  = "red"
+tar.fg  = "red"
+tgz.fg  = "red"
+xz.fg   = "red"
+zip.fg  = "red"

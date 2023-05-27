@@ -32,7 +32,7 @@ column_ratio = [1, 2, 3]
 show_borders = true
 
 # Show hidden files
-show_hidden = false
+show_hidden = true
 
 # Show file icons (requires a supporting font)
 show_icons = true

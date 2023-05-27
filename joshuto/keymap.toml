@@ -5,7 +5,7 @@ keymap = [
   { keys = [ "ctrl+t" ],      command = "new_tab --current" },
   { keys = [ "ctrl+w" ],      command = "close_tab" },
   { keys = [ "ctrl+c" ],      command = "quit" },
-  { keys = [ "q" ],           command = "quit --output-selected-files" },
+  { keys = [ "q" ],           command = "quit" },
   { keys = [ "Q" ],           command = "quit --force" },
   # { keys = [ "T" ],           command = "new_tab --cursor" },
 
