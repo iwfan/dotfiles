@@ -29,17 +29,10 @@ require("lazy").setup {
     },
     {
         "nvim-lualine/lualine.nvim",
-        config = function()
-            require "p.nvim-statusline"
-        end,
-    },
-    {
-        "akinsho/bufferline.nvim",
-        version = "v3.*",
         event = "BufRead",
         dependencies = "famiu/bufdelete.nvim",
         config = function()
-            require "p.nvim-bufferline"
+            require "p.nvim-statusline"
         end,
     },
     {
@@ -177,6 +170,18 @@ require("lazy").setup {
         config = function()
             require("nvim-autopairs").setup()
         end,
+    },
+    {
+        "kevinhwang91/nvim-ufo",
+        event = "BufRead",
+        dependencies = { "kevinhwang91/promise-async" },
+        config = function ()
+            vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+            vim.o.foldlevelstart = 99
+            vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+            vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+            require('ufo').setup()
+        end
     },
     { "windwp/nvim-ts-autotag", event = "BufRead" },
     {
