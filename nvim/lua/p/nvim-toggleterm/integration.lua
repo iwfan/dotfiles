@@ -1,29 +1,41 @@
 local Terminal = require("toggleterm.terminal").Terminal
 
+local old_laststatus = nil
+local old_showtabline = nil
+local old_cursorline = nil
+local old_relativenumber = nil
+
 local function show_line()
-    vim.opt.laststatus = 3
-    vim.opt.showtabline = 2
-    vim.opt_local.cursorline = true
-    vim.opt_local.relativenumber = true
+    vim.opt.laststatus = old_laststatus
+    vim.opt.showtabline = old_showtabline
+    vim.opt_local.cursorline = old_cursorline
+    vim.opt_local.relativenumber = old_relativenumber
 end
 
 local function hide_line()
-    vim.opt_local.cursorline = false
-    vim.opt_local.relativenumber = false
+    old_laststatus = vim.opt.laststatus
+    old_showtabline = vim.opt.showtabline
+    old_cursorline = vim.opt_local.cursorline
+    old_relativenumber = vim.opt_local.relativenumber
+
     vim.opt.laststatus = 0
     vim.opt.showtabline = 0
+    vim.opt_local.cursorline = false
+    vim.opt_local.relativenumber = false
 end
 
 function Lazygit_toggle()
-    local lazygit = Terminal:new {
+    Terminal:new({
         cmd = "lazygit",
         start_in_insert = true,
         close_on_exit = true,
         direction = "tab",
         on_open = hide_line,
-        on_close = show_line,
-    }
-    lazygit:open()
+        on_close = function(term)
+            show_line()
+            term:shutdown()
+        end,
+    }):open()
 end
 
 vim.keymap.set("n", "<c-w>g", "<cmd>lua Lazygit_toggle()<cr>")
@@ -34,13 +46,13 @@ function joshuto_toggle(path)
     local path_name = vim.fn.escape(vim.fn.expand(path), "[]()\\（） ")
     local joshuto_cmd = "joshuto --file-chooser --output-file=" .. tmpfile .. " " .. path_name
 
-    local joshuto = Terminal:new {
+    Terminal:new({
         cmd = joshuto_cmd,
         start_in_insert = true,
         close_on_exit = true,
         direction = "tab",
         on_open = hide_line,
-        on_close = function()
+        on_close = function(term)
             show_line()
             if vim.fn.filereadable(tmpfile) then
                 local ok, selected_file = pcall(vim.fn.readfile, tmpfile)
@@ -53,9 +65,9 @@ function joshuto_toggle(path)
                 end
                 vim.fn.delete(tmpfile)
             end
+            term:shutdown()
         end,
-    }
-    joshuto:open()
+    }):open()
 end
 
 vim.keymap.set("n", "<space>e", "<cmd>lua joshuto_toggle('%:p:h')<cr>")
@@ -68,6 +80,9 @@ vim.api.nvim_create_user_command("Glow", function()
         close_on_exit = true,
         direction = "tab",
         on_open = hide_line,
-        on_close = show_line,
+        on_close = function(term)
+            show_line()
+            term:shutdown()
+        end,
     }):open()
 end, { complete = "file", nargs = "*", bang = true })
