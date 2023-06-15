@@ -19,7 +19,6 @@ brew install lf
 brew install neovim
 brew install ripgrep
 brew install slides
-brew install starship
 brew install stylua
 brew install trash
 brew install wget

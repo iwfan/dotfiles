@@ -1,6 +1,6 @@
 function lfcd
-    set -l tmp $(mktemp)
-    command lf -last-dir-path=$tmp $argv
+    set -l tmp "$HOME/dotfiles/lf/temp_dir"
+    command lf $argv
     if test -f "$tmp"
         set dir (cat $tmp)
         /bin/rm -f $tmp

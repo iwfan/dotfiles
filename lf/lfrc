@@ -47,7 +47,7 @@ cmd copy_filepath %{{
 cmd trash %trash $fx
 
 cmd change_dir %{{
-  lf -remote "send $id cd $fx"
+  echo "$f" > /Users/f/dotfiles/lf/temp_dir
   lf -remote "send $id quit"
 }}
 
