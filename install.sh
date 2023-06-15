@@ -22,7 +22,7 @@ ln -s ~/dotfiles/fish ~/.config/fish
 # kitty
 ln -s ~/dotfiles/kitty ~/.config/kitty
 # lf
-ln -s ~/dotfiles/joshuto ~/.config/joshuto
+ln -s ~/dotfiles/lf ~/.config/lf
 # Neovim
 ln -s ~/dotfiles/nvim ~/.config/nvim
 # ideavimrc
