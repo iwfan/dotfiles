@@ -1,27 +1,13 @@
 local Terminal = require("toggleterm.terminal").Terminal
 
-local old_laststatus = nil
-local old_showtabline = nil
-local old_cursorline = nil
-local old_relativenumber = nil
-
 local function show_line()
-    vim.opt.laststatus = old_laststatus
-    vim.opt.showtabline = old_showtabline
-    vim.opt_local.cursorline = old_cursorline
-    vim.opt_local.relativenumber = old_relativenumber
+    vim.opt.laststatus = 3
+    vim.opt.showtabline = 2
 end
 
 local function hide_line()
-    old_laststatus = vim.opt.laststatus
-    old_showtabline = vim.opt.showtabline
-    old_cursorline = vim.opt_local.cursorline
-    old_relativenumber = vim.opt_local.relativenumber
-
     vim.opt.laststatus = 0
     vim.opt.showtabline = 0
-    vim.opt_local.cursorline = false
-    vim.opt_local.relativenumber = false
 end
 
 function Lazygit_toggle()

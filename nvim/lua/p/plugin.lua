@@ -29,7 +29,7 @@ require("lazy").setup {
     },
     {
         "nvim-lualine/lualine.nvim",
-        event = "BufRead",
+        event = "BufReadPost",
         dependencies = "famiu/bufdelete.nvim",
         config = function()
             require "p.nvim-statusline"
@@ -38,6 +38,7 @@ require("lazy").setup {
     {
         "akinsho/toggleterm.nvim",
         version = "*",
+        event = "VeryLazy",
         config = function()
             require "p.nvim-toggleterm"
         end,
@@ -56,6 +57,7 @@ require("lazy").setup {
     {
         "nvim-telescope/telescope.nvim",
         version = "*",
+        event = "VeryLazy",
         config = function()
             require "p.nvim-telescope"
         end,
@@ -63,6 +65,7 @@ require("lazy").setup {
     },
     {
         "stevearc/dressing.nvim",
+        event = "VeryLazy",
         config = function()
             require("dressing").setup {
                 input = {
@@ -96,6 +99,7 @@ require("lazy").setup {
             },
             {
                 "j-hui/fidget.nvim",
+                tag = "legacy",
                 config = function()
                     require("fidget").setup {}
                 end,
@@ -125,6 +129,7 @@ require("lazy").setup {
     {
         "tpope/vim-fugitive",
         cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit" },
+        event = "VeryLazy",
         config = function()
             local fugitive = vim.api.nvim_create_augroup("fugitive", {})
 
@@ -151,123 +156,108 @@ require("lazy").setup {
         end,
     },
     {
-        "Darazaki/indent-o-matic",
-        config = function()
-            require("indent-o-matic").setup {}
-            require("indent-o-matic").detect()
-        end,
-    },
-    {
         "kylechui/nvim-surround",
-        event = "BufRead",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
         config = function()
             require("nvim-surround").setup()
         end,
     },
     {
         "windwp/nvim-autopairs",
-        event = "BufRead",
+        event = "VeryLazy",
         config = function()
             require("nvim-autopairs").setup()
         end,
     },
+    { "windwp/nvim-ts-autotag", event = "VeryLazy" },
     {
         "kevinhwang91/nvim-ufo",
-        event = "BufRead",
+        event = "VeryLazy",
         dependencies = { "kevinhwang91/promise-async" },
-        config = function ()
+        config = function()
             vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
             vim.o.foldlevelstart = 99
-            vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-            vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-            require('ufo').setup()
-        end
+            vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+            vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+            require("ufo").setup()
+        end,
     },
-    { "windwp/nvim-ts-autotag", event = "BufRead" },
     {
         "numToStr/Comment.nvim",
-        event = "BufRead",
+        event = "VeryLazy",
         config = function()
             require "p.nvim-comment"
         end,
     },
     {
-        "folke/which-key.nvim",
-        config = function()
-            require("which-key").setup()
-        end,
-    },
-    {
-        "folke/zen-mode.nvim",
-        config = function()
-            require("zen-mode").setup()
-        end,
-    },
-    {
         "sindrets/diffview.nvim",
+        event = "VeryLazy",
         cmd = { "DiffviewOpen", "DiffviewFileHistory" },
         config = function()
             require("diffview").setup()
         end,
-        dependencies = "nvim-lua/plenary.nvim",
     },
     {
         "lewis6991/gitsigns.nvim",
-        event = "BufRead",
+        event = "VeryLazy",
         config = function()
             require "p.nvim-gitsigns"
         end,
     },
     {
         "lukas-reineke/indent-blankline.nvim",
-        event = "BufReadPost",
+        event = "VeryLazy",
         config = function()
             require "p.nvim-indentline"
         end,
     },
     {
-        "norcalli/nvim-colorizer.lua",
-        event = "BufReadPost",
+        "NvChad/nvim-colorizer.lua",
+        event = "VeryLazy",
         config = function()
             require "p.nvim-colorizer"
         end,
     },
     {
         "mg979/vim-visual-multi",
-        event = "BufRead",
+        event = "VeryLazy",
     },
     {
         "ggandor/leap.nvim",
-        event = "BufRead",
+        event = "VeryLazy",
     },
     {
         "andymass/vim-matchup",
-        event = "BufRead",
+        event = "VeryLazy",
     },
     {
         "nvim-pack/nvim-spectre",
+        event = "VeryLazy",
         config = function()
             require "p.nvim-spectre"
         end,
     },
-    {
-        "asiryk/auto-hlsearch.nvim",
-        config = function()
-            require("auto-hlsearch").setup()
-        end,
-    },
-    -- { "farmergreg/vim-lastplace", event = "BufReadPost" },
-    {
-        "tversteeg/registers.nvim",
-        event = "BufReadPost",
-        config = function()
-            require("registers").setup()
-        end,
-    },
+    { "farmergreg/vim-lastplace", event = "BufReadPost" },
     {
         "junegunn/vim-easy-align",
+        cmd = { "EasyAlign" },
+        event = "VeryLazy",
         config = function()
             vim.keymap.set({ "n", "x" }, "ga", "<Plug>(EasyAlign)")
         end,
     },
+    -- {
+    --     "asiryk/auto-hlsearch.nvim",
+    --     config = function()
+    --         require("auto-hlsearch").setup()
+    --     end,
+    -- },
+    -- {
+    --     "Darazaki/indent-o-matic",
+    --     config = function()
+    --         require("indent-o-matic").setup {}
+    --         require("indent-o-matic").detect()
+    --     end,
+    -- },
 }

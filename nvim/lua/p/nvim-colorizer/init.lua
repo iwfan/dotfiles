@@ -1,21 +1,17 @@
 require("colorizer").setup {
-    css = { css = true },
-    less = { css = true },
-    scss = { css = true },
-    sass = { css = true },
-    vue = { css = true },
-    "javascript",
-    "javascriptreact",
-    "typescriptreact",
-    "typescript",
-    "lua",
-    "json",
-    "tmux",
-    "conf",
-    "dosini",
-    "readme",
-    html = {
-        css = true,
-        mode = "foreground",
+    filetypes = {
+        "*",
+        css = { css = true },
+        less = { css = true },
+        scss = { css = true },
+        sass = { css = true },
+        vue = { css = true },
+        html = {
+            css = true,
+            mode = "foreground",
+        },
+        -- exclude prompt and popup buftypes from highlight
+        "!prompt",
+        "!popup",
     },
 }
