@@ -4,11 +4,12 @@
 
 # 复制自 rime_ice.schema.yaml ，适配了双拼。
 # 双拼键位映射复制自 https://github.com/rime/rime-double-pinyin
-#     双拼和全拼主要就是 speller/algebra 和 translator/preedit_format 这里有区别。
-# 全拼的自定义文本和双拼有些冲突，改成了 custom_phrase_double ，需要创建 custom_phrase_double.txt 文件。
-# 中英混输词库 en_dicts/cn_en.dict.yaml 可以删除或修改，里面是写死了的全拼+英文编码。
+# 双拼之间主要就是 speller/algebra 和 translator/preedit_format 这里有区别。
 #
-# v+字母在双拼是正常拼写，有冲突。默认关闭 v 模式，修改可参考 https://github.com/iDvel/rime-ice/issues/58
+# 全拼的自定义文本和双拼有些冲突，改成了 custom_phrase_double ，需要创建 custom_phrase_double.txt 文件。
+#
+# 默认启用的中英混输词库是全拼的，需要在 melt_eng.dict.yaml 中修改为对应的双拼的。
+# 还需要在英文方案 melt_eng.schema.yaml 将数字的拼写规则 __include: algebra_rime_ice 改为对应的双拼。
 
 
 # 方案说明
@@ -27,31 +28,31 @@ schema:
 
 
 # 开关
-# reset 会导致切换方案、输入法、程序后，回到设定的选项。
-# 可以注释掉 reset，和 default 中的 switcher/save_options 选项配合以记忆开关状态。
+# 鼠须管 0.16 后，用快捷键切换时的提示文字由 states 定义
+# states: 方案选单显示的名称。可以注释掉，仍可以通过快捷键切换。
+# reset: 默认状态。 注释掉后，切换窗口时不会重置到默认状态。
 switches:
   - name: ascii_mode
-    states: [ 中文, 英文 ]
+    states: [ 中, A ]
     reset: 0
-  - name: full_shape
-    states: [ 半角, 全角 ]
-    reset: 0
-  - name: ascii_punct
-    states: [ 中文标点, 英文标点 ]
+  - name: ascii_punct # 中英标点
+    states: [ ¥, $ ]
     reset: 0
   - name: traditionalization
-    states: [ 简体, 繁體 ]
+    states: [ 简, 繁 ]
     reset: 0
   - name: emoji
     states: [ 💀, 😄 ]
     reset: 1
+  - name: full_shape
+    states: [ 半角, 全角 ]
+    reset: 0
 
 
-# 输入引擎，没注释的是自带的必要的组件
+# 输入引擎
 engine:
   processors:
-    - lua_processor@select_character             # 以词定字
-    - lua_processor@code_length_limit_processor  # 限制码长
+    - lua_processor@select_character      # 以词定字
     - ascii_composer
     - recognizer
     - key_binder
@@ -70,21 +71,20 @@ engine:
     - punct_translator
     - script_translator
     - lua_translator@date_translator      # 时间、日期、星期
-    - table_translator@custom_phrase      # 自定义短语
+    - table_translator@custom_phrase      # 自定义短语 custom_phrase_double.txt
     - table_translator@melt_eng           # 英文输入
     - reverse_lookup_translator@liangfen  # 反查，两分拼字
     - lua_translator@unicode              # Unicode
+    - lua_translator@number_translator    # 数字、金额大写
   filters:
-    - simplifier@emoji             # Emoji
-    - simplifier@traditionalize    # 简繁切换
-    - uniquifier                   # 去重
+    - simplifier@emoji                    # Emoji
+    - simplifier@traditionalize           # 简繁切换
+    - lua_filter@autocap_filter           # 英文自动大写
+    - lua_filter@reduce_english_filter    # 降低部分英语单词在候选项的位置
+    - uniquifier                          # 去重
 
 
-# 限制码长，默认 100。（最多能输入的字符个数）
-code_length_limit_processor: 100
-
-
-# 日期、时间、星期、ISO 8601、时间戳的触发关键字
+# Lua 配置: 日期、时间、星期、ISO 8601、时间戳的触发关键字
 date_translator:
   date: date            # 日期： 2022-11-29
   time: time            # 时间： 18:13
@@ -93,34 +93,21 @@ date_translator:
   timestamp: timestamp  # 时间戳： 1669716794
 
 
-# 从 default 继承快捷键
-key_binder:
-  import_preset: default
-  # bindings: # 也可以增加方案专属的快捷键
-
-
-# Emoji
-emoji:
-  opencc_config: emoji.json
-  option_name: emoji
-
-
-# 简繁切换
-traditionalize:
-  option_name: traditionalization
-  opencc_config: s2t.json             # s2t.json | s2hk.json | s2tw.json | s2twp.json
-  tips: all                           # 转换提示: all 都显示 | char 仅单字显示 | none 不显示。
-  excluded_types: [ reverse_lookup ]  # 不转换反查的内容
-
-
-# 自定义短语
-custom_phrase:
-  dictionary: ""
-  user_dict: custom_phrase_double  # 需要手动创建 custom_phrase_double.txt 文件
-  db_class: stabledb
-  enable_completion: false # 补全提示
-  enable_sentence: false   # 禁止造句
-  initial_quality: 99      # custom_phrase 的权重应该比 pinyin 和 melt_eng 大
+# Lua 配置: 降低部分英语单词在候选项的位置
+# 详细介绍 https://dvel.me/posts/make-rime-en-better/#短单词置顶的问题
+# 正常情况： 输入 rug 得到 「1.rug 2.如果 …… 」
+# 降低之后： 输入 rug 得到 「1.如果 2.rug …… 」
+reduce_english_filter:
+  # 降低到第 idx 个位置
+  idx: 2
+  # 要降低的单词，匹配的是输入码，即全小写。
+  words: [nav,
+  rug, bus, ship, laos, bail, bam, bans, bib, bos, chic, chit, dab, dag,
+  dal, dit, dub, dug, fab, gam, ger, gus, hem, hep, hud, kat, lam, lax, lex, lug,
+  lux, moc, mos, mot, mum, nad, nay, nib, nip, pak, pap, pax, rig, rum, sac, sal,
+  sax, sec, shin, sis, ska, slang, sus, tad, taj, tac, tic, yep, yum, fax, cain,
+  key, mob, buy, dam, wap, yes, but, put, lag, buf, lip, aid, aim, dig, dim, din,
+  dip, pail, cad, chap, bend]
 
 
 # 引入八股文
@@ -128,7 +115,7 @@ grammar:
   language: zh-hans-t-essay-bgw
 
 
-# 拼音
+# 主翻译器，拼音
 translator:
   dictionary: rime_ice          # 挂载词库 rime_ice.dict.yaml
   prism: double_pinyin          # 多方案共用一个词库时，为避免冲突，需要用 prism 指定一个名字。
@@ -169,47 +156,76 @@ translator:
     - xform/([nl])v/$1ü/
 
 
-# 英文
+# 次翻译器，英文
 melt_eng:
-  dictionary: melt_eng
-  enable_completion: true # 补全提示
-  enable_sentence: false  # 禁止造句
-  enable_user_dict: false # 禁用用户词典
-  initial_quality: 1.1    # 初始权重
-
-
-# 标点符号
-# 共享目录预设的 punctuation.yaml 包含了 full_shape half_shape （全角和半角的符号映射）
-# 共享目录预设的 symbols.yaml     包含了 full_shape half_shape symbols
-# symbols 的功能是支持以「/」前缀开头输出一系列字符，自定义的 symbols_custom.yaml 修改成了「v」开头。
-punctuator:
-  # __include: punctuation:/     # 从共享目录引入预设的 punctuation.yaml
-  # import_preset: symbols       # 从共享目录引入预设的 symbols.yaml
-  import_preset: symbols_custom  # 从 symbols_custom.yaml 引入自己自定义的
-  # half_shape:                  # 也可以直接在这里配置
-
-
-# 处理符合特定规则的输入码，如网址、反查
-recognizer:
-  patterns:
-    email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"                            # 自带的，e-mail 正则
-    # uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"                           # 自带的，大写字母开头后，可以输入[-_+.'0-9A-Za-z]这些字符
-    url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"  # 自带的，URL 正则
-    url_2: "^[A-Za-z]+[.].*"             # 支持 google.com abc.txt 等网址或文件名，会导致句号不会让句子上屏，或使用句号翻页时需要注释掉
-    win_path: "^[A-Za-z]:.*"             # 支持 c:\file\path 之类的路径输入
-    colon: "^[A-Za-z]+:.*"               # 上面的超集，可以输入冒号，不会导致句子直接上屏
-    # punct: "^/([0-9]+[a-z]*|[a-z]+)$"  # 响应默认的 punctuation/symbols 的「/」开头的字符
-    # punct: "^v([0-9]|10|[A-Za-z]+)$"   # 响应 symbols_custom.yaml 下的 punctuator/symbols，用「v」替换「/」并支持大写
-    reverse_lookup: '^L[a-z]+$'          # 响应两分的反查
-    unicode: "^U[a-f0-9]+"               # 响应 Unicode
+  dictionary: melt_eng     # 挂载词库 melt_eng.dict.yaml
+  enable_sentence: false   # 禁止造句
+  enable_user_dict: false  # 禁用用户词典
+  initial_quality: 1.1     # 初始权重
+  comment_format:          # 自定义提示码
+    - xform/.*//           # 清空提示码
 
 
 # 反查：两分（拼字）
 liangfen:
-  dictionary: liangfen
-  prefix: 'L'              # 以 L 开头来反查
+  dictionary: liangfen     # 挂载两分词典 liangfen.dict.yaml
+  prefix: "L"              # 以 L 开头来反查
   enable_completion: true  # 补全提示
   # tips: 〔两分〕          # 反查时显示的文字，建议注释掉，否则很多 L 开头的英文单词也会显示这个
+
+
+# 自定义短语
+custom_phrase:
+  dictionary: ""
+  user_dict: custom_phrase_double  # 需要手动创建 custom_phrase_double.txt 文件
+  db_class: stabledb
+  enable_completion: false # 补全提示
+  enable_sentence: false   # 禁止造句
+  initial_quality: 99      # custom_phrase 的权重应该比 pinyin 和 melt_eng 大
+
+
+# Emoji
+emoji:
+  opencc_config: emoji.json
+  option_name: emoji
+
+
+# 简繁切换
+traditionalize:
+  option_name: traditionalization
+  opencc_config: s2t.json             # s2t.json | s2hk.json | s2tw.json | s2twp.json
+  tips: none                          # 转换提示: all 都显示 | char 仅单字显示 | none 不显示。
+  excluded_types: [ reverse_lookup ]  # 不转换反查（两分拼字）的内容
+
+
+# 标点符号
+# punctuator 下面有三个子项：
+#   full_shape 全角标点映射
+#   half_shape 半角标点映射
+#   symbols    Rime 的预设配置是以 '/' 前缀开头输出一系列字符，自定义的 symbols_caps_v.yaml 修改成了 'V' 开头。
+punctuator:
+  full_shape:
+    __include: default:/punctuator/full_shape  # 从 default.yaml 导入配置
+  half_shape:
+    __include: default:/punctuator/half_shape  # 从 default.yaml 导入配置
+  symbols:
+    __include: symbols_caps_v:/symbols         # 从 symbols_caps_v.yaml 导入配置
+
+
+# 处理符合特定规则的输入码，如网址、反查
+recognizer:
+  import_preset: default  # 从 default.yaml 继承通用的
+  patterns:  # 再增加方案专有的：
+    punct: "^V([0-9]|10|[A-Za-z]+)$"  # 响应 symbols_caps_v.yaml 的 symbols
+    reverse_lookup: "^L[a-z]+$"       # 响应两分拼字的反查
+    unicode: "^U[a-f0-9]+"            # 响应 Unicode
+    number: "^R[0-9]+[.]?[0-9]*"      # 响应 number_translator
+
+
+# 从 default 继承快捷键
+key_binder:
+  import_preset: default  # 从 default.yaml 继承通用的
+  # bindings:             # 也可以再增加方案专有的
 
 
 # 拼写设定
@@ -222,30 +238,30 @@ speller:
     - derive/^([jqxy])u$/$1v/
     - derive/^([aoe])([ioun])$/$1$1$2/
     - xform/^([aoe])(ng)?$/$1$1$2/
-    - xform/iu$/Q/
-    - xform/[iu]a$/W/
-    - xform/[uv]an$/R/
-    - xform/[uv]e$/T/
-    - xform/ing$|uai$/Y/
-    - xform/^sh/U/
-    - xform/^ch/I/
-    - xform/^zh/V/
-    - xform/uo$/O/
-    - xform/[uv]n$/P/
-    - xform/i?ong$/S/
-    - xform/[iu]ang$/D/
-    - xform/(.)en$/$1F/
-    - xform/(.)eng$/$1G/
-    - xform/(.)ang$/$1H/
-    - xform/ian$/M/
-    - xform/(.)an$/$1J/
-    - xform/iao$/C/
-    - xform/(.)ao$/$1K/
-    - xform/(.)ai$/$1L/
-    - xform/(.)ei$/$1Z/
-    - xform/ie$/X/
-    - xform/ui$/V/
-    - xform/(.)ou$/$1B/
-    - xform/in$/N/
-    - xlit/QWRTYUIOPSDFGHMJCKLZXVBN/qwrtyuiopsdfghmjcklzxvbn/
-    #- abbrev/^(.).+$/$1/
+    - xform/iu$/ǫ/
+    - xform/[iu]a$/ᴡ/
+    - xform/[uv]an$/ʀ/
+    - xform/[uv]e$/ᴛ/
+    - xform/ing$|uai$/ʏ/
+    - xform/^sh/ᴜ/
+    - xform/^ch/ɪ/
+    - xform/^zh/ᴠ/
+    - xform/uo$/ᴏ/
+    - xform/[uv]n$/ᴘ/
+    - xform/i?ong$/s/
+    - xform/[iu]ang$/ᴅ/
+    - xform/(.)en$/$1ғ/
+    - xform/(.)eng$/$1ɢ/
+    - xform/(.)ang$/$1ʜ/
+    - xform/ian$/ᴍ/
+    - xform/(.)an$/$1ᴊ/
+    - xform/iao$/ᴄ/
+    - xform/(.)ao$/$1ᴋ/
+    - xform/(.)ai$/$1ʟ/
+    - xform/(.)ei$/$1ᴢ/
+    - xform/ie$/x/
+    - xform/ui$/ᴠ/
+    - xform/(.)ou$/$1ʙ/
+    - xform/in$/ɴ/
+    - xlit/ǫᴡʀᴛʏᴜɪᴏᴘsᴅғɢʜᴍᴊᴄᴋʟᴢxᴠʙɴ/qwrtyuiopsdfghmjcklzxvbn/
+    - abbrev/^(.).+$/$1/ # 首字母简拼

@@ -6,7 +6,7 @@
 schema:
   schema_id: rime_ice
   name: 雾凇拼音
-  version: "1.2.0"
+  version: "2023-06-13"
   author:
     - Dvel
   description: |
@@ -18,31 +18,31 @@ schema:
 
 
 # 开关
-# reset 会导致切换方案、输入法、程序后，回到设定的选项。
-# 可以注释掉 reset，和 default 中的 switcher/save_options 选项配合以记忆开关状态。
+# 鼠须管 0.16 后，用快捷键切换时的提示文字由 states 定义
+# states: 方案选单显示的名称。可以注释掉，仍可以通过快捷键切换。
+# reset: 默认状态。 注释掉后，切换窗口时不会重置到默认状态。
 switches:
   - name: ascii_mode
-    states: [ 中文, 英文 ]
+    states: [ 中, A ]
     reset: 0
-  - name: full_shape
-    states: [ 半角, 全角 ]
-    reset: 0
-  - name: ascii_punct
-    states: [ 中文标点, 英文标点 ]
+  - name: ascii_punct # 中英标点
+    states: [ ¥, $ ]
     reset: 0
   - name: traditionalization
-    states: [ 简体, 繁體 ]
+    states: [ 简, 繁 ]
     reset: 0
   - name: emoji
     states: [ 💀, 😄 ]
     reset: 1
+  - name: full_shape
+    states: [ 半角, 全角 ]
+    reset: 0
 
 
-# 输入引擎，没注释的是自带的必要的组件
+# 输入引擎
 engine:
   processors:
-    - lua_processor@select_character             # 以词定字
-    - lua_processor@code_length_limit_processor  # 限制码长
+    - lua_processor@select_character      # 以词定字
     - ascii_composer
     - recognizer
     - key_binder
@@ -60,24 +60,23 @@ engine:
   translators:
     - punct_translator
     - script_translator
-    - lua_translator@date_translator             # 时间、日期、星期
-    - table_translator@custom_phrase             # 自定义短语 custom_phrase.txt
-    - table_translator@melt_eng                  # 英文输入
-    - reverse_lookup_translator@liangfen         # 反查，两分拼字
-    - lua_translator@unicode                     # Unicode
+    - lua_translator@date_translator      # 时间、日期、星期
+    - table_translator@custom_phrase      # 自定义短语 custom_phrase.txt
+    - table_translator@melt_eng           # 英文输入
+    - reverse_lookup_translator@liangfen  # 反查，两分拼字
+    - lua_translator@unicode              # Unicode
+    - lua_translator@number_translator    # 数字、金额大写
   filters:
-    - lua_filter@long_word_filter  # 长词优先
-    - simplifier@emoji             # Emoji
-    - simplifier@traditionalize    # 简繁切换
-    - lua_filter@v_filter          # v 模式 symbols 优先（否则是英文优先）
-    - uniquifier                   # 去重
+    - simplifier@emoji                    # Emoji
+    - simplifier@traditionalize           # 简繁切换
+    - lua_filter@v_filter                 # v 模式 symbols 优先（否则是英文优先）
+    - lua_filter@autocap_filter           # 英文自动大写
+    - lua_filter@reduce_english_filter    # 降低部分英语单词在候选项的位置
+    - lua_filter@long_word_filter         # 长词优先（建议放到靠后位置，不然内存起飞后不降下来）
+    - uniquifier                          # 去重（建议去重组件放到最后）
 
 
-# 限制码长，默认 100。（最多能输入的字符个数）
-code_length_limit_processor: 100
-
-
-# 日期、时间、星期、ISO 8601、时间戳的触发关键字
+# Lua 配置: 日期、时间、星期、ISO 8601、时间戳的触发关键字
 date_translator:
   date: rq       # 日期： 2022-11-29
   time: sj       # 时间： 18:13
@@ -86,31 +85,63 @@ date_translator:
   timestamp: ts  # 时间戳： 1669716794
 
 
-# 长词优先，提升 count 个词语，插入到第 idx 个位置，默认 2、4。
+# Lua 配置: 长词优先，提升 count 个词语，插入到第 idx 个位置。
 # 示例：将 2 个词插入到第 4、5 个候选项，输入 jie 得到「1接 2解 3姐 4饥饿 5极恶」
 long_word_filter:
   count: 2
   idx: 4
 
 
-# 从 default 继承快捷键
-key_binder:
-  import_preset: default
-  # bindings: # 也可以增加方案专属的快捷键
+# Lua 配置: 降低部分英语单词在候选项的位置
+# 详细介绍 https://dvel.me/posts/make-rime-en-better/#短单词置顶的问题
+# 正常情况： 输入 rug 得到 「1.rug 2.如果 …… 」
+# 降低之后： 输入 rug 得到 「1.如果 2.rug …… 」
+reduce_english_filter:
+  # 降低到第 idx 个位置
+  idx: 2
+  # 要降低的单词，匹配的是输入码，即全小写。
+  words: [rug, bus, ship, laos, bail, bam, bans, bib, bos, chic, chit, dab, dag,
+  dal, dit, dub, dug, fab, gam, ger, gus, hem, hep, hud, kat, lam, lax, lex, lug,
+  lux, moc, mos, mot, mum, nad, nay, nib, nip, pak, pap, pax, rig, rum, sac, sal,
+  sax, sec, shin, sis, ska, slang, sus, tad, taj, tac, tic, yep, yum, fax, cain,
+  key, mob, buy, dam, wap, yes, but, put, lag, buf, lip, aid, aim, dig, dim, din,
+  dip, pail, cad, chap, bend]
 
 
-# Emoji
-emoji:
-  opencc_config: emoji.json
-  option_name: emoji
+# 引入八股文
+grammar:
+  language: zh-hans-t-essay-bgw
 
 
-# 简繁切换
-traditionalize:
-  option_name: traditionalization
-  opencc_config: s2t.json             # s2t.json | s2hk.json | s2tw.json | s2twp.json
-  tips: all                           # 转换提示: all 都显示 | char 仅单字显示 | none 不显示。
-  excluded_types: [ reverse_lookup ]  # 不转换反查（两分拼字）的内容
+# 主翻译器，拼音
+translator:
+  dictionary: rime_ice          # 挂载词库 rime_ice.dict.yaml
+  contextual_suggestions: true  # 开启八股文
+  initial_quality: 1.2          # 拼音的权重应该比英文大
+  preedit_format:               # preedit_format 影响到输入框的显示和“Shift+回车”上屏的字符
+    - xform/([jqxy])v/$1u/      # 显示为 ju qu xu yu
+    # - xform/([nl])v/$1ü/      # 显示为 nü lü
+    # - xform/([nl])ue/$1üe/    # 显示为 nüe lüe
+    - xform/([nl])v/$1v/        # 显示为 nv lv
+    - xform/([nl])ue/$1ve/      # 显示为 nve lve
+
+
+# 次翻译器，英文
+melt_eng:
+  dictionary: melt_eng     # 挂载词库 melt_eng.dict.yaml
+  enable_sentence: false   # 禁止造句
+  enable_user_dict: false  # 禁用用户词典
+  initial_quality: 1.1     # 初始权重
+  comment_format:          # 自定义提示码
+    - xform/.*//           # 清空提示码
+
+
+# 反查：两分（拼字）
+liangfen:
+  dictionary: liangfen     # 挂载两分词典 liangfen.dict.yaml
+  prefix: "u"              # 以 u 开头来反查
+  enable_completion: true  # 补全提示
+  # tips: 〔两分〕          # 反查时显示的文字，建议注释掉，否则很多 u 开头的英文单词也会显示这个
 
 
 # 自定义短语：custom_phrase.txt
@@ -123,65 +154,48 @@ custom_phrase:
   initial_quality: 99      # custom_phrase 的权重应该比 pinyin 和 melt_eng 大
 
 
-# 引入八股文
-grammar:
-  language: zh-hans-t-essay-bgw
+# Emoji
+emoji:
+  opencc_config: emoji.json
+  option_name: emoji
 
 
-# 主翻译器，拼音
-translator:
-  dictionary: rime_ice          # 挂载词库 rime_ice.dict.yaml
-  contextual_suggestions: true  # 开启八股文
-  preedit_format:               # preedit_format 影响到输入框的显示和“Shift+回车”上屏的字符
-    - xform/([jqxy])v/$1u/      # 显示为 ju qu xu yu
-    # - xform/([nl])v/$1ü/      # 显示为 nü lü
-    # - xform/([nl])ue/$1üe/    # 显示为 nüe lüe
-    - xform/([nl])v/$1v/        # 显示为 nv lv
-    - xform/([nl])ue/$1ve/      # 显示为 nve lve
-  initial_quality: 1.2          # 拼音的权重应该比英文大
-
-
-# 次翻译器，英文
-melt_eng:
-  dictionary: melt_eng     # 挂载词库 melt_eng.dict.yaml
-  enable_completion: true  # 补全提示
-  enable_sentence: false   # 禁止造句
-  enable_user_dict: false  # 禁用用户词典
-  initial_quality: 1.1     # 初始权重
+# 简繁切换
+traditionalize:
+  option_name: traditionalization
+  opencc_config: s2t.json             # s2t.json | s2hk.json | s2tw.json | s2twp.json
+  tips: none                          # 转换提示: all 都显示 | char 仅单字显示 | none 不显示。
+  excluded_types: [ reverse_lookup ]  # 不转换反查（两分拼字）的内容
 
 
 # 标点符号
-# 共享目录预设的 punctuation.yaml 包含了 full_shape half_shape （全角和半角的符号映射）
-# 共享目录预设的 symbols.yaml     包含了 full_shape half_shape symbols
-# symbols 的功能是支持以「/」前缀开头输出一系列字符，自定义的 symbols_custom.yaml 修改成了「v」开头。
+# punctuator 下面有三个子项：
+#   full_shape 全角标点映射
+#   half_shape 半角标点映射
+#   symbols    Rime 的预设配置是以 '/' 前缀开头输出一系列字符，自定义的 symbols_v.yaml 修改成了 'v' 开头。
 punctuator:
-  # __include: punctuation:/     # 从共享目录引入预设的 punctuation.yaml
-  # import_preset: symbols       # 从共享目录引入预设的 symbols.yaml
-  import_preset: symbols_custom  # 从 symbols_custom.yaml 引入自己自定义的
-  # half_shape:                  # 也可以直接在这里配置
+  full_shape:
+    __include: default:/punctuator/full_shape  # 从 default.yaml 导入配置
+  half_shape:
+    __include: default:/punctuator/half_shape  # 从 default.yaml 导入配置
+  symbols:
+    __include: symbols_v:/symbols              # 从 symbols_v.yaml 导入配置
 
 
 # 处理符合特定规则的输入码，如网址、反查
 recognizer:
-  patterns:
-    email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"                            # 自带的，e-mail 正则
-    # uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"                           # 自带的，大写字母开头后，可以输入[-_+.'0-9A-Za-z]这些字符
-    url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"  # 自带的，URL 正则
-    url_2: "^[A-Za-z]+[.].*"             # 支持 google.com abc.txt 等网址或文件名，会导致句号不会让句子上屏，或使用句号翻页时需要注释掉
-    win_path: "^[A-Za-z]:.*"             # 支持 c:\file\path 之类的路径输入
-    colon: "^[A-Za-z]+:.*"               # 上面的超集，可以输入冒号，不会导致句子直接上屏
-    # punct: "^/([0-9]+[a-z]*|[a-z]+)$"  # 响应默认的 punctuation/symbols 的「/」开头的字符
-    punct: "^v([0-9]|10|[A-Za-z]+)$"     # 响应 symbols_custom.yaml 下的 punctuator/symbols，用「v」替换「/」并支持大写
-    reverse_lookup: "^u[a-z]+$"          # 响应两分的反查
-    unicode: "^U[a-f0-9]+"               # 响应 Unicode
+  import_preset: default  # 从 default.yaml 继承通用的
+  patterns:  # 再增加方案专有的：
+    punct: "^v([0-9]|10|[A-Za-z]+)$"  # 响应 symbols_v.yaml 的 symbols，用 'v' 替换 '/'
+    reverse_lookup: "^u[a-z]+$"       # 响应两分拼字的反查
+    unicode: "^U[a-f0-9]+"            # 响应 Unicode
+    number: "^R[0-9]+[.]?[0-9]*"      # 响应 number_translator
 
 
-# 反查：两分（拼字）
-liangfen:
-  dictionary: liangfen     # 两分词典 liangfen.dict.yaml
-  prefix: "u"              # 以 u 开头来反查
-  enable_completion: true  # 补全提示
-  # tips: 〔两分〕          # 反查时显示的文字，建议注释掉，否则很多 u 开头的英文单词也会显示这个
+# 从 default 继承快捷键
+key_binder:
+  import_preset: default # 从 default.yaml 继承通用的
+  # bindings:            # 也可以再增加方案专有的
 
 
 # 拼写设定
@@ -203,25 +217,25 @@ speller:
     # - derive/^g/k/
     # - derive/^k/g/
     # 韵母
-    # - derive/ang/an/
-    # - derive/an/ang/
-    # - derive/eng/en/
-    # - derive/en/eng/
-    # - derive/in/ing/
-    # - derive/ing/in/
-    # - derive/ian/iang/
-    # - derive/iang/ian/
-    # - derive/uan/uang/
-    # - derive/uang/uan/
-    # - derive/ai/an/
-    # - derive/an/ai/
-    # - derive/ong/un/
-    # - derive/un/ong/
-    # - derive/ong/on/
-    # - derive/iong/un/
-    # - derive/un/iong/
-    # - derive/ong/eng/
-    # - derive/eng/ong/
+    # - derive/ang$/an/
+    # - derive/an$/ang/
+    # - derive/eng$/en/
+    # - derive/en$/eng/
+    # - derive/in$/ing/
+    # - derive/ing$/in/
+    # - derive/ian$/iang/
+    # - derive/iang$/ian/
+    # - derive/uan$/uang/
+    # - derive/uang$/uan/
+    # - derive/ai$/an/
+    # - derive/an$/ai/
+    # - derive/ong$/un/
+    # - derive/un$/ong/
+    # - derive/ong$/on/
+    # - derive/iong$/un/
+    # - derive/un$/iong/
+    # - derive/ong$/eng/
+    # - derive/eng$/ong/
     # 拼音音节
     # - derive/^fei$/hui/
     # - derive/^hui$/fei/
@@ -255,7 +269,7 @@ speller:
     - derive/([zcs])h(a|e|i|u|ai|ei|an|en|ou|uo|ua|un|ui|uan|uai|uang|ang|eng|ong)$/h$1$2/  # hzi → zhi
     - derive/([zcs])h([aeiu])$/$1$2h/  # zih → zhi
     # ai
-    - derive/^([wghkzc])ai$/$1ia/  # wia → wai
+    - derive/^([wghk])ai$/$1ia/  # wia → wai
     # ia
     - derive/([qjx])ia$/$1ai/  # qai → qia
     # ei

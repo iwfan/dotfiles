@@ -32,5 +32,7 @@ ln -s ~/dotfiles/starship/starship.toml ~/.config/starship.toml
 # git config
 ln -s ~/dotfiles/git ~/.config/git
 ln -s ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/lazygit/config.yml
+# Rime
+ln -s ~/dotfiles/Rime ~/Library/Rime
 
 success "link finished."
