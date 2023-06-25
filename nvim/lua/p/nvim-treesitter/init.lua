@@ -39,20 +39,28 @@ require("nvim-treesitter.configs").setup {
     },
     highlight = {
         enable = not vim.g.vscode,
+        disable = function(lang, buf)
+            local max_filesize = 300 * 1024 -- 300 KB
+            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+            if ok and stats and stats.size > max_filesize then
+                return true
+            end
+        end,
+        additional_vim_regex_highlighting = false,
     },
-    indent = { enable = true },
+    indent = { enable = false },
     incremental_selection = {
         enable = true,
         keymaps = {
-            init_selection = "<c-enter>",
-            node_incremental = "<c-enter>",
-            node_decremental = "<c-backspace>",
+            init_selection = "<Enter>",
+            node_incremental = "<Enter>",
+            scope_incremental = "<C-Enter>",
+            node_decremental = "<S-Enter>",
         },
     },
     textobjects = {
         select = {
             enable = true,
-            -- Automatically jump forward to textobj, similar to targets.vim
             lookahead = true,
             keymaps = {
                 ["aa"] = "@parameter.outer",
@@ -74,6 +82,7 @@ require("nvim-treesitter.configs").setup {
             goto_next_start = {
                 ["]m"] = "@function.outer",
                 ["]]"] = "@class.outer",
+                ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
             },
             goto_next_end = {
                 ["]M"] = "@function.outer",

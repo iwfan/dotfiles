@@ -28,7 +28,7 @@ function fish_prompt
     end
 
     if test (jobs | count) -ne 0
-      set jobs_status $job_color "@! "
+      set jobs_status $job_color "✦ "
     end
 
     echo -s $cwd_color (prompt_pwd) $vcs_color (fish_vcs_prompt) $normal ' ' $prompt_status
