@@ -2,8 +2,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- better up/down
-vim.keymap.set("n", "k", [[(v:count == 0 ? 'gk' : 'k')]], { expr = true })
-vim.keymap.set("n", "j", [[(v:count == 0 ? 'gj' : 'j')]], { expr = true })
+vim.keymap.set("n", "k", [[(v:count == 0 ? 'gk' : 'k')]], { expr = true, silent = true })
+vim.keymap.set("n", "j", [[(v:count == 0 ? 'gj' : 'j')]], { expr = true, silent = true })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true })
@@ -70,24 +70,25 @@ vim.keymap.set("n", "<M-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increa
 -- for short finger
 vim.keymap.set({ "n", "v", "o" }, "H", "^")
 vim.keymap.set({ "n", "v", "o" }, "L", "g_")
-vim.keymap.set({ "n", "v", "o" }, "]w", "g*")
-vim.keymap.set({ "n", "v", "o" }, "[w", "g#")
 
 -- misc
 vim.keymap.set("n", "q", "<Nop>")
 vim.keymap.set("n", "gq", "q")
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("x", "p", [["_dP]])
-vim.keymap.set("x", "<leader>p", [[p]])
-vim.keymap.set("n", "<space><bs>", [["_dd]])
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
-vim.keymap.set("n", "<space>qq", "<cmd>qa<CR>", { desc = "Quit all" })
 vim.keymap.set("n", "<esc>", "<esc><cmd>noh<CR><cmd>call feedkeys(':','nx')<CR>", { desc = "Clear all" })
+vim.keymap.set("n", "<space>qq", "<cmd>qa<CR>", { desc = "Quit all" })
+vim.keymap.set("n", "<space><bs>", [["_dd]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "[<space>", ":<c-u>put! =repeat(nr2char(10), v:count1)<CR>'[", { silent = true })
 vim.keymap.set("n", "]<space>", ":<c-u>put =repeat(nr2char(10), v:count1)<CR>", { silent = true })
+-- Paste before/after linewise
+vim.keymap.set({ 'n', 'x' }, '[p', '<Cmd>exe "put! " . v:register<CR>', { desc = 'Paste Above' })
+vim.keymap.set({ 'n', 'x' }, ']p', '<Cmd>exe "put "  . v:register<CR>', { desc = 'Paste Below' })
+
+-- vim.keymap.set("x", "p", [["_dP]])
+-- vim.keymap.set("x", "<leader>p", [[p]])
+-- vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 vim.keymap.set("n", "<Bslash>q", ":<c-u>copen<CR>")
 vim.keymap.set("n", "<BS>q", ":<c-u>cclose<CR>")
-vim.keymap.set("n", "[q", ":<c-u>cprevious<CR>")
-vim.keymap.set("n", "]q", ":<c-u>cnext<CR>")
+-- vim.keymap.set("n", "[q", ":<c-u>cprevious<CR>")
+-- vim.keymap.set("n", "]q", ":<c-u>cnext<CR>")

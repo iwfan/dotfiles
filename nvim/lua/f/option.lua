@@ -1,16 +1,3 @@
--- Disable Built-in Function {{{
--- https://github.com/mhinz/vim-galore#standard-plugins
-vim.g.loaded_2html_plugin = 1
-vim.g.loaded_getscriptPlugin = 1
-vim.g.loaded_gzip = 1
-vim.g.loaded_matchparen = 1
-vim.g.loaded_netrwPlugin = 1
-vim.g.loaded_spellfile_plugin = 1
-vim.g.loaded_tarPlugin = 1
-vim.g.loaded_vimballPlugin = 1
-vim.g.loaded_zipPlugin = 1
--- }}}
-
 -- Options {{{
 vim.opt.autowrite = true
 vim.opt.autowriteall = true
@@ -21,7 +8,7 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 600
 vim.opt.termguicolors = true
 vim.opt.clipboard = "unnamedplus"
-vim.opt.completeopt = "menuone,noselect"
+vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.virtualedit = "block"
 vim.opt.showtabline = 2
 vim.opt.laststatus = 3
@@ -32,10 +19,11 @@ vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.colorcolumn = "+1"
 vim.opt.signcolumn = "yes"
-vim.opt.shortmess:append "sI"
+vim.opt.shortmess:append({ W = true, I = true, C = true, c = true })
 vim.opt.scrolloff = 10
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.splitkeep = "screen"
 vim.opt.pumblend = 10
 vim.opt.winblend = 10
 vim.opt.pumheight = 20

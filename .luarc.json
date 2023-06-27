@@ -1,0 +1,17 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "hs",
+        "spoon",
+        "packer_plugins",
+        "use",
+        "describe",
+        "it",
+        "assert",
+        "before_each",
+        "after_each",
+        "MiniStatusline",
+        "MiniBufremove",
+        "MiniStarter"
+    ]
+}
