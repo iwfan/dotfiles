@@ -31,6 +31,7 @@ return {
     {
         "nvim-pack/nvim-spectre",
         event = "VeryLazy",
+        opts = { open_cmd = "noswapfile vnew" },
         keys = {
             {
                 "<M-f>",

@@ -25,7 +25,7 @@ return {
             end)()
 
             return {
-                header = nil,
+                header = vim.fn.system "fortune | cowsay",
                 items = {
                     starter.sections.recent_files(5, true),
                     {
@@ -134,6 +134,55 @@ return {
         event = "VeryLazy",
     },
     { "echasnovski/mini.align", version = false, opts = {}, event = "VeryLazy" },
-    { "echasnovski/mini.ai", version = false, opts = {}, event = "VeryLazy" },
-    { "echasnovski/mini.sessions", version = false, opts = { autoread = true, autowrite = true } },
+    {
+        "echasnovski/mini.ai",
+        version = false,
+        dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
+        opts = function()
+            local treesitter = require("mini.ai").gen_spec.treesitter
+            return {
+                n_lines = 500,
+                custom_textobjects = {
+                    c = treesitter { a = "@class.outer", i = "@class.inner" },
+                    f = treesitter { a = "@function.outer", i = "@function.inner" },
+                    k = treesitter { a = "@block.outer", i = "@block.inner" },
+                    o = treesitter {
+                        a = { "@conditional.outer", "@loop.outer" },
+                        i = { "@conditional.inner", "@loop.inner" },
+                    },
+                },
+            }
+        end,
+        event = "VeryLazy",
+    },
+    {
+        "echasnovski/mini.hipatterns",
+        version = false,
+        opts = function()
+            local hi = require "mini.hipatterns"
+            return {
+                highlighters = {
+                    hex_color = hi.gen_highlighter.hex_color { priority = 2000 },
+                },
+            }
+        end,
+        event = "VeryLazy",
+    },
+    {
+        "echasnovski/mini.files",
+        version = false,
+        opts = {},
+        keys = {
+            {
+                "<space>t",
+                mode = { "n" },
+                function()
+                    MiniFiles.open()
+                end,
+                desc = "Flash",
+            },
+        },
+        event = "VeryLazy",
+    },
+    { "echasnovski/mini.sessions", version = false, opts = { autoread = false, autowrite = true } },
 }

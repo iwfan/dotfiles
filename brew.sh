@@ -7,6 +7,7 @@ brew install curl
 brew install exa
 brew install fd
 brew install fish
+brew install fortune
 brew install fzf
 brew install gh
 brew install git

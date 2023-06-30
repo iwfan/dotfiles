@@ -12,6 +12,8 @@
         "after_each",
         "MiniStatusline",
         "MiniBufremove",
-        "MiniStarter"
+        "MiniStarter",
+        "MiniFiles",
+        "MiniHipatterns"
     ]
 }
