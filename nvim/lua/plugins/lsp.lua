@@ -2,27 +2,23 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            require "lsp.lsp_config"
+            require "plugins.configs.lsp.lsp_config"
         end,
         dependencies = {
             {
                 "williamboman/mason.nvim",
-                config = function()
-                    require("mason").setup()
-                end,
+                opts = {}
             },
             {
                 "williamboman/mason-lspconfig.nvim",
                 config = function()
-                    require "lsp.mason-lspconfig"
+                    require "plugins.configs.lsp.mason-lspconfig"
                 end,
             },
             {
                 "j-hui/fidget.nvim",
                 tag = "legacy",
-                config = function()
-                    require("fidget").setup {}
-                end,
+                opts = {}
             },
             "jose-elias-alvarez/typescript.nvim",
             "jose-elias-alvarez/null-ls.nvim",
@@ -31,7 +27,7 @@ return {
     {
         "hrsh7th/nvim-cmp",
         config = function()
-            require "lsp.cmp"
+            require "plugins.configs.lsp.cmp"
         end,
         event = "InsertEnter",
         dependencies = {

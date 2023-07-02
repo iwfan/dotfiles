@@ -30,14 +30,3 @@ require("lazy").setup("plugins", {
     colorscheme = { "tokyonight", "habamax" },
   },
 })
-
--- require("lazy").setup {
---     ,
---     -- {
---     --     "Darazaki/indent-o-matic",
---     --     config = function()
---     --         require("indent-o-matic").setup {}
---     --         require("indent-o-matic").detect()
---     --     end,
---     -- },
--- }

@@ -7,7 +7,7 @@ return {
         build = ":TSUpdate",
         lazy = false,
         config = function()
-            require "p.nvim-treesitter"
+            require "plugins.configs.treesitter"
         end,
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",

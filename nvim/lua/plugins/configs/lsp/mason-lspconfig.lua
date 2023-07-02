@@ -1,4 +1,4 @@
-local enhance_attach = require "lsp.lsp_attach"
+local enhance_attach = require "plugins.configs.lsp.lsp_attach"
 
 require("mason-lspconfig").setup {
     ensure_installed = {
@@ -29,7 +29,7 @@ require("mason-lspconfig").setup_handlers {
             capabilities = capabilities,
         }
 
-        local ok, server_setup = pcall(require, "lsp.servers." .. server_name)
+        local ok, server_setup = pcall(require, "plugins.configs.lsp.servers." .. server_name)
         if ok then
             server_setup(enhance_attach, capabilities)
         else

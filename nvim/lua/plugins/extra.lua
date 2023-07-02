@@ -4,14 +4,14 @@ return {
         version = "*",
         event = "VeryLazy",
         config = function()
-            require "p.nvim-telescope"
+            require "plugins.configs.telescope"
         end,
     },
     {
         "lewis6991/gitsigns.nvim",
         event = "VeryLazy",
         config = function()
-            require "p.nvim-gitsigns"
+            require "plugins.configs.gitsigns"
         end,
     },
     {
@@ -19,7 +19,7 @@ return {
         version = "*",
         event = "VeryLazy",
         config = function()
-            require "p.nvim-toggleterm"
+            require "plugins.configs.toggleterm"
         end,
     },
     {

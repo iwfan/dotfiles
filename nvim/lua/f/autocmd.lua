@@ -9,24 +9,6 @@ autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
     command = "checktime",
 })
 
--- https://github.com/mhinz/vim-galore#smarter-cursorline
-autocmd({ "InsertLeave", "WinEnter" }, {
-    group = augroup "show_cursorline",
-    callback = function()
-        if not vim.tbl_contains({ "term", "help", "dashboard", "starter" }, vim.bo.filetype) then
-            vim.opt_local.cursorline = true
-            vim.opt_local.relativenumber = true
-        end
-    end,
-})
-autocmd({ "InsertEnter", "WinLeave" }, {
-    group = augroup "hide_cursorline",
-    callback = function()
-        vim.opt_local.cursorline = false
-        vim.opt_local.relativenumber = false
-    end,
-})
-
 -- go to last loc when opening a buffer
 autocmd("BufReadPost", {
     group = augroup "last_loc",
