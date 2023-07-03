@@ -133,6 +133,46 @@ return {
         },
         event = "VeryLazy",
     },
+    {
+        "echasnovski/mini.move",
+        version = false,
+        opts = {},
+        keys = {
+            {
+                "<M-j>",
+                mode = { "i" },
+                function()
+                    MiniMove.move_line("down")
+                end,
+                desc = "Move line down",
+            },
+            {
+                "<M-k>",
+                mode = { "i" },
+                function()
+                    MiniMove.move_line("up")
+                end,
+                desc = "Move line down",
+            },
+            {
+                "<M-h>",
+                mode = { "i" },
+                function()
+                    MiniMove.move_line("left")
+                end,
+                desc = "Move line down",
+            },
+            {
+                "<M-l>",
+                mode = { "i" },
+                function()
+                    MiniMove.move_line("right")
+                end,
+                desc = "Move line down",
+            },
+        },
+        event = "VeryLazy",
+    },
     { "echasnovski/mini.align", version = false, opts = {}, event = "VeryLazy" },
     {
         "echasnovski/mini.ai",

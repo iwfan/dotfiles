@@ -36,20 +36,6 @@ vim.keymap.set("i", ",", ",<c-g>u")
 vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", ";", ";<c-g>u")
 
--- fast move code
-vim.keymap.set("n", "<M-j>", ":m .+1<CR>==", { desc = "Move down" })
-vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv", { desc = "Move down" })
-vim.keymap.set("i", "<M-j>", "<ESC>:m .+1<CR>==gi", { desc = "Move down" })
-vim.keymap.set("n", "<M-k>", ":m .-2<CR>==", { desc = "Move up" })
-vim.keymap.set("v", "<M-k>", ":m '<-2<CR>gv=gv", { desc = "Move up" })
-vim.keymap.set("i", "<M-k>", "<ESC>:m .-2<CR>==gi", { desc = "Move up" })
-vim.keymap.set("i", "<M-h>", "<C-d>")
-vim.keymap.set("i", "<M-l>", "<C-t>")
-vim.keymap.set("v", "<M-h>", "<gv")
-vim.keymap.set("v", "<M-l>", ">gv")
-vim.keymap.set("n", "<M-h>", "<<")
-vim.keymap.set("n", "<M-l>", ">>")
-
 -- window management
 vim.keymap.set("n", "<C-h>", [[<c-w>h]])
 vim.keymap.set("n", "<C-l>", [[<c-w>l]])
