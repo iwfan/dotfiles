@@ -12,6 +12,7 @@ require("mason-lspconfig").setup {
         "jsonls",
         "gopls",
         "lua_ls",
+        "solargraph"
     },
 }
 
