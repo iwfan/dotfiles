@@ -219,7 +219,7 @@ return {
                 function()
                     MiniFiles.open()
                 end,
-                desc = "Flash",
+                desc = "MiniFiles",
             },
         },
         event = "VeryLazy",

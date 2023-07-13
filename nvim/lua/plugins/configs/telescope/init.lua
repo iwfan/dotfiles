@@ -13,7 +13,7 @@ table.insert(vimgrep_arguments, "!**/.git/*")
 telescope.setup {
     defaults = {
         vimgrep_arguments = vimgrep_arguments,
-        prompt_prefix = " ",
+        prompt_prefix = "❯ ",
         selection_caret = "➜ ",
         path_display = { "truncate" },
         sorting_strategy = "ascending",
@@ -47,9 +47,11 @@ telescope.setup {
 require("telescope").load_extension "enhanced_find_files"
 
 vim.keymap.set("n", "<space>p", "<cmd>Telescope enhanced_find_files theme=ivy<cr>")
+vim.keymap.set("n", "<space>o", "<cmd>Telescope oldfiles theme=ivy only_cwd=true<cr>")
 vim.keymap.set("n", "<space>f", "<cmd>Telescope live_grep theme=ivy<cr>")
 vim.keymap.set("n", "<space>b", "<cmd>Telescope buffers theme=ivy<cr>")
-vim.keymap.set("n", "\\f", "<cmd>Telescope buffers theme=ivy<cr>")
+vim.keymap.set("n", "\\f", "<cmd>Telescope buffers theme=cursor only_cwd=true ignore_current_buffer=true<cr>")
+vim.keymap.set("n", "\\g", "<cmd>Telescope git_status theme=cursor previewer=false<cr>")
 vim.keymap.set("n", "<space>r", "<cmd>Telescope registers theme=ivy<cr>")
 vim.keymap.set("n", "<space>m", "<cmd>Telescope marks theme=ivy<cr>")
 vim.keymap.set("n", "<space><space>", "<cmd>Telescope<cr>")

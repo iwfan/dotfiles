@@ -7,29 +7,30 @@ set incsearch
 set smartcase
 set clipboard^=unnamed,unnamedplus,ideaput
 
+set sneak
 set surround
 set commentary
-set argtextobj
-set easymotion
-set multiple-cursors
 set textobj-entire
+set textobj-indent
 set exchange
-set ReplaceWithRegister
 set highlightedyank
 set ideajoin
 set ideamarks
 set idearefactormode=keep
 
-" 自动切换为英文, 需要 IdeaVimExtension 中文
-set keep-english-in-normal
-" set keep-english-in-normal-and-restore-in-insert
+set matchit
 
+set argtextobj
 let g:argtextobj_pairs="[:],(:),<:>"
+
+set NERDTree
 let g:NERDTreeMapActivateNode="l"
 let g:NERDTreeMapPreview="gl"
 let g:NERDTreeMapOpenVSplit="<C-v>"
 let g:NERDTreeMapJumpRoot="H"
 let g:NERDTreeMapJumpParent="h"
+
+set ReplaceWithRegister
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -63,69 +64,51 @@ inoremap <C-a> <home>
 inoremap <C-e> <end>
 inoremap <C-d> <delete>
 inoremap <C-v> <C-o><C-r>*
-vnoremap p "_dP
+xnpremap p p:let @+=@0<CR>:let @"=@0<CR>
+vnpremap p p:let @+=@0<CR>:let @"=@0<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """  ACTION BINDINGS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-nnoremap / :action Replace<CR>
-nnoremap <leader>f <Plug>(easymotion-s)
-nnoremap <leader>e <Plug>(easymotion-f)
-
-nnoremap <Enter> :action EditorSelectWord<CR>
-nnoremap <C-S-Enter> :action EditorUnSelectWord<CR>
-nnoremap <C-n> :action SelectNextOccurrence<CR>
+nnoremap <Enter> :action SmartSelect<CR>
+nnoremap <S-Enter> :action SmartUnSelect<CR>
+noremap <C-n> :action SelectNextOccurrence<CR>
 noremap <leader>r :action Refactorings.QuickListPopupAction<CR>
 noremap <leader>w :action SurroundWith<CR>
-
-map gf :action AceTargetAction<CR>
-map <leader>u :action ShowUsages<CR>
-map <leader>U :action FindUsages<CR>
 noremap <leader>t :action FileStructurePopup<CR>
 noremap <leader>qr :action ReopenClosedTab<CR>
 noremap <leader>qm :action MoveEditorToOppositeTabGroup<CR>
 
-" navigate paragraph
-noremap ]q :action EditorForwardParagraph<CR>
-noremap [q :action EditorBackwardParagraph<CR>
-" navigate element
-noremap [w :action GotoPrevElementUnderCaretUsage<CR>
-noremap ]w :action GotoNextElementUnderCaretUsage<CR>
-" navigate method
-noremap ]e :action MethodDown<CR>
-noremap [e :action MethodUp<CR>
+map gr :action ShowUsages<CR>
+map gR :action FindUsages<CR>
+
 " naviagte errors
 noremap ]d :action GotoNextError<CR>
 noremap [d :action GotoPreviousError<CR>
 noremap \d :action ShowErrorDescription<CR>
+
 " navagate occurrence
 noremap <leader>a :action SelectAllOccurrences<CR>
 noremap ]a :action SelectNextOccurrence<CR>
 noremap [a :action UnselectPreviousOccurrence<CR>
+
 " navigate bookmarks
 noremap ]s :action GotoNextBookmark<CR>
 noremap [s :action GotoPreviousBookmark<CR>
 noremap \s :action ShowBookmarks<CR>
 noremap <leader>s :action ToggleBookmarkWithMnemonic<CR>
-noremap <bs>s :action ToggleBookmarkWithMnemonic<CR>
+noremap <bs>s :action ToggleBookmark<CR>
+
 " navigate changes
-noremap ]c :action VcsShowNextChangeMarker<CR>
-noremap [c :action VcsShowPrevChangeMarker<CR>
-noremap \c :action VcsShowCurrentChangeMarker<CR>
-noremap <bs>c :action Vcs.RollbackChangedLines<CR>
-noremap <leader>c :action Vcs.QuickListPopupAction<CR>
+noremap ]g :action VcsShowNextChangeMarker<CR>
+noremap [g :action VcsShowPrevChangeMarker<CR>
+noremap \g :action VcsShowCurrentChangeMarker<CR>
+noremap <bs>g :action Vcs.RollbackChangedLines<CR>
+noremap <leader>g :action Vcs.QuickListPopupAction<CR>
 
-noremap <leader><cr> :action ProblemsView.QuickFixes<CR>
-
-" make AceJump acts like easymotion in vim
-noremap <leader>; :action AceLineAction<CR>
-noremap <leader>' :action AceDeclarationAction<CR>
+noremap <leader><cr> :action ShowIntentionActions<CR>
 
 " 跳转行首
 nnoremap H :action EditorLineStart<CR>
-" vnoremap H :action EditorLineStartWithSelection<CR>
 vnoremap H g^
-" 跳转行尾
 nnoremap L :action EditorLineEnd<CR>
-" vnoremap L h:action EditorLineEndWithSelection<CR>
 vnoremap L g_

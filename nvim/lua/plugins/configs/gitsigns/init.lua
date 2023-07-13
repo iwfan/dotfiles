@@ -17,9 +17,9 @@ require("gitsigns").setup {
         end
 
         -- Navigation
-        map("n", "]c", function()
+        map("n", "]g", function()
             if vim.wo.diff then
-                return "]c"
+                return "]g"
             end
             vim.schedule(function()
                 gs.next_hunk()
@@ -27,9 +27,9 @@ require("gitsigns").setup {
             return "<Ignore>"
         end, { expr = true })
 
-        map("n", "[c", function()
+        map("n", "[g", function()
             if vim.wo.diff then
-                return "[c"
+                return "[g"
             end
             vim.schedule(function()
                 gs.prev_hunk()
@@ -52,12 +52,12 @@ require("gitsigns").setup {
             gs.diffthis "~"
         end)
         map("n", "<space>td", gs.toggle_deleted, { desc = "Toggle Deleted" })
-        map("n", "\\c", gs.preview_hunk, { desc = "Preview Hunk" })
-        map("n", "<bs>c", gs.reset_hunk, { desc = "Reset Hunk" })
-        map("v", "<bs>c", function()
+        map("n", "\\g", gs.preview_hunk, { desc = "Preview Hunk" })
+        map("n", "<bs>g", gs.reset_hunk, { desc = "Reset Hunk" })
+        map("v", "<bs>g", function()
             gs.reset_hunk { vim.fn.line ".", vim.fn.line "v" }
         end, { desc = "Reset Hunk" })
         -- Text object
-        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+        map({ "o", "x" }, "ig", ":<C-U>Gitsigns select_hunk<CR>")
     end,
 }
