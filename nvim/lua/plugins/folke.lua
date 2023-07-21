@@ -1,17 +1,24 @@
 return {
     {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        event = "VeryLazy",
         opts = {},
-        config = function()
-            vim.cmd.colorscheme "tokyonight"
-        end,
+    },
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        event = "VeryLazy",
+        opts = {},
     },
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
-        opts = {},
+        opts = {
+            window = {
+                border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
+            },
+        },
     },
     {
         "folke/flash.nvim",

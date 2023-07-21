@@ -59,7 +59,9 @@ vim.keymap.set({ "n", "v", "o" }, "L", "g_")
 
 -- misc
 vim.keymap.set("n", "q", "<Nop>")
-vim.keymap.set("n", "gq", "q")
+vim.keymap.set("n", "Q", "q")
+vim.keymap.set("n", "gq", "<Nop>")
+vim.keymap.set("n", "gQ", "Q")
 vim.keymap.set("n", "<esc>", "<esc><cmd>noh<CR><cmd>call feedkeys(':','nx')<CR>", { desc = "Clear all" })
 vim.keymap.set("x", "p", [[p:let @+=@0<CR>:let @"=@0<CR>]], { desc = "Dont copy replaced text" })
 vim.keymap.set("n", "<space>qq", "<cmd>qa<CR>", { desc = "Quit all" })

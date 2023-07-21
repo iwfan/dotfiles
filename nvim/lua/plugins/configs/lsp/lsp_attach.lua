@@ -50,7 +50,7 @@ return function(client, bufnr)
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
     vim.keymap.set("n", "go", vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set("n", "gk", vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 
     vim.keymap.set("n", "<M-r>", vim.lsp.buf.rename, bufopts)

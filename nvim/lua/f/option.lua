@@ -40,10 +40,10 @@ vim.opt.showbreak = "↪ "
 vim.opt.list = true
 vim.opt.listchars = {
     tab = " ",
-    trail = "·",
+    trail = "•",
     extends = "",
     precedes = "",
-    nbsp = "␣",
+    nbsp = "⦸",
 }
 vim.opt.fillchars = {
     eob = " ",
@@ -51,6 +51,7 @@ vim.opt.fillchars = {
     fold = " ",
     foldclose = "",
     foldopen = "",
+    -- foldclose = " ",
 }
 
 -- spell check

@@ -1,7 +1,22 @@
 local cmp = require "cmp"
 local luasnip = require "luasnip"
 
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+cmp.setup.filetype({ "markdown", "help", "TelescopePrompt" }, {
+    enabled = false,
+})
+
+local function border(hl_name)
+    return {
+        { "╭", hl_name },
+        { "─", hl_name },
+        { "╮", hl_name },
+        { "│", hl_name },
+        { "╯", hl_name },
+        { "─", hl_name },
+        { "╰", hl_name },
+        { "│", hl_name },
+    }
+end
 
 cmp.setup {
     enabled = function()
@@ -14,6 +29,15 @@ cmp.setup {
             return not context.in_treesitter_capture "comment" and not context.in_syntax_group "Comment"
         end
     end,
+    window = {
+        completion = {
+            border = border "FloatBorder",
+            winhighlight = "Normal:NormalFloat,CursorLine:PmenuSel,Search:None",
+        },
+        documentation = {
+            border = border "FloatBorder",
+        },
+    },
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -30,7 +54,10 @@ cmp.setup {
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
         },
-        ["<CR>"] = cmp.mapping.confirm { select = true },
+        ["<CR>"] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = true,
+        },
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -72,10 +99,11 @@ cmp.setup {
     },
     sources = cmp.config.sources({
         { name = "nvim_lsp" },
+        { name = "luasnip", max_item_count = 3 },
         { name = "nvim_lua" },
-        { name = "luasnip", max_item_count = 4 },
     }, {
         { name = "buffer" },
+        { name = "path" },
     }),
 }
 

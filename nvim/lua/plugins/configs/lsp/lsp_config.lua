@@ -22,7 +22,7 @@ vim.diagnostic.config {
     signs = {
         severity = vim.diagnostic.severity.ERROR,
     },
-    float = { severity_sort = true },
+    float = { severity_sort = true, border = "rounded" },
     update_in_insert = true,
     severity_sort = true,
 }

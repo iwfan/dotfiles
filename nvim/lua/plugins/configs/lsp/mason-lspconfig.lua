@@ -1,9 +1,20 @@
 local enhance_attach = require "plugins.configs.lsp.lsp_attach"
 
+require("mason").setup {
+    ui = {
+        border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗",
+        },
+    },
+}
+
 require("mason-lspconfig").setup {
     ensure_installed = {
         -- "beancount", -- High CPU usage
-        "denols",
+        "emmet_language_server",
         "html",
         "cssls",
         "tailwindcss",
@@ -12,7 +23,7 @@ require("mason-lspconfig").setup {
         "jsonls",
         "gopls",
         "lua_ls",
-        "solargraph"
+        -- "solargraph"
     },
 }
 
@@ -22,7 +33,7 @@ require("mason-lspconfig").setup_handlers {
 
         capabilities.textDocument.foldingRange = {
             dynamicRegistration = false,
-            lineFoldingOnly = true
+            lineFoldingOnly = true,
         }
 
         local opts = {

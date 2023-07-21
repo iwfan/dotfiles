@@ -11,20 +11,17 @@ autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 
 -- go to last loc when opening a buffer
 autocmd("BufReadPost", {
-    group = augroup "last_loc",
     callback = function()
-        if not vim.tbl_contains({ "term", "help", "dashboard", "starter", "gitcommit" }, vim.bo.filetype) then
-            local mark = vim.api.nvim_buf_get_mark(0, '"')
-            local lcount = vim.api.nvim_buf_line_count(0)
-            if mark[1] > 0 and mark[1] <= lcount then
-                pcall(vim.api.nvim_win_set_cursor, 0, mark)
+        if not vim.tbl_contains({ "term", "help", "gitcommit", "alpha", "TelescopePrompt" }, vim.bo.filetype) then
+            local last_pos = vim.fn.line "'\""
+            if last_pos > 0 and last_pos <= vim.fn.line "$" then
+                vim.api.nvim_win_set_cursor(0, { last_pos, 0 })
             end
         end
     end,
 })
 
 autocmd("TextYankPost", {
-    group = augroup "highlight_yank",
     callback = function()
         vim.highlight.on_yank()
     end,
@@ -94,7 +91,7 @@ autocmd("BufWritePre", {
     group = augroup "auto_trim",
     callback = function()
         vim.fn.execute [[%s/\s\+$//e]]
-        vim.fn.execute [[%s/\n\+\%$//e]]
+        -- vim.fn.execute [[%s/\n\+\%$//e]]
     end,
 })
 

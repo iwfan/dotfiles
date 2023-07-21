@@ -15,6 +15,7 @@
         "MiniStarter",
         "MiniFiles",
         "MiniHipatterns",
-        "MiniMove"
+        "MiniMove",
+        "MiniBracketed"
     ]
 }
