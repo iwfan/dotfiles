@@ -43,15 +43,34 @@ return {
             desc = "Remove Buffer",
         },
         {
-            "<space><Tab>",
+            "\\f",
+            mode = { "n" },
+            "<cmd>Telescope buffers theme=dropdown only_cwd=true ignore_current_buffer=true<cr>",
+            desc = "Show Buffer",
+        },
+        {
+            "<Tab>",
+            mode = { "n" },
+            "<cmd>BufferLineCyclePrev<cr>",
+            desc = "Prev Buffer",
+        },
+        {
+            "<S-Tab>",
+            mode = { "n" },
+            "<cmd>BufferLineCycleNext<cr>",
+            desc = "Next Buffer",
+        },
+
+        {
+            "\\<Tab>",
             mode = { "n" },
             "<cmd>BufferLinePick<cr>",
             desc = "Show Buffer",
         },
         {
-            "\\f",
+            "<space><tab>",
             mode = { "n" },
-            "<cmd>Telescope buffers theme=cursor only_cwd=true ignore_current_buffer=true<cr>",
+            "<cmd>Telescope buffers theme=dropdown only_cwd=true ignore_current_buffer=true<cr>",
             desc = "Show Buffer",
         },
         {

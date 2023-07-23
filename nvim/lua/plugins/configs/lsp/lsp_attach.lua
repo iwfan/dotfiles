@@ -18,7 +18,7 @@ end
 
 local function buf_autocmd_document_formatting(bufnr)
     vim.api.nvim_create_user_command("Format", function()
-        vim.lsp.buf.format()
+        vim.lsp.buf.format({ async = true })
     end, { force = true, nargs = 0 })
 
     -- local LspDocumentFormattingGroup = vim.api.nvim_create_augroup("LspDocumentFormatting", { clear = true })

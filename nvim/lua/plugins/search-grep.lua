@@ -1,3 +1,25 @@
+local function open_file_search(default_text)
+    local builtin = require "telescope.builtin"
+    local find_command = {
+        "fd",
+        "--type=file",
+        "--hidden",
+        "--exclude=.git",
+        "--exclude=.idea",
+        "--exclude=node_modules",
+        "--exclude=dist",
+        "--exclude=out",
+        "--exclude=.next",
+        "--exclude=.cache",
+    }
+
+    builtin.find_files(require("telescope.themes").get_dropdown {
+        previewer = false,
+        find_command = find_command,
+        default_text = default_text,
+    })
+end
+
 return {
     {
         "nvim-telescope/telescope.nvim",
@@ -6,20 +28,12 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             local telescope = require "telescope"
-            local telescopeConfig = require "telescope.config"
+            local builtin = require "telescope.builtin"
             local actions = require "telescope.actions"
-
-            -- Clone the default Telescope configuration
-            local vimgrep_arguments = telescopeConfig.values.vimgrep_arguments
-            -- I want to search in hidden/dot files.
-            table.insert(vimgrep_arguments, "--hidden")
-            -- I don't want to search in the `.git` directory.
-            table.insert(vimgrep_arguments, "--glob")
-            table.insert(vimgrep_arguments, "!**/.git/*")
+            local state = require "telescope.actions.state"
 
             telescope.setup {
                 defaults = {
-                    vimgrep_arguments = vimgrep_arguments,
                     prompt_prefix = "   ",
                     selection_caret = "  ",
                     entry_prefix = "  ",
@@ -61,20 +75,88 @@ return {
                             i = { ["<c-d>"] = "delete_buffer" },
                         },
                     },
+                    find_files = {
+                        mappings = {
+                            i = {
+                                ["<c-s>"] = function(no)
+                                    actions.close(no)
+                                    local default_text = state.get_current_line()
+                                    require("spectre").open_file_search {
+                                        is_insert_mode = true,
+                                        search_text = default_text,
+                                        is_close = true,
+                                    }
+                                end,
+                                ["<c-h>"] = function(no)
+                                    actions.close(no)
+                                    local default_text = state.get_current_line()
+                                    builtin.oldfiles(require("telescope.themes").get_dropdown {
+                                        only_cwd = true,
+                                        previewer = false,
+                                        default_text = default_text,
+                                    })
+                                end,
+                                ["<c-l>"] = function(no)
+                                    actions.close(no)
+                                    local default_text = state.get_current_line()
+                                    builtin.live_grep {
+                                        default_text = default_text,
+                                    }
+                                end,
+                            },
+                        },
+                    },
+                    oldfiles = {
+                        mappings = {
+                            i = {
+                                ["<c-s>"] = function(no)
+                                    actions.close(no)
+                                    local default_text = state.get_current_line()
+                                    require("spectre").open_file_search {
+                                        is_insert_mode = true,
+                                        search_text = default_text,
+                                        is_close = true,
+                                    }
+                                end,
+                                ["<c-l>"] = function(no)
+                                    actions.close(no)
+                                    local default_text = state.get_current_line()
+                                    open_file_search(default_text)
+                                end,
+                            },
+                        },
+                    },
                     live_grep = {
                         mappings = {
                             i = {
-                                ["<c-f>"] = function(no)
+                                ["<c-s>"] = function(no)
                                     actions.close(no)
-                                    require("spectre").open()
+                                    local default_text = state.get_current_line()
+                                    require("spectre").open {
+                                        is_insert_mode = true,
+                                        search_text = default_text,
+                                        is_close = true,
+                                    }
+                                end,
+                                ["<c-h>"] = function(no)
+                                    actions.close(no)
+                                    local default_text = state.get_current_line()
+                                    builtin.oldfiles(require("telescope.themes").get_dropdown {
+                                        only_cwd = true,
+                                        previewer = false,
+                                        default_text = default_text,
+                                    })
+                                end,
+                                ["<c-l>"] = function(no)
+                                    actions.close(no)
+                                    local default_text = state.get_current_line()
+                                    open_file_search(default_text)
                                 end,
                             },
                         },
                     },
                 },
             }
-
-            require("telescope").load_extension "enhanced_find_files"
         end,
         keys = {
             {
@@ -84,15 +166,25 @@ return {
                 desc = "Telescope live_grep",
             },
             {
-                "<space>p",
+                "<C-p>",
                 mode = "n",
-                "<cmd>Telescope enhanced_find_files<cr>",
+                function()
+                    open_file_search()
+                end,
                 desc = "Telescope find files",
             },
             {
-                "\\g",
+                "<space>p",
                 mode = "n",
-                "<cmd>Telescope git_status theme=cursor previewer=false<cr>",
+                function()
+                    open_file_search()
+                end,
+                desc = "Telescope find files",
+            },
+            {
+                "<C-g>",
+                mode = "n",
+                "<cmd>Telescope git_status theme=dropdown previewer=false<cr>",
                 desc = "Telescope git status",
             },
             {

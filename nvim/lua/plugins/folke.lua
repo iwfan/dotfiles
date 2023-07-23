@@ -1,17 +1,5 @@
 return {
     {
-        "folke/todo-comments.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        event = "VeryLazy",
-        opts = {},
-    },
-    {
-        "folke/trouble.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        event = "VeryLazy",
-        opts = {},
-    },
-    {
         "folke/which-key.nvim",
         event = "VeryLazy",
         opts = {

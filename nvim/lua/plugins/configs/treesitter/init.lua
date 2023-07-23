@@ -58,6 +58,33 @@ require("nvim-treesitter.configs").setup {
             node_decremental = "<S-Enter>",
         },
     },
+    textobjects = {
+        move = {
+            enable = true,
+            set_jumps = true,
+            goto_next_start = {
+                ["]a"] = { query = "@parameter.inner", desc = "Next argument start" },
+            },
+            goto_next_end = {
+                ["]A"] = { query = "@parameter.inner", desc = "Next argument end" },
+            },
+            goto_previous_start = {
+                ["[a"] = { query = "@parameter.inner", desc = "Previous argument start" },
+            },
+            goto_previous_end = {
+                ["[A"] = { query = "@parameter.inner", desc = "Previous argument end" },
+            },
+        },
+        swap = {
+            enable = true,
+            swap_next = {
+                [">A"] = { query = "@parameter.inner", desc = "Swap next argument" },
+            },
+            swap_previous = {
+                ["<A"] = { query = "@parameter.inner", desc = "Swap previous argument" },
+            },
+        },
+    },
     autotag = {
         enable = true,
         filetypes = { "typescriptreact", "javascriptreact", "vue", "svelte", "html", "xml", "svg" },

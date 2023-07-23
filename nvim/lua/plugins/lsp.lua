@@ -15,11 +15,6 @@ return {
                     require "plugins.configs.lsp.mason-lspconfig"
                 end,
             },
-            {
-                "j-hui/fidget.nvim",
-                tag = "legacy",
-                opts = {}
-            },
             "jose-elias-alvarez/typescript.nvim",
             "jose-elias-alvarez/null-ls.nvim",
         },

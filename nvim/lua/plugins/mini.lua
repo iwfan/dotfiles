@@ -50,10 +50,12 @@ return {
             return {
                 n_lines = 500,
                 custom_textobjects = {
+                    a = treesitter { a = "@parameter.outer", i = "@parameter.inner" },
                     c = treesitter { a = "@class.outer", i = "@class.inner" },
                     f = treesitter { a = "@function.outer", i = "@function.inner" },
                     k = treesitter { a = "@block.outer", i = "@block.inner" },
-                    o = treesitter {
+                    l = treesitter { a = "@loop.outer", i = "@loop.inner" },
+                    ["?"] = treesitter {
                         a = { "@conditional.outer", "@loop.outer" },
                         i = { "@conditional.inner", "@loop.inner" },
                     },
