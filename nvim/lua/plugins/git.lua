@@ -83,5 +83,19 @@ return {
         event = "VeryLazy",
         cmd = { "DiffviewOpen", "DiffviewFileHistory" },
         opts = {},
+        keys = {
+            {
+                "<Space>d",
+                mode = "n",
+                function()
+                    if next(require("diffview.lib").views) == nil then
+                        vim.cmd "DiffviewOpen"
+                    else
+                        vim.cmd "DiffviewClose"
+                    end
+                end,
+                desc = "neogit",
+            },
+        },
     },
 }

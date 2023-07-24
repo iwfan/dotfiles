@@ -99,9 +99,9 @@ return {
                                 ["<c-l>"] = function(no)
                                     actions.close(no)
                                     local default_text = state.get_current_line()
-                                    builtin.live_grep {
+                                    builtin.live_grep(require("telescope.themes").get_dropdown {
                                         default_text = default_text,
-                                    }
+                                    })
                                 end,
                             },
                         },
@@ -162,7 +162,7 @@ return {
             {
                 "<C-f>",
                 mode = "n",
-                "<cmd>Telescope live_grep<cr>",
+                "<cmd>Telescope live_grep theme=dropdown<cr>",
                 desc = "Telescope live_grep",
             },
             {
