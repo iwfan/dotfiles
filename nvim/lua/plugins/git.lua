@@ -85,7 +85,7 @@ return {
         opts = {},
         keys = {
             {
-                "<Space>d",
+                "<M-d>",
                 mode = "n",
                 function()
                     if next(require("diffview.lib").views) == nil then

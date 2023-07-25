@@ -96,11 +96,11 @@ return {
             val = {
                 { type = "text", val = "Quick Actions", opts = { hl = "Operator", position = "center" } },
                 { type = "padding", val = 1 },
+                button("s", "󱝴  Session", ":ReadSession<CR>"),
                 button("n", "󱇧  New file", ":ene <BAR> startinsert <CR>"),
                 button("f", "󰱼  Find file", ":Telescope find_files theme=dropdown previewer=false<cr>"),
                 button("g", "󰷊  Git status", ":Telescope git_status theme=dropdown previewer=false<cr>"),
                 button("w", "󰱽  Find word", ":Telescope live_grep theme=dropdown<CR>"),
-                button("s", "󱝴  Session", ":ReadSession<CR>"),
                 button("u", "󱈖  Sync plugins", ":Lazy sync<CR>"),
                 button("c", "󱁻  Check health", ":checkhealth<CR>"),
                 button("q", "󰪹  Quit", "<Cmd>qa<CR>"),

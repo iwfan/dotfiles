@@ -57,10 +57,12 @@ return {
                     mappings = {
                         i = {
                             ["<esc>"] = actions.close,
+                            ["<C-q>"] = actions.close,
                             ["<C-j>"] = actions.cycle_history_next,
                             ["<C-k>"] = actions.cycle_history_prev,
                         },
                         n = {
+                            ["<C-c>"] = actions.close,
                             ["<C-n>"] = actions.move_selection_next,
                             ["<C-p>"] = actions.move_selection_previous,
                         },
@@ -160,18 +162,10 @@ return {
         end,
         keys = {
             {
-                "<C-f>",
+                "<space>f",
                 mode = "n",
                 "<cmd>Telescope live_grep theme=dropdown<cr>",
                 desc = "Telescope live_grep",
-            },
-            {
-                "<C-p>",
-                mode = "n",
-                function()
-                    open_file_search()
-                end,
-                desc = "Telescope find files",
             },
             {
                 "<space>p",
@@ -182,10 +176,28 @@ return {
                 desc = "Telescope find files",
             },
             {
-                "<C-g>",
+                "<space>b",
+                mode = { "n" },
+                "<cmd>Telescope buffers theme=dropdown only_cwd=true ignore_current_buffer=true<cr>",
+                desc = "Show Buffer",
+            },
+            {
+                "<space>s",
                 mode = "n",
                 "<cmd>Telescope git_status theme=dropdown previewer=false<cr>",
                 desc = "Telescope git status",
+            },
+            {
+                "<space>m",
+                mode = "n",
+                "<cmd>Telescope marks theme=dropdown<cr>",
+                desc = "Telescope marks",
+            },
+            {
+                "<space>j",
+                mode = "n",
+                "<cmd>Telescope jumplist theme=dropdown<cr>",
+                desc = "Telescope jumplist",
             },
             {
                 "<space><space>",

@@ -18,14 +18,6 @@ return {
             end,
             desc = "MiniFiles",
         },
-        {
-            "<C-t>",
-            mode = { "n" },
-            function()
-                MiniFiles.open(vim.fn.expand "%")
-            end,
-            desc = "MiniFiles",
-        },
     },
     event = "VeryLazy",
 }
