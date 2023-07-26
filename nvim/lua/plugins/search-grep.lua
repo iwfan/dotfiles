@@ -202,7 +202,7 @@ return {
             {
                 "<space><space>",
                 mode = "n",
-                "<cmd>Telescope<cr>",
+                "<cmd>Telescope commands theme=dropdown<cr>",
                 desc = "Telescope commands",
             },
         },
