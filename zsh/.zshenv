@@ -18,7 +18,7 @@ export PAGER=ov
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 #Homebrew's sbin
-export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+export PATH="/opt/homebrew/bin:/usr/local/sbin:/usr/local/bin:$PATH"
 export HOMEBREW_NO_AUTO_UPDATE=true
 
 # ruby
