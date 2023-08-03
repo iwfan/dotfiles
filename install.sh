@@ -31,6 +31,6 @@ ln -s ~/dotfiles/ideavim ~/.config/ideavim
 ln -s ~/dotfiles/git ~/.config/git
 ln -s ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/lazygit/config.yml
 # Rime
-ln -s ~/dotfiles/Rime ~/Library/Rime
+ln -s ~/dotfiles/rime-ice ~/Library/Rime
 
 success "link finished."

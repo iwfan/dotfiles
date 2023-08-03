@@ -1,0 +1,4 @@
+[submodule "rime-ice"]
+	path = rime-ice
+	url = https://github.com/iwfan/rime-ice.git
+  branch = iwfan

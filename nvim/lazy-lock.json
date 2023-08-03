@@ -1,5 +1,5 @@
 {
-  "Comment.nvim": { "branch": "master", "commit": "176e85eeb63f1a5970d6b88f1725039d85ca0055" },
+  "Comment.nvim": { "branch": "master", "commit": "d0cbbfb539898a275dc4398446ab0ae3b94819bf" },
   "LuaSnip": { "branch": "master", "commit": "e81cbe6004051c390721d8570a4a0541ceb0df10" },
   "alpha-nvim": { "branch": "main", "commit": "e4fc5e29b731bdf55d204c5c6a11dc3be70f3b65" },
   "bufdelete.nvim": { "branch": "master", "commit": "07d1f8ba79dec59d42b975a4df1c732b2e4e37b4" },
@@ -18,7 +18,7 @@
   "friendly-snippets": { "branch": "main", "commit": "bc38057e513458cb2486b6cd82d365fa294ee398" },
   "gitsigns.nvim": { "branch": "main", "commit": "5d73da785a3c05fd63ac31769079db05169a6ec7" },
   "gruvbox-material": { "branch": "master", "commit": "b17daceec6ed9a5fb46e0f293f2ac666c90e5459" },
-  "lazy.nvim": { "branch": "main", "commit": "dac844ed617dda4f9ec85eb88e9629ad2add5e05" },
+  "lazy.nvim": { "branch": "main", "commit": "3ad55ae678876516156cca2f361c51f7952a924b" },
   "lualine.nvim": { "branch": "master", "commit": "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "e86a4c84ff35240639643ffed56ee1c4d55f538e" },
   "mason.nvim": { "branch": "main", "commit": "fe9e34a9ab4d64321cdc3ecab4ea1809239bb73f" },
