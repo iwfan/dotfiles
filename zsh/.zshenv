@@ -1,8 +1,8 @@
 # https://zsh.sourceforge.io/Intro/intro_3.html
+# https://stackoverflow.com/a/21163441
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-export DOTFILES="$HOME/dotfiles"
 export ZINIT_HOME="${ZDOTDIR:-$HOME}/.zinit"
 export ZINIT_BIN_DIR_NAME="bin"
 
@@ -10,16 +10,17 @@ export ZINIT_BIN_DIR_NAME="bin"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export GPG_TTY=tty
-
-# Editor
 export VISUAL=nvim
 export EDITOR=nvim
-export PAGER=ov
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 #Homebrew's sbin
-export PATH="/opt/homebrew/bin:/usr/local/sbin:/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 export HOMEBREW_NO_AUTO_UPDATE=true
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
 
 # ruby
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
@@ -39,6 +40,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Bat
 export BAT_PAGER="less -RF"
 export BAT_STYLE="changes,numbers"
+export BAT_THEME="ansi"
 
 # RG
 export RG_OPTIONS="--smart-case --follow"

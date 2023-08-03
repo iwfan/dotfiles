@@ -57,6 +57,3 @@ set -gx FZF_DEFAULT_OPTS "$FZF_BASE_OPTS \
   --bind 'ctrl-/:toggle-preview' \
   --preview='string match -q \"*binary\" (file --mime {} ); and echo {} is a binary file; or bat --color=always --style=numbers --line-range=:100 {}' \
   --preview-window='right:60%:wrap'"
-
-# Others
-set -gx OBJC_DISABLE_INITIALIZE_FORK_SAFETY YES

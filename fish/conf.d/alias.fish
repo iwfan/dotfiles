@@ -2,8 +2,6 @@ alias ls "exa -F"
 alias la "exa -F -a"
 alias ll "exa -F -al"
 alias lt "exa -a --tree -L 2 --long --icons --git-ignore"
-alias lzg "lazygit"
-alias lzd "lazydocker"
 
 alias cp 'cp -iv'
 alias mv 'mv -iv'
