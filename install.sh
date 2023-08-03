@@ -30,6 +30,9 @@ ln -s ~/dotfiles/ideavim ~/.config/ideavim
 # git config
 ln -s ~/dotfiles/git ~/.config/git
 ln -s ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/lazygit/config.yml
+# Hammerspoon
+ln -s ~/dotfiles/hammerspoon ~/.config/hammerspoon
+defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
 # Rime
 ln -s ~/dotfiles/rime-ice ~/Library/Rime
 

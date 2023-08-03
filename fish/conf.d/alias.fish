@@ -1,6 +1,6 @@
-alias ls "exa -F"
-alias la "exa -F -a"
-alias ll "exa -F -al"
+alias ls "exa"
+alias la "exa -a"
+alias ll "exa -al"
 alias lt "exa -a --tree -L 2 --long --icons --git-ignore"
 
 alias cp 'cp -iv'
