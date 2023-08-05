@@ -36,23 +36,23 @@ vim.opt.breakindent = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.wrap = false
-vim.opt.showbreak = "↪ "
-vim.opt.list = true
-vim.opt.listchars = {
-    tab = " ",
-    trail = "•",
-    extends = "",
-    precedes = "",
-    nbsp = "⦸",
-}
-vim.opt.fillchars = {
-    eob = " ",
-    diff = " ",
-    fold = " ",
-    foldclose = "",
-    foldopen = "",
-    -- foldclose = " ",
-}
+-- vim.opt.showbreak = "↪ "
+-- vim.opt.list = true
+-- vim.opt.listchars = {
+--     tab = " ",
+--     trail = "•",
+--     extends = "",
+--     precedes = "",
+--     nbsp = "⦸",
+-- }
+-- vim.opt.fillchars = {
+--     eob = " ",
+--     diff = " ",
+--     fold = " ",
+--     foldclose = "",
+--     foldopen = "",
+--     -- foldclose = " ",
+-- }
 
 -- spell check
 -- vim.opt.spell = true
