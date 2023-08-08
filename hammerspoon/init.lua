@@ -8,5 +8,4 @@ require "modules.search-text"
 require "modules.app-hints"
 require "modules.app-launcher"
 require "modules.window-management"
-
--- spoon.HCalendar:start()
+require "modules.switch-im"
