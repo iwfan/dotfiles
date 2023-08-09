@@ -11,12 +11,11 @@ autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 
 -- go to last loc when opening a buffer
 autocmd("BufReadPost", {
+    pattern = "*",
     callback = function()
-        if not vim.tbl_contains({ "term", "help", "gitcommit", "alpha", "TelescopePrompt" }, vim.bo.filetype) then
-            local last_pos = vim.fn.line "'\""
-            if last_pos > 0 and last_pos <= vim.fn.line "$" then
-                vim.api.nvim_win_set_cursor(0, { last_pos, 0 })
-            end
+        local row, col = unpack(vim.api.nvim_buf_get_mark(0, '"'))
+        if row > 0 and row <= vim.api.nvim_buf_line_count(0) then
+            vim.api.nvim_win_set_cursor(0, { row, col })
         end
     end,
 })

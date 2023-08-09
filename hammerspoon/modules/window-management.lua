@@ -60,7 +60,7 @@ local KEY_BINDINGS = {
         end
         local next_space_id = all_spaces[index + 1]
         hs.spaces.moveWindowToSpace(win:id(), next_space_id)
-        hs.spaces.gotoSpace(next_space_id)
+        -- hs.spaces.gotoSpace(next_space_id)
     end, false, },
     { HYPER, "[", "Prev Desktop", function()
         local win = hs.window.focusedWindow()
@@ -73,7 +73,7 @@ local KEY_BINDINGS = {
         end
         local prev_space_id = all_spaces[index - 1]
         hs.spaces.moveWindowToSpace(win:id(), prev_space_id)
-        hs.spaces.gotoSpace(prev_space_id)
+        -- hs.spaces.gotoSpace(prev_space_id)
     end, false, },
 
 }
