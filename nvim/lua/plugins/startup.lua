@@ -41,7 +41,6 @@ return {
         end
 
         local theta = require "alpha.themes.theta"
-        local cdir = vim.fn.getcwd()
 
         local section_header = {
             type = "text",
@@ -78,18 +77,14 @@ return {
                 {
                     type = "group",
                     val = function()
-                        return { theta.mru(1, cdir, 6) }
+                         return { theta.mru(1, vim.fn.getcwd(), 6) }
                     end,
-                    opts = { shrink_margin = false },
+                    opts = {
+                        shrink_margin = false,
+                    },
                 },
             },
         }
-
-        local lazy_footer = function()
-            local stats = require("lazy").stats()
-            local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-            return "󰊠 Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms "
-        end
 
         local section_actions = {
             type = "group",
@@ -111,11 +106,17 @@ return {
         local section_footer = {
             type = "group",
             val = {
-                { type = "text", val = lazy_footer, opts = { hl = "Comment", position = "center" } },
+                {
+                    type = "text",
+                    val = function()
+                        local stats = require("lazy").stats()
+                        local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+                        return "󰊠 Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms "
+                    end,
+                    opts = { hl = "Comment", position = "center" }
+                },
             },
         }
-
-        theta.header.val = ""
 
         local opts = {
             layout = {

@@ -17,6 +17,9 @@ if test -d (brew --prefix)"/share/fish/vendor_completions.d"
     set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
 end
 
+# JetBrains
+fish_add_path $HOME/Library/Application\ Support/JetBrains/Toolbox/scripts
+
 # pnpm
 set -gx PNPM_HOME "/Users/f/Library/pnpm"
 if not string match -q -- $PNPM_HOME $PATH

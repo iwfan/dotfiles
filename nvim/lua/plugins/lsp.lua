@@ -15,8 +15,6 @@ return {
                     require "plugins.configs.lsp.mason-lspconfig"
                 end,
             },
-            "jose-elias-alvarez/typescript.nvim",
-            "jose-elias-alvarez/null-ls.nvim",
         },
     },
     {
