@@ -20,3 +20,5 @@ Yes, Kitty & Fish.
 - [Tmux](https://github.com/tmux/tmux)
 - [Lazygit](https://github.com/jesseduffield/lazygit)
 - [Lf](https://github.com/gokcehan/lf)
+
+https://github.com/mikesmithgh/kitty-scrollback.nvim
