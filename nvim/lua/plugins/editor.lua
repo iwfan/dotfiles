@@ -99,4 +99,8 @@ return {
             end)
         end,
     },
+    {
+        "keaising/im-select.nvim",
+        opts = {},
+    }
 }
