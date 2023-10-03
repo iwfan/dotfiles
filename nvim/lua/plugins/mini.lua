@@ -1,5 +1,4 @@
 return {
-    { "echasnovski/mini.indentscope", version = false, opts = {}, event = "VeryLazy" },
     {
         "echasnovski/mini.move",
         version = false,

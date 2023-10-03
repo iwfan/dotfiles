@@ -47,9 +47,17 @@ set -gx RG_OPTIONS "--smart-case --follow"
 set -gx FD_OPTIONS "--hidden --follow --exclude .git --exclude node_modules"
 
 # Fzf
-set -gx DISABLE_FZF_KEY_BINDINGS true
 set -gx FZF_DEFAULT_COMMAND "fd -t f $FD_OPTIONS"
-set -gx FZF_BASE_OPTS "-m --ansi --height 40% --reverse --info inline --tabstop=4 --prompt 'File❯ ' \
+set -gx FZF_BASE_OPTS "\
+  --ansi \
+  --multi \
+  --height ~40% \
+  --layout reverse \
+  --info inline \
+  --border none \
+  --no-scrollbar \
+  --tabstop 4 \
+  --prompt 'File❯ ' \
   --bind 'ctrl-r:change-prompt(❯ )+reload(fd $FD_OPTIONS)' \
   --bind 'ctrl-y:execute-silent(echo {} | pbcopy)+abort' \
   --preview='' --preview-window=''"

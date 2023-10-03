@@ -10,6 +10,22 @@ return {
             show_close_icon = false,
             show_buffer_close_icons = false,
         },
+        highlights = {
+            separator = {
+                fg = '#343f44',
+                bg = '#343f44'
+            },
+            background = {
+                fg = '#859289',
+                bg = '#3d484d'
+            },
+            pick = {
+                bg = '#3d484d'
+            },
+            fill = {
+                bg = '#343f44'
+            }
+        },
     },
     keys = {
         {

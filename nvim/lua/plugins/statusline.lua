@@ -1,4 +1,3 @@
---        
 return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
@@ -6,37 +5,58 @@ return {
         return {
             options = {
                 theme = "auto",
-                component_separators = "|",
-                section_separators = { left = "", right = "" },
+                component_separators = "",
+                section_separators = "",
                 globalstatus = true,
-                disabled_filetypes = { statusline = { "dashboard", "alpha" } },
+                disabled_filetypes = {
+                    statusline = {
+                        'startify',
+                        'dashboard',
+                        'neo-tree',
+                        'packer',
+                        'neogitstatus',
+                        'NvimTree',
+                        'Trouble',
+                        'alpha',
+                        'lir',
+                        'Outline',
+                        'spectre_panel',
+                        'toggleterm',
+                        'qf',
+                    },
+                    winbar = {},
+                },
             },
             sections = {
                 lualine_a = {
-                    { "mode", separator = { left = "" }, right_padding = 2 },
+                    { 'mode', fmt = function(str) return str:sub(1, 1) end }
                 },
                 lualine_b = {
-                    {
-                        "branch",
-                        icon = "󰘬",
-                    },
-                    "diff",
+                    { 'b:gitsigns_head', icon = '󰘬' },
                     "diagnostics",
                 },
-                lualine_c = { "filename" },
-                lualine_x = {},
-                lualine_y = { "filetype", "encoding" },
-                lualine_z = {
-                    { "location", separator = { right = "" }, left_padding = 2 },
+                lualine_c = {
+                    {
+                        "filename",
+                        path = 3,
+                        file_status = false,
+                        newfile_status = false,
+                    },
                 },
+                lualine_x = {
+                    "bo:filetype",
+                    "location",
+                },
+                lualine_y = {},
+                lualine_z = {},
             },
             inactive_sections = {
-                lualine_a = { "filename" },
+                lualine_a = {},
                 lualine_b = {},
-                lualine_c = {},
-                lualine_x = {},
+                lualine_c = { "filename" },
+                lualine_x = { "location" },
                 lualine_y = {},
-                lualine_z = { "location" },
+                lualine_z = {},
             },
             tabline = {},
             extensions = {},

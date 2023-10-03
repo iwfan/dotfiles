@@ -3,7 +3,7 @@ function fish_prompt
     set -l normal (set_color normal)
     set -l status_color (set_color brgreen)
     set -l cwd_color (set_color $fish_color_cwd)
-    set -l vcs_color (set_color brmagenta)
+    set -l vcs_color (set_color bryellow)
     set -l job_color (set_color brmagenta)
     set -l prompt_status ""
     set -l jobs_status ""

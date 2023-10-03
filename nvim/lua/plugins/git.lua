@@ -57,28 +57,6 @@ return {
         },
     },
     {
-        "NeogitOrg/neogit",
-        opts = {},
-        dependencies = "nvim-lua/plenary.nvim",
-        event = "VeryLazy",
-        keys = {
-            {
-                "<Space>g",
-                mode = "n",
-                "<cmd>Neogit<cr>",
-                desc = "neogit",
-            },
-        },
-    },
-    -- {
-    --     "akinsho/toggleterm.nvim",
-    --     version = "*",
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require "plugins.configs.toggleterm"
-    --     end,
-    -- },
-    {
         "sindrets/diffview.nvim",
         event = "VeryLazy",
         cmd = { "DiffviewOpen", "DiffviewFileHistory" },

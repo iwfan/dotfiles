@@ -9,6 +9,8 @@ alias rm "trash -v"
 alias cat "bat --paging=never"
 alias ssh "kitty +kitten ssh"
 alias v "nvim"
+alias lg "lazygit"
+alias lf "lfcd"
 
 abbr -a -g nlsg "npm list -g --depth=0"
 abbr -a -g sskq "bundle exec sidekiq -C config/sidekiq.yml"
