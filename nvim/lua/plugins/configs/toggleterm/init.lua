@@ -24,7 +24,6 @@ function Lazygit_toggle()
     }):open()
 end
 
--- vim.keymap.set("n", "<c-w>g", "<cmd>lua Lazygit_toggle()<cr>")
 vim.keymap.set("n", "<space>g", "<cmd>lua Lazygit_toggle()<cr>")
 
 function LF_toggle(path)

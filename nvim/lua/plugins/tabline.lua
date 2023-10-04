@@ -19,6 +19,9 @@ return {
                 fg = '#859289',
                 bg = '#3d484d'
             },
+            modified = {
+                bg = '#3d484d'
+            },
             pick = {
                 bg = '#3d484d'
             },

@@ -3,7 +3,6 @@ vim.opt.autowrite = true
 vim.opt.autowriteall = true
 vim.opt.swapfile = false
 vim.opt.undofile = true
-vim.opt.mouse = "a"
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 600
 vim.opt.termguicolors = true
@@ -12,13 +11,11 @@ vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.virtualedit = "block"
 vim.opt.showtabline = 2
 vim.opt.laststatus = 3
-vim.opt.ruler = false
 vim.opt.showmode = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.colorcolumn = "+1"
-vim.opt.signcolumn = "yes"
 vim.opt.shortmess:append({ W = true, I = true, C = true, c = true })
 vim.opt.scrolloff = 10
 vim.opt.splitbelow = true
@@ -36,23 +33,9 @@ vim.opt.breakindent = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.wrap = false
--- vim.opt.showbreak = "↪ "
--- vim.opt.list = true
--- vim.opt.listchars = {
---     tab = " ",
---     trail = "•",
---     extends = "",
---     precedes = "",
---     nbsp = "⦸",
--- }
--- vim.opt.fillchars = {
---     eob = " ",
---     diff = " ",
---     fold = " ",
---     foldclose = "",
---     foldopen = "",
---     -- foldclose = " ",
--- }
+vim.opt.fillchars = {
+    eob = " ",
+}
 
 -- spell check
 -- vim.opt.spell = true
