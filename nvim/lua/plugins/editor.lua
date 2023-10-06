@@ -80,32 +80,28 @@ return {
         }
     },
     {
-        "andrewferrier/debugprint.nvim",
-        event = "VeryLazy",
-        version = "*",
+        "ThePrimeagen/refactoring.nvim",
         dependencies = {
+            "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
         },
         config = function()
-            require("debugprint").setup {
-                create_keymaps = false,
-                create_commands = false,
-            }
-            vim.keymap.set("n", "g?p", function()
-                return require("debugprint").debugprint { variable = true }
-            end, {
-                expr = true,
-            })
-            vim.keymap.set("x", "g?p", function()
-                return require("debugprint").debugprint { variable = true }
-            end, {
-                expr = true,
-            })
-
-            vim.keymap.set("n", "g?d", function()
-                require("debugprint").deleteprints()
-            end)
+            require("refactoring").setup()
+            require("telescope").load_extension("refactoring")
         end,
+        keys = {
+            { "<space>r?", mode = { "n", "x" }, function() require('telescope').extensions.refactoring.refactors() end, desc = "Refactor This", },
+            { "<leader>re", mode = "x", function() require('refactoring').refactor('Extract Function') end },
+            { "<leader>rf", mode = "x", function() require('refactoring').refactor('Extract Function To File') end },
+            { "<leader>rv", mode = "x", function() require('refactoring').refactor('Extract Variable') end },
+            { "<leader>rI", mode = "n", function() require('refactoring').refactor('Inline Function') end },
+            { "<leader>ri", mode = { "n", "x" }, function() require('refactoring').refactor('Inline Variable') end },
+            { "<leader>rb", mode = "n", function() require('refactoring').refactor('Extract Block') end },
+            { "<leader>rbf", mode = "n", function() require('refactoring').refactor('Extract Block To File') end },
+            { "<space>rp", mode = "n", function() require('refactoring').debug.printf() end, "insert debug statement" },
+            { "<space>rs", mode = {"x", "n"}, function() require('refactoring').debug.print_var() end, desc = "show variables" },
+            { "<space>rc", mode = "n", function() require('refactoring').debug.cleanup({}) end },
+        },
     },
     {
         "keaising/im-select.nvim",
