@@ -9,3 +9,5 @@ require "modules.app-hints"
 require "modules.app-launcher"
 require "modules.window-management"
 require "modules.switch-im"
+require "modules.background-sound"
+
