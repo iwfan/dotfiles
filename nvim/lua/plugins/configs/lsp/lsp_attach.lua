@@ -35,14 +35,14 @@ return function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    -- Set autocommands conditional on server_capabilities
-    if client.server_capabilities.document_highlight then
-        buf_autocmd_document_highlight(bufnr)
-    end
-
-    if client.server_capabilities.document_formatting then
-        buf_autocmd_document_formatting(bufnr)
-    end
+    -- -- Set autocommands conditional on server_capabilities
+    -- if client.server_capabilities.documentHighlightProvider then
+    --     buf_autocmd_document_highlight(bufnr)
+    -- end
+    --
+    -- if client.server_capabilities.documentFormattingProvider then
+    --     buf_autocmd_document_formatting(bufnr)
+    -- end
 
     local bufopts = { silent = true, buffer = bufnr }
     vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references theme=ivy<cr>", bufopts)

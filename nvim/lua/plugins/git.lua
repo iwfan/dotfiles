@@ -54,6 +54,7 @@ return {
                 -- Text object
                 map({ "o", "x" }, "ig", ":<C-U>Gitsigns select_hunk<CR>")
             end,
+            current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
         },
     },
     {
