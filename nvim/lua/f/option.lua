@@ -35,6 +35,7 @@ vim.opt.smartcase = true
 vim.opt.wrap = false
 vim.opt.fillchars = {
     eob = " ",
+    diff = " ",
 }
 
 -- spell check
