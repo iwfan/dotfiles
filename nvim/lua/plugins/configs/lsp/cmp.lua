@@ -5,19 +5,6 @@ cmp.setup.filetype({ "markdown", "help", "minifiles", "TelescopePrompt" }, {
     enabled = false,
 })
 
-local function border(hl_name)
-    return {
-        { "╭", hl_name },
-        { "─", hl_name },
-        { "╮", hl_name },
-        { "│", hl_name },
-        { "╯", hl_name },
-        { "─", hl_name },
-        { "╰", hl_name },
-        { "│", hl_name },
-    }
-end
-
 cmp.setup {
     enabled = function()
         -- disable completion in comments
@@ -29,15 +16,6 @@ cmp.setup {
             return not context.in_treesitter_capture "comment" and not context.in_syntax_group "Comment"
         end
     end,
-    window = {
-        completion = {
-            border = border "FloatBorder",
-            winhighlight = "Normal:NormalFloat,CursorLine:PmenuSel,Search:None",
-        },
-        documentation = {
-            border = border "FloatBorder",
-        },
-    },
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)

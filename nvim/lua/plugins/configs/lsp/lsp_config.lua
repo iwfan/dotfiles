@@ -1,28 +1,8 @@
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-
-for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
-
 vim.diagnostic.config {
-    underline = true,
-    virtual_text = {
-        prefix = "",
-        format = function(diagnostic)
-            if diagnostic.severity == vim.diagnostic.severity.ERROR then
-                return "  " .. diagnostic.message
-            elseif diagnostic.severity == vim.diagnostic.severity.WARN then
-                return "  " .. diagnostic.message
-            end
-            return nil
-        end,
-    },
-
-    signs = {
-        severity = vim.diagnostic.severity.ERROR,
-    },
-    float = { severity_sort = true, border = "rounded" },
+    underline = false,
+    virtual_text = false,
+    signs = false,
+    float = { severity_sort = true },
     update_in_insert = true,
     severity_sort = true,
 }

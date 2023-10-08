@@ -2,12 +2,13 @@
 git:
   paging:
     colorArg: always
-    pager: delta --paging=never
+    pager: delta --dark --paging=never
   pull:
     mode: 'rebase' # one of 'merge' | 'rebase' | 'ff-only'
 os:
-  edit: 'nvim'
-  editAtLine: '{{editor}} +{{line}} -- {{filename}}'
+  edit: 'nvim {{filename}}'
+  editAtLine: 'nvim --line={{line}} {{filename}}'
+  editAtLineAndWait: 'nvim --block --line={{line}} {{filename}}'
+  editInTerminal: true
+  openDirInEditor: 'nvim {{dir}}'
   open: zed {{filename}}
-reporting: "off"
-startuppopupversion: 1

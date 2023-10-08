@@ -32,7 +32,6 @@ return {
                     { 'mode', fmt = function(str) return str:sub(1, 1) end }
                 },
                 lualine_b = {
-                    { 'b:gitsigns_head', icon = '󰘬' },
                     "diagnostics",
                 },
                 lualine_c = {
@@ -47,7 +46,9 @@ return {
                     "bo:filetype",
                     "location",
                 },
-                lualine_y = {},
+                lualine_y = {
+                    { 'b:gitsigns_head', icon = '󰘬' },
+                },
                 lualine_z = {},
             },
             inactive_sections = {
