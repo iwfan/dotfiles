@@ -107,23 +107,23 @@ return {
         "keaising/im-select.nvim",
         opts = {},
     },
-    {
-        "chikko80/error-lens.nvim",
-        event = "BufRead",
-        dependencies = {
-            "nvim-telescope/telescope.nvim"
-        },
-        opts = {
-            colors = {
-                error_fg = "#E67E80",
-                error_bg = "#543A48",
-                warn_fg = "#DBBC7F",
-                warn_bg = "#4D4C43",
-                info_fg = "#A7C080",
-                info_bg = "#425047",
-                hint_fg = "#7FBBB3",
-                hint_bg = "#3A515D"
-            }
-        },
-    }
+    -- {
+    --     "chikko80/error-lens.nvim",
+    --     event = "BufRead",
+    --     dependencies = {
+    --         "nvim-telescope/telescope.nvim"
+    --     },
+    --     opts = {
+    --         colors = {
+    --             error_fg = "#E67E80",
+    --             error_bg = "#543A48",
+    --             warn_fg = "#DBBC7F",
+    --             warn_bg = "#4D4C43",
+    --             info_fg = "#A7C080",
+    --             info_bg = "#425047",
+    --             hint_fg = "#7FBBB3",
+    --             hint_bg = "#3A515D"
+    --         }
+    --     },
+    -- }
 }

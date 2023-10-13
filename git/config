@@ -3,7 +3,7 @@
     name = iwfan
     email = i.wangfancn@gmail.com
 [core]
-    editor = nvim
+    editor = /opt/homebrew/bin/nvim
     excludesfile = ~/dotfiles/git/ignore
     autocrlf = input
     pager = delta
@@ -34,23 +34,8 @@
     autoStash = true
 [credential]
     helper = cache --timeout=3600
-[rerere]
-    enabled = true
-[merge]
-    # Include summaries of merged commits in newly created merge commit messages
-    log = true
-    tool = vimdiff
-[diff]
-    tool = vimdiff
-    colormoved = dimmed-zebra
-[difftool]
-    prompt = false
 [branch]
     autoSetupRebase = always
-[mergetool "vimdiff"]
-    cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
-[difftool "vimdiff"]
-    cmd = nvim -d $LOCAL $REMOTE -c '$wincmd w' -c 'wincmd L'
 [includeIf "gitdir:~/working/"]
     path = /Users/f/working/.gitconfig
 [includeIf "gitdir:~/gd/"]

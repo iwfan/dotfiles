@@ -1,6 +1,6 @@
 vim.diagnostic.config {
-    underline = false,
-    virtual_text = false,
+    underline = true,
+    virtual_text = true,
     signs = false,
     float = { severity_sort = true },
     update_in_insert = true,
