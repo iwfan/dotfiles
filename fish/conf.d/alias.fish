@@ -1,13 +1,12 @@
-alias ls "exa"
-alias la "exa -a"
-alias ll "exa -al"
-alias lt "exa -a --tree -L 2 --long --icons --git-ignore"
+alias ls "eza"
+alias la "eza -a"
+alias ll "eza -al"
+alias lt "eza -a --tree -L 2 --long --icons --git-ignore"
 
 alias cp 'cp -iv'
 alias mv 'mv -iv'
 alias rm "trash -v"
 alias cat "bat --paging=never"
-alias ssh "kitty +kitten ssh"
 alias v "nvim"
 alias lg "lazygit"
 alias lf "lfcd"
