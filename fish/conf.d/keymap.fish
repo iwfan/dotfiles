@@ -20,7 +20,9 @@ set -g fish_cursor_visual block
 bind \cg 'lazygit'
 bind \cv 'nvim'
 bind \ct 'lfcd'
+bind \cz 'fancy_ctrl_z'
 
 bind -M insert \cg 'lazygit'
 bind -M insert \cv 'nvim'
 bind -M insert \ct 'lfcd'
+bind -M insert \cz 'fancy_ctrl_z'
