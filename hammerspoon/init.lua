@@ -5,7 +5,7 @@ _G.LEADER = { "ctrl", "alt" }
 require "modules.config-reload"
 require "modules.control-to-escape"
 require "modules.search-text"
-require "modules.app-hints"
+-- require "modules.app-hints"
 require "modules.app-launcher"
 require "modules.window-management"
 require "modules.switch-im"

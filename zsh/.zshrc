@@ -19,6 +19,8 @@ function zvm_after_init() {
   source "$(brew --prefix fzf)/shell/key-bindings.zsh"
 }
 
+typeset -ga ZSH_AUTOSUGGEST_STRATEGY=(completion)
+
 source $(brew --prefix antidote)/share/antidote/antidote.zsh
 antidote load
 
