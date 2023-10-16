@@ -1,6 +1,6 @@
 -- stylua: ignore start
 local KEY_BINDINGS = {
-    { HYPER, ";", function() hs.application.launchOrFocus "iTerm" end, },
+    { HYPER, ";", function() hs.application.launchOrFocus "Kitty" end, },
     -- { HYPER, "\\", function() hs.application.launchOrFocus "Arc" end, },
     { HYPER, "'", function() hs.application.launchOrFocus "Google Chrome" end, },
     -- { HYPER, ",", function() hs.application.launchOrFocus "Google Chrome" end, },
