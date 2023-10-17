@@ -57,7 +57,6 @@ return {
                     mappings = {
                         i = {
                             ["<esc>"] = actions.close,
-                            ["<C-q>"] = actions.close,
                             ["<C-j>"] = actions.cycle_history_next,
                             ["<C-k>"] = actions.cycle_history_prev,
                         },

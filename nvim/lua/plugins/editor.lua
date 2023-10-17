@@ -103,10 +103,10 @@ return {
             { "<space>rc", mode = "n", function() require('refactoring').debug.cleanup({}) end },
         },
     },
-    {
-        "keaising/im-select.nvim",
-        opts = {},
-    },
+    -- {
+    --     "keaising/im-select.nvim",
+    --     opts = {},
+    -- },
     -- {
     --     "chikko80/error-lens.nvim",
     --     event = "BufRead",

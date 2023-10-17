@@ -3,7 +3,7 @@
     name = iwfan
     email = i.wangfancn@gmail.com
 [core]
-    editor = nvim
+    editor = nvim -u NONE
     excludesfile = ~/dotfiles/git/ignore
     autocrlf = input
     pager = delta
