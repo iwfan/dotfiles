@@ -76,8 +76,8 @@ return {
         main = "ibl",
         opts = {
             indent = { char = "▏" },
-            scope = { enabled = false }
-        }
+            scope = { enabled = false },
+        },
     },
     {
         "ThePrimeagen/refactoring.nvim",
@@ -87,26 +87,97 @@ return {
         },
         config = function()
             require("refactoring").setup()
-            require("telescope").load_extension("refactoring")
+            require("telescope").load_extension "refactoring"
         end,
         keys = {
-            { "<space>r?", mode = { "n", "x" }, function() require('telescope').extensions.refactoring.refactors() end, desc = "Refactor This", },
-            { "<leader>re", mode = "x", function() require('refactoring').refactor('Extract Function') end },
-            { "<leader>rf", mode = "x", function() require('refactoring').refactor('Extract Function To File') end },
-            { "<leader>rv", mode = "x", function() require('refactoring').refactor('Extract Variable') end },
-            { "<leader>rI", mode = "n", function() require('refactoring').refactor('Inline Function') end },
-            { "<leader>ri", mode = { "n", "x" }, function() require('refactoring').refactor('Inline Variable') end },
-            { "<leader>rb", mode = "n", function() require('refactoring').refactor('Extract Block') end },
-            { "<leader>rbf", mode = "n", function() require('refactoring').refactor('Extract Block To File') end },
-            { "<space>rp", mode = "n", function() require('refactoring').debug.printf() end, "insert debug statement" },
-            { "<space>rs", mode = {"x", "n"}, function() require('refactoring').debug.print_var() end, desc = "show variables" },
-            { "<space>rc", mode = "n", function() require('refactoring').debug.cleanup({}) end },
+            {
+                "<space>r?",
+                mode = { "n", "x" },
+                function()
+                    require("telescope").extensions.refactoring.refactors()
+                end,
+                desc = "Refactor This",
+            },
+            {
+                "<leader>re",
+                mode = "x",
+                function()
+                    require("refactoring").refactor "Extract Function"
+                end,
+            },
+            {
+                "<leader>rf",
+                mode = "x",
+                function()
+                    require("refactoring").refactor "Extract Function To File"
+                end,
+            },
+            {
+                "<leader>rv",
+                mode = "x",
+                function()
+                    require("refactoring").refactor "Extract Variable"
+                end,
+            },
+            {
+                "<leader>rI",
+                mode = "n",
+                function()
+                    require("refactoring").refactor "Inline Function"
+                end,
+            },
+            {
+                "<leader>ri",
+                mode = { "n", "x" },
+                function()
+                    require("refactoring").refactor "Inline Variable"
+                end,
+            },
+            {
+                "<leader>rb",
+                mode = "n",
+                function()
+                    require("refactoring").refactor "Extract Block"
+                end,
+            },
+            {
+                "<leader>rbf",
+                mode = "n",
+                function()
+                    require("refactoring").refactor "Extract Block To File"
+                end,
+            },
+            {
+                "<space>rp",
+                mode = "n",
+                function()
+                    require("refactoring").debug.printf()
+                end,
+                "insert debug statement",
+            },
+            {
+                "<space>rs",
+                mode = { "x", "n" },
+                function()
+                    require("refactoring").debug.print_var()
+                end,
+                desc = "show variables",
+            },
+            {
+                "<space>rc",
+                mode = "n",
+                function()
+                    require("refactoring").debug.cleanup {}
+                end,
+            },
         },
     },
-    -- {
-    --     "keaising/im-select.nvim",
-    --     opts = {},
-    -- },
+    {
+        "keaising/im-select.nvim",
+        opts = {
+            default_im_select = "im.rime.inputmethod.Squirrel.Hans",
+        },
+    },
     -- {
     --     "chikko80/error-lens.nvim",
     --     event = "BufRead",
