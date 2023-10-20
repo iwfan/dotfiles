@@ -173,6 +173,15 @@ return {
         },
     },
     {
+        "johmsalas/text-case.nvim",
+        config = function()
+            require("textcase").setup {}
+            require("telescope").load_extension "textcase"
+            vim.api.nvim_set_keymap("n", "<space>c?", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
+            vim.api.nvim_set_keymap("v", "<space>c?", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
+        end,
+    },
+    {
         "keaising/im-select.nvim",
         opts = {
             default_im_select = "im.rime.inputmethod.Squirrel.Hans",
