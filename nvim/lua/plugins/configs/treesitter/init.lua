@@ -49,7 +49,7 @@ require("nvim-treesitter.configs").setup {
         end,
         additional_vim_regex_highlighting = false,
     },
-    indent = { enable = true },
+    indent = { enable = not vim.g.vscode },
     incremental_selection = {
         enable = true,
         keymaps = {
@@ -87,11 +87,11 @@ require("nvim-treesitter.configs").setup {
         },
     },
     autotag = {
-        enable = true,
+        enable = not vim.g.vscode,
         filetypes = { "typescriptreact", "javascriptreact", "vue", "svelte", "html", "xml", "svg" },
     },
-    context_commentstring = { enable = true },
+    context_commentstring = { enable = not vim.g.vscode },
     matchup = {
-        enable = true,
+        enable = not vim.g.vscode,
     },
 }
