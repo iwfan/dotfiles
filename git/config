@@ -1,7 +1,7 @@
 # vim:ft=gitconfig
 [user]
     name = iwfan
-    email = i.wangfancn@gmail.com
+    email = iwfan@duck.com
 [core]
     editor = nvim -u NONE
     excludesfile = ~/dotfiles/git/ignore
