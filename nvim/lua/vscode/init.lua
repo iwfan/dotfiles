@@ -7,6 +7,8 @@ vim.opt.undofile = true
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 600
 
+vim.notify = vim.g.vscode.notify
+
 require "f/keymap"
 
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -38,17 +40,6 @@ require("lazy").setup({
         version = "*",
         event = "VeryLazy",
         opts = {},
-    },
-    {
-        "mg979/vim-visual-multi",
-        event = "VeryLazy",
-        init = function()
-            vim.g.VM_default_mappings = 0
-            vim.g.VM_maps = {
-                ["Add Cursor Down"] = "<M-n>",
-                ["Add Cursor Up"] = "<M-p>",
-            }
-        end,
     },
     {
         "folke/flash.nvim",
