@@ -7,8 +7,6 @@ vim.opt.undofile = true
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 600
 
-vim.notify = vim.g.vscode.notify
-
 require "f/keymap"
 
 vim.api.nvim_create_autocmd("TextYankPost", {

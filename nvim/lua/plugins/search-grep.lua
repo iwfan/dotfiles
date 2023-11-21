@@ -178,7 +178,7 @@ return {
                 desc = "Telescope live_grep",
             },
             {
-                "<space>o",
+                "<space>p",
                 mode = "n",
                 function()
                     open_file_search()
