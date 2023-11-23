@@ -4,8 +4,11 @@ function fish_prompt
 
     _pure_print_prompt_rows # manage default vs. compact prompt
     _pure_place_iterm2_prompt_mark # place iTerm shell integration mark
-    echo -e -n (_pure_prompt $exit_code) # print prompt
-    echo -e (_pure_prompt_ending) # reset colors and end prompt
+
+    if test "$TERM_PROGRAM" != "vscode"
+      echo -e -n (_pure_prompt $exit_code) # print prompt
+      echo -e (_pure_prompt_ending) # reset colors and end prompt
+    end
 
     set _pure_fresh_session false
 end
