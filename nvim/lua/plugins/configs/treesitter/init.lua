@@ -90,7 +90,6 @@ require("nvim-treesitter.configs").setup {
         enable = not vim.g.vscode,
         filetypes = { "typescriptreact", "javascriptreact", "vue", "svelte", "html", "xml", "svg" },
     },
-    context_commentstring = { enable = not vim.g.vscode },
     matchup = {
         enable = not vim.g.vscode,
     },
