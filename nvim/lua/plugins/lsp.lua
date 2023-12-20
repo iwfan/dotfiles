@@ -15,6 +15,12 @@ return {
                     require "plugins.configs.lsp.mason-lspconfig"
                 end,
             },
+            {
+                "j-hui/fidget.nvim",
+                opts = {
+                    -- options
+                },
+            }
         },
     },
     {

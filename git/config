@@ -3,7 +3,7 @@
     name = iwfan
     email = iwfan@duck.com
 [core]
-    editor = nvim -u NONE
+    editor = nvim -u $HOME/dotfiles/nvim/lua/kitty/init.lua
     excludesfile = ~/dotfiles/git/ignore
     autocrlf = input
     pager = delta
