@@ -1,3 +1,6 @@
+local vscode = require('vscode-neovim')
+require "f/keymap"
+
 vim.opt.encoding = "utf-8"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.autowrite = true
@@ -7,7 +10,27 @@ vim.opt.undofile = true
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 600
 
-require "f/keymap"
+vim.notify = vscode.notify
+
+local opts = { silent = true }
+vim.keymap.set("n", "gr", function ()
+    vscode.action("editor.action.referenceSearch.trigger")
+end , opts)
+vim.keymap.set("n", "]d", function ()
+    vscode.action("editor.action.marker.nextInFiles")
+end , opts)
+vim.keymap.set("n", "[d", function ()
+    vscode.action("editor.action.marker.prevInFiles")
+end , opts)
+vim.keymap.set("n", "\\d", function ()
+end , opts)
+
+vim.keymap.set("n", "]g", function ()
+    vscode.action("workbench.action.editor.nextChange")
+end , opts)
+vim.keymap.set("n", "[g", function ()
+    vscode.action("workbench.action.editor.prevChange")
+end , opts)
 
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
