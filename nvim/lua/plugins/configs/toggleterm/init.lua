@@ -2,7 +2,7 @@ local Terminal = require("toggleterm.terminal").Terminal
 
 local function show_line()
     vim.opt.laststatus = 3
-    vim.opt.showtabline = 2
+    vim.opt.showtabline = 1
 end
 
 local function hide_line()

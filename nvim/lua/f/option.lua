@@ -1,15 +1,10 @@
 -- Options {{{
-vim.opt.autowrite = true
-vim.opt.autowriteall = true
 vim.opt.swapfile = false
 vim.opt.undofile = true
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 600
 vim.opt.termguicolors = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = "menu,menuone,noselect"
-vim.opt.virtualedit = "block"
-vim.opt.showtabline = 2
+-- vim.opt.showtabline = 2
 vim.opt.laststatus = 3
 vim.opt.showmode = false
 vim.opt.number = true
@@ -20,7 +15,6 @@ vim.opt.shortmess:append({ W = true, I = true, C = true, c = true })
 vim.opt.scrolloff = 10
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.splitkeep = "screen"
 vim.opt.pumblend = 10
 vim.opt.winblend = 10
 vim.opt.pumheight = 20

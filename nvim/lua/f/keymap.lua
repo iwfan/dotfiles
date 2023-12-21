@@ -41,9 +41,19 @@ vim.keymap.set("c", "<C-d>", "<Del>", { desc = "Delete" })
 vim.keymap.set("c", "<C-v>", "<C-r>*", { desc = "Paste from system clipboard" })
 
 -- Emacs-like keybinding for normal mode
-vim.keymap.set({ "n", "v", "o" }, "<C-a>", "^")
-vim.keymap.set({ "n", "v", "o" }, "<C-e>", "g_")
+-- for short finger
+vim.keymap.set({ "n", "v", "o" }, "H", "^")
+vim.keymap.set({ "n", "v", "o" }, "L", "g_")
 vim.keymap.set("n", "<C-s>", "<Cmd>w<CR><ESC>", { desc = "Save file" })
+
+-- Move line Up / Down
+vim.keymap.set('n', '<M-j>', ':move .+1<CR>==', { silent = true })
+vim.keymap.set('n', '<M-k>', ':move .-2<CR>==', { silent = true })
+vim.keymap.set('x', '<M-j>', ":move '>+1<CR>gv-gv", { silent = true })
+vim.keymap.set('x', '<M-k>', ":move '<-2<CR>gv-gv", { silent = true })
+
+vim.keymap.set('v', '<', '<gv')
+vim.keymap.set('v', '>', '>gv')
 
 -- window management
 vim.keymap.set("n", "<C-h>", [[<c-w>h]])
@@ -61,10 +71,6 @@ vim.keymap.set("n", "<M-Up>", "<Cmd>resize +2<CR>", { desc = "Increase window he
 vim.keymap.set("n", "<M-Down>", "<Cmd>resize -2<CR>", { desc = "Decrease window height" })
 vim.keymap.set("n", "<M-Left>", "<Cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
 vim.keymap.set("n", "<M-Right>", "<Cmd>vertical resize +2<CR>", { desc = "Increase window width" })
-
--- for short finger
-vim.keymap.set({ "n", "v", "o" }, "H", "^")
-vim.keymap.set({ "n", "v", "o" }, "L", "g_")
 
 -- misc
 vim.keymap.set("n", "q", "<Nop>")

@@ -13,8 +13,12 @@ return {
         event = "VeryLazy",
         opts = {
             search = {
-                -- search/jump in all windows
                 multi_window = false
+            },
+            modes = {
+                search = {
+                    enabled = false,
+                }
             }
         },
         keys = {

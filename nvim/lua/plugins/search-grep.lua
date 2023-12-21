@@ -73,7 +73,7 @@ return {
                         sort_lastused = true,
                         previewer = false,
                         mappings = {
-                            i = { ["<c-d>"] = "delete_buffer" },
+                            i = { ["<c-d>"] = "delete_buffer", ["<Tab>"] = "move_selection_next" },
                         },
                     },
                     find_files = {
@@ -156,6 +156,9 @@ return {
                             },
                         },
                     },
+                    lsp_references = {
+                        show_line = false,
+                    }
                 },
                 extensions = {
                     fzf = {
@@ -186,28 +189,22 @@ return {
                 desc = "Telescope find files",
             },
             {
-                "<space>b",
+                "<Tab>",
                 mode = { "n" },
-                "<cmd>Telescope buffers theme=dropdown only_cwd=true ignore_current_buffer=true<cr>",
+                "<cmd>Telescope buffers theme=cursor only_cwd=true ignore_current_buffer=true<cr>",
                 desc = "Show Buffer",
             },
             {
-                "<space>s",
+                "<space><Tab>",
+                mode = { "n" },
+                "<cmd>Telescope buffers theme=cursor only_cwd=true ignore_current_buffer=true<cr>",
+                desc = "Show Buffer",
+            },
+            {
+                "<space>G",
                 mode = "n",
                 "<cmd>Telescope git_status theme=dropdown previewer=false<cr>",
                 desc = "Telescope git status",
-            },
-            {
-                "<space>m",
-                mode = "n",
-                "<cmd>Telescope marks theme=dropdown<cr>",
-                desc = "Telescope marks",
-            },
-            {
-                "<space>j",
-                mode = "n",
-                "<cmd>Telescope jumplist theme=dropdown<cr>",
-                desc = "Telescope jumplist",
             },
             {
                 "<space><space>",
@@ -240,4 +237,57 @@ return {
             },
         },
     },
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { {"nvim-lua/plenary.nvim"} },
+        opts = {},
+        keys = {
+            {
+                "<M-q>",
+                mode = "n",
+                function()
+                    local harpoon = require("harpoon")
+                    harpoon.ui:toggle_quick_menu(harpoon:list())
+                end,
+                desc = "Harpoon",
+            },
+            {
+                "<space>1",
+                mode = { "n" },
+                function()
+                    local harpoon = require("harpoon")
+                    harpoon:list():select(1)
+                end,
+                desc = "Go to buffer",
+            },
+            {
+                "<space>2",
+                mode = { "n" },
+                function()
+                    local harpoon = require("harpoon")
+                    harpoon:list():select(2)
+                end,
+                desc = "Go to buffer",
+            },
+            {
+                "<space>3",
+                mode = { "n" },
+                function()
+                    local harpoon = require("harpoon")
+                    harpoon:list():select(3)
+                end,
+                desc = "Go to buffer",
+            },
+            {
+                "<space>4",
+                mode = { "n" },
+                function()
+                    local harpoon = require("harpoon")
+                    harpoon:list():select(4)
+                end,
+                desc = "Go to buffer",
+            },
+        }
+    }
 }

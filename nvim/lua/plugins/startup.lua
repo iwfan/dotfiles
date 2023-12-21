@@ -158,7 +158,7 @@ return {
                                 buffer = 0,
                                 group = vim.api.nvim_create_augroup("AlphaUnloadGroup", { clear = true }),
                                 callback = function()
-                                    vim.opt.showtabline = 2
+                                    vim.opt.showtabline = 1
                                     vim.opt.laststatus = 3
                                 end,
                             })
