@@ -84,9 +84,6 @@ vim.keymap.set("n", "<space><bs>", [["_dd]])
 vim.keymap.set("n", "[<space>", ":<c-u>put! =repeat(nr2char(10), v:count1)<CR>'[", { silent = true })
 vim.keymap.set("n", "]<space>", ":<c-u>put =repeat(nr2char(10), v:count1)<CR>", { silent = true })
 
-vim.keymap.set("n", "<Bslash>q", ":<c-u>copen<CR>")
-vim.keymap.set("n", "<BS>q", ":<c-u>cclose<CR>")
-
 vim.keymap.set("n", "<C-q>", "<Nop>")
 vim.keymap.set("n", "<C-y>", "<Nop>")
 vim.keymap.set("n", "<C-t>", "<Nop>")

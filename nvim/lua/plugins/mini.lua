@@ -1,4 +1,39 @@
 return {
+    {
+        'echasnovski/mini.comment',
+        version = false,
+        opts = {
+            options = {
+                custom_commentstring = function()
+                    return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
+                end,
+            },
+            mappings = {
+                comment_line = "<C-c>",
+                comment_visual = "<C-c>",
+            }
+        },
+        event = "VeryLazy",
+    },
+    {
+        'echasnovski/mini.surround',
+        version = false,
+        opts = {
+            mappings = {
+                add = 'sa', -- Add surrounding in Normal and Visual modes
+                delete = 'sd', -- Delete surrounding
+                find = 'sl', -- Find surrounding (to the right)
+                find_left = 'sh', -- Find surrounding (to the left)
+                highlight = 'ss', -- Highlight surrounding
+                replace = 'sr', -- Replace surrounding
+                update_n_lines = '', -- Update `n_lines`
+
+                suffix_last = 'l', -- Suffix to search with "prev" method
+                suffix_next = 'n', -- Suffix to search with "next" method
+            },
+        },
+        event = "VeryLazy"
+    },
     { "echasnovski/mini.align", version = false, opts = {}, event = "VeryLazy" },
     {
         "echasnovski/mini.ai",

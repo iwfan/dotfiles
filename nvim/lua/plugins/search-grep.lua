@@ -13,7 +13,7 @@ local function open_file_search(default_text)
         "--exclude=.cache",
     }
 
-    builtin.find_files(require("telescope.themes").get_dropdown {
+    builtin.find_files({
         previewer = false,
         find_command = find_command,
         default_text = default_text,
@@ -54,6 +54,7 @@ return {
                         preview_cutoff = 120,
                     },
                     path_display = { "truncate" },
+                    borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
                     mappings = {
                         i = {
                             ["<esc>"] = actions.close,
@@ -91,7 +92,7 @@ return {
                                 ["<c-h>"] = function(no)
                                     actions.close(no)
                                     local default_text = state.get_current_line()
-                                    builtin.oldfiles(require("telescope.themes").get_dropdown {
+                                    builtin.oldfiles({
                                         only_cwd = true,
                                         previewer = false,
                                         default_text = default_text,
@@ -100,7 +101,7 @@ return {
                                 ["<c-l>"] = function(no)
                                     actions.close(no)
                                     local default_text = state.get_current_line()
-                                    builtin.live_grep(require("telescope.themes").get_dropdown {
+                                    builtin.live_grep({
                                         default_text = default_text,
                                     })
                                 end,
@@ -142,7 +143,7 @@ return {
                                 ["<c-h>"] = function(no)
                                     actions.close(no)
                                     local default_text = state.get_current_line()
-                                    builtin.oldfiles(require("telescope.themes").get_dropdown {
+                                    builtin.oldfiles({
                                         only_cwd = true,
                                         previewer = false,
                                         default_text = default_text,
@@ -177,40 +178,68 @@ return {
             {
                 "<space>f",
                 mode = "n",
-                "<cmd>Telescope live_grep theme=dropdown<cr>",
+                "<cmd>Telescope live_grep<cr>",
+                desc = "Telescope live_grep",
+            },
+            {
+                "<space>/",
+                mode = "n",
+                "<cmd>Telescope live_grep<cr>",
                 desc = "Telescope live_grep",
             },
             {
                 "<space>p",
                 mode = "n",
-                function()
-                    open_file_search()
-                end,
+                open_file_search,
                 desc = "Telescope find files",
+            },
+            {
+                "<space>o",
+                mode = "n",
+                open_file_search,
+                desc = "Telescope find files",
+            },
+            {
+                "<space>b",
+                mode = "n",
+                "<cmd>Telescope buffers only_cwd=true<cr>",
+                desc = "Telescope find files",
+            },
+            {
+                "<space>d",
+                mode = "n",
+                "<cmd>Telescope diagnostics<cr>",
+                desc = "Telescope find files",
+            },
+            {
+                "<space>j",
+                mode = "n",
+                "<cmd>Telescope jumplist<cr>",
+                desc = "Telescope find files",
+            },
+            {
+                "<space>g",
+                mode = "n",
+                "<cmd>Telescope git_status<cr>",
+                desc = "Telescope git status",
+            },
+            {
+                "<space>'",
+                mode = "n",
+                "<cmd>Telescope resume<cr>",
+                desc = "Telescope find files",
+            },
+            {
+                "<space>?",
+                mode = "n",
+                "<cmd>Telescope commands theme=dropdown<cr>",
+                desc = "Telescope commands",
             },
             {
                 "<Tab>",
                 mode = { "n" },
                 "<cmd>Telescope buffers theme=cursor only_cwd=true ignore_current_buffer=true<cr>",
                 desc = "Show Buffer",
-            },
-            {
-                "<space><Tab>",
-                mode = { "n" },
-                "<cmd>Telescope buffers theme=cursor only_cwd=true ignore_current_buffer=true<cr>",
-                desc = "Show Buffer",
-            },
-            {
-                "<space>G",
-                mode = "n",
-                "<cmd>Telescope git_status theme=dropdown previewer=false<cr>",
-                desc = "Telescope git status",
-            },
-            {
-                "<space><space>",
-                mode = "n",
-                "<cmd>Telescope commands theme=dropdown<cr>",
-                desc = "Telescope commands",
             },
         },
     },
@@ -249,6 +278,24 @@ return {
                 function()
                     local harpoon = require("harpoon")
                     harpoon.ui:toggle_quick_menu(harpoon:list())
+                end,
+                desc = "Harpoon",
+            },
+            {
+                "<Space><Tab>",
+                mode = "n",
+                function()
+                    local harpoon = require("harpoon")
+                    harpoon.ui:toggle_quick_menu(harpoon:list())
+                end,
+                desc = "Harpoon",
+            },
+            {
+                "<Space>a",
+                mode = "n",
+                function()
+                    local harpoon = require("harpoon")
+                    harpoon:list():append()
                 end,
                 desc = "Harpoon",
             },

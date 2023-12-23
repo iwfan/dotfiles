@@ -1,46 +1,10 @@
 return {
     {
-        "numToStr/Comment.nvim",
-        opts = {
-            pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-        },
-        keys = {
-            {
-                "<C-/>",
-                mode = { "n", "x" },
-                function()
-                    local mode = vim.fn.mode()
-                    local api = require "Comment.api"
-
-                    if mode == "V" then
-                        local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
-                        vim.api.nvim_feedkeys(esc, "nx", false)
-                        api.toggle.linewise(vim.fn.visualmode())
-                    else
-                        if vim.v.count == 0 then
-                            api.toggle.linewise.current()
-                        else
-                            api.toggle.linewise.count(vim.v.count)
-                        end
-                    end
-                end,
-                desc = "Comment line",
-            },
-        },
-        event = "VeryLazy",
-    },
-    {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
         opts = {},
     },
     { "windwp/nvim-ts-autotag", event = "VeryLazy" },
-    {
-        "kylechui/nvim-surround",
-        version = "*",
-        event = "VeryLazy",
-        opts = {},
-    },
     {
         "andymass/vim-matchup",
         event = "VeryLazy",
