@@ -14,7 +14,6 @@ local function open_file_search(default_text)
     }
 
     builtin.find_files({
-        previewer = false,
         find_command = find_command,
         default_text = default_text,
     })
@@ -25,7 +24,11 @@ return {
         "nvim-telescope/telescope.nvim",
         version = "*",
         event = "VeryLazy",
-        dependencies = { { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope-fzf-native.nvim", build = "make" } },
+        dependencies = {
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+            { "nvim-telescope/telescope-ui-select.nvim" }
+        },
         config = function()
             local telescope = require "telescope"
             local builtin = require "telescope.builtin"
@@ -72,7 +75,6 @@ return {
                     buffers = {
                         show_all_buffers = true,
                         sort_lastused = true,
-                        previewer = false,
                         mappings = {
                             i = { ["<c-d>"] = "delete_buffer", ["<Tab>"] = "move_selection_next" },
                         },
@@ -94,7 +96,6 @@ return {
                                     local default_text = state.get_current_line()
                                     builtin.oldfiles({
                                         only_cwd = true,
-                                        previewer = false,
                                         default_text = default_text,
                                     })
                                 end,
@@ -145,7 +146,6 @@ return {
                                     local default_text = state.get_current_line()
                                     builtin.oldfiles({
                                         only_cwd = true,
-                                        previewer = false,
                                         default_text = default_text,
                                     })
                                 end,
@@ -169,10 +169,15 @@ return {
                         case_mode = "smart_case", -- or "ignore_case" or "respect_case"
                         -- the default case_mode is "smart_case"
                     },
+                    ["ui-select"] = {
+                        require("telescope.themes").get_dropdown {
+                        }
+                    }
                 },
             }
 
             telescope.load_extension('fzf')
+            telescope.load_extension("ui-select")
         end,
         keys = {
             {
@@ -238,7 +243,7 @@ return {
             {
                 "<Tab>",
                 mode = { "n" },
-                "<cmd>Telescope buffers theme=cursor only_cwd=true ignore_current_buffer=true<cr>",
+                "<cmd>Telescope buffers theme=cursor only_cwd=true ignore_current_buffer=true previewer=false<cr>",
                 desc = "Show Buffer",
             },
         },

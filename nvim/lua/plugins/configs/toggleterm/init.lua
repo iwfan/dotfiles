@@ -24,7 +24,7 @@ function Lazygit_toggle()
     }):open()
 end
 
-vim.keymap.set("n", "<space>g", "<cmd>lua Lazygit_toggle()<cr>")
+-- vim.keymap.set("n", "<space>g", "<cmd>lua Lazygit_toggle()<cr>")
 
 function LF_toggle(path)
     local tmpfile = "/tmp/lf_chosenfile"
@@ -55,7 +55,7 @@ function LF_toggle(path)
     }):open()
 end
 
-vim.keymap.set("n", "<space>e", "<cmd>lua LF_toggle('%')<cr>")
+-- vim.keymap.set("n", "<space>e", "<cmd>lua LF_toggle('%')<cr>")
 
 vim.api.nvim_create_user_command("Glow", function()
     local path_name = vim.fn.escape(vim.fn.expand "%:p", "[]()\\（） ")

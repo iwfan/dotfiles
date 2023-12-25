@@ -56,24 +56,5 @@ return function(client, bufnr)
     vim.keymap.set("n", "<M-r>", vim.lsp.buf.rename, bufopts)
 
     vim.keymap.set("n", "\\d", vim.diagnostic.open_float, bufopts)
-    vim.keymap.set("n", "[D", vim.diagnostic.goto_prev, bufopts)
-    vim.keymap.set("n", "]D", vim.diagnostic.goto_next, bufopts)
-    vim.keymap.set("n", "[d", function()
-        local prev_diagnostic = vim.diagnostic.get_prev { severity = vim.diagnostic.severity.ERROR }
-        if prev_diagnostic ~= nil then
-            vim.diagnostic.goto_prev { severity = vim.diagnostic.severity.ERROR }
-        else
-            vim.diagnostic.goto_prev()
-        end
-    end, bufopts)
-    vim.keymap.set("n", "]d", function()
-        local next_diagnostic = vim.diagnostic.get_next { severity = vim.diagnostic.severity.ERROR }
-        if next_diagnostic ~= nil then
-            vim.diagnostic.goto_next { severity = vim.diagnostic.severity.ERROR }
-        else
-            vim.diagnostic.goto_next()
-        end
-    end, bufopts)
-
     vim.keymap.set({ "n", "v" }, "<space><enter>", vim.lsp.buf.code_action, bufopts)
 end

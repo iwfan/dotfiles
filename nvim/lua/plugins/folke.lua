@@ -19,14 +19,14 @@ return {
             }
         },
         keys = {
-            -- {
-            --     "s",
-            --     mode = { "n", "x", "o" },
-            --     function()
-            --         require("flash").jump({ multi_window = false })
-            --     end,
-            --     desc = "Flash",
-            -- },
+            {
+                "<CR>",
+                mode = { "n", "x", "o" },
+                function()
+                    require("flash").jump({ multi_window = false })
+                end,
+                desc = "Flash",
+            },
         },
     },
 }

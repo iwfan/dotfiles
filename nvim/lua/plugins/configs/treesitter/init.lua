@@ -46,15 +46,7 @@ require("nvim-treesitter.configs").setup {
         additional_vim_regex_highlighting = false,
     },
     indent = { enable = not vim.g.vscode },
-    incremental_selection = {
-        enable = true,
-        keymaps = {
-            init_selection = "<Enter>",
-            node_incremental = "<Enter>",
-            scope_incremental = "<C-Enter>",
-            node_decremental = "<S-Enter>",
-        },
-    },
+    incremental_selection = { enable = false },
     textobjects = {
         move = {
             enable = true,

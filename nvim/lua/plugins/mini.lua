@@ -1,38 +1,74 @@
 return {
     {
-        'echasnovski/mini.comment',
+        "echasnovski/mini.comment",
         version = false,
         opts = {
             options = {
                 custom_commentstring = function()
-                    return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
+                    return require("ts_context_commentstring").calculate_commentstring() or vim.bo.commentstring
                 end,
             },
             mappings = {
-                comment_line = "<C-c>",
-                comment_visual = "<C-c>",
-            }
+                comment_line = "<C-/>",
+                comment_visual = "<C-/>",
+            },
         },
         event = "VeryLazy",
     },
     {
-        'echasnovski/mini.surround',
+        "echasnovski/mini.surround",
         version = false,
         opts = {
             mappings = {
-                add = 'sa', -- Add surrounding in Normal and Visual modes
-                delete = 'sd', -- Delete surrounding
-                find = 'sl', -- Find surrounding (to the right)
-                find_left = 'sh', -- Find surrounding (to the left)
-                highlight = 'ss', -- Highlight surrounding
-                replace = 'sr', -- Replace surrounding
-                update_n_lines = '', -- Update `n_lines`
+                add = "sa", -- Add surrounding in Normal and Visual modes
+                delete = "sd", -- Delete surrounding
+                find = "sl", -- Find surrounding (to the right)
+                find_left = "sh", -- Find surrounding (to the left)
+                highlight = "ss", -- Highlight surrounding
+                replace = "sr", -- Replace surrounding
+                update_n_lines = "", -- Update `n_lines`
 
-                suffix_last = 'l', -- Suffix to search with "prev" method
-                suffix_next = 'n', -- Suffix to search with "next" method
+                suffix_last = "l", -- Suffix to search with "prev" method
+                suffix_next = "n", -- Suffix to search with "next" method
             },
         },
-        event = "VeryLazy"
+        event = "VeryLazy",
+    },
+    {
+        "echasnovski/mini.bracketed",
+        version = false,
+        opts = {
+            buffer = { suffix = "b", options = {} },
+            comment = { suffix = "c", options = {} },
+            conflict = { suffix = "x", options = {} },
+            diagnostic = { suffix = "d", options = {} },
+            file = { suffix = "f", options = {} },
+            jump = { suffix = "j", options = {} },
+            location = { suffix = "l", options = {} },
+            oldfile = { suffix = "o", options = {} },
+            quickfix = { suffix = "q", options = {} },
+            window = { suffix = "w", options = {} },
+            indent = { suffix = "", options = {} },
+            treesitter = { suffix = "", options = {} },
+            undo = { suffix = "", options = {} },
+            yank = { suffix = "", options = {} },
+        },
+    },
+    {
+        "echasnovski/mini.files",
+        version = false,
+        opts = {},
+        keys = {
+            {
+                "<Space>e",
+                mode = "n",
+                function()
+                    MiniFiles.open(vim.fn.expand "%")
+                end,
+                desc = "MiniFiles",
+            },
+        },
+        event = "VeryLazy",
     },
     { "echasnovski/mini.align", version = false, opts = {}, event = "VeryLazy" },
     {
