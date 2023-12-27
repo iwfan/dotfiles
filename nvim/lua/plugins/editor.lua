@@ -6,6 +6,12 @@ return {
     },
     { "windwp/nvim-ts-autotag", event = "VeryLazy" },
     {
+        "kylechui/nvim-surround",
+        version = "*",
+        event = "VeryLazy",
+        opts = {},
+    },
+    {
         "andymass/vim-matchup",
         event = "VeryLazy",
         config = function()

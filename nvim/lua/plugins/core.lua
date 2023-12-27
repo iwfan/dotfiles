@@ -1,7 +1,6 @@
 return {
     { "nvim-tree/nvim-web-devicons" },
     { "nvim-lua/plenary.nvim" },
-    { "tpope/vim-repeat" },
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",

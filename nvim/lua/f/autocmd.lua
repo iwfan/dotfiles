@@ -77,6 +77,14 @@ autocmd("FileType", {
     end,
 })
 
+autocmd({ "BufRead", "BufEnter" }, {
+    group = augroup "d.ts",
+    pattern = "*.d.ts",
+    callback = function()
+        vim.bo.buflisted = false
+    end,
+})
+
 autocmd("FileType", {
     group = augroup "wrap_spell",
     pattern = { "gitcommit", "markdown" },

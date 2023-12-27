@@ -76,7 +76,7 @@ return {
                         show_all_buffers = true,
                         sort_lastused = true,
                         mappings = {
-                            i = { ["<c-d>"] = "delete_buffer", ["<Tab>"] = "move_selection_next" },
+                            i = { ["<c-d>"] = "delete_buffer" },
                         },
                     },
                     find_files = {
@@ -183,7 +183,7 @@ return {
             {
                 "<space>f",
                 mode = "n",
-                "<cmd>Telescope live_grep<cr>",
+                "<cmd>Telescope buffers only_cwd=true ignore_current_buffer=true<cr>",
                 desc = "Telescope live_grep",
             },
             {
@@ -201,13 +201,13 @@ return {
             {
                 "<space>o",
                 mode = "n",
-                open_file_search,
+                "<cmd>Telescope oldfiles only_cwd=true<cr>",
                 desc = "Telescope find files",
             },
             {
                 "<space>b",
                 mode = "n",
-                "<cmd>Telescope buffers only_cwd=true<cr>",
+                "<cmd>Telescope buffers only_cwd=true ignore_current_buffer=true<cr>",
                 desc = "Telescope find files",
             },
             {
@@ -240,12 +240,6 @@ return {
                 "<cmd>Telescope commands theme=dropdown<cr>",
                 desc = "Telescope commands",
             },
-            {
-                "<Tab>",
-                mode = { "n" },
-                "<cmd>Telescope buffers theme=cursor only_cwd=true ignore_current_buffer=true previewer=false<cr>",
-                desc = "Show Buffer",
-            },
         },
     },
     {
@@ -271,75 +265,4 @@ return {
             },
         },
     },
-    {
-        "ThePrimeagen/harpoon",
-        branch = "harpoon2",
-        dependencies = { {"nvim-lua/plenary.nvim"} },
-        opts = {},
-        keys = {
-            {
-                "<M-q>",
-                mode = "n",
-                function()
-                    local harpoon = require("harpoon")
-                    harpoon.ui:toggle_quick_menu(harpoon:list())
-                end,
-                desc = "Harpoon",
-            },
-            {
-                "<Space><Tab>",
-                mode = "n",
-                function()
-                    local harpoon = require("harpoon")
-                    harpoon.ui:toggle_quick_menu(harpoon:list())
-                end,
-                desc = "Harpoon",
-            },
-            {
-                "<Space>a",
-                mode = "n",
-                function()
-                    local harpoon = require("harpoon")
-                    harpoon:list():append()
-                end,
-                desc = "Harpoon",
-            },
-            {
-                "<space>1",
-                mode = { "n" },
-                function()
-                    local harpoon = require("harpoon")
-                    harpoon:list():select(1)
-                end,
-                desc = "Go to buffer",
-            },
-            {
-                "<space>2",
-                mode = { "n" },
-                function()
-                    local harpoon = require("harpoon")
-                    harpoon:list():select(2)
-                end,
-                desc = "Go to buffer",
-            },
-            {
-                "<space>3",
-                mode = { "n" },
-                function()
-                    local harpoon = require("harpoon")
-                    harpoon:list():select(3)
-                end,
-                desc = "Go to buffer",
-            },
-            {
-                "<space>4",
-                mode = { "n" },
-                function()
-                    local harpoon = require("harpoon")
-                    harpoon:list():select(4)
-                end,
-                desc = "Go to buffer",
-            },
-        }
-    }
 }
