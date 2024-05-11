@@ -54,6 +54,14 @@ autocmd("TermClose", {
     end,
 })
 
+autocmd({ "BufRead", "BufEnter" }, {
+    group = augroup "term_insert",
+    pattern = { "term://*" },
+    callback = function()
+        vim.cmd "startinsert"
+    end,
+})
+
 autocmd("FileType", {
     group = augroup "close_with_q",
     pattern = {
