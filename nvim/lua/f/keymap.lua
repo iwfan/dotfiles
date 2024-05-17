@@ -1,5 +1,4 @@
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 -- better up/down
 vim.keymap.set("n", "k", [[(v:count == 0 ? 'gk' : 'k')]], { expr = true, silent = true })
@@ -27,7 +26,7 @@ vim.keymap.set("i", "<C-k>", '<C-o>"_d$', { desc = "Kill characters after cusor"
 vim.keymap.set("i", "<C-z>", '<C-o><Cmd>undo<CR>', { desc = "Kill characters after cusor"})
 vim.keymap.set("i", "<S-Tab>", "<BS>", { desc = "Backspace" })
 vim.keymap.set("i", "<C-l>", [[(&spell == 0 ? '' : '<c-g>u<Esc>[s1z=`]a<c-g>u')]], { expr = true, desc = "Spelling correction" })
-vim.keymap.set("i", "<C-s>", "<c-g>u<C-o><Cmd>w<CR><ESC>", { desc = "Save file" })
+vim.keymap.set("i", "<D-s>", "<c-g>u<C-o><Cmd>w<CR><ESC>", { desc = "Save file" })
 -- Add undo break-points
 vim.keymap.set("i", ",", ",<c-g>u")
 vim.keymap.set("i", ".", ".<c-g>u")
@@ -44,7 +43,7 @@ vim.keymap.set("c", "<C-v>", "<C-r>*", { desc = "Paste from system clipboard" })
 -- for short finger
 vim.keymap.set({ "n", "v", "o" }, "H", "^")
 vim.keymap.set({ "n", "v", "o" }, "L", "g_")
-vim.keymap.set("n", "<C-s>", "<Cmd>w<CR><ESC>", { desc = "Save file" })
+vim.keymap.set("n", "<D-s>", "<Cmd>w<CR><ESC>", { desc = "Save file" })
 
 -- Move line Up / Down
 vim.keymap.set('n', '<M-j>', ':move .+1<CR>==', { silent = true })
@@ -54,6 +53,10 @@ vim.keymap.set('x', '<M-k>', ":move '<-2<CR>gv-gv", { silent = true })
 
 vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
+
+-- Comment line
+vim.keymap.set('n', '<D-/>', 'gcc', { remap = true })
+vim.keymap.set({ 'v', 'o' }, '<D-/>', 'gc', { remap = true })
 
 -- window management
 vim.keymap.set("n", "<C-h>", [[<c-w>h]])
