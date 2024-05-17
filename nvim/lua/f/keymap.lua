@@ -55,7 +55,9 @@ vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
 
 -- Comment line
+vim.keymap.set('n', '<C-/>', 'gcc', { remap = true })
 vim.keymap.set('n', '<D-/>', 'gcc', { remap = true })
+vim.keymap.set({ 'v', 'o' }, '<C-/>', 'gc', { remap = true })
 vim.keymap.set({ 'v', 'o' }, '<D-/>', 'gc', { remap = true })
 
 -- window management
