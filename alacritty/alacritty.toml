@@ -1,0 +1,48 @@
+[shell]
+program = "/opt/homebrew/bin/fish"
+args = [ "--login", "--init-command", "zellij" ]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+padding = { x = 0, y = 0 }
+dynamic_padding = true
+opacity = 1
+blur = false
+decorations = "Buttonless"
+startup_mode = "Maximized"
+option_as_alt = "OnlyLeft"
+
+[font]
+size = 15
+normal = { family = "Hasklug Nerd Font", style = "Regular" }
+bold = { family = "Hasklug Nerd Font", style = "Bold" }
+italic = { family = "Hasklug Nerd Font", style = "Italic" }
+offset = { x = 0, y = 6 }
+glyph_offset = { x = 0, y = 3 }
+
+[colors]
+[colors.primary]
+background = '#2d353b'
+foreground = '#d3c6aa'
+
+[colors.normal]
+black = '#5c6a72'
+red = '#e67e80'
+green = '#a7c080'
+yellow = '#dbbc7f'
+blue = '#7fbbb3'
+magenta = '#d699b6'
+cyan = '#83c092'
+white = '#d3c6aa'
+
+[colors.bright]
+black = '#5c6a72'
+red = '#e67e80'
+green = '#a7c080'
+yellow = '#dbbc7f'
+blue = '#7fbbb3'
+magenta = '#d699b6'
+cyan = '#83c092'
+white = '#d3c6aa'

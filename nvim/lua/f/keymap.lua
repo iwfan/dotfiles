@@ -26,7 +26,7 @@ vim.keymap.set("i", "<C-k>", '<C-o>"_d$', { desc = "Kill characters after cusor"
 vim.keymap.set("i", "<C-z>", '<C-o><Cmd>undo<CR>', { desc = "Kill characters after cusor"})
 vim.keymap.set("i", "<S-Tab>", "<BS>", { desc = "Backspace" })
 vim.keymap.set("i", "<C-l>", [[(&spell == 0 ? '' : '<c-g>u<Esc>[s1z=`]a<c-g>u')]], { expr = true, desc = "Spelling correction" })
-vim.keymap.set("i", "<D-s>", "<c-g>u<C-o><Cmd>w<CR><ESC>", { desc = "Save file" })
+vim.keymap.set("i", "<C-s>", "<c-g>u<C-o><Cmd>w<CR><ESC>", { desc = "Save file" })
 -- Add undo break-points
 vim.keymap.set("i", ",", ",<c-g>u")
 vim.keymap.set("i", ".", ".<c-g>u")
@@ -43,22 +43,20 @@ vim.keymap.set("c", "<C-v>", "<C-r>*", { desc = "Paste from system clipboard" })
 -- for short finger
 vim.keymap.set({ "n", "v", "o" }, "H", "^")
 vim.keymap.set({ "n", "v", "o" }, "L", "g_")
-vim.keymap.set("n", "<D-s>", "<Cmd>w<CR><ESC>", { desc = "Save file" })
+vim.keymap.set("n", "<C-s>", "<Cmd>w<CR><ESC>", { desc = "Save file" })
 
 -- Move line Up / Down
-vim.keymap.set('n', '<M-j>', ':move .+1<CR>==', { silent = true })
-vim.keymap.set('n', '<M-k>', ':move .-2<CR>==', { silent = true })
-vim.keymap.set('x', '<M-j>', ":move '>+1<CR>gv-gv", { silent = true })
-vim.keymap.set('x', '<M-k>', ":move '<-2<CR>gv-gv", { silent = true })
+vim.keymap.set('n', '<A-j>', ':move .+1<CR>==', { silent = true })
+vim.keymap.set('n', '<A-k>', ':move .-2<CR>==', { silent = true })
+vim.keymap.set('x', '<A-j>', ":move '>+1<CR>gv-gv", { silent = true })
+vim.keymap.set('x', '<A-k>', ":move '<-2<CR>gv-gv", { silent = true })
 
 vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
 
 -- Comment line
 vim.keymap.set('n', '<C-/>', 'gcc', { remap = true })
-vim.keymap.set('n', '<D-/>', 'gcc', { remap = true })
 vim.keymap.set({ 'v', 'o' }, '<C-/>', 'gc', { remap = true })
-vim.keymap.set({ 'v', 'o' }, '<D-/>', 'gc', { remap = true })
 
 -- window management
 vim.keymap.set("n", "<C-h>", [[<c-w>h]])
@@ -72,10 +70,10 @@ vim.keymap.set("t", "<C-K>", [[<c-\><c-n><c-w>k]])
 vim.keymap.set("t", "<C-]>", [[<C-\><C-n>]])
 vim.keymap.set("n", "<C-w>t", [[<Cmd>50vsplit term://fish<CR>]])
 vim.keymap.set("n", "<C-w>b", [[<Cmd>20split term://fish<CR>]])
-vim.keymap.set("n", "<M-Up>", "<Cmd>resize +2<CR>", { desc = "Increase window height" })
-vim.keymap.set("n", "<M-Down>", "<Cmd>resize -2<CR>", { desc = "Decrease window height" })
-vim.keymap.set("n", "<M-Left>", "<Cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
-vim.keymap.set("n", "<M-Right>", "<Cmd>vertical resize +2<CR>", { desc = "Increase window width" })
+vim.keymap.set("n", "<A-Up>", "<Cmd>resize +2<CR>", { desc = "Increase window height" })
+vim.keymap.set("n", "<A-Down>", "<Cmd>resize -2<CR>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<A-Left>", "<Cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<A-Right>", "<Cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- misc
 vim.keymap.set("n", "q", "<Nop>")

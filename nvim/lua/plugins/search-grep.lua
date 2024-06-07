@@ -248,7 +248,7 @@ return {
         opts = { open_cmd = "noswapfile vnew" },
         keys = {
             {
-                "<M-f>",
+                "<A-f>",
                 mode = "n",
                 function()
                     require("spectre").open_visual { select_word = true }
@@ -256,7 +256,7 @@ return {
                 desc = "Spectre",
             },
             {
-                "<M-f>",
+                "<A-f>",
                 mode = "v",
                 function()
                     require("spectre").open_visual()

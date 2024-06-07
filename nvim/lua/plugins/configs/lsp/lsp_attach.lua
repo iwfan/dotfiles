@@ -53,7 +53,7 @@ return function(client, bufnr)
     vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 
-    vim.keymap.set("n", "<M-r>", vim.lsp.buf.rename, bufopts)
+    vim.keymap.set("n", "<A-r>", vim.lsp.buf.rename, bufopts)
 
     vim.keymap.set("n", "\\d", vim.diagnostic.open_float, bufopts)
     vim.keymap.set({ "n", "v" }, "<space><enter>", vim.lsp.buf.code_action, bufopts)

@@ -24,8 +24,8 @@ return {
         init = function()
             vim.g.VM_default_mappings = 0
             vim.g.VM_maps = {
-                ["Add Cursor Down"] = "<M-n>",
-                ["Add Cursor Up"] = "<M-p>",
+                ["Add Cursor Down"] = "<A-n>",
+                ["Add Cursor Up"] = "<A-p>",
             }
         end,
     },
