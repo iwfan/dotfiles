@@ -9,6 +9,7 @@ typeset -gU path fpath
 export HOMEBREW_NO_AUTO_UPDATE=true
 path=(
   $HOME/{,s}bin(N)
+  $HOME/.local/{,s}bin(N)
   /opt/{homebrew,local}/{,s}bin(N)
   /usr/local/{,s}bin(N)
   $path

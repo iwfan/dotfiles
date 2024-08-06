@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 source ~/dotfiles/zsh/.zaliases
 source ~/dotfiles/zsh/.zbindings
 source ~/dotfiles/zsh/.zfunctions
@@ -21,12 +14,13 @@ function zvm_after_init() {
 
 typeset -ga ZSH_AUTOSUGGEST_STRATEGY=(completion)
 
-source $(brew --prefix antidote)/share/antidote/antidote.zsh
+if [[ $(uname) == "Darwin" ]]; then
+   source $(brew --prefix antidote)/share/antidote/antidote.zsh
+else
+   source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
+fi
 antidote load
 
-autoload -Uz promptinit && promptinit && prompt powerlevel10k
+autoload -Uz promptinit && promptinit && prompt pure
 
 eval "$(zoxide init zsh --cmd j)"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
