@@ -9,7 +9,9 @@ function zvm_after_init() {
   autoload -U edit-command-line
   zle -N edit-command-line
   bindkey '\C-x\C-e' edit-command-line
-  source "$(brew --prefix fzf)/shell/key-bindings.zsh"
+  if [[ $(uname) == "Darwin" ]]; then
+    source "$(brew --prefix fzf)/shell/key-bindings.zsh"
+  fi
 }
 
 typeset -ga ZSH_AUTOSUGGEST_STRATEGY=(completion)
@@ -24,3 +26,4 @@ antidote load
 autoload -Uz promptinit && promptinit && prompt pure
 
 eval "$(zoxide init zsh --cmd j)"
+eval "$(/home/iwfan/.local/bin/mise activate zsh)"

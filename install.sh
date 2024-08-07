@@ -15,9 +15,9 @@ info () {
 }
 
 # Zsh Setup
-ln -s ~/dotfiles/zsh/.zshenv $ZDOTDIR/.zshenv
-ln -s ~/dotfiles/zsh/.zprofile $ZDOTDIR/.zprofile
-ln -s ~/dotfiles/zsh/.zshrc $ZDOTDIR/.zshrc
+ln -s ~/dotfiles/zsh/.zshenv $HOME/.config/zsh/.zshenv
+ln -s ~/dotfiles/zsh/.zprofile $HOME/.config/zsh/.zprofile
+ln -s ~/dotfiles/zsh/.zshrc $HOME/.config/zsh/.zshrc
 # fish-shell
 ln -s ~/dotfiles/fish ~/.config/fish
 # kitty
