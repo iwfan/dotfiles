@@ -1,4 +1,4 @@
-source (brew --prefix asdf)/libexec/asdf.fish
+~/.local/bin/mise activate fish | source
 zoxide init fish --cmd j | source
 
 set --universal pure_show_jobs true

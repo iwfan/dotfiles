@@ -6,16 +6,20 @@ set -gx EDITOR nvim
 set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 # Homebrew's sbin
-fish_add_path /usr/local/sbin
-fish_add_path /opt/homebrew/bin
-fish_add_path /opt/homebrew/sbin
-set -gx HOMEBREW_NO_AUTO_UPDATE true
-if test -d (brew --prefix)"/share/fish/completions"
-    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
-end
+fish_add_path $HOME/{,s}bin
+fish_add_path $HOME/.local/{,s}bin
+fish_add_path /usr/local/{,s}bin
+fish_add_path /opt/homebrew/{,s}bin
 
-if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+if test (uname) = "Darwin"
+  set -gx HOMEBREW_NO_AUTO_UPDATE true
+  if test -d (brew --prefix)"/share/fish/completions"
+      set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
+  end
+
+  if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+      set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+  end
 end
 
 # JetBrains
