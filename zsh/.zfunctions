@@ -3,15 +3,15 @@ attach_tmux() {
 }
 
 enable_proxy() {
-    export https_proxy=http://127.0.0.1:7890
-    export http_proxy=http://127.0.0.1:7890
-    export all_proxy=socks5://127.0.0.1:7890
+  export https_proxy=http://127.0.0.1:7897
+  export http_proxy=http://127.0.0.1:7897
+  export all_proxy=socks5://127.0.0.1:7897
 }
 
 disable_proxy() {
-    unset https_proxy
-    unset http_proxy
-    unset all_proxy
+  unset https_proxy
+  unset http_proxy
+  unset all_proxy
 }
 
 # Modified version where you can press

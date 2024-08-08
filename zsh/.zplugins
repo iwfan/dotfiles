@@ -8,7 +8,6 @@ sindresorhus/pure
 
 $HOME/dotfiles/zsh/.zcompletion
 
-ohmyzsh/ohmyzsh path:plugins/asdf
 ohmyzsh/ohmyzsh path:plugins/dirhistory
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 ohmyzsh/ohmyzsh path:plugins/git

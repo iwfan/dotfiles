@@ -2,9 +2,5 @@ alias ls="ls -A -G -F"
 alias ll="ls -A -l -G -F"
 alias cp='cp -iv'
 alias mv='mv -iv'
-
-# alias lt="eza -a --tree -L 2 --long --icons --git-ignore"
-# alias cat='bat --paging=never'
-# alias rm="trash -v"
-
+alias rm="trash -v"
 alias nlsg="npm list -g --depth=0"

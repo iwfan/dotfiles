@@ -26,4 +26,4 @@ antidote load
 autoload -Uz promptinit && promptinit && prompt pure
 
 eval "$(zoxide init zsh --cmd j)"
-eval "$(/home/iwfan/.local/bin/mise activate zsh)"
+eval "$($HOME/.local/bin/mise activate zsh)"
