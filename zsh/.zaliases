@@ -1,5 +1,5 @@
-alias ls="ls -A -G -F"
-alias ll="ls -A -l -G -F"
+alias ls="eza -A -G -F"
+alias ll="eza -A -l -G -F"
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm="trash -v"
