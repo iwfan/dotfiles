@@ -36,7 +36,5 @@
     helper = cache --timeout=3600
 [branch]
     autoSetupRebase = always
-[includeIf "gitdir:~/working/"]
-    path = /Users/f/working/.gitconfig
-[includeIf "gitdir:~/gd/"]
-    path = /Users/f/gd/.gitconfig
+[includeIf "gitdir:~/works/"]
+    path = /Users/f/works/.gitconfig
