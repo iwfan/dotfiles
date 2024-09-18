@@ -1,17 +1,6 @@
 # Install Gnome shell manager
 # sudo apt install -y gnome-shell-extension-manager
 
-# Caffeine
-# Clipboard Incicator
-# Color Picker
-# Space bar
-# Vitals
-# Just Perfection
-# Forge
-# Emoji Copy
-# Coverflow Alt-Tab
-
-
 # Center new windows in the middle of the screen
 gsettings set org.gnome.mutter center-new-windows true
 
