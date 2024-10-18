@@ -54,10 +54,6 @@ vim.keymap.set('x', '<A-k>', ":move '<-2<CR>gv-gv", { silent = true })
 vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
 
--- Comment line
-vim.keymap.set('n', '<C-/>', 'gcc', { remap = true })
-vim.keymap.set({ 'v', 'o' }, '<C-/>', 'gc', { remap = true })
-
 -- window management
 vim.keymap.set("n", "<C-h>", [[<c-w>h]])
 vim.keymap.set("n", "<C-l>", [[<c-w>l]])

@@ -1,4 +1,20 @@
 return {
+     {
+        "echasnovski/mini.comment",
+        version = false,
+        opts = {
+            options = {
+                custom_commentstring = function()
+                    return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
+                end,
+            },
+            mappings = {
+                comment_line = "<C-/>",
+                comment_visual = "<C-/>"
+            }
+        },
+        event = "VeryLazy"
+    },
     {
         "echasnovski/mini.bracketed",
         version = false,
