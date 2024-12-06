@@ -41,7 +41,7 @@ vim.keymap.set("c", "<C-v>", "<C-r>*", { desc = "Paste from system clipboard" })
 
 -- Emacs-like keybinding for normal mode
 -- for short finger
-vim.keymap.set({ "n", "v", "o" }, "H", "^")
+vim.keymap.set({ "n", "v", "o" }, "H", "_")
 vim.keymap.set({ "n", "v", "o" }, "L", "g_")
 vim.keymap.set("n", "<C-s>", "<Cmd>w<CR><ESC>", { desc = "Save file" })
 

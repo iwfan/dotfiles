@@ -1,7 +1,7 @@
 local cmp = require "cmp"
 local luasnip = require "luasnip"
 
-cmp.setup.filetype({ "markdown", "help", "minifiles", "TelescopePrompt" }, {
+cmp.setup.filetype({ "markdown", "help", "minifiles", "TelescopePrompt", "neo-tree-popup" }, {
     enabled = false,
 })
 
