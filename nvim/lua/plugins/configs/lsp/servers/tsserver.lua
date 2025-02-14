@@ -1,6 +1,6 @@
 return function(on_attach, capabilities)
     capabilities.textDocument.completion.completionItem.snippetSupport = true
-    require("lspconfig").tsserver.setup {
+    require("lspconfig").vtsls.setup {
         -- pass options to lspconfig's setup method
         on_attach = function(client, bufnr)
             client.server_capabilities.document_formatting = true

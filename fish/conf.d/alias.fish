@@ -10,7 +10,6 @@ alias cat "bat --paging=never"
 alias v "nvim"
 alias lg "lazygit"
 alias lf "lfcd"
-alias ssh "TERM=xterm-256color kitten ssh"
 
 abbr -a -g nlsg "npm list -g --depth=0"
 

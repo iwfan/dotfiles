@@ -1,5 +1,5 @@
 local vscode = require('vscode-neovim')
-require "f/keymap"
+require "config/keymap"
 
 vim.opt.encoding = "utf-8"
 vim.opt.clipboard = "unnamedplus"

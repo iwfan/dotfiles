@@ -14,8 +14,8 @@
 -- Author:   Zi莱卷 <i.wangfancn@gmail.com>
 -- Github:   https://github.com/iwfan/dotfiles
 
-require "f/option"
-require "f/keymap"
-require "f/autocmd"
-require "f/usercmd"
-require "f/plugin"
+require "config/option"
+require "config/keymap"
+require "config/autocmd"
+require "config/usercmd"
+require "config/plugin"
