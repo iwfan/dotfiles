@@ -74,10 +74,6 @@ require("nvim-treesitter.configs").setup {
             },
         },
     },
-    autotag = {
-        enable = not vim.g.vscode,
-        filetypes = { "typescriptreact", "javascriptreact", "vue", "svelte", "html", "xml", "svg" },
-    },
     matchup = {
         enable = not vim.g.vscode,
     },

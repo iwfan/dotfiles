@@ -242,27 +242,4 @@ return {
             },
         },
     },
-    {
-        "nvim-pack/nvim-spectre",
-        event = "VeryLazy",
-        opts = { open_cmd = "noswapfile vnew" },
-        keys = {
-            {
-                "<A-f>",
-                mode = "n",
-                function()
-                    require("spectre").open_visual { select_word = true }
-                end,
-                desc = "Spectre",
-            },
-            {
-                "<A-f>",
-                mode = "v",
-                function()
-                    require("spectre").open_visual()
-                end,
-                desc = "Spectre",
-            },
-        },
-    },
 }

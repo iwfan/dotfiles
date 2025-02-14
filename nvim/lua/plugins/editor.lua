@@ -4,12 +4,38 @@ return {
         event = "InsertEnter",
         opts = {},
     },
-    { "windwp/nvim-ts-autotag", event = "VeryLazy" },
+    { "windwp/nvim-ts-autotag", event = "VeryLazy", opts = {} },
     {
         "kylechui/nvim-surround",
         version = "*",
         event = "VeryLazy",
         opts = {},
+    },
+    {
+        'MagicDuck/grug-far.nvim',
+        opts= {
+            windowCreationCommand = "botright split",
+            transient = true,
+        },
+        keys = {
+            {
+                "<A-f>",
+                mode = "n",
+                function()
+                    require('grug-far').open({ prefills = { search = vim.fn.expand("<cword>") } })
+                end,
+                desc = "Spectre",
+            },
+            {
+                "<A-f>",
+                mode = "v",
+                function()
+                    require('grug-far').with_visual_selection({ prefills = { paths = vim.fn.expand("%") } })
+                end,
+                desc = "Spectre",
+            },
+        },
+
     },
     {
         "andymass/vim-matchup",

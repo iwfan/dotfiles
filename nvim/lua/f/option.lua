@@ -37,3 +37,8 @@ vim.opt.fillchars = {
 vim.opt.spelllang = "en,en_us,cjk"
 vim.opt.spelloptions = "camel"
 -- }}}
+
+if vim.g.neovide then
+    -- vim.o.guifont = "Source Code Pro:h14"
+    -- vim.opt.linespace = 0
+end
