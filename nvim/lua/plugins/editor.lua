@@ -139,12 +139,6 @@ return {
             vim.api.nvim_set_keymap("v", "<space>c?", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
         end,
     },
-    {
-        "keaising/im-select.nvim",
-        opts = {
-            default_im_select = "im.rime.inputmethod.Squirrel.Hans",
-        },
-    },
     -- {
     --     "chikko80/error-lens.nvim",
     --     event = "BufRead",
