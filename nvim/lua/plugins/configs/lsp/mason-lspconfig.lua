@@ -13,14 +13,11 @@ require("mason").setup {
 
 require("mason-lspconfig").setup {
     ensure_installed = {
-        -- "beancount", -- High CPU usage
         "html",
         "cssls",
         "tailwindcss",
-        -- "ts_ls",
         "vtsls",
         "eslint",
-        "jsonls",
         "lua_ls",
         -- "gopls",
         -- "solargraph"

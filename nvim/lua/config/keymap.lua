@@ -64,8 +64,31 @@ vim.keymap.set("t", "<C-L>", [[<c-\><c-n><c-w>l]])
 vim.keymap.set("t", "<C-J>", [[<c-\><c-n><c-w>j]])
 vim.keymap.set("t", "<C-K>", [[<c-\><c-n><c-w>k]])
 vim.keymap.set("t", "<C-]>", [[<C-\><C-n>]])
-vim.keymap.set("n", "<C-w>t", [[<Cmd>50vsplit term://fish<CR>]])
-vim.keymap.set("n", "<C-w>b", [[<Cmd>20split term://fish<CR>]])
+
+-- 获取操作系统类型
+local is_windows = vim.fn.has('win32') == 1
+local is_unix = vim.fn.has('unix') == 1
+
+-- 根据操作系统设置终端命令
+local shell_cmd
+if is_windows then
+  shell_cmd = 'pwsh'  -- Windows 上使用 PowerShell
+elseif is_unix then
+  shell_cmd = '$SHELL'  -- Linux/macOS 上使用默认 Shell
+else
+  shell_cmd = '$SHELL'  -- 其他情况使用默认 Shell
+end
+
+-- 垂直分割窗口并打开终端，宽度为 50 列
+vim.keymap.set('n', '<C-w>t', function()
+  vim.cmd('50vsplit term://' .. shell_cmd)
+end, { noremap = true, silent = true })
+
+-- 水平分割窗口并打开终端，高度为 20 行
+vim.keymap.set('n', '<C-w>b', function()
+  vim.cmd('20split term://' .. shell_cmd)
+end, { noremap = true, silent = true })
+
 vim.keymap.set("n", "<A-Up>", "<Cmd>resize +2<CR>", { desc = "Increase window height" })
 vim.keymap.set("n", "<A-Down>", "<Cmd>resize -2<CR>", { desc = "Decrease window height" })
 vim.keymap.set("n", "<A-Left>", "<Cmd>vertical resize -2<CR>", { desc = "Decrease window width" })

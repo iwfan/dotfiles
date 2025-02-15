@@ -39,6 +39,6 @@ vim.opt.spelloptions = "camel"
 -- }}}
 
 if vim.g.neovide then
-    -- vim.o.guifont = "Source Code Pro:h14"
+    vim.o.guifont = "CaskaydiaMono Nerd Font:h12"
     -- vim.opt.linespace = 0
 end
