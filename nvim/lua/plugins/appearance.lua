@@ -1,4 +1,5 @@
 return {
+    { "nvim-tree/nvim-web-devicons" },
     {
         "sainnhe/everforest",
         version = false,

@@ -1,5 +1,4 @@
 return {
-    { "nvim-tree/nvim-web-devicons" },
     { "nvim-lua/plenary.nvim" },
     {
         "nvim-treesitter/nvim-treesitter",
@@ -92,4 +91,14 @@ return {
             'JoosepAlviste/nvim-ts-context-commentstring',
         },
     },
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = {
+            win = {
+                border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
+            },
+        },
+    },
+
 }
