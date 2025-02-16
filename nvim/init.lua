@@ -11,7 +11,7 @@
 --     ▀▄▐       ▀████
 --       ▀         ▀
 --
--- Author:   Zi莱卷 <i.wangfancn@gmail.com>
+-- Author:   Zi莱卷 <iwfan@duck.com>
 -- Github:   https://github.com/iwfan/dotfiles
 
 require "config/option"
