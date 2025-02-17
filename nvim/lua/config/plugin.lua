@@ -39,6 +39,6 @@ require("lazy").setup({
         border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
     },
     install = {
-        colorscheme = { "everforest", "tokyonight", "habamax" },
+        colorscheme = { "everforest", "habamax" },
     },
 })

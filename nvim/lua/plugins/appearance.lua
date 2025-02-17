@@ -1,14 +1,22 @@
 return {
-    { "nvim-tree/nvim-web-devicons" },
     {
-        "sainnhe/everforest",
-        version = false,
-        lazy = false,
-        priority = 1000,
-        config = function()
-            vim.g.everforest_background = "medium"
-            vim.g.everforest_better_performance = 1
-            vim.cmd.colorscheme "everforest"
+        "echasnovski/mini.icons",
+        lazy = true,
+        opts = {
+            file = {
+                [".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey" },
+                ["devcontainer.json"] = { glyph = "", hl = "MiniIconsAzure" },
+            },
+            filetype = {
+                dotenv = { glyph = "", hl = "MiniIconsYellow" },
+            },
+        },
+        init = function()
+            ---@diagnostic disable-next-line: duplicate-set-field
+            package.preload["nvim-web-devicons"] = function()
+                require("mini.icons").mock_nvim_web_devicons()
+                return package.loaded["nvim-web-devicons"]
+            end
         end,
     },
     {
@@ -25,10 +33,13 @@ return {
                 offsets = {
                     {
                         filetype = "neo-tree",
-                        text = "File Explorer",
-                        text_align = "left",
+                        text = "Neo-tree",
                         highlight = "Directory",
-                    }
+                        text_align = "left",
+                    },
+                    {
+                        filetype = "snacks_layout_box",
+                    },
                 },
             },
             highlights = {
