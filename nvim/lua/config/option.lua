@@ -11,11 +11,20 @@ vim.opt.mouse = 'a'
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
+-- Diasbale default ruler
+vim.opt.ruler = false
+
 -- Save undo history
 vim.opt.undofile = true
 
 -- Don't create swap file
 vim.opt.swapfile = false
+
+-- Enable auto write
+vim.opt.autowrite = true
+
+-- Get alert when quit on an unsaved buffer
+vim.opt.confirm = true
 
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
@@ -32,30 +41,38 @@ vim.opt.showtabline = 2
 -- Global statusline
 vim.opt.laststatus = 3
 
--- Don't wrap long line
-vim.opt.wrap = false
-
 -- Highlight column after 'textwidth'
 vim.opt.colorcolumn = "+1"
-
--- Enable break indent
-vim.opt.breakindent = true
--- Enable smart indent
-vim.opt.smartindent = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+-- Don't wrap long line
+vim.opt.wrap = false
+
+-- Enable break indent
+vim.opt.breakindent = true
+
+-- Enable smart indent
+vim.opt.smartindent = true
+
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-vim.opt.fillchars = { eob = " ", diff = " " }
+vim.opt.fillchars = { eob = " ", diff = "╱" }
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = 'nosplit'
+
+--
+vim.opt.jumpoptions = 'view'
 
 -- Decrease update time
 vim.opt.updatetime = 250
@@ -66,11 +83,19 @@ vim.opt.timeoutlen = 300
 -- Configure how new splits should be opened
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.opt.splitkeep = "screen"
 
 -- Configure auto-complete window height & opacity
 vim.opt.pumheight = 20
 vim.opt.pumblend = 10
 vim.opt.winblend = 10
+
+-- Enable Spell check
+vim.opt.spelllang = { "en" }
+
+-- Misc options
+vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.shortmess:append({ W = true, I = true, C = true, c = true })
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -79,15 +104,6 @@ vim.opt.winblend = 10
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
-
-
--- vim.opt.completeopt = "menu,menuone,noselect"
--- -- vim.opt.shortmess:append({ W = true, I = true, C = true, c = true })
---
--- -- vim.opt.tabstop = 2
--- -- vim.opt.shiftwidth = 2
--- -- vim.opt.softtabstop = 2
--- -- vim.opt.expandtab = true
 
 
 if vim.g.neovide then

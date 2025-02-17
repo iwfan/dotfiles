@@ -27,12 +27,12 @@ autocmd("TextYankPost", {
 })
 
 -- resize splits if window got resized
-autocmd({ "VimResized" }, {
-    group = augroup "resize_splits",
-    callback = function()
-        vim.cmd "tabdo wincmd ="
-    end,
-})
+-- autocmd({ "VimResized" }, {
+--     group = augroup "resize_splits",
+--     callback = function()
+--         vim.cmd "tabdo wincmd ="
+--     end,
+-- })
 
 autocmd("TermOpen", {
     group = augroup "term_open",
