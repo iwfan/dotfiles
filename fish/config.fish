@@ -1,4 +1,3 @@
-/opt/homebrew/bin/brew shellenv | source
 zoxide init fish --cmd j | source
 
 set --universal pure_show_jobs true
