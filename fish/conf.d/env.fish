@@ -5,25 +5,8 @@ set -gx VISUAL nvim
 set -gx EDITOR nvim
 set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
-# Homebrew's sbin
-fish_add_path $HOME/{,s}bin
-fish_add_path $HOME/.local/{,s}bin
-fish_add_path /usr/local/{,s}bin
-fish_add_path /opt/homebrew/{,s}bin
-
-if test (uname) = "Darwin"
-  set -gx HOMEBREW_NO_AUTO_UPDATE true
-  if test -d (brew --prefix)"/share/fish/completions"
-      set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
-  end
-
-  if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-      set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
-  end
-end
-
-# JetBrains
-fish_add_path $HOME/Library/Application\ Support/JetBrains/Toolbox/scripts
+# Homebrew's no auto update
+set -gx HOMEBREW_NO_AUTO_UPDATE true
 
 # pnpm
 set -gx PNPM_HOME "/Users/f/Library/pnpm"
