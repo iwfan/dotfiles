@@ -14,10 +14,6 @@ info () {
     printf "${blue}$1${normal}\n"
 }
 
-# Zsh Setup
-ln -s ~/dotfiles/zsh/.zshenv $HOME/.config/zsh/.zshenv
-ln -s ~/dotfiles/zsh/.zprofile $HOME/.config/zsh/.zprofile
-ln -s ~/dotfiles/zsh/.zshrc $HOME/.config/zsh/.zshrc
 # fish-shell
 ln -s ~/dotfiles/fish ~/.config/fish
 # kitty
@@ -32,5 +28,9 @@ ln -s ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/lazygit/c
 # Rime
 ln -s ~/dotfiles/rime-ice ~/Library/Rime
 ln -s ~/dotfiles/rime-ice ~/.config/ibus/rime
+# Zsh Setup
+ln -s ~/dotfiles/zsh/.zshenv $HOME/.config/zsh/.zshenv
+ln -s ~/dotfiles/zsh/.zprofile $HOME/.config/zsh/.zprofile
+ln -s ~/dotfiles/zsh/.zshrc $HOME/.config/zsh/.zshrc
 
 success "link finished."

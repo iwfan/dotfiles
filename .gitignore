@@ -119,3 +119,4 @@ Rime/user.yaml
 Rime/en_dicts
 Rime/cn_dicts
 zsh/.zplugins.zsh
+fish/conf.d/env_local.fish
