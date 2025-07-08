@@ -1,0 +1,5 @@
+[mgr]
+ratio          = [ 2, 3, 3 ]
+sort_by        = "natural"
+linemode       = "size_and_mtime"
+title_format   = "{cwd}"

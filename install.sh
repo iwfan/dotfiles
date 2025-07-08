@@ -22,12 +22,10 @@ ln -s ~/dotfiles/zsh/.zshrc $HOME/.config/zsh/.zshrc
 ln -s ~/dotfiles/fish ~/.config/fish
 # kitty
 ln -s ~/dotfiles/kitty ~/.config/kitty
-# lf
-ln -s ~/dotfiles/lf ~/.config/lf
+# yazi
+ln -s ~/dotfiles/yazi ~/.config/yazi
 # Neovim
 ln -s ~/dotfiles/nvim ~/.config/nvim
-# ideavimrc
-ln -s ~/dotfiles/ideavim ~/.config/ideavim
 # git config
 ln -s ~/dotfiles/git ~/.config/git
 ln -s ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/lazygit/config.yml
