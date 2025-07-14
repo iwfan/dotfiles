@@ -53,6 +53,10 @@ vim.keymap.set("c", "<C-v>", "<C-r>*", { desc = "Paste from system clipboard" })
 vim.keymap.set({ "n", "v", "o" }, "H", "_")
 vim.keymap.set({ "n", "v", "o" }, "L", "g_")
 vim.keymap.set("n", "<C-s>", "<Cmd>w<CR><ESC>", { desc = "Save file" })
+vim.keymap.set("n", "<C-/>", "gcc", { remap = true, desc = "commentline" })
+vim.keymap.set("v", "<C-/>", "gc", { remap = true, desc = "comment visual" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll half up and center" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll half down and center" })
 
 -- Move line Up / Down
 vim.keymap.set("n", "<A-j>", ":move .+1<CR>==", { silent = true })

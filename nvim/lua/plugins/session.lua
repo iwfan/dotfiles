@@ -9,18 +9,15 @@ local function get_session_name()
 end
 
 vim.api.nvim_create_user_command("ReadSession", function()
-    require("resession").load(get_session_name(), { dir = "dirsession", silence_errors = true })
+    require("persistence").load()
 end, { force = true, nargs = 0 })
-
-vim.api.nvim_create_autocmd("VimLeavePre", {
-    callback = function()
-        require("resession").save(get_session_name(), { dir = "dirsession", notify = false })
-    end,
-})
 
 return {
     {
-        "stevearc/resession.nvim",
-        opts = {},
+        "folke/persistence.nvim",
+        event = "BufReadPre", -- this will only start session saving when an actual file was opened
+        opts = {
+            -- add any custom options here
+        },
     },
 }

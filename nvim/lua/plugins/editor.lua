@@ -12,8 +12,8 @@ return {
         opts = {},
     },
     {
-        'MagicDuck/grug-far.nvim',
-        opts= {
+        "MagicDuck/grug-far.nvim",
+        opts = {
             windowCreationCommand = "botright split",
             transient = true,
         },
@@ -22,7 +22,7 @@ return {
                 "<A-f>",
                 mode = "n",
                 function()
-                    require('grug-far').open({ prefills = { search = vim.fn.expand("<cword>") } })
+                    require("grug-far").open { prefills = { search = vim.fn.expand "<cword>" } }
                 end,
                 desc = "Spectre",
             },
@@ -30,12 +30,11 @@ return {
                 "<A-f>",
                 mode = "v",
                 function()
-                    require('grug-far').with_visual_selection({ prefills = { paths = vim.fn.expand("%") } })
+                    require("grug-far").with_visual_selection { prefills = { paths = vim.fn.expand "%" } }
                 end,
                 desc = "Spectre",
             },
         },
-
     },
     {
         "andymass/vim-matchup",
@@ -70,19 +69,25 @@ return {
             modes = {
                 search = {
                     enabled = false,
-                }
-            }
+                },
+            },
         },
         keys = {
             {
                 "s",
                 mode = { "n", "x", "o" },
                 function()
-                    require("flash").jump({ multi_window = false })
+                    require("flash").jump { multi_window = false }
                 end,
                 desc = "Flash",
             },
         },
+    },
+    {
+        "folke/ts-comments.nvim",
+        opts = {},
+        event = "VeryLazy",
+        enabled = vim.fn.has "nvim-0.10.0" == 1,
     },
     {
         "johmsalas/text-case.nvim",
@@ -93,7 +98,7 @@ return {
             vim.api.nvim_set_keymap("v", "<space>c?", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
         end,
     },
-        {
+    {
         "echasnovski/mini.files",
         version = false,
         opts = {},
@@ -107,14 +112,14 @@ return {
                 desc = "MiniFiles",
             },
         },
-        config = function ()
-            require('mini.files').setup({})
+        config = function()
+            require("mini.files").setup {}
             local map_split = function(buf_id, lhs, direction)
                 local rhs = function()
                     -- Make new window and set it as target
                     local new_target_window
                     vim.api.nvim_win_call(MiniFiles.get_target_window(), function()
-                        vim.cmd(direction .. ' split')
+                        vim.cmd(direction .. " split")
                         new_target_window = vim.api.nvim_get_current_win()
                     end)
 
@@ -123,37 +128,21 @@ return {
                 end
 
                 -- Adding `desc` will result into `show_help` entries
-                local desc = 'Split ' .. direction
-                vim.keymap.set('n', lhs, rhs, { buffer = buf_id, desc = desc })
+                local desc = "Split " .. direction
+                vim.keymap.set("n", lhs, rhs, { buffer = buf_id, desc = desc })
             end
 
-            vim.api.nvim_create_autocmd('User', {
-                pattern = 'MiniFilesBufferCreate',
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "MiniFilesBufferCreate",
                 callback = function(args)
                     local buf_id = args.data.buf_id
                     -- Tweak keys to your liking
-                    map_split(buf_id, '<C-s>', 'belowright horizontal')
-                    map_split(buf_id, '<C-v>', 'belowright vertical')
+                    map_split(buf_id, "<C-s>", "belowright horizontal")
+                    map_split(buf_id, "<C-v>", "belowright vertical")
                 end,
             })
         end,
         event = "VeryLazy",
-    },
-    {
-        "echasnovski/mini.comment",
-        version = false,
-        opts = {
-            options = {
-                custom_commentstring = function()
-                    return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
-                end,
-            },
-            mappings = {
-                comment_line = "<C-/>",
-                comment_visual = "<C-/>"
-            }
-        },
-        event = "VeryLazy"
     },
     {
         "echasnovski/mini.bracketed",

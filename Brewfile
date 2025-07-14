@@ -34,6 +34,7 @@ brew "sevenzip"
 brew "slides"
 brew "stylua"
 brew "tokei"
+brew "typos"
 brew "trash", link: true
 brew "wget"
 brew "yazi"
