@@ -24,8 +24,6 @@ require("lazy").setup({
         rtp = {
             disabled_plugins = {
                 "gzip",
-                -- "matchit",
-                -- "matchparen",
                 "netrwPlugin",
                 "tarPlugin",
                 "tohtml",
@@ -33,10 +31,6 @@ require("lazy").setup({
                 "zipPlugin",
             },
         },
-    },
-    ui = {
-        size = { width = 0.8, height = 0.8 },
-        border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
     },
     install = {
         colorscheme = { "everforest", "habamax" },

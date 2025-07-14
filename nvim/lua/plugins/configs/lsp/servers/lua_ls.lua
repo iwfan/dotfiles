@@ -1,4 +1,4 @@
-return function(on_attach, capabilities)
+return function(capabilities)
     local settings = {
         Lua = {
             diagnostics = {
@@ -34,7 +34,6 @@ return function(on_attach, capabilities)
         on_attach = function(client, bufnr)
             client.server_capabilities.document_formatting = true
             client.server_capabilities.document_range_formatting = true
-            on_attach(client, bufnr)
         end,
         settings = settings,
         capabilities = capabilities,

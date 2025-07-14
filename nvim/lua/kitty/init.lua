@@ -94,10 +94,6 @@ require("lazy").setup({
             },
         },
     },
-    ui = {
-        size = { width = 0.8, height = 0.8 },
-        border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
-    },
     install = {
         colorscheme = { "everforest", "tokyonight", "habamax" },
     },

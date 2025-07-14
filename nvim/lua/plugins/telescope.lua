@@ -57,7 +57,6 @@ return {
                         preview_cutoff = 120,
                     },
                     path_display = { "truncate" },
-                    borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
                     mappings = {
                         i = {
                             ["<esc>"] = actions.close,
