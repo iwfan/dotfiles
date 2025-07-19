@@ -205,6 +205,7 @@ return {
                         -- "eslint",
                         "lua_ls",
                         "gopls",
+                        "pylsp",
                         "pyright",
                     },
                     automatic_enable = false,
