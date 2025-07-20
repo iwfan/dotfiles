@@ -1,178 +1,15 @@
-local if_nil = vim.F.if_nil
-local str_rep = string.rep
-local strdisplaywidth = vim.fn.strdisplaywidth
-
-local function button(sc, txt, keybind, keybind_opts)
-    local shortcut_padding = 50 - (strdisplaywidth(sc) + strdisplaywidth(txt))
-    local opts = {
-        position = "center",
-        shortcut = txt .. str_rep(" ", shortcut_padding) .. sc,
-        cursor = 3,
-        width = 50,
-        align_shortcut = "left",
-        hl_shortcut = { { "String", 0, 5 }, { "Text", 5, 50 }, { "Constant", 50, 100 } },
-        shrink_margin = false,
-    }
-    if keybind then
-        keybind_opts = if_nil(keybind_opts, { noremap = true, silent = true, nowait = true })
-        opts.keymap = { "n", sc, keybind, keybind_opts }
-    end
-
-    local function on_press()
-        local key = vim.api.nvim_replace_termcodes(keybind .. "<Ignore>", true, false, true)
-        vim.api.nvim_feedkeys(key, "t", false)
-    end
-
-    return {
-        type = "button",
-        val = "",
-        on_press = on_press,
-        opts = opts,
-    }
-end
-
+--             val = {
+--                 [[                                                                    ]],
+--                 [[      ███████████           █████      ██                     ]],
+--                 [[     ███████████             █████                             ]],
+--                 [[     ████████████████ ███████████ ███   ███████     ]],
+--                 [[    ████████████████ ████████████ █████ ██████████████   ]],
+--                 [[   ██████████████    █████████████ █████ █████ ████ █████   ]],
+--                 [[ ██████████████████████████████████ █████ █████ ████ █████  ]],
+--                 [[██████  ███ █████████████████ ████ █████ █████ ████ ██████ ]],
+--             },
 
 return {
-    {
-        "goolord/alpha-nvim",
-        event = "VimEnter",
-        config = function()
-            local status_ok, alpha = pcall(require, "alpha")
-            if not status_ok then
-                return
-            end
-
-            local theta = require "alpha.themes.theta"
-
-            local section_header = {
-                type = "text",
-                val = {
-                    [[                                                                    ]],
-                    [[      ███████████           █████      ██                     ]],
-                    [[     ███████████             █████                             ]],
-                    [[     ████████████████ ███████████ ███   ███████     ]],
-                    [[    ████████████████ ████████████ █████ ██████████████   ]],
-                    [[   ██████████████    █████████████ █████ █████ ████ █████   ]],
-                    [[ ██████████████████████████████████ █████ █████ ████ █████  ]],
-                    [[██████  ███ █████████████████ ████ █████ █████ ████ ██████ ]],
-                },
-                opts = {
-                    hl = "String",
-                    shrink_margin = false,
-                    position = "center",
-                },
-            }
-
-            local section_mru = {
-                type = "group",
-                val = {
-                    {
-                        type = "text",
-                        val = "Recent files",
-                        opts = {
-                            hl = "Operator",
-                            shrink_margin = false,
-                            position = "center",
-                        },
-                    },
-                    { type = "padding", val = 1 },
-                    {
-                        type = "group",
-                        val = function()
-                            return { theta.mru(1, vim.fn.getcwd(), 6) }
-                        end,
-                        opts = {
-                            shrink_margin = false,
-                        },
-                    },
-                },
-            }
-
-            local section_actions = {
-                type = "group",
-                val = {
-                    { type = "text", val = "Quick Actions", opts = { hl = "Operator", position = "center" } },
-                    { type = "padding", val = 1 },
-                    button("s", "󱝴  Session", ":ReadSession<CR>"),
-                    button("n", "󱇧  New file", ":ene <BAR> startinsert <CR>"),
-                    button("f", "󰱼  Find file", ":Telescope find_files theme=dropdown previewer=false<cr>"),
-                    button("g", "󰷊  Git status", ":Telescope git_status theme=dropdown previewer=false<cr>"),
-                    button("w", "󰱽  Find word", ":Telescope live_grep theme=dropdown<CR>"),
-                    button("u", "󱈖  Sync plugins", ":Lazy sync<CR>"),
-                    button("c", "󱁻  Check health", ":checkhealth<CR>"),
-                    button("q", "󰪹  Quit", "<Cmd>qa<CR>"),
-                },
-                position = "center",
-            }
-
-            local section_footer = {
-                type = "group",
-                val = {
-                    {
-                        type = "text",
-                        val = function()
-                            local stats = require("lazy").stats()
-                            local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-                            return "󰊠 Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms "
-                        end,
-                        opts = { hl = "Comment", position = "center" }
-                    },
-                },
-            }
-
-            local opts = {
-                layout = {
-                    { type = "padding", val = 2 },
-                    section_header,
-                    { type = "padding", val = 2 },
-                    section_mru,
-                    { type = "padding", val = 2 },
-                    section_actions,
-                    { type = "padding", val = 2 },
-                    section_footer,
-                },
-                opts = {
-                    margin = 5,
-                    setup = function()
-                        vim.api.nvim_create_autocmd("DirChanged", {
-                            pattern = "*",
-                            group = "alpha_temp",
-                            callback = function()
-                                require("alpha").redraw()
-                            end,
-                        })
-                        vim.api.nvim_create_autocmd("User", {
-                            pattern = "AlphaReady",
-                            group = vim.api.nvim_create_augroup("AlphaReadyGroup", { clear = true }),
-                            callback = function()
-                                vim.b.miniindentscope_disable = true
-                                vim.opt.showtabline = 0
-                                vim.opt.laststatus = 0
-
-                                vim.api.nvim_create_autocmd("User", {
-                                    pattern = "LazyVimStarted",
-                                    callback = function()
-                                        require("alpha").redraw()
-                                    end,
-                                })
-
-                                vim.api.nvim_create_autocmd("BufUnload", {
-                                    buffer = 0,
-                                    group = vim.api.nvim_create_augroup("AlphaUnloadGroup", { clear = true }),
-                                    callback = function()
-                                        vim.opt.showtabline = 2
-                                        vim.opt.laststatus = 3
-                                    end,
-                                })
-                            end,
-                        })
-                    end,
-                },
-            }
-
-            alpha.setup(opts)
-        end,
-    },
     {
         "echasnovski/mini.icons",
         lazy = true,
@@ -194,9 +31,49 @@ return {
         end,
     },
     {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        ---@type snacks.Config
+        opts = {
+            bigfile = { enabled = true },
+            dashboard = { enabled = true, },
+            explorer = { enabled = true },
+            indent = { enabled = true },
+            input = { enabled = true },
+            notifier = {
+                enabled = true,
+                timeout = 3000,
+            },
+            picker = { enabled = true },
+            quickfile = { enabled = true },
+            scope = { enabled = true },
+            scroll = { enabled = true },
+            statuscolumn = { enabled = true },
+            words = { enabled = true },
+            styles = {
+                notification = {
+                    -- wo = { wrap = true } -- Wrap notifications
+                },
+            },
+        },
+        keys = {
+            { "<leader><space>", function() Snacks.picker.smart() end,            desc = "Smart Find Files", },
+            { "<leader>,",       function() Snacks.picker.buffers() end,          desc = "Buffers", },
+            { "<leader>/",       function() Snacks.picker.grep() end,             desc = "Grep", },
+            { "<leader>:",       function() Snacks.picker.command_history() end,  desc = "Command History", },
+            { "<leader>n",       function() Snacks.picker.notifications() end,    desc = "Notification History", },
+            { "<leader>e",       function() Snacks.explorer() end,                desc = "File Explorer", },
+            { "<leader>p",       function() Snacks.picker.files() end,            desc = "Search File", },
+            { "<leader>o",       function() Snacks.picker.recent() end,           desc = "Search OldFiles", },
+            { "<space>?",        function() Snacks.picker.commands() end,         desc = "Search commands",      mode = "n", },
+            { "]w",              function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Reference",       mode = { "n", "t" } },
+            { "[w",              function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference",       mode = { "n", "t" } },
+        },
+    },
+    {
         "akinsho/bufferline.nvim",
         version = "*",
-        dependencies = { 'echasnovski/mini.bufremove', version = false, opts = {} },
         event = "BufReadPost",
         opts = {
             options = {
@@ -206,8 +83,8 @@ return {
                 show_buffer_close_icons = false,
                 offsets = {
                     {
-                        filetype = "neo-tree",
-                        text = "Neo-tree",
+                        filetype = "snacks_picker_list",
+                        text = "Files",
                         highlight = "Directory",
                         text_align = "left",
                     },
@@ -218,123 +95,41 @@ return {
             },
             highlights = {
                 separator = {
-                    fg = '#343f44',
-                    bg = '#343f44'
+                    fg = "#343f44",
+                    bg = "#343f44",
                 },
                 background = {
-                    fg = '#859289',
-                    bg = '#3d484d'
+                    fg = "#859289",
+                    bg = "#3d484d",
                 },
                 modified = {
-                    bg = '#3d484d'
+                    bg = "#3d484d",
                 },
                 pick = {
-                    bg = '#3d484d'
+                    bg = "#3d484d",
                 },
                 fill = {
-                    bg = '#343f44'
-                }
+                    bg = "#343f44",
+                },
             },
         },
         keys = {
-            {
-                "[f",
-                mode = { "n" },
-                "<cmd>BufferLineCyclePrev<cr>",
-                desc = "Prev Buffer",
-            },
-            {
-                "]f",
-                mode = { "n" },
-                "<cmd>BufferLineCycleNext<cr>",
-                desc = "Next Buffer",
-            },
-            {
-                "[F",
-                mode = { "n" },
-                "<cmd>BufferLineMovePrev<cr>",
-                desc = "Move Buffer Prev",
-            },
-            {
-                "]F",
-                mode = { "n" },
-                "<cmd>BufferLineMoveNext<cr>",
-                desc = "Move Buffer Next",
-            },
-            {
-                "<bs>f",
-                mode = { "n" },
-                function ()
-                    MiniBufremove.delete()
-                end,
-                desc = "Remove Buffer",
-            },
-            {
-                "\\f",
-                mode = { "n" },
-                "<cmd>BufferLinePick<cr>",
-                desc = "Show Buffer",
-            },
-            {
-                "<space>1",
-                mode = { "n" },
-                "<cmd>BufferLineGoToBuffer 1<cr>",
-                desc = "Go to buffer",
-            },
-            {
-                "<space>2",
-                mode = { "n" },
-                "<cmd>BufferLineGoToBuffer 2<cr>",
-                desc = "Go to buffer",
-            },
-            {
-                "<space>3",
-                mode = { "n" },
-                "<cmd>BufferLineGoToBuffer 3<cr>",
-                desc = "Go to buffer",
-            },
-            {
-                "<space>4",
-                mode = { "n" },
-                "<cmd>BufferLineGoToBuffer 4<cr>",
-                desc = "Go to buffer",
-            },
-            {
-                "<space>5",
-                mode = { "n" },
-                "<cmd>BufferLineGoToBuffer 5<cr>",
-                desc = "Go to buffer",
-            },
-            {
-                "<space>6",
-                mode = { "n" },
-                "<cmd>BufferLineGoToBuffer 6<cr>",
-                desc = "Go to buffer",
-            },
-            {
-                "<space>7",
-                mode = { "n" },
-                "<cmd>BufferLineGoToBuffer 7<cr>",
-                desc = "Go to buffer",
-            },
-            {
-                "<space>8",
-                mode = { "n" },
-                "<cmd>BufferLineGoToBuffer 8<cr>",
-                desc = "Go to buffer",
-            },
-            {
-                "<space>9",
-                mode = { "n" },
-                "<cmd>BufferLineGoToBuffer 9<cr>",
-                desc = "Go to buffer",
-            },
-            {
-                "<space>0",
-                mode = { "n" },
-                "<cmd>BufferLineGoToBuffer -1<cr>",
-                desc = "Go to buffer",
-            },
+            { "[f",       mode = { "n" }, "<cmd>BufferLineCyclePrev<cr>",     desc = "Prev Buffer", },
+            { "]f",       mode = { "n" }, "<cmd>BufferLineCycleNext<cr>",     desc = "Next Buffer", },
+            { "[F",       mode = { "n" }, "<cmd>BufferLineMovePrev<cr>",      desc = "Move Buffer Prev", },
+            { "]F",       mode = { "n" }, "<cmd>BufferLineMoveNext<cr>",      desc = "Move Buffer Next", },
+            { "<bs>f",    mode = { "n" }, function() Snacks.bufdelete() end,  desc = "Remove Buffer", },
+            { "\\f",      mode = { "n" }, "<cmd>BufferLinePick<cr>",          desc = "Show Buffer", },
+            { "<space>1", mode = { "n" }, "<cmd>BufferLineGoToBuffer 1<cr>",  desc = "Go to buffer", },
+            { "<space>2", mode = { "n" }, "<cmd>BufferLineGoToBuffer 2<cr>",  desc = "Go to buffer", },
+            { "<space>3", mode = { "n" }, "<cmd>BufferLineGoToBuffer 3<cr>",  desc = "Go to buffer", },
+            { "<space>4", mode = { "n" }, "<cmd>BufferLineGoToBuffer 4<cr>",  desc = "Go to buffer", },
+            { "<space>5", mode = { "n" }, "<cmd>BufferLineGoToBuffer 5<cr>",  desc = "Go to buffer", },
+            { "<space>6", mode = { "n" }, "<cmd>BufferLineGoToBuffer 6<cr>",  desc = "Go to buffer", },
+            { "<space>7", mode = { "n" }, "<cmd>BufferLineGoToBuffer 7<cr>",  desc = "Go to buffer", },
+            { "<space>8", mode = { "n" }, "<cmd>BufferLineGoToBuffer 8<cr>",  desc = "Go to buffer", },
+            { "<space>9", mode = { "n" }, "<cmd>BufferLineGoToBuffer 9<cr>",  desc = "Go to buffer", },
+            { "<space>0", mode = { "n" }, "<cmd>BufferLineGoToBuffer -1<cr>", desc = "Go to buffer", },
         },
     },
     {
@@ -349,24 +144,29 @@ return {
                     globalstatus = true,
                     disabled_filetypes = {
                         statusline = {
-                            'startify',
-                            'dashboard',
-                            'packer',
-                            'neogitstatus',
-                            'Trouble',
-                            'alpha',
-                            'lir',
-                            'Outline',
-                            'spectre_panel',
-                            'toggleterm',
-                            'qf',
+                            "startify",
+                            "dashboard",
+                            "packer",
+                            "neogitstatus",
+                            "Trouble",
+                            "alpha",
+                            "lir",
+                            "Outline",
+                            "spectre_panel",
+                            "toggleterm",
+                            "qf",
                         },
                         winbar = {},
                     },
                 },
                 sections = {
                     lualine_a = {
-                        { 'mode', fmt = function(str) return str:sub(1, 1) end }
+                        {
+                            "mode",
+                            fmt = function(str)
+                                return str:sub(1, 1)
+                            end,
+                        },
                     },
                     lualine_b = {
                         "diagnostics",
@@ -384,7 +184,7 @@ return {
                         "location",
                     },
                     lualine_y = {
-                        { 'b:gitsigns_head', icon = '󰘬' },
+                        { "b:gitsigns_head", icon = "󰘬" },
                     },
                     lualine_z = {},
                 },

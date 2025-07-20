@@ -55,14 +55,6 @@ return {
         end,
     },
     {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        opts = {
-            indent = { char = "▏" },
-            scope = { enabled = false },
-        },
-    },
-    {
         "folke/flash.nvim",
         event = "VeryLazy",
         opts = {
@@ -91,58 +83,7 @@ return {
     },
     {
         "johmsalas/text-case.nvim",
-        config = function()
-            require("textcase").setup {}
-            require("telescope").load_extension "textcase"
-            vim.api.nvim_set_keymap("n", "<space>c?", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
-            vim.api.nvim_set_keymap("v", "<space>c?", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
-        end,
-    },
-    {
-        "echasnovski/mini.files",
-        version = false,
         opts = {},
-        keys = {
-            {
-                "<Space>e",
-                mode = "n",
-                function()
-                    MiniFiles.open(vim.fn.expand "%")
-                end,
-                desc = "MiniFiles",
-            },
-        },
-        config = function()
-            require("mini.files").setup {}
-            local map_split = function(buf_id, lhs, direction)
-                local rhs = function()
-                    -- Make new window and set it as target
-                    local new_target_window
-                    vim.api.nvim_win_call(MiniFiles.get_target_window(), function()
-                        vim.cmd(direction .. " split")
-                        new_target_window = vim.api.nvim_get_current_win()
-                    end)
-
-                    MiniFiles.set_target_window(new_target_window)
-                    MiniFiles.close()
-                end
-
-                -- Adding `desc` will result into `show_help` entries
-                local desc = "Split " .. direction
-                vim.keymap.set("n", lhs, rhs, { buffer = buf_id, desc = desc })
-            end
-
-            vim.api.nvim_create_autocmd("User", {
-                pattern = "MiniFilesBufferCreate",
-                callback = function(args)
-                    local buf_id = args.data.buf_id
-                    -- Tweak keys to your liking
-                    map_split(buf_id, "<C-s>", "belowright horizontal")
-                    map_split(buf_id, "<C-v>", "belowright vertical")
-                end,
-            })
-        end,
-        event = "VeryLazy",
     },
     {
         "echasnovski/mini.bracketed",

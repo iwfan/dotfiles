@@ -26,7 +26,7 @@ return {
                     api_key_name = "OPENROUTER_API_KEY",
                     model = "moonshotai/kimi-k2",
                     timeout = 30000, -- Timeout in milliseconds
-                    disable_tools = true,
+                    -- disable_tools = true,
                     extra_request_body = {
                         temperature = 0.75,
                         max_tokens = 20480,
@@ -36,7 +36,7 @@ return {
                     endpoint = "https://api.burn.hair",
                     model = "claude-sonnet-4-20250514",
                     timeout = 30000, -- Timeout in milliseconds
-                    disable_tools = true,
+                    -- disable_tools = true,
                     extra_request_body = {
                         temperature = 0.75,
                         max_tokens = 20480,
@@ -46,12 +46,16 @@ return {
             behaviour = {
                 enable_fastapply = true, -- Enable Fast Apply feature
             },
+            windows = {
+                input = {
+                    prefix = "> ",
+                    height = 15, -- Height of the input window in vertical layout
+                },
+            },
         },
         dependencies = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
-            --- The below dependencies are optional,
-            "folke/snacks.nvim", -- for input provider snacks
             {
                 -- support for image pasting
                 "HakonHarnes/img-clip.nvim",
