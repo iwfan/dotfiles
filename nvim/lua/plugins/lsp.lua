@@ -141,12 +141,8 @@ local function setup_lspconfig()
             capabilities = capabilities,
         }
 
-        local ok, server_setup = pcall(require, "plugins.configs.lsp.servers." .. server)
-        if ok then
-            server_setup(capabilities)
-        else
-            require("lspconfig")[server].setup(opts)
-        end
+        vim.lsp.config(server, opts)
+        vim.lsp.enable(server)
     end
 
     vim.api.nvim_create_user_command("LspLog", function()
