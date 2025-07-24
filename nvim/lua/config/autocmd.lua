@@ -132,3 +132,20 @@ autocmd({ "BufNewFile", "BufRead", "FileType" }, {
         end
     end,
 })
+
+autocmd("BufEnter", {
+    group = augroup("AutoDeleteBuffers"),
+    callback = function()
+        local bufname = vim.api.nvim_buf_get_name(0)
+        if bufname ~= "" and vim.fn.filereadable(bufname) == 0 then
+            -- 延迟执行，避免在切换 buffer 时出现问题
+            vim.defer_fn(function()
+                -- 检查是否还在同一个 buffer
+                if vim.api.nvim_buf_get_name(0) == bufname then
+                    -- vim.cmd("bdelete!")
+                    Snacks.bufdelete.delete()
+                end
+            end, 10)
+        end
+    end,
+})
