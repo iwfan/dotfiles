@@ -18,29 +18,29 @@ return {
         opts = {
             -- add any opts here
             -- for example
-            provider = "openrouter",
+            provider = "moonshot",
             providers = {
+                moonshot = {
+                    __inherited_from = "openai",
+                    endpoint = "https://api.moonshot.cn/v1",
+                    api_key_name = "ANTHROPIC_AUTH_TOKEN",
+                    model = "kimi-k2-0711-preview",
+                    timeout = 30000, -- Timeout in milliseconds
+                    extra_request_body = {
+                        temperature = 0.75,
+                        max_tokens = 32768,
+                    },
+                },
                 openrouter = {
                     __inherited_from = "openai",
                     endpoint = "https://openrouter.ai/api/v1",
                     api_key_name = "OPENROUTER_API_KEY",
-                    model = "moonshotai/kimi-k2",
+                    model = "anthropic/claude-sonnet-4",
                     timeout = 30000, -- Timeout in milliseconds
-                    -- disable_tools = true,
                     extra_request_body = {
                         temperature = 0.75,
                         max_tokens = 20480,
-                    },
-                },
-                claude = {
-                    endpoint = "https://api.burn.hair",
-                    model = "claude-sonnet-4-20250514",
-                    timeout = 30000, -- Timeout in milliseconds
-                    -- disable_tools = true,
-                    extra_request_body = {
-                        temperature = 0.75,
-                        max_tokens = 20480,
-                    },
+                    }
                 },
             },
             behaviour = {
