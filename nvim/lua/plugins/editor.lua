@@ -1,4 +1,148 @@
 return {
+    { "nvim-lua/plenary.nvim" },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        branch = 'master',
+        build = ":TSUpdate",
+        lazy = false,
+        config = function()
+            require("nvim-treesitter.configs").setup {
+                ensure_installed = {
+                    "astro",
+                    "bash",
+                    "beancount",
+                    "comment",
+                    "css",
+                    "diff",
+                    "dockerfile",
+                    "fish",
+                    "go",
+                    "gomod",
+                    "graphql",
+                    "html",
+                    "markdown",
+                    "markdown_inline",
+                    "javascript",
+                    "jsdoc",
+                    "json",
+                    "json5",
+                    "jsonc",
+                    "latex",
+                    "lua",
+                    "python",
+                    "ruby",
+                    "rust",
+                    "scss",
+                    "svelte",
+                    "toml",
+                    "tsx",
+                    "typescript",
+                    "vim",
+                    "vue",
+                    "yaml",
+                },
+                sync_install = false,
+                auto_install = true,
+                ignore_install = {},
+                modules = {},
+                highlight = {
+                    enable = true,
+                    disable = function(lang, buf)
+                        local max_filesize = 100 * 1024 -- 100 KB
+                        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+                        if ok and stats and stats.size > max_filesize then
+                            return true
+                        end
+                    end,
+                    additional_vim_regex_highlighting = false,
+                },
+                indent = { enable = true },
+                incremental_selection = {
+                    enable = true,
+                    keymaps = {
+                        init_selection = "<cr>",
+                        node_incremental = "<cr>",
+                        node_decremental = "<s-cr>",
+                        scope_incremental = false,
+                    },
+                },
+                textobjects = {
+                    select = {
+                        enable = true,
+
+                        -- Automatically jump forward to textobj, similar to targets.vim
+                        lookahead = true,
+
+                        keymaps = {
+                            -- You can use the capture groups defined in textobjects.scm
+                            ["af"] = "@function.outer",
+                            ["if"] = "@function.inner",
+                            ["aa"] = "@parameter.outer",
+                            ["ia"] = "@parameter.inner",
+                            ["ac"] = "@class.outer",
+                            ["ic"] = "@class.inner",
+                            ["a?"] = "@conditional.outer",
+                            ["i?"] = "@conditional.inner",
+                            ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
+                        },
+                        -- You can choose the select mode (default is charwise 'v')
+                        --
+                        -- Can also be a function which gets passed a table with the keys
+                        -- * query_string: eg '@function.inner'
+                        -- * method: eg 'v' or 'o'
+                        -- and should return the mode ('v', 'V', or '<c-v>') or a table
+                        -- mapping query_strings to modes.
+                        selection_modes = {
+                            ['@parameter.outer'] = 'v', -- charwise
+                            ['@function.outer'] = 'V', -- linewise
+                            ['@class.outer'] = '<c-v>', -- blockwise
+                        },
+                        -- If you set this to `true` (default is `false`) then any textobject is
+                        -- extended to include preceding or succeeding whitespace. Succeeding
+                        -- whitespace has priority in order to act similarly to eg the built-in
+                        -- `ap`.
+                        --
+                        -- Can also be a function which gets passed a table with the keys
+                        -- * query_string: eg '@function.inner'
+                        -- * selection_mode: eg 'v'
+                        -- and should return true or false
+                        include_surrounding_whitespace = true,
+                    },
+                    move = {
+                        enable = false,
+                        set_jumps = true,
+                        goto_next_start = {
+                            ["]a"] = { query = "@parameter.inner", desc = "Next argument start" },
+                        },
+                        goto_next_end = {
+                            ["]A"] = { query = "@parameter.inner", desc = "Next argument end" },
+                        },
+                        goto_previous_start = {
+                            ["[a"] = { query = "@parameter.inner", desc = "Previous argument start" },
+                        },
+                        goto_previous_end = {
+                            ["[A"] = { query = "@parameter.inner", desc = "Previous argument end" },
+                        },
+                    },
+                    swap = {
+                        enable = true,
+                        swap_next = {
+                            [">A"] = { query = "@parameter.inner", desc = "Swap next argument" },
+                        },
+                        swap_previous = {
+                            ["<A"] = { query = "@parameter.inner", desc = "Swap previous argument" },
+                        },
+                    },
+                },
+                matchup = {
+                    enable = not vim.g.vscode,
+                },
+            }
+        end,
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter-textobjects",
+        },
+    },
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
@@ -86,56 +230,18 @@ return {
         opts = {},
     },
     {
-        "echasnovski/mini.bracketed",
-        version = false,
-        opts = {
-            buffer = { suffix = "b", options = {} },
-            comment = { suffix = "c", options = {} },
-            conflict = { suffix = "x", options = {} },
-            diagnostic = { suffix = "d", options = {} },
-            file = { suffix = "", options = {} },
-            jump = { suffix = "j", options = {} },
-            location = { suffix = "l", options = {} },
-            oldfile = { suffix = "o", options = {} },
-            quickfix = { suffix = "q", options = {} },
-            window = { suffix = "w", options = {} },
-            indent = { suffix = "", options = {} },
-            treesitter = { suffix = "", options = {} },
-            undo = { suffix = "", options = {} },
-            yank = { suffix = "", options = {} },
-        },
-    },
-    { "echasnovski/mini.align", version = false, opts = {}, event = "VeryLazy" },
-    {
-        "echasnovski/mini.ai",
-        version = false,
-        dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
-        opts = function()
-            local treesitter = require("mini.ai").gen_spec.treesitter
-            return {
-                n_lines = 500,
-                custom_textobjects = {
-                    a = treesitter { a = "@parameter.outer", i = "@parameter.inner" },
-                    c = treesitter { a = "@class.outer", i = "@class.inner" },
-                    f = treesitter { a = "@function.outer", i = "@function.inner" },
-                    k = treesitter { a = "@block.outer", i = "@block.inner" },
-                    l = treesitter { a = "@loop.outer", i = "@loop.inner" },
-                    ["?"] = treesitter {
-                        a = { "@conditional.outer", "@loop.outer" },
-                        i = { "@conditional.inner", "@loop.inner" },
-                    },
-                },
-            }
-        end,
-        event = "VeryLazy",
-    },
-    {
         "echasnovski/mini.hipatterns",
         version = false,
         opts = function()
             local hi = require "mini.hipatterns"
             return {
                 highlighters = {
+                    -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
+                    fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
+                    hack  = { pattern = '%f[%w]()HACK()%f[%W]',  group = 'MiniHipatternsHack'  },
+                    todo  = { pattern = '%f[%w]()TODO()%f[%W]',  group = 'MiniHipatternsTodo'  },
+                    note  = { pattern = '%f[%w]()NOTE()%f[%W]',  group = 'MiniHipatternsNote'  },
+
                     hex_color = hi.gen_highlighter.hex_color { priority = 2000 },
                 },
             }

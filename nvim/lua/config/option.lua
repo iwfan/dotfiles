@@ -106,7 +106,6 @@ vim.schedule(function()
 end)
 
 
-if vim.g.neovide then
-    vim.o.guifont = "CaskaydiaMono Nerd Font:h12"
-    -- vim.opt.linespace = 0
-end
+vim.wo.foldmethod = 'expr'
+vim.wo.foldlevel = 999
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'

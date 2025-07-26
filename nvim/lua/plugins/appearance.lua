@@ -12,18 +12,11 @@
 return {
     {
         "echasnovski/mini.icons",
-        lazy = true,
-        opts = {
-            file = {
-                [".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey" },
-                ["devcontainer.json"] = { glyph = "", hl = "MiniIconsAzure" },
-            },
-            filetype = {
-                dotenv = { glyph = "", hl = "MiniIconsYellow" },
-            },
-        },
+        priority = 1000,
+        lazy = false,
+        opts = { },
         init = function()
-            ---@diagnostic disable-next-line: duplicate-set-field
+            -- @diagnostic disable-next-line: duplicate-set-field
             package.preload["nvim-web-devicons"] = function()
                 require("mini.icons").mock_nvim_web_devicons()
                 return package.loaded["nvim-web-devicons"]
@@ -34,10 +27,9 @@ return {
         "folke/snacks.nvim",
         priority = 1000,
         lazy = false,
-        ---@type snacks.Config
         opts = {
             bigfile = { enabled = true },
-            dashboard = { enabled = true, },
+            dashboard = { enabled = true, example = "advanced" },
             explorer = { enabled = true },
             indent = { enabled = true },
             input = { enabled = true },
@@ -66,9 +58,8 @@ return {
             { "<leader>e",       function() Snacks.explorer() end,                desc = "File Explorer", },
             { "<leader>p",       function() Snacks.picker.files() end,            desc = "Search File", },
             { "<leader>o",       function() Snacks.picker.recent() end,           desc = "Search OldFiles", },
-            { "<space>?",        function() Snacks.picker.commands() end,         desc = "Search commands",      mode = "n", },
-            { "]w",              function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Reference",       mode = { "n", "t" } },
-            { "[w",              function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference",       mode = { "n", "t" } },
+            { "]w",              function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Reference", mode = { "n", "t" } },
+            { "[w",              function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
         },
     },
     {
@@ -201,4 +192,19 @@ return {
             }
         end,
     },
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = {},
+        keys = {
+            {
+                "<leader>?",
+                function()
+                    require("which-key").show({ global = false })
+                end,
+                desc = "Buffer Local Keymaps (which-key)",
+            },
+        },
+
+    }
 }
