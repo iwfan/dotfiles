@@ -14,7 +14,7 @@ return {
         "echasnovski/mini.icons",
         priority = 1000,
         lazy = false,
-        opts = { },
+        opts = {},
         init = function()
             -- @diagnostic disable-next-line: duplicate-set-field
             package.preload["nvim-web-devicons"] = function()
@@ -29,7 +29,40 @@ return {
         lazy = false,
         opts = {
             bigfile = { enabled = true },
-            dashboard = { enabled = true, example = "advanced" },
+            dashboard = {
+                enabled = true,
+                width = 70,
+                preset = {
+                    keys = {
+                        { icon = " ", key = "o", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+                        { icon = " ", key = "p", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+                        { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+                        { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+                        { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+                        { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+                    },
+                },
+                sections = {
+                    {
+                        section = "terminal",
+                        cmd = [[
+                    echo '
+                                             
+      ███████████           █████      ██
+     ███████████             █████ 
+     ████████████████ ███████████ ███   ███████
+    ████████████████ ████████████ █████ ██████████████
+   ██████████████    █████████████ █████ █████ ████ █████
+ ██████████████████████████████████ █████ █████ ████ █████
+██████  ███ █████████████████ ████ █████ █████ ████ ██████' | lolcat
+                    ]],
+                        height = 10,
+                        padding = 1,
+                    },
+                    { section = "keys", gap = 1, padding = 1 },
+                    { section = "startup" },
+                },
+            },
             explorer = { enabled = true },
             indent = { enabled = true },
             input = { enabled = true },
@@ -58,8 +91,8 @@ return {
             { "<leader>e",       function() Snacks.explorer() end,                desc = "File Explorer", },
             { "<leader>p",       function() Snacks.picker.files() end,            desc = "Search File", },
             { "<leader>o",       function() Snacks.picker.recent() end,           desc = "Search OldFiles", },
-            { "]w",              function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Reference", mode = { "n", "t" } },
-            { "[w",              function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+            { "]w",              function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Reference",       mode = { "n", "t" } },
+            { "[w",              function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference",       mode = { "n", "t" } },
         },
     },
     {
