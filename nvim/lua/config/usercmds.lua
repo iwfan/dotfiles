@@ -12,3 +12,7 @@ vim.api.nvim_create_user_command(
 vim.api.nvim_create_user_command("H", function(args)
     vim.cmd("vert h " .. args.args)
 end, { nargs = 1, complete = "help" })
+
+vim.api.nvim_create_user_command("Format", function()
+    vim.lsp.buf.format()
+end, { nargs = 0 })

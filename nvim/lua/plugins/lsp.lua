@@ -14,19 +14,12 @@ vim.diagnostic.config {
     --         [vim.diagnostic.severity.HINT] = '󰌶 ',
     --     },
     -- },
-    virtual_text = {
-        source = "if_many",
-        spacing = 2,
-        format = function(diagnostic)
-            local diagnostic_message = {
-                [vim.diagnostic.severity.ERROR] = diagnostic.message,
-                [vim.diagnostic.severity.WARN] = diagnostic.message,
-                [vim.diagnostic.severity.INFO] = diagnostic.message,
-                [vim.diagnostic.severity.HINT] = diagnostic.message,
-            }
-            return diagnostic_message[diagnostic.severity]
-        end,
+    virtual_text = false,
+    virtual_lines = {
+        -- Only show virtual line diagnostics for the current cursor line
+        current_line = true,
     },
+
 }
 
 local function setup_lspconfig()
@@ -49,30 +42,38 @@ local function setup_lspconfig()
             map("gd", Snacks.picker.lsp_definitions, "[G]oto [D]efinition")
 
             -- Find references for the word under your cursor.
-            map("gr", Snacks.picker.lsp_references, "[G]oto [R]eferences")
-
-            -- WARN: This is not Goto Definition, this is Goto Declaration.
-            --  For example, in C this would take you to the header.
-            map("gD", Snacks.picker.lsp_declarations, "[G]oto [D]eclaration")
+            map("grr", Snacks.picker.lsp_references, "[G]oto [R]eferences")
 
             -- Jump to the implementation of the word under your cursor.
             --  Useful when your language has ways of declaring types without an actual implementation.
-            map("gI", Snacks.picker.lsp_implementations, "[G]oto [I]mplementation")
+            map("gri", Snacks.picker.lsp_implementations, "[G]oto [I]mplementation")
+
+            -- Rename the variable under your cursor.
+            --  Most Language Servers support renaming across files, etc.
+            map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
+
+            -- WARN: This is not Goto Definition, this is Goto Declaration.
+            --  For example, in C this would take you to the header.
+            map("grd", Snacks.picker.lsp_declarations, "[G]oto [D]eclaration")
 
             -- Jump to the type of the word under your cursor.
             --  Useful when you're not sure what type a variable is and you want to see
             --  the definition of its *type*, not where it was *defined*.
-            map("gy", Snacks.picker.lsp_type_definitions, "[G]oto [T]ype Definition")
+            map("grt", Snacks.picker.lsp_type_definitions, "[G]oto [T]ype Definition")
+
+            -- Fuzzy find all the symbols in your current document.
+            --  Symbols are things like variables, functions, types, etc.
+            map('gO', Snacks.picker.lsp_symbols, 'Open Document Symbols')
+
+            -- Fuzzy find all the symbols in your current workspace.
+            --  Similar to document symbols, except searches over your entire project.
+            map('gW', Snacks.picker.lsp_workspace_symbols, 'Open Workspace Symbols')
 
             -- Execute a code action, usually your cursor needs to be on top of an error
             -- or a suggestion from your LSP for this to activate.
             map("<space><enter>", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
 
-            -- Rename the variable under your cursor.
-            --  Most Language Servers support renaming across files, etc.
-            map("<space>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 
-            map("K", vim.lsp.buf.hover, "Hover")
             map("\\d", vim.diagnostic.open_float, "Hover")
 
             -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
@@ -247,7 +248,7 @@ return {
                 -- <c-k>: Toggle signature help
                 --
                 -- See :h blink-cmp-config-keymap for defining your own keymap
-                preset = "super-tab",
+                preset = "none",
 
                 -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
                 --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps

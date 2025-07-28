@@ -1,13 +1,16 @@
---             val = {
---                 [[                                                                    ]],
---                 [[      ███████████           █████      ██                     ]],
---                 [[     ███████████             █████                             ]],
---                 [[     ████████████████ ███████████ ███   ███████     ]],
---                 [[    ████████████████ ████████████ █████ ██████████████   ]],
---                 [[   ██████████████    █████████████ █████ █████ ████ █████   ]],
---                 [[ ██████████████████████████████████ █████ █████ ████ █████  ]],
---                 [[██████  ███ █████████████████ ████ █████ █████ ████ ██████ ]],
---             },
+local function get_header()
+    local lines = {
+        [[                                                                    ]],
+        [[      ███████████           █████      ██                     ]],
+        [[     ███████████             █████                             ]],
+        [[     ████████████████ ███████████ ███   ███████     ]],
+        [[    ████████████████ ████████████ █████ ██████████████   ]],
+        [[   ██████████████    █████████████ █████ █████ ████ █████   ]],
+        [[ ██████████████████████████████████ █████ █████ ████ █████  ]],
+        [[██████  ███ █████████████████ ████ █████ █████ ████ ██████ ]],
+    }
+    return table.concat(lines, "\n")
+end
 
 return {
     {
@@ -35,32 +38,13 @@ return {
                 preset = {
                     keys = {
                         { icon = " ", key = "o", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-                        { icon = " ", key = "p", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-                        { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-                        { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
                         { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+                        { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+                        { icon = "󰒲 ", key = "u", desc = "Lazy", action = ":Lazy sync", enabled = package.loaded.lazy ~= nil },
+                        { icon = " ", key = "m", desc = "Mason", action = ":Mason" },
                         { icon = " ", key = "q", desc = "Quit", action = ":qa" },
                     },
-                },
-                sections = {
-                    {
-                        section = "terminal",
-                        cmd = [[
-                    echo '
-                                             
-      ███████████           █████      ██
-     ███████████             █████ 
-     ████████████████ ███████████ ███   ███████
-    ████████████████ ████████████ █████ ██████████████
-   ██████████████    █████████████ █████ █████ ████ █████
- ██████████████████████████████████ █████ █████ ████ █████
-██████  ███ █████████████████ ████ █████ █████ ████ ██████' | lolcat
-                    ]],
-                        height = 10,
-                        padding = 1,
-                    },
-                    { section = "keys", gap = 1, padding = 1 },
-                    { section = "startup" },
+                    header = get_header(),
                 },
             },
             explorer = { enabled = true },
@@ -73,14 +57,9 @@ return {
             picker = { enabled = true },
             quickfile = { enabled = true },
             scope = { enabled = true },
-            scroll = { enabled = true },
+            scroll = { enabled = false },
             statuscolumn = { enabled = true },
             words = { enabled = true },
-            styles = {
-                notification = {
-                    -- wo = { wrap = true } -- Wrap notifications
-                },
-            },
         },
         keys = {
             { "<leader><space>", function() Snacks.picker.smart() end,            desc = "Smart Find Files", },
