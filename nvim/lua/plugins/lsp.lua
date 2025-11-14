@@ -15,10 +15,11 @@ vim.diagnostic.config {
     --     },
     -- },
     virtual_text = false,
-    virtual_lines = {
-        -- Only show virtual line diagnostics for the current cursor line
-        current_line = true,
-    },
+    virtual_lines = false,
+    -- {
+    --     -- Only show virtual line diagnostics for the current cursor line
+    --     current_line = true,
+    -- },
 
 }
 
