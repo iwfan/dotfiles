@@ -1,16 +1,11 @@
-import json
-import subprocess
-from collections import defaultdict
-from datetime import datetime, timezone
+from datetime import datetime
 
-from kitty.boss import get_boss
 from kitty.fast_data_types import Screen
 from kitty.tab_bar import (
     DrawData,
     ExtraData,
     Formatter,
     TabBarData,
-    PowerlineStyle,
     as_rgb,
     draw_attributed_string,
     draw_title
@@ -122,8 +117,3 @@ def create_cells(tab: TabBarData) -> list[str]:
         # now.strftime("%d %b"),
         # now.strftime("%H:%M"),
     ]
-
-
-def _redraw_tab_bar(timer_id):
-    for tm in get_boss().all_tab_managers:
-        tm.mark_tab_bar_dirty()
