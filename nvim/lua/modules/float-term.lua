@@ -94,7 +94,6 @@ end
 
 
 M.setup = function()
-    print('adwadwada')
     -- Key mappings
     vim.keymap.set("n", "<leader>t", FloatingTerminal,
         { noremap = true, silent = true, desc = "Toggle floating terminal" })
