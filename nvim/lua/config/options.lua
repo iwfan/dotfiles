@@ -43,6 +43,9 @@ vim.opt.shiftwidth = 2                             -- Indent width
 vim.opt.softtabstop = 2                            -- Soft tab stop
 vim.opt.expandtab = true                           -- Use spaces instead of tabs
 vim.opt.smartindent = true                         -- Copy indent from current line
+vim.opt.breakindent = true                         -- Enable break indent
+vim.opt.breakindentopt = 'shift:2,min:40,sbr'      -- Configure break indent
+
 
 -- === 折叠设置 ===
 vim.wo.foldmethod = 'expr'                         -- Use expression for folding

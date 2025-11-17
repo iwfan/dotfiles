@@ -3,23 +3,14 @@ local function augroup(name)
     return vim.api.nvim_create_augroup("iwfan_" .. name, { clear = true })
 end
 
--- === 文件监控和重载 ===
-autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
-    group = augroup "checktime",
-    desc = "Check if file needs to be reloaded",
-    command = "checktime",
-})
-
--- 粘贴时自动调整缩进
-autocmd("TextChanged", {
-    group = augroup("smart_paste"),
-    desc = "Auto-adjust indentation after paste",
-    callback = function()
-        if vim.b.pasted then
-            vim.cmd("normal! =`[`]")
-            vim.b.pasted = false
-        end
-    end,
+-- === 删除全部 buffer 后进入 dashboard ===
+vim.api.nvim_create_autocmd("BufDelete", {
+  callback = function()
+    local bufs = vim.t.bufs
+    if #bufs == 1 and vim.api.nvim_buf_get_name(bufs[1]) == "" then
+      Snacks.dashboard();
+    end
+  end,
 })
 
 -- === 光标位置恢复 ===
