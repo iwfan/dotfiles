@@ -1,10 +1,12 @@
 -- === 外观设置 ===
 vim.opt.termguicolors = true                       -- Enable 24-bit colors
 vim.opt.number = true                              -- Line numbers
+vim.opt.numberwidth = 2
 vim.opt.relativenumber = true                      -- Relative line numbers
 vim.opt.showtabline = 1                            -- Show tabline only if there are at least two tab pages
 vim.opt.laststatus = 3                             -- Global statusline
 vim.opt.cursorline = true                          -- Highlight current line
+vim.opt.cursorlineopt = "number"
 vim.opt.ruler = false                              -- Disable default ruler
 vim.opt.signcolumn = "yes"                         -- Always show sign column
 vim.opt.colorcolumn = "+1"                         -- Highlight column after 'textwidth'
@@ -16,22 +18,12 @@ vim.opt.winborder = 'rounded'
 -- === 命令行和菜单 ===
 vim.opt.cmdheight = 1                              -- Command line height
 vim.opt.completeopt = "menuone,noinsert,noselect"  -- Completion options
-vim.opt.pumheight = 20                             -- Popup menu height
-vim.opt.pumblend = 10                              -- Popup menu transparency
-vim.opt.winblend = 10                              -- Floating window transparency
-vim.opt.wildmenu = true                            -- Enhanced command line completion
-vim.opt.wildmode = "longest:full,full"             -- Command line completion mode
 
 -- === 显示和滚动 ===
 vim.opt.wrap = false                               -- Don't wrap long lines
 vim.opt.linebreak = true                           -- Break lines at word boundaries
 vim.opt.scrolloff = 10                             -- Keep 10 lines above/below cursor
 vim.opt.sidescrolloff = 8                          -- Keep 8 columns left/right of cursor
-
--- 平滑滚动（仅 Neovim 0.10+）
-if vim.fn.has('nvim-0.10') == 1 then
-  vim.opt.smoothscroll = true
-end
 
 -- === 搜索设置 ===
 vim.opt.ignorecase = true                          -- Case insensitive search
@@ -50,9 +42,7 @@ vim.opt.tabstop = 2                                -- Tab width
 vim.opt.shiftwidth = 2                             -- Indent width
 vim.opt.softtabstop = 2                            -- Soft tab stop
 vim.opt.expandtab = true                           -- Use spaces instead of tabs
-vim.opt.autoindent = true                          -- Copy indent from current line
-vim.opt.breakindent = true                         -- Enable break indent
-vim.opt.breakindentopt = 'shift:2,min:40,sbr'     -- Configure break indent
+vim.opt.smartindent = true                         -- Copy indent from current line
 
 -- === 折叠设置 ===
 vim.wo.foldmethod = 'expr'                         -- Use expression for folding
@@ -120,6 +110,12 @@ if not os.getenv("SSH_TTY") then
 end
 
 vim.g.health = { style = 'float' }
+-- disable some default providers
+vim.g.loaded_node_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 
 -- add binaries installed by mason.nvim to path
 local is_windows = vim.fn.has "win32" ~= 0
