@@ -83,16 +83,4 @@ return {
             }
         },
     },
-    {
-        "NeogitOrg/neogit",
-        cmd = "Neogit",
-        keys = {
-            { "<leader>gg", "<cmd>Neogit<cr>", desc = "Open Neogit" },
-        },
-        opts = {
-            integrations = {
-                diffview = true,
-            },
-        },
-    },
 }

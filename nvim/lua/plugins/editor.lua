@@ -135,90 +135,37 @@ return {
         },
     },
     {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        opts = {},
-    },
-    { "windwp/nvim-ts-autotag", event = "VeryLazy", opts = {} },
-    {
-        "kylechui/nvim-surround",
-        version = "*",
-        event = "VeryLazy",
-        opts = {},
-    },
-    {
-        "MagicDuck/grug-far.nvim",
+        'stevearc/oil.nvim',
+        -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+        lazy = false,
+        ---@module 'oil'
+        ---@type oil.SetupOpts
         opts = {
-            windowCreationCommand = "botright split",
-            transient = true,
-        },
-        keys = {
-            {
-                "<A-f>",
-                mode = "n",
-                function()
-                    require("grug-far").open { prefills = { search = vim.fn.expand "<cword>" } }
-                end,
-                desc = "Spectre",
-            },
-            {
-                "<A-f>",
-                mode = "v",
-                function()
-                    require("grug-far").with_visual_selection { prefills = { paths = vim.fn.expand "%" } }
-                end,
-                desc = "Spectre",
-            },
-        },
-    },
-    {
-        "andymass/vim-matchup",
-        event = "VeryLazy",
-        config = function()
-            vim.g.matchup_matchparen_offscreen = {}
-        end,
-    },
-    {
-        "mg979/vim-visual-multi",
-        event = "VeryLazy",
-        init = function()
-            vim.g.VM_default_mappings = 0
-            vim.g.VM_maps = {
-                ["Add Cursor Down"] = "<A-n>",
-                ["Add Cursor Up"] = "<A-p>",
-            }
-        end,
-    },
-    {
-        "folke/flash.nvim",
-        event = "VeryLazy",
-        opts = {
-            modes = {
-                search = {
-                    enabled = false,
-                },
+            keymaps = {
+                ["<S-CR>"] = { "actions.parent", mode = "n" },
+                ["<Tab>"] = "actions.preview",
+                ["q"] = { "actions.close", mode = "n" },
+                ["g."] = { "actions.toggle_hidden", mode = "n" },
             },
         },
         keys = {
-            {
-                "s",
-                mode = { "n", "x", "o" },
-                function()
-                    require("flash").jump { multi_window = false }
-                end,
-                desc = "Flash",
-            },
+            { "<leader>e", "<CMD>Oil<CR>", desc = "File Explorer", },
         },
     },
     {
-        "folke/ts-comments.nvim",
-        opts = {},
+        "folke/which-key.nvim",
         event = "VeryLazy",
-        enabled = vim.fn.has "nvim-0.10.0" == 1,
-    },
-    {
-        "johmsalas/text-case.nvim",
         opts = {},
+        keys = {
+            {
+                "<leader>?",
+                function()
+                    require("which-key").show({ global = false })
+                end,
+                desc = "Buffer Local Keymaps (which-key)",
+            },
+        },
+
     },
     {
         "echasnovski/mini.hipatterns",
