@@ -95,7 +95,7 @@ vim.opt.list = true                                -- Show invisible characters
 vim.opt.listchars = {
   tab = '» ',                                      -- Show tabs
   trail = '·',                                     -- Show trailing spaces
-  nbsp = '␣',                                      -- Show non-breaking spaces
+  nbsp = '⦸',                                      -- Show non-breaking spaces
   extends = '→',                                   -- Show when line extends beyond screen
   precedes = '←',                                  -- Show when line precedes screen
 }

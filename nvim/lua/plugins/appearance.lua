@@ -172,6 +172,7 @@ return {
                         },
                     },
                     lualine_b = {
+                        { "b:gitsigns_head", icon = "󰘬" },
                         "diagnostics",
                     },
                     lualine_c = {
@@ -184,10 +185,9 @@ return {
                     },
                     lualine_x = {
                         "bo:filetype",
-                        "location",
                     },
                     lualine_y = {
-                        { "b:gitsigns_head", icon = "󰘬" },
+                        "location",
                     },
                     lualine_z = {},
                 },

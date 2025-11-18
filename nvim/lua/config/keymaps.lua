@@ -32,6 +32,17 @@ for key, mapping in pairs(emacs_insert) do
     vim.keymap.set('i', key, mapping[1], { desc = mapping[2] })
 end
 
+local emacs_command = {
+    ['<C-a>'] = { '<HOME>', 'Move to line start' },
+    ['<C-e>'] = { '<END>', 'Move to line end' },
+    ['<C-b>'] = { '<Left>', 'Move backward' },
+    ['<C-f>'] = { '<Right>', 'Move forward' },
+}
+
+for key, mapping in pairs(emacs_command) do
+    vim.keymap.set('c', key, mapping[1], { desc = mapping[2] })
+end
+
 -- Emacs-like keybinding for normal mode
 -- for short finger
 vim.keymap.set({ "n", "v", "o" }, "H", "_")
