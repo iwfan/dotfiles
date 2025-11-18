@@ -9,7 +9,20 @@ local function get_header()
         [[ ██████████████████████████████████ █████ █████ ████ █████  ]],
         [[██████  ███ █████████████████ ████ █████ █████ ████ ██████ ]],
     }
-    return table.concat(lines, "\n")
+
+    local cowsays = {
+        [[┌──────────────────────────┐      ]],
+        [[│    Powered By  eovim   │      ]],
+        [[└──────────────────────────┘      ]],
+        [[             \   ^__^             ]],
+        [[              \  (oo)\_______     ]],
+        [[                 (__)\       )\/\ ]],
+        [[                     ||----w |    ]],
+        [[                     ||     ||    ]],
+        [[                                  ]],
+    }
+
+    return table.concat(cowsays, "\n")
 end
 
 return {
@@ -38,6 +51,26 @@ return {
         end,
     },
     {
+        "sainnhe/gruvbox-material",
+        version = false,
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.g.gruvbox_material_better_performance = 1
+            -- vim.cmd.colorscheme "gruvbox-material"
+        end,
+    },
+    {
+        "sainnhe/sonokai",
+        version = false,
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.g.sonokai_better_performance = 1
+            -- vim.cmd.colorscheme "sonokai"
+        end,
+    },
+    {
         "folke/snacks.nvim",
         priority = 1000,
         lazy = false,
@@ -45,7 +78,7 @@ return {
             bigfile = { enabled = true },
             dashboard = {
                 enabled = true,
-                width = 70,
+                width = 40,
                 preset = {
                     keys = {
                         { icon = "󰱽 ", key = "o", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
@@ -53,9 +86,12 @@ return {
                         { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
                         { icon = "󰒲 ", key = "u", desc = "Lazy", action = ":Lazy sync", enabled = package.loaded.lazy ~= nil },
                         { icon = " ", key = "m", desc = "Mason", action = ":Mason" },
-                        { icon = " ", key = "q", desc = "Quit", action = ":qa" },
                     },
                     header = get_header(),
+                },
+                sections = {
+                    { section = "header" },
+                    { section = "keys", gap = 1, padding = 1 },
                 },
             },
             explorer = { enabled = false },
