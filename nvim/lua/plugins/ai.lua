@@ -17,6 +17,9 @@ return {
         ---@type avante.Config
         opts = {
             -- add any opts here
+            -- this file can contain specific instructions for your project
+            -- instructions_file = "avante.md",
+            -- add any opts here
             -- for example
             provider = "moonshot",
             providers = {
@@ -24,7 +27,7 @@ return {
                     __inherited_from = "openai",
                     endpoint = "https://api.moonshot.cn/v1",
                     api_key_name = "ANTHROPIC_AUTH_TOKEN",
-                    model = "kimi-k2-0711-preview",
+                    model = "kimi-k2-0905-preview",
                     timeout = 30000, -- Timeout in milliseconds
                     extra_request_body = {
                         temperature = 0.75,
@@ -43,9 +46,6 @@ return {
                     }
                 },
             },
-            behaviour = {
-                enable_fastapply = true, -- Enable Fast Apply feature
-            },
             windows = {
                 input = {
                     prefix = "> ",
@@ -59,10 +59,9 @@ return {
             {
                 "MeanderingProgrammer/render-markdown.nvim",
                 opts = {
-                    file_types = { "markdown", "Avante" },
-                    completions = { blink = { enabled = true } }
+                    file_types = { "Avante" },
                 },
-                ft = { "markdown", "Avante" },
+                ft = { "Avante" },
             },
         },
     },

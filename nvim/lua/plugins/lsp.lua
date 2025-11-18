@@ -295,6 +295,7 @@ return {
     },
     {
         "mfussenegger/nvim-lint",
+        event = { "BufReadPost", "BufWritePost", "InsertLeave" },
         opts = {
             -- Event to trigger linters
             events = { "BufWritePost", "BufReadPost", "InsertLeave" },
@@ -423,12 +424,15 @@ return {
             end,
             formatters_by_ft = {
                 lua = { "stylua" },
-                -- Conform can also run multiple formatters sequentially
-                -- python = { "isort", "black" },
-                --
-                -- You can use 'stop_after_first' to run the first available formatter from the list
-                -- javascript = { "prettierd", "prettier", stop_after_first = true },
+                go = { "goimports", "gofmt" },
+                python = { "ruff_format" },
+                -- Use the "*" filetype to run formatters on all filetypes.
+                ["*"] = { "typos" },
+                -- Use the "_" filetype to run formatters on filetypes that don't
+                -- have other formatters configured.
+                ["_"] = { "trim_whitespace" },
             },
         },
     },
+    { "nvim-flutter/flutter-tools.nvim", opts = {}, ft = { "dart" } },
 }

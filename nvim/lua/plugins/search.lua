@@ -1,8 +1,9 @@
 return {
     {
         "MagicDuck/grug-far.nvim",
+        cmd = "GrugFar",
         opts = {
-            windowCreationCommand = "botright split",
+            windowCreationCommand = "tabnew",
             transient = true,
         },
         keys = {
@@ -12,7 +13,7 @@ return {
                 function()
                     require("grug-far").open { prefills = { search = vim.fn.expand "<cword>" } }
                 end,
-                desc = "Spectre",
+                desc = "GrugFar",
             },
             {
                 "<A-f>",
@@ -20,20 +21,19 @@ return {
                 function()
                     require("grug-far").with_visual_selection { prefills = { paths = vim.fn.expand "%" } }
                 end,
-                desc = "Spectre",
+                desc = "GrugFar",
             },
         },
     },
     {
         "andymass/vim-matchup",
-        event = "VeryLazy",
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
             vim.g.matchup_matchparen_offscreen = {}
         end,
     },
     {
         "folke/flash.nvim",
-        event = "VeryLazy",
         opts = {
             modes = {
                 search = {

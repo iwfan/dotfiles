@@ -95,7 +95,15 @@ return {
                 },
             },
             explorer = { enabled = false },
-            indent = { enabled = true },
+            indent = {
+                enabled = true,
+                animate = {
+                    enabled = false
+                },
+                scope = {
+                    enabled = false
+                }
+            },
             input = { enabled = true },
             notifier = {
                 enabled = true,
@@ -103,16 +111,18 @@ return {
             },
             picker = { enabled = true },
             quickfile = { enabled = true },
-            scope = { enabled = true },
+            scope = { enabled = false },
             scroll = { enabled = false },
-            statuscolumn = { enabled = true },
-            words = { enabled = true },
+            statuscolumn = { enabled = false },
+            words = { enabled = false },
         },
         keys = {
+            { "<leader><space>", function() Snacks.picker.smart() end,            desc = "Smart Find Files" },
             { "<leader>b",       function() Snacks.picker.buffers() end,          desc = "Buffers", },
             { "<leader>/",       function() Snacks.picker.grep() end,             desc = "Grep", },
             { "<leader>p",       function() Snacks.picker.files() end,            desc = "Search File", },
             { "<leader>o",       function() Snacks.picker.recent() end,           desc = "Search OldFiles", },
+            { "<leader>E",       function() Snacks.explorer() end,                desc = "File Explorer" },
         },
     },
     {

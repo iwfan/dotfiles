@@ -1,7 +1,7 @@
 return {
     {
         "lewis6991/gitsigns.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPost", "BufNewFile" },
         opts = {
             signs = {
                 add          = { text = '┃' },
@@ -67,7 +67,6 @@ return {
     },
     {
         "sindrets/diffview.nvim",
-        event = "VeryLazy",
         cmd = { "DiffviewOpen", "DiffviewFileHistory" },
         opts = {
             keymaps = {
