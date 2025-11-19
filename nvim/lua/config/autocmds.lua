@@ -62,8 +62,6 @@ local unlisted_ft = {
     qf = true,
     notify = true,
     lspinfo = true,
-    spectre_panel = true,
-    ["null-ls-info"] = true,
 }
 
 autocmd("FileType", {

@@ -51,26 +51,6 @@ return {
         end,
     },
     {
-        "sainnhe/gruvbox-material",
-        version = false,
-        lazy = false,
-        priority = 1000,
-        config = function()
-            vim.g.gruvbox_material_better_performance = 1
-            -- vim.cmd.colorscheme "gruvbox-material"
-        end,
-    },
-    {
-        "sainnhe/sonokai",
-        version = false,
-        lazy = false,
-        priority = 1000,
-        config = function()
-            vim.g.sonokai_better_performance = 1
-            -- vim.cmd.colorscheme "sonokai"
-        end,
-    },
-    {
         "folke/snacks.nvim",
         priority = 1000,
         lazy = false,
@@ -81,10 +61,21 @@ return {
                 width = 40,
                 preset = {
                     keys = {
-                        { icon = "󰱽 ", key = "o", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+                        {
+                            icon = "󰱽 ",
+                            key = "o",
+                            desc = "Recent Files",
+                            action = ":lua Snacks.dashboard.pick('oldfiles')",
+                        },
                         { icon = "󰁯 ", key = "s", desc = "Restore Session", section = "session" },
                         { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-                        { icon = "󰒲 ", key = "u", desc = "Lazy", action = ":Lazy sync", enabled = package.loaded.lazy ~= nil },
+                        {
+                            icon = "󰒲 ",
+                            key = "u",
+                            desc = "Lazy",
+                            action = ":Lazy sync",
+                            enabled = package.loaded.lazy ~= nil,
+                        },
                         { icon = " ", key = "m", desc = "Mason", action = ":Mason" },
                     },
                     header = get_header(),
@@ -94,15 +85,15 @@ return {
                     { section = "keys", gap = 1, padding = 1 },
                 },
             },
-            explorer = { enabled = false },
+            explorer = { enabled = true },
             indent = {
                 enabled = true,
                 animate = {
-                    enabled = false
+                    enabled = false,
                 },
                 scope = {
-                    enabled = false
-                }
+                    enabled = false,
+                },
             },
             input = { enabled = true },
             notifier = {
@@ -117,12 +108,48 @@ return {
             words = { enabled = false },
         },
         keys = {
-            { "<leader><space>", function() Snacks.picker.smart() end,            desc = "Smart Find Files" },
-            { "<leader>b",       function() Snacks.picker.buffers() end,          desc = "Buffers", },
-            { "<leader>/",       function() Snacks.picker.grep() end,             desc = "Grep", },
-            { "<leader>p",       function() Snacks.picker.files() end,            desc = "Search File", },
-            { "<leader>o",       function() Snacks.picker.recent() end,           desc = "Search OldFiles", },
-            { "<leader>E",       function() Snacks.explorer() end,                desc = "File Explorer" },
+            {
+                "<leader>b",
+                function()
+                    Snacks.picker.buffers()
+                end,
+                desc = "Buffers",
+            },
+            {
+                "<leader>/",
+                function()
+                    Snacks.picker.grep()
+                end,
+                desc = "Grep",
+            },
+            {
+                "<leader>p",
+                function()
+                    Snacks.picker.smart()
+                end,
+                desc = "Search File",
+            },
+            {
+                "<leader>e",
+                function()
+                    Snacks.explorer()
+                end,
+                desc = "File Explorer",
+            },
+            {
+                "<leader><tab>",
+                function()
+                    Snacks.bufdelete.delete()
+                end,
+                desc = "Close current buffer",
+            },
+            {
+                "<leader>x",
+                function()
+                    Snacks.bufdelete.other()
+                end,
+                desc = "Close other buffers",
+            },
         },
     },
     {
@@ -131,7 +158,6 @@ return {
         opts = function()
             return {
                 options = {
-                    theme = "auto",
                     component_separators = "",
                     section_separators = "",
                     globalstatus = true,
@@ -148,8 +174,12 @@ return {
                             "spectre_panel",
                             "toggleterm",
                             "qf",
+                            "snacks_dashboard",
                         },
-                        winbar = {},
+                        tabline = {
+                            "snacks_picker_input",
+                            "snacks_dashboard",
+                        },
                     },
                 },
                 sections = {
@@ -166,15 +196,26 @@ return {
                         "diagnostics",
                     },
                     lualine_c = {
-                        {
-                            "filename",
-                            path = 3,
-                            file_status = false,
-                            newfile_status = false,
-                        },
+                        { "filename", path = 4 },
                     },
                     lualine_x = {
-                        "bo:filetype",
+                        "encoding",
+                        "filetype",
+                        {
+                            "lsp_status",
+                            icon = "",
+                            symbols = {
+                                spinner = { "󰪞 ", "󰪟 ", "󰪠 ", "󰪡 ", "󰪢 ", "󰪣 ", "󰪤 ", "󰪥 " },
+                                done = "󰄴 ",
+                                -- Delimiter inserted between LSP names:
+                                separator = "",
+                            },
+                            -- List of LSP names to ignore (e.g., `null-ls`):
+                            ignore_lsp = {},
+                            -- Display the LSP name
+                            show_name = false,
+                        },
+                        "filesize",
                     },
                     lualine_y = {
                         "location",
@@ -189,7 +230,14 @@ return {
                     lualine_y = {},
                     lualine_z = {},
                 },
-                tabline = {},
+                tabline = {
+                    lualine_a = {},
+                    lualine_b = { "buffers" },
+                    lualine_c = {},
+                    lualine_x = {},
+                    lualine_y = { "tabs" },
+                    lualine_z = {},
+                },
                 extensions = {},
             }
         end,

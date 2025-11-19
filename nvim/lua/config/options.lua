@@ -3,9 +3,6 @@ vim.opt.number = true                              -- Line numbers
 vim.opt.relativenumber = true                      -- Relative line numbers
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
-vim.opt.showtabline = 1                            -- Show tabline only if there are at least two tab pages
-vim.opt.laststatus = 3                             -- Global statusline
-vim.opt.ruler = false                              -- Disable default ruler
 vim.opt.signcolumn = "yes"                         -- Always show sign column
 vim.opt.showmode = false                           -- Don't show mode in command line
 

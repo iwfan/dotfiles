@@ -16,11 +16,6 @@ vim.diagnostic.config {
     -- },
     virtual_text = false,
     virtual_lines = false,
-    -- {
-    --     -- Only show virtual line diagnostics for the current cursor line
-    --     current_line = true,
-    -- },
-
 }
 
 local function setup_lspconfig()
@@ -43,7 +38,7 @@ local function setup_lspconfig()
             map("gd", Snacks.picker.lsp_definitions, "[G]oto [D]efinition")
 
             -- Find references for the word under your cursor.
-            map("grr", Snacks.picker.lsp_references, "[G]oto [R]eferences")
+            map("grr", Snacks.picker.lsp_references, "[G]oto [R]references")
 
             -- Jump to the implementation of the word under your cursor.
             --  Useful when your language has ways of declaring types without an actual implementation.
@@ -64,86 +59,50 @@ local function setup_lspconfig()
 
             -- Fuzzy find all the symbols in your current document.
             --  Symbols are things like variables, functions, types, etc.
-            map('gO', Snacks.picker.lsp_symbols, 'Open Document Symbols')
+            map("gO", Snacks.picker.lsp_symbols, "Open Document Symbols")
 
             -- Fuzzy find all the symbols in your current workspace.
             --  Similar to document symbols, except searches over your entire project.
-            map('gW', Snacks.picker.lsp_workspace_symbols, 'Open Workspace Symbols')
+            map("gW", Snacks.picker.lsp_workspace_symbols, "Open Workspace Symbols")
 
             -- Execute a code action, usually your cursor needs to be on top of an error
             -- or a suggestion from your LSP for this to activate.
             map("<space><enter>", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
 
-
             map("\\d", vim.diagnostic.open_float, "Hover")
-
-            -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
-            ---@param client vim.lsp.Client
-            ---@param method vim.lsp.protocol.Method
-            ---@param bufnr? integer some lsp support methods only in specific files
-            ---@return boolean
-            local function client_supports_method(client, method, bufnr)
-                if vim.fn.has "nvim-0.11" == 1 then
-                    return client:supports_method(method, bufnr)
-                else
-                    return client.supports_method(method, { bufnr = bufnr })
-                end
-            end
-
-            -- The following two autocommands are used to highlight references of the
-            -- word under your cursor when your cursor rests there for a little while.
-            --    See `:help CursorHold` for information about when this is executed
-            --
-            -- When you move your cursor, the highlights will be cleared (the second autocommand).
-            local client = vim.lsp.get_client_by_id(event.data.client_id)
-            if
-                client
-                and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
-            then
-                local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
-                vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-                    buffer = event.buf,
-                    group = highlight_augroup,
-                    callback = vim.lsp.buf.document_highlight,
-                })
-
-                vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-                    buffer = event.buf,
-                    group = highlight_augroup,
-                    callback = vim.lsp.buf.clear_references,
-                })
-
-                vim.api.nvim_create_autocmd("LspDetach", {
-                    group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
-                    callback = function(event2)
-                        vim.lsp.buf.clear_references()
-                        vim.api.nvim_clear_autocmds { group = "kickstart-lsp-highlight", buffer = event2.buf }
-                    end,
-                })
-            end
-
-            -- The following code creates a keymap to toggle inlay hints in your
-            -- code, if the language server you are using supports them
-            --
-            -- This may be unwanted, since they displace some of your code
-            if
-                client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
-            then
-                map("<leader>th", function()
-                    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-                end, "[T]oggle Inlay [H]ints")
-            end
         end,
     })
 
-    local installed_servers = require("mason-lspconfig").get_installed_servers()
-    for _, server in pairs(installed_servers) do
+    local installed_servers = {
+        lua_ls = {
+            -- cmd = { ... },
+            -- filetypes = { ... },
+            -- capabilities = {},
+            settings = {
+                Lua = {
+                    completion = {
+                        callSnippet = "Replace",
+                    },
+                    -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+                    -- diagnostics = { disable = { 'missing-fields' } },
+                },
+            },
+        },
+        cssls = {},
+        html = {},
+        gopls = {},
+        basedpyright = {},
+        tailwindcss = {},
+        vtsls = {},
+    }
+
+    for server, server_opts in pairs(installed_servers) do
         local capabilities = require("blink.cmp").get_lsp_capabilities()
         local opts = {
             capabilities = capabilities,
         }
 
-        vim.lsp.config(server, opts)
+        vim.lsp.config(server, vim.tbl_extend("force", server_opts, opts))
         vim.lsp.enable(server)
     end
 
@@ -173,26 +132,33 @@ return {
                 "mason-org/mason-lspconfig.nvim",
                 opts = {
                     ensure_installed = {
-                        -- lsps
                         "html",
                         "cssls",
                         "tailwindcss",
                         "vtsls",
-                        -- "eslint",
                         "lua_ls",
                         "gopls",
-                        "pylsp",
                         "pyright",
                     },
                     automatic_enable = false,
                 },
             },
-            -- Useful status updates for LSP.
-            { "j-hui/fidget.nvim", opts = {} },
             -- Allows extra capabilities provided by blink.cmp
             "saghen/blink.cmp",
         },
         config = setup_lspconfig,
+    },
+    {
+        -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+        -- used for completion, annotations and signatures of Neovim apis
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+            library = {
+                -- Load luvit types when the `vim.uv` word is found
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+        },
     },
     { -- Autocompletion
         "saghen/blink.cmp",
@@ -222,75 +188,28 @@ return {
                 },
                 opts = {},
             },
-            "folke/lazydev.nvim",
         },
         --- @module 'blink.cmp'
         --- @type blink.cmp.Config
         opts = {
             keymap = {
-                -- 'default' (recommended) for mappings similar to built-in completions
-                --   <c-y> to accept ([y]es) the completion.
-                --    This will auto-import if your LSP supports it.
-                --    This will expand snippets if the LSP sent a snippet.
-                -- 'super-tab' for tab to accept
-                -- 'enter' for enter to accept
-                -- 'none' for no mappings
-                --
-                -- For an understanding of why the 'default' preset is recommended,
-                -- you will need to read `:help ins-completion`
-                --
-                -- No, but seriously. Please read `:help ins-completion`, it is really good!
-                --
-                -- All presets have the following mappings:
-                -- <tab>/<s-tab>: move to right/left of your snippet expansion
-                -- <c-space>: Open menu or open docs if already open
-                -- <c-n>/<c-p> or <up>/<down>: Select next/previous item
-                -- <c-e>: Hide menu
-                -- <c-k>: Toggle signature help
-                --
-                -- See :h blink-cmp-config-keymap for defining your own keymap
-                preset = "none",
-
-                -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
-                --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+                preset = "default",
+                ['<CR>'] = { 'accept', 'fallback' },
+                ['<Tab>'] = {
+                    function(cmp)
+                        if cmp.snippet_active() then return cmp.accept()
+                        else return cmp.select_and_accept() end
+                    end,
+                    'snippet_forward',
+                    'fallback'
+                },
             },
 
             enabled = function()
                 return not vim.tbl_contains({ "markdown", "help", "minifiles", "snacks_picker_input" }, vim.bo.filetype)
             end,
 
-            appearance = {
-                -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-                -- Adjusts spacing to ensure icons are aligned
-                nerd_font_variant = "mono",
-            },
-
-            completion = {
-                -- By default, you may press `<c-space>` to show the documentation.
-                -- Optionally, set `auto_show = true` to show the documentation after a delay.
-                documentation = { auto_show = false, auto_show_delay_ms = 500 },
-            },
-
-            sources = {
-                default = { "lsp", "path", "snippets", "lazydev" },
-                providers = {
-                    lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
-                },
-            },
-
             snippets = { preset = "luasnip" },
-
-            -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
-            -- which automatically downloads a prebuilt binary when enabled.
-            --
-            -- By default, we use the Lua implementation instead, but you may enable
-            -- the rust implementation via `'prefer_rust_with_warning'`
-            --
-            -- See :h blink-cmp-config-fuzzy for more information
-            fuzzy = { implementation = "lua" },
-
-            -- Shows a signature help window while you type arguments for a function
-            signature = { enabled = true },
         },
     },
     {

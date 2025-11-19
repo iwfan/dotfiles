@@ -84,8 +84,9 @@ vim.keymap.set('t', '<C-]>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Buffer navigation
-vim.keymap.set("n", "<C-;>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-vim.keymap.set("n", "<C-'>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+vim.keymap.set("n", "<s-tab>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+vim.keymap.set("n", "<tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+vim.keymap.set("n", "<space><tab>", "<cmd>bd<cr>", { desc = "Next buffer" })
 
 -- Add undo break-points
 vim.keymap.set("i", ",", ",<c-g>u")

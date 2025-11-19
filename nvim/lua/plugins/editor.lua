@@ -135,27 +135,6 @@ return {
         },
     },
     {
-        'stevearc/oil.nvim',
-        -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-        lazy = false,
-        ---@module 'oil'
-        ---@type oil.SetupOpts
-        opts = {
-            view_options = {
-                show_hidden = true,
-            },
-            keymaps = {
-                ["<S-CR>"] = { "actions.parent", mode = "n" },
-                ["<Tab>"] = "actions.preview",
-                ["q"] = { "actions.close", mode = "n" },
-                ["g."] = { "actions.toggle_hidden", mode = "n" },
-            },
-        },
-        keys = {
-            { "<leader>e", "<CMD>Oil<CR>", desc = "File Explorer", },
-        },
-    },
-    {
         "folke/which-key.nvim",
         event = "VeryLazy",
         opts = {},
