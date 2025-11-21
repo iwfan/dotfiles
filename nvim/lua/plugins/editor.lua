@@ -159,6 +159,12 @@ return {
         },
     },
     {
+        'kevinhwang91/nvim-ufo',
+        event = { "BufReadPost", "BufNewFile" },
+        opts = {},
+        dependencies = 'kevinhwang91/promise-async'
+    },
+    {
         "folke/which-key.nvim",
         event = "VeryLazy",
         opts = {},

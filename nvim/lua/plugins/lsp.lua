@@ -98,6 +98,11 @@ local function setup_lspconfig()
 
     for server, server_opts in pairs(installed_servers) do
         local capabilities = require("blink.cmp").get_lsp_capabilities()
+        -- NVIM-UFO supported
+        capabilities.textDocument.foldingRange = {
+            dynamicRegistration = false,
+            lineFoldingOnly = true
+        }
         local opts = {
             capabilities = capabilities,
         }

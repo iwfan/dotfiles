@@ -44,13 +44,14 @@ vim.opt.expandtab = true                           -- Use spaces instead of tabs
 vim.opt.autoindent = true                          -- Copy indent from current line
 
 -- === 折叠设置 ===
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
 -- 仅当 nvim-treesitter 可用且配置 foldexpr 时，才启用 expr 折叠
 local has_ts, ts_configs = pcall(require, "nvim-treesitter.configs")
 if has_ts then
     -- treesitter 可用：使用 nvim-treesitter 的 foldexpr（更稳定）
     vim.opt.foldmethod = "expr"
     vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-    vim.opt.foldlevelstart = 99
 end
 
 -- === 文件处理 ===

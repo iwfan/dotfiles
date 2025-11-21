@@ -14,13 +14,13 @@ from kitty.rgb import Color
 from kitty.utils import color_as_int
 
 
-def _draw_icon(screen: Screen, index: int) -> int:
+def _draw_icon(draw_data: DrawData, screen: Screen, index: int) -> int:
     if index != 1:
         return 0
 
     ICON = " 󰊠 "
-    icon_fg = as_rgb(color_as_int(Color(122, 132, 120)))
-    icon_bg = as_rgb(color_as_int(Color(55, 65, 69)))
+    icon_fg = as_rgb(color_as_int(draw_data.inactive_fg))
+    icon_bg = as_rgb(color_as_int(draw_data.default_bg))
 
     fg, bg = screen.cursor.fg, screen.cursor.bg
     screen.cursor.fg = icon_fg
@@ -67,7 +67,7 @@ def draw_tab(
     is_last: bool,
     extra_data: ExtraData,
 ) -> int:
-    _draw_icon(screen, index)
+    _draw_icon(draw_data, screen, index)
     _draw_tab_with_separator(
         draw_data, screen, tab, before, max_title_length, index, is_last, extra_data
     )

@@ -31,7 +31,4 @@ require("lazy").setup({
             },
         },
     },
-    install = {
-        colorscheme = { "everforest", "habamax" },
-    },
 })

@@ -51,6 +51,14 @@ return {
         end,
     },
     {
+        "webhooked/kanso.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function ()
+            -- vim.cmd.colorscheme "kanso-ink"
+        end
+    },
+    {
         "folke/snacks.nvim",
         priority = 1000,
         lazy = false,
