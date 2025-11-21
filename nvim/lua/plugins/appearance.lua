@@ -54,9 +54,9 @@ return {
         "webhooked/kanso.nvim",
         lazy = false,
         priority = 1000,
-        config = function ()
+        config = function()
             -- vim.cmd.colorscheme "kanso-ink"
-        end
+        end,
     },
     {
         "folke/snacks.nvim",
@@ -240,10 +240,28 @@ return {
                 },
                 tabline = {
                     lualine_a = {},
-                    lualine_b = { "buffers" },
+                    lualine_b = {
+                        {
+                            "buffers",
+                            buffers_color = {
+                                -- Same values as the general color option can be used here.
+                                active = "lualine_a_normal", -- Color for active buffer.
+                                inactive = "lualine_a_inactive", -- Color for inactive buffer.
+                            },
+                        },
+                    },
                     lualine_c = {},
                     lualine_x = {},
-                    lualine_y = { "tabs" },
+                    lualine_y = {
+                        {
+                            "tabs",
+                            tabs_color = {
+                                -- Same values as the general color option can be used here.
+                                active = "lualine_a_normal", -- Color for active tab.
+                                inactive = "lualine_a_inactive", -- Color for inactive tab.
+                            },
+                        },
+                    },
                     lualine_z = {},
                 },
                 extensions = {},
