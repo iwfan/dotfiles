@@ -1,30 +1,3 @@
-local function get_header()
-    local lines = {
-        [[                                                                    ]],
-        [[      ███████████           █████      ██                     ]],
-        [[     ███████████             █████                             ]],
-        [[     ████████████████ ███████████ ███   ███████     ]],
-        [[    ████████████████ ████████████ █████ ██████████████   ]],
-        [[   ██████████████    █████████████ █████ █████ ████ █████   ]],
-        [[ ██████████████████████████████████ █████ █████ ████ █████  ]],
-        [[██████  ███ █████████████████ ████ █████ █████ ████ ██████ ]],
-    }
-
-    local cowsays = {
-        [[┌──────────────────────────┐      ]],
-        [[│    Powered By  eovim   │      ]],
-        [[└──────────────────────────┘      ]],
-        [[             \   ^__^             ]],
-        [[              \  (oo)\_______     ]],
-        [[                 (__)\       )\/\ ]],
-        [[                     ||----w |    ]],
-        [[                     ||     ||    ]],
-        [[                                  ]],
-    }
-
-    return table.concat(cowsays, "\n")
-end
-
 return {
     {
         "echasnovski/mini.icons",
@@ -40,60 +13,13 @@ return {
         end,
     },
     {
-        "sainnhe/everforest",
-        version = false,
-        lazy = false,
-        priority = 1000,
-        config = function()
-            vim.g.everforest_background = "hard"
-            vim.g.everforest_better_performance = 1
-            vim.cmd.colorscheme "everforest"
-        end,
-    },
-    {
-        "webhooked/kanso.nvim",
-        lazy = false,
-        priority = 1000,
-        config = function()
-            -- vim.cmd.colorscheme "kanso-ink"
-        end,
-    },
-    {
         "folke/snacks.nvim",
         priority = 1000,
         lazy = false,
         opts = {
             bigfile = { enabled = true },
-            dashboard = {
-                enabled = true,
-                width = 40,
-                preset = {
-                    keys = {
-                        {
-                            icon = "󰱽 ",
-                            key = "o",
-                            desc = "Recent Files",
-                            action = ":lua Snacks.dashboard.pick('oldfiles')",
-                        },
-                        { icon = "󰁯 ", key = "s", desc = "Restore Session", section = "session" },
-                        { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-                        {
-                            icon = "󰒲 ",
-                            key = "u",
-                            desc = "Lazy",
-                            action = ":Lazy sync",
-                            enabled = package.loaded.lazy ~= nil,
-                        },
-                        { icon = " ", key = "m", desc = "Mason", action = ":Mason" },
-                    },
-                    header = get_header(),
-                },
-                sections = {
-                    { section = "header" },
-                    { section = "keys", gap = 1, padding = 1 },
-                },
-            },
-            explorer = { enabled = true },
+            dashboard = { enabled = false },
+            explorer = { enabled = false },
             indent = {
                 enabled = true,
                 animate = {
@@ -137,135 +63,101 @@ return {
                 end,
                 desc = "Search File",
             },
-            {
-                "<leader>e",
-                function()
-                    Snacks.explorer()
+        },
+    },
+    {
+        "echasnovski/mini.statusline",
+        version = false,
+        opts = {
+            content = {
+                active = function()
+                    local mode, mode_hl = MiniStatusline.section_mode { trunc_width = 120 }
+                    local git = MiniStatusline.section_git { trunc_width = 40 }
+                    local lsp = MiniStatusline.section_lsp({ trunc_width = 75 })
+                    local fileinfo = MiniStatusline.section_fileinfo { trunc_width = 120 }
+                    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+
+                    return MiniStatusline.combine_groups {
+                        { hl = mode_hl, strings = { mode } },
+                        { hl = "MiniStatuslineDevinfo", strings = { git } },
+                        "%<", -- Mark general truncate point
+                        { hl = "MiniStatuslineFilename", strings = { lsp } },
+                        "%=", -- End left alignment
+                        { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
+                        { hl = mode_hl, strings = { row .. ':' .. col } },
+                    }
                 end,
-                desc = "File Explorer",
-            },
-            {
-                "<leader><tab>",
-                function()
-                    Snacks.bufdelete.delete()
+                inactive = function()
+                    local mode, mode_hl = MiniStatusline.section_mode { trunc_width = 120 }
+                    local filename = MiniStatusline.section_filename({ trunc_width = 140 })
+                    local fileinfo = MiniStatusline.section_fileinfo { trunc_width = 120 }
+                    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+
+                    return MiniStatusline.combine_groups {
+                        { hl = mode_hl, strings = { mode } },
+                        { hl = "MiniStatuslineFilename", strings = { filename } },
+                        "%<", -- Mark general truncate point
+                        { hl = "MiniStatuslineDevinfo", strings = {} },
+                        "%=", -- End left alignment
+                        { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
+                        { hl = mode_hl, strings = { row .. ':' .. col } },
+                    }
                 end,
-                desc = "Close current buffer",
             },
+            set_vim_settings = false,
+        },
+        event = "BufReadPost",
+    },
+    {
+        "echasnovski/mini.tabline",
+        version = false,
+        event = "BufReadPost",
+        opts = {
+            show_icons = false,
+            set_vim_settings = true,
+            tabpage_section = "right",
+        },
+    },
+    {
+        "echasnovski/mini.bufremove",
+        version = false,
+        opts = {},
+        keys = {
             {
                 "<leader>x",
                 function()
-                    Snacks.bufdelete.other()
+                    MiniBufremove.delete()
                 end,
                 desc = "Close other buffers",
             },
         },
+        event = "VeryLazy",
     },
     {
-        "nvim-lualine/lualine.nvim",
+        "echasnovski/mini.files",
+        version = false,
+        opts = {},
+        keys = {
+            {
+                "<space>e",
+                mode = { "n" },
+                function()
+                    MiniFiles.open()
+                end,
+                desc = "Flash",
+            },
+        },
         event = "VeryLazy",
-        opts = function()
-            return {
-                options = {
-                    component_separators = "",
-                    section_separators = "",
-                    globalstatus = true,
-                    disabled_filetypes = {
-                        statusline = {
-                            "startify",
-                            "dashboard",
-                            "packer",
-                            "neogitstatus",
-                            "Trouble",
-                            "alpha",
-                            "lir",
-                            "Outline",
-                            "spectre_panel",
-                            "toggleterm",
-                            "qf",
-                            "snacks_dashboard",
-                        },
-                        tabline = {
-                            "snacks_picker_input",
-                            "snacks_dashboard",
-                        },
-                    },
-                },
-                sections = {
-                    lualine_a = {
-                        {
-                            "mode",
-                            fmt = function(str)
-                                return str:sub(1, 1)
-                            end,
-                        },
-                    },
-                    lualine_b = {
-                        { "b:gitsigns_head", icon = "󰘬" },
-                        "diagnostics",
-                    },
-                    lualine_c = {
-                        { "filename", path = 4 },
-                    },
-                    lualine_x = {
-                        "encoding",
-                        "filetype",
-                        {
-                            "lsp_status",
-                            icon = "",
-                            symbols = {
-                                spinner = { "󰪞 ", "󰪟 ", "󰪠 ", "󰪡 ", "󰪢 ", "󰪣 ", "󰪤 ", "󰪥 " },
-                                done = "󰄴 ",
-                                -- Delimiter inserted between LSP names:
-                                separator = "",
-                            },
-                            -- List of LSP names to ignore (e.g., `null-ls`):
-                            ignore_lsp = {},
-                            -- Display the LSP name
-                            show_name = false,
-                        },
-                        "filesize",
-                    },
-                    lualine_y = {
-                        "location",
-                    },
-                    lualine_z = {},
-                },
-                inactive_sections = {
-                    lualine_a = {},
-                    lualine_b = {},
-                    lualine_c = { "filename" },
-                    lualine_x = { "location" },
-                    lualine_y = {},
-                    lualine_z = {},
-                },
-                tabline = {
-                    lualine_a = {},
-                    lualine_b = {
-                        {
-                            "buffers",
-                            buffers_color = {
-                                -- Same values as the general color option can be used here.
-                                active = "lualine_a_normal", -- Color for active buffer.
-                                inactive = "lualine_a_inactive", -- Color for inactive buffer.
-                            },
-                        },
-                    },
-                    lualine_c = {},
-                    lualine_x = {},
-                    lualine_y = {
-                        {
-                            "tabs",
-                            tabs_color = {
-                                -- Same values as the general color option can be used here.
-                                active = "lualine_a_normal", -- Color for active tab.
-                                inactive = "lualine_a_inactive", -- Color for inactive tab.
-                            },
-                        },
-                    },
-                    lualine_z = {},
-                },
-                extensions = {},
-            }
+    },
+    {
+        "sainnhe/everforest",
+        version = false,
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.g.everforest_background = "hard"
+            vim.g.everforest_better_performance = 1
+            vim.cmd.colorscheme "everforest"
         end,
     },
 }

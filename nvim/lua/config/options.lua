@@ -5,6 +5,7 @@ vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 vim.opt.signcolumn = "yes"                         -- Always show sign column
 vim.opt.showmode = false                           -- Don't show mode in command line
+vim.opt.ruler = false                           -- Don't show mode in command line
 
 -- === 显示和滚动 ===
 vim.opt.wrap = false                               -- Don't wrap long lines
