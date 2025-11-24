@@ -224,8 +224,10 @@ return {
             -- Event to trigger linters
             events = { "BufWritePost", "BufReadPost", "InsertLeave" },
             linters_by_ft = {
-                javascript = { "oxlint" },
-                typescript = { "oxlint" },
+                javascript = { "biomejs" },
+                typescript = { "biomejs" },
+                javascriptreact = { "biomejs" },
+                typescriptreact = { "biomejs" },
                 python = { "ruff" },
                 -- Use the "*" filetype to run linters on all filetypes.
                 ["*"] = { "typos" },
@@ -350,6 +352,10 @@ return {
                 lua = { "stylua" },
                 go = { "goimports", "gofmt" },
                 python = { "ruff_format" },
+                javascript = { "biome" },
+                typescript = { "biome" },
+                javascriptreact = { "biome" },
+                typescriptreact = { "biome" },
                 -- Use the "*" filetype to run formatters on all filetypes.
                 ["*"] = { "typos" },
                 -- Use the "_" filetype to run formatters on filetypes that don't

@@ -21,7 +21,7 @@ return {
             dashboard = { enabled = false },
             explorer = { enabled = false },
             indent = {
-                enabled = true,
+                enabled = false,
                 animate = {
                     enabled = false,
                 },
@@ -73,6 +73,7 @@ return {
                 active = function()
                     local mode, mode_hl = MiniStatusline.section_mode { trunc_width = 120 }
                     local git = MiniStatusline.section_git { trunc_width = 40 }
+                    local diagnostics   = MiniStatusline.section_diagnostics({ trunc_width = 75 })
                     local lsp = MiniStatusline.section_lsp({ trunc_width = 75 })
                     local fileinfo = MiniStatusline.section_fileinfo { trunc_width = 120 }
                     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -81,7 +82,7 @@ return {
                         { hl = mode_hl, strings = { mode } },
                         { hl = "MiniStatuslineDevinfo", strings = { git } },
                         "%<", -- Mark general truncate point
-                        { hl = "MiniStatuslineFilename", strings = { lsp } },
+                        { hl = "MiniStatuslineFilename", strings = { diagnostics, lsp } },
                         "%=", -- End left alignment
                         { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
                         { hl = mode_hl, strings = { row .. ':' .. col } },
@@ -142,7 +143,7 @@ return {
                 "<space>e",
                 mode = { "n" },
                 function()
-                    MiniFiles.open()
+                    MiniFiles.open(vim.fn.expand('%'))
                 end,
                 desc = "Flash",
             },
