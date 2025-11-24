@@ -155,6 +155,22 @@ return {
         },
     },
     {
+        "echasnovski/mini.files",
+        version = false,
+        opts = {},
+        keys = {
+            {
+                "<space>e",
+                mode = { "n" },
+                function()
+                    MiniFiles.open(vim.fn.expand('%'))
+                end,
+                desc = "Flash",
+            },
+        },
+        event = "VeryLazy",
+    },
+    {
         "echasnovski/mini.hipatterns",
         version = false,
         opts = function()
