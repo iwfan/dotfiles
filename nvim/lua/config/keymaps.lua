@@ -83,11 +83,6 @@ vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Terminal right windo
 vim.keymap.set('t', '<C-]>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- Buffer navigation
-vim.keymap.set("n", "<s-tab>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-vim.keymap.set("n", "<tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
-vim.keymap.set("n", "<space><tab>", "<cmd>bd<cr>", { desc = "Next buffer" })
-
 -- Add undo break-points
 vim.keymap.set("i", ",", ",<c-g>u")
 vim.keymap.set("i", ".", ".<c-g>u")
@@ -98,7 +93,6 @@ vim.keymap.set("n", "q", "<Nop>")
 vim.keymap.set("n", "Q", "q")
 vim.keymap.set("n", "gq", "<Nop>", { desc = "Do not open operation mode" })
 vim.keymap.set("n", "gQ", "Q", { desc = "Do not open Ex mode" })
-vim.keymap.set("n", "<esc>", "<esc><cmd>noh<CR><cmd>call feedkeys(':','nx')<CR>", { desc = "Clear all" })
 vim.keymap.set("x", "p", [[p:let @+=@0<CR>:let @"=@0<CR>]], { desc = "Dont copy replaced text" })
 vim.keymap.set("n", "qr", [[:%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<space><bs>", [["_dd]])
