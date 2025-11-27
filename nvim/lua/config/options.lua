@@ -69,8 +69,6 @@ vim.opt.splitright = true                          -- Configure how new splits s
 vim.opt.splitbelow = true                          -- Open horizontal splits below
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
-vim.opt.splitkeep = "screen"                       -- Keep the same relative cursor position when splitting
-vim.opt.jumpoptions = "stack,view"                 -- Jump list behavior
 vim.opt.iskeyword:append("-")                      -- Treat dash as part of word
 vim.opt.whichwrap:append("<>[]hl")
 
