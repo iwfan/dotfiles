@@ -33,26 +33,6 @@ return {
             }
         end,
     },
-    {
-        "echasnovski/mini.ai",
-        version = false,
-        dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
-        opts = function()
-            local treesitter = require("mini.ai").gen_spec.treesitter
-            return {
-                custom_textobjects = {
-                    c = treesitter { a = "@class.outer", i = "@class.inner" },
-                    f = treesitter { a = "@function.outer", i = "@function.inner" },
-                    k = treesitter { a = "@block.outer", i = "@block.inner" },
-                    o = treesitter {
-                        a = { "@conditional.outer", "@loop.outer" },
-                        i = { "@conditional.inner", "@loop.inner" },
-                    },
-                },
-            }
-        end,
-        event = "VeryLazy",
-    },
     -- {
     --     "johmsalas/text-case.nvim",
     --     dependencies = { "nvim-telescope/telescope.nvim" },
