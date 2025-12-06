@@ -35,7 +35,7 @@ local function setup_lspconfig()
             -- Jump to the definition of the word under your cursor.
             --  This is where a variable was first declared, or where a function is defined, etc.
             --  To jump back, press <C-t>.
-            map("gd", Snacks.picker.lsp_definitions, "[G]oto [D]efinition")
+            map("gd", Snacks.picker.lsp_definitions, "[G]oto [D]definition")
 
             -- Find references for the word under your cursor.
             map("grr", Snacks.picker.lsp_references, "[G]oto [R]references")
@@ -73,6 +73,27 @@ local function setup_lspconfig()
         end,
     })
 
+    local vue_language_server_path = vim.fn.stdpath('data') .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+    local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
+    local vue_plugin = {
+        name = "@vue/typescript-plugin",
+        location = vue_language_server_path,
+        languages = { "vue" },
+        configNamespace = "typescript",
+    }
+    local vtsls_config = {
+        settings = {
+            vtsls = {
+                tsserver = {
+                    globalPlugins = {
+                        vue_plugin,
+                    },
+                },
+            },
+        },
+        filetypes = tsserver_filetypes,
+    }
+
     local installed_servers = {
         lua_ls = {
             -- cmd = { ... },
@@ -93,7 +114,8 @@ local function setup_lspconfig()
         gopls = {},
         basedpyright = {},
         tailwindcss = {},
-        vtsls = {},
+        vue_ls = {},
+        vtsls = vtsls_config,
     }
 
     for server, server_opts in pairs(installed_servers) do
@@ -101,7 +123,7 @@ local function setup_lspconfig()
         -- NVIM-UFO supported
         capabilities.textDocument.foldingRange = {
             dynamicRegistration = false,
-            lineFoldingOnly = true
+            lineFoldingOnly = true,
         }
         local opts = {
             capabilities = capabilities,
@@ -199,14 +221,17 @@ return {
         opts = {
             keymap = {
                 preset = "default",
-                ['<CR>'] = { 'accept', 'fallback' },
-                ['<Tab>'] = {
+                ["<CR>"] = { "accept", "fallback" },
+                ["<Tab>"] = {
                     function(cmp)
-                        if cmp.snippet_active() then return cmp.accept()
-                        else return cmp.select_and_accept() end
+                        if cmp.snippet_active() then
+                            return cmp.accept()
+                        else
+                            return cmp.select_and_accept()
+                        end
                     end,
-                    'snippet_forward',
-                    'fallback'
+                    "snippet_forward",
+                    "fallback",
                 },
             },
 
