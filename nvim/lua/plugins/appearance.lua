@@ -244,7 +244,30 @@ return {
         config = function()
             vim.g.everforest_background = "hard"
             vim.g.everforest_better_performance = 1
-            vim.cmd.colorscheme "everforest"
+            -- vim.cmd.colorscheme "everforest"
+        end,
+    },
+    {
+        "webhooked/kanso.nvim",
+        version = false,
+        lazy = false,
+        priority = 1000,
+        config = function()
+            -- Default options:
+            require('kanso').setup({
+                bold = true,                 -- enable bold fonts
+                italics = true,              -- enable italics
+                compile = false,             -- enable compiling the colorscheme
+                undercurl = true,            -- enable undercurls
+                commentStyle = { italic = true },
+                functionStyle = {},
+                keywordStyle = { italic = false},
+                background = "ink", -- try "zen", "mist" or "pearl" !
+                foreground = "saturated", -- "default" or "saturated" (can also be a table like background)
+            })
+
+            -- setup must be called before loading
+            vim.cmd("colorscheme kanso")
         end,
     },
 }
