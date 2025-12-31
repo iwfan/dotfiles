@@ -8,5 +8,7 @@ use = "yazi-rs/plugins:no-status"
 rev = "b886025"
 hash = "3e023d31f29201efdac2a6ae35fedb78"
 
-[flavor]
-deps = []
+[[flavor.deps]]
+use = "yazi-rs/flavors:dracula"
+rev = "9276ffa"
+hash = "7a870f143a4026a893ea3123be711e7a"
