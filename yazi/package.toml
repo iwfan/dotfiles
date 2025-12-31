@@ -12,3 +12,13 @@ hash = "3e023d31f29201efdac2a6ae35fedb78"
 use = "yazi-rs/flavors:dracula"
 rev = "9276ffa"
 hash = "7a870f143a4026a893ea3123be711e7a"
+
+[[flavor.deps]]
+use = "marcosvnmelo/kanagawa-dragon"
+rev = "4905527"
+hash = "35929fa6d7ecf291d3d39e58167e7770"
+
+[[flavor.deps]]
+use = "Chromium-3-Oxide/everforest-medium"
+rev = "0158f0f"
+hash = "a7c36abf0b13289aceb1c20a17c6a63e"

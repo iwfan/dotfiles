@@ -244,7 +244,7 @@ return {
         config = function()
             vim.g.everforest_background = "hard"
             vim.g.everforest_better_performance = 1
-            -- vim.cmd.colorscheme "everforest"
+            vim.cmd.colorscheme "everforest"
         end,
     },
     {
@@ -267,7 +267,7 @@ return {
             })
 
             -- setup must be called before loading
-            vim.cmd("colorscheme kanso")
+            -- vim.cmd("colorscheme kanso")
         end,
     },
 }
