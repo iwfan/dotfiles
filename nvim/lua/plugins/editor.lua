@@ -2,7 +2,7 @@ return {
     { "nvim-lua/plenary.nvim" },
     {
         "nvim-treesitter/nvim-treesitter",
-        branch = 'master',
+        branch = "master",
         build = ":TSUpdate",
         lazy = false,
         config = function()
@@ -84,9 +84,9 @@ return {
                         -- and should return the mode ('v', 'V', or '<c-v>') or a table
                         -- mapping query_strings to modes.
                         selection_modes = {
-                            ['@parameter.outer'] = 'v', -- charwise
-                            ['@function.outer'] = 'V', -- linewise
-                            ['@class.outer'] = '<c-v>', -- blockwise
+                            ["@parameter.outer"] = "v", -- charwise
+                            ["@function.outer"] = "V", -- linewise
+                            ["@class.outer"] = "<c-v>", -- blockwise
                         },
                         -- If you set this to `true` (default is `false`) then any textobject is
                         -- extended to include preceding or succeeding whitespace. Succeeding
@@ -135,10 +135,10 @@ return {
         },
     },
     {
-        'kevinhwang91/nvim-ufo',
+        "kevinhwang91/nvim-ufo",
         event = { "BufReadPost", "BufNewFile" },
         opts = {},
-        dependencies = 'kevinhwang91/promise-async'
+        dependencies = "kevinhwang91/promise-async",
     },
     {
         "folke/which-key.nvim",
@@ -148,27 +148,49 @@ return {
             {
                 "<leader>?",
                 function()
-                    require("which-key").show({ global = false })
+                    require("which-key").show { global = false }
                 end,
                 desc = "Buffer Local Keymaps (which-key)",
             },
         },
     },
+    ---@type LazySpec
     {
-        "echasnovski/mini.files",
-        version = false,
-        opts = {},
+        "mikavilpas/yazi.nvim",
+        version = "*", -- use the latest stable version
+        event = "VeryLazy",
+        dependencies = {
+            { "nvim-lua/plenary.nvim", lazy = true },
+        },
         keys = {
+            -- 👇 in this section, choose your own keymappings!
             {
-                "<space>e",
-                mode = { "n" },
-                function()
-                    MiniFiles.open(vim.fn.expand('%'))
-                end,
-                desc = "Flash",
+                "<leader>e",
+                mode = { "n", "v" },
+                "<cmd>Yazi<cr>",
+                desc = "Open yazi at the current file",
+            },
+            {
+                "<leader>E",
+                "<cmd>Yazi toggle<cr>",
+                desc = "Resume the last yazi session",
             },
         },
-        event = "VeryLazy",
+        ---@type YaziConfig | {}
+        opts = {
+            -- if you want to open yazi instead of netrw, see below for more info
+            open_for_directories = false,
+            keymaps = {
+                show_help = "<f1>",
+            },
+        },
+        -- 👇 if you use `open_for_directories=true`, this is recommended
+        init = function()
+            -- mark netrw as loaded so it's not loaded at all.
+            --
+            -- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
+            vim.g.loaded_netrwPlugin = 1
+        end,
     },
     {
         "echasnovski/mini.hipatterns",
@@ -178,10 +200,10 @@ return {
             return {
                 highlighters = {
                     -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
-                    fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
-                    hack  = { pattern = '%f[%w]()HACK()%f[%W]',  group = 'MiniHipatternsHack'  },
-                    todo  = { pattern = '%f[%w]()TODO()%f[%W]',  group = 'MiniHipatternsTodo'  },
-                    note  = { pattern = '%f[%w]()NOTE()%f[%W]',  group = 'MiniHipatternsNote'  },
+                    fixme = { pattern = "%f[%w]()FIXME()%f[%W]", group = "MiniHipatternsFixme" },
+                    hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
+                    todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
+                    note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
 
                     hex_color = hi.gen_highlighter.hex_color { priority = 2000 },
                 },
