@@ -1,4 +1,5 @@
 font-family = Maple Mono NF CN
 font-size = 15
 macos-option-as-alt = true
+window-save-state = always
 keybind = super+backslash=toggle_quick_terminal
