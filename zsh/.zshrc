@@ -206,6 +206,7 @@ alias gco='git checkout'
 alias gst='git status'
 alias gp='git push'
 alias gl='git pull'
+alias glr='git pull --rebase'
 alias gd='git diff'
 alias glog='git log --oneline --graph --decorate'
 
@@ -388,18 +389,21 @@ setopt MULTIOS                   # Implicit tees/cats with multiple redirections
 # ----------------------------------------------------------------------------
 # Plugin Manager (Optional - uncomment if using zinit)
 # ----------------------------------------------------------------------------
-# ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-# 
-# if [ ! -d "$ZINIT_HOME" ]; then
-#   mkdir -p "$(dirname $ZINIT_HOME)"
-#   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-# fi
-# 
-# source "${ZINIT_HOME}/zinit.zsh"
-# 
-# zinit light zsh-users/zsh-syntax-highlighting
-# zinit light zsh-users/zsh-completions
-# zinit light zsh-users/zsh-autosuggestions
+ZINIT_HOME="$HOME/.local/share/zinit/zinit.git"
+
+if [ ! -d "$ZINIT_HOME" ]; then
+  bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
+fi
+
+source "${ZINIT_HOME}/zinit.zsh"
+
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(zoxide init zsh --cmd j)"
