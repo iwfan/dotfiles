@@ -5,22 +5,44 @@ function M.yazi_picker()
     -- Create a temporary file to store the selected file path
     local temp_file = vim.fn.tempname()
 
-    -- Save original tab
+    -- Save original tab and buffer
     local orig_tab = vim.api.nvim_get_current_tabpage()
+
+    -- Get current file's directory
+    local current_file = vim.api.nvim_buf_get_name(0)
+    local start_dir
+
+    if current_file ~= "" then
+        -- If there's a current file, use its directory
+        start_dir = vim.fn.fnamemodify(current_file, ":h")
+    else
+        -- If no file, use current working directory
+        start_dir = vim.fn.getcwd()
+    end
 
     -- Open new tab for yazi
     vim.cmd "tabnew"
     local yazi_tab = vim.api.nvim_get_current_tabpage()
 
-    -- Run yazi with --chooser-file to output selected file
-    local cmd = string.format('yazi --chooser-file="%s"', temp_file)
+    -- Run yazi with terminal command
+    local cmd = string.format('yazi --chooser-file="%s" "%s"', temp_file, start_dir)
+    vim.cmd("terminal " .. cmd)
 
-    vim.fn.termopen(cmd, {
-        on_exit = function(_, exit_code)
+    -- Enter insert mode for terminal
+    vim.cmd "startinsert"
+
+    -- Set up autocmd to handle when terminal closes
+    local augroup = vim.api.nvim_create_augroup("YaziPicker", { clear = true })
+    vim.api.nvim_create_autocmd("TermClose", {
+        group = augroup,
+        buffer = vim.api.nvim_get_current_buf(),
+        callback = function()
             vim.schedule(function()
                 -- Close yazi tab
-                vim.api.nvim_set_current_tabpage(yazi_tab)
-                vim.cmd "tabclose"
+                pcall(function()
+                    vim.api.nvim_set_current_tabpage(yazi_tab)
+                    vim.cmd "tabclose"
+                end)
 
                 -- Return to original tab
                 local tab_valid = false
@@ -50,6 +72,9 @@ function M.yazi_picker()
                     -- Clean up temp file if it exists
                     vim.fn.delete(temp_file)
                 end
+
+                -- Clear the autocmd group
+                vim.api.nvim_del_augroup_by_name "YaziPicker"
             end)
         end,
     })
