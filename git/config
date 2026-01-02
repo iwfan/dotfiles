@@ -3,27 +3,19 @@
     name = iwfan
     email = iwfan@duck.com
 [core]
-    editor = nvim -u $HOME/dotfiles/nvim/lua/kitty/init.lua
     excludesfile = ~/dotfiles/git/ignore
     autocrlf = input
     pager = delta
     ignorecase = false
-[init]
-    defaultBranch = main
-[color]
-    ui = true
 [interactive]
     diffFilter = delta --color-only
 [delta]
-    syntax-theme = Sublime Snazzy
     side-by-side = false
     navigate = true
-    features = line-numbers decorations
-[delta "decorations"]
-    commit-decoration-style = bold yellow box ul
-    file-style = bold yellow ul
-    file-decoration-style = none
-    hunk-header-decoration-style = cyan box ul
+    dark = true
+    line-numbers = true
+[merge]
+    conflictStyle = zdiff3
 [commit]
     verbose = true
 [push]
@@ -37,4 +29,4 @@
 [branch]
     autoSetupRebase = always
 [includeIf "gitdir:~/works/"]
-    path = /Users/f/works/.gitconfig
+    path = ~/works/.gitconfig
