@@ -99,9 +99,12 @@ vim.keymap.set("n", "<space><bs>", [["_dd]])
 vim.keymap.set("n", "[<space>", ":<c-u>put! =repeat(nr2char(10), v:count1)<CR>'[", { silent = true })
 vim.keymap.set("n", "]<space>", ":<c-u>put =repeat(nr2char(10), v:count1)<CR>", { silent = true })
 
+-- file manager
+vim.keymap.set("n", "<C-t>", "<cmd>Yazi<cr>")
+vim.keymap.set("n", "<space>e", "<cmd>Yazi<cr>")
+
 -- Disabled keys
 vim.keymap.set("n", "<C-q>", "<Nop>")
 vim.keymap.set("n", "<C-y>", "<Nop>")
-vim.keymap.set("n", "<C-t>", "<cmd>Yazi<cr>")
 vim.keymap.set("n", "<C-,>", ":echo 3<cr>")
 vim.keymap.set("n", "<C-.>", ":echo 4<cr>")
