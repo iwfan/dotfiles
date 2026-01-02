@@ -3,6 +3,7 @@ font-size = 15
 macos-option-as-alt = true
 macos-titlebar-style = "tabs"
 window-save-state = always
+title = " "
 
 keybind = super+backslash=toggle_quick_terminal
 
