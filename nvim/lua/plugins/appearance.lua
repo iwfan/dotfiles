@@ -244,7 +244,34 @@ return {
         config = function()
             vim.g.everforest_background = "hard"
             vim.g.everforest_better_performance = 1
-            vim.cmd.colorscheme "everforest"
+            -- vim.cmd.colorscheme "everforest"
+        end,
+    },
+    {
+        "webhooked/kanso.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+        config = function()
+            require("kanso").setup {
+                italics = true, -- enable italics
+                commentStyle = { italic = true },
+                keywordStyle = { italic = false },
+                colors = { -- add/modify theme and palette colors
+                    palette = {
+                        -- Mist Bg Shades
+                        mistBg0 = "#282c34",
+                        mistBg1 = "#262626",
+                        mistBg2 = "#3a3a3a",
+                        mistBg3 = "#666666",
+                    },
+                },
+                background = "mist",
+                foreground = "saturated", -- "default" or "saturated" (can also be a table like background)
+            }
+
+            -- setup must be called before loading
+            vim.cmd "colorscheme kanso-mist"
         end,
     },
 }
