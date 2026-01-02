@@ -14,10 +14,10 @@ info () {
     printf "${blue}$1${normal}\n"
 }
 
-# fish-shell
-ln -s ~/dotfiles/fish ~/.config/fish
-# kitty
-ln -s ~/dotfiles/kitty ~/.config/kitty
+# Zsh Setup
+ln -s ~/dotfiles/zsh/.zshrc ~/.zshrc
+# Tmux config
+ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 # yazi
 ln -s ~/dotfiles/yazi ~/.config/yazi
 # Neovim
@@ -28,9 +28,5 @@ ln -s ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/lazygit/c
 # Rime
 ln -s ~/dotfiles/rime-ice ~/Library/Rime
 ln -s ~/dotfiles/rime-ice ~/.config/ibus/rime
-# Zsh Setup
-ln -s ~/dotfiles/zsh/.zshenv $HOME/.config/zsh/.zshenv
-ln -s ~/dotfiles/zsh/.zprofile $HOME/.config/zsh/.zprofile
-ln -s ~/dotfiles/zsh/.zshrc $HOME/.config/zsh/.zshrc
 
 success "link finished."

@@ -374,8 +374,8 @@ export FZF_CTRL_T_OPTS="$FZF_BASE_OPTS"
 export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
 export FZF_ALT_C_OPTS="$FZF_BASE_OPTS"
 
-export FZF_COMPLETION_TRIGGER='\'
-export FZF_COMPLETION_OPTS='--border --info=inline'
+export FZF_COMPLETION_TRIGGER='?'
+export FZF_COMPLETION_OPTS="$FZF_BASE_OPTS"
 
 
 # ----------------------------------------------------------------------------
@@ -408,6 +408,7 @@ zinit wait lucid for \
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(zoxide init zsh --cmd j)"
 eval "$(mise activate zsh)"
+FZF_CTRL_T_COMMAND= FZF_ALT_C_COMMAND= source <(fzf --zsh)
 
 # ----------------------------------------------------------------------------
 # Local Configuration
