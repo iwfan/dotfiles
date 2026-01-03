@@ -134,8 +134,8 @@ return {
             return {
                 options = {
                     icons_enabled = false,
-                    component_separators = "",
-                    section_separators = "",
+                    component_separators = { left = '', right = ''},
+                    section_separators = { left = '', right = ''},
                     globalstatus = true,
                     disabled_filetypes = {
                         statusline = {
@@ -248,30 +248,13 @@ return {
         end,
     },
     {
-        "webhooked/kanso.nvim",
+        "sainnhe/gruvbox-material",
         lazy = false,
         priority = 1000,
-        opts = {},
         config = function()
-            require("kanso").setup {
-                italics = true, -- enable italics
-                commentStyle = { italic = true },
-                keywordStyle = { italic = false },
-                colors = { -- add/modify theme and palette colors
-                    palette = {
-                        -- Mist Bg Shades
-                        mistBg0 = "#282c34",
-                        mistBg1 = "#262626",
-                        mistBg2 = "#3a3a3a",
-                        mistBg3 = "#666666",
-                    },
-                },
-                background = "mist",
-                foreground = "saturated", -- "default" or "saturated" (can also be a table like background)
-            }
-
-            -- setup must be called before loading
-            vim.cmd "colorscheme kanso-mist"
+            vim.g.gruvbox_material_background = "hard"
+            vim.g.gruvbox_material_foreground = "mix"
+            vim.cmd "colorscheme gruvbox-material"
         end,
     },
 }
