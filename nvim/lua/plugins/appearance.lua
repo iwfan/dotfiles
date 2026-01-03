@@ -244,7 +244,7 @@ return {
         config = function()
             vim.g.everforest_background = "hard"
             vim.g.everforest_better_performance = 1
-            -- vim.cmd.colorscheme "everforest"
+            vim.cmd.colorscheme "everforest"
         end,
     },
     {
@@ -254,7 +254,7 @@ return {
         config = function()
             vim.g.gruvbox_material_background = "hard"
             vim.g.gruvbox_material_foreground = "mix"
-            vim.cmd "colorscheme gruvbox-material"
+            -- vim.cmd "colorscheme gruvbox-material"
         end,
     },
 }

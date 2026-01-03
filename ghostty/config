@@ -4,7 +4,9 @@ macos-option-as-alt = true
 macos-titlebar-style = "tabs"
 window-save-state = always
 title = " "
-theme = Gruvbox Dark Hard
+# theme = Gruvbox Dark Hard
+theme = Everforest Dark Hard
+background = #272e33
 
 keybind = super+backslash=toggle_quick_terminal
 
