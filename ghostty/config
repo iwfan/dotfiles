@@ -8,8 +8,6 @@ title = " "
 theme = Everforest Dark Hard
 background = #272e33
 
-keybind = super+backslash=toggle_quick_terminal
-
 # 将 CMD 键映射为 tmux 命令（使用 Ctrl+b 作为 prefix）
 initial-command = "/opt/homebrew/bin/tmux new-session -A -s f"
 
@@ -49,4 +47,7 @@ keybind = super+r=text:\x02r
 
 # CMD+Z 最大化/还原当前面板
 keybind = super+z=text:\x02z
+
+# CMD+\ 打开 tmux 的 popup window
+keybind = super+backslash=text:\x02\x20
 
