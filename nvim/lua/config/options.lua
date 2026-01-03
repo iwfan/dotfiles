@@ -85,7 +85,7 @@ vim.opt.listchars = {
 }
 vim.opt.fillchars = {
     eob = " ",                                     -- Remove ~ at end of buffer
-    diff = "╱"                                     -- Better diff separator
+    diff = " "                                     -- Better diff separator
 }
 
 -- === 剪贴板设置 ===
