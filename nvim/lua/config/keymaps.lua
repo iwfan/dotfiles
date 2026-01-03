@@ -62,8 +62,8 @@ vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 
 -- Comment Line & Block
-vim.keymap.set("n", "<C-/>", "gcc", { remap = true, desc = "commentline" })
-vim.keymap.set("v", "<C-/>", "gc", { remap = true, desc = "comment visual" })
+vim.keymap.set("n", "<C-_>", "gcc", { remap = true, desc = "commentline" })
+vim.keymap.set("v", "<C-_>", "gc", { remap = true, desc = "comment visual" })
 
 -- window management
 vim.keymap.set("n", "<C-h>", [[<c-w>h]], { desc = "Go to top window" })
