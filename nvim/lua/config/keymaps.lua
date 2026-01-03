@@ -102,6 +102,8 @@ vim.keymap.set("n", "]<space>", ":<c-u>put =repeat(nr2char(10), v:count1)<CR>", 
 -- file manager
 vim.keymap.set("n", "<C-t>", "<cmd>Yazi<cr>")
 vim.keymap.set("n", "<space>e", "<cmd>Yazi<cr>")
+-- lazy git
+vim.keymap.set("n", "<C-g>", "<cmd>Lazygit<cr>")
 
 -- Disabled keys
 vim.keymap.set("n", "<C-q>", "<Nop>")
