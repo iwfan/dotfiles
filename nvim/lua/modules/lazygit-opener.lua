@@ -25,6 +25,10 @@ function M.lazygit()
     local cmd = string.format('cd "%s" && lazygit', start_dir)
     vim.cmd("terminal " .. cmd)
 
+    -- Get the terminal buffer and job id
+    local term_buf = vim.api.nvim_get_current_buf()
+    local term_job_id = vim.b[term_buf].terminal_job_id
+
     -- Enter insert mode for terminal
     vim.cmd "startinsert"
 
@@ -32,13 +36,23 @@ function M.lazygit()
     local augroup = vim.api.nvim_create_augroup("LazygitOpener", { clear = true })
     vim.api.nvim_create_autocmd("TermClose", {
         group = augroup,
-        buffer = vim.api.nvim_get_current_buf(),
+        buffer = term_buf,
         callback = function()
             vim.schedule(function()
+                -- Stop the job if it's still running
+                if term_job_id then
+                    pcall(vim.fn.jobstop, term_job_id)
+                end
+
+                -- Delete the terminal buffer
+                if vim.api.nvim_buf_is_valid(term_buf) then
+                    vim.api.nvim_buf_delete(term_buf, { force = true })
+                end
+
                 -- Close lazygit tab
                 pcall(function()
                     vim.api.nvim_set_current_tabpage(lazygit_tab)
-                    vim.cmd "tabclose"
+                    vim.cmd "tabclose!"
                 end)
 
                 -- Return to original tab
@@ -58,7 +72,7 @@ function M.lazygit()
                 vim.cmd "checktime"
 
                 -- Clear the autocmd group
-                vim.api.nvim_del_augroup_by_name "LazygitOpener"
+                pcall(vim.api.nvim_del_augroup_by_name, "LazygitOpener")
             end)
         end,
     })

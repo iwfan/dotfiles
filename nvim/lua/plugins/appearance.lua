@@ -98,6 +98,13 @@ return {
         },
         keys = {
             {
+                "<C-\\>",
+                function()
+                    Snacks.picker.buffers()
+                end,
+                desc = "Buffers",
+            },
+            {
                 "<leader>b",
                 function()
                     Snacks.picker.buffers()
@@ -105,11 +112,25 @@ return {
                 desc = "Buffers",
             },
             {
+                "<C-f>",
+                function()
+                    Snacks.picker.grep()
+                end,
+                desc = "Grep",
+            },
+            {
                 "<leader>/",
                 function()
                     Snacks.picker.grep()
                 end,
                 desc = "Grep",
+            },
+            {
+                "<C-p>",
+                function()
+                    Snacks.picker.smart()
+                end,
+                desc = "Search File",
             },
             {
                 "<leader>p",

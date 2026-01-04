@@ -28,6 +28,10 @@ function M.yazi_picker()
     local cmd = string.format('yazi --chooser-file="%s" "%s"', temp_file, start_dir)
     vim.cmd("terminal " .. cmd)
 
+    -- Get the terminal buffer and job id
+    local term_buf = vim.api.nvim_get_current_buf()
+    local term_job_id = vim.b[term_buf].terminal_job_id
+
     -- Enter insert mode for terminal
     vim.cmd "startinsert"
 
@@ -35,13 +39,23 @@ function M.yazi_picker()
     local augroup = vim.api.nvim_create_augroup("YaziPicker", { clear = true })
     vim.api.nvim_create_autocmd("TermClose", {
         group = augroup,
-        buffer = vim.api.nvim_get_current_buf(),
+        buffer = term_buf,
         callback = function()
             vim.schedule(function()
+                -- Stop the job if it's still running
+                if term_job_id then
+                    pcall(vim.fn.jobstop, term_job_id)
+                end
+
+                -- Delete the terminal buffer
+                if vim.api.nvim_buf_is_valid(term_buf) then
+                    vim.api.nvim_buf_delete(term_buf, { force = true })
+                end
+
                 -- Close yazi tab
                 pcall(function()
                     vim.api.nvim_set_current_tabpage(yazi_tab)
-                    vim.cmd "tabclose"
+                    vim.cmd "tabclose!"
                 end)
 
                 -- Return to original tab
@@ -74,7 +88,7 @@ function M.yazi_picker()
                 end
 
                 -- Clear the autocmd group
-                vim.api.nvim_del_augroup_by_name "YaziPicker"
+                pcall(vim.api.nvim_del_augroup_by_name, "YaziPicker")
             end)
         end,
     })
