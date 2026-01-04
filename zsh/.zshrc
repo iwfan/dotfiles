@@ -308,6 +308,67 @@ killport() {
  lsof -nP -iTCP -sTCP:LISTEN | grep $argv[1] | awk '{print $2}' | xargs kill
 }
 
+ai() {
+    # Default model
+    local model="xiaomi/mimo-v2-flash:free"
+
+    # 1. Check for optional -m flag
+    if [[ "$1" == "-m" ]]; then
+        if [[ -z "$2" ]]; then
+            echo "Error: Please provide a model name after -m"
+            return 1
+        fi
+        model="$2"
+        shift 2 # Remove the flag and model argument from the list
+    fi
+
+    # 2. The rest of the arguments are treated as the prompt
+    local prompt="$*"
+
+    # Check if prompt is missing
+    if [[ -z "$prompt" ]]; then
+        echo "Usage: q [-m model_name] \"Your prompt here\""
+        return 1
+    fi
+
+    # Check API Key
+    if [[ -z "$OPENROUTER_API_KEY" ]]; then
+        echo "Error: OPENROUTER_API_KEY environment variable is not set."
+        return 1
+    fi
+
+    # 3. Construct JSON payload using the variable $model
+    local JSON_PAYLOAD
+    JSON_PAYLOAD=$(jq -n \
+        --arg model "$model" \
+        --arg content "$prompt" \
+        '{
+            model: $model,
+            messages: [
+                {
+                    role: "system",
+                    content: "You are a helpful, expert coding and general assistant. Always respond in valid Markdown format. Be concise."
+                },
+                {
+                    role: "user",
+                    content: $content
+                }
+            ],
+            "reasoning": {
+              "enabled": true
+            }
+        }')
+
+    # 4. Execute request
+    curl -sS \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+        -d "$JSON_PAYLOAD" \
+        https://openrouter.ai/api/v1/chat/completions \
+        | jq -r '.choices[0].message.content' | glow -p
+}
+
+bindkey -s '^Xai' 'ai -m xiaomi/mimo-v2-flash:free ""\C-b'
 
 # ----------------------------------------------------------------------------
 # Environment Variables
