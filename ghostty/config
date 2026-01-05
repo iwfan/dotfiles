@@ -18,11 +18,14 @@ keybind = super+t=text:\x02c
 keybind = super+w=text:\x02&
 
 # CMD+数字 切换到指定窗口
-keybind = super+1=text:\x021
-keybind = super+2=text:\x022
-keybind = super+3=text:\x023
-keybind = super+4=text:\x024
-keybind = super+5=text:\x025
+keybind = super+digit_1=text:\x021
+keybind = super+digit_2=text:\x022
+keybind = super+digit_3=text:\x023
+keybind = super+digit_4=text:\x024
+keybind = super+digit_5=text:\x025
+keybind = super+digit_6=text:\x026
+keybind = super+digit_7=text:\x027
+keybind = super+digit_8=text:\x028
 
 # CMD+D 水平分割
 keybind = super+d=text:\x02|

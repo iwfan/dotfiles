@@ -135,6 +135,68 @@ return {
         },
     },
     {
+        "mfussenegger/nvim-dap",
+        keys = {
+            { "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
+            { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
+            { "<leader>dd", function() require("dapui").toggle() end, desc = "Toggle Dap UI" },
+            { "<F6>", function() require("dap").terminate() end, desc = "Terminate" },
+            { "<F7>", function() require("dap").step_back() end, desc = "Step Back" },
+            { "<F8>", function() require("dap").continue() end, desc = "Run/Continue" },
+            { "<F9>", function() require("dap").step_over() end, desc = "Step Over" },
+            { "<F10>", function() require("dap").step_into() end, desc = "Step Into" },
+            { "<F11>", function() require("dap").step_out() end, desc = "Step Out" },
+            { "<F12>", function() require("dap").run_to_cursor() end, desc = "Step Out" },
+            { "<leader>dj", function() require("dap").down() end, desc = "Down" },
+            { "<leader>dk", function() require("dap").up() end, desc = "Up" },
+            { "<leader>dr", function() require("dap").repl.toggle() end, desc = "Toggle REPL" },
+            { "<leader>ds", function() require("dap").session() end, desc = "Session" },
+            { "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
+            { "<leader>de", function() require("dapui").eval() end, desc = "Eval" },
+        },
+        dependencies = {
+            "rcarriga/nvim-dap-ui",
+            "theHamsta/nvim-dap-virtual-text",
+            "nvim-neotest/nvim-nio",
+        },
+        config = function()
+            local dap = require "dap"
+            local dapui = require "dapui"
+
+            require("dapui").setup()
+
+            require("nvim-dap-virtual-text").setup {
+                -- This just tries to mitigate the chance that I leak tokens here. Probably won't stop it from happening...
+                display_callback = function(variable)
+                    local name = string.lower(variable.name)
+                    local value = string.lower(variable.value)
+                    if name:match "secret" or name:match "api" or value:match "secret" or value:match "api" then
+                        return "*****"
+                    end
+
+                    if #variable.value > 15 then
+                        return " " .. string.sub(variable.value, 1, 15) .. "... "
+                    end
+
+                    return " " .. variable.value
+                end,
+            }
+
+            -- dap.listeners.before.attach.dapui_config = function()
+            --     dapui.open()
+            -- end
+            -- dap.listeners.before.launch.dapui_config = function()
+            --     dapui.open()
+            -- end
+            dap.listeners.before.event_terminated.dapui_config = function()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited.dapui_config = function()
+                dapui.close()
+            end
+        end,
+    },
+    {
         "kevinhwang91/nvim-ufo",
         event = { "BufReadPost", "BufNewFile" },
         opts = {},
