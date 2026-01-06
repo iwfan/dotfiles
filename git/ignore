@@ -6,5 +6,3 @@ tags
 .idea
 .vscode
 Session.vim
-
-**/.claude/settings.local.json
