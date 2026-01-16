@@ -390,6 +390,10 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 # Homebrew's sbin
 export HOMEBREW_NO_AUTO_UPDATE=true
 
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 # Bat
 export BAT_PAGER="less -RF"
 export BAT_STYLE="changes,numbers"

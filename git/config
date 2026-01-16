@@ -1,7 +1,4 @@
 # vim:ft=gitconfig
-[user]
-    name = iwfan
-    email = iwfan@duck.com
 [core]
     excludesfile = ~/dotfiles/git/ignore
     autocrlf = input
@@ -28,5 +25,5 @@
     helper = cache --timeout=3600
 [branch]
     autoSetupRebase = always
-[includeIf "gitdir:~/works/"]
-    path = ~/works/.gitconfig
+[init]
+	defaultBranch = main
