@@ -177,6 +177,64 @@ ${jobs_indicator}${prompt_symbol} "
 RPROMPT=''
 
 # ----------------------------------------------------------------------------
+# Hooks(https://gist.github.com/elliottminns/09a598082d77f795c88e93f7f73dba61)
+# ----------------------------------------------------------------------------
+autoload -Uz add-zsh-hook
+
+# Then Define separate functions
+function auto_venv() {
+  # If already in a virtualenv, do nothing
+  if [[ -n "$VIRTUAL_ENV" && "$PWD" != *"${VIRTUAL_ENV:h}"* ]]; then
+    deactivate
+    return
+  fi
+
+  [[ -n "$VIRTUAL_ENV" ]] && return
+
+  local dir="$PWD"
+  while [[ "$dir" != "/" ]]; do
+    if [[ -f "$dir/.venv/bin/activate" ]]; then
+      source "$dir/.venv/bin/activate"
+      return
+    fi
+    dir="${dir:h}"
+  done
+}
+
+add-zsh-hook chpwd auto_venv
+
+# Check if git repo has local user info configured
+function check_git_user_config() {
+  # Only check if we're in a git repository
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+    # Check if local user.name is set
+    local local_user_name=$(git config --local user.name 2>/dev/null)
+    # Check if local user.email is set
+    local local_user_email=$(git config --local user.email 2>/dev/null)
+
+    # If either is missing, show a warning
+    if [[ -z "$local_user_name" ]] || [[ -z "$local_user_email" ]]; then
+      echo ""
+      echo "⚠️  Warning: This git repository is missing local user configuration!"
+      echo ""
+      if [[ -z "$local_user_name" ]]; then
+        echo "   ❌ Local user.name is not set"
+      fi
+      if [[ -z "$local_user_email" ]]; then
+        echo "   ❌ Local user.email is not set"
+      fi
+      echo ""
+      echo "   To fix this, run:"
+      echo "   git config user.name \"Your Name\""
+      echo "   git config user.email \"your.email@example.com\""
+      echo ""
+    fi
+  fi
+}
+
+add-zsh-hook chpwd check_git_user_config
+
+# ----------------------------------------------------------------------------
 # Aliases
 # ----------------------------------------------------------------------------
 
