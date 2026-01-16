@@ -448,6 +448,19 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 # Homebrew's sbin
 export HOMEBREW_NO_AUTO_UPDATE=true
 
+# Set ANDROID_HOME before using it
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+
+# Android tools paths
+export PATH="$ANDROID_HOME/build-tools/35.0.1:$PATH"
+export PATH="$ANDROID_HOME/tools:$PATH"
+export PATH="$ANDROID_HOME/tools/bin:$PATH"
+export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
+export PATH="$ANDROID_HOME/platform-tools:$PATH"
+
+# Flutter
+export PATH="$HOME/development/flutter/bin:$PATH"
+
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
