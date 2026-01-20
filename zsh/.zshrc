@@ -429,6 +429,97 @@ ai() {
 bindkey -s '^Xai' 'ai -m xiaomi/mimo-v2-flash:free ""\C-b'
 
 # ----------------------------------------------------------------------------
+# Git Worktree (https://gist.github.com/vikingmute/e85e0b4249a65e41d64315c7790e5987)
+# ----------------------------------------------------------------------------
+
+confirm() {
+  local prompt="${1:-Are you sure? [y/N]} "
+
+  read -q "response?$prompt"
+
+  # 打印换行（因为 read -q 不换行）
+  echo
+
+  if [[ "$response" =~ ^[yY]$ ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+gta() {
+  local worktree_branch="$1"
+  local git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+
+  if [ $? -eq 1 ]; then
+    echo "❌ Not a git repo"
+    return 1
+  fi
+
+  if [[ -z "$worktree_branch" ]]; then
+    read -r "?Enter branch name: " worktree_branch
+    if [[ -z "$worktree_branch" ]]; then
+      echo "❌ Branch name is required"
+      return 1
+    fi
+  fi
+
+  local dir_name="$(basename "$git_root")"
+  # Strip existing (...) suffix if present to avoid repo(a)(b) nested names
+  local repo_name="${dir_name%%\(*}"
+  local worktree_path="$git_root/../$repo_name($worktree_branch)"
+
+  # Check if branch exists to decide between creating (-b) or checkout
+  if git show-ref --verify --quiet "refs/heads/$worktree_branch"; then
+    echo "ℹ️  Branch '$worktree_branch' exists. Checking out..."
+    git worktree add "$worktree_path" "$worktree_branch" || return 1
+  else
+    git worktree add -b "$worktree_branch" "$worktree_path" || return 1
+  fi
+
+  cd "$worktree_path" || return 1
+  [[ -f "$worktree_path/.mise.toml" && -n "$(command -v mise)" ]] && mise trust "$worktree_path"
+}
+
+gtd() {
+  local git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+
+  if [ $? -eq 1 ]; then
+    echo "❌ Not a git repo"
+    return 1
+  fi
+
+  local worktree_name="$(basename "$git_root")"
+
+  if [[ ! "$worktree_name" =~ .+\(.+\) ]]; then
+    echo "❌ Current directory name doesn't match pattern 'repo_name(branch_name)'"
+    return 1
+  fi
+
+  local branch_name="${worktree_name#*\(}"
+  branch_name="${branch_name%\)}"
+
+  # Find the main worktree to fallback to safely
+  local main_worktree_path=$(git worktree list --porcelain | head -n1 | cut -d ' ' -f2)
+
+  if confirm "🚨 Delete Worktree: $worktree_name? (Uncommitted changes will be lost!) (y/n) "; then
+    # Move out of the directory before deleting
+    if [[ -d "$main_worktree_path" ]]; then
+      cd "$main_worktree_path" || return 1
+    else
+      echo "❌ Can not find git repo location"
+      return 1
+    fi
+
+    git worktree remove "$git_root" --force > /dev/null
+
+    if confirm "🚨 Delete Branch: $branch_name? (y/n) "; then
+      git branch -D "$branch_name" > /dev/null
+    fi
+  fi
+}
+
+# ----------------------------------------------------------------------------
 # Environment Variables
 # ----------------------------------------------------------------------------
 export EDITOR='nvim'
@@ -445,8 +536,10 @@ export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
 export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 
-# Homebrew's sbin
+# Homebrew
 export HOMEBREW_NO_AUTO_UPDATE=true
+# TLDR
+export TLDR_AUTO_UPDATE_DISABLED=true
 
 # Set ANDROID_HOME before using it
 export ANDROID_HOME="$HOME/Library/Android/sdk"
