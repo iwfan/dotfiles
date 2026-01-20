@@ -519,6 +519,22 @@ gtd() {
   fi
 }
 
+gtc() {
+  local git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+
+  if [ $? -eq 1 ]; then
+    echo "❌ Not a git repo"
+    return 1
+  fi
+
+  local selected=$(git worktree list | fzf --height=20% --layout=reverse --prompt="Switch to Worktree > ")
+
+  if [[ -n "$selected" ]]; then
+    local worktree_path=$(echo "$selected" | awk '{print $1}')
+    cd "$worktree_path"
+  fi
+}
+
 # ----------------------------------------------------------------------------
 # Environment Variables
 # ----------------------------------------------------------------------------
