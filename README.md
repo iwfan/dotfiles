@@ -11,8 +11,8 @@
 
 # Terminal Environment
 
-Yes, Ghostty & Zsh.
 
+- Terminal: [Kitty](https://github.com/kovidgoyal/kitty)
 - Terminal: [Ghostty](https://github.com/ghostty-org/ghostty)
 - Shell: [Zsh](https://www.zsh.org/)
 - Fonts: [Maple Mono NF CN](https://github.com/subframe7536/maple-font)
@@ -20,5 +20,3 @@ Yes, Ghostty & Zsh.
 - [Tmux](https://github.com/tmux/tmux)
 - [Lazygit](https://github.com/jesseduffield/lazygit)
 - [Yazi](https://github.com/sxyazi/yazi)
-
-https://github.com/mikesmithgh/kitty-scrollback.nvim
