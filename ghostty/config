@@ -26,7 +26,8 @@ keybind = super+digit_5=text:\x025
 keybind = super+digit_6=text:\x026
 keybind = super+digit_7=text:\x027
 keybind = super+digit_8=text:\x028
-keybind = super+digit_9=text:\x02l
+keybind = super+digit_9=text:\x02^
+keybind = super+digit_0=text:\x02l
 
 # CMD+D 水平分割
 keybind = super+d=text:\x02|
@@ -41,7 +42,7 @@ keybind = super+bracket_left=text:\x02o
 keybind = super+bracket_right=text:\x02o
 
 # CMD+K 清屏
-keybind = super+k=text:\x02\x0c
+keybind = super+k=text:\x0c
 
 # CMD+F 进入复制模式（搜索）
 keybind = super+f=text:\x02[
