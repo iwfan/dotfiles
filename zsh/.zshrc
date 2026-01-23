@@ -563,6 +563,7 @@ export ANDROID_HOME="$HOME/Library/Android/sdk"
 # Android tools paths
 export PATH="$ANDROID_HOME/build-tools/35.0.1:$PATH"
 export PATH="$ANDROID_HOME/tools:$PATH"
+export PATH="$ANDROID_HOME/emulator:$PATH"
 export PATH="$ANDROID_HOME/tools/bin:$PATH"
 export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
 export PATH="$ANDROID_HOME/platform-tools:$PATH"
