@@ -1,4 +1,7 @@
-font-family = Maple Mono NF CN
+font-family = Maple Mono NF CN Medium
+font-family-bold = Maple Mono NF CN Bold
+font-family-italic = Maple Mono NF CN Medium Italic
+font-family-bold-italic = Maple Mono NF CN Bold Italic
 font-size = 15
 macos-option-as-alt = true
 macos-titlebar-style = "tabs"
@@ -53,6 +56,9 @@ keybind = super+r=text:\x02r
 # CMD+Z 最大化/还原当前面板
 keybind = super+z=text:\x02z
 
-# CMD+\ 打开 tmux 的 popup window
-keybind = super+backslash=text:\x02\x20
+# CMD+\ 选择不同的 pane
+keybind = super+backslash=text:\x02q
+
+# CMD+' 打开 tmux 的 popup window
+keybind = super+apostrophe=text:\x02\x20
 
