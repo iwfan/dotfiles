@@ -165,12 +165,18 @@ precmd() {
   # Time for right side
   local time_display="%F{240}%*%f"
   
-  # Second line: background jobs indicator + prompt symbol
+  # Proxy indicator
+  local proxy_indicator=""
+  if [[ -n "$http_proxy" || -n "$https_proxy" || -n "$all_proxy" ]]; then
+    proxy_indicator="%F{yellow}⚡︎%f "
+  fi
+  
+  # Second line: proxy indicator + background jobs indicator + prompt symbol
   local jobs_indicator="%(1j.%F{yellow}[✦]%f .)"
   local prompt_symbol="%(?,%F{cyan}→%f,%F{red}→%f)"
   
   PROMPT="${path_display}${git_info}
-${jobs_indicator}${prompt_symbol} "
+${proxy_indicator}${jobs_indicator}${prompt_symbol} "
 }
 
 # Clear right prompt
