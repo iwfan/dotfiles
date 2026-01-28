@@ -168,12 +168,12 @@ precmd() {
   # Proxy indicator
   local proxy_info=""
   if [[ -n "$http_proxy" || -n "$https_proxy" || -n "$all_proxy" ]]; then
-    proxy_info=" %F{240}via%f %F{yellow}⚡︎%f"
+    proxy_info=" %F{240}via%f %F{yellow}@%f"
   fi
   
   # Second line: background jobs indicator + prompt symbol
-  local jobs_indicator="%(1j.%F{yellow}[✦]%f .)"
-  local prompt_symbol="%(?,%F{cyan}➤%f,%F{red}➤%f)"
+  local jobs_indicator="%(1j.%F{yellow}[&]%f .)"
+  local prompt_symbol="%(?,%F{cyan}>%f,%F{red}!%f)"
   
   PROMPT="${path_display}${git_info}${proxy_info}
 ${jobs_indicator}${prompt_symbol} "
