@@ -115,7 +115,7 @@ nvim-widget() {
   zle reset-prompt
 }
 zle -N nvim-widget
-bindkey '^o' nvim-widget                       # Ctrl+V
+bindkey '^o' nvim-widget                       # Ctrl+O
 
 # ----------------------------------------------------------------------------
 # Prompt Configuration
