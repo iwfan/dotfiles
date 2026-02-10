@@ -85,37 +85,39 @@ bindkey '^[[1;5C' forward-word                 # Ctrl+Right
 bindkey '^[[1;5D' backward-word                # Ctrl+Left
 
 # Custom widget for lazygit
-lazygit-widget() {
+lazygit_widget() {
   BUFFER=""
   zle clear-screen
   lazygit
+  _build_prompt
   zle reset-prompt
 }
-zle -N lazygit-widget
-bindkey '^g' lazygit-widget                    # Ctrl+G
+zle -N lazygit_widget
+bindkey '^g' lazygit_widget                    # Ctrl+G
 
 # Custom widget for yazi
-yazi-widget() {
+yazi_widget() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
   yazi "$@" --cwd-file="$tmp"
   if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
     cd -- "$cwd"
   fi
   rm -f -- "$tmp"
+  _build_prompt
   zle reset-prompt
 }
-zle -N yazi-widget
-bindkey '^t' yazi-widget                       # Ctrl+T
+zle -N yazi_widget
+bindkey '^t' yazi_widget                       # Ctrl+T
 
 # Custom widget for nvim
-nvim-widget() {
+nvim_widget() {
   BUFFER=""
   zle clear-screen
   nvim
   zle reset-prompt
 }
-zle -N nvim-widget
-bindkey '^o' nvim-widget                       # Ctrl+O
+zle -N nvim_widget
+bindkey '^o' nvim_widget                       # Ctrl+O
 
 # ----------------------------------------------------------------------------
 # Prompt Configuration
@@ -128,25 +130,9 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' formats '%b'
 zstyle ':vcs_info:git:*' actionformats '%b|%a'
 
-# Function to get git status symbols
-git_prompt_status() {
-  local git_status=""
-  if git rev-parse --is-inside-work-tree &>/dev/null; then
-    # Check for uncommitted changes
-    if ! git diff --quiet 2>/dev/null; then
-      git_status="+"
-    fi
-    # Check for untracked files
-    if [[ -n $(git ls-files --others --exclude-standard 2>/dev/null) ]]; then
-      git_status="${git_status}?"
-    fi
-  fi
-  echo "$git_status"
-}
-
-
-# Precmd function to update vcs_info and build prompt
-precmd() {
+# Function to build prompt (shared by precmd and toggle-agent-mode)
+_build_prompt() {
+  # Update vcs_info first
   vcs_info
   
   # Path
@@ -155,32 +141,174 @@ precmd() {
   # Git branch with status
   local git_info=""
   if [[ -n "${vcs_info_msg_0_}" ]]; then
-    local git_status="$(git_prompt_status)"
     git_info=" %F{240}on %F{magenta}${vcs_info_msg_0_}%f"
-    if [[ -n "$git_status" ]]; then
-      git_info="${git_info} %F{red}[${git_status}]%f"
-    fi
   fi
-  
-  # Time for right side
-  local time_display="%F{240}%*%f"
+
+  # Agent mode indicator
+  local agent_info=""
+  if (( AGENT_MODE )); then
+    agent_info=" %F{240}with%f %F{green}agent%f"
+  fi
   
   # Proxy indicator
   local proxy_info=""
   if [[ -n "$http_proxy" || -n "$https_proxy" || -n "$all_proxy" ]]; then
-    proxy_info=" %F{240}via%f %F{yellow}@%f"
+    proxy_info=" %F{240}using%f %F{yellow}proxy%f"
   fi
   
   # Second line: background jobs indicator + prompt symbol
   local jobs_indicator="%(1j.%F{yellow}[&]%f .)"
   local prompt_symbol="%(?,%F{cyan}>%f,%F{red}!%f)"
   
-  PROMPT="${path_display}${git_info}${proxy_info}
+  PROMPT="${path_display}${git_info}${agent_info}${proxy_info}
 ${jobs_indicator}${prompt_symbol} "
 }
 
+# Precmd function to build prompt
+precmd() {
+  _build_prompt
+}
+
 # Clear right prompt
-RPROMPT=''
+RPROMPT='%F{240}%*%f'
+
+# ============================================================================
+# Agent Mode - Press Alt+Space to activate
+# ============================================================================
+typeset -g AGENT_MODE=0
+
+toggle_agent_mode() {
+  if [[ -z "$MOONSHOT_API_KEY" ]]; then
+      echo "⚠️  警告: 未设置 MOONSHOT_API_KEY 环境变量" >&2
+      echo "请在 ~/.zshrc 中添加: export MOONSHOT_API_KEY='your-key-here'" >&2
+  fi
+
+  if (( AGENT_MODE )); then
+    AGENT_MODE=0
+  else
+    AGENT_MODE=1
+  fi
+
+  # Rebuild prompt immediately
+  _build_prompt
+  zle reset-prompt
+}
+
+zle -N toggle_agent_mode
+# bind to Alt + Space
+bindkey '^[ ' toggle_agent_mode
+
+# ----------------------------------------------------------------------------
+# Agent Functions
+# ----------------------------------------------------------------------------
+
+# 命令帮助 agent - 根据用户描述生成命令
+command_help_agent() {
+  local log_file="/tmp/command_help_agent.log"
+  local content="${${1#\#}##[[:space:]]#}"
+  content="${content%%[[:space:]]#}"
+
+  [[ -z "$content" ]] && return
+  [[ -z "$MOONSHOT_API_KEY" ]] && { zle -M "⚠️  请先设置 MOONSHOT_API_KEY 环境变量"; return 1 }
+
+  zle -R "🤖 正在生成命令..."
+
+  local os_info="${OSTYPE}"
+  [[ "$OSTYPE" == darwin* ]] && os_info="macOS $(sw_vers -productVersion 2>/dev/null || echo unknown)"
+  [[ "$OSTYPE" == linux-gnu* ]] && os_info="Linux"
+
+  local response http_code
+  response=$(curl -sS -w '\n%{http_code}' \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $MOONSHOT_API_KEY" \
+    -d "$(jq -n \
+      --arg content "$content" \
+      --arg shell "${SHELL:t}" \
+      --arg os "$os_info" \
+      '{
+        model: "kimi-k2-turbo-preview",
+        messages: [
+          {
+            role: "system",
+            content: "You are a shell command generator for \($os) running \($shell). Your user is a dog that only knows how to press Enter. Generate commands compatible with this platform. Output ONLY the command, nothing else. No explanations, no markdown, no code blocks, no comments. Just the raw command."
+          },
+          { role: "user", content: $content }
+        ],
+        temperature: 0.3
+      }')" \
+    https://api.moonshot.cn/v1/chat/completions 2>>"$log_file")
+
+  local curl_exit=$?
+  http_code="${response##*$'\n'}"
+  response="${response%$'\n'*}"
+
+  {
+    echo "=== $(date '+%Y-%m-%d %H:%M:%S') ==="
+    echo "input: $content | curl_exit: $curl_exit | http_code: $http_code"
+    printf 'response: %s\n\n' "$response"
+  } >> "$log_file"
+
+  if [[ $curl_exit -ne 0 ]]; then
+    zle -M "❌ 网络错误 (curl exit: $curl_exit)，详情见 $log_file"
+    return 1
+  fi
+
+  if [[ "$http_code" -ne 200 ]]; then
+    local err=$(jq -r '.error.message // empty' <<< "$response" 2>/dev/null)
+    zle -M "❌ API 错误 ($http_code): ${err:-未知错误}，详情见 $log_file"
+    return 1
+  fi
+
+  local command=$(jq -r '.choices[0].message.content // empty' <<< "$response" 2>/dev/null)
+
+  if [[ -z "$command" ]]; then
+    zle -M "❌ 未能生成命令，详情见 $log_file"
+    return 1
+  fi
+
+  BUFFER="$command"
+  CURSOR=$#BUFFER
+  zle redisplay
+}
+
+# 普通对话 agent - 在 agent 模式下进行对话
+general_agent() {
+  local user_input="$1"
+  echo "💬 对话 Agent 收到消息: $user_input"
+  # TODO: 实现普通对话逻辑
+}
+
+# 处理 agent 模式下的命令执行
+agent_accept_line() {
+  # 空输入直接执行
+  if [[ -z "$BUFFER" ]]; then
+    zle accept-line
+    return
+  fi
+
+  # 处理 # 开头的命令帮助请求（不管是否在 AGENT_MODE）
+  if [[ $BUFFER == \#* ]]; then
+    # 调用命令帮助 agent
+    command_help_agent "$BUFFER"
+    return
+  fi
+
+  # 在 AGENT_MODE 下，普通输入调用 general_agent
+  if (( AGENT_MODE )); then
+    general_agent "$BUFFER"
+    return
+  fi
+
+  # 非 AGENT_MODE 下，正常执行命令
+  zle .accept-line
+}
+
+zle -N agent_accept_line
+
+# 将你的自定义 widget 加入到“清理建议”的触发列表中
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(agent_accept_line)
+
+bindkey '^M' agent_accept_line
 
 # ----------------------------------------------------------------------------
 # Hooks(https://gist.github.com/elliottminns/09a598082d77f795c88e93f7f73dba61)
@@ -339,6 +467,20 @@ disable_proxy() {
   unset http_proxy
   unset all_proxy
 }
+
+toggle_proxy_widget() {
+  if [[ -n "$http_proxy" || -n "$https_proxy" || -n "$all_proxy" ]]; then
+    disable_proxy
+  else
+    enable_proxy
+  fi
+  
+  # Rebuild prompt immediately
+  _build_prompt
+  zle reset-prompt
+}
+zle -N toggle_proxy_widget
+bindkey '^X^P' toggle_proxy_widget  # Ctrl+X Ctrl+P
 
 # Modified version where you can press
 #   - CTRL-O to open with `open` command,
