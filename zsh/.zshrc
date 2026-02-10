@@ -273,9 +273,34 @@ command_help_agent() {
 
 # 普通对话 agent - 在 agent 模式下进行对话
 general_agent() {
-  local user_input="$1"
-  echo "💬 对话 Agent 收到消息: $user_input"
-  # TODO: 实现普通对话逻辑
+  local prompt="$1"
+
+  [[ -z "$prompt" ]] && return
+  [[ -z "$MOONSHOT_API_KEY" ]] && { echo "⚠️  请先设置 MOONSHOT_API_KEY 环境变量"; return 1 }
+
+  curl -sS --no-buffer \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $MOONSHOT_API_KEY" \
+    -d "$(jq -n \
+      --arg content "$prompt" \
+      '{
+        model: "kimi-k2-turbo-preview",
+        stream: true,
+        messages: [
+          {
+            role: "system",
+            content: "You are a helpful, expert coding and general assistant. Be concise."
+          },
+          { role: "user", content: $content }
+        ]
+      }')" \
+    https://api.moonshot.cn/v1/chat/completions \
+    | sed -u 's/^data: //' \
+    | while IFS= read -r line; do
+        [[ "$line" == "[DONE]" || -z "$line" ]] && continue
+        printf '%s' "$(jq -rj '.choices[0].delta.content // empty' <<< "$line" 2>/dev/null)"
+      done
+  echo
 }
 
 # 处理 agent 模式下的命令执行
@@ -513,68 +538,6 @@ port() {
 killport() {
  lsof -nP -iTCP -sTCP:LISTEN | grep $argv[1] | awk '{print $2}' | xargs kill
 }
-
-ai() {
-    # Default model
-    local model="xiaomi/mimo-v2-flash:free"
-
-    # 1. Check for optional -m flag
-    if [[ "$1" == "-m" ]]; then
-        if [[ -z "$2" ]]; then
-            echo "Error: Please provide a model name after -m"
-            return 1
-        fi
-        model="$2"
-        shift 2 # Remove the flag and model argument from the list
-    fi
-
-    # 2. The rest of the arguments are treated as the prompt
-    local prompt="$*"
-
-    # Check if prompt is missing
-    if [[ -z "$prompt" ]]; then
-        echo "Usage: q [-m model_name] \"Your prompt here\""
-        return 1
-    fi
-
-    # Check API Key
-    if [[ -z "$OPENROUTER_API_KEY" ]]; then
-        echo "Error: OPENROUTER_API_KEY environment variable is not set."
-        return 1
-    fi
-
-    # 3. Construct JSON payload using the variable $model
-    local JSON_PAYLOAD
-    JSON_PAYLOAD=$(jq -n \
-        --arg model "$model" \
-        --arg content "$prompt" \
-        '{
-            model: $model,
-            messages: [
-                {
-                    role: "system",
-                    content: "You are a helpful, expert coding and general assistant. Always respond in valid Markdown format. Be concise."
-                },
-                {
-                    role: "user",
-                    content: $content
-                }
-            ],
-            "reasoning": {
-              "enabled": true
-            }
-        }')
-
-    # 4. Execute request
-    curl -sS \
-        -H "Content-Type: application/json" \
-        -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-        -d "$JSON_PAYLOAD" \
-        https://openrouter.ai/api/v1/chat/completions \
-        | jq -r '.choices[0].message.content' | glow -p
-}
-
-bindkey -s '^Xai' 'ai -m xiaomi/mimo-v2-flash:free ""\C-b'
 
 # ----------------------------------------------------------------------------
 # Git Worktree (https://gist.github.com/vikingmute/e85e0b4249a65e41d64315c7790e5987)
