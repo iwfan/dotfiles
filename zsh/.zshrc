@@ -144,12 +144,6 @@ _build_prompt() {
     git_info=" %F{240}on %F{magenta}${vcs_info_msg_0_}%f"
   fi
 
-  # Agent mode indicator
-  local agent_info=""
-  if (( AGENT_MODE )); then
-    agent_info=" %F{240}with%f %F{green}agent%f"
-  fi
-  
   # Proxy indicator
   local proxy_info=""
   if [[ -n "$http_proxy" || -n "$https_proxy" || -n "$all_proxy" ]]; then
@@ -160,7 +154,7 @@ _build_prompt() {
   local jobs_indicator="%(1j.%F{yellow}[&]%f .)"
   local prompt_symbol="%(?,%F{cyan}>%f,%F{red}!%f)"
   
-  PROMPT="${path_display}${git_info}${agent_info}${proxy_info}
+  PROMPT="${path_display}${git_info}${proxy_info}
 ${jobs_indicator}${prompt_symbol} "
 }
 
@@ -170,37 +164,11 @@ precmd() {
 }
 
 # Clear right prompt
-RPROMPT='%F{240}%*%f'
+RPROMPT=''
 
 # ============================================================================
 # Agent Mode - Press Alt+Space to activate
 # ============================================================================
-typeset -g AGENT_MODE=0
-
-toggle_agent_mode() {
-  if [[ -z "$MOONSHOT_API_KEY" ]]; then
-      echo "⚠️  警告: 未设置 MOONSHOT_API_KEY 环境变量" >&2
-      echo "请在 ~/.zshrc 中添加: export MOONSHOT_API_KEY='your-key-here'" >&2
-  fi
-
-  if (( AGENT_MODE )); then
-    AGENT_MODE=0
-  else
-    AGENT_MODE=1
-  fi
-
-  # Rebuild prompt immediately
-  _build_prompt
-  zle reset-prompt
-}
-
-zle -N toggle_agent_mode
-# bind to Alt + Space
-bindkey '^[ ' toggle_agent_mode
-
-# ----------------------------------------------------------------------------
-# Agent Functions
-# ----------------------------------------------------------------------------
 
 # 命令帮助 agent - 根据用户描述生成命令
 command_help_agent() {
@@ -209,98 +177,36 @@ command_help_agent() {
   content="${content%%[[:space:]]#}"
 
   [[ -z "$content" ]] && return
-  [[ -z "$MOONSHOT_API_KEY" ]] && { zle -M "⚠️  请先设置 MOONSHOT_API_KEY 环境变量"; return 1 }
 
   zle -R "🤖 正在生成命令..."
 
-  local os_info="${OSTYPE}"
-  [[ "$OSTYPE" == darwin* ]] && os_info="macOS $(sw_vers -productVersion 2>/dev/null || echo unknown)"
-  [[ "$OSTYPE" == linux-gnu* ]] && os_info="Linux"
+  local os="${OSTYPE}"
+  [[ "$OSTYPE" == darwin* ]] && os="macOS $(sw_vers -productVersion 2>/dev/null || echo unknown)"
+  [[ "$OSTYPE" == linux-gnu* ]] && os="Linux"
+  local shell="${SHELL:t}"
 
-  local response http_code
-  response=$(curl -sS -w '\n%{http_code}' \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer $MOONSHOT_API_KEY" \
-    -d "$(jq -n \
-      --arg content "$content" \
-      --arg shell "${SHELL:t}" \
-      --arg os "$os_info" \
-      '{
-        model: "kimi-k2-turbo-preview",
-        messages: [
-          {
-            role: "system",
-            content: "You are a shell command generator for \($os) running \($shell). Your user is a dog that only knows how to press Enter. Generate commands compatible with this platform. Output ONLY the command, nothing else. No explanations, no markdown, no code blocks, no comments. Just the raw command."
-          },
-          { role: "user", content: $content }
-        ],
-        temperature: 0.3
-      }')" \
-    https://api.moonshot.cn/v1/chat/completions 2>>"$log_file")
+  # 确保代理已开启
+  if [[ -z "$http_proxy" && -z "$https_proxy" && -z "$all_proxy" ]]; then
+    enable_proxy
+  fi
 
-  local curl_exit=$?
-  http_code="${response##*$'\n'}"
-  response="${response%$'\n'*}"
+  local result
+  result=$(command pi --no-session --provider google-antigravity --model gemini-3-flash -p "You are a shell command generator for $os running $shell. Your user is a dog that only knows how to press Enter. Generate commands compatible with this platform. Output ONLY the command, nothing else. No explanations, no markdown, no code blocks, no comments. Just the raw command. User Request: $content" 2>>"$log_file")
 
   {
     echo "=== $(date '+%Y-%m-%d %H:%M:%S') ==="
-    echo "input: $content | curl_exit: $curl_exit | http_code: $http_code"
-    printf 'response: %s\n\n' "$response"
+    echo "input: $content"
+    printf 'response: %s\n\n' "$result"
   } >> "$log_file"
 
-  if [[ $curl_exit -ne 0 ]]; then
-    zle -M "❌ 网络错误 (curl exit: $curl_exit)，详情见 $log_file"
-    return 1
-  fi
-
-  if [[ "$http_code" -ne 200 ]]; then
-    local err=$(jq -r '.error.message // empty' <<< "$response" 2>/dev/null)
-    zle -M "❌ API 错误 ($http_code): ${err:-未知错误}，详情见 $log_file"
-    return 1
-  fi
-
-  local command=$(jq -r '.choices[0].message.content // empty' <<< "$response" 2>/dev/null)
-
-  if [[ -z "$command" ]]; then
+  if [[ -z "$result" ]]; then
     zle -M "❌ 未能生成命令，详情见 $log_file"
     return 1
   fi
 
-  BUFFER="$command"
+  BUFFER="$result"
   CURSOR=$#BUFFER
   zle redisplay
-}
-
-# 普通对话 agent - 在 agent 模式下进行对话
-general_agent() {
-  local prompt="$1"
-
-  [[ -z "$prompt" ]] && return
-  [[ -z "$MOONSHOT_API_KEY" ]] && { echo "⚠️  请先设置 MOONSHOT_API_KEY 环境变量"; return 1 }
-
-  curl -sS --no-buffer \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer $MOONSHOT_API_KEY" \
-    -d "$(jq -n \
-      --arg content "$prompt" \
-      '{
-        model: "kimi-k2-turbo-preview",
-        stream: true,
-        messages: [
-          {
-            role: "system",
-            content: "You are a helpful, expert coding and general assistant. Be concise."
-          },
-          { role: "user", content: $content }
-        ]
-      }')" \
-    https://api.moonshot.cn/v1/chat/completions \
-    | sed -u 's/^data: //' \
-    | while IFS= read -r line; do
-        [[ "$line" == "[DONE]" || -z "$line" ]] && continue
-        printf '%s' "$(jq -rj '.choices[0].delta.content // empty' <<< "$line" 2>/dev/null)"
-      done
-  echo
 }
 
 # 处理 agent 模式下的命令执行
@@ -311,20 +217,13 @@ agent_accept_line() {
     return
   fi
 
-  # 处理 # 开头的命令帮助请求（不管是否在 AGENT_MODE）
+  # 处理 # 开头的命令帮助请求
   if [[ $BUFFER == \#* ]]; then
     # 调用命令帮助 agent
     command_help_agent "$BUFFER"
     return
   fi
 
-  # 在 AGENT_MODE 下，普通输入调用 general_agent
-  if (( AGENT_MODE )); then
-    general_agent "$BUFFER"
-    return
-  fi
-
-  # 非 AGENT_MODE 下，正常执行命令
   zle .accept-line
 }
 
