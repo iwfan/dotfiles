@@ -84,17 +84,6 @@ bindkey '^[[3~' delete-char                    # Delete
 bindkey '^[[1;5C' forward-word                 # Ctrl+Right
 bindkey '^[[1;5D' backward-word                # Ctrl+Left
 
-# Custom widget for lazygit
-lazygit_widget() {
-  BUFFER=""
-  zle clear-screen
-  lazygit
-  _build_prompt
-  zle reset-prompt
-}
-zle -N lazygit_widget
-bindkey '^g' lazygit_widget                    # Ctrl+G
-
 # Custom widget for yazi
 yazi_widget() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -109,15 +98,9 @@ yazi_widget() {
 zle -N yazi_widget
 bindkey '^t' yazi_widget                       # Ctrl+T
 
-# Custom widget for nvim
-nvim_widget() {
-  BUFFER=""
-  zle clear-screen
-  nvim
-  zle reset-prompt
-}
-zle -N nvim_widget
-bindkey '^o' nvim_widget                       # Ctrl+O
+bindkey -s '^g' '^qlazygit\n'                  # Ctrl+G
+bindkey -s '^o' '^qnvim\n'                     # Ctrl+O
+bindkey -s '\e ' '^qpi\n'                      # Alt+Space
 
 # ----------------------------------------------------------------------------
 # Prompt Configuration

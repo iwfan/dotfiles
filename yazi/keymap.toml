@@ -2,3 +2,19 @@
 on   = "l"
 run  = "plugin smart-enter"
 desc = "Enter the child directory, or open the file"
+
+[[mgr.prepend_keymap]]
+on   = "<C-c>"
+run  = "quit --no-cwd-file"
+desc = "Quit without change directory"
+
+[[mgr.prepend_keymap]]
+on   = "q"
+run  = "quit --no-cwd-file"
+desc = "Quit without change directory"
+
+[[mgr.prepend_keymap]]
+on   = "Q"
+run  = "quit"
+desc = "Quit"
+
