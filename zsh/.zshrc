@@ -28,7 +28,8 @@ setopt HIST_FIND_NO_DUPS         # Don't display duplicates when searching
 setopt HIST_IGNORE_SPACE         # Don't record entries starting with space
 setopt HIST_SAVE_NO_DUPS         # Don't write duplicates to history file
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks
-setopt SHARE_HISTORY             # Share history between sessions
+setopt INC_APPEND_HISTORY        # Append and save commands immediately
+unsetopt SHARE_HISTORY           # Keep arrow-key history local to this session
 
 # ----------------------------------------------------------------------------
 # Directory Navigation
@@ -63,15 +64,25 @@ zstyle ':completion:*' rehash true                         # Automatically find 
 # ----------------------------------------------------------------------------
 bindkey -e  # Emacs key bindings (use -v for vi mode)
 
-# Better history search
+# Keep arrow-key history navigation predictable across terminals.
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-bindkey '^[[A' up-line-or-beginning-search     # Up arrow
-bindkey '^[[B' down-line-or-beginning-search   # Down arrow
-bindkey '^P' up-line-or-beginning-search       # Ctrl+P
-bindkey '^N' down-line-or-beginning-search     # Ctrl+N
+for keymap in emacs viins; do
+  bindkey -M "$keymap" $'\e[A' up-line-or-history
+  bindkey -M "$keymap" $'\eOA' up-line-or-history
+  bindkey -M "$keymap" $'\e[B' down-line-or-history
+  bindkey -M "$keymap" $'\eOB' down-line-or-history
+
+  [[ -n ${terminfo[kcuu1]} ]] && bindkey -M "$keymap" "${terminfo[kcuu1]}" up-line-or-history
+  [[ -n ${terminfo[kcud1]} ]] && bindkey -M "$keymap" "${terminfo[kcud1]}" down-line-or-history
+done
+
+bindkey '^P' up-line-or-history                 # Ctrl+P
+bindkey '^N' down-line-or-history               # Ctrl+N
+bindkey '^[[5~' up-line-or-beginning-search     # PageUp
+bindkey '^[[6~' down-line-or-beginning-search   # PageDown
 
 autoload -Uz edit-command-line
 zle -N edit-command-line
