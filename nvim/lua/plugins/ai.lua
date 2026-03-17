@@ -26,7 +26,7 @@ return {
                 moonshot = {
                     __inherited_from = "openai",
                     endpoint = "https://api.moonshot.cn/v1",
-                    api_key_name = "ANTHROPIC_AUTH_TOKEN",
+                    api_key_name = "MOONSHOT_API_KEY",
                     model = "kimi-k2-0905-preview",
                     timeout = 30000, -- Timeout in milliseconds
                     extra_request_body = {

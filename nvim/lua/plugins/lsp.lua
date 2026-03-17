@@ -112,6 +112,7 @@ local function setup_lspconfig()
         cssls = {},
         html = {},
         gopls = {},
+        astro = {},
         basedpyright = {},
         tailwindcss = {},
         vue_ls = {},
