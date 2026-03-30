@@ -62,3 +62,5 @@ keybind = super+backslash=text:\x02q
 # CMD+' 打开 tmux 的 popup window
 keybind = super+apostrophe=text:\x02\x20
 
+# CMD+S 切换 Session
+keybind = super+s=text:\x02s
