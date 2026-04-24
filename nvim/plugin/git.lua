@@ -1,23 +1,27 @@
-return {
-    {
-        "lewis6991/gitsigns.nvim",
-        event = { "BufReadPost", "BufNewFile" },
-        opts = {
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+    once = true,
+    callback = function()
+        vim.pack.add {
+            { src = "https://github.com/lewis6991/gitsigns.nvim" },
+            { src = "https://github.com/sindrets/diffview.nvim" },
+        }
+
+        require("gitsigns").setup {
             signs = {
-                add          = { text = '┃' },
-                change       = { text = '┃' },
-                delete       = { text = '_' },
-                topdelete    = { text = '‾' },
-                changedelete = { text = '~' },
-                untracked    = { text = '┆' },
+                add = { text = "┃" },
+                change = { text = "┃" },
+                delete = { text = "_" },
+                topdelete = { text = "‾" },
+                changedelete = { text = "~" },
+                untracked = { text = "┆" },
             },
             signs_staged = {
-                add          = { text = '┃' },
-                change       = { text = '┃' },
-                delete       = { text = '_' },
-                topdelete    = { text = '‾' },
-                changedelete = { text = '~' },
-                untracked    = { text = '┆' },
+                add = { text = "┃" },
+                change = { text = "┃" },
+                delete = { text = "_" },
+                topdelete = { text = "‾" },
+                changedelete = { text = "~" },
+                untracked = { text = "┆" },
             },
             on_attach = function(bufnr)
                 local gs = package.loaded.gitsigns
@@ -62,13 +66,10 @@ return {
                 -- Text object
                 map({ "o", "x" }, "ig", ":<C-U>Gitsigns select_hunk<CR>")
             end,
-            current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
-        },
-    },
-    {
-        "sindrets/diffview.nvim",
-        cmd = { "DiffviewOpen", "DiffviewFileHistory" },
-        opts = {
+            current_line_blame = true,
+        }
+
+        require("diffview").setup {
             keymaps = {
                 view = {
                     { { "n" }, "q", "<Cmd>DiffviewClose<CR>", { desc = "Close Diffview" } },
@@ -78,25 +79,8 @@ return {
                 },
                 file_history_panel = {
                     { { "n" }, "q", "<Cmd>DiffviewClose<CR>", { desc = "Close Diffview" } },
-                }
-            }
-        },
-    },
-    {
-        "NeogitOrg/neogit",
-        cmd = "Neogit",
-        opts = {
-            integrations = {
-                diffview = true,
+                },
             },
-        },
-        keys = {
-            {
-                "<leader>g",
-                "<cmd>Neogit<cr>",
-                desc = "Open Neogit",
-            },
-
         }
-    }
-}
+    end,
+})

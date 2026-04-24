@@ -46,13 +46,12 @@ autocmd("TermOpen", {
     end,
 })
 
--- === 格式化选项管理 ===
-autocmd("BufEnter", {
-    group = augroup "fix_formatoptions",
+-- Don't auto-wrap comments and don't insert comment leader after hitting 'o'.
+-- Do on `FileType` to always override these changes from filetype plugins.
+autocmd("FileType", {
+    group = augroup "Proper 'formatoptions'",
     callback = function()
-        if vim.bo.filetype ~= "" then
-            vim.opt.formatoptions = "jqlnt"
-        end
+        vim.cmd('setlocal formatoptions-=c formatoptions-=o')
     end,
 })
 

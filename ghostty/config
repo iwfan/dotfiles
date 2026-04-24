@@ -64,3 +64,6 @@ keybind = super+apostrophe=text:\x02\x20
 
 # CMD+S 切换 Session
 keybind = super+s=text:\x02s
+
+keybind = alt+backspace=text:\x1b\x7f
+keybind = shift+enter=text:\n

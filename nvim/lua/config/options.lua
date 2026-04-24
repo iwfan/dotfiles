@@ -1,11 +1,13 @@
 -- === 外观设置 ===
-vim.opt.number = true                              -- Line numbers
-vim.opt.relativenumber = true                      -- Relative line numbers
+vim.opt.number = true                               -- Line numbers
+vim.opt.relativenumber = true                       -- Relative line numbers
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
-vim.opt.signcolumn = "yes"                         -- Always show sign column
-vim.opt.showmode = false                           -- Don't show mode in command line
-vim.opt.ruler = false                           -- Don't show mode in command line
+vim.opt.signcolumn = "yes"                          -- Always show sign column
+vim.opt.showmode = false                            -- Don't show mode in command line
+vim.opt.ruler = false                               -- Don't show mode in command line
+vim.opt.colorcolumn = '+1'                          -- Draw column on the right of maximum width
+vim.opt.switchbuf = 'usetab'                        -- Use already opened buffers when switching
 
 -- === 显示和滚动 ===
 vim.opt.wrap = false                               -- Don't wrap long lines
@@ -18,14 +20,13 @@ vim.opt.smartcase = true                           -- Case sensitive if uppercas
 vim.opt.hlsearch = false                           -- Don't highlight search results
 vim.opt.incsearch = true                           -- Show matches as you type
 
--- === 文件搜索和忽略 ===
-vim.opt.path:append("**")                          -- Include subdirectories in search
-
--- 使用 ripgrep 如果可用，否则回退到默认
-if vim.fn.executable('rg') == 1 then
-    vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"
-    vim.opt.grepformat = "%f:%l:%c:%m"
-end
+-- === 自动补全 ===
+vim.o.pumborder = 'single'                         -- Use border in popup menu
+vim.o.pumheight = 10                               -- Make popup menu smaller
+vim.o.pummaxwidth = 100                            -- Make popup menu not too wide
+vim.o.complete = '.,w,b,kspell'                    -- Keep built-in fallback completion lightweight
+vim.o.completeopt = 'menuone,noselect,fuzzy,nosort'
+vim.o.completetimeout = 100
 
 vim.opt.wildmenu = true
 vim.opt.wildmode="longest:full,full"
@@ -42,18 +43,15 @@ vim.opt.tabstop = 2                                -- Tab width
 vim.opt.shiftwidth = 2                             -- Indent width
 vim.opt.softtabstop = 2                            -- Soft tab stop
 vim.opt.expandtab = true                           -- Use spaces instead of tabs
+vim.opt.breakindent = true                         -- Indent wrapped lines to match line start
+vim.opt.breakindentopt = 'list:-1'                 -- Add padding for lists (if 'wrap' is set)
 vim.opt.autoindent = true                          -- Copy indent from current line
 
 -- === 折叠设置 ===
-vim.opt.foldlevel = 99
-vim.opt.foldlevelstart = 99
--- 仅当 nvim-treesitter 可用且配置 foldexpr 时，才启用 expr 折叠
-local has_ts, ts_configs = pcall(require, "nvim-treesitter.configs")
-if has_ts then
-    -- treesitter 可用：使用 nvim-treesitter 的 foldexpr（更稳定）
-    vim.opt.foldmethod = "expr"
-    vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-end
+vim.o.foldlevel   = 10       -- Fold nothing by default; set to 0 or 1 to fold
+vim.o.foldmethod  = 'indent' -- Fold based on indent level
+vim.o.foldnestmax = 10       -- Limit number of fold levels
+vim.o.foldtext    = ''       -- Show text under fold with its highlighting
 
 -- === 文件处理 ===
 vim.opt.swapfile = false                           -- Don't create swap files

@@ -18,7 +18,6 @@ require "config.options"
 require "config.keymaps"
 require "config.autocmds"
 require "config.usercmds"
-require "config.plugins"
 require "modules.buffer-cleanup".setup()
 require "modules.float-term".setup()
 require "modules.yazi-picker".setup()
