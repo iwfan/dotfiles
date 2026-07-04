@@ -1,0 +1,83 @@
+onboarding = false
+
+[theme]
+name = "kanagawa"
+auto_switch = false
+
+[theme.custom]
+panel_bg = "reset"
+accent = "#a7c080"
+green = "#a7c080"
+blue = "#7fbbb3"
+red = "#e67e80"
+yellow = "#dbbc7f"
+
+[keys]
+# Prefix key
+prefix = "ctrl+b"
+
+# Settings (mapped to comma to free up 's' for workspace_picker)
+settings = "prefix+comma"
+
+# Detach (mapped to 'd' to free up 'q' for last_pane, matching classic tmux)
+detach = "prefix+d"
+
+# Reload configuration (mapped to 'r' to free up 'shift+r' for resize_mode, matching tmux config)
+reload_config = "prefix+r"
+resize_mode = "prefix+shift+r"
+
+# Workspace picker (mapped to 's' to match tmux 's' session picker)
+workspace_picker = "prefix+s"
+
+# New tab (CMD+T sends \x02c -> prefix+c)
+new_tab = "prefix+c"
+
+# Close tab (CMD+W sends \x02& -> prefix+ampersand)
+close_tab = "prefix+ampersand"
+
+# Close pane (matches tmux 'x')
+close_pane = "prefix+x"
+
+# Zoom (matches tmux 'z')
+zoom = "prefix+z"
+
+# Split vertical (CMD+D sends \x02| -> prefix+|)
+split_vertical = ["prefix+|", "prefix+v"]
+
+# Split horizontal (CMD+Shift+D sends \x02- -> prefix+minus)
+split_horizontal = "prefix+minus"
+
+# Previous and next tab (CMD+Shift+[ sends \x02p -> prefix+p, CMD+Shift+] sends \x02n -> prefix+n)
+# We also map "prefix+l" to previous_tab as a fallback for CMD+0 (\x02l).
+previous_tab = ["prefix+p", "prefix+l"]
+next_tab = "prefix+n"
+
+# Switch tab 1..9
+switch_tab = "prefix+1..9"
+
+# Cycle panes (CMD+[ sends \x02O -> prefix+shift+o, CMD+] sends \x02o -> prefix+o)
+cycle_pane_previous = ["prefix+shift+tab", "prefix+shift+o"]
+cycle_pane_next = ["prefix+tab", "prefix+o"]
+
+# Last pane (CMD+\ sends \x02q -> prefix+q)
+last_pane = "prefix+q"
+
+# Git worktrees (CMD+Shift+G sends \x02G -> prefix+shift+g, CMD+Shift+X sends \x02X -> prefix+shift+x)
+new_worktree = "prefix+shift+g"
+remove_worktree = "prefix+shift+x"
+
+# Workspaces (CMD+Shift+N sends \x02N -> prefix+shift+n, CMD+Shift+W sends \x02D -> prefix+shift+d, CMD+Shift+Left/Right sends \x02\x1b[D / \x02\x1b[C -> prefix+left/right, CMD+Alt+1..9 sends \x02\x1b1..9 -> prefix+alt+1..9)
+new_workspace = "prefix+shift+n"
+close_workspace = "prefix+shift+d"
+previous_workspace = "prefix+left"
+next_workspace = "prefix+right"
+switch_workspace = "prefix+alt+1..9"
+
+# Edit scrollback/copy mode (CMD+F sends \x02[ -> prefix+[)
+edit_scrollback = "prefix+["
+
+[[keys.command]]
+key = "prefix+space"
+type = "pane"
+command = "zsh"
+description = "Toggle popup/scratch pane"

@@ -12,13 +12,18 @@ theme = Everforest Dark Hard
 background = #272e33
 
 # 将 CMD 键映射为 tmux 命令（使用 Ctrl+b 作为 prefix）
-initial-command = "/opt/homebrew/bin/tmux new-session -A -s f"
+# initial-command = "/opt/homebrew/bin/tmux new-session -A -s f"
+initial-command = "/opt/homebrew/bin/herdr"
 
 # CMD+T 创建新窗口
 keybind = super+t=text:\x02c
 
 # CMD+W 关闭当前窗口
 keybind = super+w=text:\x02&
+
+# CMD+Shift+N 创建新 workspace，CMD+Shift+W 关闭 workspace
+keybind = super+shift+n=text:\x02N
+keybind = super+shift+w=text:\x02D
 
 # CMD+数字 切换到指定窗口
 keybind = super+digit_1=text:\x021
@@ -29,8 +34,23 @@ keybind = super+digit_5=text:\x025
 keybind = super+digit_6=text:\x026
 keybind = super+digit_7=text:\x027
 keybind = super+digit_8=text:\x028
-keybind = super+digit_9=text:\x02^
+keybind = super+digit_9=text:\x029
 keybind = super+digit_0=text:\x02l
+
+# CMD+Alt+数字 切换到指定 workspace
+keybind = super+alt+digit_1=text:\x02\x1b1
+keybind = super+alt+digit_2=text:\x02\x1b2
+keybind = super+alt+digit_3=text:\x02\x1b3
+keybind = super+alt+digit_4=text:\x02\x1b4
+keybind = super+alt+digit_5=text:\x02\x1b5
+keybind = super+alt+digit_6=text:\x02\x1b6
+keybind = super+alt+digit_7=text:\x02\x1b7
+keybind = super+alt+digit_8=text:\x02\x1b8
+keybind = super+alt+digit_9=text:\x02\x1b9
+
+# CMD+Shift+Left/Right 切换到上一个/下一个 workspace
+keybind = super+shift+left=text:\x02\x1b[D
+keybind = super+shift+right=text:\x02\x1b[C
 
 # CMD+D 水平分割
 keybind = super+d=text:\x02|
@@ -38,11 +58,15 @@ keybind = super+d=text:\x02|
 # CMD+Shift+D 垂直分割
 keybind = super+shift+d=text:\x02-
 
+# CMD+Shift+G 创建新 worktree，CMD+Shift+X 删除 worktree
+keybind = super+shift+g=text:\x02G
+keybind = super+shift+x=text:\x02X
+
 # CMD+[ 和 CMD+] 切换窗口
 keybind = super+shift+left_bracket=text:\x02p
 keybind = super+shift+right_bracket=text:\x02n
-keybind = super+bracket_left=text:\x02o
-keybind = super+bracket_right=text:\x02o
+keybind = super+[=text:\x02O
+keybind = super+]=text:\x02o
 
 # CMD+K 清屏
 keybind = super+k=text:\x0c
