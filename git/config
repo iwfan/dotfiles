@@ -1,29 +1,31 @@
 # vim:ft=gitconfig
 [core]
-    excludesfile = ~/dotfiles/git/ignore
-    autocrlf = input
-    pager = delta
-    ignorecase = false
+	excludesfile = ~/dotfiles/git/ignore
+	autocrlf = input
+	pager = delta
+	ignorecase = false
 [interactive]
-    diffFilter = delta --color-only
+	diffFilter = delta --color-only
 [delta]
-    side-by-side = false
-    navigate = true
-    dark = true
-    line-numbers = true
+	side-by-side = false
+	navigate = true
+	dark = true
+	line-numbers = true
+	features = decorations
+	word-diff-regex = [^[:space:]]+
 [merge]
-    conflictStyle = zdiff3
+	conflictStyle = zdiff3
 [commit]
-    verbose = true
+	verbose = true
 [push]
-    default = current
+	default = current
 [pull]
-    rebase = true
+	rebase = true
 [rebase]
-    autoStash = true
+	autoStash = true
 [credential]
-    helper = cache --timeout=3600
+	helper = cache --timeout=3600
 [branch]
-    autoSetupRebase = always
+	autoSetupRebase = always
 [init]
 	defaultBranch = main
