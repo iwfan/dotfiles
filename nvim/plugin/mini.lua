@@ -66,6 +66,7 @@ local disabled_completion_filetypes = {
     markdown = true,
     minifiles = true,
     snacks_picker_input = true,
+    fff_input = true,
 }
 
 local function disable_completion_if_needed(buf)
@@ -153,10 +154,10 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
                 comment = "gc",
 
                 -- Toggle comment on current line
-                comment_line = "<C-_>",
+                comment_line = "<C-/>",
 
                 -- Toggle comment on visual selection
-                comment_visual = "<C-_>",
+                comment_visual = "<C-/>",
 
                 -- Define 'comment' textobject (like `dgc` - delete whole comment block)
                 -- Works also in Visual mode if mapping differs from `comment_visual`

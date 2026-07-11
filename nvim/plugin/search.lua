@@ -1,20 +1,42 @@
-vim.api.nvim_create_autocmd("VimEnter", {
-    once = true,
-    callback = function()
-        vim.pack.add {
-            {
-                src = "https://github.com/ibhagwan/fzf-lua",
-                version = "main",
-            },
-        }
+vim.pack.add {
+    {
+        src = "https://github.com/dmtrKovalenko/fff.nvim",
+        version = "main",
+    },
+}
 
-        require("fzf-lua").setup {
-            { "fzf-native", "hide" },
-            winopts = { fullscreen = true },
-        }
-        require("fzf-lua").register_ui_select()
-        vim.keymap.set("n", "<C-p>", "<cmd>FzfLua combine pickers=oldfiles;files<cr>")
-        vim.keymap.set("n", "<C-f>", "<cmd>FzfLua live_grep<cr>")
-        vim.keymap.set("n", "<C-\\>", "<cmd>FzfLua resume<cr>")
-    end,
+vim.api.nvim_create_autocmd('PackChanged', {
+  callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == 'fff.nvim' and (kind == 'install' or kind == 'update') then
+      if not ev.data.active then vim.cmd.packadd('fff.nvim') end
+      require('fff.download').download_or_build_binary()
+    end
+  end,
 })
+
+vim.g.fff = {
+  lazy_sync = true,
+  debug = { enabled = true, show_scores = true },
+}
+
+
+require('fff').setup({
+  prompt = '> ',
+  title = 'File Search',
+  layout = {
+    height = 0.9,
+    width = 0.0,
+    prompt_position = 'top',   -- or 'top'
+    preview_position = 'right',   -- 'left' | 'right' | 'top' | 'bottom'
+    preview_size = 0.6,
+  },
+  preview = {
+    line_numbers = true,
+    cursorlineopt = 'both',
+  },
+})
+
+vim.keymap.set("n", "<C-p>", function() require('fff').find_files() end)
+vim.keymap.set("n", "<C-f>", function() require('fff').live_grep_under_cursor() end)
+

@@ -13,14 +13,14 @@
       "src": "https://github.com/sainnhe/everforest",
       "version": "'master'"
     },
+    "fff.nvim": {
+      "rev": "b4590ca108bdb3501030c971b1ebf65c150bf108",
+      "src": "https://github.com/dmtrKovalenko/fff.nvim",
+      "version": "'main'"
+    },
     "friendly-snippets": {
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
-    },
-    "fzf-lua": {
-      "rev": "ffa44ee9470743a7697d28df3a1a216fdfe2b09d",
-      "src": "https://github.com/ibhagwan/fzf-lua",
-      "version": "'main'"
     },
     "gitsigns.nvim": {
       "rev": "6d808f99bd63303646794406e270bd553ad7792e",

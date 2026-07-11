@@ -59,18 +59,18 @@ local function setup_lspconfig()
             end
 
             -- FzfLua picker mappings
-            local fzf = require "fzf-lua"
-            map("gd", fzf.lsp_definitions, "[G]oto [D]definition")
-            map("grr", fzf.lsp_references, "[G]oto [R]references")
-            map("gri", fzf.lsp_implementations, "[G]oto [I]mplementation")
-            map("grd", fzf.lsp_declarations, "[G]oto [D]eclaration")
-            map("grt", fzf.lsp_typedefs, "[G]oto [T]ype Definition")
-            map("gO", fzf.lsp_document_symbols, "Open Document Symbols")
-            map("gW", fzf.lsp_live_workspace_symbols, "Open Workspace Symbols")
-
-            map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
-            map("<space><enter>", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
-            map("\\d", vim.diagnostic.open_float, "Hover")
+            -- local fzf = require "fzf-lua"
+            -- map("gd", fzf.lsp_definitions, "[G]oto [D]definition")
+            -- map("grr", fzf.lsp_references, "[G]oto [R]references")
+            -- map("gri", fzf.lsp_implementations, "[G]oto [I]mplementation")
+            -- map("grd", fzf.lsp_declarations, "[G]oto [D]eclaration")
+            -- map("grt", fzf.lsp_typedefs, "[G]oto [T]ype Definition")
+            -- map("gO", fzf.lsp_document_symbols, "Open Document Symbols")
+            -- map("gW", fzf.lsp_live_workspace_symbols, "Open Workspace Symbols")
+            --
+            -- map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
+            -- map("<space><enter>", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
+            -- map("\\d", vim.diagnostic.open_float, "Hover")
         end,
     })
 
@@ -150,7 +150,7 @@ require("mason-lspconfig").setup {
         "vtsls",
         "lua_ls",
         "gopls",
-        "pyright",
+        "basedpyright",
     },
 }
 

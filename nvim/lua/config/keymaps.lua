@@ -12,6 +12,19 @@ local search_modes = { 'n', 'x', 'o' }
 vim.keymap.set(search_modes, 'n', "'Nn'[v:searchforward]", { expr = true, desc = 'Next search result' })
 vim.keymap.set(search_modes, 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev search result' })
 
+-- Visual mode: extend / shrink selection
+vim.keymap.set('v', '<CR>', 'an', { remap = true, desc = 'Extend selection' })
+vim.keymap.set('v', '<BS>', 'in', { remap = true, desc = 'Shrink selection' })
+
+-- Buffer switching (normal mode)
+vim.keymap.set('n', '<Tab>', '<cmd>bnext<CR>', { desc = 'Next buffer' })
+vim.keymap.set('n', '<S-Tab>', '<cmd>bprevious<CR>', { desc = 'Previous buffer' })
+vim.keymap.set('n', '<leader><Tab>', '<cmd>bdelete<CR>', { desc = 'Close buffer' })
+
+-- Built-in Undotree
+vim.cmd.packadd('nvim.undotree')
+vim.keymap.set('n', '<leader>u', '<cmd>Undotree<CR>', { desc = 'Toggle Undo Tree' })
+
 -- Emacs-style keybindings
 local emacs_insert = {
     ['<C-a>'] = { '<C-o>^', 'Move to line start' },
@@ -62,8 +75,8 @@ vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 
 -- Comment Line & Block
--- vim.keymap.set("n", "<C-_>", "gcc", { remap = true, desc = "commentline" })
--- vim.keymap.set("v", "<C-_>", "gc", { remap = true, desc = "comment visual" })
+vim.keymap.set("n", "<C-/>", "gcc", { remap = true, desc = "commentline" })
+vim.keymap.set("v", "<C-/>", "gc", { remap = true, desc = "comment visual" })
 
 -- window management
 vim.keymap.set("n", "<C-h>", [[<c-w>h]], { desc = "Go to top window" })
@@ -98,6 +111,8 @@ vim.keymap.set("n", "qr", [[:%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<space><bs>", [["_dd]])
 vim.keymap.set("n", "[<space>", ":<c-u>put! =repeat(nr2char(10), v:count1)<CR>'[", { silent = true })
 vim.keymap.set("n", "]<space>", ":<c-u>put =repeat(nr2char(10), v:count1)<CR>", { silent = true })
+
+vim.keymap.set('n', '<leader>re', '<cmd>restart<CR>', { desc = 'Restart Neovim' })
 
 -- file manager
 vim.keymap.set("n", "<C-t>", "<cmd>Yazi<cr>")
