@@ -1,11 +1,6 @@
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
     once = true,
     callback = function()
-        vim.pack.add {
-            { src = "https://github.com/lewis6991/gitsigns.nvim" },
-            { src = "https://github.com/sindrets/diffview.nvim" },
-        }
-
         require("gitsigns").setup {
             signs = {
                 add = { text = "┃" },
@@ -63,24 +58,11 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
                 map("v", "<bs>g", function()
                     gs.reset_hunk { vim.fn.line ".", vim.fn.line "v" }
                 end, { desc = "Reset Hunk" })
+
                 -- Text object
                 map({ "o", "x" }, "ig", ":<C-U>Gitsigns select_hunk<CR>")
             end,
             current_line_blame = true,
-        }
-
-        require("diffview").setup {
-            keymaps = {
-                view = {
-                    { { "n" }, "q", "<Cmd>DiffviewClose<CR>", { desc = "Close Diffview" } },
-                },
-                file_panel = {
-                    { { "n" }, "q", "<Cmd>DiffviewClose<CR>", { desc = "Close Diffview" } },
-                },
-                file_history_panel = {
-                    { { "n" }, "q", "<Cmd>DiffviewClose<CR>", { desc = "Close Diffview" } },
-                },
-            },
         }
     end,
 })

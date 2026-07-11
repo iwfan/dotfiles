@@ -1,7 +1,10 @@
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
+-- ============================================================================
+-- lualine.nvim — blazing fast statusline
+-- ============================================================================
+
+vim.api.nvim_create_autocmd("VimEnter", {
     once = true,
     callback = function()
-        vim.pack.add { "https://github.com/nvim-lualine/lualine.nvim" }
         require("lualine").setup {
             options = {
                 icons_enabled = false,
@@ -54,12 +57,9 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
                         symbols = {
                             spinner = { "󰪞 ", "󰪟 ", "󰪠 ", "󰪡 ", "󰪢 ", "󰪣 ", "󰪤 ", "󰪥 " },
                             done = "󰄴 ",
-                            -- Delimiter inserted between LSP names:
                             separator = "",
                         },
-                        -- List of LSP names to ignore (e.g., `null-ls`):
                         ignore_lsp = {},
-                        -- Display the LSP name
                         show_name = false,
                     },
                     "filesize",
@@ -83,9 +83,8 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
                     {
                         "buffers",
                         buffers_color = {
-                            -- Same values as the general color option can be used here.
-                            active = "lualine_a_normal", -- Color for active buffer.
-                            inactive = "lualine_a_inactive", -- Color for inactive buffer.
+                            active = "lualine_a_normal",
+                            inactive = "lualine_a_inactive",
                         },
                     },
                 },
@@ -95,9 +94,8 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
                     {
                         "tabs",
                         tabs_color = {
-                            -- Same values as the general color option can be used here.
-                            active = "lualine_a_normal", -- Color for active tab.
-                            inactive = "lualine_a_inactive", -- Color for inactive tab.
+                            active = "lualine_a_normal",
+                            inactive = "lualine_a_inactive",
                         },
                     },
                 },

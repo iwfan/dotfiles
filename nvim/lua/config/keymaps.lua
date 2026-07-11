@@ -13,7 +13,6 @@ vim.keymap.set(search_modes, 'n', "'Nn'[v:searchforward]", { expr = true, desc =
 vim.keymap.set(search_modes, 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev search result' })
 
 -- Visual mode: extend / shrink selection
-vim.keymap.set('n', '<CR>', 'viw', { desc = 'Select word under cursor' })
 vim.keymap.set('v', '<CR>', 'an', { remap = true, desc = 'Extend selection' })
 vim.keymap.set('v', '<BS>', 'in', { remap = true, desc = 'Shrink selection' })
 
