@@ -44,24 +44,26 @@ disable_completion_if_needed(0)
 
 vim.keymap.set("i", "<Tab>", function()
     if vim.fn.pumvisible() == 1 then
-        return vim.keycode "<C-n>"
+        vim.api.nvim_feedkeys(vim.keycode "<C-n>", "n", false)
+    else
+        vim.api.nvim_feedkeys(vim.keycode "<Tab>", "n", false)
     end
-    return vim.keycode "<Tab>"
-end, { expr = true, desc = "Next completion item" })
+end, { desc = "Next completion item or Tab" })
 
 vim.keymap.set("i", "<S-Tab>", function()
     if vim.fn.pumvisible() == 1 then
-        return vim.keycode "<C-p>"
+        vim.api.nvim_feedkeys(vim.keycode "<C-p>", "n", false)
+    else
+        vim.api.nvim_feedkeys(vim.keycode "<BS>", "n", false)
     end
-    return vim.keycode "<BS>"
-end, { expr = true, desc = "Previous completion item" })
+end, { desc = "Previous completion item or Backspace" })
 
 vim.keymap.set("i", "<CR>", function()
     if vim.fn.complete_info().selected ~= -1 then
-        return vim.keycode "<C-y>"
+        vim.api.nvim_feedkeys(vim.keycode "<C-y>", "n", false)
+    elseif _G.MiniPairs then
+        vim.api.nvim_feedkeys(MiniPairs.cr(), "n", false)
+    else
+        vim.api.nvim_feedkeys(vim.keycode "<CR>", "n", false)
     end
-    if _G.MiniPairs then
-        return MiniPairs.cr()
-    end
-    return vim.keycode "<CR>"
-end, { expr = true, desc = "Accept completion or newline" })
+end, { desc = "Accept completion or newline" })

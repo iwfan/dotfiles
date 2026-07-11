@@ -24,24 +24,23 @@ local function setup_lspconfig()
                 return
             end
 
+            vim.lsp.inlay_hint.enable()
+
             local map = function(keys, func, desc, mode)
                 mode = mode or "n"
                 vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
             end
 
-            -- FzfLua picker mappings
-            -- local fzf = require "fzf-lua"
-            -- map("gd", fzf.lsp_definitions, "[G]oto [D]definition")
-            -- map("grr", fzf.lsp_references, "[G]oto [R]references")
-            -- map("gri", fzf.lsp_implementations, "[G]oto [I]mplementation")
-            -- map("grd", fzf.lsp_declarations, "[G]oto [D]eclaration")
-            -- map("grt", fzf.lsp_typedefs, "[G]oto [T]ype Definition")
-            -- map("gO", fzf.lsp_document_symbols, "Open Document Symbols")
-            -- map("gW", fzf.lsp_live_workspace_symbols, "Open Workspace Symbols")
-            --
-            -- map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
-            -- map("<space><enter>", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
-            -- map("\\d", vim.diagnostic.open_float, "Hover")
+            -- LSP goto / actions
+            map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+            map("grr", vim.lsp.buf.references, "[G]oto [R]eferences")
+            map("gri", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+            map("grt", vim.lsp.buf.type_definition, "[G]oto [T]ype Definition")
+            map("gO", vim.lsp.buf.document_symbol, "Open Document Symbols")
+            map("gW", vim.lsp.buf.workspace_symbol, "Open Workspace Symbols")
+            map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
+            map("<space><enter>", vim.lsp.buf.code_action, "Code [A]ction", { "n", "x" })
+            map("\\d", vim.diagnostic.open_float, "Hover diagnostic")
         end,
     })
 

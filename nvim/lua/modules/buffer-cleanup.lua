@@ -54,13 +54,7 @@ local function safe_delete_buffer(bufnr, bufname)
         end
 
         -- 尝试使用插件删除
-        if vim.fn.exists(':Bdelete') == 2 then
-            vim.cmd('silent! Bdelete! ' .. bufnr)
-        elseif package.loaded.snacks and pcall(function() return Snacks.bufdelete end) then
-            Snacks.bufdelete.delete(bufnr)
-        else
-            vim.cmd('silent! bdelete! ' .. bufnr)
-        end
+        MiniBufremove.delete(bufnr)
 
         cleanup_stats.deleted = cleanup_stats.deleted + 1
     end)

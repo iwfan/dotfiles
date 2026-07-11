@@ -8,7 +8,6 @@ require("conform").setup {
         typescript = { "biome" },
         javascriptreact = { "biome" },
         typescriptreact = { "biome" },
-        ["*"] = { "typos" },
         ["_"] = { "trim_whitespace" },
     },
 }

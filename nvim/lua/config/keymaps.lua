@@ -25,6 +25,10 @@ vim.keymap.set('n', '<leader><Tab>', '<cmd>bdelete<CR>', { desc = 'Close buffer'
 vim.cmd.packadd('nvim.undotree')
 vim.keymap.set('n', '<leader>u', '<cmd>Undotree<CR>', { desc = 'Toggle Undo Tree' })
 
+-- Built-in Difftool
+vim.cmd.packadd('nvim.difftool')
+vim.keymap.set('n', '<leader>gd', '<cmd>DiffTool<CR>', { desc = 'Open Diff Tool' })
+
 -- Emacs-style keybindings
 local emacs_insert = {
     ['<C-a>'] = { '<C-o>^', 'Move to line start' },

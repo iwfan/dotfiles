@@ -100,6 +100,10 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
         src = "https://github.com/nvim-mini/mini.hipatterns",
         version = "main",
       },
+      {
+        src = "https://github.com/nvim-mini/mini.indentscope",
+        version = "main",
+      },
 
       -- Git
       {
@@ -121,6 +125,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
     vim.pack.add {
       {
         src = "https://github.com/nvim-lualine/lualine.nvim",
+      },
+      {
+        src = "https://github.com/rmagatti/auto-session",
       },
     }
   end,
