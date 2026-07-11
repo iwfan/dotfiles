@@ -91,6 +91,10 @@
       "src": "https://github.com/nvim-mini/mini.surround",
       "version": "'main'"
     },
+    "neogit": {
+      "rev": "a0847c4bea5a5f92a36e3f3bf7da99d7d685d3ac",
+      "src": "https://github.com/NeogitOrg/neogit"
+    },
     "nvim-lint": {
       "rev": "eab58b48eb11d7745c11c505e0f3057165902461",
       "src": "https://github.com/mfussenegger/nvim-lint"

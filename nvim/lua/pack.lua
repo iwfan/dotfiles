@@ -112,6 +112,9 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
       {
         src = "https://github.com/sindrets/diffview.nvim",
       },
+      {
+        src = "https://github.com/NeogitOrg/neogit",
+      },
     }
   end,
 })
