@@ -132,3 +132,18 @@ vim.api.nvim_create_autocmd("VimEnter", {
     }
   end,
 })
+
+-- ============================================================================
+-- Lazy on FileType markdown — render-markdown (only when editing .md files)
+-- ============================================================================
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  once = true,
+  callback = function()
+    vim.pack.add {
+      {
+        src = "https://github.com/MeanderingProgrammer/render-markdown.nvim",
+      },
+    }
+  end,
+})
