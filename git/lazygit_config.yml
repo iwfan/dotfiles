@@ -10,5 +10,3 @@ os:
   editAtLine: 'nvim --line={{line}} {{filename}}'
   editAtLineAndWait: 'nvim --block --line={{line}} {{filename}}'
   editInTerminal: true
-  openDirInEditor: 'nvim {{dir}}'
-  open: zed {{filename}}
