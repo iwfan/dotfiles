@@ -13,6 +13,7 @@ vim.keymap.set(search_modes, 'n', "'Nn'[v:searchforward]", { expr = true, desc =
 vim.keymap.set(search_modes, 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev search result' })
 
 -- Visual mode: extend / shrink selection
+vim.keymap.set('n', '<CR>', 'viw', { desc = 'Select word under cursor' })
 vim.keymap.set('v', '<CR>', 'an', { remap = true, desc = 'Extend selection' })
 vim.keymap.set('v', '<BS>', 'in', { remap = true, desc = 'Shrink selection' })
 
@@ -79,10 +80,10 @@ vim.keymap.set("n", "<C-/>", "gcc", { remap = true, desc = "commentline" })
 vim.keymap.set("v", "<C-/>", "gc", { remap = true, desc = "comment visual" })
 
 -- window management
-vim.keymap.set("n", "<C-h>", [[<c-w>h]], { desc = "Go to top window" })
+vim.keymap.set("n", "<C-h>", [[<c-w>h]], { desc = "Go to left window" })
 vim.keymap.set("n", "<C-l>", [[<c-w>l]], { desc = "Go to right window" })
-vim.keymap.set("n", "<C-j>", [[<c-w>j]], { desc = "Go to left window" })
-vim.keymap.set("n", "<C-k>", [[<c-w>k]], { desc = "Go to bottom window" })
+vim.keymap.set("n", "<C-j>", [[<c-w>j]], { desc = "Go to down window" })
+vim.keymap.set("n", "<C-k>", [[<c-w>k]], { desc = "Go to top window" })
 vim.keymap.set("n", "<A-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
 vim.keymap.set("n", "<A-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
 vim.keymap.set("n", "<A-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
@@ -101,14 +102,20 @@ vim.keymap.set("i", ",", ",<c-g>u")
 vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", ";", ";<c-g>u")
 
+-- Join line without change cursor position
+vim.keymap.set("n", "J", "mzJ`z")
+-- paste over selection without loosing yanked
+vim.keymap.set("x", "p", [["_dP]])
+-- leader d delete wont remember as yanked/clipboard when delete pasting
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<space><bs>", [["_dd]])
+
 -- misc
 vim.keymap.set("n", "q", "<Nop>")
 vim.keymap.set("n", "Q", "q")
 vim.keymap.set("n", "gq", "<Nop>", { desc = "Do not open operation mode" })
 vim.keymap.set("n", "gQ", "Q", { desc = "Do not open Ex mode" })
-vim.keymap.set("x", "p", [[p:let @+=@0<CR>:let @"=@0<CR>]], { desc = "Dont copy replaced text" })
 vim.keymap.set("n", "qr", [[:%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<space><bs>", [["_dd]])
 vim.keymap.set("n", "[<space>", ":<c-u>put! =repeat(nr2char(10), v:count1)<CR>'[", { silent = true })
 vim.keymap.set("n", "]<space>", ":<c-u>put =repeat(nr2char(10), v:count1)<CR>", { silent = true })
 
