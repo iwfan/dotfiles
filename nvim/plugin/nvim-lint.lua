@@ -1,9 +1,10 @@
 local lint = require "lint"
 lint.linters_by_ft = {
-    javascript = { "biomejs" },
-    typescript = { "biomejs" },
-    javascriptreact = { "biomejs" },
-    typescriptreact = { "biomejs" },
+    astro = { "biome" },
+    javascript = { "biome" },
+    typescript = { "biome" },
+    javascriptreact = { "biome" },
+    typescriptreact = { "biome" },
     python = { "ruff" },
     ["*"] = { "typos" },
 }

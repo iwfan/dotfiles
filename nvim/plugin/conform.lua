@@ -4,6 +4,7 @@ require("conform").setup {
         lua = { "stylua" },
         go = { "goimports", "gofmt" },
         python = { "ruff_format" },
+        astro = { "biome" },
         javascript = { "biome" },
         typescript = { "biome" },
         javascriptreact = { "biome" },

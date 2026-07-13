@@ -24,7 +24,8 @@ local function setup_lspconfig()
                 return
             end
 
-            vim.lsp.inlay_hint.enable()
+            -- vim.lsp.inlay_hint.enable()
+            -- vim.lsp.codelens.enable()
 
             local map = function(keys, func, desc, mode)
                 mode = mode or "n"
@@ -81,9 +82,11 @@ local function setup_lspconfig()
         gopls = {},
         astro = {},
         basedpyright = {},
+        ruff = {},
         tailwindcss = {},
         vue_ls = {},
         vtsls = vtsls_config,
+        marksman = {},
     }
 
     for server, server_opts in pairs(installed_servers) do
