@@ -1,0 +1,56 @@
+require("which-key").setup({
+  preset = "classic",
+  delay = 200,
+  plugins = {
+    marks = true,
+    registers = true,
+    spelling = {
+      enabled = true,
+      suggestions = 20,
+    },
+    presets = {
+      operators = true,
+      motions = true,
+      text_objects = true,
+      windows = true,
+      nav = true,
+      z = true,
+      g = true,
+    },
+  },
+  win = {
+    no_overlap = true,
+    padding = { 1, 2 },
+    title = true,
+    title_pos = "center",
+    zindex = 1000,
+    wo = {},
+  },
+  layout = {
+    width = { min = 20 },
+    spacing = 3,
+  },
+  keys = {
+    scroll_down = "<C-d>",
+    scroll_up = "<C-u>",
+  },
+  sort = { "local", "order", "group", "alphanum", "mod" },
+  expand = 0,
+  icons = {
+    breadcrumb = "»",
+    separator = "➜",
+    group = "+",
+    mappings = true,
+    colors = true,
+  },
+  show_help = true,
+  show_keys = true,
+  spec = {
+    { "<leader><Tab>", desc = "Close buffer" },
+    { "<leader>d", desc = "Delete (no yank)" },
+    { "<leader>e", desc = "File manager" },
+    { "<leader>gd", desc = "Open Diff Tool" },
+    { "<leader>re", desc = "Restart Neovim" },
+    { "<leader>u", desc = "Toggle Undo Tree" },
+  },
+})
