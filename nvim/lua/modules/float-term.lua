@@ -65,7 +65,8 @@ function FloatingTerminal()
     end
 
     if not has_terminal then
-        vim.fn.termopen(os.getenv("SHELL"))
+        local shell = vim.fn.has('win32') == 1 and 'powershell' or os.getenv('SHELL')
+        vim.fn.termopen(shell)
     end
 
     terminal_state.is_open = true
