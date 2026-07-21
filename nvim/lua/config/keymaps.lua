@@ -1,63 +1,59 @@
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
-vim.g.mapleader = vim.keycode('<space>')
+vim.g.mapleader = vim.keycode "<space>"
 
 -- Better vertical movement
-vim.keymap.set({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Better search behavior
-local search_modes = { 'n', 'x', 'o' }
-vim.keymap.set(search_modes, 'n', "'Nn'[v:searchforward]", { expr = true, desc = 'Next search result' })
-vim.keymap.set(search_modes, 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev search result' })
+local search_modes = { "n", "x", "o" }
+vim.keymap.set(search_modes, "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+vim.keymap.set(search_modes, "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
 -- Visual mode: extend / shrink selection
-vim.keymap.set('v', '<CR>', 'an', { remap = true, desc = 'Extend selection' })
-vim.keymap.set('v', '<BS>', 'in', { remap = true, desc = 'Shrink selection' })
+vim.keymap.set("v", "<CR>", "an", { remap = true, desc = "Extend selection" })
+vim.keymap.set("v", "<BS>", "in", { remap = true, desc = "Shrink selection" })
 
 -- Buffer switching (normal mode)
-vim.keymap.set('n', '<Tab>', '<cmd>bnext<CR>', { desc = 'Next buffer' })
-vim.keymap.set('n', '<S-Tab>', '<cmd>bprevious<CR>', { desc = 'Previous buffer' })
-vim.keymap.set('n', '<leader><Tab>', '<cmd>bdelete<CR>', { desc = 'Close buffer' })
+vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<leader><Tab>", "<cmd>bdelete<CR>", { desc = "Close buffer" })
 
 -- Built-in Undotree
-vim.cmd.packadd('nvim.undotree')
-vim.keymap.set('n', '<leader>u', '<cmd>Undotree<CR>', { desc = 'Toggle Undo Tree' })
-
--- Built-in Difftool
-vim.cmd.packadd('nvim.difftool')
-vim.keymap.set('n', '<leader>gd', '<cmd>DiffTool<CR>', { desc = 'Open Diff Tool' })
+vim.cmd.packadd "nvim.undotree"
+vim.keymap.set("n", "<leader>u", "<cmd>Undotree<CR>", { desc = "Toggle Undo Tree" })
 
 -- Emacs-style keybindings
 local emacs_insert = {
-    ['<C-a>'] = { '<C-o>^', 'Move to line start' },
-    ['<C-e>'] = { '<C-o>$', 'Move to line end' },
-    ['<C-b>'] = { '<Left>', 'Move backward' },
-    ['<C-f>'] = { '<Right>', 'Move forward' },
-    ['<C-p>'] = { '<Up>', 'Move up' },
-    ['<C-n>'] = { '<Down>', 'Move down' },
-    ['<C-h>'] = { '<BS>', 'Backspace' },
-    ['<C-d>'] = { '<Del>', 'Delete' },
-    ['<C-k>'] = { '<C-o>D', 'Kill to end of line' },
-    ['<C-z>'] = { '<C-o>u', 'Undo' },
-    ['<C-v>'] = { '<C-r>+', 'Paste from clipboard' },
-    ['<S-tab>'] = { '<BS>', 'Mapped to backspace' },
+    ["<C-a>"] = { "<C-o>^", "Move to line start" },
+    ["<C-e>"] = { "<C-o>$", "Move to line end" },
+    ["<C-b>"] = { "<Left>", "Move backward" },
+    ["<C-f>"] = { "<Right>", "Move forward" },
+    ["<C-p>"] = { "<Up>", "Move up" },
+    ["<C-n>"] = { "<Down>", "Move down" },
+    ["<C-h>"] = { "<BS>", "Backspace" },
+    ["<C-d>"] = { "<Del>", "Delete" },
+    ["<C-k>"] = { "<C-o>D", "Kill to end of line" },
+    ["<C-z>"] = { "<C-o>u", "Undo" },
+    ["<C-v>"] = { "<C-r>+", "Paste from clipboard" },
+    ["<S-tab>"] = { "<BS>", "Mapped to backspace" },
 }
 
 for key, mapping in pairs(emacs_insert) do
-    vim.keymap.set('i', key, mapping[1], { desc = mapping[2] })
+    vim.keymap.set("i", key, mapping[1], { desc = mapping[2] })
 end
 
 local emacs_command = {
-    ['<C-a>'] = { '<HOME>', 'Move to line start' },
-    ['<C-e>'] = { '<END>', 'Move to line end' },
-    ['<C-b>'] = { '<Left>', 'Move backward' },
-    ['<C-f>'] = { '<Right>', 'Move forward' },
+    ["<C-a>"] = { "<HOME>", "Move to line start" },
+    ["<C-e>"] = { "<END>", "Move to line end" },
+    ["<C-b>"] = { "<Left>", "Move backward" },
+    ["<C-f>"] = { "<Right>", "Move forward" },
 }
 
 for key, mapping in pairs(emacs_command) do
-    vim.keymap.set('c', key, mapping[1], { desc = mapping[2] })
+    vim.keymap.set("c", key, mapping[1], { desc = mapping[2] })
 end
 
 -- Emacs-like keybinding for normal mode
@@ -72,7 +68,7 @@ vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move s
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selection up" })
 
 -- Quick save
-vim.keymap.set({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
+vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- Better indenting in visual mode
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
@@ -93,12 +89,12 @@ vim.keymap.set("n", "<A-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decreas
 vim.keymap.set("n", "<A-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- Terminal mode navigation
-vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = 'Terminal left window nav' })
-vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = 'Terminal down window nav' })
-vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = 'Terminal up window nav' })
-vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Terminal right window nav' })
-vim.keymap.set('t', '<C-]>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Terminal left window nav" })
+vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Terminal down window nav" })
+vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Terminal up window nav" })
+vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Terminal right window nav" })
+vim.keymap.set("t", "<C-]>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Add undo break-points
 vim.keymap.set("i", ",", ",<c-g>u")
@@ -122,7 +118,7 @@ vim.keymap.set("n", "qr", [[:%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "[<space>", ":<c-u>put! =repeat(nr2char(10), v:count1)<CR>'[", { silent = true })
 vim.keymap.set("n", "]<space>", ":<c-u>put =repeat(nr2char(10), v:count1)<CR>", { silent = true })
 
-vim.keymap.set('n', '<leader>re', '<cmd>restart<CR>', { desc = 'Restart Neovim' })
+vim.keymap.set("n", "<leader>re", "<cmd>restart<CR>", { desc = "Restart Neovim" })
 
 -- file manager
 vim.keymap.set("n", "<C-t>", "<cmd>Yazi<cr>")
@@ -130,8 +126,10 @@ vim.keymap.set("n", "<space>e", "<cmd>Yazi<cr>")
 -- lazy git
 vim.keymap.set("n", "<C-g>", "<cmd>Lazygit<cr>")
 
+-- Diagnostics
+vim.keymap.set("n", "\\d", vim.diagnostic.open_float, { desc = "Line diagnostics" })
+
 -- Disabled keys
-vim.keymap.set("n", "<C-q>", "<Nop>")
 vim.keymap.set("n", "<C-y>", "<Nop>")
 vim.keymap.set("n", "<C-,>", ":echo 3<cr>")
 vim.keymap.set("n", "<C-.>", ":echo 4<cr>")

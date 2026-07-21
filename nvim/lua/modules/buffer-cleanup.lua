@@ -11,7 +11,7 @@ local function should_delete_buffer(bufnr, bufname)
         return false
     end
 
-    if bufname == "" or bufname:match("^%w+://") then
+    if bufname == "" or bufname:match "^%w+://" then
         return false
     end
 
@@ -22,15 +22,24 @@ local function should_delete_buffer(bufnr, bufname)
 
     -- 受保护的类型
     local protected_buftypes = {
-        "terminal", "quickfix", "help", "prompt", "nofile", "acwrite"
+        "terminal",
+        "quickfix",
+        "help",
+        "prompt",
+        "nofile",
+        "acwrite",
     }
     local protected_filetypes = {
-        "netrw", "fugitive", "gitcommit", "alpha", "dashboard", "lazy", "mason"
+        "netrw",
+        "fugitive",
+        "gitcommit",
+        "alpha",
+        "dashboard",
+        "lazy",
+        "mason",
     }
 
-    if vim.tbl_contains(protected_buftypes, buftype) or
-        vim.tbl_contains(protected_filetypes, filetype) or
-        modified then
+    if vim.tbl_contains(protected_buftypes, buftype) or vim.tbl_contains(protected_filetypes, filetype) or modified then
         return false
     end
 
@@ -54,7 +63,7 @@ local function safe_delete_buffer(bufnr, bufname)
         end
 
         -- 尝试使用插件删除
-        MiniBufremove.delete(bufnr)
+        Snacks.bufdelete.delete(bufnr)
 
         cleanup_stats.deleted = cleanup_stats.deleted + 1
     end)
@@ -63,8 +72,7 @@ local function safe_delete_buffer(bufnr, bufname)
         cleanup_stats.errors = cleanup_stats.errors + 1
 
         -- 只记录重要错误
-        if not err:match("No buffers were deleted") and
-            not err:match("not found") then
+        if not err:match "No buffers were deleted" and not err:match "not found" then
             vim.schedule(function()
                 vim.notify(
                     string.format("Buffer cleanup error [%d]: %s", bufnr, tostring(err):sub(1, 100)),
@@ -141,11 +149,9 @@ function M.setup()
         callback = function()
             pending_deletes = {}
             if cleanup_stats.deleted > 0 or cleanup_stats.errors > 0 then
-                print(string.format(
-                    "Buffer cleanup: %d deleted, %d errors",
-                    cleanup_stats.deleted,
-                    cleanup_stats.errors
-                ))
+                print(
+                    string.format("Buffer cleanup: %d deleted, %d errors", cleanup_stats.deleted, cleanup_stats.errors)
+                )
             end
         end,
     })

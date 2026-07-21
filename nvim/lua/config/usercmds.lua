@@ -16,4 +16,3 @@ end, { nargs = 1, complete = "help" })
 vim.api.nvim_create_user_command("Format", function()
     require("conform").format { lsp_format = true }
 end, { nargs = 0 })
-

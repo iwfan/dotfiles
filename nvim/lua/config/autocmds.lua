@@ -8,7 +8,7 @@ autocmd("TextYankPost", {
     group = augroup "highlight_yank",
     desc = "Highlight yanked text",
     callback = function()
-        vim.highlight.on_yank({ timeout = 200 })
+        vim.highlight.on_yank { timeout = 350 }
     end,
 })
 
@@ -42,7 +42,7 @@ autocmd("TermOpen", {
         vim.opt_local.scrolloff = 0
         vim.opt_local.sidescrolloff = 0
         vim.bo.buflisted = false
-        vim.cmd("startinsert")
+        vim.cmd "startinsert"
     end,
 })
 
@@ -51,7 +51,7 @@ autocmd("TermOpen", {
 autocmd("FileType", {
     group = augroup "Proper 'formatoptions'",
     callback = function()
-        vim.cmd('setlocal formatoptions-=c formatoptions-=o')
+        vim.cmd "setlocal formatoptions-=c formatoptions-=o"
     end,
 })
 

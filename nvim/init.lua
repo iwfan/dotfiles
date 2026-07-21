@@ -14,7 +14,7 @@
 -- Author:   Zi莱卷 <iwfan@duck.com>
 -- Github:   https://github.com/iwfan/dotfiles
 
-require('vim._core.ui2').enable()
+require("vim._core.ui2").enable()
 
 require "config.options"
 require "config.keymaps"
@@ -22,8 +22,7 @@ require "config.autocmds"
 require "config.usercmds"
 require "config.lazy"
 
-require "modules.buffer-cleanup".setup()
-require "modules.float-term".setup()
-require "modules.yazi-picker".setup()
-require "modules.lazygit-opener".setup()
-
+require("modules.buffer-cleanup").setup()
+require("modules.float-term").setup()
+require("modules.yazi-picker").setup()
+require("modules.lazygit-opener").setup()
