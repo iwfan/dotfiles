@@ -3,6 +3,15 @@ return {
         "nvim-treesitter/nvim-treesitter",
         branch = "main",
         build = function()
+            if vim.fn.executable "tree-sitter" ~= 1 then
+                vim.notify(
+                    "nvim-treesitter: `tree-sitter` CLI not found.\n"
+                        .. "Install it: `brew install tree-sitter` or `cargo install tree-sitter-cli`\n"
+                        .. "Then run: `tree-sitter init-config`",
+                    vim.log.levels.ERROR
+                )
+                return
+            end
             local TS = require "nvim-treesitter"
             if TS.get_installed then
                 TS.update(nil, { summary = true })
