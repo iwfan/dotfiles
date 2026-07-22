@@ -62,7 +62,6 @@ vim.opt.autoindent = true -- Copy indent from current line
 -- === 折叠设置 ===
 vim.o.foldlevel = 99 -- Open all folds by default; treesitter overrides per-filetype
 vim.o.foldmethod = "manual" -- Default; treesitter sets to "expr" when available
-vim.o.foldnestmax = 10 -- Limit number of fold levels
 vim.o.foldtext = "" -- Show text under fold with its highlighting
 
 -- === 文件处理 ===

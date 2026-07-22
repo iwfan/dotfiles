@@ -2,19 +2,90 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         branch = "main",
-        build = ":TSUpdate",
-        event = { "VeryLazy" },
+        build = function()
+            local TS = require "nvim-treesitter"
+            if TS.get_installed then
+                TS.update(nil, { summary = true })
+            end
+        end,
+        event = { "BufReadPost", "BufNewFile", "VeryLazy" },
         cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
-        config = function()
-            -- Use tree-sitter for indentation and folding on supported filetypes
+        opts_extend = { "ensure_installed" },
+        opts = {
+            ensure_installed = {
+                "astro",
+                "bash",
+                "css",
+                "diff",
+                "go",
+                "gomod",
+                "html",
+                "javascript",
+                "json",
+                "lua",
+                "luadoc",
+                "markdown",
+                "markdown_inline",
+                "python",
+                "query",
+                "regex",
+                "toml",
+                "tsx",
+                "typescript",
+                "vim",
+                "vimdoc",
+                "vue",
+                "yaml",
+            },
+        },
+        config = function(_, opts)
+            local TS = require "nvim-treesitter"
+
+            if not TS.get_installed then
+                vim.notify("nvim-treesitter: please run `:TSUpdate`", vim.log.levels.WARN)
+                return
+            end
+
+            if type(opts.ensure_installed) ~= "table" then
+                vim.notify("nvim-treesitter: ensure_installed must be a table", vim.log.levels.ERROR)
+                return
+            end
+
+            TS.setup(opts)
+
+            local installed = TS.get_installed()
+            local installed_set = {}
+            for _, lang in ipairs(installed) do
+                installed_set[lang] = true
+            end
+
+            local missing = {}
+            for _, lang in ipairs(opts.ensure_installed) do
+                if not installed_set[lang] then
+                    table.insert(missing, lang)
+                end
+            end
+
+            if #missing > 0 then
+                TS.install(missing, { summary = true })
+            end
+
+            -- Enable treesitter features per filetype
             vim.api.nvim_create_autocmd("FileType", {
                 group = vim.api.nvim_create_augroup("nvim-treesitter", { clear = true }),
                 callback = function(ev)
-                    if pcall(vim.treesitter.start, ev.buf) then
-                        vim.bo.indentexpr = "v:lua.vim.treesitter.indentexpr()"
-                        vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-                        vim.wo[0][0].foldmethod = "expr"
+                    if not ev.filetype or ev.filetype == "" then
+                        return
                     end
+                    local ok, lang = pcall(vim.treesitter.language.get_lang, ev.filetype)
+                    if not ok or not lang then
+                        return
+                    end
+
+                    pcall(vim.treesitter.start, ev.buf)
+                    vim.bo[ev.buf].indentexpr = "v:lua.vim.treesitter.indentexpr()"
+                    vim.wo[0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+                    vim.wo[0].foldmethod = "expr"
                 end,
             })
         end,
@@ -35,9 +106,6 @@ return {
         config = function(_, opts)
             require("nvim-treesitter-textobjects").setup(opts)
 
-            local select = require("nvim-treesitter-textobjects.select").select_textobject
-            local swap_next = require("nvim-treesitter-textobjects.swap").swap_next
-            local swap_prev = require("nvim-treesitter-textobjects.swap").swap_previous
             local goto_next_start = require("nvim-treesitter-textobjects.move").goto_next_start
             local goto_next_end = require("nvim-treesitter-textobjects.move").goto_next_end
             local goto_previous_start = require("nvim-treesitter-textobjects.move").goto_previous_start
