@@ -131,18 +131,32 @@ setopt PROMPT_SUBST
 
 # Configure vcs_info for git
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git:*' formats '%b'
-zstyle ':vcs_info:git:*' actionformats '%b|%a'
+zstyle ':vcs_info:git:*' formats '%F{magenta}%b%f%c%u'
+zstyle ':vcs_info:git:*' actionformats '%F{magenta}%b%F{yellow}|%a%f%c%u'
+# Enable the next two lines to show dirty/staged dots (slower on large repos):
+# zstyle ':vcs_info:git:*' check-for-changes true
+# zstyle ':vcs_info:git:*' unstagedstr '%F{red}●%f'
+# zstyle ':vcs_info:git:*' stagedstr '%F{green}●%f'
 
-# Function to build prompt (shared by precmd and toggle-agent-mode)
+# Detect if we're in an SSH session
+_is_ssh() {
+  [[ -n "$SSH_CONNECTION" || -n "$SSH_CLIENT" || -n "$SSH_TTY" ]]
+}
+
+# Function to build prompt (shared by precmd and widget callbacks)
 _build_prompt() {
-  # Update vcs_info first
-  vcs_info
-  
-  # Path
+  # --- Line 1: context info ---
+
+  # SSH indicator: show user@host in red to catch attention
+  local context=""
+  if _is_ssh; then
+    context="%F{red}%n@%m%f "
+  fi
+
+  # Current path (shortened with ~)
   local path_display="%F{cyan}%~%f"
-  
-  # Git branch with status
+
+  # Git info (set by async or sync vcs_info)
   local git_info=""
   if [[ -n "${vcs_info_msg_0_}" ]]; then
     git_info=" %F{240}on %F{magenta}${vcs_info_msg_0_}%f"
@@ -153,22 +167,30 @@ _build_prompt() {
   if [[ -n "$http_proxy" || -n "$https_proxy" || -n "$all_proxy" ]]; then
     proxy_info=" %F{240}using%f %F{yellow}proxy%f"
   fi
-  
-  # Second line: background jobs indicator + prompt symbol
+
+  # --- Line 2: prompt line ---
+
+  # Background jobs indicator
   local jobs_indicator="%(1j.%F{yellow}[&]%f .)"
+
+  # Exit code of last command (only shown when non-zero)
+  local exit_code="%(?..%F{red}%?%f )"
+
+  # Prompt symbol: cyan for success, red for failure
   local prompt_symbol="%(?,%F{cyan}>%f,%F{red}!%f)"
-  
-  PROMPT="${path_display}${git_info}${proxy_info}
-${jobs_indicator}${prompt_symbol} "
+
+  # Right prompt: time (useful for timing commands)
+  RPROMPT='%F{240}%*%f'
+
+  PROMPT="${context}${path_display}${git_info}${proxy_info}
+${exit_code}${jobs_indicator}${prompt_symbol} "
 }
 
 # Precmd function to build prompt
 precmd() {
+  vcs_info
   _build_prompt
 }
-
-# Clear right prompt
-RPROMPT=''
 
 # ============================================================================
 # Agent Mode - Press Alt+Space to activate
@@ -330,6 +352,13 @@ alias glr='git pull --rebase'
 alias gd='git diff'
 alias glog='git log --oneline --graph --decorate'
 
+# System-level cross-platform compat (Linux only; macOS has these natively)
+if [[ "$OSTYPE" == linux* ]]; then
+  alias open='xdg-open'
+  alias pbcopy='wl-copy'
+  alias pbpaste='wl-paste'
+fi
+
 # System
 alias df='df -h'
 alias du='du -h'
@@ -376,7 +405,7 @@ ff() {
 }
 
 # Find directories by name
-fd() {
+fdd() {
   find . -type d -iname "*$1*"
 }
 
@@ -430,8 +459,12 @@ fif() {
   ${EDITOR:-vim} "$file"
 }
 
-ip () {
-  ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'
+myip() {
+  if [[ "$OSTYPE" == darwin* ]]; then
+    ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'
+  else
+    ip -4 addr show | grep -oP '(?<=inet )([0-9]+\.){3}[0-9]+' | grep -v '^127\.'
+  fi
 }
 
 port() {
@@ -665,7 +698,7 @@ zinit wait lucid for \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+[[ "$OSTYPE" == darwin* ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(zoxide init zsh --cmd j)"
 eval "$(mise activate zsh)"
 FZF_CTRL_T_COMMAND= FZF_ALT_C_COMMAND= source <(fzf --zsh)
@@ -681,5 +714,5 @@ FZF_CTRL_T_COMMAND= FZF_ALT_C_COMMAND= source <(fzf --zsh)
 # ----------------------------------------------------------------------------
 # zprof
 
-# Added by OrbStack: command-line tools and integration
-source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+# Added by OrbStack: command-line tools and integration (macOS only)
+[[ "$OSTYPE" == darwin* ]] && source ~/.orbstack/shell/init.zsh 2>/dev/null || :
