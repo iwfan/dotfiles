@@ -25,6 +25,8 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 # git config
 ln -s ~/dotfiles/git ~/.config/git
 ln -s ~/dotfiles/git/lazygit_config.yml ~/Library/Application\ Support/lazygit/config.yml
+# foot terminal
+ln -sf ~/dotfiles/foot ~/.config/foot
 # Rime
 ln -s ~/dotfiles/rime-ice ~/Library/Rime
 ln -s ~/dotfiles/rime-ice ~/.config/ibus/rime
