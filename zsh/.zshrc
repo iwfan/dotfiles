@@ -41,14 +41,18 @@ setopt PUSHD_MINUS               # Reverse +/- operators
 
 # ----------------------------------------------------------------------------
 # Completion System
-# ----------------------------------------------------------------------------
-autoload -Uz compinit
+# Preload zle module for later use
+zmodload zsh/zle 2>/dev/null
 
-# Speed up compinit by checking cache once per day
-if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-  compinit
-else
-  compinit -C
+# Skip compinit when running with -c (ZSH_EXECUTION_STRING is set)
+# to avoid "can't change option: zle" warnings from .zcompdump
+if [[ -z "${ZSH_EXECUTION_STRING-}" ]]; then
+  autoload -Uz compinit
+  if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+    compinit
+  else
+    compinit -C
+  fi
 fi
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Case insensitive
@@ -62,6 +66,8 @@ zstyle ':completion:*' rehash true                         # Automatically find 
 # ----------------------------------------------------------------------------
 # Key Bindings
 # ----------------------------------------------------------------------------
+
+if [[ -o interactive && -z "${ZSH_EXECUTION_STRING-}" ]]; then
 bindkey -e  # Emacs key bindings (use -v for vi mode)
 
 # Keep arrow-key history navigation predictable across terminals.
@@ -439,6 +445,8 @@ toggle_proxy_widget() {
 zle -N toggle_proxy_widget
 bindkey '^X^P' toggle_proxy_widget  # Ctrl+X Ctrl+P
 
+fi
+
 # Modified version where you can press
 #   - CTRL-O to open with `open` command,
 #   - CTRL-E or Enter key to open with the $EDITOR
@@ -687,21 +695,22 @@ ZINIT_HOME="$HOME/.local/share/zinit/zinit.git"
 if [ ! -d "$ZINIT_HOME" ]; then
   bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
 fi
+if [[ -o interactive && -z "${ZSH_EXECUTION_STRING-}" ]]; then
+  source "${ZINIT_HOME}/zinit.zsh"
 
-source "${ZINIT_HOME}/zinit.zsh"
-
-zinit wait lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma-continuum/fast-syntax-highlighting \
- blockf \
-    zsh-users/zsh-completions \
- atload"!_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions
+  zinit wait lucid for \
+   atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+      zdharma-continuum/fast-syntax-highlighting \
+   blockf \
+      zsh-users/zsh-completions \
+   atload"!_zsh_autosuggest_start" \
+      zsh-users/zsh-autosuggestions
+fi
 
 [[ "$OSTYPE" == darwin* ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(zoxide init zsh --cmd j)"
 eval "$(mise activate zsh)"
-FZF_CTRL_T_COMMAND= FZF_ALT_C_COMMAND= source <(fzf --zsh)
+[[ -o interactive && -z "${ZSH_EXECUTION_STRING-}" ]] && FZF_CTRL_T_COMMAND= FZF_ALT_C_COMMAND= source <(fzf --zsh)
 
 # ----------------------------------------------------------------------------
 # Local Configuration
