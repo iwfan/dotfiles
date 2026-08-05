@@ -14,5 +14,5 @@ vim.api.nvim_create_user_command("H", function(args)
 end, { nargs = 1, complete = "help" })
 
 vim.api.nvim_create_user_command("Format", function()
-    require("conform").format { lsp_format = true }
+    require("conform").format { async = true, lsp_format = "fallback" }
 end, { nargs = 0 })

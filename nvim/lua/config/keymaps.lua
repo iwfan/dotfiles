@@ -19,6 +19,8 @@ vim.keymap.set("v", "<BS>", "in", { remap = true, desc = "Shrink selection" })
 -- Buffer switching (normal mode)
 vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
+-- 显式映射 <C-i> 保持原生动作，避免映射 <Tab> 时在支持扩展键盘协议(CSI u)的终端下误覆盖 <C-i> (Jumplist 前进)
+vim.keymap.set("n", "<C-i>", "<C-i>", { desc = "Jump forward in jumplist" })
 vim.keymap.set("n", "<leader><Tab>", "<cmd>bdelete<CR>", { desc = "Close buffer" })
 
 -- Built-in Undotree
