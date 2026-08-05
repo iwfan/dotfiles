@@ -81,3 +81,7 @@ key = "prefix+space"
 type = "pane"
 command = "zsh"
 description = "Toggle popup/scratch pane"
+
+[experimental]
+kitty_graphics = true
+
