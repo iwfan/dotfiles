@@ -71,12 +71,18 @@ return {
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
                 callback = function(event)
-                    -- vim.lsp.inlay_hint.enable()
-                    -- vim.lsp.codelens.enable()
-
+                    local client = vim.lsp.get_client_by_id(event.data.client_id)
                     local map = function(keys, func, desc, mode)
                         mode = mode or "n"
                         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+                    end
+
+                    if client and client:supports_method("textDocument/inlayHint", { bufnr = event.buf }) then
+                        vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+                        map("<leader>th", function()
+                            local enabled = vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }
+                            vim.lsp.inlay_hint.enable(not enabled, { bufnr = event.buf })
+                        end, "Toggle Inlay Hints")
                     end
 
                     map("gd", Snacks.picker.lsp_definitions, "[G]oto [D]efinition")
@@ -104,6 +110,26 @@ return {
             }
             local vtsls_config = {
                 settings = {
+                    typescript = {
+                        inlayHints = {
+                            parameterNames = { enabled = "literals" },
+                            parameterTypes = { enabled = true },
+                            variableTypes = { enabled = true },
+                            propertyDeclarationTypes = { enabled = true },
+                            functionLikeReturnTypes = { enabled = true },
+                            enumMemberValues = { enabled = true },
+                        },
+                    },
+                    javascript = {
+                        inlayHints = {
+                            parameterNames = { enabled = "literals" },
+                            parameterTypes = { enabled = true },
+                            variableTypes = { enabled = true },
+                            propertyDeclarationTypes = { enabled = true },
+                            functionLikeReturnTypes = { enabled = true },
+                            enumMemberValues = { enabled = true },
+                        },
+                    },
                     vtsls = {
                         tsserver = {
                             globalPlugins = {
@@ -119,6 +145,9 @@ return {
                 lua_ls = {
                     settings = {
                         Lua = {
+                            hint = {
+                                enable = true,
+                            },
                             completion = {
                                 callSnippet = "Replace",
                             },
@@ -127,9 +156,36 @@ return {
                 },
                 cssls = {},
                 html = {},
-                gopls = {},
+                gopls = {
+                    settings = {
+                        gopls = {
+                            hints = {
+                                assignVariableTypes = true,
+                                compositeLiteralFields = true,
+                                compositeLiteralTypes = true,
+                                constantValues = true,
+                                functionTypeParameters = true,
+                                parameterNames = true,
+                                rangeVariableTypes = true,
+                            },
+                        },
+                    },
+                },
                 astro = {},
-                basedpyright = {},
+                basedpyright = {
+                    settings = {
+                        basedpyright = {
+                            analysis = {
+                                inlayHints = {
+                                    variableTypes = true,
+                                    callArgumentNames = true,
+                                    functionReturnTypes = true,
+                                    genericTypes = true,
+                                },
+                            },
+                        },
+                    },
+                },
                 ruff = {},
                 tailwindcss = {},
                 vue_ls = {},
