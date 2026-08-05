@@ -10,3 +10,33 @@ os:
   editAtLine: 'nvim --line={{line}} {{filename}}'
   editAtLineAndWait: 'nvim --block --line={{line}} {{filename}}'
   editInTerminal: true
+gui:
+  nerdFontsVersion: '3'
+  showFileIcons: false
+  theme:
+    activeBorderColor:
+      - '#a7c080'
+      - bold
+    inactiveBorderColor:
+      - default
+    searchingActiveBorderColor:
+      - '#e69875'
+      - bold
+    optionsTextColor:
+      - '#7fbbb3'
+    selectedLineBgColor:
+      - '#343f44'
+    selectedRangeBgColor:
+      - '#343f44'
+    cherryPickedCommitFgColor:
+      - '#7fbbb3'
+    cherryPickedCommitBgColor:
+      - '#3d484d'
+    markedBaseCommitFgColor:
+      - '#7fbbb3'
+    markedBaseCommitBgColor:
+      - '#dbbc7f'
+    unstagedChangesColor:
+      - '#e67e80'
+
+

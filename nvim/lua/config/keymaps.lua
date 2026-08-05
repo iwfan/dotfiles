@@ -122,12 +122,6 @@ vim.keymap.set("n", "]<space>", ":<c-u>put =repeat(nr2char(10), v:count1)<CR>", 
 
 vim.keymap.set("n", "<leader>re", "<cmd>restart<CR>", { desc = "Restart Neovim" })
 
--- file manager
-vim.keymap.set("n", "<C-t>", "<cmd>Yazi<cr>")
-vim.keymap.set("n", "<space>e", "<cmd>Yazi<cr>")
--- lazy git
-vim.keymap.set("n", "<C-g>", "<cmd>Lazygit<cr>")
-
 -- Diagnostics
 vim.keymap.set("n", "\\d", vim.diagnostic.open_float, { desc = "Line diagnostics" })
 

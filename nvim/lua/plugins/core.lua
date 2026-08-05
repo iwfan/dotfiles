@@ -60,6 +60,24 @@ return {
             scroll = { enabled = false },
             statuscolumn = { enabled = false },
             words = { enabled = false },
+            lazygit = {
+                configure = false,
+                win = {
+                    backdrop = false,
+                    width = 0,
+                    height = 0,
+                    wo = {
+                        winhighlight = "Normal:Normal,NormalNC:Normal,NormalFloat:Normal",
+                    },
+                },
+            },
+            styles = {
+                lazygit = {
+                    wo = {
+                        winhighlight = "Normal:Normal,NormalNC:Normal,NormalFloat:Normal",
+                    },
+                },
+            },
         },
         keys = {
             {
@@ -82,6 +100,20 @@ return {
                     Snacks.picker.smart()
                 end,
                 desc = "Search File",
+            },
+            {
+                "<C-g>",
+                function()
+                    Snacks.lazygit.open()
+                end,
+                desc = "Open Lazygit",
+            },
+            {
+                "<C-w>b",
+                function()
+                    Snacks.terminal.toggle()
+                end,
+                desc = "Open Terminal",
             },
             {
                 "<leader>x",
@@ -272,5 +304,50 @@ return {
             },
             extensions = {},
         },
+    },
+    {
+        "mikavilpas/yazi.nvim",
+        version = "*", -- use the latest stable version
+        event = "VeryLazy",
+        dependencies = {
+            { "nvim-lua/plenary.nvim", lazy = true },
+        },
+        keys = {
+            -- 👇 in this section, choose your own keymappings!
+            {
+                "<leader>-",
+                mode = { "n", "v" },
+                "<cmd>Yazi cwd<cr>",
+                desc = "Open yazi at the current file",
+            },
+            {
+                -- Open in the current working directory
+                "<leader>cw",
+                "<cmd>Yazi cwd<cr>",
+                desc = "Open the file manager in nvim's working directory",
+            },
+            {
+                "<c-t>",
+                "<cmd>Yazi toggle<cr>",
+                desc = "Resume the last yazi session",
+            },
+        },
+        ---@type YaziConfig | {}
+        opts = {
+            -- if you want to open yazi instead of netrw, see below for more info
+            open_for_directories = false,
+            floating_window_scaling_factor = 1,
+            yazi_floating_window_border = "none",
+            keymaps = {
+                show_help = "<f1>",
+            },
+        },
+        -- 👇 if you use `open_for_directories=true`, this is recommended
+        init = function()
+            -- mark netrw as loaded so it's not loaded at all.
+            --
+            -- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
+            vim.g.loaded_netrwPlugin = 1
+        end,
     },
 }

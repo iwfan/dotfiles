@@ -25,6 +25,3 @@ require "config.usercmds"
 require "config.lazy"
 
 require("modules.buffer-cleanup").setup()
-require("modules.float-term").setup()
-require("modules.yazi-picker").setup()
-require("modules.lazygit-opener").setup()
