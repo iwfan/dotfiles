@@ -21,12 +21,8 @@ vim.opt.hlsearch = false -- Don't highlight search results
 vim.opt.incsearch = true -- Show matches as you type
 
 -- === 自动补全 ===
-vim.o.pumborder = "single" -- Use border in popup menu
 vim.o.pumheight = 10 -- Make popup menu smaller
 vim.o.pummaxwidth = 100 -- Make popup menu not too wide
-vim.o.complete = ".,w,b,kspell" -- Keep built-in fallback completion lightweight
-vim.o.completeopt = "menuone,noselect,fuzzy,nosort"
-vim.o.completetimeout = 100
 
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full,full"
