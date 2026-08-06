@@ -19,7 +19,7 @@ initial-command = "/opt/homebrew/bin/herdr"
 keybind = super+t=text:\x02c
 
 # CMD+W 关闭当前窗口
-keybind = super+w=text:\x02&
+keybind = super+w=text:\x02X
 
 # CMD+Shift+N 创建新 workspace，CMD+Shift+W 关闭 workspace
 keybind = super+shift+n=text:\x02N
@@ -37,7 +37,7 @@ keybind = super+digit_8=text:\x028
 keybind = super+digit_9=text:\x029
 keybind = super+digit_0=text:\x02l
 
-# CMD+Ctrl+数字 切换到指定 workspace
+# CMD+Ctrl+数字 切换到指定 workspace (发送 \x02\x1b1..9 -> prefix+alt+1..9)
 keybind = super+ctrl+digit_1=text:\x02\x1b1
 keybind = super+ctrl+digit_2=text:\x02\x1b2
 keybind = super+ctrl+digit_3=text:\x02\x1b3
@@ -48,9 +48,13 @@ keybind = super+ctrl+digit_7=text:\x02\x1b7
 keybind = super+ctrl+digit_8=text:\x02\x1b8
 keybind = super+ctrl+digit_9=text:\x02\x1b9
 
-# CMD+Ctrl+Up/Down 切换到上一个/下一个 workspace
-keybind = super+ctrl+up=text:\x02\x1b[A
-keybind = super+ctrl+down=text:\x02\x1b[B
+# CMD+Ctrl+J/K 切换到下一个/上一个 workspace (发送 \x02\x1bj / \x02\x1bk -> prefix+alt+j/k)
+keybind = super+ctrl+k=text:\x02\x1bk
+keybind = super+ctrl+j=text:\x02\x1bj
+
+# CMD+Shift+J/K 切换到下一个/上一个 Agent (发送 \x02J / \x02K -> prefix+shift+j/k)
+keybind = super+shift+k=text:\x02K
+keybind = super+shift+j=text:\x02J
 
 # CMD+D 水平分割
 keybind = super+d=text:\x02|
@@ -65,6 +69,8 @@ keybind = super+shift+x=text:\x02X
 # CMD+[ 和 CMD+] 切换窗口
 keybind = super+shift+left_bracket=text:\x02p
 keybind = super+shift+right_bracket=text:\x02n
+keybind = super+ctrl+h=text:\x02p
+keybind = super+ctrl+l=text:\x02n
 keybind = super+[=text:\x02O
 keybind = super+]=text:\x02o
 
