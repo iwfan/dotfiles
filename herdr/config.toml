@@ -66,11 +66,11 @@ last_pane = "prefix+q"
 new_worktree = "prefix+shift+g"
 remove_worktree = "prefix+shift+x"
 
-# Workspaces (CMD+Shift+N sends \x02N -> prefix+shift+n, CMD+Shift+W sends \x02D -> prefix+shift+d, CMD+Shift+Left/Right sends \x02\x1b[D / \x02\x1b[C -> prefix+left/right, CMD+Alt+1..9 sends \x02\x1b1..9 -> prefix+alt+1..9)
+# Workspaces (CMD+Shift+N sends \x02N -> prefix+shift+n, CMD+Shift+W sends \x02D -> prefix+shift+d, CMD+Ctrl+Up/Down sends \x02\x1b[A / \x02\x1b[B -> prefix+up/down, CMD+Ctrl+1..9 sends \x02\x1b1..9 -> prefix+alt+1..9)
 new_workspace = "prefix+shift+n"
 close_workspace = "prefix+shift+d"
-previous_workspace = "prefix+left"
-next_workspace = "prefix+right"
+previous_workspace = "prefix+up"
+next_workspace = "prefix+down"
 switch_workspace = "prefix+alt+1..9"
 
 # Edit scrollback/copy mode (CMD+F sends \x02[ -> prefix+[)
@@ -85,3 +85,8 @@ description = "Toggle popup/scratch pane"
 [experimental]
 kitty_graphics = true
 
+[ui.toast]
+delivery = "terminal"
+
+[ui]
+show_agent_labels_on_pane_borders = true

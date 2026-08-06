@@ -37,20 +37,20 @@ keybind = super+digit_8=text:\x028
 keybind = super+digit_9=text:\x029
 keybind = super+digit_0=text:\x02l
 
-# CMD+Alt+数字 切换到指定 workspace
-keybind = super+alt+digit_1=text:\x02\x1b1
-keybind = super+alt+digit_2=text:\x02\x1b2
-keybind = super+alt+digit_3=text:\x02\x1b3
-keybind = super+alt+digit_4=text:\x02\x1b4
-keybind = super+alt+digit_5=text:\x02\x1b5
-keybind = super+alt+digit_6=text:\x02\x1b6
-keybind = super+alt+digit_7=text:\x02\x1b7
-keybind = super+alt+digit_8=text:\x02\x1b8
-keybind = super+alt+digit_9=text:\x02\x1b9
+# CMD+Ctrl+数字 切换到指定 workspace
+keybind = super+ctrl+digit_1=text:\x02\x1b1
+keybind = super+ctrl+digit_2=text:\x02\x1b2
+keybind = super+ctrl+digit_3=text:\x02\x1b3
+keybind = super+ctrl+digit_4=text:\x02\x1b4
+keybind = super+ctrl+digit_5=text:\x02\x1b5
+keybind = super+ctrl+digit_6=text:\x02\x1b6
+keybind = super+ctrl+digit_7=text:\x02\x1b7
+keybind = super+ctrl+digit_8=text:\x02\x1b8
+keybind = super+ctrl+digit_9=text:\x02\x1b9
 
-# CMD+Shift+Left/Right 切换到上一个/下一个 workspace
-keybind = super+shift+left=text:\x02\x1b[D
-keybind = super+shift+right=text:\x02\x1b[C
+# CMD+Ctrl+Up/Down 切换到上一个/下一个 workspace
+keybind = super+ctrl+up=text:\x02\x1b[A
+keybind = super+ctrl+down=text:\x02\x1b[B
 
 # CMD+D 水平分割
 keybind = super+d=text:\x02|
