@@ -1,352 +1,119 @@
 # ============================================================================
-# Modern Zsh Configuration
+# Modern Zsh Configuration (macOS & Fedora / Linux Compatible)
 # ============================================================================
 
 # ----------------------------------------------------------------------------
-# Performance Profiling (uncomment to debug slow startup)
+# Path & Environment Setup (Loaded early for all shells)
 # ----------------------------------------------------------------------------
-# zmodload zsh/zprof
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+
+# Homebrew environment (macOS & Linuxbrew on Fedora)
+for _brew in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
+  if [[ -x "$_brew" ]]; then
+    eval "$("$_brew" shellenv)"
+    break
+  fi
+done
+unset _brew
+
+# Environment Variables
+export EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='less'
+export LESS='-R'
+
+# Homebrew & TLDR
+export HOMEBREW_NO_AUTO_UPDATE=true
+export TLDR_AUTO_UPDATE_DISABLED=true
+
+# Tool Paths (Flutter & Bun)
+[[ -d "$HOME/development/flutter/bin" ]] && export PATH="$HOME/development/flutter/bin:$PATH"
+export BUN_INSTALL="$HOME/.bun"
+[[ -d "$BUN_INSTALL/bin" ]] && export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Bat, Ripgrep, Fd
+export BAT_PAGER="less -RF"
+export BAT_STYLE="changes,numbers"
+export BAT_THEME="ansi"
+export RG_OPTIONS="--smart-case --follow"
+export FD_OPTIONS="--hidden --follow --exclude .git --exclude node_modules"
+
+# Fzf Configuration
+export DISABLE_FZF_KEY_BINDINGS=true
+export FZF_DEFAULT_COMMAND="fd -t f $FD_OPTIONS"
+export FZF_BASE_OPTS="\
+  --ansi \
+  --multi \
+  --height ~40% \
+  --layout reverse \
+  --info inline \
+  --border none \
+  --no-scrollbar \
+  --tabstop 4 \
+  --prompt 'File❯ ' \
+  --bind 'ctrl-r:change-prompt(❯ )+reload(fd $FD_OPTIONS)' \
+  --bind 'ctrl-o:execute(cd {})' \
+  --bind 'ctrl-y:execute-silent(echo -n {} | (pbcopy 2>/dev/null || wl-copy 2>/dev/null || xclip -selection clipboard 2>/dev/null || xsel --clipboard --input 2>/dev/null))+abort' \
+  --preview='' --preview-window=''"
+
+export FZF_DEFAULT_OPTS="$FZF_BASE_OPTS \
+  --bind 'ctrl-d:change-prompt(Dirs❯ )+reload(fd -t d $FD_OPTIONS)' \
+  --bind 'ctrl-f:change-prompt(Files❯ )+reload(fd -t f $FD_OPTIONS)' \
+  --bind 'ctrl-/:toggle-preview' \
+  --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file \
+  || (bat --color=always --style=numbers --line-range=:500 {} || cat {}) 2> /dev/null | head -300' \
+  --preview-window='right:60%:wrap'"
+
+export FZF_CTRL_R_OPTS="$FZF_BASE_OPTS"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="$FZF_BASE_OPTS"
+export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
+export FZF_ALT_C_OPTS="$FZF_BASE_OPTS"
+export FZF_COMPLETION_TRIGGER='?'
+export FZF_COMPLETION_OPTS="$FZF_BASE_OPTS"
 
 # ----------------------------------------------------------------------------
-# Path Configuration
+# Tool Integrations (mise, zoxide)
 # ----------------------------------------------------------------------------
-export PATH="$HOME/bin:/usr/local/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
+command -v mise &>/dev/null && eval "$(mise activate zsh)"
+command -v zoxide &>/dev/null && eval "$(zoxide init zsh --cmd j)"
 
 # ----------------------------------------------------------------------------
-# History Configuration
+# Shell Options & History
 # ----------------------------------------------------------------------------
 HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
 
-setopt EXTENDED_HISTORY          # Write timestamp to history
-setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first
-setopt HIST_IGNORE_DUPS          # Don't record duplicate entries
-setopt HIST_IGNORE_ALL_DUPS      # Delete old duplicate entries
-setopt HIST_FIND_NO_DUPS         # Don't display duplicates when searching
-setopt HIST_IGNORE_SPACE         # Don't record entries starting with space
-setopt HIST_SAVE_NO_DUPS         # Don't write duplicates to history file
-setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks
-setopt INC_APPEND_HISTORY        # Append and save commands immediately
-unsetopt SHARE_HISTORY           # Keep arrow-key history local to this session
+setopt EXTENDED_HISTORY HIST_EXPIRE_DUPS_FIRST HIST_IGNORE_ALL_DUPS \
+       HIST_FIND_NO_DUPS HIST_IGNORE_SPACE HIST_SAVE_NO_DUPS \
+       HIST_REDUCE_BLANKS INC_APPEND_HISTORY
+unsetopt SHARE_HISTORY
 
-# ----------------------------------------------------------------------------
-# Directory Navigation
-# ----------------------------------------------------------------------------
-setopt AUTO_CD                   # cd by typing directory name
-setopt AUTO_PUSHD                # Push directories onto stack
-setopt PUSHD_IGNORE_DUPS         # Don't push duplicates
-setopt PUSHD_MINUS               # Reverse +/- operators
-
-# ----------------------------------------------------------------------------
-# Completion System
-# Preload zle module for later use
-zmodload zsh/zle 2>/dev/null
-
-# Skip compinit when running with -c (ZSH_EXECUTION_STRING is set)
-# to avoid "can't change option: zle" warnings from .zcompdump
-if [[ -z "${ZSH_EXECUTION_STRING-}" ]]; then
-  autoload -Uz compinit
-  if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-    compinit
-  else
-    compinit -C
-  fi
-fi
-
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Case insensitive
-zstyle ':completion:*' menu select                         # Menu selection
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"   # Colored completion
-zstyle ':completion:*' group-name ''                       # Group results
-zstyle ':completion:*:descriptions' format '%B%d%b'        # Format descriptions
-zstyle ':completion:*:warnings' format 'No matches found'  # No match message
-zstyle ':completion:*' rehash true                         # Automatically find new executables
-
-# ----------------------------------------------------------------------------
-# Key Bindings
-# ----------------------------------------------------------------------------
-
-if [[ -o interactive && -z "${ZSH_EXECUTION_STRING-}" ]]; then
-bindkey -e  # Emacs key bindings (use -v for vi mode)
-
-# Keep arrow-key history navigation predictable across terminals.
-autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-
-for keymap in emacs viins; do
-  bindkey -M "$keymap" $'\e[A' up-line-or-history
-  bindkey -M "$keymap" $'\eOA' up-line-or-history
-  bindkey -M "$keymap" $'\e[B' down-line-or-history
-  bindkey -M "$keymap" $'\eOB' down-line-or-history
-
-  [[ -n ${terminfo[kcuu1]} ]] && bindkey -M "$keymap" "${terminfo[kcuu1]}" up-line-or-history
-  [[ -n ${terminfo[kcud1]} ]] && bindkey -M "$keymap" "${terminfo[kcud1]}" down-line-or-history
-done
-
-bindkey '^P' up-line-or-history                 # Ctrl+P
-bindkey '^N' down-line-or-history               # Ctrl+N
-bindkey '^[[5~' up-line-or-beginning-search     # PageUp
-bindkey '^[[6~' down-line-or-beginning-search   # PageDown
-
-autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey '^X^E' edit-command-line  # Ctrl+X Ctrl+E
-
-# Other useful bindings
-bindkey '^[[H' beginning-of-line               # Home
-bindkey '^[[F' end-of-line                     # End
-bindkey '^[[3~' delete-char                    # Delete
-bindkey '^[[1;5C' forward-word                 # Ctrl+Right
-bindkey '^[[1;5D' backward-word                # Ctrl+Left
-
-# Custom widget for lazygit
-lazygit_widget() {
-  BUFFER=""
-  zle clear-screen
-  lazygit
-  _build_prompt
-  zle reset-prompt
-}
-zle -N lazygit_widget
-bindkey '^g' lazygit_widget                       # Ctrl+G
-
-# Custom widget for yazi
-yazi_widget() {
-  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-  yazi "$@" --cwd-file="$tmp"
-  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-    cd -- "$cwd"
-  fi
-  rm -f -- "$tmp"
-  _build_prompt
-  zle reset-prompt
-}
-zle -N yazi_widget
-bindkey '^t' yazi_widget                       # Ctrl+T
-
-bindkey -s '^o' '^qnvim\n'                     # Ctrl+O
-bindkey -s '\e ' '^qpi\n'                      # Alt+Space
-
-# ----------------------------------------------------------------------------
-# Prompt Configuration
-# ----------------------------------------------------------------------------
-autoload -Uz vcs_info
-setopt PROMPT_SUBST
-
-# Configure vcs_info for git
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git:*' formats '%F{magenta}%b%f%c%u'
-zstyle ':vcs_info:git:*' actionformats '%F{magenta}%b%F{yellow}|%a%f%c%u'
-# Enable the next two lines to show dirty/staged dots (slower on large repos):
-# zstyle ':vcs_info:git:*' check-for-changes true
-# zstyle ':vcs_info:git:*' unstagedstr '%F{red}●%f'
-# zstyle ':vcs_info:git:*' stagedstr '%F{green}●%f'
-
-# Detect if we're in an SSH session
-_is_ssh() {
-  [[ -n "$SSH_CONNECTION" || -n "$SSH_CLIENT" || -n "$SSH_TTY" ]]
-}
-
-# Function to build prompt (shared by precmd and widget callbacks)
-_build_prompt() {
-  # --- Line 1: context info ---
-
-  # SSH indicator: show user@host in red to catch attention
-  local context=""
-  if _is_ssh; then
-    context="%F{red}%n@%m%f "
-  fi
-
-  # Current path (shortened with ~)
-  local path_display="%F{cyan}%~%f"
-
-  # Git info (set by async or sync vcs_info)
-  local git_info=""
-  if [[ -n "${vcs_info_msg_0_}" ]]; then
-    git_info=" %F{240}on %F{magenta}${vcs_info_msg_0_}%f"
-  fi
-
-  # Proxy indicator
-  local proxy_info=""
-  if [[ -n "$http_proxy" || -n "$https_proxy" || -n "$all_proxy" ]]; then
-    proxy_info=" %F{240}using%f %F{yellow}proxy%f"
-  fi
-
-  # --- Line 2: prompt line ---
-
-  # Background jobs indicator
-  local jobs_indicator="%(1j.%F{yellow}[&]%f .)"
-
-  # Exit code of last command (only shown when non-zero)
-  local exit_code="%(?..%F{red}%?%f )"
-
-  # Prompt symbol: cyan for success, red for failure
-  local prompt_symbol="%(?,%F{cyan}>%f,%F{red}!%f)"
-
-  # Right prompt: time (useful for timing commands)
-  RPROMPT='%F{240}%*%f'
-
-  PROMPT="${context}${path_display}${git_info}${proxy_info}
-${exit_code}${jobs_indicator}${prompt_symbol} "
-}
-
-# Precmd function to build prompt
-precmd() {
-  vcs_info
-  _build_prompt
-}
-
-# ============================================================================
-# Agent Mode - Press Alt+Space to activate
-# ============================================================================
-
-# 命令帮助 agent - 根据用户描述生成命令
-command_help_agent() {
-  local log_file="/tmp/command_help_agent.log"
-  local content="${${1#\#}##[[:space:]]#}"
-  content="${content%%[[:space:]]#}"
-
-  [[ -z "$content" ]] && return
-
-  zle -R "🤖 正在生成命令..."
-
-  local os="${OSTYPE}"
-  [[ "$OSTYPE" == darwin* ]] && os="macOS $(sw_vers -productVersion 2>/dev/null || echo unknown)"
-  [[ "$OSTYPE" == linux-gnu* ]] && os="Linux"
-  local shell="${SHELL:t}"
-
-  # 确保代理已开启
-  if [[ -z "$http_proxy" && -z "$https_proxy" && -z "$all_proxy" ]]; then
-    enable_proxy
-  fi
-
-  local result
-  result=$(command pi --no-session --provider google-antigravity --model gemini-3-flash -p "You are a shell command generator for $os running $shell. Your user is a dog that only knows how to press Enter. Generate commands compatible with this platform. Output ONLY the command, nothing else. No explanations, no markdown, no code blocks, no comments. Just the raw command. User Request: $content" 2>>"$log_file")
-
-  {
-    echo "=== $(date '+%Y-%m-%d %H:%M:%S') ==="
-    echo "input: $content"
-    printf 'response: %s\n\n' "$result"
-  } >> "$log_file"
-
-  if [[ -z "$result" ]]; then
-    zle -M "❌ 未能生成命令，详情见 $log_file"
-    return 1
-  fi
-
-  BUFFER="$result"
-  CURSOR=$#BUFFER
-  zle redisplay
-}
-
-# 处理 agent 模式下的命令执行
-agent_accept_line() {
-  # 空输入直接执行
-  if [[ -z "$BUFFER" ]]; then
-    zle accept-line
-    return
-  fi
-
-  # 处理 # 开头的命令帮助请求
-  if [[ $BUFFER == \#* ]]; then
-    # 调用命令帮助 agent
-    command_help_agent "$BUFFER"
-    return
-  fi
-
-  zle .accept-line
-}
-
-zle -N agent_accept_line
-
-# 将你的自定义 widget 加入到“清理建议”的触发列表中
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(agent_accept_line)
-
-bindkey '^M' agent_accept_line
-
-# ----------------------------------------------------------------------------
-# Hooks(https://gist.github.com/elliottminns/09a598082d77f795c88e93f7f73dba61)
-# ----------------------------------------------------------------------------
-autoload -Uz add-zsh-hook
-
-# Then Define separate functions
-function auto_venv() {
-  # If already in a virtualenv, do nothing
-  if [[ -n "$VIRTUAL_ENV" && "$PWD" != *"${VIRTUAL_ENV:h}"* ]]; then
-    deactivate
-    return
-  fi
-
-  [[ -n "$VIRTUAL_ENV" ]] && return
-
-  local dir="$PWD"
-  while [[ "$dir" != "/" ]]; do
-    if [[ -f "$dir/.venv/bin/activate" ]]; then
-      source "$dir/.venv/bin/activate"
-      return
-    fi
-    dir="${dir:h}"
-  done
-}
-
-add-zsh-hook chpwd auto_venv
-
-# Check if git repo has local user info configured
-function check_git_user_config() {
-  # Only check if we're in a git repository
-  if git rev-parse --is-inside-work-tree &>/dev/null; then
-    # Check if local user.name is set
-    local local_user_name=$(git config --local user.name 2>/dev/null)
-    # Check if local user.email is set
-    local local_user_email=$(git config --local user.email 2>/dev/null)
-
-    # If either is missing, show a warning
-    if [[ -z "$local_user_name" ]] || [[ -z "$local_user_email" ]]; then
-      echo ""
-      echo "⚠️  Warning: This git repository is missing local user configuration!"
-      echo ""
-      if [[ -z "$local_user_name" ]]; then
-        echo "   ❌ Local user.name is not set"
-      fi
-      if [[ -z "$local_user_email" ]]; then
-        echo "   ❌ Local user.email is not set"
-      fi
-      echo ""
-      echo "   To fix this, run:"
-      echo "   git config user.name \"Your Name\""
-      echo "   git config user.email \"your.email@example.com\""
-      echo ""
-    fi
-  fi
-}
-
-add-zsh-hook chpwd check_git_user_config
+setopt AUTO_CD AUTO_PUSHD PUSHD_IGNORE_DUPS PUSHD_MINUS CORRECT \
+       INTERACTIVE_COMMENTS NO_BEEP MULTIOS
 
 # ----------------------------------------------------------------------------
 # Aliases
 # ----------------------------------------------------------------------------
+if ls --color=auto /dev/null &>/dev/null; then
+  alias ls='ls --color=auto'
+else
+  alias ls='ls -G'
+fi
 
-# Basic commands
-alias ls='ls --color=auto'
 alias ll='ls -lah'
 alias la='ls -A'
 alias l='ls -CF'
-
-# Safety nets
 alias rm='rm -i'
 alias rrm="trash -v"
 alias cp='cp -i'
 alias mv='mv -i'
 
-# Navigation
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias -- -='cd -'
 
-# Git shortcuts
 alias g='git'
 alias ga='git add'
 alias gc='git commit'
@@ -358,32 +125,32 @@ alias glr='git pull --rebase'
 alias gd='git diff'
 alias glog='git log --oneline --graph --decorate'
 
-# System-level cross-platform compat (Linux only; macOS has these natively)
 if [[ "$OSTYPE" == linux* ]]; then
   alias open='xdg-open'
-  alias pbcopy='wl-copy'
-  alias pbpaste='wl-paste'
+  if command -v wl-copy &>/dev/null; then
+    alias pbcopy='wl-copy'
+    alias pbpaste='wl-paste'
+  elif command -v xclip &>/dev/null; then
+    alias pbcopy='xclip -selection clipboard'
+    alias pbpaste='xclip -selection clipboard -o'
+  elif command -v xsel &>/dev/null; then
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+  fi
 fi
 
-# System
 alias df='df -h'
 alias du='du -h'
-alias free='free -h'
+command -v free &>/dev/null && alias free='free -h'
 
-# Quick edits
 alias zshrc='${EDITOR:-nvim} ~/.zshrc'
 alias reload='source ~/.zshrc'
 
 # ----------------------------------------------------------------------------
 # Functions
 # ----------------------------------------------------------------------------
+mkcd() { mkdir -p "$1" && cd "$1"; }
 
-# Create directory and cd into it
-mkcd() {
-  mkdir -p "$1" && cd "$1"
-}
-
-# Extract various archive formats
 extract() {
   if [ -f "$1" ]; then
     case "$1" in
@@ -405,19 +172,10 @@ extract() {
   fi
 }
 
-# Find files by name
-ff() {
-  find . -type f -iname "*$1*"
-}
+ff() { find . -type f -iname "*$1*"; }
+fdd() { find . -type d -iname "*$1*"; }
 
-# Find directories by name
-fdd() {
-  find . -type d -iname "*$1*"
-}
-
-attach_tmux() {
-  tmux attach -t f || tmux new -s f
-}
+attach_tmux() { tmux attach -t f 2>/dev/null || tmux new -s f; }
 
 enable_proxy() {
   export https_proxy=http://127.0.0.1:7890
@@ -426,30 +184,9 @@ enable_proxy() {
 }
 
 disable_proxy() {
-  unset https_proxy
-  unset http_proxy
-  unset all_proxy
+  unset https_proxy http_proxy all_proxy
 }
 
-toggle_proxy_widget() {
-  if [[ -n "$http_proxy" || -n "$https_proxy" || -n "$all_proxy" ]]; then
-    disable_proxy
-  else
-    enable_proxy
-  fi
-  
-  # Rebuild prompt immediately
-  _build_prompt
-  zle reset-prompt
-}
-zle -N toggle_proxy_widget
-bindkey '^X^P' toggle_proxy_widget  # Ctrl+X Ctrl+P
-
-fi
-
-# Modified version where you can press
-#   - CTRL-O to open with `open` command,
-#   - CTRL-E or Enter key to open with the $EDITOR
 fo() {
   local out file key
   IFS=$'\n' out=("$(fzf --query="$1" -0 -1 --expect=ctrl-o,ctrl-e)")
@@ -460,7 +197,6 @@ fo() {
   fi
 }
 
-# find-in-file - usage: fif <searchTerm>
 fif() {
   if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
   file=$(rg --files-with-matches --no-messages "$1" | fzf --preview "rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}")
@@ -470,258 +206,278 @@ fif() {
 myip() {
   if [[ "$OSTYPE" == darwin* ]]; then
     ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'
+  elif command -v hostname &>/dev/null && hostname -I &>/dev/null; then
+    hostname -I | awk '{print $1}'
   else
     ip -4 addr show | grep -oP '(?<=inet )([0-9]+\.){3}[0-9]+' | grep -v '^127\.'
   fi
 }
 
-port() {
-  lsof -nP -iTCP -sTCP:LISTEN | grep $1
-}
-
-killport() {
- lsof -nP -iTCP -sTCP:LISTEN | grep $argv[1] | awk '{print $2}' | xargs kill
-}
+port() { lsof -nP -iTCP -sTCP:LISTEN | grep "$1"; }
+killport() { lsof -nP -iTCP -sTCP:LISTEN | grep "$1" | awk '{print $2}' | xargs kill; }
 
 # ----------------------------------------------------------------------------
-# Git Worktree (https://gist.github.com/vikingmute/e85e0b4249a65e41d64315c7790e5987)
+# Hooks
 # ----------------------------------------------------------------------------
+autoload -Uz add-zsh-hook
 
-confirm() {
-  local prompt="${1:-Are you sure? [y/N]} "
-
-  read -q "response?$prompt"
-
-  # 打印换行（因为 read -q 不换行）
-  echo
-
-  if [[ "$response" =~ ^[yY]$ ]]; then
-    return 0
-  else
-    return 1
+function auto_venv() {
+  if [[ -n "$VIRTUAL_ENV" && "$PWD" != *"${VIRTUAL_ENV:h}"* ]]; then
+    type deactivate &>/dev/null && deactivate
+    return
   fi
+
+  [[ -n "$VIRTUAL_ENV" ]] && return
+
+  local dir="$PWD"
+  while [[ "$dir" != "/" ]]; do
+    if [[ -f "$dir/.venv/bin/activate" ]]; then
+      source "$dir/.venv/bin/activate"
+      return
+    fi
+    dir="${dir:h}"
+  done
 }
 
-gta() {
-  local worktree_branch="$1"
-  local git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+add-zsh-hook chpwd auto_venv
 
-  if [ $? -eq 1 ]; then
-    echo "❌ Not a git repo"
-    return 1
-  fi
+function check_git_user_config() {
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+    local local_user_name=$(git config --local user.name 2>/dev/null)
+    local local_user_email=$(git config --local user.email 2>/dev/null)
 
-  if [[ -z "$worktree_branch" ]]; then
-    read -r "?Enter branch name: " worktree_branch
-    if [[ -z "$worktree_branch" ]]; then
-      echo "❌ Branch name is required"
-      return 1
+    if [[ -z "$local_user_name" ]] || [[ -z "$local_user_email" ]]; then
+      echo ""
+      echo "⚠️  Warning: This git repository is missing local user configuration!"
+      echo ""
+      [[ -z "$local_user_name" ]] && echo "   ❌ Local user.name is not set"
+      [[ -z "$local_user_email" ]] && echo "   ❌ Local user.email is not set"
+      echo ""
+      echo "   To fix this, run:"
+      echo "   git config user.name \"Your Name\""
+      echo "   git config user.email \"your.email@example.com\""
+      echo ""
     fi
   fi
-
-  local dir_name="$(basename "$git_root")"
-  # Strip existing (...) suffix if present to avoid repo(a)(b) nested names
-  local repo_name="${dir_name%%\(*}"
-  local worktree_path="$git_root/../$repo_name($worktree_branch)"
-
-  # Check if branch exists to decide between creating (-b) or checkout
-  if git show-ref --verify --quiet "refs/heads/$worktree_branch"; then
-    echo "ℹ️  Branch '$worktree_branch' exists. Checking out..."
-    git worktree add "$worktree_path" "$worktree_branch" || return 1
-  else
-    git worktree add -b "$worktree_branch" "$worktree_path" || return 1
-  fi
-
-  cd "$worktree_path" || return 1
-  [[ -f "$worktree_path/.mise.toml" && -n "$(command -v mise)" ]] && mise trust "$worktree_path"
 }
 
-gtd() {
-  local git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+add-zsh-hook chpwd check_git_user_config
 
-  if [ $? -eq 1 ]; then
-    echo "❌ Not a git repo"
-    return 1
-  fi
+# ----------------------------------------------------------------------------
+# Interactive Shell Configuration
+# ----------------------------------------------------------------------------
+if [[ -o interactive ]]; then
 
-  local worktree_name="$(basename "$git_root")"
-
-  if [[ ! "$worktree_name" =~ .+\(.+\) ]]; then
-    echo "❌ Current directory name doesn't match pattern 'repo_name(branch_name)'"
-    return 1
-  fi
-
-  local branch_name="${worktree_name#*\(}"
-  branch_name="${branch_name%\)}"
-
-  # Find the main worktree to fallback to safely
-  local main_worktree_path=$(git worktree list --porcelain | head -n1 | cut -d ' ' -f2)
-
-  if confirm "🚨 Delete Worktree: $worktree_name? (Uncommitted changes will be lost!) (y/n) "; then
-    # Move out of the directory before deleting
-    if [[ -d "$main_worktree_path" ]]; then
-      cd "$main_worktree_path" || return 1
+  # Completion System
+  if [[ -z "${ZSH_EXECUTION_STRING-}" ]]; then
+    zmodload zsh/zle 2>/dev/null
+    autoload -Uz compinit
+    local zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
+    if [[ -f "$zcompdump" && -n "$zcompdump"(#qN.mh+24) ]]; then
+      compinit
+    elif [[ ! -f "$zcompdump" ]]; then
+      compinit
     else
-      echo "❌ Can not find git repo location"
-      return 1
-    fi
-
-    git worktree remove "$git_root" --force > /dev/null
-
-    if confirm "🚨 Delete Branch: $branch_name? (y/n) "; then
-      git branch -D "$branch_name" > /dev/null
+      compinit -C
     fi
   fi
-}
 
-gtc() {
-  local git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+  zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+  zstyle ':completion:*' menu select
+  zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+  zstyle ':completion:*' group-name ''
+  zstyle ':completion:*:descriptions' format '%B%d%b'
+  zstyle ':completion:*:warnings' format 'No matches found'
+  zstyle ':completion:*' rehash true
 
-  if [ $? -eq 1 ]; then
-    echo "❌ Not a git repo"
-    return 1
+  # Prompt Configuration
+  autoload -Uz vcs_info
+  setopt PROMPT_SUBST
+
+  zstyle ':vcs_info:*' enable git
+  zstyle ':vcs_info:git:*' formats '%F{magenta}%b%f%c%u'
+  zstyle ':vcs_info:git:*' actionformats '%F{magenta}%b%F{yellow}|%a%f%c%u'
+
+  _is_ssh() {
+    [[ -n "$SSH_CONNECTION" || -n "$SSH_CLIENT" || -n "$SSH_TTY" ]]
+  }
+
+  _build_prompt() {
+    local context=""
+    _is_ssh && context="%F{red}%n@%m%f "
+
+    local path_display="%F{cyan}%~%f"
+    local git_info=""
+    [[ -n "${vcs_info_msg_0_}" ]] && git_info=" %F{240}on %F{magenta}${vcs_info_msg_0_}%f"
+
+    local proxy_info=""
+    [[ -n "$http_proxy" || -n "$https_proxy" || -n "$all_proxy" ]] && proxy_info=" %F{240}using%f %F{yellow}proxy%f"
+
+    local jobs_indicator="%(1j.%F{yellow}[&]%f .)"
+    local exit_code="%(?..%F{red}%?%f )"
+    local prompt_symbol="%(?,%F{cyan}>%f,%F{red}!%f)"
+
+    RPROMPT='%F{240}%*%f'
+    PROMPT="${context}${path_display}${git_info}${proxy_info}
+${exit_code}${jobs_indicator}${prompt_symbol} "
+  }
+
+  precmd() {
+    vcs_info
+    _build_prompt
+  }
+
+  # ZLE Widgets & Key Bindings
+  if [[ -z "${ZSH_EXECUTION_STRING-}" ]]; then
+    bindkey -e
+
+    autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+    zle -N up-line-or-beginning-search
+    zle -N down-line-or-beginning-search
+
+    for keymap in emacs viins; do
+      bindkey -M "$keymap" $'\e[A' up-line-or-history
+      bindkey -M "$keymap" $'\eOA' up-line-or-history
+      bindkey -M "$keymap" $'\e[B' down-line-or-history
+      bindkey -M "$keymap" $'\eOB' down-line-or-history
+
+      [[ -n ${terminfo[kcuu1]} ]] && bindkey -M "$keymap" "${terminfo[kcuu1]}" up-line-or-history
+      [[ -n ${terminfo[kcud1]} ]] && bindkey -M "$keymap" "${terminfo[kcud1]}" down-line-or-history
+    done
+
+    bindkey '^P' up-line-or-history
+    bindkey '^N' down-line-or-history
+    bindkey '^[[5~' up-line-or-beginning-search
+    bindkey '^[[6~' down-line-or-beginning-search
+
+    autoload -Uz edit-command-line
+    zle -N edit-command-line
+    bindkey '^X^E' edit-command-line
+
+    bindkey '^[[H' beginning-of-line
+    bindkey '^[[F' end-of-line
+    bindkey '^[[3~' delete-char
+    bindkey '^[[1;5C' forward-word
+    bindkey '^[[1;5D' backward-word
+
+    lazygit_widget() {
+      BUFFER=""
+      zle clear-screen
+      lazygit
+      _build_prompt
+      zle reset-prompt
+    }
+    zle -N lazygit_widget
+    bindkey '^g' lazygit_widget
+
+    yazi_widget() {
+      local tmp="$(mktemp "${TMPDIR:-/tmp}/yazi-cwd.XXXXXX")"
+      yazi "$@" --cwd-file="$tmp"
+      if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        cd -- "$cwd"
+      fi
+      rm -f -- "$tmp"
+      _build_prompt
+      zle reset-prompt
+    }
+    zle -N yazi_widget
+    bindkey '^t' yazi_widget
+
+    bindkey -s '^o' '^qnvim\n'
+    bindkey -s '\e ' '^qpi\n'
+
+    toggle_proxy_widget() {
+      if [[ -n "$http_proxy" || -n "$https_proxy" || -n "$all_proxy" ]]; then
+        disable_proxy
+      else
+        enable_proxy
+      fi
+      _build_prompt
+      zle reset-prompt
+    }
+    zle -N toggle_proxy_widget
+    bindkey '^X^P' toggle_proxy_widget
+
+    # Command help agent
+    command_help_agent() {
+      local log_file="/tmp/command_help_agent.log"
+      local content="${${1#\#}##[[:space:]]#}"
+      content="${content%%[[:space:]]#}"
+
+      [[ -z "$content" ]] && return
+
+      zle -R "🤖 Thinking..."
+
+      local os="Linux"
+      if [[ "$OSTYPE" == darwin* ]]; then
+        os="macOS $(sw_vers -productVersion 2>/dev/null || echo unknown)"
+      elif [[ -f /etc/os-release ]]; then
+        os="$(source /etc/os-release && echo "$PRETTY_NAME")"
+      fi
+      local shell="${SHELL:t}"
+
+      [[ -z "$http_proxy" && -z "$https_proxy" && -z "$all_proxy" ]] && enable_proxy
+
+      local result
+      result=$(command pi --no-session --model deepseek-v4-flash -p "You are a shell command generator for $os running $shell. Your user is a dog that only knows how to press Enter. Generate commands compatible with this platform. Output ONLY the command, nothing else. No explanations, no markdown, no code blocks, no comments. Just the raw command. User Request: $content" 2>>"$log_file")
+
+      {
+        echo "=== $(date '+%Y-%m-%d %H:%M:%S') ==="
+        echo "input: $content"
+        printf 'response: %s\n\n' "$result"
+      } >> "$log_file"
+
+      if [[ -z "$result" ]]; then
+        zle -M "❌ Generate failed, Checkout $log_file"
+        return 1
+      fi
+
+      BUFFER="$result"
+      CURSOR=$#BUFFER
+      zle redisplay
+    }
+
+    agent_accept_line() {
+      if [[ -z "$BUFFER" ]]; then
+        zle accept-line
+        return
+      fi
+
+      if [[ $BUFFER == \#* ]]; then
+        command_help_agent "$BUFFER"
+        return
+      fi
+
+      zle .accept-line
+    }
+
+    zle -N agent_accept_line
+    ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(agent_accept_line)
+    bindkey '^M' agent_accept_line
+
+    # Plugin Manager (Zinit)
+    ZINIT_HOME="$HOME/.local/share/zinit/zinit.git"
+    if [ ! -d "$ZINIT_HOME" ]; then
+      bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
+    fi
+    if [[ -f "${ZINIT_HOME}/zinit.zsh" ]]; then
+      source "${ZINIT_HOME}/zinit.zsh"
+      zinit wait lucid for \
+       atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+          zdharma-continuum/fast-syntax-highlighting \
+       blockf \
+          zsh-users/zsh-completions \
+       atload"!_zsh_autosuggest_start" \
+          zsh-users/zsh-autosuggestions
+    fi
+
+    # FZF Zsh Integration
+    FZF_CTRL_T_COMMAND= FZF_ALT_C_COMMAND= source <(fzf --zsh) 2>/dev/null || :
   fi
-
-  local selected=$(git worktree list | fzf --height=20% --layout=reverse --prompt="Switch to Worktree > ")
-
-  if [[ -n "$selected" ]]; then
-    local worktree_path=$(echo "$selected" | awk '{print $1}')
-    cd "$worktree_path"
-  fi
-}
-
-# ----------------------------------------------------------------------------
-# Environment Variables
-# ----------------------------------------------------------------------------
-export EDITOR='nvim'
-export VISUAL='nvim'
-export PAGER='less'
-export LESS='-R'
-
-# Colored man pages
-export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
-export LESS_TERMCAP_md=$'\E[1;36m'     # begin blink
-export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
-export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
-export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
-export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
-export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
-
-# Homebrew
-export HOMEBREW_NO_AUTO_UPDATE=true
-# TLDR
-export TLDR_AUTO_UPDATE_DISABLED=true
-
-# Set ANDROID_HOME before using it
-export ANDROID_HOME="$HOME/Library/Android/sdk"
-
-# Android tools paths
-export PATH="$ANDROID_HOME/build-tools/35.0.1:$PATH"
-export PATH="$ANDROID_HOME/tools:$PATH"
-export PATH="$ANDROID_HOME/emulator:$PATH"
-export PATH="$ANDROID_HOME/tools/bin:$PATH"
-export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
-export PATH="$ANDROID_HOME/platform-tools:$PATH"
-
-# Flutter
-export PATH="$HOME/development/flutter/bin:$PATH"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# Bat
-export BAT_PAGER="less -RF"
-export BAT_STYLE="changes,numbers"
-export BAT_THEME="ansi"
-
-# RG
-export RG_OPTIONS="--smart-case --follow"
-
-# Fd
-export FD_OPTIONS="--hidden --follow --exclude .git --exclude node_modules"
-
-# Fzf
-export DISABLE_FZF_KEY_BINDINGS=true
-export FZF_DEFAULT_COMMAND="fd -t f $FD_OPTIONS"
-export FZF_BASE_OPTS="\
-  --ansi \
-  --multi \
-  --height ~40% \
-  --layout reverse \
-  --info inline \
-  --border none \
-  --no-scrollbar \
-  --tabstop 4 \
-  --prompt 'File❯ ' \
-  --bind 'ctrl-r:change-prompt(❯ )+reload(fd $FD_OPTIONS)' \
-  --bind 'ctrl-o:execute(cd {})' \
-  --bind 'ctrl-y:execute-silent(echo {} | pbcopy)+abort' \
-  --preview='' --preview-window=''"
-
-export FZF_DEFAULT_OPTS="$FZF_BASE_OPTS \
-  --bind 'ctrl-d:change-prompt(Dirs❯ )+reload(fd -t d $FD_OPTIONS)' \
-  --bind 'ctrl-f:change-prompt(Files❯ )+reload(fd -t f $FD_OPTIONS)' \
-  --bind 'ctrl-/:toggle-preview' \
-  --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file \
-  || (bat --color=always --style=numbers --line-range=:500 {} || cat {}) 2> /dev/null | head -300' \
-  --preview-window='right:60%:wrap'"
-
-export FZF_CTRL_R_OPTS="$FZF_BASE_OPTS"
-# Paste the selected files and directories onto the command-line
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="$FZF_BASE_OPTS"
-# cd into the selected directory
-export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
-export FZF_ALT_C_OPTS="$FZF_BASE_OPTS"
-
-export FZF_COMPLETION_TRIGGER='?'
-export FZF_COMPLETION_OPTS="$FZF_BASE_OPTS"
-
-
-# ----------------------------------------------------------------------------
-# Additional Options
-# ----------------------------------------------------------------------------
-setopt CORRECT                   # Spell correction for commands
-setopt INTERACTIVE_COMMENTS      # Allow comments in interactive shell
-setopt NO_BEEP                   # No beeping
-setopt MULTIOS                   # Implicit tees/cats with multiple redirections
-
-# ----------------------------------------------------------------------------
-# Plugin Manager (Optional - uncomment if using zinit)
-# ----------------------------------------------------------------------------
-ZINIT_HOME="$HOME/.local/share/zinit/zinit.git"
-
-if [ ! -d "$ZINIT_HOME" ]; then
-  bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
-fi
-if [[ -o interactive && -z "${ZSH_EXECUTION_STRING-}" ]]; then
-  source "${ZINIT_HOME}/zinit.zsh"
-
-  zinit wait lucid for \
-   atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-      zdharma-continuum/fast-syntax-highlighting \
-   blockf \
-      zsh-users/zsh-completions \
-   atload"!_zsh_autosuggest_start" \
-      zsh-users/zsh-autosuggestions
 fi
 
-[[ "$OSTYPE" == darwin* ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(zoxide init zsh --cmd j)"
-eval "$(mise activate zsh)"
-[[ -o interactive && -z "${ZSH_EXECUTION_STRING-}" ]] && FZF_CTRL_T_COMMAND= FZF_ALT_C_COMMAND= source <(fzf --zsh)
-
 # ----------------------------------------------------------------------------
-# Local Configuration
+# Local Configuration & External Integrations
 # ----------------------------------------------------------------------------
-# Load local configuration if it exists
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
-# ----------------------------------------------------------------------------
-# Performance Profiling (uncomment if enabled at top)
-# ----------------------------------------------------------------------------
-# zprof
-
-# Added by OrbStack: command-line tools and integration (macOS only)
-[[ "$OSTYPE" == darwin* ]] && source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+[[ "$OSTYPE" == darwin* && -f ~/.orbstack/shell/init.zsh ]] && source ~/.orbstack/shell/init.zsh 2>/dev/null || :
